@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>CTF每日打卡 on xiaochai_123的小窝</title>
+    <link>https://xiaochai-123.github.io/categories/ctf%E6%AF%8F%E6%97%A5%E6%89%93%E5%8D%A1/</link>
+    <description>Recent content in CTF每日打卡 on xiaochai_123的小窝</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <copyright>© 2025 xiaochai-123. 欢迎转载但请注明出处 | 本博客内容版权所有</copyright>
+    <lastBuildDate>Thu, 04 Dec 2025 20:43:35 +0800</lastBuildDate><atom:link href="https://xiaochai-123.github.io/categories/ctf%E6%AF%8F%E6%97%A5%E6%89%93%E5%8D%A1/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>251204每日打卡</title>
+      <link>https://xiaochai-123.github.io/posts/251204/</link>
+      <pubDate>Thu, 04 Dec 2025 20:43:35 +0800</pubDate>
+      <guid>https://xiaochai-123.github.io/posts/251204/</guid>
+      <description><![CDATA[<h2 id="极客大挑战-2019lovesql" data-numberify>[极客大挑战 2019]LoveSQL<a class="anchor ms-1" href="#极客大挑战-2019lovesql"></a></h2>
+<p>题目一个登录框，测试一下注入</p>
+<p>用户名输入<code>1'</code>  密码输入<code>aa</code></p>
+<p>报错<code>You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'aa'' at line 1</code>我们看到aa被单引号包裹</p>
+<p>后台拼接后的sql语句是<code>SELECT * FROM users WHERE username = '1'' AND password = 'aa'</code></p>
+<p>在用户名输入单引号会引发语法错误，判断为字符型注入</p>
+<p>所以输入用户名<code>1' OR 1=1 #</code>，这个语句会绕过登录验证，让where条件永远为真，返回所有用户，但这里只回显第一行。我们获取到第一个用户的数据</p>
+<p>成功拿到admin账户和密码</p>
+<p>通过<code>1' union select 1,2,3#</code>查出来有三列，然后看回显，2和3的位置都可以回显</p>
+<p><code>1' union select 1,2,database()#</code>可以看到当前数据库为geek</p>
+<p><code>1' union select 1,group_concat(table_name),database() from information_schema.tables where table_schema=database()#</code></p>]]></description>
+    </item>
+    
+    <item>
+      <title>251129每日打卡</title>
+      <link>https://xiaochai-123.github.io/posts/251129/</link>
+      <pubDate>Sat, 29 Nov 2025 20:43:35 +0800</pubDate>
+      <guid>https://xiaochai-123.github.io/posts/251129/</guid>
+      <description><![CDATA[<p>2025/11/29 我决定每天打卡几道题来积少成多</p>
+
+<h2 id="afctf-2021baby_csp" data-numberify>[AFCTF 2021]BABY_CSP<a class="anchor ms-1" href="#afctf-2021baby_csp"></a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">html</span> <span style="color:#a6e22e">lang</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;UTF-8&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">http-equiv</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;X-UA-Compatible&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;IE=edge&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;viewport&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width=device-width, initial-scale=1.0&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">title</span>&gt;BABY CSP&lt;/<span style="color:#f92672">title</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;#&#39;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btn&#34;</span>&gt;whe3e are y0u fr0m?&lt;/<span style="color:#f92672">a</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">nonce</span><span style="color:#f92672">=</span><span style="color:#e6db74">29de6fde0db5686d</span>&gt;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">btn</span>.<span style="color:#a6e22e">onclick</span> <span style="color:#f92672">=</span> () =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">location</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;./?school=&#39;</span> <span style="color:#f92672">+</span> encodeURIComponent([<span style="color:#e6db74">&#39;CSU&#39;</span>, <span style="color:#e6db74">&#39;JXNU&#39;</span>, <span style="color:#e6db74">&#39;HEBNU&#39;</span>, <span style="color:#e6db74">&#39;I don\&#39;t konw :( &#39;</span>][Math.<span style="color:#a6e22e">floor</span>(<span style="color:#ae81ff">4</span> <span style="color:#f92672">*</span> Math.<span style="color:#a6e22e">random</span>())]);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">script</span>&gt;&lt;<span style="color:#f92672">p</span>&gt;I don&#39;t konw :( !&lt;/<span style="color:#f92672">p</span>&gt;&lt;/<span style="color:#f92672">html</span>&gt;
+</span></span></code></pre></div><p>这是题目的源码。页面内容为<code>wewhe3e are y0u fr0m?</code>按钮，按后会出现CSU，JXNU，HEBNU，idk之一</p>
+<p>通过题目我们可以看到考察CSP，而题目通过GET方法获得school参数从而回显到屏幕上</p>
+<p>注意到源码内包含了nonce(一次性令牌)，说明脚本必须带这个令牌，否则CSP会阻止脚本执行。</p>
+<p>那我们先来了解一下nonce</p>
+<blockquote>
+<p>Nonce（Number Used Once）是一个在密码学、区块链和计算机安全中常用的术语，指一个<strong>仅使用一次的随机或伪随机数</strong>。 它的核心目的是确保每次操作或通信的唯一性，防止重放攻击（Replay Attack）或其他安全威胁。 在加密算法（如AES、SSL/TLS）或认证协议中，nonce作为临时令牌，确保每次加密的输入唯一，即使明文相同，生成的密文也不同。</p>
+</blockquote>
+<p>先来尝试下URL传入<code>/?school=&lt;script&gt;alert(1)&lt;/script&gt;</code></p>
+<p>题目只回显了一个感叹号，因为script标签没有正确的nonce所以被拦截了。</p>
+<p>那我们传入事件型标签XSS<code>/?school=&quot;&gt;&lt;img src=x onerror=alert(1)&gt;</code></p>
+<p>回显中为    <code>&lt;/script&gt;&lt;p&gt;&quot;&gt;&lt;img src=[x](http://node4.anna.nssctf.cn:28499/x) onerror=alert(1)&gt;!&lt;/p&gt;&lt;/html&gt;</code></p>]]></description>
+    </item>
+    
+  </channel>
+</rss>
+

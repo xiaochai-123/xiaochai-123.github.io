@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Md5 on xiaochai_123的小窝</title>
+    <link>https://xiaochai-123.github.io/tags/md5/</link>
+    <description>Recent content in Md5 on xiaochai_123的小窝</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <copyright>© 2025 xiaochai-123. 欢迎转载但请注明出处 | 本博客内容版权所有</copyright>
+    <lastBuildDate>Fri, 05 Dec 2025 23:25:07 +0800</lastBuildDate><atom:link href="https://xiaochai-123.github.io/tags/md5/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>双重md5爆破</title>
+      <link>https://xiaochai-123.github.io/posts/%E5%8F%8C%E9%87%8Dmd5%E7%88%86%E7%A0%B4/</link>
+      <pubDate>Fri, 05 Dec 2025 23:25:07 +0800</pubDate>
+      <guid>https://xiaochai-123.github.io/posts/%E5%8F%8C%E9%87%8Dmd5%E7%88%86%E7%A0%B4/</guid>
+      <description><![CDATA[<h1 id="双重md5加密弱等于" data-numberify>双重md5加密弱等于<a class="anchor ms-1" href="#双重md5加密弱等于"></a></h1>
+<p>当前做过几道php反序列化题目中含有md5双重加密的判断</p>
+<p>发现有两个小知识点</p>
+
+<h2 id="科学计数法弱等于" data-numberify>科学计数法弱等于<a class="anchor ms-1" href="#科学计数法弱等于"></a></h2>
+<p><picture><img class="img-fluid " alt="msedge_h6OmdU0Xrz" src="https://xiaochai-123.github.io/images/screenshoots/2025-12/msedge_h6OmdU0Xrz.png?v=582a181d1ba0e5025b9c874eda529231" loading="lazy" width="505" height="298" />
+</picture>
+
+</p>
+<p>比如说这道极客大挑战2025的题目，要求两个值弱等于且不强等于。</p>
+<p>由于弱等于可以把字符串转化为数字比较，而强等于限制了二者不能完全相同</p>
+<p>所有用到科学计数法，当双重md5后字符串为0e开头后面全是数字，则可以通过弱比较，二者都等于0，且强比较不同，符合题意。这里给出一个python脚本，可以拿来爆破</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> hashlib
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> string
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> multiprocessing
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">double_md5</span>(s):
+</span></span><span style="display:flex;"><span>    first_md5 <span style="color:#f92672">=</span> hashlib<span style="color:#f92672">.</span>md5(s<span style="color:#f92672">.</span>encode())<span style="color:#f92672">.</span>hexdigest()
+</span></span><span style="display:flex;"><span>    second_md5 <span style="color:#f92672">=</span> hashlib<span style="color:#f92672">.</span>md5(first_md5<span style="color:#f92672">.</span>encode())<span style="color:#f92672">.</span>hexdigest()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> second_md5
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">is_magic_hash</span>(md5_hash):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> md5_hash<span style="color:#f92672">.</span>startswith(<span style="color:#e6db74">&#39;0e&#39;</span>) <span style="color:#f92672">and</span> md5_hash[<span style="color:#ae81ff">2</span>:]<span style="color:#f92672">.</span>isdigit()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">worker_task</span>(args):
+</span></span><span style="display:flex;"><span>    charset, length, start_idx, batch_size, max_results_left <span style="color:#f92672">=</span> args
+</span></span><span style="display:flex;"><span>    results <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    count <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(start_idx, start_idx <span style="color:#f92672">+</span> batch_size):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> i <span style="color:#f92672">&gt;=</span> len(charset) <span style="color:#f92672">**</span> length <span style="color:#f92672">or</span> count <span style="color:#f92672">&gt;=</span> max_results_left:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>        candidate_str <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>        temp <span style="color:#f92672">=</span> i
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(length):
+</span></span><span style="display:flex;"><span>            candidate_str <span style="color:#f92672">+=</span> charset[temp <span style="color:#f92672">%</span> len(charset)]
+</span></span><span style="display:flex;"><span>            temp <span style="color:#f92672">//=</span> len(charset)
+</span></span><span style="display:flex;"><span>        hash_result <span style="color:#f92672">=</span> double_md5(candidate_str)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> is_magic_hash(hash_result):
+</span></span><span style="display:flex;"><span>            results<span style="color:#f92672">.</span>append((candidate_str, hash_result))
+</span></span><span style="display:flex;"><span>            count <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> results
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">parallel_brute_force</span>(max_results, charset, desc<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>):
+</span></span><span style="display:flex;"><span>    max_length <span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span>
+</span></span><span style="display:flex;"><span>    batch_size <span style="color:#f92672">=</span> <span style="color:#ae81ff">100000</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    found <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">开始并行暴力破解“</span><span style="color:#e6db74">{</span>desc<span style="color:#e6db74">}</span><span style="color:#e6db74">”集，目标找到 </span><span style="color:#e6db74">{</span>max_results<span style="color:#e6db74">}</span><span style="color:#e6db74"> 个...&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> length <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">4</span>, max_length <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>):
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">搜索长度 </span><span style="color:#e6db74">{</span>length<span style="color:#e6db74">}</span><span style="color:#e6db74"> 的字符串...&#34;</span>)
+</span></span><span style="display:flex;"><span>        total_combinations <span style="color:#f92672">=</span> len(charset) <span style="color:#f92672">**</span> length
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">with</span> multiprocessing<span style="color:#f92672">.</span>Pool(processes<span style="color:#f92672">=</span>multiprocessing<span style="color:#f92672">.</span>cpu_count()) <span style="color:#66d9ef">as</span> pool:
+</span></span><span style="display:flex;"><span>            tasks <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> start_idx <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">0</span>, total_combinations, batch_size):
+</span></span><span style="display:flex;"><span>                left_to_find <span style="color:#f92672">=</span> max_results <span style="color:#f92672">-</span> len(found)
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> left_to_find <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>                tasks<span style="color:#f92672">.</span>append((charset, length, start_idx, batch_size, left_to_find))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> i, result_batch <span style="color:#f92672">in</span> enumerate(pool<span style="color:#f92672">.</span>imap_unordered(worker_task, tasks)):
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> result_batch:
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">for</span> string_val, hash_val <span style="color:#f92672">in</span> result_batch:
+</span></span><span style="display:flex;"><span>                        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;找到匹配! 字符串: </span><span style="color:#e6db74">{</span>string_val<span style="color:#e6db74">}</span><span style="color:#e6db74">, 哈希: </span><span style="color:#e6db74">{</span>hash_val<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>                        found<span style="color:#f92672">.</span>append((string_val, hash_val))
+</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">if</span> len(found) <span style="color:#f92672">&gt;=</span> max_results:
+</span></span><span style="display:flex;"><span>                            print(<span style="color:#e6db74">&#34;已达到目标数量，提前结束&#34;</span>)
+</span></span><span style="display:flex;"><span>                            pool<span style="color:#f92672">.</span>terminate()
+</span></span><span style="display:flex;"><span>                            <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">if</span> len(found) <span style="color:#f92672">&gt;=</span> max_results:
+</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> i <span style="color:#f92672">%</span> <span style="color:#ae81ff">10</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>                    progress <span style="color:#f92672">=</span> min((i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">*</span> batch_size, total_combinations)
+</span></span><span style="display:flex;"><span>                    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;进度: </span><span style="color:#e6db74">{</span>progress<span style="color:#e6db74">}</span><span style="color:#e6db74">/</span><span style="color:#e6db74">{</span>total_combinations<span style="color:#e6db74">}</span><span style="color:#e6db74"> (</span><span style="color:#e6db74">{</span>progress<span style="color:#f92672">/</span>total_combinations<span style="color:#f92672">*</span><span style="color:#ae81ff">100</span><span style="color:#e6db74">:</span><span style="color:#e6db74">.1f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">%)&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> len(found) <span style="color:#f92672">&gt;=</span> max_results:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">全部找到的魔术hash（</span><span style="color:#e6db74">{</span>desc<span style="color:#e6db74">}</span><span style="color:#e6db74">）如下：&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> idx, (s, h) <span style="color:#f92672">in</span> enumerate(found, <span style="color:#ae81ff">1</span>):
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>idx<span style="color:#e6db74">:</span><span style="color:#e6db74">02d</span><span style="color:#e6db74">}</span><span style="color:#e6db74">. 字符串: </span><span style="color:#e6db74">{</span>s<span style="color:#e6db74">}</span><span style="color:#e6db74">, 哈希: </span><span style="color:#e6db74">{</span>h<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> found
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    num <span style="color:#f92672">=</span> int(input(<span style="color:#e6db74">&#34;请输入要找到的魔术hash数量: &#34;</span>))
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;-&#34;</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">30</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 先用纯字母集爆破</span>
+</span></span><span style="display:flex;"><span>    results_alpha <span style="color:#f92672">=</span> parallel_brute_force(num, string<span style="color:#f92672">.</span>ascii_letters, desc<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;字母&#34;</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;-&#34;</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">30</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 再用字母+数字集爆破（不会重复已找到的结果）</span>
+</span></span><span style="display:flex;"><span>    results_alphanum <span style="color:#f92672">=</span> parallel_brute_force(num, string<span style="color:#f92672">.</span>ascii_letters <span style="color:#f92672">+</span> string<span style="color:#f92672">.</span>digits, desc<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;字母+数字&#34;</span>)
+</span></span></code></pre></div><p>然后这里再给出几个爆破结果</p>]]></description>
+    <enclosure url="https://xiaochai-123.github.io/images/MD5.png" length="216119" type="image/.png" />
+    </item>
+    
+  </channel>
+</rss>
+

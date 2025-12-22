@@ -1,0 +1,601 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>欢迎来到xiaochai_123的小窝！ on xiaochai_123的小窝</title>
+    <link>https://xiaochai-123.github.io/</link>
+    <description>Recent content in 欢迎来到xiaochai_123的小窝！ on xiaochai_123的小窝</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <copyright>© 2025 xiaochai-123. 欢迎转载但请注明出处 | 本博客内容版权所有</copyright>
+    <lastBuildDate>Mon, 22 Dec 2025 07:19:56 +0800</lastBuildDate><atom:link href="https://xiaochai-123.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[持续更新] CTF-Web Guide</title>
+      <link>https://xiaochai-123.github.io/posts/ctf-web-guide/</link>
+      <pubDate>Wed, 17 Dec 2025 20:43:35 +0800</pubDate>
+      <guid>https://xiaochai-123.github.io/posts/ctf-web-guide/</guid>
+      <description><![CDATA[<h1 id="持续更新-ctf-web-guide" data-numberify>[持续更新] CTF-Web Guide<a class="anchor ms-1" href="#持续更新-ctf-web-guide"></a></h1>
+<p>看到Lunatic大佬的</p>
+<p>大受震撼。大丈夫当如是也！这种长篇的持续更新文章似乎可以更全面的记录遇到题目时要有的思路，或查找一些偏门的考点。仆诚以著此篇，希望我能写出一个好的Guide&hellip;</p>
+
+<h2 id="前言-preface" data-numberify>前言 (Preface)<a class="anchor ms-1" href="#前言-preface"></a></h2>
+<ul>
+<li><strong>前言</strong>：本篇旨在提供全面的ctfweb题目分析讲解和思路的提供，无论是新手学习和老手速查都十分适合0v0</li>
+</ul>
+
+<h2 id="第一章工欲善其事-the-toolkit" data-numberify>第一章：工欲善其事 (The Toolkit)<a class="anchor ms-1" href="#第一章工欲善其事-the-toolkit"></a></h2>
+<blockquote>
+<p><em>这部分介绍基础环境，同时强调工具的重要性。</em></p>
+</blockquote>
+
+<h3 id="基础知识储备" data-numberify>基础知识储备<a class="anchor ms-1" href="#基础知识储备"></a></h3>
+<blockquote>
+<p><em>这部分是地基，不需要写太深，但要列出“必知必会”。</em></p>
+</blockquote>
+<ol>
+<li>协议与架构
+<ul>
+<li><strong>HTTP/HTTPS 协议</strong>：请求头（Headers）、响应码（Status Codes）、常用方法（GET/POST/PUT/HEAD/OPTIONS）。</li>
+<li><strong>Web 架构</strong>：前端（HTML/JS/CSS）与后端（PHP/Java/Python/Go）的交互流程，MVC 模式，API 接口（RESTful/GraphQL）。</li>
+</ul>
+</li>
+</ol>
+
+<h3 id="web工具" data-numberify>Web工具<a class="anchor ms-1" href="#web工具"></a></h3>
+<ol>
+<li>常用工具
+<ul>
+<li><strong>抓包与测试</strong>：<strong>Burp Suite</strong>（核心、抓包/重放/爆破）、Yakit（中文版bp）</li>
+<li><strong>信息收集</strong>：<strong>Dirsearch</strong>（目录扫描）、Nmap（端口扫描）</li>
+<li><strong>浏览器插件</strong>：<strong>HackBar</strong>（快速发包）、Wappalyzer（指纹识别）</li>
+<li><strong>Linux环境</strong>：<strong>VMware/WSL2 Kali</strong>（用来执行shell/linux工具)</li>
+<li><strong>远程控制</strong>：<strong>Antsword</strong>（连接木马），冰蝎，哥斯拉</li>
+<li><strong>IDE</strong>：<strong>PhpStorm</strong>（做php反序列化），<strong>IDEA</strong>（做java）</li>
+<li><strong>自动注入</strong>：<strong>SQLmap</strong>（sql注入点自动查找），<strong>fenjing</strong>（焚靖|自动构建SSTIpayload，绕过waf一把梭）</li>
+<li><strong>AI助手</strong>：帮你想思路，构建payload和脚本</li>
+</ul>
+</li>
+</ol>
+
+<h2 id="第二章信息收集-information-gathering" data-numberify>第二章：信息收集 (Information Gathering)<a class="anchor ms-1" href="#第二章信息收集-information-gathering"></a></h2>
+<blockquote>
+<p><em>Web 题的第一步永远是把题目“看光”。</em></p>
+</blockquote>
+
+<h3 id="敏感文件泄露" data-numberify>敏感文件泄露<a class="anchor ms-1" href="#敏感文件泄露"></a></h3>
+<ul>
+<li><code>robots.txt</code>、<code>sitemap.xml</code>。</li>
+</ul>
+
+<h4 id="1-管理类文件" data-numberify>1. 管理类文件<a class="anchor ms-1" href="#1-管理类文件"></a></h4>
+
+<h5 id="11-robotstxt" data-numberify>1.1 robots.txt<a class="anchor ms-1" href="#11-robotstxt"></a></h5>
+<ul>
+<li>
+<p><strong>作用</strong>：搜索引擎爬虫协议文件，告诉爬虫哪些路径不应抓取。</p>
+</li>
+<li>
+<p><strong>渗透思路</strong>：黑名单信息含涉密路径、后门、管理后台、备份等，非常容易疏忽泄露。</p>
+</li>
+<li>
+<p><strong>例子</strong>：</p>
+<pre tabindex="0"><code>Disallow: /admin
+Disallow: /hidden/flag.txt
+</code></pre></li>
+</ul>
+
+<h5 id="12-sitemapxml" data-numberify>1.2 sitemap.xml<a class="anchor ms-1" href="#12-sitemapxml"></a></h5>
+<ul>
+<li><strong>作用</strong>：网站内容地图，列出所有可爬网址。</li>
+<li><strong>渗透思路</strong>：直接暴露未公开子目录，配合robots.txt查询价值极高。</li>
+</ul>
+
+<h5 id="13-env" data-numberify>1.3 .env<a class="anchor ms-1" href="#13-env"></a></h5>
+<ul>
+<li><strong>作用</strong>：各类Web框架常用环境变量文件。</li>
+<li><strong>渗透</strong>：很多JWT密钥、数据库连接信息、邮箱API等一览无遗，PHP、Laravel、Node.js尤其常见。</li>
+</ul>
+<hr>
+
+<h4 id="2-源码和仓库泄露" data-numberify>2. 源码和仓库泄露<a class="anchor ms-1" href="#2-源码和仓库泄露"></a></h4>
+
+<h5 id="21-git" data-numberify>2.1 .git/<a class="anchor ms-1" href="#21-git"></a></h5>
+<ul>
+<li><strong>作用</strong>：Git版本库目录。</li>
+<li><strong>渗透</strong>：若未做严格防护可直接遍历和还原完整源码。使用 <code>GitHack.py</code>、<code>githound</code>等工具，一键还原全部源码+敏感信息。</li>
+</ul>
+
+<h5 id="22-svnhg" data-numberify>2.2 .svn/、.hg/<a class="anchor ms-1" href="#22-svnhg"></a></h5>
+<ul>
+<li><strong>作用</strong>：分别对应Subversion、Mercurial代码管理目录。</li>
+<li><strong>渗透</strong>：同理可还原源代码及全部提交历史。</li>
+</ul>
+
+<h5 id="23-ds_store" data-numberify>2.3 .DS_Store<a class="anchor ms-1" href="#23-ds_store"></a></h5>
+<ul>
+<li><strong>作用</strong>：Mac下目录索引文件。</li>
+<li><strong>渗透</strong>：泄露完整目录结构（可见文件名），辅助发现“隐藏文件”“Flag”。</li>
+</ul>
+
+<h5 id="24-wwwzipcodetargzsourcebak" data-numberify>2.4 www.zip、code.tar.gz、source.bak<a class="anchor ms-1" href="#24-wwwzipcodetargzsourcebak"></a></h5>
+<ul>
+<li><strong>作用</strong>：习惯性手工备份或源码打包，上传或备份遗留。</li>
+<li><strong>渗透</strong>：敏感备份/打包文件常规文件：
+<code>www.zip</code>、<code>web.zip</code>、<code>backup.zip</code>、<code>site.bak</code>、<code>index.php.bak</code>、<code>src.rar</code>、<code>bak.tar.gz</code>等</li>
+</ul>
+<hr>
+
+<h4 id="3-编辑器临时自动备份文件" data-numberify>3. 编辑器临时/自动备份文件<a class="anchor ms-1" href="#3-编辑器临时自动备份文件"></a></h4>
+
+<h5 id="31-vimemacs交换备份" data-numberify>3.1 Vim/Emacs交换备份<a class="anchor ms-1" href="#31-vimemacs交换备份"></a></h5>
+<ul>
+<li><code>.swp</code>/<code>.swo</code></li>
+<li>例：<code>index.php.swp</code></li>
+<li><strong>用途与危害</strong>：Vim自动生成的内存交换文件。利用<code>strings</code>等命令可恢复大量源码或明文密码。</li>
+</ul>
+
+<h5 id="32-emacs临时文件" data-numberify>3.2 Emacs临时文件<a class="anchor ms-1" href="#32-emacs临时文件"></a></h5>
+<ul>
+<li>例：<code>index.php~</code>, <code>#index.php#</code></li>
+</ul>
+
+<h5 id="33-其它常见临时备份扩展" data-numberify>3.3 其它常见临时/备份扩展<a class="anchor ms-1" href="#33-其它常见临时备份扩展"></a></h5>
+<ul>
+<li><code>.bak</code>、<code>.old</code>、<code>.backup</code>、<code>.save</code>、<code>.tmp</code>、<code>.temp</code></li>
+<li><strong>典型案例</strong>：<code>index.php.bak</code>、<code>config.php.old</code>，甚至<code>flag.php.save</code></li>
+</ul>
+<hr>
+
+<h4 id="4-常见渗透ctf技巧总结" data-numberify>4. 常见渗透/CTF技巧总结<a class="anchor ms-1" href="#4-常见渗透ctf技巧总结"></a></h4>
+<ol>
+<li><strong>爆破路径字典</strong>：用字典工具快速遍历敏感路径
+典例：<code>dirsearch</code>, <code>ffuf</code>, <code>gobuster</code></li>
+<li><strong>尝试访问源码与备份文件</strong>：如<code>index.php.bak</code>，几乎等同于源码泄露。</li>
+<li><strong>下载解压源码包或查看仓库提交历史</strong>：发现历史密码、后台路径、flag等。</li>
+<li><strong>扫描.git, .svn, .hg</strong>：直接还原项目全部文件、操作commit，甚至逆推出未上线flag。</li>
+<li><strong>编辑器遗留文件源码复原</strong>：如vim .swp 文件，用<code>strings</code>或专用工具还原内容，常获flag。</li>
+</ol>
+<ul>
+<li>源码泄露：<code>www.zip</code>、<code>.git</code>、<code>.svn</code>、<code>.hg</code>、<code>.DS_Store</code>。</li>
+<li>备份文件：<code>index.php.bak</code>、<code>vim</code> 交换文件 (<code>.swp</code>)。</li>
+</ul>
+<ol>
+<li>指纹识别
+<ul>
+<li>判断操作系统（Linux/Windows）、中间件（Apache/Nginx/IIS/Tomcat）、数据库类型。</li>
+<li>CMS 识别（WordPress, Discuz, Typecho 等）。</li>
+</ul>
+</li>
+<li>其他
+<ul>
+<li>PHPinfo 页面分析（查看 <code>disable_functions</code>、开启的扩展）。</li>
+<li>社工与 OSINT（如果有涉及）。</li>
+</ul>
+</li>
+</ol>
+
+<h2 id="第三章核心漏洞---注入篇-injection-attacks" data-numberify>第三章：核心漏洞 - 注入篇 (Injection Attacks)<a class="anchor ms-1" href="#第三章核心漏洞---注入篇-injection-attacks"></a></h2>
+<p><em>CTF Web 的半壁江山。</em></p>]]></description>
+    <enclosure url="https://xiaochai-123.github.io/images/1.png" length="328106" type="image/.png" />
+    </item>
+    
+    <item>
+      <title>SQL注入——sqli-labs学习笔记</title>
+      <link>https://xiaochai-123.github.io/posts/sqli-labs/</link>
+      <pubDate>Mon, 22 Dec 2025 07:19:55 +0800</pubDate>
+      <guid>https://xiaochai-123.github.io/posts/sqli-labs/</guid>
+      <description><![CDATA[<h1 id="sql注入sqli-labs学习笔记" data-numberify>SQL注入——sqli-labs学习笔记<a class="anchor ms-1" href="#sql注入sqli-labs学习笔记"></a></h1>
+<p>我是边看b站重庆橘子科技的视频边学的，陈腾师傅讲得很好，推荐</p>
+<pre tabindex="0"><code>https://www.bilibili.com/video/BV1c34y1h7So/?p=7&amp;share_source=copy_web&amp;vd_source=9c22157b2c924857f42d806788cc5fea
+</code></pre><hr>
+
+<h2 id="union注入" data-numberify>Union注入<a class="anchor ms-1" href="#union注入"></a></h2>
+<p><picture><img class="img-fluid " alt="msedge_yEllTDmkjW" src="https://xiaochai-123.github.io/images/screenshoots/2025-12/msedge_yEllTDmkjW.png?v=09bfda9fddc93fac2c87312aac6ebd94" loading="lazy" width="1745" height="1079" />
+</picture>
+
+</p>
+<p>登入后我们看到提示可以传入id，我们传入就能看到对应id的user和password。</p>
+<p>一般来讲，我们需要判断题目为字符型注入还是数字型注入，这里借用几张老师的PPT</p>
+<p><picture><img class="img-fluid " alt="msedge_xZKLMRW9Rx" src="https://xiaochai-123.github.io/images/screenshoots/2025-12/msedge_xZKLMRW9Rx.png?v=a0ea5383364828d7364730585fd0ac5b" loading="lazy" width="1597" height="856" />
+</picture>
+
+</p>
+<p><picture><img class="img-fluid " alt="msedge_FapzDjjfSs" src="https://xiaochai-123.github.io/images/screenshoots/2025-12/msedge_FapzDjjfSs.png?v=66ffa7d54c1aa87c6dfcc2b1711dd50f" loading="lazy" width="1178" height="689" />
+</picture>
+
+</p>
+<p>小技巧，如果id=2和id=2-1的回显是一样的，说明是字符型注入。否则是数字型注入</p>
+<p><picture><img class="img-fluid " alt="msedge_pS3yOqh3DT" src="https://xiaochai-123.github.io/images/screenshoots/2025-12/msedge_pS3yOqh3DT.png?v=53a0d08a193ed341df82f1adefe911f3" loading="lazy" width="1380" height="733" />
+</picture>
+
+</p>
+<p>在UNION注入场景下，由于页面只回显第一行数据，我们可以将注入数据的<code>id</code>字段设置为0或一个负值，使其在原表中不存在，这样页面就会显示我们注入的数据。同时，也可以在需要回显的位置填写如<code>database()</code>、<code>version()</code>等函数，以获取数据库的信息。</p>
+<p>老师给出的板书<picture><img class="img-fluid " alt="msedge_oEaGgCNcvf" src="https://xiaochai-123.github.io/images/screenshoots/2025-12/msedge_oEaGgCNcvf.png?v=37bc2d5d9224384ffc9c916412b4580f" loading="lazy" width="1067" height="213" />
+</picture>
+
+</p>
+<p>sql数据库里面存在一个<strong>information_schema</strong>数据库，里面含有<strong>COLUMS</strong>表和<strong>TABLES</strong>表包含了所有数据库里面的信息，在这里通过<code>group_concat</code>和查询就能获取到当前数据库的表名</p>
+<p>比如<code>username=1’union select 1,2,group_concat(table_name) from information_schema.t</code>
+<code>ables where table_schema=database()#&amp;password=1</code></p>
+<blockquote>
+<p>点 (.) 用于分隔 information_schema 和 tables。 这是一种标准命名约定，遵循 SQL 标准。 它表示 tables 是 information_schema 命名空间下的一个对象，就像 mydb.mytable 表示 mytable 表属于 mydb 数据库一样。</p>
+</blockquote>
+
+<h2 id="报错注入" data-numberify>报错注入<a class="anchor ms-1" href="#报错注入"></a></h2>
+<p><picture><img class="img-fluid " alt="msedge_m4Xts1eDSA" src="https://xiaochai-123.github.io/images/screenshoots/2025-12/msedge_m4Xts1eDSA.png?v=7db64a0bcf335cc1342adee28a779f13" loading="lazy" width="1051" height="519" />
+</picture>
+
+</p>
+<p>如图所示，当我们正常进行查询时，不会有回显，只显示You are in&hellip;</p>
+<p>当我们故意输错database,比如打成datadase，题目回显<code>FUNCTION security.datadase does not exist</code></p>]]></description>
+    <enclosure url="https://xiaochai-123.github.io/images/SQL1.png" length="88126" type="image/.png" />
+    </item>
+    
+    <item>
+      <title>SQLi-labs靶场搭建</title>
+      <link>https://xiaochai-123.github.io/posts/sqli-labs%E9%9D%B6%E5%9C%BA%E6%90%AD%E5%BB%BA/</link>
+      <pubDate>Mon, 22 Dec 2025 07:19:56 +0800</pubDate>
+      <guid>https://xiaochai-123.github.io/posts/sqli-labs%E9%9D%B6%E5%9C%BA%E6%90%AD%E5%BB%BA/</guid>
+      <description><![CDATA[<h2 id="靶场的搭建" data-numberify>靶场的搭建<a class="anchor ms-1" href="#靶场的搭建"></a></h2>
+<p>建议在虚拟机里进行靶场的搭建，<strong>安全、隔离、可恢复</strong>，不会影响真正系统。我将使用vmware-kali来搭建靶场</p>
+
+<h3 id="kali环境下sqli-labs靶场部署全流程总结" data-numberify>Kali环境下SQLi Labs靶场部署全流程总结<a class="anchor ms-1" href="#kali环境下sqli-labs靶场部署全流程总结"></a></h3>
+
+<h3 id="1-安装kali环境及lamp组件" data-numberify>1. 安装Kali环境及LAMP组件<a class="anchor ms-1" href="#1-安装kali环境及lamp组件"></a></h3>
+<p>建议使用VMware或VirtualBox新建Kali虚拟机。<br>
+安装Web服务与SQL支持：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt update
+</span></span><span style="display:flex;"><span>sudo apt install apache2 mariadb-server php php-mysql git unzip
+</span></span></code></pre></div>
+<h3 id="2-克隆sqli-labs靶场源码" data-numberify>2. 克隆SQLi Labs靶场源码<a class="anchor ms-1" href="#2-克隆sqli-labs靶场源码"></a></h3>
+<p>进入Web根目录（Apache默认）：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd /var/www/html
+</span></span><span style="display:flex;"><span>sudo git clone https://github.com/Audi-1/sqli-labs.git
+</span></span><span style="display:flex;"><span>sudo chown -R www-data:www-data sqli-labs
+</span></span></code></pre></div>
+<h3 id="3-启动服务" data-numberify>3. 启动服务<a class="anchor ms-1" href="#3-启动服务"></a></h3>
+<p>确保apache和数据库开启：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo systemctl start apache2
+</span></span><span style="display:flex;"><span>sudo systemctl start mariadb
+</span></span><span style="display:flex;"><span>sudo systemctl enable apache2
+</span></span><span style="display:flex;"><span>sudo systemctl enable mariadb
+</span></span></code></pre></div>
+<h3 id="4-创建数据库和导入数据" data-numberify>4. 创建数据库和导入数据<a class="anchor ms-1" href="#4-创建数据库和导入数据"></a></h3>
+<p>登录MariaDB/MySQL，创建数据库：</p>]]></description>
+    <enclosure url="https://xiaochai-123.github.io/images/SQL.png" length="1095127" type="image/.png" />
+    </item>
+    
+    <item>
+      <title>bkcrack的使用方法</title>
+      <link>https://xiaochai-123.github.io/posts/bkcrack%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</link>
+      <pubDate>Wed, 17 Dec 2025 20:43:35 +0800</pubDate>
+      <guid>https://xiaochai-123.github.io/posts/bkcrack%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</guid>
+      <description><![CDATA[<h1 id="bkcrack的使用方法" data-numberify>bkcrack的使用方法<a class="anchor ms-1" href="#bkcrack的使用方法"></a></h1>
+<p>在2025年鹏城杯中，连续涉及很多misc题目需要使用bkcrack破解</p>
+<p><a href="https://github.com/kimci86/bkcrack" target="_blank" rel="noopener noreferrer">bkcrack<i class="fas fa-external-link-square-alt ms-1"></i></a> 是一个开源的 ZIP 加密破解工具，可以针对使用传统 ZIP 加密（即 PKZIP cipher）的压缩包进行明文攻击，还支持多种高级功能。你可以用它来：</p>
+<ul>
+<li>还原遗忘的 ZIP 密码（仅限传统加密）</li>
+<li>当已知部分原始文件（明文）时暴力破解</li>
+<li>对加密后的 zip 文件进行“无密通杀提取”</li>
+</ul>
+<blockquote>
+<p>注意：<strong>不支持压缩包加密类型为 AES 的 ZIP</strong>，仅限“传统加密”！</p>
+</blockquote>
+
+<h2 id="明文攻击" data-numberify>明文攻击<a class="anchor ms-1" href="#明文攻击"></a></h2>
+<p>先说结论，bkcrack是用于明文攻击，需要我们<strong>已知部分明文内容</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>echo 89504E470D0A1A0A0000000D49484452 | xxd -r -ps &gt; png_header
+</span></span><span style="display:flex;"><span>bkcrack.exe -C 1.zip -c xor.png -p png_header -o <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>bkcrack.exe -C 1.zip -k &lt;key&gt; -U flag.zip <span style="color:#ae81ff">114</span>
+</span></span></code></pre></div><blockquote>
+<p>(png 文件头：89504E47 0D0A1A0A 0000000D 49484452)</p>
+<p>加密的压缩包：1.zip</p>
+<p>目标内容：xor.png</p>
+<p>新创建的压缩包：flag.zip</p>
+<p><key>：第二行命令爆破出来的密码</p>
+</blockquote>
+<p>就比如上面这三行命令，我们知道了加密文件的内容是一张<code>png</code>图片</p>
+<p>我们通过<code>echo</code>先创建了一个存储已知明文的<code>png_header</code>文件</p>
+<p>使用工具爆破出密码，然后使用原密码将原压缩包修改密码并导出成我们自己的压缩包：<code>flag.zip</code>，密码为114</p>
+<p>正常使用密码解压<code>flag.zip</code>即可得到原文：<code>xor.png</code></p>]]></description>
+    </item>
+    
+    <item>
+      <title>双重md5爆破</title>
+      <link>https://xiaochai-123.github.io/posts/%E5%8F%8C%E9%87%8Dmd5%E7%88%86%E7%A0%B4/</link>
+      <pubDate>Fri, 05 Dec 2025 23:25:07 +0800</pubDate>
+      <guid>https://xiaochai-123.github.io/posts/%E5%8F%8C%E9%87%8Dmd5%E7%88%86%E7%A0%B4/</guid>
+      <description><![CDATA[<h1 id="双重md5加密弱等于" data-numberify>双重md5加密弱等于<a class="anchor ms-1" href="#双重md5加密弱等于"></a></h1>
+<p>当前做过几道php反序列化题目中含有md5双重加密的判断</p>
+<p>发现有两个小知识点</p>
+
+<h2 id="科学计数法弱等于" data-numberify>科学计数法弱等于<a class="anchor ms-1" href="#科学计数法弱等于"></a></h2>
+<p><picture><img class="img-fluid " alt="msedge_h6OmdU0Xrz" src="https://xiaochai-123.github.io/images/screenshoots/2025-12/msedge_h6OmdU0Xrz.png?v=582a181d1ba0e5025b9c874eda529231" loading="lazy" width="505" height="298" />
+</picture>
+
+</p>
+<p>比如说这道极客大挑战2025的题目，要求两个值弱等于且不强等于。</p>
+<p>由于弱等于可以把字符串转化为数字比较，而强等于限制了二者不能完全相同</p>
+<p>所有用到科学计数法，当双重md5后字符串为0e开头后面全是数字，则可以通过弱比较，二者都等于0，且强比较不同，符合题意。这里给出一个python脚本，可以拿来爆破</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> hashlib
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> string
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> multiprocessing
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">double_md5</span>(s):
+</span></span><span style="display:flex;"><span>    first_md5 <span style="color:#f92672">=</span> hashlib<span style="color:#f92672">.</span>md5(s<span style="color:#f92672">.</span>encode())<span style="color:#f92672">.</span>hexdigest()
+</span></span><span style="display:flex;"><span>    second_md5 <span style="color:#f92672">=</span> hashlib<span style="color:#f92672">.</span>md5(first_md5<span style="color:#f92672">.</span>encode())<span style="color:#f92672">.</span>hexdigest()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> second_md5
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">is_magic_hash</span>(md5_hash):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> md5_hash<span style="color:#f92672">.</span>startswith(<span style="color:#e6db74">&#39;0e&#39;</span>) <span style="color:#f92672">and</span> md5_hash[<span style="color:#ae81ff">2</span>:]<span style="color:#f92672">.</span>isdigit()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">worker_task</span>(args):
+</span></span><span style="display:flex;"><span>    charset, length, start_idx, batch_size, max_results_left <span style="color:#f92672">=</span> args
+</span></span><span style="display:flex;"><span>    results <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    count <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(start_idx, start_idx <span style="color:#f92672">+</span> batch_size):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> i <span style="color:#f92672">&gt;=</span> len(charset) <span style="color:#f92672">**</span> length <span style="color:#f92672">or</span> count <span style="color:#f92672">&gt;=</span> max_results_left:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>        candidate_str <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>        temp <span style="color:#f92672">=</span> i
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(length):
+</span></span><span style="display:flex;"><span>            candidate_str <span style="color:#f92672">+=</span> charset[temp <span style="color:#f92672">%</span> len(charset)]
+</span></span><span style="display:flex;"><span>            temp <span style="color:#f92672">//=</span> len(charset)
+</span></span><span style="display:flex;"><span>        hash_result <span style="color:#f92672">=</span> double_md5(candidate_str)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> is_magic_hash(hash_result):
+</span></span><span style="display:flex;"><span>            results<span style="color:#f92672">.</span>append((candidate_str, hash_result))
+</span></span><span style="display:flex;"><span>            count <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> results
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">parallel_brute_force</span>(max_results, charset, desc<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>):
+</span></span><span style="display:flex;"><span>    max_length <span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span>
+</span></span><span style="display:flex;"><span>    batch_size <span style="color:#f92672">=</span> <span style="color:#ae81ff">100000</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    found <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">开始并行暴力破解“</span><span style="color:#e6db74">{</span>desc<span style="color:#e6db74">}</span><span style="color:#e6db74">”集，目标找到 </span><span style="color:#e6db74">{</span>max_results<span style="color:#e6db74">}</span><span style="color:#e6db74"> 个...&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> length <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">4</span>, max_length <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>):
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">搜索长度 </span><span style="color:#e6db74">{</span>length<span style="color:#e6db74">}</span><span style="color:#e6db74"> 的字符串...&#34;</span>)
+</span></span><span style="display:flex;"><span>        total_combinations <span style="color:#f92672">=</span> len(charset) <span style="color:#f92672">**</span> length
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">with</span> multiprocessing<span style="color:#f92672">.</span>Pool(processes<span style="color:#f92672">=</span>multiprocessing<span style="color:#f92672">.</span>cpu_count()) <span style="color:#66d9ef">as</span> pool:
+</span></span><span style="display:flex;"><span>            tasks <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> start_idx <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">0</span>, total_combinations, batch_size):
+</span></span><span style="display:flex;"><span>                left_to_find <span style="color:#f92672">=</span> max_results <span style="color:#f92672">-</span> len(found)
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> left_to_find <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>                tasks<span style="color:#f92672">.</span>append((charset, length, start_idx, batch_size, left_to_find))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> i, result_batch <span style="color:#f92672">in</span> enumerate(pool<span style="color:#f92672">.</span>imap_unordered(worker_task, tasks)):
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> result_batch:
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">for</span> string_val, hash_val <span style="color:#f92672">in</span> result_batch:
+</span></span><span style="display:flex;"><span>                        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;找到匹配! 字符串: </span><span style="color:#e6db74">{</span>string_val<span style="color:#e6db74">}</span><span style="color:#e6db74">, 哈希: </span><span style="color:#e6db74">{</span>hash_val<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>                        found<span style="color:#f92672">.</span>append((string_val, hash_val))
+</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">if</span> len(found) <span style="color:#f92672">&gt;=</span> max_results:
+</span></span><span style="display:flex;"><span>                            print(<span style="color:#e6db74">&#34;已达到目标数量，提前结束&#34;</span>)
+</span></span><span style="display:flex;"><span>                            pool<span style="color:#f92672">.</span>terminate()
+</span></span><span style="display:flex;"><span>                            <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">if</span> len(found) <span style="color:#f92672">&gt;=</span> max_results:
+</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> i <span style="color:#f92672">%</span> <span style="color:#ae81ff">10</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>                    progress <span style="color:#f92672">=</span> min((i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">*</span> batch_size, total_combinations)
+</span></span><span style="display:flex;"><span>                    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;进度: </span><span style="color:#e6db74">{</span>progress<span style="color:#e6db74">}</span><span style="color:#e6db74">/</span><span style="color:#e6db74">{</span>total_combinations<span style="color:#e6db74">}</span><span style="color:#e6db74"> (</span><span style="color:#e6db74">{</span>progress<span style="color:#f92672">/</span>total_combinations<span style="color:#f92672">*</span><span style="color:#ae81ff">100</span><span style="color:#e6db74">:</span><span style="color:#e6db74">.1f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">%)&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> len(found) <span style="color:#f92672">&gt;=</span> max_results:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">全部找到的魔术hash（</span><span style="color:#e6db74">{</span>desc<span style="color:#e6db74">}</span><span style="color:#e6db74">）如下：&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> idx, (s, h) <span style="color:#f92672">in</span> enumerate(found, <span style="color:#ae81ff">1</span>):
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>idx<span style="color:#e6db74">:</span><span style="color:#e6db74">02d</span><span style="color:#e6db74">}</span><span style="color:#e6db74">. 字符串: </span><span style="color:#e6db74">{</span>s<span style="color:#e6db74">}</span><span style="color:#e6db74">, 哈希: </span><span style="color:#e6db74">{</span>h<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> found
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    num <span style="color:#f92672">=</span> int(input(<span style="color:#e6db74">&#34;请输入要找到的魔术hash数量: &#34;</span>))
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;-&#34;</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">30</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 先用纯字母集爆破</span>
+</span></span><span style="display:flex;"><span>    results_alpha <span style="color:#f92672">=</span> parallel_brute_force(num, string<span style="color:#f92672">.</span>ascii_letters, desc<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;字母&#34;</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;-&#34;</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">30</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 再用字母+数字集爆破（不会重复已找到的结果）</span>
+</span></span><span style="display:flex;"><span>    results_alphanum <span style="color:#f92672">=</span> parallel_brute_force(num, string<span style="color:#f92672">.</span>ascii_letters <span style="color:#f92672">+</span> string<span style="color:#f92672">.</span>digits, desc<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;字母+数字&#34;</span>)
+</span></span></code></pre></div><p>然后这里再给出几个爆破结果</p>]]></description>
+    <enclosure url="https://xiaochai-123.github.io/images/MD5.png" length="216119" type="image/.png" />
+    </item>
+    
+    <item>
+      <title>251204每日打卡</title>
+      <link>https://xiaochai-123.github.io/posts/251204/</link>
+      <pubDate>Thu, 04 Dec 2025 20:43:35 +0800</pubDate>
+      <guid>https://xiaochai-123.github.io/posts/251204/</guid>
+      <description><![CDATA[<h2 id="极客大挑战-2019lovesql" data-numberify>[极客大挑战 2019]LoveSQL<a class="anchor ms-1" href="#极客大挑战-2019lovesql"></a></h2>
+<p>题目一个登录框，测试一下注入</p>
+<p>用户名输入<code>1'</code>  密码输入<code>aa</code></p>
+<p>报错<code>You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'aa'' at line 1</code>我们看到aa被单引号包裹</p>
+<p>后台拼接后的sql语句是<code>SELECT * FROM users WHERE username = '1'' AND password = 'aa'</code></p>
+<p>在用户名输入单引号会引发语法错误，判断为字符型注入</p>
+<p>所以输入用户名<code>1' OR 1=1 #</code>，这个语句会绕过登录验证，让where条件永远为真，返回所有用户，但这里只回显第一行。我们获取到第一个用户的数据</p>
+<p>成功拿到admin账户和密码</p>
+<p>通过<code>1' union select 1,2,3#</code>查出来有三列，然后看回显，2和3的位置都可以回显</p>
+<p><code>1' union select 1,2,database()#</code>可以看到当前数据库为geek</p>
+<p><code>1' union select 1,group_concat(table_name),database() from information_schema.tables where table_schema=database()#</code></p>]]></description>
+    </item>
+    
+    <item>
+      <title>251129每日打卡</title>
+      <link>https://xiaochai-123.github.io/posts/251129/</link>
+      <pubDate>Sat, 29 Nov 2025 20:43:35 +0800</pubDate>
+      <guid>https://xiaochai-123.github.io/posts/251129/</guid>
+      <description><![CDATA[<p>2025/11/29 我决定每天打卡几道题来积少成多</p>
+
+<h2 id="afctf-2021baby_csp" data-numberify>[AFCTF 2021]BABY_CSP<a class="anchor ms-1" href="#afctf-2021baby_csp"></a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">html</span> <span style="color:#a6e22e">lang</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;UTF-8&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">http-equiv</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;X-UA-Compatible&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;IE=edge&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;viewport&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width=device-width, initial-scale=1.0&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">title</span>&gt;BABY CSP&lt;/<span style="color:#f92672">title</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;#&#39;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btn&#34;</span>&gt;whe3e are y0u fr0m?&lt;/<span style="color:#f92672">a</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">nonce</span><span style="color:#f92672">=</span><span style="color:#e6db74">29de6fde0db5686d</span>&gt;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">btn</span>.<span style="color:#a6e22e">onclick</span> <span style="color:#f92672">=</span> () =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">location</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;./?school=&#39;</span> <span style="color:#f92672">+</span> encodeURIComponent([<span style="color:#e6db74">&#39;CSU&#39;</span>, <span style="color:#e6db74">&#39;JXNU&#39;</span>, <span style="color:#e6db74">&#39;HEBNU&#39;</span>, <span style="color:#e6db74">&#39;I don\&#39;t konw :( &#39;</span>][Math.<span style="color:#a6e22e">floor</span>(<span style="color:#ae81ff">4</span> <span style="color:#f92672">*</span> Math.<span style="color:#a6e22e">random</span>())]);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">script</span>&gt;&lt;<span style="color:#f92672">p</span>&gt;I don&#39;t konw :( !&lt;/<span style="color:#f92672">p</span>&gt;&lt;/<span style="color:#f92672">html</span>&gt;
+</span></span></code></pre></div><p>这是题目的源码。页面内容为<code>wewhe3e are y0u fr0m?</code>按钮，按后会出现CSU，JXNU，HEBNU，idk之一</p>
+<p>通过题目我们可以看到考察CSP，而题目通过GET方法获得school参数从而回显到屏幕上</p>
+<p>注意到源码内包含了nonce(一次性令牌)，说明脚本必须带这个令牌，否则CSP会阻止脚本执行。</p>
+<p>那我们先来了解一下nonce</p>
+<blockquote>
+<p>Nonce（Number Used Once）是一个在密码学、区块链和计算机安全中常用的术语，指一个<strong>仅使用一次的随机或伪随机数</strong>。 它的核心目的是确保每次操作或通信的唯一性，防止重放攻击（Replay Attack）或其他安全威胁。 在加密算法（如AES、SSL/TLS）或认证协议中，nonce作为临时令牌，确保每次加密的输入唯一，即使明文相同，生成的密文也不同。</p>
+</blockquote>
+<p>先来尝试下URL传入<code>/?school=&lt;script&gt;alert(1)&lt;/script&gt;</code></p>
+<p>题目只回显了一个感叹号，因为script标签没有正确的nonce所以被拦截了。</p>
+<p>那我们传入事件型标签XSS<code>/?school=&quot;&gt;&lt;img src=x onerror=alert(1)&gt;</code></p>
+<p>回显中为    <code>&lt;/script&gt;&lt;p&gt;&quot;&gt;&lt;img src=[x](http://node4.anna.nssctf.cn:28499/x) onerror=alert(1)&gt;!&lt;/p&gt;&lt;/html&gt;</code></p>]]></description>
+    </item>
+    
+    <item>
+      <title>搭建博客</title>
+      <link>https://xiaochai-123.github.io/posts/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</link>
+      <pubDate>Tue, 25 Nov 2025 07:19:55 +0800</pubDate>
+      <guid>https://xiaochai-123.github.io/posts/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</guid>
+      <description><![CDATA[<h1 id="搭建个人博客的教程" data-numberify>搭建个人博客的教程<a class="anchor ms-1" href="#搭建个人博客的教程"></a></h1>
+
+<h2 id="第一步-确定所选择的框架" data-numberify>第一步 确定所选择的框架<a class="anchor ms-1" href="#第一步-确定所选择的框架"></a></h2>
+
+<h3 id="前言" data-numberify>前言<a class="anchor ms-1" href="#前言"></a></h3>
+<p><strong>所想要搭建静态博客，大致要走完这个流程（这是我用Hugo和Github搭建博客时的流程）：</strong></p>
+<p><strong>选择框架(网站生成器)&ndash;&gt;在对应框架的主题库内选择主题(模板)&ndash;&gt;对主题和模板进行修改，在本地渲染网页进行调试，产生public文件夹&ndash;&gt;通过git将public内容上传至Github仓库托管&ndash;&gt;由Github生成网页</strong></p>
+<p>Here we go!</p>
+<p>博客分为静态网站和动态网站（顺便一提）</p>
+<blockquote>
+<p>静态网站的核心特点</p>
+<ol>
+<li>内容固定
+<ul>
+<li>网站内容在更新前不会随访问变化，浏览器拿到的就是预先生成好的页面。</li>
+</ul>
+</li>
+<li>没有服务端动态逻辑
+<ul>
+<li>没有 PHP、Python、Node.js 等后端程序实时输出数据。</li>
+<li>没有数据库（如 MySQL、MongoDB）实时读取。</li>
+</ul>
+</li>
+<li>部署极其简单
+<ul>
+<li>可以直接放到任何 Web 服务器甚至 GitHub Pages 这类静态托管服务。</li>
+</ul>
+</li>
+<li>访问速度快
+<ul>
+<li>没有复杂的服务端运算，页面加载非常迅速。</li>
+</ul>
+</li>
+<li>安全性高
+<ul>
+<li>没有服务端程序与数据库，攻击面极小，不怕 SQL 注入等常见动态网站漏洞。</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<p>我们搭建一个静态网站可以是0金钱成本的，这就很不错。静态网站没有后端程序或数据库，缺点就是缺乏与用户的交互和动态(比如说评论，用户系统，个性化内容等等)。而动态网站就需要自己花钱去租赁服务器，租域名和维护网站安全，成本高昂。这篇文章则重点以Hugo框架为例详解搭建静态博客。</p>
+<p>以下各个框架是由不同语言开发的，这意味着如果要使用框架可能需要对应的语言环境和技术基础。（建议善用AI）</p>
+
+<h3 id="静态框架" data-numberify>静态框架<a class="anchor ms-1" href="#静态框架"></a></h3>
+
+<h4 id="hexo" data-numberify>Hexo<a class="anchor ms-1" href="#hexo"></a></h4>
+<ul>
+<li><strong>开发语言</strong>：Node.js</li>
+<li>优点
+<ul>
+<li>上手简单，配置清晰，写 Markdown 就能发文章；</li>
+<li><strong>插件多，主题丰富，社区活跃；</strong></li>
+<li>文章少时构建速度较快；</li>
+<li>托管友好，常用 GitHub Pages 一键部署。</li>
+</ul>
+</li>
+<li>缺点
+<ul>
+<li>生成大型站点时速度和内存有限制；</li>
+<li>部分插件兼容性一般，需要一定技术基础；</li>
+<li>没有动态功能，不能直接实现评论、用户系统等，需要借助第三方服务。</li>
+<li>据说文章量大时（数百篇）渲染速度会明显减慢。</li>
+</ul>
+</li>
+</ul>
+
+<h4 id="hugo" data-numberify>Hugo<a class="anchor ms-1" href="#hugo"></a></h4>
+<ul>
+<li><strong>开发语言</strong>：Go</li>
+<li>优点
+<ul>
+<li><strong>构建速度极快，适合超大量内容的博客或网站（在文章数量庞大的时候仍能快速渲染）；</strong></li>
+<li>多语言和分区支持好，国际化方便；</li>
+<li>官方文档完善，可定制性强；</li>
+<li>无需数据库，部署简单。</li>
+</ul>
+</li>
+<li>缺点
+<ul>
+<li>Go 模板语法较学习成本；</li>
+<li>中文社区和资源比 Hexo 少一些；</li>
+<li>插件、主题生态比 WordPress、Hexo要小。</li>
+</ul>
+</li>
+</ul>
+
+<h4 id="jekyll" data-numberify>Jekyll<a class="anchor ms-1" href="#jekyll"></a></h4>
+<ul>
+<li><strong>开发语言</strong>：Ruby</li>
+<li>优点
+<ul>
+<li><strong>GitHub Pages 原生支持，免配置一键部署；</strong></li>
+<li>社区成熟、文档齐全，主题不少；</li>
+<li>支持 Markdown、Liquid 模板。</li>
+</ul>
+</li>
+<li>缺点
+<ul>
+<li>Ruby 环境搭建略麻烦；</li>
+<li>构建速度比 Hugo 慢，尤其内容多时；</li>
+<li>主题和插件生态不如 WordPress、Hexo广。</li>
+</ul>
+</li>
+</ul>
+
+<h3 id="动态框架" data-numberify>动态框架<a class="anchor ms-1" href="#动态框架"></a></h3>
+
+<h4 id="typecho" data-numberify>Typecho<a class="anchor ms-1" href="#typecho"></a></h4>
+<ul>
+<li><strong>开发语言</strong>：PHP</li>
+<li>优点
+<ul>
+<li><strong>极致轻量，对服务器资源要求低；</strong></li>
+<li>后台清爽简洁，操作简单；</li>
+<li>插件和主题够用，适合个人极简博客；</li>
+<li>便于自定义和二次开发。</li>
+</ul>
+</li>
+<li>缺点
+<ul>
+<li>文档较为简略，社区小众，扩展生态有限；</li>
+<li>插件数量和兼容度不如 WordPress；</li>
+<li>动态系统，需配置数据库和服务器环境。</li>
+</ul>
+</li>
+</ul>
+
+<h4 id="halo" data-numberify>Halo<a class="anchor ms-1" href="#halo"></a></h4>
+<ul>
+<li>
+<p><strong>开发语言</strong>：Java</p>]]></description>
+    </item>
+    
+  </channel>
+</rss>
+

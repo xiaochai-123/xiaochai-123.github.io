@@ -1,0 +1,1015 @@
+<!doctype html>
+<html class="position-relative" itemscope itemtype="https://schema.org/WebPage" lang="en"
+  data-bs-theme="auto" data-palette="blue">
+  <head><script src="/assets/init/bundle.min.acf86bec8f1585feebb4a7bc424e2c509abd0c84c974075fb9eee923b2c62b39.js" integrity="sha256-rPhr7I8Vhf7rtKe8Qk4sUJq9DITJdAdfue7pI7LGKzk=" crossorigin="anonymous"></script>
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>[持续更新] CTF-Web Guide - xiaochai_123的小窝</title>
+    <link rel="icon" href="https://xiaochai-123.github.io/images/icons/icon-16x16.png?version=10de02cdc53ad46a103b64b869070266" sizes="16x16">
+    <link rel="icon" href="https://xiaochai-123.github.io/images/icons/icon-32x32.png?version=f1747f8c31b6821777c3a0956b5ba0db" sizes="32x32">
+    <link rel="icon" href="/favicon_hu_1fce3f16494f6ae3.png" sizes="150x150" type="image/png">
+    <link rel="apple-touch-icon" href="/favicon_hu_f105fae78c239d0f.png" sizes="180x180" type="image/png">
+    <link rel="icon" href="/favicon_hu_af357fe99fc0195a.png" sizes="192x192" type="image/png">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#6f42c1"><link rel="icon" href="https://xiaochai-123.github.io/images/icons/favicon.ico?version=13a0b7f517ed6605fd5fc54b37b8552d">
+<meta name="keywords" content="" />
+  <meta name="description" content="持续更新的CTF Web知识体系与刷题总结。" />
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://xiaochai-123.github.io/images/1.png">
+  <meta name="twitter:title" content="[持续更新] CTF-Web Guide">
+  <meta name="twitter:description" content="持续更新的CTF Web知识体系与刷题总结。">
+<meta property="og:url" content="https://xiaochai-123.github.io/posts/ctf-web-guide/">
+  <meta property="og:site_name" content="xiaochai_123的小窝">
+  <meta property="og:title" content="[持续更新] CTF-Web Guide">
+  <meta property="og:description" content="持续更新的CTF Web知识体系与刷题总结。">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-12-17T20:43:35+08:00">
+    <meta property="article:modified_time" content="2025-12-17T20:43:35+08:00">
+    <meta property="article:tag" content="CTF">
+    <meta property="article:tag" content="Web">
+    <meta property="og:image" content="https://xiaochai-123.github.io/images/1.png">
+
+  <meta itemprop="name" content="[持续更新] CTF-Web Guide">
+  <meta itemprop="description" content="持续更新的CTF Web知识体系与刷题总结。">
+  <meta itemprop="datePublished" content="2025-12-17T20:43:35+08:00">
+  <meta itemprop="dateModified" content="2025-12-17T20:43:35+08:00">
+  <meta itemprop="wordCount" content="403">
+  <meta itemprop="image" content="https://xiaochai-123.github.io/images/1.png">
+  <meta itemprop="keywords" content="CTF,Web">
+  <meta property="og:image:alt" content="[持续更新] CTF-Web Guide" />
+  <meta name="twitter:image:alt" content="[持续更新] CTF-Web Guide" />
+
+<link data-precache rel="stylesheet" href="/assets/main/bundle.min.5e43b1a2119e65d96e086e7147d978bfdbb1033637f8262ecddbd3fbaee298c1.css" integrity="sha256-XkOxohGeZdluCG5xR9l4v9uxAzY3+CYuzdvT+67imME=" crossorigin="anonymous">
+
+    <link data-precache rel="stylesheet" href="/assets/viewer/bundle.min.16d2c85c4cae39a98f8cb7a977e95e554b174f91a5484c32605637156f49ca6b.css" integrity="sha256-FtLIXEyuOamPjLepd&#43;leVUsXT5GlSEwyYFY3FW9Jyms=" crossorigin="anonymous">
+
+
+
+<link rel="stylesheet" href="/css/custom.css"><link rel="stylesheet" href="/css/all.min.css">
+  </head>
+  <body><header class="mb-4 sticky-top">
+  
+<nav class="top-app-bar shadow navbar navbar-expand-lg">
+  <div class="container">
+<a class="navbar-brand d-flex align-items-center flex-grow-1 flex-xxl-grow-0 justify-content-xxl-start ms-2 ms-xxl-0 mx-auto me-xxl-2"
+    href="https://xiaochai-123.github.io/">
+    <picture><img class="logo " alt="Logo" src="https://xiaochai-123.github.io/images/logo.png?v=166cbf8ee66ab6626f3f85db1fb49313" loading="lazy" width="2048" height="2048" />
+</picture>
+xiaochai_123的小窝
+</a>
+
+    <div class="offcanvas-lg offcanvas-end flex-grow-1" data-bs-scroll="true" tabindex="-1" id="navbarMenus" aria-labelledby="navbarMenusLabel">
+      <div class="offcanvas-header px-4 pb-0">
+        <div class="offcanvas-title h5" id="navbarMenusLabel">xiaochai_123的小窝</div>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" data-bs-target="#navbarMenus" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body p-4 pt-0 p-lg-0">
+        <hr class="d-lg-none">
+        <ul class="navbar-nav flex-row flex-wrap align-items-center me-auto"><li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2" href="https://xiaochai-123.github.io/posts/">Posts
+            </a>
+          </li><li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2" href="https://xiaochai-123.github.io/categories/">Categories
+            </a>
+          </li><li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2" href="https://xiaochai-123.github.io/tags/">Tags
+            </a>
+          </li><li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2" href="https://xiaochai-123.github.io/friends/">Friends
+            </a>
+          </li>
+        </ul>
+        
+    <hr class="d-lg-none">
+    <form class="search-bar ms-auto my-auto" action="" novalidate>
+      <div class="input-group align-items-center">
+        <span class="btn btn-search disabled position-absolute left-0 border-0 px-1">
+          <i class="fas fa-fw fa-search fa-lg"></i>
+        </span>
+        <input
+          class="my-1 form-control border-white rounded-5 search-input bg-body"
+          name="q"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+          required>
+          <span class="search-shortcut position-absolute end-0 top-0 me-2">
+            <kbd class="text-dark bg-white opacity-75 rounded-3 shadow border border-primary py-1 fw-bold">/</kbd>
+          </span>
+      </div>
+    </form><hr class="d-lg-none">
+        <ul class="navbar-nav flex-row flex-wrap align-items-center ms-md-auto">
+<li class="nav-item dropdown col-6 col-lg-auto">
+    <a class="nav-link px-0 py-2 px-lg-1" href="#" id="paletteDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="fas fa-fw fa-palette"></i>
+        <span class="d-lg-none">Palette</span>
+    </a>
+    <ul class="palette-dropdown-menu dropdown-menu dropdown-menu-end px-2 row g-2" aria-labelledby="paletteDropdown">
+            <li class="col-4 my-1">
+                <a role="button" id="palette-blue" aria-label="Blue"
+                    class="btn btn-sm w-100 palette text-bg-blue" data-palette="blue">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-blue-gray" aria-label="Blue Gray"
+                    class="btn btn-sm w-100 palette text-bg-blue-gray" data-palette="blue-gray">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-brown" aria-label="Brown"
+                    class="btn btn-sm w-100 palette text-bg-brown" data-palette="brown">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-cyan" aria-label="Cyan"
+                    class="btn btn-sm w-100 palette text-bg-cyan" data-palette="cyan">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-green" aria-label="Green"
+                    class="btn btn-sm w-100 palette text-bg-green" data-palette="green">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-indigo" aria-label="Indigo"
+                    class="btn btn-sm w-100 palette text-bg-indigo" data-palette="indigo">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-orange" aria-label="Orange"
+                    class="btn btn-sm w-100 palette text-bg-orange" data-palette="orange">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-pink" aria-label="Pink"
+                    class="btn btn-sm w-100 palette text-bg-pink" data-palette="pink">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-purple" aria-label="Purple"
+                    class="btn btn-sm w-100 palette text-bg-purple" data-palette="purple">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-red" aria-label="Red"
+                    class="btn btn-sm w-100 palette text-bg-red" data-palette="red">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-teal" aria-label="Teal"
+                    class="btn btn-sm w-100 palette text-bg-teal" data-palette="teal">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-yellow" aria-label="Yellow"
+                    class="btn btn-sm w-100 palette text-bg-yellow" data-palette="yellow">
+                </a>
+            </li>
+    </ul>
+</li>
+<li class="nav-item dropdown col-6 col-lg-auto">
+    <a class="nav-link px-0 py-2 px-lg-1" href="#" id="modeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="mode-icon fas fa-fw fa-adjust" id="modeIcon"></i>
+        <span class="d-lg-none">Mode</span>
+    </a>
+    <ul class="mode-dropdown-menu dropdown-menu dropdown-menu-end" aria-labelledby="modeDropdown">
+        <li class="mode-item" data-color-mode="light" data-icon="sun">
+            <button class="dropdown-item">
+                <i class="mode-icon fas fa-fw fa-sun"></i> Light
+            </button>
+        </li>
+        <li class="mode-item" data-color-mode="dark" data-icon="moon">
+            <button class="dropdown-item">
+                <i class="mode-icon fas fa-fw fa-moon"></i> Dark
+            </button>
+        </li>
+        <li class="mode-item active" data-color-mode="auto" data-icon="adjust">
+            <button class="dropdown-item">
+                <i class="mode-icon fas fa-fw fa-adjust"></i> Auto
+            </button>
+        </li>
+    </ul>
+</li>
+        </ul>
+      </div>
+    </div>
+    <div class="d-flex">
+      <button class="navbar-toggler order-5 border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarMenus"
+        aria-controls="navbarMenus" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-ellipsis-h"></i>
+      </button>
+    </div>
+  </div>
+</nav>
+
+</header>
+
+    <main class="container has-sidebar" data-kind="page"><script data-precache src="/js/main-init.6a1fd2a99f6ad87b4aa9b7ed0f10344d4273d92cc29a6fb2cf05c463ec57ce39.js" integrity="sha256-ah/SqZ9q2HtKqbftDxA0TUJz2SzCmm&#43;yzwXEY&#43;xXzjk=" crossorigin="anonymous"></script>
+
+      <div class="row content"><noscript>
+    <div class="alert alert-danger" role="alert">Your browser does not support JavaScript.</div>
+</noscript>
+
+<div class="content-posts col-xxl-8">
+  <div class="container"><nav class="row card component" aria-label="breadcrumb">
+  <div class="card-body pb-0">
+    <ol class="hbs-breadcrumb breadcrumb flex-nowrap"><li class="breadcrumb-item text-surface"><a href="/">Home</a></li><li class="breadcrumb-item text-surface"><a href="/posts/">Posts</a></li><li class="breadcrumb-item active">[持续更新] CTF-Web Guide</li></ol>
+  </div>
+</nav><div class="post-panel-wrapper position-relative d-flex justify-content-center">
+  <div class="d-flex flex-row justify-content-center rounded-5 border post-panel position-fixed px-3 py-1 surface shadow-1">
+    
+    
+
+    
+    
+    
+  <a class="action action-toc d-none d-xxl-block" href="#postTOC" role="button" title="Contents">
+    <i class="fas fa-fw fa-list-alt"></i>
+  </a>
+<a class="action action-toc d-block d-xxl-none" href="#post-toc-container" role="button" title="Contents">
+  <i class="fas fa-fw fa-list-alt"></i>
+</a>
+
+    <a class="action action-post-comments" href="#post-comments" role="button" aria-label="Comments" title="Comments">
+  <i class="fas fa-fw fa-comments"></i>
+</a>
+    
+<a id="sidebarToggler" class="action action-sidebar-toggler d-none d-xl-block" role="button" title="Toggle sidebar">
+  <i class="fas fa-fw fa-expand-alt" data-fa-transform="rotate-45"></i>
+</a>
+
+    
+  </div>
+</div><article class="row card component mb-4 post">
+  <div class="card-header ">
+    <h1 class="card-title post-title my-2">[持续更新] CTF-Web Guide</h1>
+  </div>
+  <div class="card-body"><div class="post-meta mb-3">
+  <span class="post-date me-1 mb-1" title="created on 2025-12-17 20:43:35 &#43;0800 CST.">December 17, 2025</span><span class="post-reading-time me-1 mb-1">2 min read</span><a href="/categories/guide/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-category">
+      <i class="fas fa-fw fa-folder me-1"></i>Guide</a><a href="/tags/ctf/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-tag">CTF</a><a href="/tags/web/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-tag">Web</a>
+</div>
+
+      <p class="lead mb-3 text-body-emphasis">持续更新的CTF Web知识体系与刷题总结。</p>
+<div class="mt-2 mb-3 d-block d-xxl-none">
+    <h2 class="text-surface mb-3">Contents</h2>
+    <div id="post-toc-container">
+        </div>
+    <hr class="text-secondary">
+</div><div class="post-content mb-3" data-bs-spy="scroll" data-bs-target="#TableOfContents" tabindex="0">
+        <div id="post-content-body">
+<h1 id="持续更新-ctf-web-guide" data-numberify>[持续更新] CTF-Web Guide<a class="anchor ms-1" href="#持续更新-ctf-web-guide"></a></h1>
+<p>看到Lunatic大佬的</p>
+<p>大受震撼。大丈夫当如是也！这种长篇的持续更新文章似乎可以更全面的记录遇到题目时要有的思路，或查找一些偏门的考点。仆诚以著此篇，希望我能写出一个好的Guide&hellip;</p>
+
+<h2 id="前言-preface" data-numberify>前言 (Preface)<a class="anchor ms-1" href="#前言-preface"></a></h2>
+<ul>
+<li><strong>前言</strong>：本篇旨在提供全面的ctfweb题目分析讲解和思路的提供，无论是新手学习和老手速查都十分适合0v0</li>
+</ul>
+
+<h2 id="第一章工欲善其事-the-toolkit" data-numberify>第一章：工欲善其事 (The Toolkit)<a class="anchor ms-1" href="#第一章工欲善其事-the-toolkit"></a></h2>
+<blockquote>
+<p><em>这部分介绍基础环境，同时强调工具的重要性。</em></p>
+</blockquote>
+
+<h3 id="基础知识储备" data-numberify>基础知识储备<a class="anchor ms-1" href="#基础知识储备"></a></h3>
+<blockquote>
+<p><em>这部分是地基，不需要写太深，但要列出“必知必会”。</em></p>
+</blockquote>
+<ol>
+<li>协议与架构
+<ul>
+<li><strong>HTTP/HTTPS 协议</strong>：请求头（Headers）、响应码（Status Codes）、常用方法（GET/POST/PUT/HEAD/OPTIONS）。</li>
+<li><strong>Web 架构</strong>：前端（HTML/JS/CSS）与后端（PHP/Java/Python/Go）的交互流程，MVC 模式，API 接口（RESTful/GraphQL）。</li>
+</ul>
+</li>
+</ol>
+
+<h3 id="web工具" data-numberify>Web工具<a class="anchor ms-1" href="#web工具"></a></h3>
+<ol>
+<li>常用工具
+<ul>
+<li><strong>抓包与测试</strong>：<strong>Burp Suite</strong>（核心、抓包/重放/爆破）、Yakit（中文版bp）</li>
+<li><strong>信息收集</strong>：<strong>Dirsearch</strong>（目录扫描）、Nmap（端口扫描）</li>
+<li><strong>浏览器插件</strong>：<strong>HackBar</strong>（快速发包）、Wappalyzer（指纹识别）</li>
+<li><strong>Linux环境</strong>：<strong>VMware/WSL2 Kali</strong>（用来执行shell/linux工具)</li>
+<li><strong>远程控制</strong>：<strong>Antsword</strong>（连接木马），冰蝎，哥斯拉</li>
+<li><strong>IDE</strong>：<strong>PhpStorm</strong>（做php反序列化），<strong>IDEA</strong>（做java）</li>
+<li><strong>自动注入</strong>：<strong>SQLmap</strong>（sql注入点自动查找），<strong>fenjing</strong>（焚靖|自动构建SSTIpayload，绕过waf一把梭）</li>
+<li><strong>AI助手</strong>：帮你想思路，构建payload和脚本</li>
+</ul>
+</li>
+</ol>
+
+<h2 id="第二章信息收集-information-gathering" data-numberify>第二章：信息收集 (Information Gathering)<a class="anchor ms-1" href="#第二章信息收集-information-gathering"></a></h2>
+<blockquote>
+<p><em>Web 题的第一步永远是把题目“看光”。</em></p>
+</blockquote>
+
+<h3 id="敏感文件泄露" data-numberify>敏感文件泄露<a class="anchor ms-1" href="#敏感文件泄露"></a></h3>
+<ul>
+<li><code>robots.txt</code>、<code>sitemap.xml</code>。</li>
+</ul>
+
+<h4 id="1-管理类文件" data-numberify>1. 管理类文件<a class="anchor ms-1" href="#1-管理类文件"></a></h4>
+
+<h5 id="11-robotstxt" data-numberify>1.1 robots.txt<a class="anchor ms-1" href="#11-robotstxt"></a></h5>
+<ul>
+<li>
+<p><strong>作用</strong>：搜索引擎爬虫协议文件，告诉爬虫哪些路径不应抓取。</p>
+</li>
+<li>
+<p><strong>渗透思路</strong>：黑名单信息含涉密路径、后门、管理后台、备份等，非常容易疏忽泄露。</p>
+</li>
+<li>
+<p><strong>例子</strong>：</p>
+<pre tabindex="0"><code>Disallow: /admin
+Disallow: /hidden/flag.txt
+</code></pre></li>
+</ul>
+
+<h5 id="12-sitemapxml" data-numberify>1.2 sitemap.xml<a class="anchor ms-1" href="#12-sitemapxml"></a></h5>
+<ul>
+<li><strong>作用</strong>：网站内容地图，列出所有可爬网址。</li>
+<li><strong>渗透思路</strong>：直接暴露未公开子目录，配合robots.txt查询价值极高。</li>
+</ul>
+
+<h5 id="13-env" data-numberify>1.3 .env<a class="anchor ms-1" href="#13-env"></a></h5>
+<ul>
+<li><strong>作用</strong>：各类Web框架常用环境变量文件。</li>
+<li><strong>渗透</strong>：很多JWT密钥、数据库连接信息、邮箱API等一览无遗，PHP、Laravel、Node.js尤其常见。</li>
+</ul>
+<hr>
+
+<h4 id="2-源码和仓库泄露" data-numberify>2. 源码和仓库泄露<a class="anchor ms-1" href="#2-源码和仓库泄露"></a></h4>
+
+<h5 id="21-git" data-numberify>2.1 .git/<a class="anchor ms-1" href="#21-git"></a></h5>
+<ul>
+<li><strong>作用</strong>：Git版本库目录。</li>
+<li><strong>渗透</strong>：若未做严格防护可直接遍历和还原完整源码。使用 <code>GitHack.py</code>、<code>githound</code>等工具，一键还原全部源码+敏感信息。</li>
+</ul>
+
+<h5 id="22-svnhg" data-numberify>2.2 .svn/、.hg/<a class="anchor ms-1" href="#22-svnhg"></a></h5>
+<ul>
+<li><strong>作用</strong>：分别对应Subversion、Mercurial代码管理目录。</li>
+<li><strong>渗透</strong>：同理可还原源代码及全部提交历史。</li>
+</ul>
+
+<h5 id="23-ds_store" data-numberify>2.3 .DS_Store<a class="anchor ms-1" href="#23-ds_store"></a></h5>
+<ul>
+<li><strong>作用</strong>：Mac下目录索引文件。</li>
+<li><strong>渗透</strong>：泄露完整目录结构（可见文件名），辅助发现“隐藏文件”“Flag”。</li>
+</ul>
+
+<h5 id="24-wwwzipcodetargzsourcebak" data-numberify>2.4 www.zip、code.tar.gz、source.bak<a class="anchor ms-1" href="#24-wwwzipcodetargzsourcebak"></a></h5>
+<ul>
+<li><strong>作用</strong>：习惯性手工备份或源码打包，上传或备份遗留。</li>
+<li><strong>渗透</strong>：敏感备份/打包文件常规文件：
+<code>www.zip</code>、<code>web.zip</code>、<code>backup.zip</code>、<code>site.bak</code>、<code>index.php.bak</code>、<code>src.rar</code>、<code>bak.tar.gz</code>等</li>
+</ul>
+<hr>
+
+<h4 id="3-编辑器临时自动备份文件" data-numberify>3. 编辑器临时/自动备份文件<a class="anchor ms-1" href="#3-编辑器临时自动备份文件"></a></h4>
+
+<h5 id="31-vimemacs交换备份" data-numberify>3.1 Vim/Emacs交换备份<a class="anchor ms-1" href="#31-vimemacs交换备份"></a></h5>
+<ul>
+<li><code>.swp</code>/<code>.swo</code></li>
+<li>例：<code>index.php.swp</code></li>
+<li><strong>用途与危害</strong>：Vim自动生成的内存交换文件。利用<code>strings</code>等命令可恢复大量源码或明文密码。</li>
+</ul>
+
+<h5 id="32-emacs临时文件" data-numberify>3.2 Emacs临时文件<a class="anchor ms-1" href="#32-emacs临时文件"></a></h5>
+<ul>
+<li>例：<code>index.php~</code>, <code>#index.php#</code></li>
+</ul>
+
+<h5 id="33-其它常见临时备份扩展" data-numberify>3.3 其它常见临时/备份扩展<a class="anchor ms-1" href="#33-其它常见临时备份扩展"></a></h5>
+<ul>
+<li><code>.bak</code>、<code>.old</code>、<code>.backup</code>、<code>.save</code>、<code>.tmp</code>、<code>.temp</code></li>
+<li><strong>典型案例</strong>：<code>index.php.bak</code>、<code>config.php.old</code>，甚至<code>flag.php.save</code></li>
+</ul>
+<hr>
+
+<h4 id="4-常见渗透ctf技巧总结" data-numberify>4. 常见渗透/CTF技巧总结<a class="anchor ms-1" href="#4-常见渗透ctf技巧总结"></a></h4>
+<ol>
+<li><strong>爆破路径字典</strong>：用字典工具快速遍历敏感路径
+典例：<code>dirsearch</code>, <code>ffuf</code>, <code>gobuster</code></li>
+<li><strong>尝试访问源码与备份文件</strong>：如<code>index.php.bak</code>，几乎等同于源码泄露。</li>
+<li><strong>下载解压源码包或查看仓库提交历史</strong>：发现历史密码、后台路径、flag等。</li>
+<li><strong>扫描.git, .svn, .hg</strong>：直接还原项目全部文件、操作commit，甚至逆推出未上线flag。</li>
+<li><strong>编辑器遗留文件源码复原</strong>：如vim .swp 文件，用<code>strings</code>或专用工具还原内容，常获flag。</li>
+</ol>
+<ul>
+<li>源码泄露：<code>www.zip</code>、<code>.git</code>、<code>.svn</code>、<code>.hg</code>、<code>.DS_Store</code>。</li>
+<li>备份文件：<code>index.php.bak</code>、<code>vim</code> 交换文件 (<code>.swp</code>)。</li>
+</ul>
+<ol>
+<li>指纹识别
+<ul>
+<li>判断操作系统（Linux/Windows）、中间件（Apache/Nginx/IIS/Tomcat）、数据库类型。</li>
+<li>CMS 识别（WordPress, Discuz, Typecho 等）。</li>
+</ul>
+</li>
+<li>其他
+<ul>
+<li>PHPinfo 页面分析（查看 <code>disable_functions</code>、开启的扩展）。</li>
+<li>社工与 OSINT（如果有涉及）。</li>
+</ul>
+</li>
+</ol>
+
+<h2 id="第三章核心漏洞---注入篇-injection-attacks" data-numberify>第三章：核心漏洞 - 注入篇 (Injection Attacks)<a class="anchor ms-1" href="#第三章核心漏洞---注入篇-injection-attacks"></a></h2>
+<p><em>CTF Web 的半壁江山。</em></p>
+<ol>
+<li>SQL 注入 (SQLi)：
+<ul>
+<li>基础：Union 注入, Boolean 盲注, Time 盲注。</li>
+<li>进阶：报错注入, 堆叠注入 (Stacked Queries)。</li>
+<li>技巧：WAF 绕过 (空格变体、编码绕过), NoSQL 注入 (MongoDB)。</li>
+</ul>
+</li>
+<li>命令执行 (RCE/Command Injection)：
+<ul>
+<li>常见触发函数 (system, exec, etc.)。</li>
+<li>无回显 RCE (DNSLog 外带)。</li>
+<li>字符限制绕过 (利用通配符、环境变量拼凑命令)。</li>
+</ul>
+</li>
+<li>代码执行 (Code Execution)：
+<ul>
+<li><code>eval()</code>, <code>assert()</code> 的滥用。</li>
+</ul>
+</li>
+<li>模板注入 (SSTI)：
+<ul>
+<li>Python (Jinja2, Flask), PHP (Smarty), Java (Thymeleaf)。</li>
+<li>利用链构造与沙箱逃逸。</li>
+</ul>
+</li>
+</ol>
+
+<h2 id="第四章核心漏洞---文件操作篇-file-operations" data-numberify>第四章：核心漏洞 - 文件操作篇 (File Operations)<a class="anchor ms-1" href="#第四章核心漏洞---文件操作篇-file-operations"></a></h2>
+<ol>
+<li>文件包含 (LFI/RFI)：
+<ul>
+<li>PHP 伪协议 (<code>php://filter</code>, <code>php://input</code>, <code>zip://</code>, <code>phar://</code>)。</li>
+<li>日志包含 GetShell。</li>
+</ul>
+</li>
+<li>文件上传 (File Upload)：
+<ul>
+<li>前端检测绕过。</li>
+<li>MIME 类型、文件头检测绕过。</li>
+<li>黑名单/白名单绕过 (大小写、双后缀、00截断)。</li>
+<li>竞争条件 (Race Condition) 上传。</li>
+<li>解析漏洞 (Apache/Nginx/IIS 特性)。</li>
+</ul>
+</li>
+</ol>
+
+<h2 id="第五章客户端与认证安全-client-side--auth" data-numberify>第五章：客户端与认证安全 (Client-side & Auth)<a class="anchor ms-1" href="#第五章客户端与认证安全-client-side--auth"></a></h2>
+<ol>
+<li>XSS (跨站脚本攻击)：
+<ul>
+<li>反射型、存储型、DOM 型。</li>
+<li>CSP (内容安全策略) 绕过技巧。</li>
+<li>XSS Bot 题目解法 (Admin 访问恶意链接)。</li>
+</ul>
+</li>
+<li>CSRF &amp; SSRF：
+<ul>
+<li><strong>SSRF (服务端请求伪造)</strong>：攻击内网、Redis 未授权访问、Gopher 协议利用。</li>
+</ul>
+</li>
+<li>认证与逻辑漏洞：
+<ul>
+<li>弱口令与爆破。</li>
+<li>JWT (Json Web Token) 攻击 (空加密算法、密钥爆破、修改头部)。</li>
+<li>IDOR (越权访问)。</li>
+<li>密码找回逻辑漏洞。</li>
+</ul>
+</li>
+</ol>
+
+<h2 id="第六章语言特性与反序列化-language-specifics" data-numberify>第六章：语言特性与反序列化 (Language Specifics)<a class="anchor ms-1" href="#第六章语言特性与反序列化-language-specifics"></a></h2>
+<blockquote>
+<p><em>针对不同后端语言的特性（Trick），是 CTF Web 的精髓。</em></p>
+</blockquote>
+<ol>
+<li>
+<p>PHP 奇技淫巧：</p>
+<ul>
+<li>弱类型比较 (<code>==</code> vs <code>===</code>, MD5 碰撞)。</li>
+<li>变量覆盖 (<code>extract</code>, <code>parse_str</code>)。</li>
+<li><strong>PHP 反序列化</strong>：魔术方法 (<code>__construct</code>, <code>__wakeup</code>, <code>__destruct</code>), POP 链构造, Phar 反序列化。</li>
+<li>原生类利用 (SoapClient, SplFileObject)。</li>
+</ul>
+</li>
+<li>
+<p>Python Web :</p>
+<ul>
+<li>
+<p><strong>SSTI (模板注入)</strong>：Jinja2, Tornado, Mako。利用 <code>__class__</code>, <code>__mro__</code>, <code>__subclasses__</code> 寻找利用链。</p>
+</li>
+<li>
+<p><strong>Pickle 反序列化</strong>：手写 opcode，利用 <code>__reduce__</code>。</p>
+</li>
+<li>
+<p>PyJail (沙箱逃逸)。</p>
+</li>
+<li>
+<p>格式化字符串漏洞。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Java 安全：</p>
+<ul>
+<li><strong>Java 反序列化</strong> (ysoserial 工具, CommonsCollections 利用链, Fastjson, Jackson, Log4j2）</li>
+<li><strong>表达式注入</strong>：SPEL, OGNL。</li>
+<li>Spring Boot Actuator配置不当。</li>
+<li>WebLogic, Shiro, Struts2 历史漏洞复现。</li>
+<li>内存马 (Memory Shell) 概念。</li>
+</ul>
+</li>
+<li>
+<p>Node.js：</p>
+<ul>
+<li>原型链污染 (Prototype Pollution)。</li>
+<li>JS 弱类型与 VM 沙箱逃逸。</li>
+</ul>
+</li>
+</ol>
+
+<h2 id="第七章高阶技巧与新趋势-advanced--modern-web" data-numberify>第七章：高阶技巧与新趋势 (Advanced & Modern Web)<a class="anchor ms-1" href="#第七章高阶技巧与新趋势-advanced--modern-web"></a></h2>
+<ol>
+<li>XML 外部实体注入 (XXE)：
+<ul>
+<li>读取文件、内网探测。</li>
+<li>无回显 XXE (Blind XXE)。</li>
+</ul>
+</li>
+<li>HTTP 协议攻击：
+<ul>
+<li>HTTP 请求走私 (Request Smuggling)。</li>
+<li>HTTP 头注入 (CRLF Injection)。</li>
+</ul>
+</li>
+<li>Web Cache：
+<ul>
+<li>缓存投毒 (Cache Poisoning)。</li>
+</ul>
+</li>
+<li>Web 密码学
+<ul>
+<li>Padding Oracle Attack。</li>
+<li>Hash 长度扩展攻击。</li>
+<li>伪随机数预测 (mt_rand)。</li>
+</ul>
+</li>
+<li>区块链/Web3：
+<ul>
+<li>智能合约漏洞 (重入攻击、整数溢出)</li>
+</ul>
+</li>
+</ol>
+
+<h2 id="第八章解题战术总结-strategy--mindset" data-numberify>第八章：解题战术总结 (Strategy & Mindset)<a class="anchor ms-1" href="#第八章解题战术总结-strategy--mindset"></a></h2>
+<ol>
+<li><strong>WAF 绕过通用思路</strong>：编码、分块传输、利用解析差异。</li>
+<li><strong>提权与后渗透 (简略)</strong>：拿到 Shell 后如何找 Flag (<code>/flag</code>, 环境变量, <code>phpinfo()</code>, SUID 提权)。</li>
+<li><strong>如何从 0 到 1 复现题目</strong>：利用 Docker 搭建环境的重要性。</li>
+<li><strong>题目怎么入手？</strong>（一看源码，二看功能，三抓包，四扫目录）。</li>
+<li><strong>卡住了怎么办？</strong>（回顾基础，去翻博客，报错信息，猜出题人意图）。</li>
+<li><strong>如何写好 Writeup？</strong>（不仅是答案，更是思路的记录）。</li>
+</ol>
+
+<h2 id="结语-conclusion" data-numberify>结语 (Conclusion)<a class="anchor ms-1" href="#结语-conclusion"></a></h2>
+<ul>
+<li>推荐的学习平台 (BuuCTF, HackTheBox, PortSwigger,NSSCTF,CTF+)。</li>
+<li>鼓励多看 Writeup (WP) 并复盘。</li>
+</ul>
+</div>
+</div>
+</div><div class="card-footer">
+  <div class="post-navs d-flex justify-content-evenly"><div class="post-nav post-prev">
+      <i class="fas fa-fw fa-chevron-down post-prev-icon me-1" data-fa-transform="rotate-90"></i>
+      <a href="/posts/sqli-labs/">SQL注入——sqli-labs学习笔记</a>
+    </div></div>
+</div></article>
+<section class="related-posts row card component">
+      <div class="card-header">
+        <h2 class="card-title fs-4 my-2 text-surface">
+          Related Posts
+        </h2>
+      </div>
+      <div class="card-body slide px-1">
+        <div class="slide-inner row gx-0"><div class="col-12 col-md-6 col-lg-4 me-2">
+            <div class="post-card card card-body p-0 border-0 surface">
+  
+  <picture><img class="img-fluid" alt="双重md5爆破" src="https://xiaochai-123.github.io/images/MD5.png" loading="lazy"
+     width="626"
+     height="251"/>
+  </picture>
+
+  <a class="post-title" href="/posts/%E5%8F%8C%E9%87%8Dmd5%E7%88%86%E7%A0%B4/">
+    双重md5爆破
+  </a>
+  <div class="post-meta mb-0">
+    December 5, 2025
+
+  </div>
+</div>
+
+          </div><div class="col-12 col-md-6 col-lg-4 me-2">
+            <div class="post-card card card-body p-0 border-0 surface">
+  
+  <div
+    class="post-card-default-img card-img-top d-flex align-items-center justify-content-center bg-body-secondary mb-1">
+    NO IMAGE
+  </div>
+
+  <a class="post-title" href="/posts/251204/">
+    251204每日打卡
+  </a>
+  <div class="post-meta mb-0">
+    December 4, 2025
+
+  </div>
+</div>
+
+          </div><div class="col-12 col-md-6 col-lg-4 me-2">
+            <div class="post-card card card-body p-0 border-0 surface">
+  
+  <div
+    class="post-card-default-img card-img-top d-flex align-items-center justify-content-center bg-body-secondary mb-1">
+    NO IMAGE
+  </div>
+
+  <a class="post-title" href="/posts/251129/">
+    251129每日打卡
+  </a>
+  <div class="post-meta mb-0">
+    November 29, 2025
+
+  </div>
+</div>
+
+          </div><div class="col-12 col-md-6 col-lg-4 me-2">
+            <div class="post-card card card-body p-0 border-0 surface">
+  
+  <div
+    class="post-card-default-img card-img-top d-flex align-items-center justify-content-center bg-body-secondary mb-1">
+    NO IMAGE
+  </div>
+
+  <a class="post-title" href="/posts/bkcrack%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/">
+    bkcrack的使用方法
+  </a>
+  <div class="post-meta mb-0">
+    December 17, 2025
+
+  </div>
+</div>
+
+          </div></div>
+        <button class="slide-control-left">
+          <i class="fas fa-2x fa-chevron-circle-down" data-fa-transform="rotate-90"></i>
+          <span class="visually-hidden">Left</span>
+        </button>
+        <button class="slide-control-right">
+          <i class="fas fa-2x fa-chevron-circle-down" data-fa-transform="rotate-270"></i>
+          <span class="visually-hidden">Right</span>
+        </button>
+      </div>
+    </section><div class="card component row post-comments" id="post-comments">
+  <div class="card-header">
+    <h2 class="card-title my-2 fs-4 text-surface">Comments</h2>
+  </div>
+  <div class="card-body">
+
+<div class="giscus"></div>
+
+
+
+</div>
+</div></div>
+</div>
+<aside class="col-xxl-4 sidebar d-flex">
+  <div class="container d-flex flex-column">
+    
+    
+<div class="card mb-3">
+  <div class="card-body text-center">
+    <img src="/images/my-avatar.jpg" alt="我的头像" class="rounded-circle mb-2" width="100" height="100">
+    <h5 class="card-title">xiaochai_123</h5>
+    <p class="card-text">CS学生 | CTF界的小学生 | BD7PUC</p>
+<nav class="d-flex justify-content-center gap-2 my-2">
+  <a class="btn btn-sm btn-outline-dark rounded-circle" href="https://github.com/xiaochai-123" title="GitHub" target="_blank">
+    <i class="fab fa-github"></i>
+  </a>
+  <a class="btn btn-sm btn-outline-primary rounded-circle" href="mailto:l2556843965@163.com" title="Email">
+    <i class="fas fa-envelope"></i>
+  </a>
+  <a class="btn btn-sm btn-outline-danger rounded-circle" href="https://space.bilibili.com/595746072" title="Bilibili" target="_blank">
+  <i class="fab fa-bilibili"></i> 
+</a>
+  
+</nav>
+  </div>
+</div>
+
+
+    <div class="accordion posts-toggle">
+      <div class="row card component accordion-item">
+        <div class="accordion-header card-header border-0">
+          <a
+            class="accordion-button d-lg-none mb-1 shadow-none p-0 bg-transparent"
+            role="button"
+            data-bs-toggle="collapse"
+            href="#posts-toggle"
+            aria-expanded="true"
+            aria-controls="posts-toggle">
+            Posts
+          </a>
+        </div>
+        <div
+          class="card-body collapse accordion-collapse accordion-body d-lg-block show"
+          id="posts-toggle">
+          <ul class="nav nav-pills nav-fill" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link active"
+                  id="recent-posts-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#recent-posts"
+                  type="button"
+                  role="tab"
+                  aria-controls="recent-posts"
+                  aria-selected="true">
+                  Recent Posts
+                </button>
+              </li>
+          </ul>
+
+          <div class="tab-content mt-3">
+              <div
+                class="tab-pane active"
+                id="recent-posts"
+                role="tabpanel"
+                aria-labelledby="recent-posts-tab"
+                tabindex="0">
+                <ul class="post-list list-unstyled ms-1">
+                    <li class="mb-2">
+    
+  
+  <div class="d-flex">
+      <div
+        class="flex-shrink-0 d-flex justify-content-center align-items-center"
+        style="max-width: 100px"><picture><img class="img-fluid" alt="SQLi-labs靶场搭建" src="https://xiaochai-123.github.io/images/SQL.png" loading="lazy"
+     width="1546"
+     height="699"/>
+  </picture>
+      </div>
+    <div
+      class="flex-grow-1 d-flex flex-column h-auto justify-content-center ms-3">
+      <a class="post-title" href="/posts/sqli-labs%E9%9D%B6%E5%9C%BA%E6%90%AD%E5%BB%BA/">
+        SQLi-labs靶场搭建
+      </a>
+      <div class="post-meta mt-2">
+        <span class="post-date">
+          December 22, 2025
+        </span>
+      </div>
+    </div>
+  </div>
+                    </li>
+                    <li class="mb-2">
+    
+  
+  <div class="d-flex">
+      <div
+        class="flex-shrink-0 d-flex justify-content-center align-items-center"
+        style="max-width: 100px"><picture><img class="img-fluid" alt="SQL注入——sqli-labs学习笔记" src="https://xiaochai-123.github.io/images/SQL1.png" loading="lazy"
+     width="474"
+     height="240"/>
+  </picture>
+      </div>
+    <div
+      class="flex-grow-1 d-flex flex-column h-auto justify-content-center ms-3">
+      <a class="post-title" href="/posts/sqli-labs/">
+        SQL注入——sqli-labs学习笔记
+      </a>
+      <div class="post-meta mt-2">
+        <span class="post-date">
+          December 22, 2025
+        </span>
+      </div>
+    </div>
+  </div>
+                    </li>
+                    <li class="mb-2">
+  <div class="d-flex">
+    <div
+      class="flex-grow-1 d-flex flex-column h-auto justify-content-center">
+      <a class="post-title" href="/posts/bkcrack%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/">
+        bkcrack的使用方法
+      </a>
+      <div class="post-meta mt-2">
+        <span class="post-date">
+          December 17, 2025
+        </span>
+      </div>
+    </div>
+  </div>
+                    </li>
+                    <li class="mb-2">
+    
+  
+  <div class="d-flex">
+      <div
+        class="flex-shrink-0 d-flex justify-content-center align-items-center"
+        style="max-width: 100px"><picture><img class="img-fluid" alt="[持续更新] CTF-Web Guide" src="https://xiaochai-123.github.io/images/1.png" loading="lazy"
+     width="2400"
+     height="1350"/>
+  </picture>
+      </div>
+    <div
+      class="flex-grow-1 d-flex flex-column h-auto justify-content-center ms-3">
+      <a class="post-title" href="/posts/ctf-web-guide/">
+        [持续更新] CTF-Web Guide
+      </a>
+      <div class="post-meta mt-2">
+        <span class="post-date">
+          December 17, 2025
+        </span>
+      </div>
+    </div>
+  </div>
+                    </li>
+                    <li class="mb-2">
+    
+  
+  <div class="d-flex">
+      <div
+        class="flex-shrink-0 d-flex justify-content-center align-items-center"
+        style="max-width: 100px"><picture><img class="img-fluid" alt="双重md5爆破" src="https://xiaochai-123.github.io/images/MD5.png" loading="lazy"
+     width="626"
+     height="251"/>
+  </picture>
+      </div>
+    <div
+      class="flex-grow-1 d-flex flex-column h-auto justify-content-center ms-3">
+      <a class="post-title" href="/posts/%E5%8F%8C%E9%87%8Dmd5%E7%88%86%E7%A0%B4/">
+        双重md5爆破
+      </a>
+      <div class="post-meta mt-2">
+        <span class="post-date">
+          December 5, 2025
+        </span>
+      </div>
+    </div>
+  </div>
+                    </li>
+                </ul>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<div class="accordion post-toc d-none d-lg-block">
+  <div class="accordion-item row mb-4 card component" id="postTOC">
+    <div class="card-header accordion-header">
+      <h2 class="card-title fs-4 my-2 text-surface d-none d-lg-block">Contents</h2>
+      <a class="accordion-button d-lg-none mb-1 collapsed shadow-none p-0 bg-transparent" role="button" data-bs-toggle="collapse" href="#post-toc" aria-expanded="false" aria-controls="post-toc">
+        Contents
+      </a>
+    </div>
+    <div class="card-body collapse accordion-collapse accordion-body d-lg-block" id="post-toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#前言-preface">前言 (Preface)</a></li>
+    <li><a href="#第一章工欲善其事-the-toolkit">第一章：工欲善其事 (The Toolkit)</a>
+      <ul>
+        <li><a href="#基础知识储备">基础知识储备</a></li>
+        <li><a href="#web工具">Web工具</a></li>
+      </ul>
+    </li>
+    <li><a href="#第二章信息收集-information-gathering">第二章：信息收集 (Information Gathering)</a>
+      <ul>
+        <li><a href="#敏感文件泄露">敏感文件泄露</a></li>
+      </ul>
+    </li>
+    <li><a href="#第三章核心漏洞---注入篇-injection-attacks">第三章：核心漏洞 - 注入篇 (Injection Attacks)</a></li>
+    <li><a href="#第四章核心漏洞---文件操作篇-file-operations">第四章：核心漏洞 - 文件操作篇 (File Operations)</a></li>
+    <li><a href="#第五章客户端与认证安全-client-side--auth">第五章：客户端与认证安全 (Client-side &amp; Auth)</a></li>
+    <li><a href="#第六章语言特性与反序列化-language-specifics">第六章：语言特性与反序列化 (Language Specifics)</a></li>
+    <li><a href="#第七章高阶技巧与新趋势-advanced--modern-web">第七章：高阶技巧与新趋势 (Advanced &amp; Modern Web)</a></li>
+    <li><a href="#第八章解题战术总结-strategy--mindset">第八章：解题战术总结 (Strategy &amp; Mindset)</a></li>
+    <li><a href="#结语-conclusion">结语 (Conclusion)</a></li>
+  </ul>
+</nav>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+    
+  </div>
+</aside>
+
+      </div>
+    </main><footer class="footer mt-auto py-3 text-center container"><div class="offcanvas offcanvas-bottom h-auto" tabindex="-1" id="offcanvasActionsPanel"
+  aria-labelledby="offcanvasActionsPanelLabel">
+  <div class="offcanvas-header">
+    <div class="offcanvas-title h5" id="offcanvasActionsPanelLabel">
+      <i class="fas fa-fw fa-th-large me-1"></i>
+      Actions
+    </div>
+    <button type="button" class="btn-close ms-auto" data-bs-dismiss="offcanvas" data-bs-target="offcanvasActionsPanel" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body mt-2"><div class="social-share mb-4 d-flex overflow-auto">
+      <a class="btn-social-share d-flex flex-column align-items-center me-3" rel="noopener noreferrer" aria-label="X Share Button"
+      target="_blank" href="https://x.com/intent/tweet?title=%5b%e6%8c%81%e7%bb%ad%e6%9b%b4%e6%96%b0%5d%20CTF-Web%20Guide&url=https%3a%2f%2fxiaochai-123.github.io%2fposts%2fctf-web-guide%2f">
+        <i class="fab fa-2x fa-fw fa-x-twitter mb-2"></i> X
+      </a>
+      <a class="btn-social-share d-flex flex-column align-items-center me-3" rel="noopener noreferrer" aria-label="Facebook Share Button"
+        target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fxiaochai-123.github.io%2fposts%2fctf-web-guide%2f">
+        <i class="fab fa-2x fa-fw fa-facebook-f mb-2"></i> Facebook
+      </a>
+    </div>
+    <hr class="mb-4"><div class="actions d-flex overflow-auto align-items-center">
+      <a role="button" class="action action-go-back d-flex flex-column align-items-center me-3" href="javascript: window.history.back();">
+        <span class="action-icon mb-2"><i class="fas fa-2x fa-chevron-circle-down" data-fa-transform="rotate-90"></i></span> Go back
+      </a>
+      <a role="button" class="action action-reload-page d-flex flex-column align-items-center me-3">
+        <span class="action-icon mb-2"><i class="fas fa-2x fa-redo-alt"></i></span> Reload
+      </a>
+      <a role="button" class="action action-copy-url d-flex flex-column align-items-center me-3">
+        <span class="action-icon mb-2"><i class="fas fa-2x fa-link"></i></span> Copy URL
+      </a>
+  </div>
+    </div>
+  </div>
+</div><div class="row text-center">
+  <div class="col-12 mt-2">
+    <p class="mb-2">xiaochai_123的小窝</p>
+    <p class="text-secondary mb-2"><small>Welcome to xiaochai_123’s Blog! I look forward to sharing this great journey with you.</small></p>© 2025 xiaochai-123. 欢迎转载但请注明出处 | 本博客内容版权所有
+    <div class="footer-line visitor" style="margin: 0.5em 0;">
+      <span id="busuanzi_container_site_uv" title="总访客数" style="display: inline;">
+        👤 总访客数 <span id="busuanzi_value_site_uv">...</span>
+      </span>
+      <span id="busuanzi_container_site_pv" class="footer-divider" title="总访问量" style="display: inline; margin-left: 1em;">
+        👁️ 总访问量 <span id="busuanzi_value_site_pv">...</span>
+      </span>
+    </div>
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <div class="powered-by mb-2 text-secondary">
+  <small>
+    Build with ❤️ from the <a class="text-primary" href="https://gohugo.io" target="_blank" rel="noopener noreferrer">Hugo</a> and the <a class="text-primary" href="https://github.com/razonyang/hugo-theme-bootstrap" target="_blank" rel="noopener noreferrer">HBS</a> theme.
+  </small>
+</div>
+
+
+<nav class="social-links nav justify-content-center mb-2 mt-3">
+    <a class="nav-link social-link p-0 me-1 mb-2" href="mailto:mailto:l2556843965@163.com" title="Email">
+      <i class="fas fa-fw fa-2x fa-envelope" style="color: #0963ac;"></i>
+    </a>
+      <a class="nav-link social-link p-0 me-1 mb-2" target="_blank" href="https://github.com/xiaochai-123" title="GitHub" rel="me">
+        <i class="fa-fw fa-2x fab fa-github"
+          ></i>
+      </a>
+  <a class="nav-link social-link p-0 me-1 mb-2" target="_blank" data-rss-feed href="https://xiaochai-123.github.io/index.xml" title="RSS" rel="me">
+    <i class="fas fa-fw fa-2x fa-rss" style="color: #ea6221;"></i>
+  </a>
+</nav>
+</div>
+  <div class="col-12 col-lg-8 offset-0 offset-lg-1"></div>
+</div>
+<script src="/js/copy-code.js"></script>
+<link rel="stylesheet" href="/css/copy-code.css">
+</footer>
+<script data-precache src="/assets/main/bundle.min.5f7fecfd2a8f9951e8efea436dc08e86e678d38ab9eeb343e3d1324d57f3f64a.js" integrity="sha256-X3/s/SqPmVHo7&#43;pDbcCOhuZ404q57rND49EyTVfz9ko=" crossorigin="anonymous" async></script><script data-precache src="/assets/icons/bundle.min.0b03280daa4a59445b0aafc46855a2bb53b310e572534596869c33acaeec09dd.js" integrity="sha256-CwMoDapKWURbCq/EaFWiu1OzEOVyU0WWhpwzrK7sCd0=" crossorigin="anonymous" defer></script>
+<script data-precache src="/assets/viewer/bundle.min.cca398d318de9fa7816141db90f09282784fcfe0c5dabc31599b8c589932e4ae.js" integrity="sha256-zKOY0xjen6eBYUHbkPCSgnhPz&#43;DF2rwxWZuMWJky5K4=" crossorigin="anonymous" defer></script>
+<script src="https://giscus.app/client.js"
+    data-repo="xiaochai-123/xiaochai-123.github.io"
+    data-repo-id="R_kgDOQcBRNA"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOQcBRNM4Cy98G"
+    data-mapping="pathname"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    data-loading="lazy"
+    crossorigin="anonymous"
+    defer>
+</script>
+
+
+  </body>
+</html>

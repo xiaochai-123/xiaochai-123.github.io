@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Hugo on xiaochai_123的小窝</title>
+    <link>https://xiaochai-123.github.io/tags/hugo/</link>
+    <description>Recent content in Hugo on xiaochai_123的小窝</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <copyright>© 2025 xiaochai-123. 欢迎转载但请注明出处 | 本博客内容版权所有</copyright>
+    <lastBuildDate>Tue, 25 Nov 2025 07:19:55 +0800</lastBuildDate><atom:link href="https://xiaochai-123.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>搭建博客</title>
+      <link>https://xiaochai-123.github.io/posts/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</link>
+      <pubDate>Tue, 25 Nov 2025 07:19:55 +0800</pubDate>
+      <guid>https://xiaochai-123.github.io/posts/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</guid>
+      <description><![CDATA[<h1 id="搭建个人博客的教程" data-numberify>搭建个人博客的教程<a class="anchor ms-1" href="#搭建个人博客的教程"></a></h1>
+
+<h2 id="第一步-确定所选择的框架" data-numberify>第一步 确定所选择的框架<a class="anchor ms-1" href="#第一步-确定所选择的框架"></a></h2>
+
+<h3 id="前言" data-numberify>前言<a class="anchor ms-1" href="#前言"></a></h3>
+<p><strong>所想要搭建静态博客，大致要走完这个流程（这是我用Hugo和Github搭建博客时的流程）：</strong></p>
+<p><strong>选择框架(网站生成器)&ndash;&gt;在对应框架的主题库内选择主题(模板)&ndash;&gt;对主题和模板进行修改，在本地渲染网页进行调试，产生public文件夹&ndash;&gt;通过git将public内容上传至Github仓库托管&ndash;&gt;由Github生成网页</strong></p>
+<p>Here we go!</p>
+<p>博客分为静态网站和动态网站（顺便一提）</p>
+<blockquote>
+<p>静态网站的核心特点</p>
+<ol>
+<li>内容固定
+<ul>
+<li>网站内容在更新前不会随访问变化，浏览器拿到的就是预先生成好的页面。</li>
+</ul>
+</li>
+<li>没有服务端动态逻辑
+<ul>
+<li>没有 PHP、Python、Node.js 等后端程序实时输出数据。</li>
+<li>没有数据库（如 MySQL、MongoDB）实时读取。</li>
+</ul>
+</li>
+<li>部署极其简单
+<ul>
+<li>可以直接放到任何 Web 服务器甚至 GitHub Pages 这类静态托管服务。</li>
+</ul>
+</li>
+<li>访问速度快
+<ul>
+<li>没有复杂的服务端运算，页面加载非常迅速。</li>
+</ul>
+</li>
+<li>安全性高
+<ul>
+<li>没有服务端程序与数据库，攻击面极小，不怕 SQL 注入等常见动态网站漏洞。</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<p>我们搭建一个静态网站可以是0金钱成本的，这就很不错。静态网站没有后端程序或数据库，缺点就是缺乏与用户的交互和动态(比如说评论，用户系统，个性化内容等等)。而动态网站就需要自己花钱去租赁服务器，租域名和维护网站安全，成本高昂。这篇文章则重点以Hugo框架为例详解搭建静态博客。</p>
+<p>以下各个框架是由不同语言开发的，这意味着如果要使用框架可能需要对应的语言环境和技术基础。（建议善用AI）</p>
+
+<h3 id="静态框架" data-numberify>静态框架<a class="anchor ms-1" href="#静态框架"></a></h3>
+
+<h4 id="hexo" data-numberify>Hexo<a class="anchor ms-1" href="#hexo"></a></h4>
+<ul>
+<li><strong>开发语言</strong>：Node.js</li>
+<li>优点
+<ul>
+<li>上手简单，配置清晰，写 Markdown 就能发文章；</li>
+<li><strong>插件多，主题丰富，社区活跃；</strong></li>
+<li>文章少时构建速度较快；</li>
+<li>托管友好，常用 GitHub Pages 一键部署。</li>
+</ul>
+</li>
+<li>缺点
+<ul>
+<li>生成大型站点时速度和内存有限制；</li>
+<li>部分插件兼容性一般，需要一定技术基础；</li>
+<li>没有动态功能，不能直接实现评论、用户系统等，需要借助第三方服务。</li>
+<li>据说文章量大时（数百篇）渲染速度会明显减慢。</li>
+</ul>
+</li>
+</ul>
+
+<h4 id="hugo" data-numberify>Hugo<a class="anchor ms-1" href="#hugo"></a></h4>
+<ul>
+<li><strong>开发语言</strong>：Go</li>
+<li>优点
+<ul>
+<li><strong>构建速度极快，适合超大量内容的博客或网站（在文章数量庞大的时候仍能快速渲染）；</strong></li>
+<li>多语言和分区支持好，国际化方便；</li>
+<li>官方文档完善，可定制性强；</li>
+<li>无需数据库，部署简单。</li>
+</ul>
+</li>
+<li>缺点
+<ul>
+<li>Go 模板语法较学习成本；</li>
+<li>中文社区和资源比 Hexo 少一些；</li>
+<li>插件、主题生态比 WordPress、Hexo要小。</li>
+</ul>
+</li>
+</ul>
+
+<h4 id="jekyll" data-numberify>Jekyll<a class="anchor ms-1" href="#jekyll"></a></h4>
+<ul>
+<li><strong>开发语言</strong>：Ruby</li>
+<li>优点
+<ul>
+<li><strong>GitHub Pages 原生支持，免配置一键部署；</strong></li>
+<li>社区成熟、文档齐全，主题不少；</li>
+<li>支持 Markdown、Liquid 模板。</li>
+</ul>
+</li>
+<li>缺点
+<ul>
+<li>Ruby 环境搭建略麻烦；</li>
+<li>构建速度比 Hugo 慢，尤其内容多时；</li>
+<li>主题和插件生态不如 WordPress、Hexo广。</li>
+</ul>
+</li>
+</ul>
+
+<h3 id="动态框架" data-numberify>动态框架<a class="anchor ms-1" href="#动态框架"></a></h3>
+
+<h4 id="typecho" data-numberify>Typecho<a class="anchor ms-1" href="#typecho"></a></h4>
+<ul>
+<li><strong>开发语言</strong>：PHP</li>
+<li>优点
+<ul>
+<li><strong>极致轻量，对服务器资源要求低；</strong></li>
+<li>后台清爽简洁，操作简单；</li>
+<li>插件和主题够用，适合个人极简博客；</li>
+<li>便于自定义和二次开发。</li>
+</ul>
+</li>
+<li>缺点
+<ul>
+<li>文档较为简略，社区小众，扩展生态有限；</li>
+<li>插件数量和兼容度不如 WordPress；</li>
+<li>动态系统，需配置数据库和服务器环境。</li>
+</ul>
+</li>
+</ul>
+
+<h4 id="halo" data-numberify>Halo<a class="anchor ms-1" href="#halo"></a></h4>
+<ul>
+<li>
+<p><strong>开发语言</strong>：Java</p>]]></description>
+    </item>
+    
+  </channel>
+</rss>
+

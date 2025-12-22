@@ -1,0 +1,35 @@
+/* 让目录栏链接在鼠标悬停时高亮变色 */
+.post-toc a:hover,
+.table-of-contents a:hover {
+  color: #007bff !important;    /* 变成你喜欢的颜色，比如蓝色 */
+  /* text-decoration: underline;   /* 可选，悬停加下划线 */
+  /* background: #f0f8ff;          /* 可选，悬停加浅蓝背景 */
+  border-radius: 4px;           /* 可选，圆角边框更明显 */
+  transition: color 0.15s, background 0.2s;
+}
+.logo {
+  transition: none;
+  will-change: transform, filter;
+}
+.navbar-brand:hover .logo {
+  animation: spin-glow 2.2s cubic-bezier(.25,.8,.25,1) !important;
+}
+@keyframes spin-glow {
+  0%   { transform: rotate(0deg) scale(1);   filter: drop-shadow(0 0 0px #03a9f4);}
+  20%  { transform: rotate(180deg) scale(1.10); filter: drop-shadow(0 0 16px #e91e63);}
+  40%  { transform: rotate(360deg) scale(1.18); filter: drop-shadow(0 0 36px #8bc34a);}
+  60%  { transform: rotate(540deg) scale(0.97); filter: drop-shadow(0 0 42px #ffa726);}
+  80%  { transform: rotate(650deg) scale(1.09); filter: drop-shadow(0 0 26px #40c4ff);}
+  100% { transform: rotate(720deg) scale(1);    filter: drop-shadow(0 0 0px #03a9f4);}
+}
+.post-toc {
+  position: sticky;
+  top: 60px;           /* 你已用的悬浮起点 */
+  max-height: calc(100vh - 60px); /* 保证不超出可视区 */
+  overflow-y: auto;    /* 超出部分可滚动 */
+  z-index: 999;
+  /* 可选美化（背景、阴影等） */
+}
+.post-card-default-img {
+  display: none !important;
+}

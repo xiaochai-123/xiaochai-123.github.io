@@ -1,0 +1,1 @@
+(()=>{var o={fallback:"https://xiaochai-123.github.io/",homes:{en:"https://xiaochai-123.github.io/"}};(()=>{let a=navigator.language||navigator.userLanguage;if(a in o.homes){window.location.href=o.homes[a];return}let n=a.split("-");for(let i in o.homes)if(i.indexOf(n[0])===0){window.location.href=o.homes[i];return}window.location.href=o.fallback})();})();

