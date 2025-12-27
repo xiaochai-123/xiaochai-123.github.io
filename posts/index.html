@@ -38,7 +38,22 @@
 
 
 
-<link rel="stylesheet" href="/css/custom.css"><link rel="stylesheet" href="/css/all.min.css">
+<link rel="stylesheet" href="/css/custom.css">
+<script>
+(function() {
+  var originalTitle = document.title;
+  document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+      document.title = '下次再见~';
+    } else {
+      document.title = '欢迎回来~';
+      setTimeout(function() {
+        document.title = originalTitle;
+      }, 1500); 
+    }
+  });
+})();
+</script><link rel="stylesheet" href="/css/all.min.css">
   </head>
   <body><header class="mb-4 sticky-top">
   
@@ -224,24 +239,6 @@ xiaochai_123的小窝
 </div>
 
     <div class="post-summary"><p>持续更新的CTF Web知识体系与刷题总结。</p><div><a class="btn btn-sm btn-outline-primary btn-read-more" href="/posts/ctf-web-guide/">Read More</a></div>
-    </div>
-  </div>
-</article>
-<article class="row card post component">
-  <div class="card-header">
-    <h2 class="card-title post-title my-2 fs-4">
-      <a href="/posts/xxe%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/">XXE漏洞利用</a>
-    </h2>
-  </div>
-  <div class="card-body"><picture><img class="img-fluid" alt="XXE漏洞利用" src="https://xiaochai-123.github.io/images/xxe.png" loading="lazy"
-     width="700"
-     height="502"/>
-  </picture><div class="post-meta mb-3">
-  <span class="post-date me-1 mb-1" title="created on 2025-12-27 16:35:35 &#43;0800 CST.">December 27, 2025</span><span class="post-reading-time me-1 mb-1">1 min read</span><a href="/categories/ctf%E7%AC%94%E8%AE%B0/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-category">
-      <i class="fas fa-fw fa-folder me-1"></i>CTF笔记</a><a href="/tags/ctf/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-tag">CTF</a><a href="/tags/web/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-tag">Web</a><a href="/tags/xxe/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-tag">XXE</a>
-</div>
-
-    <div class="post-summary"><p>XXE漏洞利用学习笔记</p><div><a class="btn btn-sm btn-outline-primary btn-read-more" href="/posts/xxe%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/">Read More</a></div>
     </div>
   </div>
 </article>
@@ -436,30 +433,6 @@ xiaochai_123的小窝
   <div class="d-flex">
       <div
         class="flex-shrink-0 d-flex justify-content-center align-items-center"
-        style="max-width: 100px"><picture><img class="img-fluid" alt="XXE漏洞利用" src="https://xiaochai-123.github.io/images/xxe.png" loading="lazy"
-     width="700"
-     height="502"/>
-  </picture>
-      </div>
-    <div
-      class="flex-grow-1 d-flex flex-column h-auto justify-content-center ms-3">
-      <a class="post-title" href="/posts/xxe%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/">
-        XXE漏洞利用
-      </a>
-      <div class="post-meta mt-2">
-        <span class="post-date">
-          December 27, 2025
-        </span>
-      </div>
-    </div>
-  </div>
-                    </li>
-                    <li class="mb-2">
-    
-  
-  <div class="d-flex">
-      <div
-        class="flex-shrink-0 d-flex justify-content-center align-items-center"
         style="max-width: 100px"><picture><img class="img-fluid" alt="[持续更新] CTF-Web Guide" src="https://xiaochai-123.github.io/images/1.png" loading="lazy"
      width="2400"
      height="1350"/>
@@ -536,6 +509,30 @@ xiaochai_123的小窝
       <div class="post-meta mt-2">
         <span class="post-date">
           December 17, 2025
+        </span>
+      </div>
+    </div>
+  </div>
+                    </li>
+                    <li class="mb-2">
+    
+  
+  <div class="d-flex">
+      <div
+        class="flex-shrink-0 d-flex justify-content-center align-items-center"
+        style="max-width: 100px"><picture><img class="img-fluid" alt="双重md5爆破" src="https://xiaochai-123.github.io/images/MD5.png" loading="lazy"
+     width="626"
+     height="251"/>
+  </picture>
+      </div>
+    <div
+      class="flex-grow-1 d-flex flex-column h-auto justify-content-center ms-3">
+      <a class="post-title" href="/posts/%E5%8F%8C%E9%87%8Dmd5%E7%88%86%E7%A0%B4/">
+        双重md5爆破
+      </a>
+      <div class="post-meta mt-2">
+        <span class="post-date">
+          December 5, 2025
         </span>
       </div>
     </div>

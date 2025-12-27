@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>欢迎来到xiaochai_123的小窝！ on xiaochai_123的小窝</title>
+    <title>xiaochai_123的小窝</title>
     <link>https://xiaochai-123.github.io/</link>
-    <description>Recent content in 欢迎来到xiaochai_123的小窝！ on xiaochai_123的小窝</description>
+    <description>Recent content on xiaochai_123的小窝</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
     <copyright>© 2025 xiaochai-123. 欢迎转载但请注明出处 | 本博客内容版权所有</copyright>
@@ -176,44 +176,6 @@ Disallow: /hidden/flag.txt
 <h2 id="第三章核心漏洞---注入篇-injection-attacks" data-numberify>第三章：核心漏洞 - 注入篇 (Injection Attacks)<a class="anchor ms-1" href="#第三章核心漏洞---注入篇-injection-attacks"></a></h2>
 <p><em>CTF Web 的半壁江山。</em></p>]]></description>
     <enclosure url="https://xiaochai-123.github.io/images/1.png" length="328106" type="image/.png" />
-    </item>
-    
-    <item>
-      <title>XXE漏洞利用</title>
-      <link>https://xiaochai-123.github.io/posts/xxe%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/</link>
-      <pubDate>Sat, 27 Dec 2025 16:35:35 +0800</pubDate>
-      <guid>https://xiaochai-123.github.io/posts/xxe%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/</guid>
-      <description><![CDATA[<h1 id="xxe漏洞利用" data-numberify>XXE漏洞利用<a class="anchor ms-1" href="#xxe漏洞利用"></a></h1>
-<p>学习XXE首先了解XML语言：</p>
-<p>XML是一种标记语言。他是用来把数据<strong>结构化</strong>然后传输给对方，让对方在结构化的数据中进行读取的。</p>
-<p>XML和HTML的区别：</p>
-<table>
-  <thead>
-      <tr>
-          <th>XML</th>
-          <th>HTML</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>功能：数据读取</td>
-          <td>功能：开发</td>
-      </tr>
-      <tr>
-          <td>标签无意义</td>
-          <td>标签预定义</td>
-      </tr>
-      <tr>
-          <td>传输和存储数据</td>
-          <td>显示数据</td>
-      </tr>
-      <tr>
-          <td>焦点：数据的内容</td>
-          <td>焦点：数据的外观</td>
-      </tr>
-  </tbody>
-</table>]]></description>
-    <enclosure url="https://xiaochai-123.github.io/images/xxe.png" length="120897" type="image/.png" />
     </item>
     
     <item>

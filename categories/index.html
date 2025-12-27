@@ -25,8 +25,8 @@
 
   <meta itemprop="name" content="Categories">
   <meta itemprop="description" content="Welcome to xiaochai_123’s Blog! I look forward to sharing this great journey with you.">
-  <meta itemprop="datePublished" content="2025-12-27T16:35:35+08:00">
-  <meta itemprop="dateModified" content="2025-12-27T16:35:35+08:00">
+  <meta itemprop="datePublished" content="2025-12-22T22:43:35+08:00">
+  <meta itemprop="dateModified" content="2025-12-22T22:43:35+08:00">
   <meta property="og:image" content="https://xiaochai-123.github.io/images/logo.png"/>
   <meta name="twitter:image" content="https://xiaochai-123.github.io/images/logo.png"/>
   <meta property="og:image:alt" content="Categories" />
@@ -38,7 +38,22 @@
 
 
 
-<link rel="stylesheet" href="/css/custom.css"><link rel="stylesheet" href="/css/all.min.css">
+<link rel="stylesheet" href="/css/custom.css">
+<script>
+(function() {
+  var originalTitle = document.title;
+  document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+      document.title = '下次再见~';
+    } else {
+      document.title = '欢迎回来~';
+      setTimeout(function() {
+        document.title = originalTitle;
+      }, 1500); 
+    }
+  });
+})();
+</script><link rel="stylesheet" href="/css/all.min.css">
   </head>
   <body><header class="mb-4 sticky-top">
   
@@ -231,11 +246,8 @@ xiaochai_123的小窝
         </div>
         <div class="card-body">
           <div class="taxonomy-meta mt-1 mb-3">
-            <span class="taxonomy-post-count"><i class="fas fa-fw fa-file-alt me-1"></i>3 posts in total</span>
+            <span class="taxonomy-post-count"><i class="fas fa-fw fa-file-alt me-1"></i>2 posts in total</span>
           </div><ul class="taxonomy-posts post-list list-unstyled ms-1"><li class="taxonomy-post mb-2">
-              <a class="post-title" href="/posts/xxe%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/">XXE漏洞利用</a>
-              <span class="float-end post-date">December 27, 2025</span>
-            </li><li class="taxonomy-post mb-2">
               <a class="post-title" href="/posts/sqli-labs/">SQL注入——sqli-labs学习笔记</a>
               <span class="float-end post-date">December 22, 2025</span>
             </li><li class="taxonomy-post mb-2">
@@ -363,30 +375,6 @@ xiaochai_123的小窝
   <div class="d-flex">
       <div
         class="flex-shrink-0 d-flex justify-content-center align-items-center"
-        style="max-width: 100px"><picture><img class="img-fluid" alt="XXE漏洞利用" src="https://xiaochai-123.github.io/images/xxe.png" loading="lazy"
-     width="700"
-     height="502"/>
-  </picture>
-      </div>
-    <div
-      class="flex-grow-1 d-flex flex-column h-auto justify-content-center ms-3">
-      <a class="post-title" href="/posts/xxe%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/">
-        XXE漏洞利用
-      </a>
-      <div class="post-meta mt-2">
-        <span class="post-date">
-          December 27, 2025
-        </span>
-      </div>
-    </div>
-  </div>
-                    </li>
-                    <li class="mb-2">
-    
-  
-  <div class="d-flex">
-      <div
-        class="flex-shrink-0 d-flex justify-content-center align-items-center"
         style="max-width: 100px"><picture><img class="img-fluid" alt="[持续更新] CTF-Web Guide" src="https://xiaochai-123.github.io/images/1.png" loading="lazy"
      width="2400"
      height="1350"/>
@@ -463,6 +451,30 @@ xiaochai_123的小窝
       <div class="post-meta mt-2">
         <span class="post-date">
           December 17, 2025
+        </span>
+      </div>
+    </div>
+  </div>
+                    </li>
+                    <li class="mb-2">
+    
+  
+  <div class="d-flex">
+      <div
+        class="flex-shrink-0 d-flex justify-content-center align-items-center"
+        style="max-width: 100px"><picture><img class="img-fluid" alt="双重md5爆破" src="https://xiaochai-123.github.io/images/MD5.png" loading="lazy"
+     width="626"
+     height="251"/>
+  </picture>
+      </div>
+    <div
+      class="flex-grow-1 d-flex flex-column h-auto justify-content-center ms-3">
+      <a class="post-title" href="/posts/%E5%8F%8C%E9%87%8Dmd5%E7%88%86%E7%A0%B4/">
+        双重md5爆破
+      </a>
+      <div class="post-meta mt-2">
+        <span class="post-date">
+          December 5, 2025
         </span>
       </div>
     </div>
