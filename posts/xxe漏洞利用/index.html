@@ -4,7 +4,7 @@
   <head><script src="/assets/init/bundle.min.acf86bec8f1585feebb4a7bc424e2c509abd0c84c974075fb9eee923b2c62b39.js" integrity="sha256-rPhr7I8Vhf7rtKe8Qk4sUJq9DITJdAdfue7pI7LGKzk=" crossorigin="anonymous"></script>
 <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SQLi-labs靶场搭建 - xiaochai_123的小窝</title>
+    <title>XXE漏洞利用 - xiaochai_123的小窝</title>
     <link rel="icon" href="https://xiaochai-123.github.io/images/icons/icon-16x16.png?version=10de02cdc53ad46a103b64b869070266" sizes="16x16">
     <link rel="icon" href="https://xiaochai-123.github.io/images/icons/icon-32x32.png?version=f1747f8c31b6821777c3a0956b5ba0db" sizes="32x32">
     <link rel="icon" href="/favicon_hu_1fce3f16494f6ae3.png" sizes="150x150" type="image/png">
@@ -12,34 +12,34 @@
     <link rel="icon" href="/favicon_hu_af357fe99fc0195a.png" sizes="192x192" type="image/png">
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#6f42c1"><link rel="icon" href="https://xiaochai-123.github.io/images/icons/favicon.ico?version=13a0b7f517ed6605fd5fc54b37b8552d">
 <meta name="keywords" content="" />
-  <meta name="description" content="sql注入靶场搭建" />
+  <meta name="description" content="XXE漏洞利用学习笔记" />
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://xiaochai-123.github.io/images/SQL.png">
-  <meta name="twitter:title" content="SQLi-labs靶场搭建">
-  <meta name="twitter:description" content="sql注入靶场搭建">
-<meta property="og:url" content="https://xiaochai-123.github.io/posts/sqli-labs%E9%9D%B6%E5%9C%BA%E6%90%AD%E5%BB%BA/">
+  <meta name="twitter:image" content="https://xiaochai-123.github.io/images/xxe.png">
+  <meta name="twitter:title" content="XXE漏洞利用">
+  <meta name="twitter:description" content="XXE漏洞利用学习笔记">
+<meta property="og:url" content="https://xiaochai-123.github.io/posts/xxe%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/">
   <meta property="og:site_name" content="xiaochai_123的小窝">
-  <meta property="og:title" content="SQLi-labs靶场搭建">
-  <meta property="og:description" content="sql注入靶场搭建">
+  <meta property="og:title" content="XXE漏洞利用">
+  <meta property="og:description" content="XXE漏洞利用学习笔记">
   <meta property="og:locale" content="zh_cn">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2025-12-22T07:19:56+08:00">
-    <meta property="article:modified_time" content="2025-12-22T07:19:56+08:00">
-    <meta property="article:tag" content="SQL">
+    <meta property="article:published_time" content="2025-12-27T16:35:35+08:00">
+    <meta property="article:modified_time" content="2025-12-27T16:35:35+08:00">
     <meta property="article:tag" content="CTF">
     <meta property="article:tag" content="Web">
-    <meta property="og:image" content="https://xiaochai-123.github.io/images/SQL.png">
+    <meta property="article:tag" content="XXE">
+    <meta property="og:image" content="https://xiaochai-123.github.io/images/xxe.png">
 
-  <meta itemprop="name" content="SQLi-labs靶场搭建">
-  <meta itemprop="description" content="sql注入靶场搭建">
-  <meta itemprop="datePublished" content="2025-12-22T07:19:56+08:00">
-  <meta itemprop="dateModified" content="2025-12-22T07:19:56+08:00">
-  <meta itemprop="wordCount" content="356">
-  <meta itemprop="image" content="https://xiaochai-123.github.io/images/SQL.png">
-  <meta itemprop="keywords" content="SQL,CTF,Web">
-  <meta property="og:image:alt" content="SQLi-labs靶场搭建" />
-  <meta name="twitter:image:alt" content="SQLi-labs靶场搭建" />
+  <meta itemprop="name" content="XXE漏洞利用">
+  <meta itemprop="description" content="XXE漏洞利用学习笔记">
+  <meta itemprop="datePublished" content="2025-12-27T16:35:35+08:00">
+  <meta itemprop="dateModified" content="2025-12-27T16:35:35+08:00">
+  <meta itemprop="wordCount" content="14">
+  <meta itemprop="image" content="https://xiaochai-123.github.io/images/xxe.png">
+  <meta itemprop="keywords" content="CTF,Web,XXE">
+  <meta property="og:image:alt" content="XXE漏洞利用" />
+  <meta name="twitter:image:alt" content="XXE漏洞利用" />
 
 <link data-precache rel="stylesheet" href="/assets/main/bundle.min.5e43b1a2119e65d96e086e7147d978bfdbb1033637f8262ecddbd3fbaee298c1.css" integrity="sha256-XkOxohGeZdluCG5xR9l4v9uxAzY3+CYuzdvT+67imME=" crossorigin="anonymous">
 
@@ -215,7 +215,7 @@ xiaochai_123的小窝
 <div class="content-posts col-xxl-8">
   <div class="container"><nav class="row card component" aria-label="breadcrumb">
   <div class="card-body pb-0">
-    <ol class="hbs-breadcrumb breadcrumb flex-nowrap"><li class="breadcrumb-item text-surface"><a href="/">Home</a></li><li class="breadcrumb-item text-surface"><a href="/posts/">Posts</a></li><li class="breadcrumb-item active">SQLi-labs靶场搭建</li></ol>
+    <ol class="hbs-breadcrumb breadcrumb flex-nowrap"><li class="breadcrumb-item text-surface"><a href="/">Home</a></li><li class="breadcrumb-item text-surface"><a href="/posts/">Posts</a></li><li class="breadcrumb-item active">XXE漏洞利用</li></ol>
   </div>
 </nav><div class="post-panel-wrapper position-relative d-flex justify-content-center">
   <div class="d-flex flex-row justify-content-center rounded-5 border post-panel position-fixed px-3 py-1 surface shadow-1">
@@ -225,12 +225,6 @@ xiaochai_123的小窝
     
     
     
-  <a class="action action-toc d-none d-xxl-block" href="#postTOC" role="button" title="Contents">
-    <i class="fas fa-fw fa-list-alt"></i>
-  </a>
-<a class="action action-toc d-block d-xxl-none" href="#post-toc-container" role="button" title="Contents">
-  <i class="fas fa-fw fa-list-alt"></i>
-</a>
 
     <a class="action action-post-comments" href="#post-comments" role="button" aria-label="Comments" title="Comments">
   <i class="fas fa-fw fa-comments"></i>
@@ -244,244 +238,53 @@ xiaochai_123的小窝
   </div>
 </div><article class="row card component mb-4 post">
   <div class="card-header ">
-    <h1 class="card-title post-title my-2">SQLi-labs靶场搭建</h1>
+    <h1 class="card-title post-title my-2">XXE漏洞利用</h1>
   </div>
   <div class="card-body"><div class="post-meta mb-3">
-  <span class="post-date me-1 mb-1" title="created on 2025-12-22 07:19:56 &#43;0800 CST.">December 22, 2025</span><span class="post-reading-time me-1 mb-1">2 min read</span><a href="/categories/ctf%E7%AC%94%E8%AE%B0/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-category">
-      <i class="fas fa-fw fa-folder me-1"></i>CTF笔记</a><a href="/tags/ctf/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-tag">CTF</a><a href="/tags/sql/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-tag">SQL</a><a href="/tags/web/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-tag">Web</a>
+  <span class="post-date me-1 mb-1" title="created on 2025-12-27 16:35:35 &#43;0800 CST.">December 27, 2025</span><span class="post-reading-time me-1 mb-1">1 min read</span><a href="/categories/ctf%E7%AC%94%E8%AE%B0/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-category">
+      <i class="fas fa-fw fa-folder me-1"></i>CTF笔记</a><a href="/tags/ctf/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-tag">CTF</a><a href="/tags/web/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-tag">Web</a><a href="/tags/xxe/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-tag">XXE</a>
 </div>
 
-      <p class="lead mb-3 text-body-emphasis">sql注入靶场搭建</p>
-<div class="mt-2 mb-3 d-block d-xxl-none">
-    <h2 class="text-surface mb-3">Contents</h2>
-    <div id="post-toc-container">
-        </div>
-    <hr class="text-secondary">
-</div><div class="post-content mb-3" data-bs-spy="scroll" data-bs-target="#TableOfContents" tabindex="0">
+      <p class="lead mb-3 text-body-emphasis">XXE漏洞利用学习笔记</p><div class="post-content mb-3" data-bs-spy="scroll" data-bs-target="#TableOfContents" tabindex="0">
         <div id="post-content-body">
-<h2 id="靶场的搭建" data-numberify>靶场的搭建<a class="anchor ms-1" href="#靶场的搭建"></a></h2>
-<p>建议在虚拟机里进行靶场的搭建，<strong>安全、隔离、可恢复</strong>，不会影响真正系统。我将使用vmware-kali来搭建靶场</p>
-
-<h3 id="kali环境下sqli-labs靶场部署全流程总结" data-numberify>Kali环境下SQLi Labs靶场部署全流程总结<a class="anchor ms-1" href="#kali环境下sqli-labs靶场部署全流程总结"></a></h3>
-
-<h3 id="1-安装kali环境及lamp组件" data-numberify>1. 安装Kali环境及LAMP组件<a class="anchor ms-1" href="#1-安装kali环境及lamp组件"></a></h3>
-<p>建议使用VMware或VirtualBox新建Kali虚拟机。<br>
-安装Web服务与SQL支持：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt update
-</span></span><span style="display:flex;"><span>sudo apt install apache2 mariadb-server php php-mysql git unzip
-</span></span></code></pre></div>
-<h3 id="2-克隆sqli-labs靶场源码" data-numberify>2. 克隆SQLi Labs靶场源码<a class="anchor ms-1" href="#2-克隆sqli-labs靶场源码"></a></h3>
-<p>进入Web根目录（Apache默认）：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd /var/www/html
-</span></span><span style="display:flex;"><span>sudo git clone https://github.com/Audi-1/sqli-labs.git
-</span></span><span style="display:flex;"><span>sudo chown -R www-data:www-data sqli-labs
-</span></span></code></pre></div>
-<h3 id="3-启动服务" data-numberify>3. 启动服务<a class="anchor ms-1" href="#3-启动服务"></a></h3>
-<p>确保apache和数据库开启：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo systemctl start apache2
-</span></span><span style="display:flex;"><span>sudo systemctl start mariadb
-</span></span><span style="display:flex;"><span>sudo systemctl enable apache2
-</span></span><span style="display:flex;"><span>sudo systemctl enable mariadb
-</span></span></code></pre></div>
-<h3 id="4-创建数据库和导入数据" data-numberify>4. 创建数据库和导入数据<a class="anchor ms-1" href="#4-创建数据库和导入数据"></a></h3>
-<p>登录MariaDB/MySQL，创建数据库：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo mysql -u root
-</span></span><span style="display:flex;"><span>CREATE DATABASE security;
-</span></span><span style="display:flex;"><span>exit;
-</span></span></code></pre></div><p>导入表数据（最新版SQLi Labs用sql-lab.sql）：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo mysql -u root security &lt; /var/www/html/sqli-labs/sql-lab.sql
-</span></span></code></pre></div>
-<h3 id="5-检查修改数据库连接配置" data-numberify>5. 检查/修改数据库连接配置<a class="anchor ms-1" href="#5-检查修改数据库连接配置"></a></h3>
-<p>查看连接文件：
-<code>/var/www/html/sqli-labs/sql-connections/db-creds.inc.php</code>
-常见参数如下：</p>
-<p>（这里要把你实际的数据库user和password写进去）</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$dbuser <span style="color:#f92672">=</span><span style="color:#e6db74">&#39;root&#39;</span>;
-</span></span><span style="display:flex;"><span>$dbpass <span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#39;</span>;
-</span></span><span style="display:flex;"><span>$dbname <span style="color:#f92672">=</span><span style="color:#e6db74">&#34;security&#34;</span>;
-</span></span><span style="display:flex;"><span>$host <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;localhost&#39;</span>;
-</span></span></code></pre></div>
-<h3 id="6-重启服务并测试浏览" data-numberify>6. 重启服务并测试浏览<a class="anchor ms-1" href="#6-重启服务并测试浏览"></a></h3>
-<p>重启Apache以确保配置生效：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo systemctl restart apache2
-</span></span></code></pre></div><p>用浏览器访问靶场首页：</p>
-<pre tabindex="0"><code>http://localhost/sqli-labs/
-</code></pre>
-<h3 id="7-局域网访问windows主机互通" data-numberify>7. 局域网访问（Windows主机互通）<a class="anchor ms-1" href="#7-局域网访问windows主机互通"></a></h3>
-<ul>
-<li>
-<p>Kali虚拟机网络模式用桥接或主机仅。</p>
-</li>
-<li>
-<p>Kali查IP命令：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ip a
-</span></span></code></pre></div></li>
-<li>
-<p>Windows浏览器输入 Kali 的IP访问：（比如说192.168.26.128）</p>
-<pre tabindex="0"><code>http://192.168.26.128/sqli-labs/
-</code></pre></li>
-</ul>
-
-<h3 id="8-常见问题处理" data-numberify>8. 常见问题处理<a class="anchor ms-1" href="#8-常见问题处理"></a></h3>
-<ul>
-<li>
-<p>若页面报错，优先检查数据库服务和连接配置无误。</p>
-</li>
-<li>
-<p>权限不足可用：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo chown -R www-data:www-data /var/www/html/sqli-labs
-</span></span></code></pre></div></li>
-<li>
-<p>IP变动，重新查当前虚拟机IP再访问。</p>
-</li>
-<li>
-<p>如靶场实验练废，建议用虚拟机快照恢复环境。</p>
-</li>
-</ul>
-
-<h4 id="1-安装和初始化数据库" data-numberify>1. 安装和初始化数据库<a class="anchor ms-1" href="#1-安装和初始化数据库"></a></h4>
-<p><strong>问题现象：</strong></p>
-<ul>
-<li>页面提示“Unable to connect to database”或空白</li>
-<li>没初始化 security 数据库</li>
-</ul>
-<p><strong>解决办法：</strong></p>
-<ul>
-<li>
-<p>用 MariaDB 终端手动创建数据库并导入建表 SQL 脚本</p>
-</li>
-<li>
-<p>例：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mysql -u admin -p
-</span></span><span style="display:flex;"><span>CREATE DATABASE security;
-</span></span><span style="display:flex;"><span>USE security;
-</span></span><span style="display:flex;"><span>SOURCE /var/www/html/sqli-labs-master/sql-connections/setup-db.sql;
-</span></span></code></pre></div></li>
-<li>
-<p>编写好 db-creds.inc，用户名、密码跟本地数据库账号一致</p>
-</li>
-</ul>
-<hr>
-
-<h4 id="2-数据库连接报错" data-numberify>2. 数据库连接报错<a class="anchor ms-1" href="#2-数据库连接报错"></a></h4>
-<p><strong>常见报错：</strong></p>
-<ul>
-<li><code>Access denied for user ...</code></li>
-<li><code>Unknown database ...</code></li>
-<li><code>mysqli_connect(): (HY000/1045)...</code> 或类似的连接失败</li>
-</ul>
-<p><strong>排查方法：</strong></p>
-<ul>
-<li>
-<p>在MariaDB中执行：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">user</span>, <span style="color:#66d9ef">host</span> <span style="color:#66d9ef">FROM</span> mysql.<span style="color:#66d9ef">user</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SHOW</span> DATABASES;
-</span></span><span style="display:flex;"><span>USE <span style="color:#66d9ef">security</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SHOW</span> TABLES;
-</span></span></code></pre></div></li>
-<li>
-<p>保证用户和数据库名一样</p>
-</li>
-<li>
-<p>如果用的是 admin 账户，确保密码一致，且有足够权限</p>
-</li>
-</ul>
-<hr>
-
-<h4 id="3-页面无响应或空白" data-numberify>3. 页面无响应或空白<a class="anchor ms-1" href="#3-页面无响应或空白"></a></h4>
-<p><strong>问题现象：</strong></p>
-<ul>
-<li>页面一片白</li>
-<li>没有任何提示，也不报错</li>
-</ul>
-<p><strong>排查方法：</strong></p>
-<ol>
-<li>
-<p>打开 PHP 错误显示：在顶部添加</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#a6e22e">error_reporting</span>(<span style="color:#66d9ef">E_ALL</span>); <span style="color:#a6e22e">ini_set</span>(<span style="color:#e6db74">&#39;display_errors&#39;</span>, <span style="color:#ae81ff">1</span>);
-</span></span></code></pre></div></li>
-<li>
-<p>刷新页面，获取详细错误信息</p>
-</li>
-<li>
-<p>检查配置文件路径和引用是否正确</p>
-</li>
-</ol>
-<hr>
-
-<h4 id="4-mysql_-系列函数无效最常见问题传入id无反应" data-numberify>4. mysql_* 系列函数无效（最常见问题，传入id无反应）<a class="anchor ms-1" href="#4-mysql_-系列函数无效最常见问题传入id无反应"></a></h4>
-<p><strong>问题描述：</strong></p>
-<ul>
-<li>报错 <code>Call to undefined function mysql_connect()</code> 或 <code>mysql_query</code> 未定义</li>
-<li>原因：PHP7/8 已移除所有 mysql_* API，只支持 mysqli 或 PDO</li>
-</ul>
-<p><strong>典型报错：</strong></p>
-<pre tabindex="0"><code>Fatal error: Uncaught Error: Call to undefined function mysql_connect() in .../sql-connections/sql-connect.php
-</code></pre><p><strong>解决办法：</strong></p>
-<ul>
-<li>
-<p>把数据库连接相关代码从</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$con <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_connect</span>($host, $dbuser, $dbpass);
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">mysql_select_db</span>($dbname, $con);
-</span></span></code></pre></div><p>改成：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$con <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysqli_connect</span>($host, $dbuser, $dbpass, $dbname);
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>$con) { <span style="color:#66d9ef">die</span>(<span style="color:#e6db74">&#34;Failed to connect to MySQL: &#34;</span> <span style="color:#f92672">.</span> <span style="color:#a6e22e">mysqli_connect_error</span>()); }
-</span></span></code></pre></div></li>
-<li>
-<p>数据查询部分所有</p>
-<ul>
-<li><code>mysql_query($sql)</code> → <code>mysqli_query($con, $sql)</code></li>
-<li><code>mysql_fetch_array($result)</code> → <code>mysqli_fetch_array($result)</code></li>
-<li><code>mysql_error()</code> → <code>mysqli_error($con)</code></li>
-<li>保证 <code>$con</code> 变量正确传递</li>
-</ul>
-</li>
-</ul>
-<p><strong>所有靶场关卡页面都需要这样修改，否则会一直报函数未定义错误。</strong></p>
-<hr>
-
-<h4 id="5-修改与迁移建议" data-numberify>5. 修改与迁移建议<a class="anchor ms-1" href="#5-修改与迁移建议"></a></h4>
-<ul>
-<li>推荐批量替换所有 mysql_* 为 mysqli_*，节约手动成本</li>
-<li>新建一份备份后，用自动化脚本或命令行处理</li>
-<li>个别复杂页面再人工微调</li>
-</ul>
-<hr>
-
-<h4 id="6-批量替换技巧" data-numberify>6. 批量替换技巧<a class="anchor ms-1" href="#6-批量替换技巧"></a></h4>
-<p><strong>Linux下批量替换：</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>find 路径 -type f -name <span style="color:#e6db74">&#34;*.php&#34;</span> -exec sed -i <span style="color:#e6db74">&#39;s/mysql_query(\(.*\))/mysqli_query($con, \1)/g&#39;</span> <span style="color:#f92672">{}</span> <span style="color:#ae81ff">\;</span>
-</span></span><span style="display:flex;"><span>find 路径 -type f -name <span style="color:#e6db74">&#34;*.php&#34;</span> -exec sed -i <span style="color:#e6db74">&#39;s/mysql_fetch_array/mysqli_fetch_array/g&#39;</span> <span style="color:#f92672">{}</span> <span style="color:#ae81ff">\;</span>
-</span></span><span style="display:flex;"><span>find 路径 -type f -name <span style="color:#e6db74">&#34;*.php&#34;</span> -exec sed -i <span style="color:#e6db74">&#39;s/mysql_error()/mysqli_error($con)/g&#39;</span> <span style="color:#f92672">{}</span> <span style="color:#ae81ff">\;</span>
-</span></span></code></pre></div><blockquote>
-<p>路径通常为 <code>/var/www/html/sqli-labs</code></p>
-</blockquote>
-<ul>
-<li>替换后需人工快速检查，极个别页面手工微调语法即可。</li>
-<li>建议先备份项目，防止误操作。</li>
-</ul>
-<hr>
-
-<h4 id="7-总结建议" data-numberify>7. 总结建议<a class="anchor ms-1" href="#7-总结建议"></a></h4>
-<ul>
-<li>MariaDB 与 MySQL 基本操作一致，各种 SQL 语法都可以直接用</li>
-<li>数据库用户、库名、密码要与配置文件内容保持一致</li>
-<li>PHP7及以上环境部署 sqli-labs 务必把所有数据库操作 API 升级为 mysqli 或 PDO</li>
-<li>批量自动化替换最省事，GitHub上也可直接寻找兼容新环境的 sqli-labs 分支或 fork</li>
-<li>有错误多查看报错内容，开启 error_reporting，便于排查</li>
-<li>遇到个别页面无法正常访问时，结合 SQL 控制台查询和页面调试双管齐下</li>
-<li>MariaDB可兼容mysql，前者是mysql团队部分成员为了不受 Oracle 控制做的分支。</li>
-<li>文章内使用命令行的部分可以使用phpmyadmin等可视化工具代替</li>
-<li>一切正常之后，进入Less - 1，不应该只有Welcome Dhakkan</li>
-</ul>
+<h1 id="xxe漏洞利用" data-numberify>XXE漏洞利用<a class="anchor ms-1" href="#xxe漏洞利用"></a></h1>
+<p>学习XXE首先了解XML语言：</p>
+<p>XML是一种标记语言。他是用来把数据<strong>结构化</strong>然后传输给对方，让对方在结构化的数据中进行读取的。</p>
+<p>XML和HTML的区别：</p>
+<table>
+  <thead>
+      <tr>
+          <th>XML</th>
+          <th>HTML</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>功能：数据读取</td>
+          <td>功能：开发</td>
+      </tr>
+      <tr>
+          <td>标签无意义</td>
+          <td>标签预定义</td>
+      </tr>
+      <tr>
+          <td>传输和存储数据</td>
+          <td>显示数据</td>
+      </tr>
+      <tr>
+          <td>焦点：数据的内容</td>
+          <td>焦点：数据的外观</td>
+      </tr>
+  </tbody>
+</table>
 </div>
 </div>
 </div><div class="card-footer">
   <div class="post-navs d-flex justify-content-evenly"><div class="post-nav post-prev">
       <i class="fas fa-fw fa-chevron-down post-prev-icon me-1" data-fa-transform="rotate-90"></i>
-      <a href="/posts/bkcrack%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/">bkcrack的使用方法</a>
-    </div><div class="post-nav post-next">
       <a href="/posts/sqli-labs/">SQL注入——sqli-labs学习笔记</a>
+    </div><div class="post-nav post-next">
+      <a href="/posts/ctf-web-guide/">[持续更新] CTF-Web Guide</a>
       <i class="fas fa-fw fa-chevron-down post-next-icon ms-1" data-fa-transform="rotate-270"></i>
     </div></div>
 </div></article>
@@ -493,6 +296,40 @@ xiaochai_123的小窝
       </div>
       <div class="card-body slide px-1">
         <div class="slide-inner row gx-0"><div class="col-12 col-md-6 col-lg-4 me-2">
+            <div class="post-card card card-body p-0 border-0 surface">
+  
+  <picture><img class="img-fluid" alt="[持续更新] CTF-Web Guide" src="https://xiaochai-123.github.io/images/1.png" loading="lazy"
+     width="2400"
+     height="1350"/>
+  </picture>
+
+  <a class="post-title" href="/posts/ctf-web-guide/">
+    [持续更新] CTF-Web Guide
+  </a>
+  <div class="post-meta mb-0">
+    December 22, 2025
+
+  </div>
+</div>
+
+          </div><div class="col-12 col-md-6 col-lg-4 me-2">
+            <div class="post-card card card-body p-0 border-0 surface">
+  
+  <picture><img class="img-fluid" alt="SQLi-labs靶场搭建" src="https://xiaochai-123.github.io/images/SQL.png" loading="lazy"
+     width="1546"
+     height="699"/>
+  </picture>
+
+  <a class="post-title" href="/posts/sqli-labs%E9%9D%B6%E5%9C%BA%E6%90%AD%E5%BB%BA/">
+    SQLi-labs靶场搭建
+  </a>
+  <div class="post-meta mb-0">
+    December 22, 2025
+
+  </div>
+</div>
+
+          </div><div class="col-12 col-md-6 col-lg-4 me-2">
             <div class="post-card card card-body p-0 border-0 surface">
   
   <picture><img class="img-fluid" alt="SQL注入——sqli-labs学习笔记" src="https://xiaochai-123.github.io/images/SQL1.png" loading="lazy"
@@ -539,40 +376,6 @@ xiaochai_123的小窝
   </a>
   <div class="post-meta mb-0">
     December 4, 2025
-
-  </div>
-</div>
-
-          </div><div class="col-12 col-md-6 col-lg-4 me-2">
-            <div class="post-card card card-body p-0 border-0 surface">
-  
-  <div
-    class="post-card-default-img card-img-top d-flex align-items-center justify-content-center bg-body-secondary mb-1">
-    NO IMAGE
-  </div>
-
-  <a class="post-title" href="/posts/251129/">
-    251129每日打卡
-  </a>
-  <div class="post-meta mb-0">
-    November 29, 2025
-
-  </div>
-</div>
-
-          </div><div class="col-12 col-md-6 col-lg-4 me-2">
-            <div class="post-card card card-body p-0 border-0 surface">
-  
-  <div
-    class="post-card-default-img card-img-top d-flex align-items-center justify-content-center bg-body-secondary mb-1">
-    NO IMAGE
-  </div>
-
-  <a class="post-title" href="/posts/bkcrack%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/">
-    bkcrack的使用方法
-  </a>
-  <div class="post-meta mb-0">
-    December 17, 2025
 
   </div>
 </div>
@@ -782,35 +585,7 @@ xiaochai_123的小窝
         </div>
       </div>
     </div>
-<div class="accordion post-toc d-none d-lg-block">
-  <div class="accordion-item row mb-4 card component" id="postTOC">
-    <div class="card-header accordion-header">
-      <h2 class="card-title fs-4 my-2 text-surface d-none d-lg-block">Contents</h2>
-      <a class="accordion-button d-lg-none mb-1 collapsed shadow-none p-0 bg-transparent" role="button" data-bs-toggle="collapse" href="#post-toc" aria-expanded="false" aria-controls="post-toc">
-        Contents
-      </a>
-    </div>
-    <div class="card-body collapse accordion-collapse accordion-body d-lg-block" id="post-toc">
-      <nav id="TableOfContents">
-  <ul>
-    <li><a href="#靶场的搭建">靶场的搭建</a>
-      <ul>
-        <li><a href="#kali环境下sqli-labs靶场部署全流程总结">Kali环境下SQLi Labs靶场部署全流程总结</a></li>
-        <li><a href="#1-安装kali环境及lamp组件">1. 安装Kali环境及LAMP组件</a></li>
-        <li><a href="#2-克隆sqli-labs靶场源码">2. 克隆SQLi Labs靶场源码</a></li>
-        <li><a href="#3-启动服务">3. 启动服务</a></li>
-        <li><a href="#4-创建数据库和导入数据">4. 创建数据库和导入数据</a></li>
-        <li><a href="#5-检查修改数据库连接配置">5. 检查/修改数据库连接配置</a></li>
-        <li><a href="#6-重启服务并测试浏览">6. 重启服务并测试浏览</a></li>
-        <li><a href="#7-局域网访问windows主机互通">7. 局域网访问（Windows主机互通）</a></li>
-        <li><a href="#8-常见问题处理">8. 常见问题处理</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-    </div>
-  </div>
-</div>
+
 
 
 
@@ -832,11 +607,11 @@ xiaochai_123的小窝
   </div>
   <div class="offcanvas-body mt-2"><div class="social-share mb-4 d-flex overflow-auto">
       <a class="btn-social-share d-flex flex-column align-items-center me-3" rel="noopener noreferrer" aria-label="X Share Button"
-      target="_blank" href="https://x.com/intent/tweet?title=SQLi-labs%e9%9d%b6%e5%9c%ba%e6%90%ad%e5%bb%ba&url=https%3a%2f%2fxiaochai-123.github.io%2fposts%2fsqli-labs%25E9%259D%25B6%25E5%259C%25BA%25E6%2590%25AD%25E5%25BB%25BA%2f">
+      target="_blank" href="https://x.com/intent/tweet?title=XXE%e6%bc%8f%e6%b4%9e%e5%88%a9%e7%94%a8&url=https%3a%2f%2fxiaochai-123.github.io%2fposts%2fxxe%25E6%25BC%258F%25E6%25B4%259E%25E5%2588%25A9%25E7%2594%25A8%2f">
         <i class="fab fa-2x fa-fw fa-x-twitter mb-2"></i> X
       </a>
       <a class="btn-social-share d-flex flex-column align-items-center me-3" rel="noopener noreferrer" aria-label="Facebook Share Button"
-        target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fxiaochai-123.github.io%2fposts%2fsqli-labs%25E9%259D%25B6%25E5%259C%25BA%25E6%2590%25AD%25E5%25BB%25BA%2f">
+        target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fxiaochai-123.github.io%2fposts%2fxxe%25E6%25BC%258F%25E6%25B4%259E%25E5%2588%25A9%25E7%2594%25A8%2f">
         <i class="fab fa-2x fa-fw fa-facebook-f mb-2"></i> Facebook
       </a>
     </div>
