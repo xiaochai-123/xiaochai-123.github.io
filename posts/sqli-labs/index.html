@@ -35,7 +35,7 @@
   <meta itemprop="description" content="sql注入学习笔记">
   <meta itemprop="datePublished" content="2025-12-22T07:19:55+08:00">
   <meta itemprop="dateModified" content="2025-12-22T07:19:55+08:00">
-  <meta itemprop="wordCount" content="543">
+  <meta itemprop="wordCount" content="550">
   <meta itemprop="image" content="https://xiaochai-123.github.io/images/SQL1.png">
   <meta itemprop="keywords" content="SQL,CTF,Web">
   <meta property="og:image:alt" content="SQL注入——sqli-labs学习笔记" />
@@ -305,8 +305,9 @@ xiaochai_123的小窝
 
 </p>
 <p>sql数据库里面存在一个<strong>information_schema</strong>数据库，里面含有<strong>COLUMS</strong>表和<strong>TABLES</strong>表包含了所有数据库里面的信息，在这里通过<code>group_concat</code>和查询就能获取到当前数据库的表名</p>
-<p>比如<code>username=1’union select 1,2,group_concat(table_name) from information_schema.t</code>
-<code>ables where table_schema=database()#&amp;password=1</code></p>
+<p>比如<code>username=1'union select 1,2,group_concat(table_name) from information_schema.t</code>
+<code>ables where table_schema=database()#</code></p>
+<p><strong>1&rsquo;union select 1,2,group_concat(column_name) from information_schema.columns where table_schema=database()#</strong></p>
 <blockquote>
 <p>点 (.) 用于分隔 information_schema 和 tables。 这是一种标准命名约定，遵循 SQL 标准。 它表示 tables 是 information_schema 命名空间下的一个对象，就像 mydb.mytable 表示 mytable 表属于 mydb 数据库一样。</p>
 </blockquote>
@@ -708,7 +709,7 @@ xiaochai_123的小窝
       <i class="fas fa-fw fa-chevron-down post-prev-icon me-1" data-fa-transform="rotate-90"></i>
       <a href="/posts/sqli-labs%E9%9D%B6%E5%9C%BA%E6%90%AD%E5%BB%BA/">SQLi-labs靶场搭建</a>
     </div><div class="post-nav post-next">
-      <a href="/posts/ctf-web-guide/">[持续更新] CTF-Web Guide</a>
+      <a href="/posts/xxe%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/">XXE漏洞利用</a>
       <i class="fas fa-fw fa-chevron-down post-next-icon ms-1" data-fa-transform="rotate-270"></i>
     </div></div>
 </div></article>
@@ -881,6 +882,30 @@ xiaochai_123的小窝
   <div class="d-flex">
       <div
         class="flex-shrink-0 d-flex justify-content-center align-items-center"
+        style="max-width: 100px"><picture><img class="img-fluid" alt="XXE漏洞利用" src="https://xiaochai-123.github.io/images/xxe.png" loading="lazy"
+     width="700"
+     height="502"/>
+  </picture>
+      </div>
+    <div
+      class="flex-grow-1 d-flex flex-column h-auto justify-content-center ms-3">
+      <a class="post-title" href="/posts/xxe%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/">
+        XXE漏洞利用
+      </a>
+      <div class="post-meta mt-2">
+        <span class="post-date">
+          February 17, 2026
+        </span>
+      </div>
+    </div>
+  </div>
+                    </li>
+                    <li class="mb-2">
+    
+  
+  <div class="d-flex">
+      <div
+        class="flex-shrink-0 d-flex justify-content-center align-items-center"
         style="max-width: 100px"><picture><img class="img-fluid" alt="[持续更新] CTF-Web Guide" src="https://xiaochai-123.github.io/images/1.png" loading="lazy"
      width="2400"
      height="1350"/>
@@ -957,30 +982,6 @@ xiaochai_123的小窝
       <div class="post-meta mt-2">
         <span class="post-date">
           December 17, 2025
-        </span>
-      </div>
-    </div>
-  </div>
-                    </li>
-                    <li class="mb-2">
-    
-  
-  <div class="d-flex">
-      <div
-        class="flex-shrink-0 d-flex justify-content-center align-items-center"
-        style="max-width: 100px"><picture><img class="img-fluid" alt="双重md5爆破" src="https://xiaochai-123.github.io/images/MD5.png" loading="lazy"
-     width="626"
-     height="251"/>
-  </picture>
-      </div>
-    <div
-      class="flex-grow-1 d-flex flex-column h-auto justify-content-center ms-3">
-      <a class="post-title" href="/posts/%E5%8F%8C%E9%87%8Dmd5%E7%88%86%E7%A0%B4/">
-        双重md5爆破
-      </a>
-      <div class="post-meta mt-2">
-        <span class="post-date">
-          December 5, 2025
         </span>
       </div>
     </div>
@@ -1077,7 +1078,7 @@ xiaochai_123的小窝
 </div><div class="row text-center">
   <div class="col-12 mt-2">
     <p class="mb-2">xiaochai_123的小窝</p>
-    <p class="text-secondary mb-2"><small>Welcome to xiaochai_123’s Blog! I look forward to sharing this great journey with you.</small></p>© 2025 xiaochai-123. 欢迎转载但请注明出处 | 本博客内容版权所有
+    <p class="text-secondary mb-2"><small>Welcome to xiaochai_123’s Blog! I look forward to sharing this great journey with you.</small></p>© 2026 xiaochai-123. 欢迎转载但请注明出处 | 本博客内容版权所有
     <div class="footer-line visitor" style="margin: 0.5em 0;">
       <span id="busuanzi_container_site_uv" title="总访客数" style="display: inline;">
         👤 总访客数 <span id="busuanzi_value_site_uv">...</span>

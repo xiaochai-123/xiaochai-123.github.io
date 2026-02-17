@@ -6,7 +6,7 @@
     <description>Recent content in SQL on xiaochai_123的小窝</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <copyright>© 2025 xiaochai-123. 欢迎转载但请注明出处 | 本博客内容版权所有</copyright>
+    <copyright>© 2026 xiaochai-123. 欢迎转载但请注明出处 | 本博客内容版权所有</copyright>
     <lastBuildDate>Mon, 22 Dec 2025 07:19:56 +0800</lastBuildDate><atom:link href="https://xiaochai-123.github.io/tags/sql/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>SQL注入——sqli-labs学习笔记</title>
@@ -44,8 +44,9 @@
 
 </p>
 <p>sql数据库里面存在一个<strong>information_schema</strong>数据库，里面含有<strong>COLUMS</strong>表和<strong>TABLES</strong>表包含了所有数据库里面的信息，在这里通过<code>group_concat</code>和查询就能获取到当前数据库的表名</p>
-<p>比如<code>username=1’union select 1,2,group_concat(table_name) from information_schema.t</code>
-<code>ables where table_schema=database()#&amp;password=1</code></p>
+<p>比如<code>username=1'union select 1,2,group_concat(table_name) from information_schema.t</code>
+<code>ables where table_schema=database()#</code></p>
+<p><strong>1&rsquo;union select 1,2,group_concat(column_name) from information_schema.columns where table_schema=database()#</strong></p>
 <blockquote>
 <p>点 (.) 用于分隔 information_schema 和 tables。 这是一种标准命名约定，遵循 SQL 标准。 它表示 tables 是 information_schema 命名空间下的一个对象，就像 mydb.mytable 表示 mytable 表属于 mydb 数据库一样。</p>
 </blockquote>
@@ -55,8 +56,7 @@
 </picture>
 
 </p>
-<p>如图所示，当我们正常进行查询时，不会有回显，只显示You are in&hellip;</p>
-<p>当我们故意输错database,比如打成datadase，题目回显<code>FUNCTION security.datadase does not exist</code></p>]]></description>
+<p>如图所示，当我们正常进行查询时，不会有回显，只显示You are in&hellip;</p>]]></description>
     <enclosure url="https://xiaochai-123.github.io/images/SQL1.png" length="88126" type="image/.png" />
     </item>
     

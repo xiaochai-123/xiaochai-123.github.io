@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>XXE on xiaochai_123的小窝</title>
-    <link>http://localhost:1313/tags/xxe/</link>
+    <link>https://xiaochai-123.github.io/tags/xxe/</link>
     <description>Recent content in XXE on xiaochai_123的小窝</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <copyright>© 2025 xiaochai-123. 欢迎转载但请注明出处 | 本博客内容版权所有</copyright>
-    <lastBuildDate>Sat, 27 Dec 2025 16:35:35 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/xxe/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>© 2026 xiaochai-123. 欢迎转载但请注明出处 | 本博客内容版权所有</copyright>
+    <lastBuildDate>Tue, 17 Feb 2026 23:35:35 +0800</lastBuildDate><atom:link href="https://xiaochai-123.github.io/tags/xxe/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>XXE漏洞利用</title>
-      <link>http://localhost:1313/posts/xxe%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/</link>
-      <pubDate>Sat, 27 Dec 2025 16:35:35 +0800</pubDate>
-      <guid>http://localhost:1313/posts/xxe%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/</guid>
+      <link>https://xiaochai-123.github.io/posts/xxe%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/</link>
+      <pubDate>Tue, 17 Feb 2026 23:35:35 +0800</pubDate>
+      <guid>https://xiaochai-123.github.io/posts/xxe%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/</guid>
       <description><![CDATA[<h1 id="xxe漏洞利用" data-numberify>XXE漏洞利用<a class="anchor ms-1" href="#xxe漏洞利用"></a></h1>
 <p>学习XXE首先了解XML语言：</p>
 <p>XML是一种标记语言。他是用来把数据<strong>结构化</strong>然后传输给对方，让对方在结构化的数据中进行读取的。</p>
@@ -42,8 +42,34 @@
           <td>焦点：数据的外观</td>
       </tr>
   </tbody>
-</table>]]></description>
-    <enclosure url="http://localhost:1313/images/xxe.png" length="120897" type="image/.png" />
+</table>
+<p>我们的xml标签是没有意义的，也就是说你可以随意命名。</p>
+<p>既然我们的标签没有意义，那么我们的注入怎么来呢？</p>
+<p>就是通过外部DTD声明。</p>
+
+<h2 id="dtd-doucument-type-definition" data-numberify>DTD (Doucument Type Definition)<a class="anchor ms-1" href="#dtd-doucument-type-definition"></a></h2>
+<p>文档类型定义，可定义合法的XML文档构建模块，它使用一系列合法的元素来定义文档的结构。在XML中DTD就是来定义我们自定义元素的相关属性的文档，它规定、约束XML规则的定义和陈述，DTD可被成行地声明于XML文档中，也可作为一个外部引用。</p>
+<p>XML文档内部定义的是内定义，例如：</p>
+<pre tabindex="0"><code class="language-xml-dtd" data-lang="xml-dtd">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;
+&lt;!DOCTYPE root [
+                               &lt;!-- DOCTYPE用来约束XML规则 --&gt; 
+    &lt;!ELEMENT root (man)&gt;      &lt;!-- !ELEMENT定义root下有一个分支叫做man --&gt;
+    &lt;!ELEMENT man (name,age)&gt;  &lt;!-- 定义man根下有两个分支叫做name和age --&gt;
+    &lt;!ELEMENT name (#PCDATA)&gt;  &lt;!-- #PCDATA意味着name里面只能是字符串 --&gt;
+]&gt;
+&lt;root&gt;
+	&lt;man&gt;
+    	&lt;name&gt;leyi&lt;/name&gt;
+        &lt;age&gt;18&lt;/age&gt;
+        &lt;extra&gt;114514&lt;/extra&gt;  &lt;!-- 多余的会报错，但页面仍可正常打开 --&gt;
+    &lt;/man&gt;
+	&lt;man&gt;
+    	&lt;name&gt;晓堃&lt;/name&gt;
+        &lt;age&gt;18&lt;/age&gt;
+    &lt;/man&gt;
+&lt;/root&gt;
+</code></pre><p>除了<code>!ELEMENT</code>,我们还有其他的DTD声明标记，比如:</p>]]></description>
+    <enclosure url="https://xiaochai-123.github.io/images/xxe.png" length="120897" type="image/.png" />
     </item>
     
   </channel>

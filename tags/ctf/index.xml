@@ -6,8 +6,8 @@
     <description>Recent content in CTF on xiaochai_123的小窝</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <copyright>© 2025 xiaochai-123. 欢迎转载但请注明出处 | 本博客内容版权所有</copyright>
-    <lastBuildDate>Mon, 22 Dec 2025 22:43:35 +0800</lastBuildDate><atom:link href="https://xiaochai-123.github.io/tags/ctf/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>© 2026 xiaochai-123. 欢迎转载但请注明出处 | 本博客内容版权所有</copyright>
+    <lastBuildDate>Tue, 17 Feb 2026 23:35:35 +0800</lastBuildDate><atom:link href="https://xiaochai-123.github.io/tags/ctf/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[持续更新] CTF-Web Guide</title>
       <link>https://xiaochai-123.github.io/posts/ctf-web-guide/</link>
@@ -179,6 +179,70 @@ Disallow: /hidden/flag.txt
     </item>
     
     <item>
+      <title>XXE漏洞利用</title>
+      <link>https://xiaochai-123.github.io/posts/xxe%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/</link>
+      <pubDate>Tue, 17 Feb 2026 23:35:35 +0800</pubDate>
+      <guid>https://xiaochai-123.github.io/posts/xxe%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/</guid>
+      <description><![CDATA[<h1 id="xxe漏洞利用" data-numberify>XXE漏洞利用<a class="anchor ms-1" href="#xxe漏洞利用"></a></h1>
+<p>学习XXE首先了解XML语言：</p>
+<p>XML是一种标记语言。他是用来把数据<strong>结构化</strong>然后传输给对方，让对方在结构化的数据中进行读取的。</p>
+<p>XML和HTML的区别：</p>
+<table>
+  <thead>
+      <tr>
+          <th>XML</th>
+          <th>HTML</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>功能：数据读取</td>
+          <td>功能：开发</td>
+      </tr>
+      <tr>
+          <td>标签无意义</td>
+          <td>标签预定义</td>
+      </tr>
+      <tr>
+          <td>传输和存储数据</td>
+          <td>显示数据</td>
+      </tr>
+      <tr>
+          <td>焦点：数据的内容</td>
+          <td>焦点：数据的外观</td>
+      </tr>
+  </tbody>
+</table>
+<p>我们的xml标签是没有意义的，也就是说你可以随意命名。</p>
+<p>既然我们的标签没有意义，那么我们的注入怎么来呢？</p>
+<p>就是通过外部DTD声明。</p>
+
+<h2 id="dtd-doucument-type-definition" data-numberify>DTD (Doucument Type Definition)<a class="anchor ms-1" href="#dtd-doucument-type-definition"></a></h2>
+<p>文档类型定义，可定义合法的XML文档构建模块，它使用一系列合法的元素来定义文档的结构。在XML中DTD就是来定义我们自定义元素的相关属性的文档，它规定、约束XML规则的定义和陈述，DTD可被成行地声明于XML文档中，也可作为一个外部引用。</p>
+<p>XML文档内部定义的是内定义，例如：</p>
+<pre tabindex="0"><code class="language-xml-dtd" data-lang="xml-dtd">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;
+&lt;!DOCTYPE root [
+                               &lt;!-- DOCTYPE用来约束XML规则 --&gt; 
+    &lt;!ELEMENT root (man)&gt;      &lt;!-- !ELEMENT定义root下有一个分支叫做man --&gt;
+    &lt;!ELEMENT man (name,age)&gt;  &lt;!-- 定义man根下有两个分支叫做name和age --&gt;
+    &lt;!ELEMENT name (#PCDATA)&gt;  &lt;!-- #PCDATA意味着name里面只能是字符串 --&gt;
+]&gt;
+&lt;root&gt;
+	&lt;man&gt;
+    	&lt;name&gt;leyi&lt;/name&gt;
+        &lt;age&gt;18&lt;/age&gt;
+        &lt;extra&gt;114514&lt;/extra&gt;  &lt;!-- 多余的会报错，但页面仍可正常打开 --&gt;
+    &lt;/man&gt;
+	&lt;man&gt;
+    	&lt;name&gt;晓堃&lt;/name&gt;
+        &lt;age&gt;18&lt;/age&gt;
+    &lt;/man&gt;
+&lt;/root&gt;
+</code></pre><p>除了<code>!ELEMENT</code>,我们还有其他的DTD声明标记，比如:</p>]]></description>
+    <enclosure url="https://xiaochai-123.github.io/images/xxe.png" length="120897" type="image/.png" />
+    </item>
+    
+    <item>
       <title>SQL注入——sqli-labs学习笔记</title>
       <link>https://xiaochai-123.github.io/posts/sqli-labs/</link>
       <pubDate>Mon, 22 Dec 2025 07:19:55 +0800</pubDate>
@@ -214,8 +278,9 @@ Disallow: /hidden/flag.txt
 
 </p>
 <p>sql数据库里面存在一个<strong>information_schema</strong>数据库，里面含有<strong>COLUMS</strong>表和<strong>TABLES</strong>表包含了所有数据库里面的信息，在这里通过<code>group_concat</code>和查询就能获取到当前数据库的表名</p>
-<p>比如<code>username=1’union select 1,2,group_concat(table_name) from information_schema.t</code>
-<code>ables where table_schema=database()#&amp;password=1</code></p>
+<p>比如<code>username=1'union select 1,2,group_concat(table_name) from information_schema.t</code>
+<code>ables where table_schema=database()#</code></p>
+<p><strong>1&rsquo;union select 1,2,group_concat(column_name) from information_schema.columns where table_schema=database()#</strong></p>
 <blockquote>
 <p>点 (.) 用于分隔 information_schema 和 tables。 这是一种标准命名约定，遵循 SQL 标准。 它表示 tables 是 information_schema 命名空间下的一个对象，就像 mydb.mytable 表示 mytable 表属于 mydb 数据库一样。</p>
 </blockquote>
@@ -225,8 +290,7 @@ Disallow: /hidden/flag.txt
 </picture>
 
 </p>
-<p>如图所示，当我们正常进行查询时，不会有回显，只显示You are in&hellip;</p>
-<p>当我们故意输错database,比如打成datadase，题目回显<code>FUNCTION security.datadase does not exist</code></p>]]></description>
+<p>如图所示，当我们正常进行查询时，不会有回显，只显示You are in&hellip;</p>]]></description>
     <enclosure url="https://xiaochai-123.github.io/images/SQL1.png" length="88126" type="image/.png" />
     </item>
     
