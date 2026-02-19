@@ -1,0 +1,1068 @@
+<!doctype html>
+<html class="position-relative" itemscope itemtype="https://schema.org/WebPage" lang="en"
+  data-bs-theme="auto" data-palette="blue">
+  <head><script src="/assets/init/bundle.min.acf86bec8f1585feebb4a7bc424e2c509abd0c84c974075fb9eee923b2c62b39.js" integrity="sha256-rPhr7I8Vhf7rtKe8Qk4sUJq9DITJdAdfue7pI7LGKzk=" crossorigin="anonymous"></script>
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Arch&#43;Hyprland - xiaochai_123的小窝</title>
+    <link rel="icon" href="https://xiaochai-123.github.io/images/icons/icon-16x16.png?version=10de02cdc53ad46a103b64b869070266" sizes="16x16">
+    <link rel="icon" href="https://xiaochai-123.github.io/images/icons/icon-32x32.png?version=f1747f8c31b6821777c3a0956b5ba0db" sizes="32x32">
+    <link rel="icon" href="/favicon_hu_1fce3f16494f6ae3.png" sizes="150x150" type="image/png">
+    <link rel="apple-touch-icon" href="/favicon_hu_f105fae78c239d0f.png" sizes="180x180" type="image/png">
+    <link rel="icon" href="/favicon_hu_af357fe99fc0195a.png" sizes="192x192" type="image/png">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#6f42c1"><link rel="icon" href="https://xiaochai-123.github.io/images/icons/favicon.ico?version=13a0b7f517ed6605fd5fc54b37b8552d">
+<meta name="keywords" content="" />
+  <meta name="description" content="Arch折腾记录" />
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://xiaochai-123.github.io/images/arch.png">
+  <meta name="twitter:title" content="Arch&#43;Hyprland">
+  <meta name="twitter:description" content="Arch折腾记录">
+<meta property="og:url" content="https://xiaochai-123.github.io/posts/arch&#43;hyprland&#43;linux%E5%B0%8F%E6%8A%80%E5%B7%A7/">
+  <meta property="og:site_name" content="xiaochai_123的小窝">
+  <meta property="og:title" content="Arch&#43;Hyprland">
+  <meta property="og:description" content="Arch折腾记录">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-02-19T18:35:35+08:00">
+    <meta property="article:modified_time" content="2026-02-19T18:35:35+08:00">
+    <meta property="article:tag" content="Linux">
+    <meta property="article:tag" content="OS">
+    <meta property="og:image" content="https://xiaochai-123.github.io/images/arch.png">
+
+  <meta itemprop="name" content="Arch&#43;Hyprland">
+  <meta itemprop="description" content="Arch折腾记录">
+  <meta itemprop="datePublished" content="2026-02-19T18:35:35+08:00">
+  <meta itemprop="dateModified" content="2026-02-19T18:35:35+08:00">
+  <meta itemprop="wordCount" content="966">
+  <meta itemprop="image" content="https://xiaochai-123.github.io/images/arch.png">
+  <meta itemprop="keywords" content="Linux,OS">
+  <meta property="og:image:alt" content="Arch&#43;Hyprland" />
+  <meta name="twitter:image:alt" content="Arch&#43;Hyprland" />
+
+<link data-precache rel="stylesheet" href="/assets/main/bundle.min.5e43b1a2119e65d96e086e7147d978bfdbb1033637f8262ecddbd3fbaee298c1.css" integrity="sha256-XkOxohGeZdluCG5xR9l4v9uxAzY3+CYuzdvT+67imME=" crossorigin="anonymous">
+
+    <link data-precache rel="stylesheet" href="/assets/viewer/bundle.min.16d2c85c4cae39a98f8cb7a977e95e554b174f91a5484c32605637156f49ca6b.css" integrity="sha256-FtLIXEyuOamPjLepd&#43;leVUsXT5GlSEwyYFY3FW9Jyms=" crossorigin="anonymous">
+
+
+
+<link rel="stylesheet" href="/css/custom.css">
+<script>
+(function() {
+  var originalTitle = document.title;
+  document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+      document.title = '下次再见~';
+    } else {
+      document.title = '欢迎回来~';
+      setTimeout(function() {
+        document.title = originalTitle;
+      }, 1500); 
+    }
+  });
+})();
+</script><link rel="stylesheet" href="/css/all.min.css">
+  </head>
+  <body><header class="mb-4 sticky-top">
+  
+<nav class="top-app-bar shadow navbar navbar-expand-lg">
+  <div class="container">
+<a class="navbar-brand d-flex align-items-center flex-grow-1 flex-xxl-grow-0 justify-content-xxl-start ms-2 ms-xxl-0 mx-auto me-xxl-2"
+    href="https://xiaochai-123.github.io/">
+    <picture><img class="logo " alt="Logo" src="https://xiaochai-123.github.io/images/logo.png?v=166cbf8ee66ab6626f3f85db1fb49313" loading="lazy" width="2048" height="2048" />
+</picture>
+xiaochai_123的小窝
+</a>
+
+    <div class="offcanvas-lg offcanvas-end flex-grow-1" data-bs-scroll="true" tabindex="-1" id="navbarMenus" aria-labelledby="navbarMenusLabel">
+      <div class="offcanvas-header px-4 pb-0">
+        <div class="offcanvas-title h5" id="navbarMenusLabel">xiaochai_123的小窝</div>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" data-bs-target="#navbarMenus" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body p-4 pt-0 p-lg-0">
+        <hr class="d-lg-none">
+        <ul class="navbar-nav flex-row flex-wrap align-items-center me-auto"><li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2" href="https://xiaochai-123.github.io/posts/">Posts
+            </a>
+          </li><li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2" href="https://xiaochai-123.github.io/categories/">Categories
+            </a>
+          </li><li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2" href="https://xiaochai-123.github.io/tags/">Tags
+            </a>
+          </li><li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2" href="https://xiaochai-123.github.io/friends/">Friends
+            </a>
+          </li>
+        </ul>
+        
+    <hr class="d-lg-none">
+    <form class="search-bar ms-auto my-auto" action="" novalidate>
+      <div class="input-group align-items-center">
+        <span class="btn btn-search disabled position-absolute left-0 border-0 px-1">
+          <i class="fas fa-fw fa-search fa-lg"></i>
+        </span>
+        <input
+          class="my-1 form-control border-white rounded-5 search-input bg-body"
+          name="q"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+          required>
+          <span class="search-shortcut position-absolute end-0 top-0 me-2">
+            <kbd class="text-dark bg-white opacity-75 rounded-3 shadow border border-primary py-1 fw-bold">/</kbd>
+          </span>
+      </div>
+    </form><hr class="d-lg-none">
+        <ul class="navbar-nav flex-row flex-wrap align-items-center ms-md-auto">
+<li class="nav-item dropdown col-6 col-lg-auto">
+    <a class="nav-link px-0 py-2 px-lg-1" href="#" id="paletteDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="fas fa-fw fa-palette"></i>
+        <span class="d-lg-none">Palette</span>
+    </a>
+    <ul class="palette-dropdown-menu dropdown-menu dropdown-menu-end px-2 row g-2" aria-labelledby="paletteDropdown">
+            <li class="col-4 my-1">
+                <a role="button" id="palette-blue" aria-label="Blue"
+                    class="btn btn-sm w-100 palette text-bg-blue" data-palette="blue">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-blue-gray" aria-label="Blue Gray"
+                    class="btn btn-sm w-100 palette text-bg-blue-gray" data-palette="blue-gray">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-brown" aria-label="Brown"
+                    class="btn btn-sm w-100 palette text-bg-brown" data-palette="brown">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-cyan" aria-label="Cyan"
+                    class="btn btn-sm w-100 palette text-bg-cyan" data-palette="cyan">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-green" aria-label="Green"
+                    class="btn btn-sm w-100 palette text-bg-green" data-palette="green">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-indigo" aria-label="Indigo"
+                    class="btn btn-sm w-100 palette text-bg-indigo" data-palette="indigo">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-orange" aria-label="Orange"
+                    class="btn btn-sm w-100 palette text-bg-orange" data-palette="orange">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-pink" aria-label="Pink"
+                    class="btn btn-sm w-100 palette text-bg-pink" data-palette="pink">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-purple" aria-label="Purple"
+                    class="btn btn-sm w-100 palette text-bg-purple" data-palette="purple">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-red" aria-label="Red"
+                    class="btn btn-sm w-100 palette text-bg-red" data-palette="red">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-teal" aria-label="Teal"
+                    class="btn btn-sm w-100 palette text-bg-teal" data-palette="teal">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-yellow" aria-label="Yellow"
+                    class="btn btn-sm w-100 palette text-bg-yellow" data-palette="yellow">
+                </a>
+            </li>
+    </ul>
+</li>
+<li class="nav-item dropdown col-6 col-lg-auto">
+    <a class="nav-link px-0 py-2 px-lg-1" href="#" id="modeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="mode-icon fas fa-fw fa-adjust" id="modeIcon"></i>
+        <span class="d-lg-none">Mode</span>
+    </a>
+    <ul class="mode-dropdown-menu dropdown-menu dropdown-menu-end" aria-labelledby="modeDropdown">
+        <li class="mode-item" data-color-mode="light" data-icon="sun">
+            <button class="dropdown-item">
+                <i class="mode-icon fas fa-fw fa-sun"></i> Light
+            </button>
+        </li>
+        <li class="mode-item" data-color-mode="dark" data-icon="moon">
+            <button class="dropdown-item">
+                <i class="mode-icon fas fa-fw fa-moon"></i> Dark
+            </button>
+        </li>
+        <li class="mode-item active" data-color-mode="auto" data-icon="adjust">
+            <button class="dropdown-item">
+                <i class="mode-icon fas fa-fw fa-adjust"></i> Auto
+            </button>
+        </li>
+    </ul>
+</li>
+        </ul>
+      </div>
+    </div>
+    <div class="d-flex">
+      <button class="navbar-toggler order-5 border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarMenus"
+        aria-controls="navbarMenus" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-ellipsis-h"></i>
+      </button>
+    </div>
+  </div>
+</nav>
+
+</header>
+
+    <main class="container has-sidebar" data-kind="page"><script data-precache src="/js/main-init.6a1fd2a99f6ad87b4aa9b7ed0f10344d4273d92cc29a6fb2cf05c463ec57ce39.js" integrity="sha256-ah/SqZ9q2HtKqbftDxA0TUJz2SzCmm&#43;yzwXEY&#43;xXzjk=" crossorigin="anonymous"></script>
+
+      <div class="row content"><noscript>
+    <div class="alert alert-danger" role="alert">Your browser does not support JavaScript.</div>
+</noscript>
+
+<div class="content-posts col-xxl-8">
+  <div class="container"><nav class="row card component" aria-label="breadcrumb">
+  <div class="card-body pb-0">
+    <ol class="hbs-breadcrumb breadcrumb flex-nowrap"><li class="breadcrumb-item text-surface"><a href="/">Home</a></li><li class="breadcrumb-item text-surface"><a href="/posts/">Posts</a></li><li class="breadcrumb-item active">Arch&#43;Hyprland</li></ol>
+  </div>
+</nav><div class="post-panel-wrapper position-relative d-flex justify-content-center">
+  <div class="d-flex flex-row justify-content-center rounded-5 border post-panel position-fixed px-3 py-1 surface shadow-1">
+    
+    
+
+    
+    
+    
+  <a class="action action-toc d-none d-xxl-block" href="#postTOC" role="button" title="Contents">
+    <i class="fas fa-fw fa-list-alt"></i>
+  </a>
+<a class="action action-toc d-block d-xxl-none" href="#post-toc-container" role="button" title="Contents">
+  <i class="fas fa-fw fa-list-alt"></i>
+</a>
+
+    <a class="action action-post-comments" href="#post-comments" role="button" aria-label="Comments" title="Comments">
+  <i class="fas fa-fw fa-comments"></i>
+</a>
+    
+<a id="sidebarToggler" class="action action-sidebar-toggler d-none d-xl-block" role="button" title="Toggle sidebar">
+  <i class="fas fa-fw fa-expand-alt" data-fa-transform="rotate-45"></i>
+</a>
+
+    
+  </div>
+</div><article class="row card component mb-4 post">
+  <div class="card-header ">
+    <h1 class="card-title post-title my-2">Arch&#43;Hyprland</h1>
+  </div>
+  <div class="card-body"><div class="post-meta mb-3">
+  <span class="post-date me-1 mb-1" title="created on 2026-02-19 18:35:35 &#43;0800 CST.">February 19, 2026</span><span class="post-reading-time me-1 mb-1">5 min read</span><a href="/categories/%E6%95%99%E7%A8%8B/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-category">
+      <i class="fas fa-fw fa-folder me-1"></i>教程</a><a href="/tags/linux/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-tag">Linux</a><a href="/tags/os/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-tag">OS</a>
+</div>
+
+      <p class="lead mb-3 text-body-emphasis">Arch折腾记录</p>
+<div class="mt-2 mb-3 d-block d-xxl-none">
+    <h2 class="text-surface mb-3">Contents</h2>
+    <div id="post-toc-container">
+        </div>
+    <hr class="text-secondary">
+</div><div class="post-content mb-3" data-bs-spy="scroll" data-bs-target="#TableOfContents" tabindex="0">
+        <div id="post-content-body">
+<h1 id="arch-linux" data-numberify>Arch Linux<a class="anchor ms-1" href="#arch-linux"></a></h1>
+<p>因为看上了Arch Linux的社区活跃性，所以我决定试试一下这个操作系统！</p>
+<p>（安装起来也很炫酷，不像其他系统只要点点点就完成了，让我找到小时候第一次安系统的新奇感）</p>
+<p>通过安装Arch Linux，也可以学到一些东西。</p>
+<p>我按照B站up林长枫的教程，archlinux 的wiki和AI建议，弄出了一个arch。下面就来记录一下学到的东西和折腾流程</p>
+
+<h1 id="概述前言" data-numberify>概述/前言<a class="anchor ms-1" href="#概述前言"></a></h1>
+<p>​	在Unix系统之前，如Multics系统代码量巨大，庞大臃肿，复杂难用，并且和特定机器硬件绑定(因为是用汇编语言写的)，价格昂贵，只能单用户单任务运行。而在1969年的美国贝尔实验室，Ken Thompson为了在闲置机器上运行他编写的《星际旅行》（Space Travel）游戏，开发了Unix。最初，Unix是用汇编语言编写的，这给系统移植带来了巨大困难。为了解决这个问题，丹尼斯·里奇（Dennis Ritchie）在1973年对B语言进行了改良，创造了大名鼎鼎的<strong>C语言</strong>，并与肯·汤普逊一起用C语言彻底重写了Unix。Unix可移植，支持大量用户和任务数，统一文件接口，清晰化文件系统，精细控制系统权限，并且自由开源。</p>
+<p>​	当时的AT&amp;T公司（贝尔实验室母公司）受法律限制不能销售计算机产品，他们便把Unix源码以低廉的价格授权给大学用于教学，而后学术界对其进行了大量改进，如SunOS/AIX（挺都没听过)等。</p>
+<p>​	由于Unix的商业化和闭源化难以被接受，1984年，Richard Stallman发起了<strong>GNU计划</strong>，为了创建一个完全自由且于Unix兼容的操作系统。GNU计划开发了大量的系统组件（如GCC编译器，文本编辑器，命令行Shell，函数库等），但内核却迟迟未能完成。直到1991年，芬兰大学生Linus Torvalds不满于当时教学的类Unix系统Minix的授权限制，决定自己编写一个内核。他把这个内核发到网上，命名为<strong>Linux</strong>。要素集齐，合成了一个完整的、功能强大的、自由开源的操作系统——<strong>GNU/Linux</strong>。</p>
+
+<h1 id="准备工作" data-numberify>准备工作<a class="anchor ms-1" href="#准备工作"></a></h1>
+<p>因为要安装系统，我们需要准备一个装机U盘。对这块U盘的要求并不高，只要能稳定读取，存储空间大于4G其实都够用。</p>
+<p>我建议使用Ventoy制作U盘。Ventoy是一个开源工具，用于制作装机U盘。首先去<a href="https://www.ventoy.net/cn/" target="_blank" rel="noopener noreferrer">Ventoy官网<i class="fas fa-external-link-square-alt ms-1"></i></a>下载软件，选好你的U盘点安装。然后在U盘里新建一个iso文件夹，把iso文件丢进去就可以了。对，很简单。然后去<a href="https://archlinux.org/download/" target="_blank" rel="noopener noreferrer">Arch Linux官网<i class="fas fa-external-link-square-alt ms-1"></i></a>，往下滑找到China的下载地址，下载一个Arch Linux的镜像文件，丢进U盘的iso文件夹里，这样我们用来装Arch Linux的装机U盘就做好了。</p>
+<p>然后就是进BIOS修改启动顺序或直接选择U盘为启动项，进入Ventoy的界面，选择Arch Linux镜像</p>
+
+<h1 id="安装arch-linux系统" data-numberify>安装Arch Linux系统<a class="anchor ms-1" href="#安装arch-linux系统"></a></h1>
+
+<h2 id="live环境" data-numberify>Live环境<a class="anchor ms-1" href="#live环境"></a></h2>
+
+<h3 id="联网" data-numberify>联网<a class="anchor ms-1" href="#联网"></a></h3>
+<p>在选择Arch Linux镜像后，我们会进入到命令行界面内。这是我们的第一个阶段——Live环境，这个环境运行在内存当中，所以我们可以在环境中格式化硬盘，但是关机后他就会重置。我们需要在Live环境里完成网络的连接，对硬盘进行分区和格式化，使用pacstrap命令讲基础系统安装到硬盘上。</p>
+<p>你会看到像这样的命令行界面：</p>
+<p>root@archiso ~ #</p>
+<p>输入 <code>ip a</code> 可以列出当前的网络信息，有线网会自动连接，连接无线网需要使用iwd命令行工具。</p>
+<p>输入 <code>iwctl</code> 打开联网工具，输入<code>device list</code>可以查看网络适配器设备，一般是wlan0。</p>
+<p>输入<code>station wlan0 scan</code>指定网络适配器并扫描网络</p>
+<p>输入<code>station wlan0 get-networks</code>列出所有可用网络</p>
+<p>输入<code>station wlan0 connect &lt;网络名称&gt;</code>连接网络（”&lt;网络名称&gt;“代表你要连接的网络名称，这里wifi名称还不能是中文）然后输入密码</p>
+<p>然后输入<code>exit</code>退出iwctl工具</p>
+<p>然后可以ping一个网站测试网络是否正常：<code>ping -c 3 bilibili.com</code></p>
+<p>联网后会自动同步时间（对于后面软件安装校验比较重要）NTP（Network Time Protocol，网络时间协议）</p>
+<p>输入<code>timedatectl</code>查看NTP service有没有启动，查看系统时间是否正确</p>
+<p>如果没有开启的话，可以输入<code>timedatectl set-ntp true</code>手动开启</p>
+
+<h3 id="硬盘操作" data-numberify>硬盘操作<a class="anchor ms-1" href="#硬盘操作"></a></h3>
+<p>输入<code>reflector -a 12 -c cn -f 10 --sort score --v --save /etc/pacman.d/mirrorlist</code>配置镜像源</p>
+<p>reflector是自动配置镜像源工具，-a (age)指定最近12小时更新过的源，-c (country)指定地区，-f (fastest)找出最快十个 &ndash;sort按照同步时间和下载速度综合评分进行排序 &ndash;v (verbose)让过程显示出来 &ndash;save保存文件到路径</p>
+<p>输入<code>pacman -Sy archlinux-keyring</code>更新数据库并且按照密钥</p>
+<p>pacman是Arch Linux的包管理器，-S同步安装（安装软件包），-y刷新本地包数据库，archlinux-keyring是Arch的密钥环包。Arch Linux的所有软件包都有数字签名，我们需要这个keyring密钥环来验证软件包是否受信任，所以要定期更新这个keyring，这里初做讲解。</p>
+<p>为了方便查看文件，我们安装一个叫yazi的终端文档管理器</p>
+<p>输入<code>pacman -S yazi</code>安装yazi</p>
+<p>输入<code>yazi</code>打开yazi，在这个界面里可以看到文件目录。我们可以使用上下左右方向键来操作 上下选择，左右进退</p>
+<p>/目录是Linux系统的根目录，大致有以下目录</p>
+<pre tabindex="0"><code>/（根目录）
+├── bin  -&gt;  usr/bin      # 基础命令
+├── boot                  # 启动文件
+├── dev                   # 设备文件
+├── etc                   # 配置文件
+├── home                  # 用户目录
+├── lib  -&gt;  usr/lib      # 基础库文件 类似 Windows 的 DLL
+├── media                 # 可移动媒体 自动挂载的U盘、光盘
+├── mnt                   # 临时挂载
+├── opt                   # 可选软件 第三方商业软件或手动安装的程序
+├── proc                  # 进程信息 
+├── root                  # root用户家目录
+├── run                   # 运行时数据 系统启动后的运行时信息
+├── sbin -&gt; usr/sbin      # 系统管理命令 只有 root 能用的系统管理工具
+├── srv                   # 服务数据 Web服务器、FTP服务器的数据文件
+├── sys                   # 系统信息
+├── tmp                   # 临时文件 所有用户都能读写，重启清空
+├── usr                   # 用户程序 这是最大的目录，结构类似根目录
+└── var                   # 可变数据 日志文件、邮件、打印队列、缓存等
+</code></pre><p>按Q键退出yazi；CTRL+L键可以清屏</p>
+<p>输入<code>lsblk -pf</code>列出当前分区情况</p>
+<p>-p列出完整设备名 -f显示更多信息</p>
+<p>找到你要安装Arch的目标硬盘，如果不确定可以使用<code>fdisk -l &lt;设备名，如/dev/nvme1n1&gt;</code>列出详细信息</p>
+<p>输入<code>cfdisk &lt;硬盘名，如dev/nvme0n1&gt;</code>如果你先前格式化过硬盘，会跳出窗口让你选择分区模式，选gpt即可</p>
+<p>接下来我们要创建一个启动分区，上下键可以选择我们要使用的空闲空间，左右键在选项里选择new回车</p>
+<p>输入要给启动分区分的内存大小，建议设置200MB-500MB，(下图例为100MB)</p>
+<p><picture><img class="img-fluid " alt="msedge_eMmDphipGv" src="https://xiaochai-123.github.io/images/screenshoots/2026-02/msedge_eMmDphipGv.png?v=734e693aedeef4c75012dcbbbbcee350" loading="lazy" width="1664" height="723" />
+</picture>
+
+</p>
+<p>然后再对准我们新创建的这个分区，按右方向键选择Type，类型选择EFI System(如果没有，需要先修改MBR分区为GPT分区)</p>
+<p>ESP（EFI System Partition（EFI系统分区），也就是启动分区）常用挂载点为</p>
+<pre tabindex="0"><code>/boot （最常见） 优点：内核和 initramfs 直接放在 ESP 里，GRUB 可以直接读取
+/efi （新趋势） 优点：和 /boot 分开，更清晰
+/boot/efi （传统）优点：兼容性最好
+</code></pre><p>我们选择的挂载点为/efi</p>
+<p>然后我们选中剩余空间，选择New，直接按空格键把剩余空间全部创建为根分区(此时文件类型为Linux filesystem就可以)</p>
+<p>文件系统类型对比</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left"><strong>特性</strong></th>
+          <th style="text-align: left"><strong>ext4</strong></th>
+          <th style="text-align: left"><strong>Btrfs</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>定位</strong></td>
+          <td style="text-align: left">成熟稳重的<strong>老管家</strong></td>
+          <td style="text-align: left">功能超多的<strong>技术极客</strong></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>核心优势</strong></td>
+          <td style="text-align: left"><strong>稳定、高效、简单</strong>，Linux默认首选</td>
+          <td style="text-align: left"><strong>自带“时光机”</strong>（快照）和**“纠错仪”**（数据校验）</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>自带高级功能</strong></td>
+          <td style="text-align: left">没有（需配合LVM等）</td>
+          <td style="text-align: left"><strong>自带</strong>：快照、压缩、软RAID、子卷</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>数据安全</strong></td>
+          <td style="text-align: left">记录“操作日志”，但<strong>不防数据静默损坏</strong></td>
+          <td style="text-align: left"><strong>写时复制 + 校验和</strong>，能发现并防止数据腐坏</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>适用场景</strong></td>
+          <td style="text-align: left"><strong>90%的人的首选</strong>：追求省心、稳定、高性能</td>
+          <td style="text-align: left"><strong>爱折腾/数据敏感者</strong>：看重快照回滚、透明压缩</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>一句话总结</strong></td>
+          <td style="text-align: left">把分内事做到极致，<strong>绝不给你添乱</strong></td>
+          <td style="text-align: left">十八般武艺样样精通，但<strong>你得学会用</strong></td>
+      </tr>
+  </tbody>
+</table>
+<p>对于我们的Arch Linux来说，btrfs更合适，它可以通过快照直接回溯。</p>
+<p>（同时，因为ESP是FAT文件系统，无法被Btrfs快照，所以ESP不能挂载到/boot）</p>
+<p>分区结束之后向右选择Write保存，输入yes确定，然后选择Quit退出</p>
+<p>再次输入<code>lsblk -pf</code>查看当前分区情况，现在我们要来格式化分区</p>
+<p>输入<code>mkfs.fat -F 32 &lt;引导分区名，如/dev/nvme0n1p1&gt;</code>把我们的引导分区格式化为FAT32</p>
+<p>输入<code>mkfs.btrfs &lt;根分区名，如/dev/nvme0n1p2&gt;</code>把我们的根分区格式化为btrfs</p>
+<p>输入<code>mount -t btrfs /dev/nvme0n1p2 /mnt</code>将根分区挂载到/mnt目录</p>
+<p>我们要创建两个子卷：系统和用户，方便分开回滚</p>
+<p>输入<code>btrfs subvolume create /mnt/@</code></p>
+<p>输入<code>btrfs subvolume create /mnt/@home</code></p>
+<p>我们现在是根分区挂载到/mnt，要把子卷挂载到/mnt，先要取消挂载</p>
+<p>输入<code>umount /mnt</code>取消挂载</p>
+<p>输入<code>mount -t btrfs -o subvol=/@,compress=zstd /dev/nvme0n1p2 /mnt</code>把root子卷挂载到/mnt</p>
+<p>-o是option指定挂载参数，subvol指定子卷，compress=zstd指定zstd透明压缩算法，是在数据写入硬盘前进行压缩，节约资源。</p>
+<p>然后输入<code>mount --mkdir -t btrfs -o subvol=/@home,compress=zstd /dev/nvme0n1p2 /mnt</code>创建并挂载home子卷</p>
+<p>输入<code>mount --mkdir /dev/nvme0n1p1 /mnt/efi</code>挂载ESP</p>
+
+<h3 id="安装系统" data-numberify>安装系统<a class="anchor ms-1" href="#安装系统"></a></h3>
+<p>然后输入<code>pacstrap -K /mnt base base-devel linux-zen linux-firmware btrfs-progs</code>正式安装系统到硬盘上</p>
+<p>pacstrap命令把软件安装到指定根目录，-K复制密钥，/mnt挂载着根，base是基本包，base-devel是在编译AUR助手时会用到，linux-zen是社区黑客针对桌面、多媒体、游戏优化的内核，它比linux更强一点，极少出现问题，linux-firmware是基本固件,btrfs-progs是btrfs管理工具。如果你是marvell网卡则还要安装linux-firmware-marvell</p>
+<p>输入<code>pacstrap /mnt networkmanager vim sudo intel-ucode</code>安装基本功能性软件</p>
+<p>networkmanager是联网工具，vim大名鼎鼎的终端文档编辑器，sudo管理权限，<strong>如果你是amd的CPU就把Intel改成amd</strong>，这个包是对CPU进行优化</p>
+<p>输入<code>genfstab -U /mnt &gt; /mnt/etc/fstab</code>生成fstab文件，系统在启动时会按照这个进行挂载</p>
+<p>-U代表使用uuid指定分区 &gt; 表示写入（&raquo;表示在文件末尾追加）</p>
+<p>然后输入<code>arch-chroot /mnt</code>进行change root，虽然我们还在live环境里，但我们已经进入硬盘系统的内部了</p>
+<p>输入<code>ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</code>创建文件链接</p>
+<p>重新安装鸭子<code>pacman -S yazi</code>，输入<code>yazi</code>进入鸭子，按下G+空格键输入/usr/share/zoneinfo可以看到有很多时区文件，而我们刚才创建文件连接将/etc里面的localtime指向了Shanghai。按Q退出鸭子</p>
+<p>输入<code>timedatectl</code>可以查看当前时区信息</p>
+<p>输入<code>hwclock --systohc</code>，之后系统会在/etc目录下创建adjtime文件，用来调节时间差</p>
+<p>输入<code>vim /etc/locale.gen</code>使用vim编辑locale.gen文件，按下/键，输入en_US，回车</p>
+<p>找到#en_US.UTF-8 UTF-8一行，删除前面的＃。具体方法是将光标移动到#前面，按下X键剪切掉一个字符</p>
+<p>再按/搜索zh_CN，回车，同样删掉#zh_CN.UTF-8 UTF-8一行前面的#。然后在键盘上按冒号:。代表要输入指令</p>
+<p>输入wq代表保存并退出。下面介绍一些vim操作</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">模式</th>
+          <th style="text-align: left">作用</th>
+          <th style="text-align: left">怎么进</th>
+          <th style="text-align: left">怎么退</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>普通模式</strong></td>
+          <td style="text-align: left">移动、复制、删除</td>
+          <td style="text-align: left">打开 Vim 默认就在</td>
+          <td style="text-align: left">-</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>插入模式</strong></td>
+          <td style="text-align: left">输入文字</td>
+          <td style="text-align: left"><code>i</code></td>
+          <td style="text-align: left"><code>Esc</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>可视模式</strong></td>
+          <td style="text-align: left">选中文字</td>
+          <td style="text-align: left"><code>v</code></td>
+          <td style="text-align: left"><code>Esc</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>命令模式</strong></td>
+          <td style="text-align: left">保存、退出、搜索</td>
+          <td style="text-align: left"><code>:</code></td>
+          <td style="text-align: left"><code>Esc</code></td>
+      </tr>
+  </tbody>
+</table>
+<pre tabindex="0"><code>文件操作
+vim 文件名     # 打开文件
+:w             # 保存
+:q             # 退出
+:wq            # 保存并退出
+:q!            # 不保存强制退出
+ZZ             # 保存并退出（Shift+z+z）
+移动（普通模式）
+h j k l        # 左 下 上 右（相当于方向键）
+0              # 行首
+$              # 行尾
+gg             # 文件开头
+G              # 文件结尾
+123G           # 跳到第 123 行
+w              # 下一个单词开头
+b              # 上一个单词开头
+编辑（普通模式）
+i              # 在光标前插入
+a              # 在光标后插入
+o              # 在下一行插入新行
+dd             # 删除当前行
+5dd            # 删除 5 行
+yy             # 复制当前行
+5yy            # 复制 5 行
+p              # 粘贴
+u              # 撤销
+Ctrl+r         # 重做
+x              # 删除光标处字符
+dw             # 删除一个单词
+搜索替换
+/关键词        # 向下搜索
+?关键词        # 向上搜索
+n              # 下一个匹配
+N              # 上一个匹配
+:%s/旧/新/g    # 全文替换
+:%s/旧/新/gc   # 全文替换（每次确认）
+可视模式（选中文字）
+v              # 进入可视模式（字符选中）
+V              # 行选中
+Ctrl+v         # 块选中
+选中后按 y     # 复制
+选中后按 d     # 删除
+</code></pre><p>用习惯之后，感觉vim是真好用！</p>
+<p>输入<code>locale-gen</code>生成本地化文件</p>
+<p>然后输入<code>vim /etc/locale.conf</code>编辑配置文件，按下i键进入编辑模式</p>
+<p>写入<code>LANG=en_US.UTF-8</code>代表全局本地化使用英文，然后按Esc退出编辑模式，输入:wq保存并退出(之后不再赘述)</p>
+<p>输入<code>vim /etc/hostname</code>编辑主机名，在里面写入你的主机名（只能包含小写字母，数字0-9，短横-）</p>
+<p>然后输入<code>passwd root</code>设置root的密码（输入<code>cat /etc/shadow</code>可以看到加密的密码）</p>
+<p>输入<code>pacman -S grub efibootmgr</code>安装grub和efibootmgr。grub是我们的引导菜单程序，在开机时让我们选择系统或内核。efibootmgr是UEFI启动项管理工具，可以修改BIOS启动顺序</p>
+<p>输入<code>grub-install --target=x86_64-efi --efi-directory=/efi --boot-directory=/efi --bootloader-id=dazhuang</code>安装引导&ndash;target选项指定架构</p>
+<p>&ndash;efi-directory指定ESP位置，&ndash;boot-directory指定grub安装目录（默认安装路径在/boot，但我们的根分区是btrfs文件系统，grub在启动初期无法写入，会导致异常，所以安装在ESP里）<strong>&ndash;bootloader-id可以写一个你喜欢的启动项名称！</strong>,默认取名为arch，示例取名为大壮</p>
+<p>由于大部分软件会默认grub安装在/boot目录下，所以我们创建一个链接，把默认位置链接到efi/grub</p>
+<p>输入<code>ln -s /efi/grub /boot/grub</code></p>
+<p>输入<code>grub-mkconfig</code>命令生成grub的配置文件，它会去扫描系统生成具体的启动项和启动流程</p>
+<p><code>grub-mkconfig -o &lt;path&gt;</code>可以把日志保存到具体路径</p>
+<p>输入<code>vim /etc/default/grub</code>编辑文件</p>
+<p>找到#GRUB_SAVEDEFAULT=TRUE一行，删掉#解开注释，可以让它记住你选择的启动项，按两下G键回到开头，将第一行GRUB_DEFAULT=0改为GRUB_DEFAULT=saved，然后看第四行，把GRUB_CMDLINE_LINUX_DEFAULT=&ldquo;loglevel=3 quiet&quot;修改为GRUB_CMDLINE_LINUX_DEFAULT=&ldquo;loglevel=5&rdquo;，这样我们在启动或者关闭系统时就会显示日志，日志等级最高7级，5级比较平衡，推荐5级。保存并退出</p>
+<p>再输入<code>grub-mkconfig -o /boot/grub/grub.cfg</code>生成一次配置文件</p>
+<p>然后我们配置Zram内存压缩和交换空间</p>
+<p>输入<code>pacman -S zram-generator</code>，它是管理工具</p>
+<p>输入<code>vim /etc/systemd/zram-generator.conf</code>,并且写入：</p>
+<pre tabindex="0"><code>[zram0]
+zram-size = ram
+compression-algorithm = zstd
+</code></pre><p>然后编辑grub源文件</p>
+<p>输入<code>vim /etc/default/grub</code>,将GRUB_CMDLINE_LINUX_DEFAULT=&ldquo;loglevel=5&quot;一行改为GRUB_CMDLINE_LINUX_DEFAULT=&ldquo;loglevel=5 zswap.enabled=0&rdquo; ，禁用zswap，它和zram功能重复</p>
+<p>再输入<code>grub-mkconfig -o /boot/grub/grub.cfg</code>生成一次配置文件</p>
+<p>输入<code>exit</code>退出chroot环境</p>
+<p>输入<code>reboot</code>重启</p>
+
+<h2 id="tty环境" data-numberify>TTY环境<a class="anchor ms-1" href="#tty环境"></a></h2>
+<p>TTY 是 <strong>Teletypewriter</strong>（电传打字机）的缩写，就是上古时代那种物理打字机连电脑的东西。名字保留到现在，意思就是“文本终端”。因为此时我们还没有图形化桌面，只有终端。</p>
+
+<h3 id="初入系统" data-numberify>初入系统<a class="anchor ms-1" href="#初入系统"></a></h3>
+<p>输入<code>systemctl enable --now NetworkManager</code></p>
+<p>systemctl是systemd的命令行工具，由红帽开发的系统和服务管理工具，enable代表开机自启，&ndash;now代表现在启动</p>
+<p>输入<code>nmtui</code>进入联网tui界面</p>
+<p><picture><img class="img-fluid " alt="msedge_RkO4b8gM1o" src="https://xiaochai-123.github.io/images/screenshoots/2026-02/msedge_RkO4b8gM1o.png?v=03f19af67925818f1f4a9c94722018aa" loading="lazy" width="518" height="425" />
+</picture>
+
+</p>
+<p>选择第二项Activate a connection连接wifi，连接完成后按ESC退出</p>
+<p>使用<code>ping -c 3 bilibili.com</code>测试网络</p>
+<p>输入<code>pacman -S fastfetch cmatrix</code>安装这两个包</p>
+<p>现在我们可以使用fastfetch来查看那个经典页面了：</p>
+<p><picture><img class="img-fluid " alt="Weixin_oN3FN8WmXT" src="https://xiaochai-123.github.io/images/screenshoots/2026-02/Weixin_oN3FN8WmXT.png?v=aebdc6feb7f08ad8960f2c31e061da3f" loading="lazy" width="1077" height="589" />
+</picture>
+
+</p>
+<p>恭喜完成手动安装，拍照纪念一下！</p>
+<p>可以运行<code>cmatrix</code>欣赏一下代码雨，休息一下（按Q或CRTL+C退出）</p>
+<p>这里有些防止滚挂的tips</p>
+<p><picture><img class="img-fluid " alt="msedge_CkIA9LIU7Q" src="https://xiaochai-123.github.io/images/screenshoots/2026-02/msedge_CkIA9LIU7Q.png?v=f2fb98b75414f463c6fb93096eb08beb" loading="lazy" width="804" height="493" />
+</picture>
+
+</p>
+
+<h3 id="快照功能" data-numberify>快照功能<a class="anchor ms-1" href="#快照功能"></a></h3>
+<p>输入<code>pacman -Syu</code>来确认系统是最新状态，这也是之后我们滚动更新的命令，u代表升级所以软件</p>
+<p>输入<code>vim /etc/environment</code>编辑环境变量</p>
+<p>在下方新开一行输入EDITOR=vim</p>
+<p><picture><img class="img-fluid " alt="msedge_nBICBRl85J" src="https://xiaochai-123.github.io/images/screenshoots/2026-02/msedge_nBICBRl85J.png?v=f2ee83f02a360d7bdc7250f5a4205961" loading="lazy" width="1891" height="957" />
+</picture>
+
+</p>
+<p>输入<code>exit</code>,重新登录使环境变量生效（或许这个环境变量可以用来写flag=xxx（））</p>
+<p>然后创建普通用户，因为很多软件不能在root下运行</p>
+<p>输入<code>useradd -mG wheel &lt;username&gt;</code></p>
+<p>-m代表同时创建home目录 G添加用户到wheel组(有管理员权限)，后面加上你的用户名</p>
+<p>输入<code>passwd &lt;username&gt;</code>设置密码</p>
+<p>输入<code>visudo</code>，搜索wheel，取消#%wheel ALL=(ALL:ALL) ALL开头的注释</p>
+<p>输入<code>vim /etc/pacman.conf</code>，搜索multilib，取消#[multilib]和#Include = /etc/pacman.d/mirrorlist前面的注释，在文件最底部新建一行写入以下内容：</p>
+<pre tabindex="0"><code>[archlinuxcn]
+Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
+</code></pre><p>#唉逆神什么时候能有开源镜像站</p>
+<p>然后保存并退出</p>
+<p>输入<code>pacman -Sy archlinuxcn-keyring</code>同步并安装密钥</p>
+<p>输入<code>pacman -S yay paru</code>安装AUR助手</p>
+<p>输入<code>pacman -S snapper snap-pac btrfs-assistant grub-btrfs inotify-tools</code>安装快照需要的包snapper是快照工具，提供创建 修改 删除之类的功能。另一个常用的软件是timeshift，但它可能会导致btrfs系统挂掉！所以建议不要用。snap-pac会在你执行pacman操作的时候自动快照（不用担心存储空间，快照只存储有差别的部分，所以占用小）。btrfs-assistant是简化工具，提供图形化界面和简单命令行指令。grub-btrfs会在启动项选择时添加快照选项，方便回档。最后一个是依赖</p>
+<p>输入<code>systemctl enable --now grub-btrfsd</code>开启快照启动项服务，重启下电脑让它生效</p>
+<p>重启后登录root账户</p>
+<p>输入<code>snapper -c root create-config /</code></p>
+<p>-c指定config指定要使用的配置 root是具体配置名称 create-config创建它(因为还不存在) / 设置快照范围为根目录</p>
+<p>输入<code>snapper -c root create-config /home</code>同样设置home目录</p>
+<p>输入<code>snapper -c root create --description &quot;helloworld&quot;</code>创建第一个快照</p>
+<p>输入<code>snapper -c home create --description &quot;helloworld&quot;</code>创建home的快照</p>
+<p>输入<code>pacman -S linux-lts</code>安装lts内核来备用。lts是不会频繁更新的稳定版内核，如果使用最新内核进不去系统可以试试这个。</p>
+<p>输入<code>grub-mkconfg -o /boot/grub/grub.cfg</code>更新一下grub配置文件，生成lts内核和快照的启动项</p>
+<p>之后我们就可以通过命令行或者图形化界面或者启动项来回溯啦</p>
+
+<h3 id="安装显卡驱动和视频编解码" data-numberify>安装显卡驱动和视频编解码<a class="anchor ms-1" href="#安装显卡驱动和视频编解码"></a></h3>
+
+<h4 id="nvidia" data-numberify>NVIDIA<a class="anchor ms-1" href="#nvidia"></a></h4>
+<p>我没折腾，因为我的电脑只有Intel核显，可以去查下<a href="https://wiki.archlinux.org/title/NVIDIA" target="_blank" rel="noopener noreferrer">NVIDIA - ArchWiki<i class="fas fa-external-link-square-alt ms-1"></i></a>，使用dkms包自行编译</p>
+
+<h4 id="intel" data-numberify>Intel<a class="anchor ms-1" href="#intel"></a></h4>
+<p>输入<code>pacman -S mesa lib32-mesa vulkan-intel lib32-vulkan-intel</code></p>
+
+<h4 id="amd" data-numberify>AMD<a class="anchor ms-1" href="#amd"></a></h4>
+<p>输入<code>pacman -S mesa lib32-mesa xf86-video-amdgpu vulkan-radeon lib32-vulkan-radeon</code></p>
+
+<h3 id="视频编解码" data-numberify>视频编解码<a class="anchor ms-1" href="#视频编解码"></a></h3>
+
+<h4 id="nvidia-1" data-numberify>NVIDIA<a class="anchor ms-1" href="#nvidia-1"></a></h4>
+<p><a href="https://wiki.archlinux.org/title/Hardware_video_acceleration" target="_blank" rel="noopener noreferrer">Hardware video acceleration - ArchWiki<i class="fas fa-external-link-square-alt ms-1"></i></a></p>
+
+<h4 id="intel-1" data-numberify>Intel<a class="anchor ms-1" href="#intel-1"></a></h4>
+<p>输入<code>pacman -S libva-utils libva intel-media-driver</code></p>
+
+<h3 id="音视频服务和蓝牙" data-numberify>音视频服务和蓝牙<a class="anchor ms-1" href="#音视频服务和蓝牙"></a></h3>
+<p>登录普通账户</p>
+<p>输入<code>sudo pacman -S sof-firmware alsa-ucm-conf alsa-firmware</code>驱动</p>
+<p>输入<code>sudo pacman -S pipewire wireplumber ouoewire-pulse pipewire-alsa pipewire-jack</code> 安装pipewire音视频服务技术</p>
+<p>输入<code>systemctl --user enable pipewire wireplumber pipewire-pulse</code>启动服务</p>
+<p>输入<code>sudo pacman -S bluez</code>安装蓝牙</p>
+<p>输入<code>sudo systemctl enable --now bluetooth</code>开启服务</p>
+<p>输入<code>sudo pacman -S power-profiles-daemon</code>安装性能模式切换工具</p>
+<p>输入<code>sudo systemctl enable --now power-profiles-daemon</code>开启服务</p>
+<p>输入<code>sudo pacman -S noto-fonts noto-fonts-emoji adobe-source-han-sans-cn-fonts</code>安装一些基础字体</p>
+<p>输入<code>sudo pacman -S flatpak</code>下载一下flatpak软件，（下载其他软件工具）</p>
+<p>输入<code>sudo flatpak remote-modify flathub --url=https://mirrors.sjtu.edu.cn/flathub</code>添加上交大源</p>
+<p>输入<code>reboot</code>重启电脑，我们可以创建一个作为安装桌面之前的快照了</p>
+<p>输入<code>sudo snapper -c home create --description &quot;before desktop&quot;</code></p>
+<p>输入<code>sudo snapper -c root create --description &quot;before desktop&quot;</code></p>
+
+<h2 id="de环境" data-numberify>DE环境<a class="anchor ms-1" href="#de环境"></a></h2>
+<p>DE环境，即Desktop Environment桌面环境，应该是大多数人最熟悉的环境了。Linux可以选择不同的DE环境，如Gnome，KDE等。有很多Linux预装的DE环境就是Gnome，比如Fedora。Gnome比较简洁（简陋），KDE比较全面（冗杂）。这两个开箱即用，一键安装。但我们还有另一种选择，<strong>Window Manager</strong>(WM)桌面环境其实就是基于WM做出来的。WM只提供基础的窗口管理，任务栏，系统托盘等都要自己安装，占用极低。Sway极其精简，Niri稍高，而且较流程，hyprland自定义程度极高，占用资源接近完整DE，Quickshell可以提供开箱即用的桌面级WM体验（主流为DankMaterialShell和Noctalia）</p>
+<p>我选择了Hyprland，你可以自定义桌面的样子，自定义系统的快捷键，自定义一切</p>
+
+<h3 id="安装hyprland" data-numberify>安装Hyprland<a class="anchor ms-1" href="#安装hyprland"></a></h3>
+<p>虽然我们到了DE环境阶段，但实际上我们还要在TTY里完成DE的安装（）</p>
+<p>或许这样分比较符合直觉？</p>
+<p>输入<code>sudo pacman -S zsh zsh-completions</code>下载zsh和自动补全</p>
+<p>输入<code>chsh -s /usr/bin/zsh</code>将登录shell换成zsh（比较可靠）</p>
+<p>重新登录后可以看到命令行换成了zsh</p>
+<p>输入<code>sudo pacman -S hyprland kitty fuzzel firefox wqy-zenhei</code>hyprland本体，kitty是终端模拟器，fuzzel程序启动菜单，火狐浏览器，文泉驿正黑中文字体</p>
+<p>在选择Repository extra时选择第二项pipewire-jack，兼容前者，字体选择第二项noto-fonts即可。</p>
+<p>输入<code>hyprland</code>进入hyprland会话，跳出的窗口可以看看，先不管。</p>
+<p>使用vim编辑hyprland的配置文件</p>
+<p><code>vim ~/.config/hypr/hyprland.conf</code></p>
+<p>在里面找到# Set programs that you use</p>
+<p>修改成你要的软件</p>
+<pre tabindex="0"><code># Set programs that you use
+$terminal = kitty
+$fileManager = dolphin
+#menu = fuzzel
+</code></pre><p>保存并退出</p>
+<p>再次输入<code>hyprland</code>进入DE</p>
+<p>再次输入<code>vim ~/.config/hypr/hyprland.conf</code>编辑配置文件</p>
+<p>找到autogenerated = 1 # remove this line to remove the warning，删掉这一行</p>
+<p>按下Super(win)+Q键，打开终端，输入<code>hyprctl monitors all</code>查看显示器信息</p>
+<p>找到配置文件里的monitor部分，可以自定义显示器和分辨率刷新率，放大倍率等显示设置（如monitor=eDP-1,1920x1080@60,0x0,1.2)，多个显示器可以再往下多写一行，设置位置，通过具体分辨率x放大倍率计算位置</p>
+<p>搜索input</p>
+<p><picture><img class="img-fluid " alt="msedge_c1KLIwObbZ" src="https://xiaochai-123.github.io/images/screenshoots/2026-02/msedge_c1KLIwObbZ.png?v=56542510cab104aadc1bf05d94f6f9ad" loading="lazy" width="892" height="555" />
+</picture>
+
+</p>
+<p>在这里写入一行accel_profile=flat设置关闭鼠标加速。在下面的touchpad里面，把natural_scroll = false修改为true，开启触摸板自然滚动</p>
+<p>按两下G键回到配置文件顶部</p>
+<p><picture><img class="img-fluid " alt="msedge_w6sA7UGI9A" src="" loading="lazy" />
+</picture>
+
+</p>
+<p>在这里写下</p>
+<pre tabindex="0"><code>xwayland{
+	force_zero_scaling=true
+}
+</code></pre><p>可以解决缩放导致的字体模糊问题，保存并退出</p>
+
+<h3 id="安装音视频服务" data-numberify>安装音视频服务<a class="anchor ms-1" href="#安装音视频服务"></a></h3>
+<p>输入<code>sudo pacman -S --needed pipewire wireplumber pipewire-pulse pipewire-alsa pipewire-jack</code></p>
+<p>输入<code>systemctl --user enable --now pipewire pipewire-pulse wireplumber</code>启动服务</p>
+<p>输入<code>sudo pacman -S pavucontrol</code>安装图形化声音控制工具</p>
+<p>输入<code>sudo pacman -S libnotify mako xdg-desktop-portal-hyprland xdg-desltop-portal-gtk hypropolkitagent qt5-wayland qt6-wayland</code>安装一些必要软件，前两个是通知，xdg是门户，提供屏幕分享，文件选择之类的功能。hypropolkitagent是管理员权限询问，后两个是qt的wayland库，负责让基于 Qt5 和 Qt6 框架开发的应用程序，能在 Wayland 这个新的图形界面上正常显示和运行</p>
+<p>然后再去编辑hyprland的配置文件，找到exec，写入</p>
+<pre tabindex="0"><code>exec-once = mako
+exec-once = /usr/lib/hyprpolkitagent/hyprpolkitagent
+</code></pre><p>代表开机自启，保存并退出。</p>
+<p>Super+M退出DE，然后再输入<code>hyprland</code>进入</p>
+<p>输入<code>notify-send helloworld</code>给自己发个信息</p>
+<p>使用<code>mkdir ~/.config/mako</code>创建文件夹，输入<code>vim ~/.config/mako/config</code></p>
+<p>写入(8000代表通知显示8000ms也就是8s，下面设置圆角)</p>
+<pre tabindex="0"><code>default-timeout=8000
+border-radius=5
+</code></pre><p>输入<code>makoctl reload</code>，再给自己发个信息，就按照我们的配置显示了</p>
+
+<h3 id="安装图形化文档管理器" data-numberify>安装图形化文档管理器<a class="anchor ms-1" href="#安装图形化文档管理器"></a></h3>
+<p>输入<code>sudo pacman -S thunar tumbler ffmpegthumbnailer poppler-glib gvfs-smb file-roller thunar-archive-plugin gnome-keyring</code></p>
+<p>thunar很合适，tumbler提供图片缩略图，下一个提供视频缩略图，下一个pdf缩略图，gvfs是检测u盘和其他硬盘，下一个是压缩解压缩，下一个在右键里添加压缩解压缩功能，最后一个提供密码记录功能。</p>
+<p>然后编辑hyprland配置文件，搜索dolphin，换成thunar</p>
+<p>（搜索bind，跳转到快捷键设置部分。在这里可以自由设置快捷键）保存并退出</p>
+<p>按下Super + R打开thunar file Manager。点击左上角Edit&ndash;&gt;Configure custome actions&hellip;&ndash;&gt;右侧蓝色小齿轮&ndash;&gt;把Command内容改成kitty</p>
+<p>输入<code>sudo ln -s /usr/bin/kitty /usr/bin/gnome-terminal</code></p>
+
+<h3 id="安装其他杂七杂八的功能" data-numberify>安装其他杂七杂八的功能<a class="anchor ms-1" href="#安装其他杂七杂八的功能"></a></h3>
+<p>然后安装面板，输入<code>sudo pacman -S waybar ttf-jetbrains-mono-nerd</code>安装waybar和图标字体，启动waybar。</p>
+<p>然后用一样的办法，配置waybar和exec启动项等内容，在这里你可以自定义waybar显示内容。</p>
+<p>输入<code>sudo pacman -S bluez blueman</code>安装蓝牙功能，使用<code>sudo systemctl enable --now bluetooth</code>开启服务</p>
+<p>输入<code>sudo pacman -S network-manager-applet dnsmasq</code>安装网络面板和高级网络配置工具，同样配置自启项。</p>
+<p>还有锁屏，壁纸，截图，剪贴板等内容，都可以自由安装和选择了。这里懒得说了</p>
+<p><picture><img class="img-fluid " alt="81D33217D990EF3FB677F83621E68F01" src="" loading="lazy" />
+</picture>
+
+</p>
+<p>广阔天地，大有作为(bushi)</p>
+</div>
+</div>
+</div><div class="card-footer">
+  <div class="post-navs d-flex justify-content-evenly"><div class="post-nav post-prev">
+      <i class="fas fa-fw fa-chevron-down post-prev-icon me-1" data-fa-transform="rotate-90"></i>
+      <a href="/posts/xxe%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/">XXE漏洞利用</a>
+    </div><div class="post-nav post-next">
+      <a href="/posts/ctf-web-guide/">[持续更新] CTF-Web Guide</a>
+      <i class="fas fa-fw fa-chevron-down post-next-icon ms-1" data-fa-transform="rotate-270"></i>
+    </div></div>
+</div></article>
+<div class="card component row post-comments" id="post-comments">
+  <div class="card-header">
+    <h2 class="card-title my-2 fs-4 text-surface">Comments</h2>
+  </div>
+  <div class="card-body">
+
+<div class="giscus"></div>
+
+
+
+</div>
+</div></div>
+</div>
+<aside class="col-xxl-4 sidebar d-flex">
+  <div class="container d-flex flex-column">
+    
+    
+<div class="card mb-3">
+  <div class="card-body text-center">
+    <img src="/images/my-avatar.jpg" alt="我的头像" class="rounded-circle mb-2" width="100" height="100">
+    <h5 class="card-title">xiaochai_123</h5>
+    <p class="card-text">CS学生 | CTF界的小学生 | BD7PUC</p>
+<nav class="d-flex justify-content-center gap-2 my-2">
+  <a class="btn btn-sm btn-outline-dark rounded-circle" href="https://github.com/xiaochai-123" title="GitHub" target="_blank">
+    <i class="fab fa-github"></i>
+  </a>
+  <a class="btn btn-sm btn-outline-primary rounded-circle" href="mailto:l2556843965@163.com" title="Email">
+    <i class="fas fa-envelope"></i>
+  </a>
+  <a class="btn btn-sm btn-outline-danger rounded-circle" href="https://space.bilibili.com/595746072" title="Bilibili" target="_blank">
+  <i class="fab fa-bilibili"></i> 
+</a>
+  
+</nav>
+  </div>
+</div>
+
+
+    <div class="accordion posts-toggle">
+      <div class="row card component accordion-item">
+        <div class="accordion-header card-header border-0">
+          <a
+            class="accordion-button d-lg-none mb-1 shadow-none p-0 bg-transparent"
+            role="button"
+            data-bs-toggle="collapse"
+            href="#posts-toggle"
+            aria-expanded="true"
+            aria-controls="posts-toggle">
+            Posts
+          </a>
+        </div>
+        <div
+          class="card-body collapse accordion-collapse accordion-body d-lg-block show"
+          id="posts-toggle">
+          <ul class="nav nav-pills nav-fill" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link active"
+                  id="recent-posts-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#recent-posts"
+                  type="button"
+                  role="tab"
+                  aria-controls="recent-posts"
+                  aria-selected="true">
+                  Recent Posts
+                </button>
+              </li>
+          </ul>
+
+          <div class="tab-content mt-3">
+              <div
+                class="tab-pane active"
+                id="recent-posts"
+                role="tabpanel"
+                aria-labelledby="recent-posts-tab"
+                tabindex="0">
+                <ul class="post-list list-unstyled ms-1">
+                    <li class="mb-2">
+    
+  
+  <div class="d-flex">
+      <div
+        class="flex-shrink-0 d-flex justify-content-center align-items-center"
+        style="max-width: 100px"><picture><img class="img-fluid" alt="Arch&#43;Hyprland" src="https://xiaochai-123.github.io/images/arch.png" loading="lazy"
+     width="833"
+     height="353"/>
+  </picture>
+      </div>
+    <div
+      class="flex-grow-1 d-flex flex-column h-auto justify-content-center ms-3">
+      <a class="post-title" href="/posts/arch&#43;hyprland&#43;linux%E5%B0%8F%E6%8A%80%E5%B7%A7/">
+        Arch&#43;Hyprland
+      </a>
+      <div class="post-meta mt-2">
+        <span class="post-date">
+          February 19, 2026
+        </span>
+      </div>
+    </div>
+  </div>
+                    </li>
+                    <li class="mb-2">
+    
+  
+  <div class="d-flex">
+      <div
+        class="flex-shrink-0 d-flex justify-content-center align-items-center"
+        style="max-width: 100px"><picture><img class="img-fluid" alt="XXE漏洞利用" src="https://xiaochai-123.github.io/images/xxe.png" loading="lazy"
+     width="700"
+     height="502"/>
+  </picture>
+      </div>
+    <div
+      class="flex-grow-1 d-flex flex-column h-auto justify-content-center ms-3">
+      <a class="post-title" href="/posts/xxe%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/">
+        XXE漏洞利用
+      </a>
+      <div class="post-meta mt-2">
+        <span class="post-date">
+          February 17, 2026
+        </span>
+      </div>
+    </div>
+  </div>
+                    </li>
+                    <li class="mb-2">
+    
+  
+  <div class="d-flex">
+      <div
+        class="flex-shrink-0 d-flex justify-content-center align-items-center"
+        style="max-width: 100px"><picture><img class="img-fluid" alt="[持续更新] CTF-Web Guide" src="https://xiaochai-123.github.io/images/1.png" loading="lazy"
+     width="2400"
+     height="1350"/>
+  </picture>
+      </div>
+    <div
+      class="flex-grow-1 d-flex flex-column h-auto justify-content-center ms-3">
+      <a class="post-title" href="/posts/ctf-web-guide/">
+        [持续更新] CTF-Web Guide
+      </a>
+      <div class="post-meta mt-2">
+        <span class="post-date">
+          December 22, 2025
+        </span>
+      </div>
+    </div>
+  </div>
+                    </li>
+                    <li class="mb-2">
+    
+  
+  <div class="d-flex">
+      <div
+        class="flex-shrink-0 d-flex justify-content-center align-items-center"
+        style="max-width: 100px"><picture><img class="img-fluid" alt="SQLi-labs靶场搭建" src="https://xiaochai-123.github.io/images/SQL.png" loading="lazy"
+     width="1546"
+     height="699"/>
+  </picture>
+      </div>
+    <div
+      class="flex-grow-1 d-flex flex-column h-auto justify-content-center ms-3">
+      <a class="post-title" href="/posts/sqli-labs%E9%9D%B6%E5%9C%BA%E6%90%AD%E5%BB%BA/">
+        SQLi-labs靶场搭建
+      </a>
+      <div class="post-meta mt-2">
+        <span class="post-date">
+          December 22, 2025
+        </span>
+      </div>
+    </div>
+  </div>
+                    </li>
+                    <li class="mb-2">
+    
+  
+  <div class="d-flex">
+      <div
+        class="flex-shrink-0 d-flex justify-content-center align-items-center"
+        style="max-width: 100px"><picture><img class="img-fluid" alt="SQL注入——sqli-labs学习笔记" src="https://xiaochai-123.github.io/images/SQL1.png" loading="lazy"
+     width="474"
+     height="240"/>
+  </picture>
+      </div>
+    <div
+      class="flex-grow-1 d-flex flex-column h-auto justify-content-center ms-3">
+      <a class="post-title" href="/posts/sqli-labs/">
+        SQL注入——sqli-labs学习笔记
+      </a>
+      <div class="post-meta mt-2">
+        <span class="post-date">
+          December 22, 2025
+        </span>
+      </div>
+    </div>
+  </div>
+                    </li>
+                </ul>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<div class="accordion post-toc d-none d-lg-block">
+  <div class="accordion-item row mb-4 card component" id="postTOC">
+    <div class="card-header accordion-header">
+      <h2 class="card-title fs-4 my-2 text-surface d-none d-lg-block">Contents</h2>
+      <a class="accordion-button d-lg-none mb-1 collapsed shadow-none p-0 bg-transparent" role="button" data-bs-toggle="collapse" href="#post-toc" aria-expanded="false" aria-controls="post-toc">
+        Contents
+      </a>
+    </div>
+    <div class="card-body collapse accordion-collapse accordion-body d-lg-block" id="post-toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#live环境">Live环境</a>
+      <ul>
+        <li><a href="#联网">联网</a></li>
+        <li><a href="#硬盘操作">硬盘操作</a></li>
+        <li><a href="#安装系统">安装系统</a></li>
+      </ul>
+    </li>
+    <li><a href="#tty环境">TTY环境</a>
+      <ul>
+        <li><a href="#初入系统">初入系统</a></li>
+        <li><a href="#快照功能">快照功能</a></li>
+        <li><a href="#安装显卡驱动和视频编解码">安装显卡驱动和视频编解码</a></li>
+        <li><a href="#视频编解码">视频编解码</a></li>
+        <li><a href="#音视频服务和蓝牙">音视频服务和蓝牙</a></li>
+      </ul>
+    </li>
+    <li><a href="#de环境">DE环境</a>
+      <ul>
+        <li><a href="#安装hyprland">安装Hyprland</a></li>
+        <li><a href="#安装音视频服务">安装音视频服务</a></li>
+        <li><a href="#安装图形化文档管理器">安装图形化文档管理器</a></li>
+        <li><a href="#安装其他杂七杂八的功能">安装其他杂七杂八的功能</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+    
+  </div>
+</aside>
+
+      </div>
+    </main><footer class="footer mt-auto py-3 text-center container"><div class="offcanvas offcanvas-bottom h-auto" tabindex="-1" id="offcanvasActionsPanel"
+  aria-labelledby="offcanvasActionsPanelLabel">
+  <div class="offcanvas-header">
+    <div class="offcanvas-title h5" id="offcanvasActionsPanelLabel">
+      <i class="fas fa-fw fa-th-large me-1"></i>
+      Actions
+    </div>
+    <button type="button" class="btn-close ms-auto" data-bs-dismiss="offcanvas" data-bs-target="offcanvasActionsPanel" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body mt-2"><div class="social-share mb-4 d-flex overflow-auto">
+      <a class="btn-social-share d-flex flex-column align-items-center me-3" rel="noopener noreferrer" aria-label="X Share Button"
+      target="_blank" href="https://x.com/intent/tweet?title=Arch%2bHyprland&url=https%3a%2f%2fxiaochai-123.github.io%2fposts%2farch%2bhyprland%2blinux%25E5%25B0%258F%25E6%258A%2580%25E5%25B7%25A7%2f">
+        <i class="fab fa-2x fa-fw fa-x-twitter mb-2"></i> X
+      </a>
+      <a class="btn-social-share d-flex flex-column align-items-center me-3" rel="noopener noreferrer" aria-label="Facebook Share Button"
+        target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fxiaochai-123.github.io%2fposts%2farch%2bhyprland%2blinux%25E5%25B0%258F%25E6%258A%2580%25E5%25B7%25A7%2f">
+        <i class="fab fa-2x fa-fw fa-facebook-f mb-2"></i> Facebook
+      </a>
+    </div>
+    <hr class="mb-4"><div class="actions d-flex overflow-auto align-items-center">
+      <a role="button" class="action action-go-back d-flex flex-column align-items-center me-3" href="javascript: window.history.back();">
+        <span class="action-icon mb-2"><i class="fas fa-2x fa-chevron-circle-down" data-fa-transform="rotate-90"></i></span> Go back
+      </a>
+      <a role="button" class="action action-reload-page d-flex flex-column align-items-center me-3">
+        <span class="action-icon mb-2"><i class="fas fa-2x fa-redo-alt"></i></span> Reload
+      </a>
+      <a role="button" class="action action-copy-url d-flex flex-column align-items-center me-3">
+        <span class="action-icon mb-2"><i class="fas fa-2x fa-link"></i></span> Copy URL
+      </a>
+  </div>
+    </div>
+  </div>
+</div><div class="row text-center">
+  <div class="col-12 mt-2">
+    <p class="mb-2">xiaochai_123的小窝</p>
+    <p class="text-secondary mb-2"><small>Welcome to xiaochai_123’s Blog! I look forward to sharing this great journey with you.</small></p>© 2026 xiaochai-123. 欢迎转载但请注明出处 | 本博客内容版权所有
+    <div class="footer-line visitor" style="margin: 0.5em 0;">
+      <span id="busuanzi_container_site_uv" title="总访客数" style="display: inline;">
+        👤 总访客数 <span id="busuanzi_value_site_uv">...</span>
+      </span>
+      <span id="busuanzi_container_site_pv" class="footer-divider" title="总访问量" style="display: inline; margin-left: 1em;">
+        👁️ 总访问量 <span id="busuanzi_value_site_pv">...</span>
+      </span>
+    </div>
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <div class="powered-by mb-2 text-secondary">
+  <small>
+    Build with ❤️ from the <a class="text-primary" href="https://gohugo.io" target="_blank" rel="noopener noreferrer">Hugo</a> and the <a class="text-primary" href="https://github.com/razonyang/hugo-theme-bootstrap" target="_blank" rel="noopener noreferrer">HBS</a> theme.
+  </small>
+</div>
+
+
+<nav class="social-links nav justify-content-center mb-2 mt-3">
+    <a class="nav-link social-link p-0 me-1 mb-2" href="mailto:mailto:l2556843965@163.com" title="Email">
+      <i class="fas fa-fw fa-2x fa-envelope" style="color: #0963ac;"></i>
+    </a>
+      <a class="nav-link social-link p-0 me-1 mb-2" target="_blank" href="https://github.com/xiaochai-123" title="GitHub" rel="me">
+        <i class="fa-fw fa-2x fab fa-github"
+          ></i>
+      </a>
+  <a class="nav-link social-link p-0 me-1 mb-2" target="_blank" data-rss-feed href="https://xiaochai-123.github.io/index.xml" title="RSS" rel="me">
+    <i class="fas fa-fw fa-2x fa-rss" style="color: #ea6221;"></i>
+  </a>
+</nav>
+</div>
+  <div class="col-12 col-lg-8 offset-0 offset-lg-1"></div>
+</div>
+<script src="/js/copy-code.js"></script>
+<link rel="stylesheet" href="/css/copy-code.css">
+</footer>
+<script data-precache src="/assets/main/bundle.min.5f7fecfd2a8f9951e8efea436dc08e86e678d38ab9eeb343e3d1324d57f3f64a.js" integrity="sha256-X3/s/SqPmVHo7&#43;pDbcCOhuZ404q57rND49EyTVfz9ko=" crossorigin="anonymous" async></script><script data-precache src="/assets/icons/bundle.min.0b03280daa4a59445b0aafc46855a2bb53b310e572534596869c33acaeec09dd.js" integrity="sha256-CwMoDapKWURbCq/EaFWiu1OzEOVyU0WWhpwzrK7sCd0=" crossorigin="anonymous" defer></script>
+<script data-precache src="/assets/viewer/bundle.min.cca398d318de9fa7816141db90f09282784fcfe0c5dabc31599b8c589932e4ae.js" integrity="sha256-zKOY0xjen6eBYUHbkPCSgnhPz&#43;DF2rwxWZuMWJky5K4=" crossorigin="anonymous" defer></script>
+<script src="https://giscus.app/client.js"
+    data-repo="xiaochai-123/xiaochai-123.github.io"
+    data-repo-id="R_kgDOQcBRNA"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOQcBRNM4Cy98G"
+    data-mapping="pathname"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    data-loading="lazy"
+    crossorigin="anonymous"
+    defer>
+</script>
+
+
+  </body>
+</html>

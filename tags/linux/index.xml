@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Linux on xiaochai_123的小窝</title>
+    <link>https://xiaochai-123.github.io/tags/linux/</link>
+    <description>Recent content in Linux on xiaochai_123的小窝</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <copyright>© 2026 xiaochai-123. 欢迎转载但请注明出处 | 本博客内容版权所有</copyright>
+    <lastBuildDate>Thu, 19 Feb 2026 18:35:35 +0800</lastBuildDate><atom:link href="https://xiaochai-123.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Arch&#43;Hyprland</title>
+      <link>https://xiaochai-123.github.io/posts/arch&#43;hyprland&#43;linux%E5%B0%8F%E6%8A%80%E5%B7%A7/</link>
+      <pubDate>Thu, 19 Feb 2026 18:35:35 +0800</pubDate>
+      <guid>https://xiaochai-123.github.io/posts/arch&#43;hyprland&#43;linux%E5%B0%8F%E6%8A%80%E5%B7%A7/</guid>
+      <description><![CDATA[<h1 id="arch-linux" data-numberify>Arch Linux<a class="anchor ms-1" href="#arch-linux"></a></h1>
+<p>因为看上了Arch Linux的社区活跃性，所以我决定试试一下这个操作系统！</p>
+<p>（安装起来也很炫酷，不像其他系统只要点点点就完成了，让我找到小时候第一次安系统的新奇感）</p>
+<p>通过安装Arch Linux，也可以学到一些东西。</p>
+<p>我按照B站up林长枫的教程，archlinux 的wiki和AI建议，弄出了一个arch。下面就来记录一下学到的东西和折腾流程</p>
+
+<h1 id="概述前言" data-numberify>概述/前言<a class="anchor ms-1" href="#概述前言"></a></h1>
+<p>​	在Unix系统之前，如Multics系统代码量巨大，庞大臃肿，复杂难用，并且和特定机器硬件绑定(因为是用汇编语言写的)，价格昂贵，只能单用户单任务运行。而在1969年的美国贝尔实验室，Ken Thompson为了在闲置机器上运行他编写的《星际旅行》（Space Travel）游戏，开发了Unix。最初，Unix是用汇编语言编写的，这给系统移植带来了巨大困难。为了解决这个问题，丹尼斯·里奇（Dennis Ritchie）在1973年对B语言进行了改良，创造了大名鼎鼎的<strong>C语言</strong>，并与肯·汤普逊一起用C语言彻底重写了Unix。Unix可移植，支持大量用户和任务数，统一文件接口，清晰化文件系统，精细控制系统权限，并且自由开源。</p>
+<p>​	当时的AT&amp;T公司（贝尔实验室母公司）受法律限制不能销售计算机产品，他们便把Unix源码以低廉的价格授权给大学用于教学，而后学术界对其进行了大量改进，如SunOS/AIX（挺都没听过)等。</p>
+<p>​	由于Unix的商业化和闭源化难以被接受，1984年，Richard Stallman发起了<strong>GNU计划</strong>，为了创建一个完全自由且于Unix兼容的操作系统。GNU计划开发了大量的系统组件（如GCC编译器，文本编辑器，命令行Shell，函数库等），但内核却迟迟未能完成。直到1991年，芬兰大学生Linus Torvalds不满于当时教学的类Unix系统Minix的授权限制，决定自己编写一个内核。他把这个内核发到网上，命名为<strong>Linux</strong>。要素集齐，合成了一个完整的、功能强大的、自由开源的操作系统——<strong>GNU/Linux</strong>。</p>
+
+<h1 id="准备工作" data-numberify>准备工作<a class="anchor ms-1" href="#准备工作"></a></h1>
+<p>因为要安装系统，我们需要准备一个装机U盘。对这块U盘的要求并不高，只要能稳定读取，存储空间大于4G其实都够用。</p>
+<p>我建议使用Ventoy制作U盘。Ventoy是一个开源工具，用于制作装机U盘。首先去<a href="https://www.ventoy.net/cn/" target="_blank" rel="noopener noreferrer">Ventoy官网<i class="fas fa-external-link-square-alt ms-1"></i></a>下载软件，选好你的U盘点安装。然后在U盘里新建一个iso文件夹，把iso文件丢进去就可以了。对，很简单。然后去<a href="https://archlinux.org/download/" target="_blank" rel="noopener noreferrer">Arch Linux官网<i class="fas fa-external-link-square-alt ms-1"></i></a>，往下滑找到China的下载地址，下载一个Arch Linux的镜像文件，丢进U盘的iso文件夹里，这样我们用来装Arch Linux的装机U盘就做好了。</p>
+<p>然后就是进BIOS修改启动顺序或直接选择U盘为启动项，进入Ventoy的界面，选择Arch Linux镜像</p>
+
+<h1 id="安装arch-linux系统" data-numberify>安装Arch Linux系统<a class="anchor ms-1" href="#安装arch-linux系统"></a></h1>
+
+<h2 id="live环境" data-numberify>Live环境<a class="anchor ms-1" href="#live环境"></a></h2>
+
+<h3 id="联网" data-numberify>联网<a class="anchor ms-1" href="#联网"></a></h3>
+<p>在选择Arch Linux镜像后，我们会进入到命令行界面内。这是我们的第一个阶段——Live环境，这个环境运行在内存当中，所以我们可以在环境中格式化硬盘，但是关机后他就会重置。我们需要在Live环境里完成网络的连接，对硬盘进行分区和格式化，使用pacstrap命令讲基础系统安装到硬盘上。</p>
+<p>你会看到像这样的命令行界面：</p>
+<p>root@archiso ~ #</p>
+<p>输入 <code>ip a</code> 可以列出当前的网络信息，有线网会自动连接，连接无线网需要使用iwd命令行工具。</p>
+<p>输入 <code>iwctl</code> 打开联网工具，输入<code>device list</code>可以查看网络适配器设备，一般是wlan0。</p>
+<p>输入<code>station wlan0 scan</code>指定网络适配器并扫描网络</p>
+<p>输入<code>station wlan0 get-networks</code>列出所有可用网络</p>]]></description>
+    <enclosure url="https://xiaochai-123.github.io/images/arch.png" length="410412" type="image/.png" />
+    </item>
+    
+  </channel>
+</rss>
+
