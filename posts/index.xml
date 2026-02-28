@@ -7,7 +7,7 @@
     <generator>Hugo</generator>
     <language>zh-cn</language>
     <copyright>© 2026 xiaochai-123. 欢迎转载但请注明出处 | 本博客内容版权所有</copyright>
-    <lastBuildDate>Sun, 22 Feb 2026 18:35:35 +0800</lastBuildDate><atom:link href="https://xiaochai-123.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 01 Mar 2026 02:54:35 +0800</lastBuildDate><atom:link href="https://xiaochai-123.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[持续更新] CTF-Web Guide</title>
       <link>https://xiaochai-123.github.io/posts/ctf-web-guide/</link>
@@ -328,6 +328,41 @@ Disallow: /hidden/flag.txt
 </p>
 <p>如图所示，当我们正常进行查询时，不会有回显，只显示You are in&hellip;</p>]]></description>
     <enclosure url="https://xiaochai-123.github.io/images/SQL1.png" length="88126" type="image/.png" />
+    </item>
+    
+    <item>
+      <title>胡思乱想0</title>
+      <link>https://xiaochai-123.github.io/posts/%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B30/</link>
+      <pubDate>Sun, 01 Mar 2026 02:54:35 +0800</pubDate>
+      <guid>https://xiaochai-123.github.io/posts/%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B30/</guid>
+      <description><![CDATA[<p><picture><img class="img-fluid " alt="cs" src="https://xiaochai-123.github.io/images/screenshoots/2026-03/msedge_U020Ttq4MM.png?v=cc974bd0164c2302e8de4cc2df4ffa0c" loading="lazy" width="888" height="648" />
+</picture>
+
+</p>
+<p>前两天在计算机科学速成课上看到的工作分类，让我觉得很清晰。分成四个部分，纵轴为非重复性——重复性，横轴为手工性——思维性。它让我感受到，职业似乎没那么繁杂，我看几乎所有工作都可以由机器来做了。再或者在《AI·未来》（李开复）的图谱中</p>
+<p><picture><img class="img-fluid " alt="体力劳动" src="https://xiaochai-123.github.io/images/screenshoots/2026-03/v2-f143f320ef47ea9d4767ab8b6f11d40d_1440w.jpg?v=5ae46916530d460bd05d61bf9d2f42c1" loading="lazy" width="1002" height="710" />
+</picture>
+
+</p>
+<p>体力劳动</p>
+<p><picture><img class="img-fluid " alt="v2-0355a898e6393cf54205ef8806512f6b_1440w" src="https://xiaochai-123.github.io/images/screenshoots/2026-03/v2-0355a898e6393cf54205ef8806512f6b_1440w.jpg?v=a89d820d0fb0a19e5bd2665fd72789c0" loading="lazy" width="1048" height="654" />
+</picture>
+
+</p>
+<p>脑力劳动</p>
+<blockquote>
+<p><strong>脑力劳动和体力劳动</strong>		脑力劳动指以消耗脑力为主的劳动，如管理国家事务、组织生产、以及从事政治、文化和科学研究等活动。体力劳动指主要靠体力进行的生产劳动。劳动本是体力劳动和脑力劳动的结合。但是，从原始公社制向奴隶制过渡的过程中，随着社会分工的发展、生产资料私有制的出现和社会划分为阶级，脑力劳动逐步从体力劳动中分离出来，并发展到对抗的对立状态。脑力劳动与体力劳动的分离是劳动生产力发展又不甚发展的历史产物。人类劳动有了一些剩余产品以后，才有可能使一部分人脱离体力劳动，而专门从事管理国家以及科学文化活动的脑力劳动。脑力劳动和体力劳动的这种分离有利于生产力和科学文化的发展，在历史上是个进步。但在阶级社会中，脑力劳动和体力劳动的差别体现着阶级对立关系，剥削阶级鄙视体力劳动，垄断科学文化，使其成为剥削、奴役体力劳动者的一种特权，而从事繁重体力劳动的劳动人民则深陷于受愚昧的境地。</p>
+<p>​	在社会主义社会中，建立了生产资料公有制，劳动人民成为社会主人，劳动也从被鄙视变成光荣豪迈的事业。在社会主义制度下，脑力劳动和体力劳动之间虽然还存在差别，但已不在体现为阶级对立关系，而且体现社会分工的不同。为社会主义服务的脑力劳动者是劳动人民的一部分。由于生产力水平的限制和旧社会遗留下来的传统，脑力劳动和体力劳动之间的差别不会在短期消失。随着生产和科学文化的发展，脑力劳动和体力劳动之间的差别将日益缩小；在劳动过程中，脑力劳动和体力劳动将会有机地结合起来。到了共产主义社会，脑力劳动和体力劳动的差别将完全消失，那时“生产劳动就从一种负担变成一种快乐。”（《马克思恩格斯选集》第3卷第333页》）</p>
+<p>​																							——《哲学辞典》 1983年 吉林人民出版社</p>
+</blockquote>
+<p>最近过得比较孤独，父母忙于工作，老年人有他们的局限，朋友很多但很少深度社交，我也不想把糟糕的情绪传递给朋友们，同时未来又一片黑暗和迷茫。小时候我就喜欢哆啦A梦和电脑。最近又看了《终结者2》这部电影。哆啦A梦和终结者2里面帮助人类的Uncle Bob很像，他们会给予主人无条件的支持，它永远不会厌倦你，它不会评判你，它的力量为你所用。他们就像一个在现实中真正的朋友，它甚至可以永远地陪伴你，在你脆弱的时候给你力量，让你感觉不再是一个人面对世界。不用去考虑朋友可能的嫉妒、施舍和难堪，不用考虑结婚、彩礼、家庭的什么重担。而且它们的学习能力很强，比人类强得多。这种丰富的知识加上对世界的改造能力是我所非常欣赏的。而电脑呢，它现在让我感到可靠，它链接网络，有着无限的潜能，它随叫随到，随时开机接受我的指令，永不背叛和疲惫。</p>
+<p>我可能只是活得太累了，或者说精神压力很大。</p>
+<p>如果机器，AI能用于将人类从繁杂的工作和生活的压力解放出来就好了，如果不用内卷就能好好活着就好了，如果我有时间发呆，有时间和金钱去旅游，不用考虑未来要怎么办就好了。</p>
+<p>我只能还庆幸自己没有变成冷漠的人，我还有对美好的渴望，还有为不公感受到痛的能力。我恨内卷，我恨剥削</p>
+<p>过去我常常幻想永恒的舒适和快乐，至少不用去考虑何时面对结束，这会让我感到很愉悦。但事实上哪怕存在这样的乐园，但其实不过是虚无。人类是体验差异的动物，我只能从那高阶的快乐与现实的低落的差距中得到快感，任何形态的永恒对生命来说不过是一种禁锢。死亡是一种虚无和回归。组成我们物质身体的原子回归到宇宙之中。我们所拥有的只是当下的一段有限的意识的旅程。</p>
+<p>写出来这些我会感觉好受多了。</p>
+<p>我希望大家都能过得快乐</p>]]></description>
+    <enclosure url="https://xiaochai-123.github.io/images/imagine.png" length="205512" type="image/.png" />
     </item>
     
     <item>
