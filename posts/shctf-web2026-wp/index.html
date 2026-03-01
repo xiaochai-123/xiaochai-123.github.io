@@ -34,7 +34,7 @@
   <meta itemprop="description" content="SHCTF3rd复现wp">
   <meta itemprop="datePublished" content="2026-02-22T18:35:35+08:00">
   <meta itemprop="dateModified" content="2026-02-22T18:35:35+08:00">
-  <meta itemprop="wordCount" content="1061">
+  <meta itemprop="wordCount" content="1060">
   <meta itemprop="image" content="http://localhost:1313/images/shctf3rd.jpg">
   <meta itemprop="keywords" content="CTF,Web">
   <meta property="og:image:alt" content="SHCTF-web2026-WP" />
@@ -578,7 +578,7 @@ xiaochai_123的小窝
 </span></span><span style="display:flex;"><span>$exploar<span style="color:#f92672">-&gt;</span>$road($this<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">Saturn</span>);
 </span></span></code></pre></div><p>因为黑名单过滤了很多直接读文件的函数（<code>file_get_contents</code>、<code>fopen</code>、<code>readfile</code>），但没有过滤 <code>SplFileObject</code> 类和它的 <code>fpassthru</code> 方法，所以我们要传入 <code>$func=&quot;SplFileObject&quot;</code>、<code>$args[0]=&quot;/flag&quot;</code>、<code>$road=&quot;fpassthru&quot;</code></p>
 <blockquote>
-<p>SplFileObject是PHP原生文件操作类，fpassthru可直接输出文件内容</p>
+<p>SplFileObject是PHP原生文件操作类，fpassthru直接输出文件完整内容</p>
 </blockquote>
 <p>而<code>Solar::__call</code> 能实例化自定义类并方法</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">__call</span>($func, $args) {
@@ -618,11 +618,10 @@ xiaochai_123的小窝
 <ul>
 <li>使用数组：<code>[0=&gt;$sun, 1=&gt;'dummy']</code></li>
 <li>serialize后，字符串里有<code>i:0;O:3:&quot;Sun&quot;....i:1;s:5:&quot;dummy&quot;;</code></li>
-<li>手动将<code>i:1;</code>改为<code>i:0;</code>，后面那个&quot;覆盖&quot;了前面位置，前者直接成为“孤儿”，<strong>立即调用__destruct</strong></li>
+<li>把<code>i:1;</code>改为<code>i:0;</code>，后面那个覆盖了前面位置，前者直接丢失引用，<strong>立即调用__destruct</strong></li>
 </ul>
 <p>整个链条：</p>
-<pre tabindex="0"><code>整条链在payload里怎么嵌套？
-Sun对象 → $sun = Moon
+<pre tabindex="0"><code>Sun对象 → $sun = Moon
 Moon对象 → $nearside = Earth
 Earth对象 → $onearth = SolarA，$inearth任意，$outofearth=&#39;/flag&#39;
 SolarA → Mercury = SolarB, Venus=&#39;SplFileObject&#39;, Mars=&#39;/flag&#39;
@@ -768,7 +767,7 @@ Sun::destruct触发，层层串联，SolarB-&gt;__call 读flag
       <i class="fas fa-fw fa-chevron-down post-prev-icon me-1" data-fa-transform="rotate-90"></i>
       <a href="/posts/arch&#43;hyprland&#43;linux%E5%B0%8F%E6%8A%80%E5%B7%A7/">Arch&#43;Hyprland</a>
     </div><div class="post-nav post-next">
-      <a href="/posts/ctf-web-guide/">[持续更新] CTF-Web Guide</a>
+      <a href="/posts/%E5%85%B3%E4%BA%8Eai%E7%9A%84%E4%B8%80%E4%BA%9B%E7%9C%8B%E6%B3%95/">关于AI的看法</a>
       <i class="fas fa-fw fa-chevron-down post-next-icon ms-1" data-fa-transform="rotate-270"></i>
     </div></div>
 </div></article>
@@ -968,6 +967,54 @@ Sun::destruct触发，层层串联，SolarB-&gt;__call 读flag
   <div class="d-flex">
       <div
         class="flex-shrink-0 d-flex justify-content-center align-items-center"
+        style="max-width: 100px"><picture><img class="img-fluid" alt="关于AI的看法" src="http://localhost:1313/images/OIPC.jpg" loading="lazy"
+     width="388"
+     height="270"/>
+  </picture>
+      </div>
+    <div
+      class="flex-grow-1 d-flex flex-column h-auto justify-content-center ms-3">
+      <a class="post-title" href="/posts/%E5%85%B3%E4%BA%8Eai%E7%9A%84%E4%B8%80%E4%BA%9B%E7%9C%8B%E6%B3%95/">
+        关于AI的看法
+      </a>
+      <div class="post-meta mt-2">
+        <span class="post-date">
+          March 1, 2026
+        </span>
+      </div>
+    </div>
+  </div>
+                    </li>
+                    <li class="mb-2">
+    
+  
+  <div class="d-flex">
+      <div
+        class="flex-shrink-0 d-flex justify-content-center align-items-center"
+        style="max-width: 100px"><picture><img class="img-fluid" alt="胡思乱想0" src="http://localhost:1313/images/imagine.png" loading="lazy"
+     width="500"
+     height="500"/>
+  </picture>
+      </div>
+    <div
+      class="flex-grow-1 d-flex flex-column h-auto justify-content-center ms-3">
+      <a class="post-title" href="/posts/%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B30/">
+        胡思乱想0
+      </a>
+      <div class="post-meta mt-2">
+        <span class="post-date">
+          March 1, 2026
+        </span>
+      </div>
+    </div>
+  </div>
+                    </li>
+                    <li class="mb-2">
+    
+  
+  <div class="d-flex">
+      <div
+        class="flex-shrink-0 d-flex justify-content-center align-items-center"
         style="max-width: 100px"><picture><img class="img-fluid" alt="SHCTF-web2026-WP" src="http://localhost:1313/images/shctf3rd.jpg" loading="lazy"
      width="1771"
      height="1018"/>
@@ -1029,54 +1076,6 @@ Sun::destruct触发，层层串联，SolarB-&gt;__call 读flag
       <div class="post-meta mt-2">
         <span class="post-date">
           February 17, 2026
-        </span>
-      </div>
-    </div>
-  </div>
-                    </li>
-                    <li class="mb-2">
-    
-  
-  <div class="d-flex">
-      <div
-        class="flex-shrink-0 d-flex justify-content-center align-items-center"
-        style="max-width: 100px"><picture><img class="img-fluid" alt="[持续更新] CTF-Web Guide" src="http://localhost:1313/images/1.png" loading="lazy"
-     width="2400"
-     height="1350"/>
-  </picture>
-      </div>
-    <div
-      class="flex-grow-1 d-flex flex-column h-auto justify-content-center ms-3">
-      <a class="post-title" href="/posts/ctf-web-guide/">
-        [持续更新] CTF-Web Guide
-      </a>
-      <div class="post-meta mt-2">
-        <span class="post-date">
-          December 22, 2025
-        </span>
-      </div>
-    </div>
-  </div>
-                    </li>
-                    <li class="mb-2">
-    
-  
-  <div class="d-flex">
-      <div
-        class="flex-shrink-0 d-flex justify-content-center align-items-center"
-        style="max-width: 100px"><picture><img class="img-fluid" alt="SQLi-labs靶场搭建" src="http://localhost:1313/images/SQL.png" loading="lazy"
-     width="1546"
-     height="699"/>
-  </picture>
-      </div>
-    <div
-      class="flex-grow-1 d-flex flex-column h-auto justify-content-center ms-3">
-      <a class="post-title" href="/posts/sqli-labs%E9%9D%B6%E5%9C%BA%E6%90%AD%E5%BB%BA/">
-        SQLi-labs靶场搭建
-      </a>
-      <div class="post-meta mt-2">
-        <span class="post-date">
-          December 22, 2025
         </span>
       </div>
     </div>
