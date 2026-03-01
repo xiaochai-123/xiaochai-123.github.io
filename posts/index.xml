@@ -7,7 +7,7 @@
     <generator>Hugo</generator>
     <language>zh-cn</language>
     <copyright>© 2026 xiaochai-123. 欢迎转载但请注明出处 | 本博客内容版权所有</copyright>
-    <lastBuildDate>Sun, 01 Mar 2026 02:54:35 +0800</lastBuildDate><atom:link href="https://xiaochai-123.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 01 Mar 2026 13:54:35 +0800</lastBuildDate><atom:link href="https://xiaochai-123.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[持续更新] CTF-Web Guide</title>
       <link>https://xiaochai-123.github.io/posts/ctf-web-guide/</link>
@@ -176,6 +176,43 @@ Disallow: /hidden/flag.txt
 <h2 id="第三章核心漏洞---注入篇-injection-attacks" data-numberify>第三章：核心漏洞 - 注入篇 (Injection Attacks)<a class="anchor ms-1" href="#第三章核心漏洞---注入篇-injection-attacks"></a></h2>
 <p><em>CTF Web 的半壁江山。</em></p>]]></description>
     <enclosure url="https://xiaochai-123.github.io/images/1.png" length="328106" type="image/.png" />
+    </item>
+    
+    <item>
+      <title>关于AI的看法</title>
+      <link>https://xiaochai-123.github.io/posts/%E5%85%B3%E4%BA%8Eai%E7%9A%84%E4%B8%80%E4%BA%9B%E7%9C%8B%E6%B3%95/</link>
+      <pubDate>Sun, 01 Mar 2026 13:54:35 +0800</pubDate>
+      <guid>https://xiaochai-123.github.io/posts/%E5%85%B3%E4%BA%8Eai%E7%9A%84%E4%B8%80%E4%BA%9B%E7%9C%8B%E6%B3%95/</guid>
+      <description><![CDATA[<p>当下的AI时代，它们的学习速度和进化速率我们有目共睹，从设计上来看，他们对信息的接受和处理效率是远超我们人类的。</p>
+<p>的确，AI会对我们的时代造成巨大的冲击，我们无法预测未来会变成什么样子。也许一部分人类会被消灭，也许人类会从工作中解放。我看到有人会产生对它的厌拒心理，甚至感到害怕</p>
+<p>比如这两个例子。</p>
+<p>我看过影视飓风的视频。<a href="https://www.bilibili.com/video/BV1QMSjBREzr/?share_source=copy_web&amp;vd_source=9c22157b2c924857f42d806788cc5fea" target="_blank" rel="noopener noreferrer">AI可以取代我，那我的意义是？<i class="fas fa-external-link-square-alt ms-1"></i></a></p>
+<p>他们是制作视频的公司，当Tim体验了AI创作视频的时候，他发现AI的质量和效率，甚至进化速率和学习能力，都要远超过人类。过去每个人需要花费数年学习成本，制作视频需要很多人共同工作，工作几个小时可能还比不上AI生成两分钟出来的成果。而AI生成视频的能力也越来越强，画面更清晰，更符合真实的物理规律。</p>
+<p>再比如说我们CTF界目前的情况。这是SHCTF 2026的一个文栏<picture><img class="img-fluid " alt="8312195f3eee4af1bee5ef36cb532b4d" src="https://xiaochai-123.github.io/images/screenshoots/2026-03/8312195f3eee4af1bee5ef36cb532b4d.png?v=589264878636649fad6be0cc22e8ae93" loading="lazy" width="1401" height="600" />
+</picture>
+
+</p>
+<p>我们看到了什么？我们过去奉为圭臬的努力和投入，在AI的面前其实不值一提。我们继续沿用着传统的学习策略，传统的知识，使用着远远落后时代的效率。我们工作和努力的意义何在？</p>
+<p>我相信，AI马上就会变成多面手，甚至我们在上一篇胡思乱想中右上角分类出来的工作——认知型，创造型的工作，也会由AI来完成。</p>
+<p>人工智能本质上是在高维向量空间运作，它能捕捉数千个变量之间极其微弱的非线性关联，而我们人类则受到三维思维的局限。未来，知识越来越多，一个人学完前人积累的东西可能就已经过了创造力的黄金期。但AI不用——它瞬间就能学会。</p>
+<p>即便我们目前互联网上的高质量文本资源即将耗尽，但物理世界的多模态数据刚刚开始发掘，自动驾驶每天收集数百万公里的道路数据，具身智能一直在交互中学习物理规律。未来人工智能能从传感器和物理模拟获得更加丰富的学习资源。他们通过机器学习的途径不断升级。而代码和知识（机器的感性认知？）却可以无限复制和共享。</p>
+<p>我们也在逐步突破冯·诺依曼架构储算分离导致的能源浪费的限制，人类在研究存算一体和类脑计算。</p>
+<p>我看到AI真正有希望去开创我们科学的新时代，而不只是靠过去几个聪明人的灵光一现的方式来发展科学。 我想说的是<strong>我们人类的发展可能将要很大程度上依靠AI</strong></p>
+<p>人类正是能制造工具并进行有意识、有目的的劳动，才从猿猴进化成人类。我们不应该排斥工具，那我们真正排斥的是什么呢？</p>
+<p><strong>我们排斥的是我们变成了工具</strong>。</p>
+<p>我们不会害怕自己被AI超越，但是会害怕失去经济来源和生活的体面。我们不怕科学进步，新工具的出现，而是害怕新工具从解放手段异化为压迫的力量。</p>
+<p>而我们现在有这样一个悖论，科技与制度的悖论：</p>
+<p>如果技术真的足够发达，机器可以代替人类完成大部分工作，那么：</p>
+<ol>
+<li><strong>生产端</strong>：人类不需要劳动，资本家失去&quot;剩余价值&quot;的来源——没人干活，利润从哪来？</li>
+<li><strong>消费端</strong>：人类不工作就没有收入，没有收入就无法消费——产品卖给谁？</li>
+<li><strong>宏观结果</strong>：整个经济循环断裂，社会陷入危机。</li>
+</ol>
+<p><strong>结论</strong>：资本主义为了维持自身运转，不得不<strong>限制技术的发展和应用</strong>，或者<strong>制造出不需要的&quot;虚假工作&quot;</strong> 让人们有事可做、有钱可花。
+而从我们政治经济学的角度来说，剩余价值赖源于工人的剩余劳动。如果机器取代了工人，由于机器本身不创造剩余价值（它只是转移自身的价值），资本主义生产方式的基础将被瓦解。同时，由于大部分人没有工作，没有工资，也就没有人消费，导致饿殍遍野、再生产断裂、经济危机。</p>
+<p><strong>我希望科学的束缚将会被打破，我希望人们能从繁重的劳动中解放出来。</strong></p>
+<p>这些就是我现在对AI的思考和感想。感谢阅读</p>]]></description>
+    <enclosure url="https://xiaochai-123.github.io/%5Cimages%5COIP-C.webp" length="12682" type="image/.webp" />
     </item>
     
     <item>
