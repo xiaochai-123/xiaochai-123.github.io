@@ -7,7 +7,7 @@
     <generator>Hugo</generator>
     <language>zh-cn</language>
     <copyright>© 2026 xiaochai-123. 欢迎转载但请注明出处 | 本博客内容版权所有</copyright>
-    <lastBuildDate>Wed, 25 Mar 2026 20:43:35 +0800</lastBuildDate><atom:link href="https://xiaochai-123.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 07 Apr 2026 23:25:07 +0800</lastBuildDate><atom:link href="https://xiaochai-123.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[持续更新] CTF-Web Guide</title>
       <link>https://xiaochai-123.github.io/posts/ctf-web-guide/</link>
@@ -522,6 +522,77 @@ Disallow: /hidden/flag.txt
 <p>写出来这些我会感觉好受多了。</p>
 <p>我希望大家都能过得快乐</p>]]></description>
     <enclosure url="https://xiaochai-123.github.io/images/imagine.png" length="205512" type="image/.png" />
+    </item>
+    
+    <item>
+      <title>260325~~每~~日打卡</title>
+      <link>https://xiaochai-123.github.io/posts/260325/</link>
+      <pubDate>Wed, 25 Mar 2026 20:43:35 +0800</pubDate>
+      <guid>https://xiaochai-123.github.io/posts/260325/</guid>
+      <description><![CDATA[<h1 id="bjdctf-2020ezphp" data-numberify>[BJDCTF 2020]Ezphp<a class="anchor ms-1" href="#bjdctf-2020ezphp"></a></h1>
+<p>发现神秘base32字符，拉到cyberchef解一下<picture><img class="img-fluid " alt="msedge_6KfUAHsjnf" src="https://xiaochai-123.github.io/images/screenshoots/2026-03/msedge_6KfUAHsjnf.png?v=45705b4155f4b0143f61e3c14ee1d45e" loading="lazy" width="1437" height="697" />
+</picture>
+
+</p>
+<p><picture><img class="img-fluid " alt="msedge_VpGzQgKuIc" src="https://xiaochai-123.github.io/images/screenshoots/2026-03/msedge_VpGzQgKuIc.png?v=b5cf180bf1470970a12b646f8dbd26e2" loading="lazy" width="1449" height="891" />
+</picture>
+
+</p>
+<p>访问对应路径拿到源码</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">highlight_file</span>(<span style="color:#66d9ef">__FILE__</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">error_reporting</span>(<span style="color:#ae81ff">0</span>); 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$file <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;1nD3x.php&#34;</span>;
+</span></span><span style="display:flex;"><span>$shana <span style="color:#f92672">=</span> $_GET[<span style="color:#e6db74">&#39;shana&#39;</span>];
+</span></span><span style="display:flex;"><span>$passwd <span style="color:#f92672">=</span> $_GET[<span style="color:#e6db74">&#39;passwd&#39;</span>];
+</span></span><span style="display:flex;"><span>$arg <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>;
+</span></span><span style="display:flex;"><span>$code <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;&lt;br /&gt;&lt;font color=red&gt;&lt;B&gt;This is a very simple challenge and if you solve it I will give you a flag. Good Luck!&lt;/B&gt;&lt;br&gt;&lt;/font&gt;&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span>($_SERVER) { 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">preg_match</span>(<span style="color:#e6db74">&#39;/shana|debu|aqua|cute|arg|code|flag|system|exec|passwd|ass|eval|sort|shell|ob|start|mail|\$|sou|show|cont|high|reverse|flip|rand|scan|chr|local|sess|id|source|arra|head|light|read|inc|info|bin|hex|oct|echo|print|pi|\.|\&#34;|\&#39;|log/i&#39;</span>, $_SERVER[<span style="color:#e6db74">&#39;QUERY_STRING&#39;</span>])
+</span></span><span style="display:flex;"><span>        )  
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">die</span>(<span style="color:#e6db74">&#39;You seem to want to do something bad?&#39;</span>); 
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">preg_match</span>(<span style="color:#e6db74">&#39;/http|https/i&#39;</span>, $_GET[<span style="color:#e6db74">&#39;file&#39;</span>])) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">preg_match</span>(<span style="color:#e6db74">&#39;/^aqua_is_cute$/&#39;</span>, $_GET[<span style="color:#e6db74">&#39;debu&#39;</span>]) <span style="color:#f92672">&amp;&amp;</span> $_GET[<span style="color:#e6db74">&#39;debu&#39;</span>] <span style="color:#f92672">!==</span> <span style="color:#e6db74">&#39;aqua_is_cute&#39;</span>) { 
+</span></span><span style="display:flex;"><span>        $file <span style="color:#f92672">=</span> $_GET[<span style="color:#e6db74">&#34;file&#34;</span>]; 
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;Neeeeee! Good Job!&lt;br&gt;&#34;</span>;
+</span></span><span style="display:flex;"><span>    } 
+</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">die</span>(<span style="color:#e6db74">&#39;fxck you! What do you want to do ?!&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span>($_REQUEST) { 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">foreach</span>($_REQUEST <span style="color:#66d9ef">as</span> $value) { 
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">preg_match</span>(<span style="color:#e6db74">&#39;/[a-zA-Z]/i&#39;</span>, $value))  
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">die</span>(<span style="color:#e6db74">&#39;fxck you! I hate English!&#39;</span>); 
+</span></span><span style="display:flex;"><span>    } 
+</span></span><span style="display:flex;"><span>} 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">file_get_contents</span>($file) <span style="color:#f92672">!==</span> <span style="color:#e6db74">&#39;debu_debu_aqua&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">die</span>(<span style="color:#e6db74">&#34;Aqua is the cutest five-year-old child in the world! Isn&#39;t it ?&lt;br&gt;&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> ( <span style="color:#a6e22e">sha1</span>($shana) <span style="color:#f92672">===</span> <span style="color:#a6e22e">sha1</span>($passwd) <span style="color:#f92672">&amp;&amp;</span> $shana <span style="color:#f92672">!=</span> $passwd ){
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">extract</span>($_GET[<span style="color:#e6db74">&#34;flag&#34;</span>]);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;Very good! you know my password. But what is flag?&lt;br&gt;&#34;</span>;
+</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">else</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">die</span>(<span style="color:#e6db74">&#34;fxck you! you don&#39;t know my password! And you don&#39;t know sha1! why you come here!&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">preg_match</span>(<span style="color:#e6db74">&#39;/^[a-z0-9]*$/isD&#39;</span>, $code) <span style="color:#f92672">||</span> 
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">preg_match</span>(<span style="color:#e6db74">&#39;/fil|cat|more|tail|tac|less|head|nl|tailf|ass|eval|sort|shell|ob|start|mail|\`|\{|\%|x|\&amp;|\$|\*|\||\&lt;|\&#34;|\&#39;|\=|\?|sou|show|cont|high|reverse|flip|rand|scan|chr|local|sess|id|source|arra|head|light|print|echo|read|inc|flag|1f|info|bin|hex|oct|pi|con|rot|input|\.|log|\^/i&#39;</span>, $arg) ) { 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">die</span>(<span style="color:#e6db74">&#34;&lt;br /&gt;Neeeeee~! I have disabled all dangerous functions! You can&#39;t get my flag =w=&#34;</span>); 
+</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">else</span> { 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">include</span> <span style="color:#e6db74">&#34;flag.php&#34;</span>;
+</span></span><span style="display:flex;"><span>    $code(<span style="color:#e6db74">&#39;&#39;</span>, $arg); 
+</span></span><span style="display:flex;"><span>} <span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">This is a very simple challenge and if you solve it I will give you a flag. Good Luck!
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">fxck you! I hate English!
+</span></span></span></code></pre></div><p>哇，这么多正则匹配看的好难受。这哪是ezphp，又骗我</p>]]></description>
     </item>
     
     <item>
