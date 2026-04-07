@@ -7,7 +7,7 @@
     <generator>Hugo</generator>
     <language>zh-cn</language>
     <copyright>© 2026 xiaochai-123. 欢迎转载但请注明出处 | 本博客内容版权所有</copyright>
-    <lastBuildDate>Tue, 07 Apr 2026 23:25:07 +0800</lastBuildDate><atom:link href="https://xiaochai-123.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 07 Apr 2026 22:55:07 +0800</lastBuildDate><atom:link href="https://xiaochai-123.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[持续更新] CTF-Web Guide</title>
       <link>https://xiaochai-123.github.io/posts/ctf-web-guide/</link>
@@ -176,6 +176,285 @@ Disallow: /hidden/flag.txt
 <h2 id="第三章核心漏洞---注入篇-injection-attacks" data-numberify>第三章：核心漏洞 - 注入篇 (Injection Attacks)<a class="anchor ms-1" href="#第三章核心漏洞---注入篇-injection-attacks"></a></h2>
 <p><em>CTF Web 的半壁江山。</em></p>]]></description>
     <enclosure url="https://xiaochai-123.github.io/images/1.png" length="328106" type="image/.png" />
+    </item>
+    
+    <item>
+      <title>深圳大学 大学物理实验（一） 预习测试答案</title>
+      <link>https://xiaochai-123.github.io/posts/%E6%B7%B1%E5%9C%B3%E5%A4%A7%E5%AD%A6-%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C-%E9%A2%84%E4%B9%A0%E9%A2%98%E7%AD%94%E6%A1%88/</link>
+      <pubDate>Tue, 07 Apr 2026 22:55:07 +0800</pubDate>
+      <guid>https://xiaochai-123.github.io/posts/%E6%B7%B1%E5%9C%B3%E5%A4%A7%E5%AD%A6-%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C-%E9%A2%84%E4%B9%A0%E9%A2%98%E7%AD%94%E6%A1%88/</guid>
+      <description><![CDATA[<h1 id="深圳大学-大学物理实验一-预习测试答案" data-numberify>深圳大学 大学物理实验（一） 预习测试答案<a class="anchor ms-1" href="#深圳大学-大学物理实验一-预习测试答案"></a></h1>
+
+<h2 id="1-电子秤的设计" data-numberify>1. 电子秤的设计<a class="anchor ms-1" href="#1-电子秤的设计"></a></h2>
+
+<h3 id="一单选题共7题每题5分满分35分得分35分" data-numberify>一、单选题（共7题，每题5分，满分35分，得分35分）<a class="anchor ms-1" href="#一单选题共7题每题5分满分35分得分35分"></a></h3>
+<ol>
+<li>应变片的灵敏度是指（<strong>B</strong>）
+<ul>
+<li>A. 横向应变与纵向应变之比</li>
+<li>B. 电阻的相对变化与长度的相对变化之比</li>
+<li>C. 横向应变与纵向应力之比</li>
+<li>D. 电阻的相对变化与体积的相对变化之比</li>
+</ul>
+</li>
+<li>下面哪种电桥有非线性误差（<strong>C</strong>）
+<ul>
+<li>A. 全臂电桥</li>
+<li>B. 单臂电桥</li>
+<li>C. 都有非线性误差</li>
+<li>D. 双臂电桥</li>
+</ul>
+</li>
+<li>应变片采用金属丝多次环绕做成栅状的原因是（<strong>D</strong>）
+<ul>
+<li>A. 增加应变片的总电阻</li>
+<li>B. 增加应变片的稳定性</li>
+<li>C. 增加产生的总电压</li>
+<li>D. 增加形变的有效长度</li>
+</ul>
+</li>
+<li>本实验中22千欧电位器调零是指（<strong>D</strong>）
+<ul>
+<li>A. 调节测量精度</li>
+<li>B. 调节灵敏度</li>
+<li>C. 调节电桥稳定</li>
+<li>D. 调节零点误差</li>
+</ul>
+</li>
+<li>双臂和全臂电桥的灵敏度分别是单臂电桥灵敏度的（<strong>B</strong>）
+<ul>
+<li>A. 2倍、2倍</li>
+<li>B. 2倍、4倍</li>
+<li>C. 4倍、4倍</li>
+<li>D. 4倍、2倍</li>
+</ul>
+</li>
+<li>本实验中电桥接近平衡时，接入差动放大器两个输入端的实际电位接近（<strong>A</strong>）
+<ul>
+<li>A. 0V</li>
+<li>B. 4V</li>
+<li>C. 8V</li>
+<li>D. -4V</li>
+</ul>
+</li>
+<li>差动放大器调零是为了（<strong>D</strong>）
+<ul>
+<li>A. 调节电桥的零点误差</li>
+<li>B. 调节电桥的灵敏度</li>
+<li>C. 减小输出电压V0</li>
+<li>D. 消除电压干扰信号</li>
+</ul>
+</li>
+</ol>
+
+<h3 id="二多选题共6题每题6分满分36分得分36分" data-numberify>二、多选题（共6题，每题6分，满分36分，得分36分）<a class="anchor ms-1" href="#二多选题共6题每题6分满分36分得分36分"></a></h3>
+<ol>
+<li>本实验的实验目的是（<strong>ABCD</strong>）
+<ul>
+<li>A. 了解差动放大器的工作原理</li>
+<li>B. 了解应变效应</li>
+<li>C. 设计电子秤系统</li>
+<li>D. 学习单臂电桥、半桥、全桥的工作原理</li>
+</ul>
+</li>
+<li>本实验中双孔悬臂梁的“孔”的作用是（<strong>BD</strong>）
+<ul>
+<li>A. 使砝码盘更稳固</li>
+<li>B. 使应变片更容易发生形变</li>
+<li>C. 防止应变片过度形变</li>
+<li>D. 使四个应变片形变量相等</li>
+</ul>
+</li>
+<li>关于全臂电桥，下列说法正确的是（<strong>AD</strong>）
+<ul>
+<li>A. 电阻一增一减的两个应变片接在相邻的臂上</li>
+<li>B. 电阻同时增加（或减小）的两个应变片应接在相邻的臂上</li>
+<li>C. 电阻一增一减的两个应变片接在相对的臂上</li>
+<li>D. 电阻同时增加（或减小）的两个应变片应接在相对的臂上</li>
+</ul>
+</li>
+<li>下列哪种情况可导致万用表测量的电压符号改变（<strong>BD</strong>）
+<ul>
+<li>A. 22千欧电位器两端恒压源的极性改变</li>
+<li>B. 电桥两端恒压源的极性改变</li>
+<li>C. 应变片R4的两个插线孔反接</li>
+<li>D. 电桥两臂中点接入差动放大器的输入端的位置改变</li>
+</ul>
+</li>
+<li>关于本实验的电桥，下列说法正确的是（<strong>ABCD</strong>）
+<ul>
+<li>A. 接成全臂电桥时，R1、R2、R3、R4均为应变片</li>
+<li>B. 接成单臂电桥时，R1、R2、R3为固定电阻，R4为应变片</li>
+<li>C. 电阻和应变片的位置顺序可有多种组合</li>
+<li>D. 接成双臂电桥时，R1和R2为固定电阻，R3、R4为应变片</li>
+</ul>
+</li>
+<li>提高电桥灵敏度和线性度可以采用的办法有（<strong>ABCD</strong>）
+<ul>
+<li>A. 采用四臂电桥</li>
+<li>B. 四个臂的总阻值尽量小（R1+R2+R3+R4尽量小）</li>
+<li>C. 增大电桥电压</li>
+<li>D. 四个臂尽量均匀（R1、R2、R3、R4阻值接近）</li>
+</ul>
+</li>
+</ol>
+
+<h3 id="三判断题共7题满分29分得分29分" data-numberify>三、判断题（共7题，满分29分，得分29分）<a class="anchor ms-1" href="#三判断题共7题满分29分得分29分"></a></h3>
+<ol>
+<li>（4分）电桥的灵敏度仅由应变片的灵敏度决定（<strong>×</strong>）</li>
+<li>（4分）常见材料的泊松比的值在0-0.5之间（<strong>√</strong>）</li>
+<li>（4分）调节差动放大器的灵敏度可改变电桥的灵敏度（<strong>√</strong>）</li>
+<li>（4分）放砝码后，应变片R1和R3的电阻增加，R2和R4电阻减小（<strong>√</strong>）</li>
+<li>（4分）本实验中所有应变片和电阻的阻值均接近相等（<strong>√</strong>）</li>
+<li>（5分）应变片需要按顺序接入电桥，应变片的两根线没有顺序（<strong>√</strong>）</li>
+<li>（4分）本实验使用的应变片电阻的规格是350欧（<strong>√</strong>）</li>
+</ol>
+
+<h2 id="2磁特性综合实验" data-numberify>2．磁特性综合实验<a class="anchor ms-1" href="#2磁特性综合实验"></a></h2>
+
+<h3 id="一单选题共8题满分39分得分39分" data-numberify>一、单选题（共8题，满分39分，得分39分）<a class="anchor ms-1" href="#一单选题共8题满分39分得分39分"></a></h3>
+<ol>
+<li>（5分）下列选项中不属于本实验的实验目的的是（<strong>A</strong>）
+<ul>
+<li>A. 了解磁特性在生活中的应用</li>
+<li>B. 学会测量磁化曲线</li>
+<li>C. 学会测量磁滞回线</li>
+<li>D. 掌握矫顽力、剩磁和磁导率的概念</li>
+</ul>
+</li>
+<li>（5分）利用磁滞回线的不重合性，铁磁材料可用来（<strong>D</strong>）
+<ul>
+<li>A. 探测电流</li>
+<li>B. 发电</li>
+<li>C. 磁化其它物体</li>
+<li>D. 作为记录介质</li>
+</ul>
+</li>
+<li>（5分）磁滞回线的横坐标和纵坐标通常是（<strong>C</strong>）
+<ul>
+<li>A. 磁感应强度B和磁场强度H</li>
+<li>B. 磁感应强度M和磁场强度H</li>
+<li>C. 磁场强度H和磁感应强度B</li>
+<li>D. 磁场强度H和磁导率μ</li>
+</ul>
+</li>
+<li>（4分）本次实验的仪器中不包括的是（<strong>A</strong>）
+<ul>
+<li>A. 直流电压源</li>
+<li>B. 电阻</li>
+<li>C. 铁磁体</li>
+<li>D. 电容</li>
+</ul>
+</li>
+<li>（5分）下列说法中错误的是（<strong>B</strong>）
+<ul>
+<li>A. 如果磁场不能产生感应电动势，则不能通过本实验初级线圈和次级线圈的方式测量磁滞回线</li>
+<li>B. 测量磁场强度和磁感应强度不都是通过测量间接量得到的</li>
+<li>C. 产生磁场强度的电路是串联电路，产生磁感应强度的电路也是串联电路</li>
+<li>D. 实验与理论值有误差是因为无论怎么连接电路，产生磁场时总有涡流等副作用的产生</li>
+</ul>
+</li>
+<li>（5分）下列关于电容的说法正确的是（<strong>C</strong>）
+<ul>
+<li>A. 在交流电的作用下，电流达到最大的时候，电容两端的电压最大</li>
+<li>B. 在交流电的作用下，电流达到最大的时候，电容两端的电量最大</li>
+<li>C. 本实验中，在其它参数不变的时候，电容越大观察到的纵坐标电压越小</li>
+<li>D. 电容通直流阻交流</li>
+</ul>
+</li>
+<li>（5分）下面关于磁滞回线的说法不正确的是（<strong>B</strong>）
+<ul>
+<li>A. 磁滞回线的回线内的面积代表损耗的能量</li>
+<li>B. 磁滞回线对我们利用磁场有用，对电路设计没有用</li>
+<li>C. 磁滞回线到末段变水平是因为已达到饱和</li>
+<li>D. 磁滞回线开始时斜率大是因为元电流圈改变方向要克服的阻力不大</li>
+</ul>
+</li>
+<li>（5分）下列说法不正确的是（<strong>A</strong>）
+<ul>
+<li>A. 放大示波器的波形不能提高最后结果的精度</li>
+<li>B. 在观察磁滞回线的时候，一定要把示波器调到“xy”模式</li>
+<li>C. 示波器可将读取的图形放大，但不影响实际电压的大小</li>
+<li>D. 电压的大小可通过示波器的两个通道读取</li>
+</ul>
+</li>
+</ol>
+
+<h3 id="二多选题共8题满分61分得分61分" data-numberify>二、多选题（共8题，满分61分，得分61分）<a class="anchor ms-1" href="#二多选题共8题满分61分得分61分"></a></h3>
+<ol>
+<li>（7分）磁性材料可分为（<strong>BCD</strong>）等
+<ul>
+<li>A. 反磁质</li>
+<li>B. 铁磁质</li>
+<li>C. 抗磁质</li>
+<li>D. 顺磁质</li>
+</ul>
+</li>
+<li>（7分）硬磁和软磁材料的区别在于（<strong>AD</strong>）
+<ul>
+<li>A. 矫顽力Hc不同</li>
+<li>B. 材料的硬度不同</li>
+<li>C. 磁化的极性不同</li>
+<li>D. 磁滞回线形状不同</li>
+</ul>
+</li>
+<li>（7分）下面哪个（些）实验<strong>不是</strong>体现了间接测量的思想？（<strong>BD</strong>）
+<ul>
+<li>A. 通过单摆的摆长和周期测重力加速度</li>
+<li>B. 用两个山顶之间的距离除以时间间隔来测量光速</li>
+<li>C. 通过影子的长度测量塔的高度</li>
+<li>D. 一大一小的两个铁球同时落地实验</li>
+</ul>
+</li>
+<li>（8分）下列说法正确的是（<strong>ABCD</strong>）
+<ul>
+<li>A. 通过单摆的摆长和周期测重力加速度</li>
+<li>B. 用两个山顶之间的距离除以时间间隔来测量光速</li>
+<li>C. 通过影子的长度测量塔的高度</li>
+<li>D. 一大一小的两个铁球同时落地实验</li>
+</ul>
+</li>
+<li>（8分）下列关于电感线圈的说法正确的是（<strong>BC</strong>）
+<ul>
+<li>A. 产生感应电动势是因为运动的带电粒子在磁场中受到洛伦兹力的作用</li>
+<li>B. 线圈中的感应电动势和电流的变化率的大小成正比</li>
+<li>C. 在通有交流电的时候，电流和磁场是同时到达最大的（同步的或相位相同的）</li>
+<li>D. 线圈中的感应电动势和电流的大小成正比</li>
+</ul>
+</li>
+<li>（8分）下面关于磁滞回线的说法<strong>不正确</strong>的是（<strong>CD</strong>）
+<ul>
+<li>A. 铁磁性越大，其回线的面积越大</li>
+<li>B. 铁磁性越大，其矫顽力越大</li>
+<li>C. 逆磁性越大，其回线的面积越大</li>
+<li>D. 顺磁性越大，其回线的面积越大</li>
+</ul>
+</li>
+<li>（8分）设磁导率 μ = B/H，则下列说法中正确的是（<strong>AD</strong>）
+<ul>
+<li>A. 磁滞回线对应的磁导率曲线（以 μ 为纵坐标，H为横坐标）是不重合的回线</li>
+<li>B. 磁滞回线对应的磁导率曲线（以 μ 为纵坐标，H为横坐标）不是不重合的回线</li>
+<li>C. 在磁化曲线中磁导率先减小后增加</li>
+<li>D. 在磁化曲线中磁导率先增加后减小</li>
+</ul>
+</li>
+<li>（8分）下列说法中正确的是（<strong>ABCD</strong>）
+<ul>
+<li>A. 实验中用两个线圈是因为单个线圈不方便既测H又测B</li>
+<li>B. 在改变频率的时候，由于涡流的存在，会改变磁滞回线的形状</li>
+<li>C. R1的大小较小是因为较大时分压较多，会造成线圈电压小，不利于测量</li>
+<li>D. 测电阻两端的电压而不测线圈两端的电压是因为线圈有感应电动势，电流与电压不成正比</li>
+</ul>
+</li>
+</ol>
+
+<h2 id="3基于multisim的电源设计" data-numberify>3．基于Multisim的电源设计<a class="anchor ms-1" href="#3基于multisim的电源设计"></a></h2>
+
+<h3 id="一单选题共10题每题5分满分50分得分50分" data-numberify>一、单选题（共10题，每题5分，满分50分，得分50分）<a class="anchor ms-1" href="#一单选题共10题每题5分满分50分得分50分"></a></h3>
+<ol>
+<li>
+<p>（5分）二极管具有什么特性（<strong>B</strong>）</p>]]></description>
+    <enclosure url="https://xiaochai-123.github.io/images/SZU.png" length="20227" type="image/.png" />
     </item>
     
     <item>
