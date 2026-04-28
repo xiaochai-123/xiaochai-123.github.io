@@ -9,176 +9,6 @@
     <copyright>© 2026 xiaochai-123. 欢迎转载但请注明出处 | 本博客内容版权所有</copyright>
     <lastBuildDate>Tue, 28 Apr 2026 21:20:35 +0800</lastBuildDate><atom:link href="https://xiaochai-123.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>[持续更新] CTF-Web Guide</title>
-      <link>https://xiaochai-123.github.io/posts/ctf-web-guide/</link>
-      <pubDate>Mon, 22 Dec 2025 22:43:35 +0800</pubDate>
-      <guid>https://xiaochai-123.github.io/posts/ctf-web-guide/</guid>
-      <description><![CDATA[<h1 id="持续更新-ctf-web-guide" data-numberify>[持续更新] CTF-Web Guide<a class="anchor ms-1" href="#持续更新-ctf-web-guide"></a></h1>
-<p>看到Lunatic大佬的</p>
-<p>大受震撼。大丈夫当如是也！这种长篇的持续更新文章似乎可以更全面的记录遇到题目时要有的思路，或查找一些偏门的考点。仆诚以著此篇，希望我能写出一个好的Guide&hellip;</p>
-
-<h2 id="前言-preface" data-numberify>前言 (Preface)<a class="anchor ms-1" href="#前言-preface"></a></h2>
-<ul>
-<li><strong>前言</strong>：本篇旨在提供全面的ctfweb题目分析讲解和思路的提供，无论是新手学习和老手速查都十分适合0v0</li>
-</ul>
-
-<h2 id="第一章工欲善其事-the-toolkit" data-numberify>第一章：工欲善其事 (The Toolkit)<a class="anchor ms-1" href="#第一章工欲善其事-the-toolkit"></a></h2>
-<blockquote>
-<p><em>这部分介绍基础环境，同时强调工具的重要性。</em></p>
-</blockquote>
-
-<h3 id="基础知识储备" data-numberify>基础知识储备<a class="anchor ms-1" href="#基础知识储备"></a></h3>
-<blockquote>
-<p><em>这部分是地基，不需要写太深，但要列出“必知必会”。</em></p>
-</blockquote>
-<ol>
-<li>协议与架构
-<ul>
-<li><strong>HTTP/HTTPS 协议</strong>：请求头（Headers）、响应码（Status Codes）、常用方法（GET/POST/PUT/HEAD/OPTIONS）。</li>
-<li><strong>Web 架构</strong>：前端（HTML/JS/CSS）与后端（PHP/Java/Python/Go）的交互流程，MVC 模式，API 接口（RESTful/GraphQL）。</li>
-</ul>
-</li>
-</ol>
-
-<h3 id="web工具" data-numberify>Web工具<a class="anchor ms-1" href="#web工具"></a></h3>
-<ol>
-<li>常用工具
-<ul>
-<li><strong>抓包与测试</strong>：<strong>Burp Suite</strong>（核心、抓包/重放/爆破）、Yakit（中文版bp）</li>
-<li><strong>信息收集</strong>：<strong>Dirsearch</strong>（目录扫描）、Nmap（端口扫描）</li>
-<li><strong>浏览器插件</strong>：<strong>HackBar</strong>（快速发包）、Wappalyzer（指纹识别）</li>
-<li><strong>Linux环境</strong>：<strong>VMware/WSL2 Kali</strong>（用来执行shell/linux工具)</li>
-<li><strong>远程控制</strong>：<strong>Antsword</strong>（连接木马），冰蝎，哥斯拉</li>
-<li><strong>IDE</strong>：<strong>PhpStorm</strong>（做php反序列化），<strong>IDEA</strong>（做java）</li>
-<li><strong>自动注入</strong>：<strong>SQLmap</strong>（sql注入点自动查找），<strong>fenjing</strong>（焚靖|自动构建SSTIpayload，绕过waf一把梭）</li>
-<li><strong>AI助手</strong>：帮你想思路，构建payload和脚本</li>
-</ul>
-</li>
-</ol>
-
-<h2 id="第二章信息收集-information-gathering" data-numberify>第二章：信息收集 (Information Gathering)<a class="anchor ms-1" href="#第二章信息收集-information-gathering"></a></h2>
-<blockquote>
-<p><em>Web 题的第一步永远是把题目“看光”。</em></p>
-</blockquote>
-
-<h3 id="敏感文件泄露" data-numberify>敏感文件泄露<a class="anchor ms-1" href="#敏感文件泄露"></a></h3>
-<ul>
-<li><code>robots.txt</code>、<code>sitemap.xml</code>。</li>
-</ul>
-
-<h4 id="1-管理类文件" data-numberify>1. 管理类文件<a class="anchor ms-1" href="#1-管理类文件"></a></h4>
-
-<h5 id="11-robotstxt" data-numberify>1.1 robots.txt<a class="anchor ms-1" href="#11-robotstxt"></a></h5>
-<ul>
-<li>
-<p><strong>作用</strong>：搜索引擎爬虫协议文件，告诉爬虫哪些路径不应抓取。</p>
-</li>
-<li>
-<p><strong>渗透思路</strong>：黑名单信息含涉密路径、后门、管理后台、备份等，非常容易疏忽泄露。</p>
-</li>
-<li>
-<p><strong>例子</strong>：</p>
-<pre tabindex="0"><code>Disallow: /admin
-Disallow: /hidden/flag.txt
-</code></pre></li>
-</ul>
-
-<h5 id="12-sitemapxml" data-numberify>1.2 sitemap.xml<a class="anchor ms-1" href="#12-sitemapxml"></a></h5>
-<ul>
-<li><strong>作用</strong>：网站内容地图，列出所有可爬网址。</li>
-<li><strong>渗透思路</strong>：直接暴露未公开子目录，配合robots.txt查询价值极高。</li>
-</ul>
-
-<h5 id="13-env" data-numberify>1.3 .env<a class="anchor ms-1" href="#13-env"></a></h5>
-<ul>
-<li><strong>作用</strong>：各类Web框架常用环境变量文件。</li>
-<li><strong>渗透</strong>：很多JWT密钥、数据库连接信息、邮箱API等一览无遗，PHP、Laravel、Node.js尤其常见。</li>
-</ul>
-<hr>
-
-<h4 id="2-源码和仓库泄露" data-numberify>2. 源码和仓库泄露<a class="anchor ms-1" href="#2-源码和仓库泄露"></a></h4>
-
-<h5 id="21-git" data-numberify>2.1 .git/<a class="anchor ms-1" href="#21-git"></a></h5>
-<ul>
-<li><strong>作用</strong>：Git版本库目录。</li>
-<li><strong>渗透</strong>：若未做严格防护可直接遍历和还原完整源码。使用 <code>GitHack.py</code>、<code>githound</code>等工具，一键还原全部源码+敏感信息。</li>
-</ul>
-
-<h5 id="22-svnhg" data-numberify>2.2 .svn/、.hg/<a class="anchor ms-1" href="#22-svnhg"></a></h5>
-<ul>
-<li><strong>作用</strong>：分别对应Subversion、Mercurial代码管理目录。</li>
-<li><strong>渗透</strong>：同理可还原源代码及全部提交历史。</li>
-</ul>
-
-<h5 id="23-ds_store" data-numberify>2.3 .DS_Store<a class="anchor ms-1" href="#23-ds_store"></a></h5>
-<ul>
-<li><strong>作用</strong>：Mac下目录索引文件。</li>
-<li><strong>渗透</strong>：泄露完整目录结构（可见文件名），辅助发现“隐藏文件”“Flag”。</li>
-</ul>
-
-<h5 id="24-wwwzipcodetargzsourcebak" data-numberify>2.4 www.zip、code.tar.gz、source.bak<a class="anchor ms-1" href="#24-wwwzipcodetargzsourcebak"></a></h5>
-<ul>
-<li><strong>作用</strong>：习惯性手工备份或源码打包，上传或备份遗留。</li>
-<li><strong>渗透</strong>：敏感备份/打包文件常规文件：
-<code>www.zip</code>、<code>web.zip</code>、<code>backup.zip</code>、<code>site.bak</code>、<code>index.php.bak</code>、<code>src.rar</code>、<code>bak.tar.gz</code>等</li>
-</ul>
-<hr>
-
-<h4 id="3-编辑器临时自动备份文件" data-numberify>3. 编辑器临时/自动备份文件<a class="anchor ms-1" href="#3-编辑器临时自动备份文件"></a></h4>
-
-<h5 id="31-vimemacs交换备份" data-numberify>3.1 Vim/Emacs交换备份<a class="anchor ms-1" href="#31-vimemacs交换备份"></a></h5>
-<ul>
-<li><code>.swp</code>/<code>.swo</code></li>
-<li>例：<code>index.php.swp</code></li>
-<li><strong>用途与危害</strong>：Vim自动生成的内存交换文件。利用<code>strings</code>等命令可恢复大量源码或明文密码。</li>
-</ul>
-
-<h5 id="32-emacs临时文件" data-numberify>3.2 Emacs临时文件<a class="anchor ms-1" href="#32-emacs临时文件"></a></h5>
-<ul>
-<li>例：<code>index.php~</code>, <code>#index.php#</code></li>
-</ul>
-
-<h5 id="33-其它常见临时备份扩展" data-numberify>3.3 其它常见临时/备份扩展<a class="anchor ms-1" href="#33-其它常见临时备份扩展"></a></h5>
-<ul>
-<li><code>.bak</code>、<code>.old</code>、<code>.backup</code>、<code>.save</code>、<code>.tmp</code>、<code>.temp</code></li>
-<li><strong>典型案例</strong>：<code>index.php.bak</code>、<code>config.php.old</code>，甚至<code>flag.php.save</code></li>
-</ul>
-<hr>
-
-<h4 id="4-常见渗透ctf技巧总结" data-numberify>4. 常见渗透/CTF技巧总结<a class="anchor ms-1" href="#4-常见渗透ctf技巧总结"></a></h4>
-<ol>
-<li><strong>爆破路径字典</strong>：用字典工具快速遍历敏感路径
-典例：<code>dirsearch</code>, <code>ffuf</code>, <code>gobuster</code></li>
-<li><strong>尝试访问源码与备份文件</strong>：如<code>index.php.bak</code>，几乎等同于源码泄露。</li>
-<li><strong>下载解压源码包或查看仓库提交历史</strong>：发现历史密码、后台路径、flag等。</li>
-<li><strong>扫描.git, .svn, .hg</strong>：直接还原项目全部文件、操作commit，甚至逆推出未上线flag。</li>
-<li><strong>编辑器遗留文件源码复原</strong>：如vim .swp 文件，用<code>strings</code>或专用工具还原内容，常获flag。</li>
-</ol>
-<ul>
-<li>源码泄露：<code>www.zip</code>、<code>.git</code>、<code>.svn</code>、<code>.hg</code>、<code>.DS_Store</code>。</li>
-<li>备份文件：<code>index.php.bak</code>、<code>vim</code> 交换文件 (<code>.swp</code>)。</li>
-</ul>
-<ol>
-<li>指纹识别
-<ul>
-<li>判断操作系统（Linux/Windows）、中间件（Apache/Nginx/IIS/Tomcat）、数据库类型。</li>
-<li>CMS 识别（WordPress, Discuz, Typecho 等）。</li>
-</ul>
-</li>
-<li>其他
-<ul>
-<li>PHPinfo 页面分析（查看 <code>disable_functions</code>、开启的扩展）。</li>
-<li>社工与 OSINT（如果有涉及）。</li>
-</ul>
-</li>
-</ol>
-
-<h2 id="第三章核心漏洞---注入篇-injection-attacks" data-numberify>第三章：核心漏洞 - 注入篇 (Injection Attacks)<a class="anchor ms-1" href="#第三章核心漏洞---注入篇-injection-attacks"></a></h2>
-<p><em>CTF Web 的半壁江山。</em></p>]]></description>
-    <enclosure url="https://xiaochai-123.github.io/images/1.png" length="328106" type="image/.png" />
-    </item>
-    
-    <item>
       <title>深圳大学 大学物理实验（一） 预习测试答案</title>
       <link>https://xiaochai-123.github.io/posts/%E6%B7%B1%E5%9C%B3%E5%A4%A7%E5%AD%A6-%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C-%E9%A2%84%E4%B9%A0%E9%A2%98%E7%AD%94%E6%A1%88/</link>
       <pubDate>Tue, 07 Apr 2026 22:55:07 +0800</pubDate>
@@ -455,6 +285,248 @@ Disallow: /hidden/flag.txt
 <li>
 <p>（5分）二极管具有什么特性（<strong>B</strong>）</p>]]></description>
     <enclosure url="https://xiaochai-123.github.io/images/SZU.png" length="20227" type="image/.png" />
+    </item>
+    
+    <item>
+      <title>[持续更新] CTF-Web Guide</title>
+      <link>https://xiaochai-123.github.io/posts/ctf-web-guide/</link>
+      <pubDate>Mon, 22 Dec 2025 22:43:35 +0800</pubDate>
+      <guid>https://xiaochai-123.github.io/posts/ctf-web-guide/</guid>
+      <description><![CDATA[<h1 id="持续更新-ctf-web-guide" data-numberify>[持续更新] CTF-Web Guide<a class="anchor ms-1" href="#持续更新-ctf-web-guide"></a></h1>
+<p>看到Lunatic大佬的</p>
+<p>大受震撼。大丈夫当如是也！这种长篇的持续更新文章似乎可以更全面的记录遇到题目时要有的思路，或查找一些偏门的考点。仆诚以著此篇，希望我能写出一个好的Guide&hellip;</p>
+
+<h2 id="前言-preface" data-numberify>前言 (Preface)<a class="anchor ms-1" href="#前言-preface"></a></h2>
+<ul>
+<li><strong>前言</strong>：本篇旨在提供全面的ctfweb题目分析讲解和思路的提供，无论是新手学习和老手速查都十分适合0v0</li>
+</ul>
+
+<h2 id="第一章工欲善其事-the-toolkit" data-numberify>第一章：工欲善其事 (The Toolkit)<a class="anchor ms-1" href="#第一章工欲善其事-the-toolkit"></a></h2>
+<blockquote>
+<p><em>这部分介绍基础环境，同时强调工具的重要性。</em></p>
+</blockquote>
+
+<h3 id="基础知识储备" data-numberify>基础知识储备<a class="anchor ms-1" href="#基础知识储备"></a></h3>
+<blockquote>
+<p><em>这部分是地基，不需要写太深，但要列出“必知必会”。</em></p>
+</blockquote>
+<ol>
+<li>协议与架构
+<ul>
+<li><strong>HTTP/HTTPS 协议</strong>：请求头（Headers）、响应码（Status Codes）、常用方法（GET/POST/PUT/HEAD/OPTIONS）。</li>
+<li><strong>Web 架构</strong>：前端（HTML/JS/CSS）与后端（PHP/Java/Python/Go）的交互流程，MVC 模式，API 接口（RESTful/GraphQL）。</li>
+</ul>
+</li>
+</ol>
+
+<h3 id="web工具" data-numberify>Web工具<a class="anchor ms-1" href="#web工具"></a></h3>
+<ol>
+<li>常用工具
+<ul>
+<li><strong>抓包与测试</strong>：<strong>Burp Suite</strong>（核心、抓包/重放/爆破）、Yakit（中文版bp）</li>
+<li><strong>信息收集</strong>：<strong>Dirsearch</strong>（目录扫描）、Nmap（端口扫描）</li>
+<li><strong>浏览器插件</strong>：<strong>HackBar</strong>（快速发包）、Wappalyzer（指纹识别）</li>
+<li><strong>Linux环境</strong>：<strong>VMware/WSL2 Kali</strong>（用来执行shell/linux工具)</li>
+<li><strong>远程控制</strong>：<strong>Antsword</strong>（连接木马），冰蝎，哥斯拉</li>
+<li><strong>IDE</strong>：<strong>PhpStorm</strong>（做php反序列化），<strong>IDEA</strong>（做java）</li>
+<li><strong>自动注入</strong>：<strong>SQLmap</strong>（sql注入点自动查找），<strong>fenjing</strong>（焚靖|自动构建SSTIpayload，绕过waf一把梭）</li>
+<li><strong>AI助手</strong>：帮你想思路，构建payload和脚本</li>
+</ul>
+</li>
+</ol>
+
+<h2 id="第二章信息收集-information-gathering" data-numberify>第二章：信息收集 (Information Gathering)<a class="anchor ms-1" href="#第二章信息收集-information-gathering"></a></h2>
+<blockquote>
+<p><em>Web 题的第一步永远是把题目“看光”。</em></p>
+</blockquote>
+
+<h3 id="敏感文件泄露" data-numberify>敏感文件泄露<a class="anchor ms-1" href="#敏感文件泄露"></a></h3>
+<ul>
+<li><code>robots.txt</code>、<code>sitemap.xml</code>。</li>
+</ul>
+
+<h4 id="1-管理类文件" data-numberify>1. 管理类文件<a class="anchor ms-1" href="#1-管理类文件"></a></h4>
+
+<h5 id="11-robotstxt" data-numberify>1.1 robots.txt<a class="anchor ms-1" href="#11-robotstxt"></a></h5>
+<ul>
+<li>
+<p><strong>作用</strong>：搜索引擎爬虫协议文件，告诉爬虫哪些路径不应抓取。</p>
+</li>
+<li>
+<p><strong>渗透思路</strong>：黑名单信息含涉密路径、后门、管理后台、备份等，非常容易疏忽泄露。</p>
+</li>
+<li>
+<p><strong>例子</strong>：</p>
+<pre tabindex="0"><code>Disallow: /admin
+Disallow: /hidden/flag.txt
+</code></pre></li>
+</ul>
+
+<h5 id="12-sitemapxml" data-numberify>1.2 sitemap.xml<a class="anchor ms-1" href="#12-sitemapxml"></a></h5>
+<ul>
+<li><strong>作用</strong>：网站内容地图，列出所有可爬网址。</li>
+<li><strong>渗透思路</strong>：直接暴露未公开子目录，配合robots.txt查询价值极高。</li>
+</ul>
+
+<h5 id="13-env" data-numberify>1.3 .env<a class="anchor ms-1" href="#13-env"></a></h5>
+<ul>
+<li><strong>作用</strong>：各类Web框架常用环境变量文件。</li>
+<li><strong>渗透</strong>：很多JWT密钥、数据库连接信息、邮箱API等一览无遗，PHP、Laravel、Node.js尤其常见。</li>
+</ul>
+<hr>
+
+<h4 id="2-源码和仓库泄露" data-numberify>2. 源码和仓库泄露<a class="anchor ms-1" href="#2-源码和仓库泄露"></a></h4>
+
+<h5 id="21-git" data-numberify>2.1 .git/<a class="anchor ms-1" href="#21-git"></a></h5>
+<ul>
+<li><strong>作用</strong>：Git版本库目录。</li>
+<li><strong>渗透</strong>：若未做严格防护可直接遍历和还原完整源码。使用 <code>GitHack.py</code>、<code>githound</code>等工具，一键还原全部源码+敏感信息。</li>
+</ul>
+
+<h5 id="22-svnhg" data-numberify>2.2 .svn/、.hg/<a class="anchor ms-1" href="#22-svnhg"></a></h5>
+<ul>
+<li><strong>作用</strong>：分别对应Subversion、Mercurial代码管理目录。</li>
+<li><strong>渗透</strong>：同理可还原源代码及全部提交历史。</li>
+</ul>
+
+<h5 id="23-ds_store" data-numberify>2.3 .DS_Store<a class="anchor ms-1" href="#23-ds_store"></a></h5>
+<ul>
+<li><strong>作用</strong>：Mac下目录索引文件。</li>
+<li><strong>渗透</strong>：泄露完整目录结构（可见文件名），辅助发现“隐藏文件”“Flag”。</li>
+</ul>
+
+<h5 id="24-wwwzipcodetargzsourcebak" data-numberify>2.4 www.zip、code.tar.gz、source.bak<a class="anchor ms-1" href="#24-wwwzipcodetargzsourcebak"></a></h5>
+<ul>
+<li><strong>作用</strong>：习惯性手工备份或源码打包，上传或备份遗留。</li>
+<li><strong>渗透</strong>：敏感备份/打包文件常规文件：
+<code>www.zip</code>、<code>web.zip</code>、<code>backup.zip</code>、<code>site.bak</code>、<code>index.php.bak</code>、<code>src.rar</code>、<code>bak.tar.gz</code>等</li>
+</ul>
+<hr>
+
+<h4 id="3-编辑器临时自动备份文件" data-numberify>3. 编辑器临时/自动备份文件<a class="anchor ms-1" href="#3-编辑器临时自动备份文件"></a></h4>
+
+<h5 id="31-vimemacs交换备份" data-numberify>3.1 Vim/Emacs交换备份<a class="anchor ms-1" href="#31-vimemacs交换备份"></a></h5>
+<ul>
+<li><code>.swp</code>/<code>.swo</code></li>
+<li>例：<code>index.php.swp</code></li>
+<li><strong>用途与危害</strong>：Vim自动生成的内存交换文件。利用<code>strings</code>等命令可恢复大量源码或明文密码。</li>
+</ul>
+
+<h5 id="32-emacs临时文件" data-numberify>3.2 Emacs临时文件<a class="anchor ms-1" href="#32-emacs临时文件"></a></h5>
+<ul>
+<li>例：<code>index.php~</code>, <code>#index.php#</code></li>
+</ul>
+
+<h5 id="33-其它常见临时备份扩展" data-numberify>3.3 其它常见临时/备份扩展<a class="anchor ms-1" href="#33-其它常见临时备份扩展"></a></h5>
+<ul>
+<li><code>.bak</code>、<code>.old</code>、<code>.backup</code>、<code>.save</code>、<code>.tmp</code>、<code>.temp</code></li>
+<li><strong>典型案例</strong>：<code>index.php.bak</code>、<code>config.php.old</code>，甚至<code>flag.php.save</code></li>
+</ul>
+<hr>
+
+<h4 id="4-常见渗透ctf技巧总结" data-numberify>4. 常见渗透/CTF技巧总结<a class="anchor ms-1" href="#4-常见渗透ctf技巧总结"></a></h4>
+<ol>
+<li><strong>爆破路径字典</strong>：用字典工具快速遍历敏感路径
+典例：<code>dirsearch</code>, <code>ffuf</code>, <code>gobuster</code></li>
+<li><strong>尝试访问源码与备份文件</strong>：如<code>index.php.bak</code>，几乎等同于源码泄露。</li>
+<li><strong>下载解压源码包或查看仓库提交历史</strong>：发现历史密码、后台路径、flag等。</li>
+<li><strong>扫描.git, .svn, .hg</strong>：直接还原项目全部文件、操作commit，甚至逆推出未上线flag。</li>
+<li><strong>编辑器遗留文件源码复原</strong>：如vim .swp 文件，用<code>strings</code>或专用工具还原内容，常获flag。</li>
+</ol>
+<ul>
+<li>源码泄露：<code>www.zip</code>、<code>.git</code>、<code>.svn</code>、<code>.hg</code>、<code>.DS_Store</code>。</li>
+<li>备份文件：<code>index.php.bak</code>、<code>vim</code> 交换文件 (<code>.swp</code>)。</li>
+</ul>
+<ol>
+<li>指纹识别
+<ul>
+<li>判断操作系统（Linux/Windows）、中间件（Apache/Nginx/IIS/Tomcat）、数据库类型。</li>
+<li>CMS 识别（WordPress, Discuz, Typecho 等）。</li>
+</ul>
+</li>
+<li>其他
+<ul>
+<li>PHPinfo 页面分析（查看 <code>disable_functions</code>、开启的扩展）。</li>
+<li>社工与 OSINT（如果有涉及）。</li>
+</ul>
+</li>
+</ol>
+
+<h2 id="第三章核心漏洞---注入篇-injection-attacks" data-numberify>第三章：核心漏洞 - 注入篇 (Injection Attacks)<a class="anchor ms-1" href="#第三章核心漏洞---注入篇-injection-attacks"></a></h2>
+<p><em>CTF Web 的半壁江山。</em></p>]]></description>
+    <enclosure url="https://xiaochai-123.github.io/images/1.png" length="328106" type="image/.png" />
+    </item>
+    
+    <item>
+      <title>思考能力是如何被阶级化的</title>
+      <link>https://xiaochai-123.github.io/posts/%E5%85%B3%E4%BA%8E%E7%9C%BC%E7%95%8C%E5%BD%A2%E5%BC%8F%E4%B8%BB%E4%B9%89%E5%92%8C%E6%80%9D%E7%BB%B4%E8%83%BD%E5%8A%9B%E7%9A%84%E7%8C%9C%E6%83%B3/</link>
+      <pubDate>Tue, 28 Apr 2026 21:20:35 +0800</pubDate>
+      <guid>https://xiaochai-123.github.io/posts/%E5%85%B3%E4%BA%8E%E7%9C%BC%E7%95%8C%E5%BD%A2%E5%BC%8F%E4%B8%BB%E4%B9%89%E5%92%8C%E6%80%9D%E7%BB%B4%E8%83%BD%E5%8A%9B%E7%9A%84%E7%8C%9C%E6%83%B3/</guid>
+      <description><![CDATA[<h1 id="你最后一次发呆是什么时候" data-numberify>你最后一次发呆是什么时候<a class="anchor ms-1" href="#你最后一次发呆是什么时候"></a></h1>
+<p>今天群聊里发生了一次吵架</p>
+<p>吵的是那些互联网烂梗——“木柜子”“笔电男大”“热水器”……一个朋友说这不就是开玩笑嘛，上纲上线干嘛。我说这不是开玩笑，这是脑腐。公共讨论正在被这些东西劣质化，弱者开始互害，严肃议题被消解于无形。</p>
+<p>晚上我看了一个视频，讲人类如何发现银河系。从伽利略第一次把望远镜指向星空，到赫歇尔数星星画出银河盘面，再到沙普利用造父变星测距离，我们终于知道自己住在一个巨大的盘状星系里。那个过程非常迷人——人类用极其有限的感官和智力，一点点拼出了宇宙的地图。</p>
+<p>这两个画面在我脑子里撞在一起，发出很大的声响。</p>
+<p>但我知道，烂梗只是冰山一角。真正吃掉我们认知带宽的，是另一样东西——它比烂梗更“正经”，更被默许，也更难以对抗。</p>
+<p>它叫形式主义。</p>
+<p>一、烂梗到底坏在哪里
+这类烂梗的本质，是把你活生生的人塞进“地域/性别/年龄/职业”的格子里，让所有不满都沿着这些裂缝发泄。当你在嘲讽“笔电男大”的时候，你攻击的是一个符号，而不是去思考背后可能存在的教育资源不均、就业压力、阶级困境。</p>
+<p>这招最聪明的地方在于：它让你只看到对立，看不到共同的困境。</p>
+<p>底层攻击底层，弱者辱骂弱者。“面试学生都是眼高手低”——真正制造这些困境的结构性力量呢？隐身了。弱者互害，是强者最稳固的统治基础。这种语言在精神上把本该站在同一阶级的人切割成孤岛，孤岛之间只剩下互相扔石头。</p>
+<p>而且烂梗是没有论证过程的。它直接扣帽子，直接完成“定罪”。它的流行拉低了公共讨论的门槛，让人沉迷于“嘴替”式的快感——有人骂出了我想骂的，爽了，结束。复杂思考？不需要了。</p>
+<p>说到底，这不是武器，这是精神上的自我阉割。</p>
+<p>真正有力的批判，永远是瞄准具体问题的，而不是给人贴标签；是团结“我们”的，而不是制造“你们”和“他们”。</p>
+<p>二、形式主义：一种被合法化的认知屠杀
+但烂梗至少还被一些人警惕。形式主义呢？它穿着“规范”“流程”“严谨”的外衣，堂而皇之地走进每一间办公室、每一所学校、每一个基层单位。</p>
+<p>你有没有经历过这样的场景——</p>
+<p>一个本该两小时结束的会议，开了整整一天。八个人轮流念PPT，每个人都在说一些“加强”“深化”“落实”之类的词，但没有一个人真正做出一个决定。会议结束了，问题还在原地。</p>
+<p>一份三页纸就能说清楚的报告，被要求写成三十页。格式要统一，用词要规范，封面要精美。写报告的人花了两天时间排版，又花了一天时间等领导签字。而真正需要解决的那个技术问题，一周过去了，一行代码都没写。</p>
+<p>一个基层医生、一个乡村教师、一个社区工作者，上面来了几十个“条线”，每个条线都要填表、都要拍照、都要留痕。他们真正服务对象的时间，被压缩到只剩下一小截。</p>
+<p>诸如此类，早晚自习，没用的课程等等等等&hellip;</p>
+<p>这些东西不叫烂梗。它们叫“工作”。</p>
+<p>但它们对认知带宽的吞噬，比烂梗凶猛一万倍。</p>
+<p>烂梗你可以选择不看。形式主义你不能选择不干。</p>
+<p>形式主义不直接禁止你热爱，它只是用无数微小的、看似“正当”的事情，把你的时间和精力一点一点地清空。就像水煮青蛙，水温是慢慢升上去的。等你发现不对劲的时候，你已经不会兴奋地讨论银河系了，你只想下班。</p>
+<p>三、认知带宽是一种稀缺资源，但它被掠夺了
+人在一天之内的认知带宽是有限的。</p>
+<p>你可以把它想象成一块电池。深度思考、复杂推理、创造性突破——这些是高耗能任务。简单重复、情绪宣泄、被动刷信息——这些是低耗能任务。</p>
+<p>如果你每天上班八小时（其实是十小时）已经被形式主义占满了——开会、填表、走流程、做PPT、应付检查——你的电池就已经被消耗得差不多了。剩下的那点电量，你要通勤，要吃饭，要应付家庭琐事。然后你还有多少电量留给“银河系”？</p>
+<p>不是你不愿意。是你真的没电了。</p>
+<p>这时候，抖音和游戏就成了最理性的选择。因为它们耗电少，回血快。十五秒一个刺激，不用动脑子，情绪被轻轻拨动一下，然后放下。这不是堕落，这是人在认知耗竭状态下的自救——虽然是一种让人更耗竭的自救。</p>
+<p>我妈妈看不懂纽康柏悖论。不是因为她笨，而是因为她长期没有被奖励过这种思考。她的认知带宽一直被日常琐事和形式化的劳动占满。久而久之，“主动思考复杂问题”变成了一件陌生且痛苦的事情。</p>
+<p>四、历史的真相：科学进步从来是靠“脱产”堆出来的
+我那个视频看完之后，看了看评论。评论区有人在讨论为什么这些老外能这么长时间脱离生产去搞研究。于是想到：人类历史上那些伟大的科学发现——哥白尼的日心说，牛顿的万有引力，爱因斯坦的相对论，甚至包括银河系结构的揭示——背后站着的，绝大多数都是脱产的人。</p>
+<p>或者说得直白一点：有闲的人。</p>
+<p>哥白尼是教会法学家，有教职收入；伽利略有美第奇家族庇护；开普勒虽然是宫廷数学家，工资低得可怜，但他仍然是一个“以思考为工作”的人；牛顿有剑桥的教授席位，可以安心研究自然哲学。这些人的共同点不是智商，而是：他们不需要把一天的绝大部分精力花在生存和无聊的流程上。</p>
+<p>他们有时间发呆。有时间试错。有时间沿着一个没人关心的问题走很远。</p>
+<p>普通人呢？在种地。在打铁。在工场里做十几个小时的工。在填表。在开会。在走流程。他们也许有同样的好奇心、同样的潜力、同样的天赋，但这些都被占满了。</p>
+<p>科学从来不是公平的。它一直是一种垄断。</p>
+<p>一种对“时间”和“认知带宽”的垄断。</p>
+<p>五、所以我希望八小时工作制被真正落实
+这不是一句口号。这是一个非常具体的、关于科学进步效率的判断。</p>
+<p>如果一个人的工作时间被压进八小时以内，如果他不需要每天花两三个小时通勤，如果他的工作中形式主义被削减到最低限度——那么他会多出时间。</p>
+<p>不是刷手机的时间，而是真正属于自己的、可以自由支配的、可以发呆的、可以沿着一个奇怪的问题走下去的时间。</p>
+<p>历史上几乎所有重大的科学突破，都不是在“被要求工作”的时间里产生的。它们产生在散步的时候，在喝咖啡的时候，在深夜睡不着的时候，在跟朋友闲聊的时候。它们需要一种状态——不被紧迫任务追赶的松弛。</p>
+<p>形式主义是这种松弛的天敌。它永远在制造“紧急但不重要”的事情。它让你永远觉得有一堆事还没做，让你没法真正停下来。</p>
+<p>八小时工作制的本质，不是“少干活”。它是对人类认知资源的保护。它承认：一个人一天只有那么点认知带宽，超出这个限度，你做的工作是低质量的，你活着也是低质量的。</p>
+<p>而我们希望人类科学进步效率加快——这个目标本身，就要求我们保护每个人的认知带宽，而不是把它全部榨干。</p>
+<p>六、更进一步：为什么我依然向往共产主义
+八小时工作制是眼前的目标。再往远看一些，我依然向往共产主义。</p>
+<p>不是课本上那种套话式的共产主义。而是这样一个世界：大多数人不被生存和无聊的流程占满，可以自由地选择把自己的认知带宽投入到哪里。</p>
+<p>一个流水线上的工人，如果他想学物理，他有时间学。一个中专生，如果他对天文学感兴趣，他有条件接触。一个忙碌的上班族，如果他想停下来思考一个悖论，他不会被明天的工作报告追着跑。</p>
+<p>在这个世界里，科学进步不再是少数脱产者的特权，而是全人类共同参与的事业。不是因为每个人都在做科研，而是因为每个人都被允许多想一点、多问一点、多发一会儿呆。</p>
+<p>这是一个非常遥远的理想。我可能看不到它实现的那一天。</p>
+<p>但我知道一个事实：形式主义不会自动消失，八小时工作制不会自动落实，认知带宽不会被主动归还。这些东西需要我们一遍一遍地提，一遍一遍地争取。</p>
+<p>就像伽利略一遍一遍地观察木星的卫星，然后说：你看，不是所有东西都围着地球转。</p>
+<p>七、那我还能做什么</p>
+<p>但我不想给出一句“一切都会好起来”的鸡汤。因为我不确定一切会不会好起来。认知不平等可能长久存在。科学参与的门槛可能永远无法被抹平。</p>
+<p>但有些事情是可以做的。</p>
+<p>第一，拒绝参与烂梗的语言游戏。 不骂，不传，不用。当别人用标签攻击的时候，可以问一句：“你说的具体是什么问题？”把对话拉回地面。</p>
+<p>第二，在自己的工作和生活中，最大限度地对形式主义说不。适当糊弄。这不是消极怠工，这是为了把认知带宽留给真正重要的事情。</p>
+<p>第三，支持并参与任何推动八小时工作制落实的努力。 不要觉得这是“别人的事”。你的同事能早点下班，你的认知环境也会变好。这不是一个人的战斗。</p>
+<p>第四，坚持复杂问题不能被标签终结。 在你的群里，在你的博客里，在你的对话里。哪怕只有一个人因为你的一句话，开始对纽康柏悖论或者银河系产生了一点点好奇，那也是对抗。</p>
+<p>第五，承认认知不平等，但不因此鄙视“被困在其中的人”。 不嘲笑看不懂悖论的人。不嘲讽刷短视频的人。他们的状态是结构的结果，不是个人缺陷。</p>]]></description>
+    <enclosure url="https://xiaochai-123.github.io/images/star.jpeg" length="227592" type="image/.jpeg" />
     </item>
     
     <item>
@@ -766,78 +838,6 @@ Disallow: /hidden/flag.txt
 </p>
 <p>如图所示，当我们正常进行查询时，不会有回显，只显示You are in&hellip;</p>]]></description>
     <enclosure url="https://xiaochai-123.github.io/images/SQL1.png" length="88126" type="image/.png" />
-    </item>
-    
-    <item>
-      <title>思考能力是如何被阶级化的</title>
-      <link>https://xiaochai-123.github.io/posts/%E5%85%B3%E4%BA%8E%E7%9C%BC%E7%95%8C%E5%BD%A2%E5%BC%8F%E4%B8%BB%E4%B9%89%E5%92%8C%E6%80%9D%E7%BB%B4%E8%83%BD%E5%8A%9B%E7%9A%84%E7%8C%9C%E6%83%B3/</link>
-      <pubDate>Tue, 28 Apr 2026 21:20:35 +0800</pubDate>
-      <guid>https://xiaochai-123.github.io/posts/%E5%85%B3%E4%BA%8E%E7%9C%BC%E7%95%8C%E5%BD%A2%E5%BC%8F%E4%B8%BB%E4%B9%89%E5%92%8C%E6%80%9D%E7%BB%B4%E8%83%BD%E5%8A%9B%E7%9A%84%E7%8C%9C%E6%83%B3/</guid>
-      <description><![CDATA[<h1 id="你最后一次发呆是什么时候" data-numberify>你最后一次发呆是什么时候<a class="anchor ms-1" href="#你最后一次发呆是什么时候"></a></h1>
-<p>今天群聊里发生了一次吵架</p>
-<p>吵的是那些互联网烂梗——“木柜子”“笔电男大”“热水器”……一个朋友说这不就是开玩笑嘛，上纲上线干嘛。我说这不是开玩笑，这是脑腐。公共讨论正在被这些东西劣质化，弱者开始互害，严肃议题被消解于无形。</p>
-<p>晚上我看了一个视频，讲人类如何发现银河系。从伽利略第一次把望远镜指向星空，到赫歇尔数星星画出银河盘面，再到沙普利用造父变星测距离，我们终于知道自己住在一个巨大的盘状星系里。那个过程非常迷人——人类用极其有限的感官和智力，一点点拼出了宇宙的地图。</p>
-<p>这两个画面在我脑子里撞在一起，发出很大的声响。</p>
-<p>但我知道，烂梗只是冰山一角。真正吃掉我们认知带宽的，是另一样东西——它比烂梗更“正经”，更被默许，也更难以对抗。</p>
-<p>它叫形式主义。</p>
-<p>一、烂梗到底坏在哪里
-这类烂梗的本质，是把你活生生的人塞进“地域/性别/年龄/职业”的格子里，让所有不满都沿着这些裂缝发泄。当你在嘲讽“笔电男大”的时候，你攻击的是一个符号，而不是去思考背后可能存在的教育资源不均、就业压力、阶级困境。</p>
-<p>这招最聪明的地方在于：它让你只看到对立，看不到共同的困境。</p>
-<p>底层攻击底层，弱者辱骂弱者。“面试学生都是眼高手低”——真正制造这些困境的结构性力量呢？隐身了。弱者互害，是强者最稳固的统治基础。这种语言在精神上把本该站在同一阶级的人切割成孤岛，孤岛之间只剩下互相扔石头。</p>
-<p>而且烂梗是没有论证过程的。它直接扣帽子，直接完成“定罪”。它的流行拉低了公共讨论的门槛，让人沉迷于“嘴替”式的快感——有人骂出了我想骂的，爽了，结束。复杂思考？不需要了。</p>
-<p>说到底，这不是武器，这是精神上的自我阉割。</p>
-<p>真正有力的批判，永远是瞄准具体问题的，而不是给人贴标签；是团结“我们”的，而不是制造“你们”和“他们”。</p>
-<p>二、形式主义：一种被合法化的认知屠杀
-但烂梗至少还被一些人警惕。形式主义呢？它穿着“规范”“流程”“严谨”的外衣，堂而皇之地走进每一间办公室、每一所学校、每一个基层单位。</p>
-<p>你有没有经历过这样的场景——</p>
-<p>一个本该两小时结束的会议，开了整整一天。八个人轮流念PPT，每个人都在说一些“加强”“深化”“落实”之类的词，但没有一个人真正做出一个决定。会议结束了，问题还在原地。</p>
-<p>一份三页纸就能说清楚的报告，被要求写成三十页。格式要统一，用词要规范，封面要精美。写报告的人花了两天时间排版，又花了一天时间等领导签字。而真正需要解决的那个技术问题，一周过去了，一行代码都没写。</p>
-<p>一个基层医生、一个乡村教师、一个社区工作者，上面来了几十个“条线”，每个条线都要填表、都要拍照、都要留痕。他们真正服务对象的时间，被压缩到只剩下一小截。</p>
-<p>诸如此类，早晚自习，没用的课程等等等等&hellip;</p>
-<p>这些东西不叫烂梗。它们叫“工作”。</p>
-<p>但它们对认知带宽的吞噬，比烂梗凶猛一万倍。</p>
-<p>烂梗你可以选择不看。形式主义你不能选择不干。</p>
-<p>形式主义不直接禁止你热爱，它只是用无数微小的、看似“正当”的事情，把你的时间和精力一点一点地清空。就像水煮青蛙，水温是慢慢升上去的。等你发现不对劲的时候，你已经不会兴奋地讨论银河系了，你只想下班。</p>
-<p>三、认知带宽是一种稀缺资源，但它被掠夺了
-人在一天之内的认知带宽是有限的。</p>
-<p>你可以把它想象成一块电池。深度思考、复杂推理、创造性突破——这些是高耗能任务。简单重复、情绪宣泄、被动刷信息——这些是低耗能任务。</p>
-<p>如果你每天上班八小时（其实是十小时）已经被形式主义占满了——开会、填表、走流程、做PPT、应付检查——你的电池就已经被消耗得差不多了。剩下的那点电量，你要通勤，要吃饭，要应付家庭琐事。然后你还有多少电量留给“银河系”？</p>
-<p>不是你不愿意。是你真的没电了。</p>
-<p>这时候，抖音和游戏就成了最理性的选择。因为它们耗电少，回血快。十五秒一个刺激，不用动脑子，情绪被轻轻拨动一下，然后放下。这不是堕落，这是人在认知耗竭状态下的自救——虽然是一种让人更耗竭的自救。</p>
-<p>我妈妈看不懂纽康柏悖论。不是因为她笨，而是因为她长期没有被奖励过这种思考。她的认知带宽一直被日常琐事和形式化的劳动占满。久而久之，“主动思考复杂问题”变成了一件陌生且痛苦的事情。</p>
-<p>四、历史的真相：科学进步从来是靠“脱产”堆出来的
-我那个视频看完之后，看了看评论。评论区有人在讨论为什么这些老外能这么长时间脱离生产去搞研究。于是想到：人类历史上那些伟大的科学发现——哥白尼的日心说，牛顿的万有引力，爱因斯坦的相对论，甚至包括银河系结构的揭示——背后站着的，绝大多数都是脱产的人。</p>
-<p>或者说得直白一点：有闲的人。</p>
-<p>哥白尼是教会法学家，有教职收入；伽利略有美第奇家族庇护；开普勒虽然是宫廷数学家，工资低得可怜，但他仍然是一个“以思考为工作”的人；牛顿有剑桥的教授席位，可以安心研究自然哲学。这些人的共同点不是智商，而是：他们不需要把一天的绝大部分精力花在生存和无聊的流程上。</p>
-<p>他们有时间发呆。有时间试错。有时间沿着一个没人关心的问题走很远。</p>
-<p>普通人呢？在种地。在打铁。在工场里做十几个小时的工。在填表。在开会。在走流程。他们也许有同样的好奇心、同样的潜力、同样的天赋，但这些都被占满了。</p>
-<p>科学从来不是公平的。它一直是一种垄断。</p>
-<p>一种对“时间”和“认知带宽”的垄断。</p>
-<p>五、所以我希望八小时工作制被真正落实
-这不是一句口号。这是一个非常具体的、关于科学进步效率的判断。</p>
-<p>如果一个人的工作时间被压进八小时以内，如果他不需要每天花两三个小时通勤，如果他的工作中形式主义被削减到最低限度——那么他会多出时间。</p>
-<p>不是刷手机的时间，而是真正属于自己的、可以自由支配的、可以发呆的、可以沿着一个奇怪的问题走下去的时间。</p>
-<p>历史上几乎所有重大的科学突破，都不是在“被要求工作”的时间里产生的。它们产生在散步的时候，在喝咖啡的时候，在深夜睡不着的时候，在跟朋友闲聊的时候。它们需要一种状态——不被紧迫任务追赶的松弛。</p>
-<p>形式主义是这种松弛的天敌。它永远在制造“紧急但不重要”的事情。它让你永远觉得有一堆事还没做，让你没法真正停下来。</p>
-<p>八小时工作制的本质，不是“少干活”。它是对人类认知资源的保护。它承认：一个人一天只有那么点认知带宽，超出这个限度，你做的工作是低质量的，你活着也是低质量的。</p>
-<p>而我们希望人类科学进步效率加快——这个目标本身，就要求我们保护每个人的认知带宽，而不是把它全部榨干。</p>
-<p>六、更进一步：为什么我依然向往共产主义
-八小时工作制是眼前的目标。再往远看一些，我依然向往共产主义。</p>
-<p>不是课本上那种套话式的共产主义。而是这样一个世界：大多数人不被生存和无聊的流程占满，可以自由地选择把自己的认知带宽投入到哪里。</p>
-<p>一个流水线上的工人，如果他想学物理，他有时间学。一个中专生，如果他对天文学感兴趣，他有条件接触。一个忙碌的上班族，如果他想停下来思考一个悖论，他不会被明天的工作报告追着跑。</p>
-<p>在这个世界里，科学进步不再是少数脱产者的特权，而是全人类共同参与的事业。不是因为每个人都在做科研，而是因为每个人都被允许多想一点、多问一点、多发一会儿呆。</p>
-<p>这是一个非常遥远的理想。我可能看不到它实现的那一天。</p>
-<p>但我知道一个事实：形式主义不会自动消失，八小时工作制不会自动落实，认知带宽不会被主动归还。这些东西需要我们一遍一遍地提，一遍一遍地争取。</p>
-<p>就像伽利略一遍一遍地观察木星的卫星，然后说：你看，不是所有东西都围着地球转。</p>
-<p>七、那我还能做什么</p>
-<p>但我不想给出一句“一切都会好起来”的鸡汤。因为我不确定一切会不会好起来。认知不平等可能长久存在。科学参与的门槛可能永远无法被抹平。</p>
-<p>但有些事情是可以做的。</p>
-<p>第一，拒绝参与烂梗的语言游戏。 不骂，不传，不用。当别人用标签攻击的时候，可以问一句：“你说的具体是什么问题？”把对话拉回地面。</p>
-<p>第二，在自己的工作和生活中，最大限度地对形式主义说不。适当糊弄。这不是消极怠工，这是为了把认知带宽留给真正重要的事情。</p>
-<p>第三，支持并参与任何推动八小时工作制落实的努力。 不要觉得这是“别人的事”。你的同事能早点下班，你的认知环境也会变好。这不是一个人的战斗。</p>
-<p>第四，坚持复杂问题不能被标签终结。 在你的群里，在你的博客里，在你的对话里。哪怕只有一个人因为你的一句话，开始对纽康柏悖论或者银河系产生了一点点好奇，那也是对抗。</p>
-<p>第五，承认认知不平等，但不因此鄙视“被困在其中的人”。 不嘲笑看不懂悖论的人。不嘲讽刷短视频的人。他们的状态是结构的结果，不是个人缺陷。</p>]]></description>
-    <enclosure url="https://xiaochai-123.github.io/images/star.jpeg" length="227592" type="image/.jpeg" />
     </item>
     
     <item>

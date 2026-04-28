@@ -2,11 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://xiaochai-123.github.io/posts/%E6%B7%B1%E5%9C%B3%E5%A4%A7%E5%AD%A6-%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C-%E9%A2%84%E4%B9%A0%E9%A2%98%E7%AD%94%E6%A1%88/</loc>
+    <lastmod>2026-04-07T22:55:07+08:00</lastmod>
+  </url><url>
     <loc>https://xiaochai-123.github.io/posts/ctf-web-guide/</loc>
     <lastmod>2025-12-22T22:43:35+08:00</lastmod>
   </url><url>
-    <loc>https://xiaochai-123.github.io/posts/%E6%B7%B1%E5%9C%B3%E5%A4%A7%E5%AD%A6-%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C-%E9%A2%84%E4%B9%A0%E9%A2%98%E7%AD%94%E6%A1%88/</loc>
-    <lastmod>2026-04-07T22:55:07+08:00</lastmod>
+    <loc>https://xiaochai-123.github.io/posts/%E5%85%B3%E4%BA%8E%E7%9C%BC%E7%95%8C%E5%BD%A2%E5%BC%8F%E4%B8%BB%E4%B9%89%E5%92%8C%E6%80%9D%E7%BB%B4%E8%83%BD%E5%8A%9B%E7%9A%84%E7%8C%9C%E6%83%B3/</loc>
+    <lastmod>2026-04-28T21:20:35+08:00</lastmod>
   </url><url>
     <loc>https://xiaochai-123.github.io/posts/hgame-2026-web-wp/</loc>
     <lastmod>2026-03-05T18:35:35+08:00</lastmod>
@@ -25,9 +28,6 @@
   </url><url>
     <loc>https://xiaochai-123.github.io/posts/sqli-labs/</loc>
     <lastmod>2025-12-22T07:19:55+08:00</lastmod>
-  </url><url>
-    <loc>https://xiaochai-123.github.io/posts/%E5%85%B3%E4%BA%8E%E7%9C%BC%E7%95%8C%E5%BD%A2%E5%BC%8F%E4%B8%BB%E4%B9%89%E5%92%8C%E6%80%9D%E7%BB%B4%E8%83%BD%E5%8A%9B%E7%9A%84%E7%8C%9C%E6%83%B3/</loc>
-    <lastmod>2026-04-28T21:20:35+08:00</lastmod>
   </url><url>
     <loc>https://xiaochai-123.github.io/posts/%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B30/</loc>
     <lastmod>2026-03-01T02:54:35+08:00</lastmod>
