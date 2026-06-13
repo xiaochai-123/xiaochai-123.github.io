@@ -1,0 +1,1333 @@
+<!doctype html>
+<html class="position-relative" itemscope itemtype="https://schema.org/WebPage" lang="en"
+  data-bs-theme="auto" data-palette="blue">
+  <head><script src="/assets/init/bundle.min.acf86bec8f1585feebb4a7bc424e2c509abd0c84c974075fb9eee923b2c62b39.js" integrity="sha256-rPhr7I8Vhf7rtKe8Qk4sUJq9DITJdAdfue7pI7LGKzk=" crossorigin="anonymous"></script>
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>关于打印服务之CUPS_IPP的介绍 - xiaochai_123的小窝</title>
+    <link rel="icon" href="https://xiaochai-123.github.io/images/icons/icon-16x16.png?version=10de02cdc53ad46a103b64b869070266" sizes="16x16">
+    <link rel="icon" href="https://xiaochai-123.github.io/images/icons/icon-32x32.png?version=f1747f8c31b6821777c3a0956b5ba0db" sizes="32x32">
+    <link rel="icon" href="/favicon_hu_1fce3f16494f6ae3.png" sizes="150x150" type="image/png">
+    <link rel="apple-touch-icon" href="/favicon_hu_f105fae78c239d0f.png" sizes="180x180" type="image/png">
+    <link rel="icon" href="/favicon_hu_af357fe99fc0195a.png" sizes="192x192" type="image/png">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#6f42c1"><link rel="icon" href="https://xiaochai-123.github.io/images/icons/favicon.ico?version=13a0b7f517ed6605fd5fc54b37b8552d">
+<meta name="keywords" content="" />
+  <meta name="description" content="打印这一块" />
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://xiaochai-123.github.io/images/CUPS.jpg">
+  <meta name="twitter:title" content="关于打印服务之CUPS_IPP的介绍">
+  <meta name="twitter:description" content="打印这一块">
+<meta property="og:url" content="https://xiaochai-123.github.io/posts/%E5%85%B3%E4%BA%8E%E6%89%93%E5%8D%B0%E6%9C%8D%E5%8A%A1%E4%B9%8Bcups_ipp%E7%9A%84%E4%BB%8B%E7%BB%8D/">
+  <meta property="og:site_name" content="xiaochai_123的小窝">
+  <meta property="og:title" content="关于打印服务之CUPS_IPP的介绍">
+  <meta property="og:description" content="打印这一块">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-06-13T20:31:35+08:00">
+    <meta property="article:modified_time" content="2026-06-13T20:31:35+08:00">
+    <meta property="article:tag" content="CTF">
+    <meta property="article:tag" content="Linux">
+    <meta property="og:image" content="https://xiaochai-123.github.io/images/CUPS.jpg">
+
+  <meta itemprop="name" content="关于打印服务之CUPS_IPP的介绍">
+  <meta itemprop="description" content="打印这一块">
+  <meta itemprop="datePublished" content="2026-06-13T20:31:35+08:00">
+  <meta itemprop="dateModified" content="2026-06-13T20:31:35+08:00">
+  <meta itemprop="wordCount" content="589">
+  <meta itemprop="image" content="https://xiaochai-123.github.io/images/CUPS.jpg">
+  <meta itemprop="keywords" content="CTF,Linux">
+  <meta property="og:image:alt" content="关于打印服务之CUPS_IPP的介绍" />
+  <meta name="twitter:image:alt" content="关于打印服务之CUPS_IPP的介绍" />
+
+<link data-precache rel="stylesheet" href="/assets/main/bundle.min.5e43b1a2119e65d96e086e7147d978bfdbb1033637f8262ecddbd3fbaee298c1.css" integrity="sha256-XkOxohGeZdluCG5xR9l4v9uxAzY3+CYuzdvT+67imME=" crossorigin="anonymous">
+
+    <link data-precache rel="stylesheet" href="/assets/viewer/bundle.min.16d2c85c4cae39a98f8cb7a977e95e554b174f91a5484c32605637156f49ca6b.css" integrity="sha256-FtLIXEyuOamPjLepd&#43;leVUsXT5GlSEwyYFY3FW9Jyms=" crossorigin="anonymous">
+
+
+
+<link rel="stylesheet" href="/css/custom.css">
+<script>
+(function() {
+  var originalTitle = document.title;
+  document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+      document.title = '下次再见~';
+    } else {
+      document.title = '欢迎回来~';
+      setTimeout(function() {
+        document.title = originalTitle;
+      }, 1500); 
+    }
+  });
+})();
+</script><link rel="stylesheet" href="/css/all.min.css">
+  </head>
+  <body><header class="mb-4 sticky-top">
+  
+<nav class="top-app-bar shadow navbar navbar-expand-lg">
+  <div class="container">
+<a class="navbar-brand d-flex align-items-center flex-grow-1 flex-xxl-grow-0 justify-content-xxl-start ms-2 ms-xxl-0 mx-auto me-xxl-2"
+    href="https://xiaochai-123.github.io/">
+    <picture><img class="logo " alt="Logo" src="https://xiaochai-123.github.io/images/logo.png?v=166cbf8ee66ab6626f3f85db1fb49313" loading="lazy" width="2048" height="2048" />
+</picture>
+xiaochai_123的小窝
+</a>
+
+    <div class="offcanvas-lg offcanvas-end flex-grow-1" data-bs-scroll="true" tabindex="-1" id="navbarMenus" aria-labelledby="navbarMenusLabel">
+      <div class="offcanvas-header px-4 pb-0">
+        <div class="offcanvas-title h5" id="navbarMenusLabel">xiaochai_123的小窝</div>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" data-bs-target="#navbarMenus" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body p-4 pt-0 p-lg-0">
+        <hr class="d-lg-none">
+        <ul class="navbar-nav flex-row flex-wrap align-items-center me-auto"><li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2" href="https://xiaochai-123.github.io/posts/">Posts
+            </a>
+          </li><li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2" href="https://xiaochai-123.github.io/categories/">Categories
+            </a>
+          </li><li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2" href="https://xiaochai-123.github.io/tags/">Tags
+            </a>
+          </li><li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2" href="https://xiaochai-123.github.io/friends/">Friends
+            </a>
+          </li>
+        </ul>
+        
+    <hr class="d-lg-none">
+    <form class="search-bar ms-auto my-auto" action="" novalidate>
+      <div class="input-group align-items-center">
+        <span class="btn btn-search disabled position-absolute left-0 border-0 px-1">
+          <i class="fas fa-fw fa-search fa-lg"></i>
+        </span>
+        <input
+          class="my-1 form-control border-white rounded-5 search-input bg-body"
+          name="q"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+          required>
+          <span class="search-shortcut position-absolute end-0 top-0 me-2">
+            <kbd class="text-dark bg-white opacity-75 rounded-3 shadow border border-primary py-1 fw-bold">/</kbd>
+          </span>
+      </div>
+    </form><hr class="d-lg-none">
+        <ul class="navbar-nav flex-row flex-wrap align-items-center ms-md-auto">
+<li class="nav-item dropdown col-6 col-lg-auto">
+    <a class="nav-link px-0 py-2 px-lg-1" href="#" id="paletteDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="fas fa-fw fa-palette"></i>
+        <span class="d-lg-none">Palette</span>
+    </a>
+    <ul class="palette-dropdown-menu dropdown-menu dropdown-menu-end px-2 row g-2" aria-labelledby="paletteDropdown">
+            <li class="col-4 my-1">
+                <a role="button" id="palette-blue" aria-label="Blue"
+                    class="btn btn-sm w-100 palette text-bg-blue" data-palette="blue">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-blue-gray" aria-label="Blue Gray"
+                    class="btn btn-sm w-100 palette text-bg-blue-gray" data-palette="blue-gray">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-brown" aria-label="Brown"
+                    class="btn btn-sm w-100 palette text-bg-brown" data-palette="brown">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-cyan" aria-label="Cyan"
+                    class="btn btn-sm w-100 palette text-bg-cyan" data-palette="cyan">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-green" aria-label="Green"
+                    class="btn btn-sm w-100 palette text-bg-green" data-palette="green">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-indigo" aria-label="Indigo"
+                    class="btn btn-sm w-100 palette text-bg-indigo" data-palette="indigo">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-orange" aria-label="Orange"
+                    class="btn btn-sm w-100 palette text-bg-orange" data-palette="orange">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-pink" aria-label="Pink"
+                    class="btn btn-sm w-100 palette text-bg-pink" data-palette="pink">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-purple" aria-label="Purple"
+                    class="btn btn-sm w-100 palette text-bg-purple" data-palette="purple">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-red" aria-label="Red"
+                    class="btn btn-sm w-100 palette text-bg-red" data-palette="red">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-teal" aria-label="Teal"
+                    class="btn btn-sm w-100 palette text-bg-teal" data-palette="teal">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-yellow" aria-label="Yellow"
+                    class="btn btn-sm w-100 palette text-bg-yellow" data-palette="yellow">
+                </a>
+            </li>
+    </ul>
+</li>
+<li class="nav-item dropdown col-6 col-lg-auto">
+    <a class="nav-link px-0 py-2 px-lg-1" href="#" id="modeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="mode-icon fas fa-fw fa-adjust" id="modeIcon"></i>
+        <span class="d-lg-none">Mode</span>
+    </a>
+    <ul class="mode-dropdown-menu dropdown-menu dropdown-menu-end" aria-labelledby="modeDropdown">
+        <li class="mode-item" data-color-mode="light" data-icon="sun">
+            <button class="dropdown-item">
+                <i class="mode-icon fas fa-fw fa-sun"></i> Light
+            </button>
+        </li>
+        <li class="mode-item" data-color-mode="dark" data-icon="moon">
+            <button class="dropdown-item">
+                <i class="mode-icon fas fa-fw fa-moon"></i> Dark
+            </button>
+        </li>
+        <li class="mode-item active" data-color-mode="auto" data-icon="adjust">
+            <button class="dropdown-item">
+                <i class="mode-icon fas fa-fw fa-adjust"></i> Auto
+            </button>
+        </li>
+    </ul>
+</li>
+        </ul>
+      </div>
+    </div>
+    <div class="d-flex">
+      <button class="navbar-toggler order-5 border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarMenus"
+        aria-controls="navbarMenus" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-ellipsis-h"></i>
+      </button>
+    </div>
+  </div>
+</nav>
+
+</header>
+
+    <main class="container has-sidebar" data-kind="page"><script data-precache src="/js/main-init.6a1fd2a99f6ad87b4aa9b7ed0f10344d4273d92cc29a6fb2cf05c463ec57ce39.js" integrity="sha256-ah/SqZ9q2HtKqbftDxA0TUJz2SzCmm&#43;yzwXEY&#43;xXzjk=" crossorigin="anonymous"></script>
+
+      <div class="row content"><noscript>
+    <div class="alert alert-danger" role="alert">Your browser does not support JavaScript.</div>
+</noscript>
+
+<div class="content-posts col-xxl-8">
+  <div class="container"><nav class="row card component" aria-label="breadcrumb">
+  <div class="card-body pb-0">
+    <ol class="hbs-breadcrumb breadcrumb flex-nowrap"><li class="breadcrumb-item text-surface"><a href="/">Home</a></li><li class="breadcrumb-item text-surface"><a href="/posts/">Posts</a></li><li class="breadcrumb-item active">关于打印服务之CUPS_IPP的介绍</li></ol>
+  </div>
+</nav><div class="post-panel-wrapper position-relative d-flex justify-content-center">
+  <div class="d-flex flex-row justify-content-center rounded-5 border post-panel position-fixed px-3 py-1 surface shadow-1">
+    
+    
+
+    
+    
+    
+  <a class="action action-toc d-none d-xxl-block" href="#postTOC" role="button" title="Contents">
+    <i class="fas fa-fw fa-list-alt"></i>
+  </a>
+<a class="action action-toc d-block d-xxl-none" href="#post-toc-container" role="button" title="Contents">
+  <i class="fas fa-fw fa-list-alt"></i>
+</a>
+
+    <a class="action action-post-comments" href="#post-comments" role="button" aria-label="Comments" title="Comments">
+  <i class="fas fa-fw fa-comments"></i>
+</a>
+    
+<a id="sidebarToggler" class="action action-sidebar-toggler d-none d-xl-block" role="button" title="Toggle sidebar">
+  <i class="fas fa-fw fa-expand-alt" data-fa-transform="rotate-45"></i>
+</a>
+
+    
+  </div>
+</div><article class="row card component mb-4 post">
+  <div class="card-header ">
+    <h1 class="card-title post-title my-2">关于打印服务之CUPS_IPP的介绍</h1>
+  </div>
+  <div class="card-body"><div class="post-meta mb-3">
+  <span class="post-date me-1 mb-1" title="created on 2026-06-13 20:31:35 &#43;0800 CST.">June 13, 2026</span><span class="post-reading-time me-1 mb-1">3 min read</span><a href="/categories/%E5%A5%87%E5%A6%99%E5%B0%8F%E7%9F%A5%E8%AF%86/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-category">
+      <i class="fas fa-fw fa-folder me-1"></i>奇妙小知识</a><a href="/tags/ctf/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-tag">CTF</a><a href="/tags/linux/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-tag">Linux</a>
+</div>
+
+      <p class="lead mb-3 text-body-emphasis">打印这一块</p>
+<div class="mt-2 mb-3 d-block d-xxl-none">
+    <h2 class="text-surface mb-3">Contents</h2>
+    <div id="post-toc-container">
+        </div>
+    <hr class="text-secondary">
+</div><div class="post-content mb-3" data-bs-spy="scroll" data-bs-target="#TableOfContents" tabindex="0">
+        <div id="post-content-body">
+<h1 id="打印这一块" data-numberify>打印这一块<a class="anchor ms-1" href="#打印这一块"></a></h1>
+
+<h2 id="历史前言" data-numberify>历史前言<a class="anchor ms-1" href="#历史前言"></a></h2>
+<p>在CUPS出现之前，Unix/Linux系统的打印功能存在但十分低效。Windows和MacOS对打印机的适配比较好，因为厂家往往不愿意让自己的驱动程序开源，同时Linux系统分支复杂种类繁多，用户较少，使得打印机很少对Linux系统进行适配。</p>
+
+<h3 id="早期打印与lpd协议" data-numberify>早期打印与LPD协议<a class="anchor ms-1" href="#早期打印与lpd协议"></a></h3>
+<p>在个人计算机普及之前，打印机是昂贵且集中的资源，通常由多个用户共享。这种共享环境催生了最早的打印管理系统。</p>
+<p><strong>LPD（Line Printer Daemon，行式打印守护程序）</strong> 它是一个轻量、简单的协议，专门为打印任务设计，功能单一。LPD 的一个显著优势是配置简单，且跨平台性很好，能在不同操作系统间轻松共享打印机。但同时，由于它诞生于早期的互联网环境，设计上几乎没有考虑安全性，缺乏身份验证和数据加密机制，数据传输是明文的，因此被认为“安全性较弱”。</p>
+<p>在 Windows 上添加打印机时，如果选择“创建新端口”为 <strong>LPR Port</strong>，就是在使用 LPD 协议。在 Linux 等 Unix-like 系统中，使用 <code>lpr</code> 命令提交作业时，后台走的也是这个流程。虽然现在 CUPS 更通用，但在很多嵌入式设备（如路由器、NAS）和旧系统中，LPD 依然是标配。</p>
+<p>然而，LPD的设计带着浓厚的“字符打印时代”的特征。当时的打印机多为击打式打印机（类似打字机），使用固定的字符集，打印数据流简单，数据量也小。随着图形用户界面的普及和激光打印机的出现，打印技术从基于字符的时代迈入了图形化时代。PostScript等页面描述语言的发明，使得打印机可以打印任意字体和图像，但这同时也带来了巨大的数据传输和复杂的处理需求。</p>
+
+<h3 id="技术演进带来的挑战" data-numberify>技术演进带来的挑战<a class="anchor ms-1" href="#技术演进带来的挑战"></a></h3>
+<p>LPD协议的局限性在此背景下逐渐暴露：</p>
+<ul>
+<li><strong>协议功能单一</strong>：LPD不支持现代打印所需的双向通信，无法从打印机获取状态信息、错误报告或耗材余量等反馈。</li>
+<li><strong>安全机制薄弱</strong>：LPD协议缺乏强大的用户认证和数据加密功能，在现代网络环境中存在安全隐患。</li>
+<li><strong>设备支持受限</strong>：LPD最初主要为行式打印机设计，难以很好地支持具备各种高级功能的图形化打印机。</li>
+<li><strong>管理方式固化</strong>：它无法优雅地支持同时连接和管理多个打印设备，尤其在不同厂商、不同接口标准的设备混合使用的场景下。</li>
+</ul>
+<p>此外，市场上还存在其他接口标准，如HP公司为网络打印机开发的JetDirect（使用TCP 9100端口）等，它们各自为政，进一步加剧了打印系统的碎片化。</p>
+
+<h3 id="从bsd到system-v" data-numberify>从BSD到System V<a class="anchor ms-1" href="#从bsd到system-v"></a></h3>
+<p>除了LPD，Unix系统中还存在另一套源自System V的打印系统。它使用 <code>lp</code>、<code>lpstat</code>、<code>cancel</code> 等命令。虽然命令和LPD系统不同，但其底层架构和设计理念同样古老，并未解决打印技术发展所带来的根本性挑战。</p>
+<p>总的来说，在CUPS诞生之前，Unix/Linux的打印世界是分散、低效且充满兼容性问题的。LPD作为服务端，其功能和协议标准都已远远落后于硬件的发展。用户和系统管理员常常需要面对复杂的配置、不稳定的连接和有限的功能支持，“在Linux下成功打印”甚至一度成为一项颇具挑战性的任务。</p>
+<p>CUPS的出现，正是为了终结这种混乱，为Unix/Linux带来一种现代、可靠且统一的打印解决方案。</p>
+
+<h2 id="cups-通用unix打印系统common-unix-printing-system" data-numberify>CUPS (通用UNIX打印系统,Common UNIX Printing System)<a class="anchor ms-1" href="#cups-通用unix打印系统common-unix-printing-system"></a></h2>
+
+<h3 id="诞生背景与发展历程" data-numberify>诞生背景与发展历程<a class="anchor ms-1" href="#诞生背景与发展历程"></a></h3>
+<p>CUPS的诞生可以追溯到1997年，由Michael Sweet创办的Easy Software Products公司开始开发。1999年，第一个公开测试版面世。CUPS的设计初衷是解决当时Unix/Linux打印系统面临的碎片化困境——LPD协议功能单一、缺乏双向通信、安全管理薄弱，而不同厂商又各自推出JetDirect等互不兼容的接口标准。</p>
+<p>值得注意的是，CUPS最初的设计也使用了LPD协议，但由于LPD的固有局限和厂商之间的不兼容问题，开发团队最终选择了 <strong>IPP (互联网打印协议,Internet Printing Protocol)</strong> 作为核心协议。这一决策成为CUPS成功的关键。</p>
+<p>CUPS的普及速度很快。它迅速成为大多数Linux发行版的默认打印系统。2002年3月，苹果公司（Apple Inc.）采纳CUPS作为Mac OS X 10.2的打印系统。2007年2月，苹果聘请了首席开发者Michael Sweet并购买了CUPS的源代码。2019年底，Michael Sweet离开苹果后，OpenPrinting组织接手了该项目，继续推动其发展。CUPS这个名称最初是“Common UNIX Printing System”的缩写，但从CUPS 1.4版本开始，由于UNIX商标的法律问题，名称被简化为单纯的“CUPS”。</p>
+
+<h3 id="与windows的适配-smb协议" data-numberify>与Windows的适配 (SMB协议)<a class="anchor ms-1" href="#与windows的适配-smb协议"></a></h3>
+<p>**SMB (Server Message Block, 服务器消息块协议) **是一个复杂的、集成度高的协议，它最大的优点是无需单独安装客户端，Windows、macOS 和 Linux 都内置了对它的支持，对普通用户非常友好。其现代版本（如 SMB 2.0/3.0）内置了强大的加密和身份验证机制，安全性远高于 LPD，是Windows网络环境下共享文件和打印机的核心协议。在传统的Linux打印方案中，连接Windows共享打印机往往需要复杂的配置和额外的中间层。CUPS通过集成SMB后端，使得Linux用户可以像访问本地打印机一样，直接向Windows共享的打印机提交任务。这一能力在实际的企业混合网络环境中尤为重要，它让Linux系统能够融入以Windows为中心的办公网络，而无需改变既有的打印共享架构。</p>
+
+<h3 id="cups核心架构" data-numberify>CUPS核心架构<a class="anchor ms-1" href="#cups核心架构"></a></h3>
+<p>感性地来说，当你使用CUPS服务配置好打印机后，你便可以正常在Linux系统上使用该打印机进行打印，如果开启share选项，在能访问CUPS服务的范围内，其他设备便可以通过网络连接到你共享出去的打印机，就像他们添加一台USB打印机一样。</p>
+<p>CUPS的核心可以概括为一个<strong>模块化的开源打印系统</strong>，它以IPP作为管理打印机、打印请求和打印队列的基础协议。</p>
+<p>其工作流程可以分解为以下几个关键环节：</p>
+<ol>
+<li><strong>任务接收与队列管理</strong>：当用户通过应用程序发起打印时，CUPS首先会创建一个<strong>打印任务（Job）</strong>。这个任务包含了目标打印队列、文档名称以及页面描述信息。CUPS为每个任务分配编号（如queue-1、queue-2），以便用户后续监控或取消任务。</li>
+<li><strong>格式转换（过滤器系统）</strong>：这是CUPS最核心的能力之一。它接收应用程序产生的页面描述（如“在此处换行”、“在此处画线”），然后自动确定并使用最佳的**过滤器（filters）**和打印机驱动程序，将这些描述转换成打印机能够理解的语言（如PostScript、PCL或打印机特定的光栅格式）。</li>
+<li><strong>数据传输（后端系统）</strong>：经过转换后的可打印数据，最后被传递给**后端（backend）**程序。后端负责通过具体的通信接口（如USB、TCP/IP网络）将数据发送到目标打印机。任务完全打印完成后，CUPS会将其从队列中移除，并继续处理下一个任务。</li>
+</ol>
+<p>为了兼容旧有系统，CUPS还提供了对LPD协议的有限支持，并保留了传统的System V（<code>lp</code>）和Berkeley（<code>lpr</code>）打印命令接口，使得用户和应用程序几乎无需改变使用习惯。</p>
+
+<h3 id="主要特性与优势" data-numberify>主要特性与优势<a class="anchor ms-1" href="#主要特性与优势"></a></h3>
+<p>相较于前文所述的LPD等传统方案，CUPS带来了革命性的进步：</p>
+<ul>
+<li><strong>统一的协议标准（IPP）</strong>：IPP是基于HTTP协议构建的，它天然支持访问控制、用户认证和数据加密，比LPD强大且安全得多。使用IPP，用户可以验证打印机或服务器的状态信息、远程管理打印机，甚至通过浏览器直接打印作业。</li>
+<li><strong>广泛的协议兼容性</strong>：CUPS不仅支持IPP，同时提供对LPD、SMB、JetDirect和AppSocket等多种通信协议的支持。这使得CUPS能够无缝接入各种网络打印环境。</li>
+<li><strong>自动设备发现</strong>：CUPS能够自动检测网络上的打印机。它支持使用mDNS（Bonjour）和SNMP等协议搜索打印机，也能通过CUPS浏览功能发现其他CUPS服务器共享的打印机。需要说明的是，CUPS的浏览能力随版本有所变化——1.6.x至2.1.x期间曾一度被移除，由独立的<code>cups-browsed</code>守护进程接管；该进程可创建持久队列，并支持集群和负载均衡等高级功能。从CUPS 2.2.4开始，原生浏览能力恢复（通过avahi-daemon实现，但只创建临时队列），<code>cups-browsed</code>则转向处理更复杂的发现需求。对于直接连接的USB打印机，热插拔事件也能被自动识别并创建打印队列。</li>
+<li><strong>便捷的Web管理界面</strong>：CUPS提供了一个内置的、基于Web浏览器的管理界面。<a href="https://docs.redhat.com/zh-cn/documentation/red_hat_enterprise_linux/9/html-single/configuring_and_using_a_cups_printing_server/index" target="_blank" rel="noopener noreferrer">配置和使用 CUPS 打印服务器(Red Hat)<i class="fas fa-external-link-square-alt ms-1"></i></a>基本配置完成后，用户在浏览器中访问对应ip地址的631端口，即可完成添加打印机、配置选项、管理任务等几乎所有操作。</li>
+<li><strong>标准化的驱动模型（PPD）</strong>：CUPS使用Adobe的PostScript打印机描述（PPD）文件作为驱动模型。这为厂商提供了一种标准化的方式来描述其打印机的特性和选项，简化了驱动开发。不过需要说明的是，<strong>CUPS官方已宣布传统的驱动和PPD文件方式已弃用，未来将全面转向基于IPP的现代标准。</strong></li>
+</ul>
+
+<h3 id="ppd文件" data-numberify>PPD文件<a class="anchor ms-1" href="#ppd文件"></a></h3>
+<p>PPD (PostScript Printer Description, PostScript打印机描述) 文件是一种<strong>文本格式的配置文件</strong>，由打印机厂商为其PostScript打印机或打印机系列创建，用于完整描述设备的功能和特性。</p>
+<p>CUPS对打印机的配置要使用PPD文件。正是由于<strong>PPD是文本文件</strong>，所以可以在不同的系统中通用，也可以在厂商提供的驱动中找到。</p>
+<p>PPD文件本质上充当了<strong>打印机的驱动描述层</strong>——它告诉操作系统打印机“能做什么”。具体来说，它包含以下关键信息：</p>
+<ul>
+<li>打印机支持的语言级别（如PostScript Level 2）</li>
+<li>是否支持彩色打印</li>
+<li>允许的纸张尺寸（A4、Letter等）</li>
+<li>输入纸盒选项</li>
+<li>双面打印能力</li>
+<li>字体信息</li>
+<li>分辨率选项</li>
+</ul>
+<p>例如：</p>
+<pre tabindex="0"><code>*LanguageLevel: &#34;2&#34;
+*ColorDevice: True
+*DefaultColorSpace: CMYK
+*Throughput: &#34;10&#34;
+</code></pre><p>需要说明的是，<strong>PPD文件并非完整的驱动程序</strong>。用户在使用CUPS配置打印机时，虽然只需选择或上传PPD文件，但真正完成数据转换工作的是CUPS背后的过滤器系统（如<code>pdftopdf</code>、<code>pstops</code>、<code>gstoraster</code>等）和后端程序（如<code>usb</code>、<code>socket</code>后端等）。PPD文件更像一份“说明书”，告诉系统应该调用哪些组件以及如何调用。</p>
+
+<h3 id="打印流程" data-numberify>打印流程<a class="anchor ms-1" href="#打印流程"></a></h3>
+<p>整体的打印流程大概是：</p>
+<p><strong>步骤1：生成源文件</strong> —— 用户执行打印操作后，应用程序将待打印内容生成PDF文件（如原格式非PDF则先转换），并提交至CUPS。</p>
+<p><strong>步骤2：确定转换方案</strong> —— CUPS查阅目标打印机的PPD文件，根据文件描述判断应使用哪种过滤器，以便将PDF转换为打印机支持的语言（如PJL、PCL、位图或原生PDF）。</p>
+<p><strong>步骤3：执行格式转换</strong> —— 选定的过滤器将PDF文件转换成打印机能够识别的数据格式。</p>
+<p><strong>步骤4：数据输出</strong> —— 转换完成的数据被交给对应的后端程序。例如，USB连接打印机时，系统会调用USB后端完成最终发送。</p>
+
+<h2 id="ipp-互联网打印协议internet-printing-protocol" data-numberify>IPP (互联网打印协议,Internet Printing Protocol)<a class="anchor ms-1" href="#ipp-互联网打印协议internet-printing-protocol"></a></h2>
+<p>IPP 是一个基于HTTP的应用层协议，专门设计用于在客户端和打印机（或打印服务器）之间进行打印任务的管理和控制。它由IETF（互联网工程任务组）于1997年开始制定，与CUPS的诞生几乎同期。</p>
+<p>如果说LPD是为“字符打印时代”设计的轻量协议，那么IPP就是为“互联网时代的打印需求”的现代方案。</p>
+
+<h3 id="ipp的核心设计理念" data-numberify>IPP的核心设计理念<a class="anchor ms-1" href="#ipp的核心设计理念"></a></h3>
+<p>IPP的设计借鉴了HTTP的成功经验，具有以下几个核心理念：</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">理念</th>
+          <th style="text-align: left">说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>基于HTTP</strong></td>
+          <td style="text-align: left">IPP使用HTTP作为传输协议，继承了HTTP的请求/响应模型、内容类型协商和认证机制</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>面向对象</strong></td>
+          <td style="text-align: left">将打印机、打印任务等抽象为对象，每个对象都有相应的属性和操作</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>可扩展</strong></td>
+          <td style="text-align: left">通过定义新的属性和操作来扩展功能，而不破坏已有实现</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>双向通信</strong></td>
+          <td style="text-align: left">客户端不仅可以发送任务，还能查询打印机状态、任务进度等信息</td>
+      </tr>
+  </tbody>
+</table>
+
+<h3 id="ipp的url格式" data-numberify>IPP的URL格式<a class="anchor ms-1" href="#ipp的url格式"></a></h3>
+<p>在IPP协议中，打印机通过URL来标识。常见的IPP URL格式有：</p>
+<pre tabindex="0"><code>ipp://printer-ip-address:631/ipp/port
+ipps://printer-ip-address:631/ipp/port   (基于TLS/SSL加密版本)
+</code></pre><ul>
+<li><code>631</code> 是IPP服务的默认端口号</li>
+<li><code>/ipp/port</code> 是常见的打印机资源路径（不同厂商可能略有差异）</li>
+</ul>
+<blockquote>
+<p>你可能见过 <code>i//</code> 或 <code>ipps://</code> 开头的地址，这就是在访问IPP打印机。而现代macOS和iOS系统广泛使用的AirPrint，其底层核心就是IPP。</p>
+</blockquote>
+
+<h3 id="ipp的主要操作" data-numberify>IPP的主要操作<a class="anchor ms-1" href="#ipp的主要操作"></a></h3>
+<p>IPP定义了一套完整的操作集合，涵盖了打印任务的全生命周期：</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">操作类型</th>
+          <th style="text-align: left">操作名</th>
+          <th style="text-align: left">说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>打印机操作</strong></td>
+          <td style="text-align: left"><code>Get-Printer-Attributes</code></td>
+          <td style="text-align: left">查询打印机的能力和状态</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><code>Get-Jobs</code></td>
+          <td style="text-align: left">查询指定打印机的所有任务</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><code>Pause-Printer</code> / <code>Resume-Printer</code></td>
+          <td style="text-align: left">暂停/恢复打印机</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>任务操作</strong></td>
+          <td style="text-align: left"><code>Print-Job</code></td>
+          <td style="text-align: left">提交打印任务（最核心的操作）</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><code>Cancel-Job</code></td>
+          <td style="text-align: left">取消指定的打印任务</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><code>Get-Job-Attributes</code></td>
+          <td style="text-align: left">查询某个任务的详细状态</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><code>Hold-Job</code> / <code>Release-Job</code></td>
+          <td style="text-align: left">暂停/恢复某个任务</td>
+      </tr>
+  </tbody>
+</table>
+<p>就像图片中的：</p>
+<p><picture><img class="img-fluid " alt="Wireshark_mju5PWBSYH" src="https://xiaochai-123.github.io/images/screenshoots/2026-06/Wireshark_mju5PWBSYH.png?v=e8197552a0c0118ac6286da7bb52c948" loading="lazy" width="1290" height="687" />
+</picture>
+
+</p>
+<p>IPP打印流程大概如下：</p>
+<ol>
+<li>发现打印机（mDNS/DNS-SD广播）</li>
+<li>Get-Printer-Attributes（查询打印机能力）</li>
+<li>打印机返回支持的功能（纸张尺寸、双面、彩色等）</li>
+<li>Print-Job（提交打印数据）</li>
+<li>打印机返回任务ID和状态</li>
+<li>Get-Job-Attributes（可选：轮询任务进度）</li>
+<li>返回任务状态（pending/processing/completed）</li>
+</ol>
+<p>IPP的安全性可以这样理解——<strong>HTTP : HTTPS = IPP : IPPS</strong></p>
+
+<h3 id="ipp与无驱动打印" data-numberify>IPP与无驱动打印<a class="anchor ms-1" href="#ipp与无驱动打印"></a></h3>
+<p>IPP最重要的贡献之一，是推动了<strong>无驱动打印</strong>的普及。</p>
+<p>传统打印流程依赖PPD文件和过滤器进行格式转换，而现代IPP打印机可以直接接受标准化的页面描述格式（如PDF、PWG Raster）。客户端和打印机之间通过IPP协商：</p>
+<ol>
+<li>客户端询问打印机：“你能接收什么格式的数据？”</li>
+<li>打印机回答：“我支持PDF、PCL、PWG Raster……”</li>
+<li>客户端选择双方都支持的格式（通常是PDF），直接发送</li>
+</ol>
+<p>这意味着<strong>用户不再需要为每款打印机安装驱动程序</strong>。只要打印机支持IPP Everywhere或AirPrint，添加打印机就像连接WiFi一样简单。</p>
+
+<h3 id="ipp-everywhere" data-numberify>IPP Everywhere<a class="anchor ms-1" href="#ipp-everywhere"></a></h3>
+<p><strong>IPP Everywhere</strong> 是由打印机工作组（PWG）制定的IPP认证计划，旨在定义一套现代打印机的通用标准。</p>
+<p>符合IPP Everywhere标准的打印机必须满足以下要求：</p>
+<ul>
+<li>支持PDF作为文档格式</li>
+<li>支持PWG Raster作为光栅格式</li>
+<li>支持mDNS/DNS-SD进行网络发现</li>
+<li>实现一组核心的IPP操作</li>
+</ul>
+<p>目前，大多数新出厂的网络打印机都已支持IPP Everywhere。这也是CUPS官方弃用PPD文件的底气所在。</p>
+
+<h3 id="ipp协议流量分析" data-numberify>IPP协议流量分析<a class="anchor ms-1" href="#ipp协议流量分析"></a></h3>
+<p>IPP消息采用二进制格式传输，不是纯文本。版本号固定为<code>0x0101</code>，操作ID占2字节（如Print-Job=<code>0x0002</code>），属性以<code>value-tag</code>+<code>name</code>+<code>value</code>的结构排列。Wireshark已经帮我们解析好了，所以看到的是可读的字段名。</p>
+<p>我们找到ipp的包，图示这个为Print-Job</p>
+<p><picture><img class="img-fluid " alt="Wireshark_RTksq2TRu0" src="https://xiaochai-123.github.io/images/screenshoots/2026-06/Wireshark_RTksq2TRu0.png?v=84053a131370c9e6e4ea835b659b98bb" loading="lazy" width="1419" height="908" />
+</picture>
+
+</p>
+<p>看到左下角展开的Internet Printing Protocol，我们仔细分析</p>
+<p><picture><img class="img-fluid " alt="Wireshark_9hdwofjlmf" src="https://xiaochai-123.github.io/images/screenshoots/2026-06/Wireshark_9hdwofjlmf.png?v=81787879e45b541fa4593ffc189bab5a" loading="lazy" width="577" height="237" />
+</picture>
+
+</p>
+<p>可以看到这里列出了</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">字段</th>
+          <th style="text-align: left">值</th>
+          <th style="text-align: left">含义</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>operation-attributes-tag</code></td>
+          <td style="text-align: left">(组标记)</td>
+          <td style="text-align: left">标记操作属性组的开始，值是<code>0x01</code>（十六进制），表示后面是操作属性</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>attributes-charset</code></td>
+          <td style="text-align: left"><code>utf-8</code></td>
+          <td style="text-align: left">字符集，指定请求中字符串的编码方式（通常是UTF-8）</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>attributes-natural-language</code></td>
+          <td style="text-align: left"><code>en-us</code></td>
+          <td style="text-align: left">自然语言，用于错误消息等的人类语言（美式英语）</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>printer-uri</code></td>
+          <td style="text-align: left"><code>ipp://192.168.2.1:631/printers/SCX-4623-Series</code></td>
+          <td style="text-align: left"><strong>目标打印机</strong>，指定要将作业发送到哪台打印机</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>requesting-user-name</code></td>
+          <td style="text-align: left"><code>anonymous</code></td>
+          <td style="text-align: left"><strong>请求用户</strong>，作业是由谁提交的（这里是匿名用户）</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>document-name</code></td>
+          <td style="text-align: left"><code>fake.png</code></td>
+          <td style="text-align: left"><strong>文档名称</strong>，正在打印的文件名（只是信息性字段）</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>document-format</code></td>
+          <td style="text-align: left"><code>application/octet-stream</code></td>
+          <td style="text-align: left"><strong>文档格式</strong>，告诉CUPS这个数据是原始字节流（不指定具体格式）</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>end-of-attributes-tag</code></td>
+          <td style="text-align: left">(组结束标记)</td>
+          <td style="text-align: left">操作属性组结束，后面可能跟着作业属性组或文档数据</td>
+      </tr>
+  </tbody>
+</table>
+<p>找到一个successful-ok包，分析打印机属性组（部分）</p>
+<p><picture><img class="img-fluid " alt="explorer_jmvpCs2txu" src="https://xiaochai-123.github.io/images/screenshoots/2026-06/explorer_jmvpCs2txu.png?v=27546e883fceefd6b7fcd870a41959ec" loading="lazy" width="707" height="520" />
+</picture>
+
+</p>
+<p>在这部分的属性里，我们能得到这些信息</p>
+<p><strong>URI信息（攻击面关键）</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">属性名</th>
+          <th style="text-align: left">值</th>
+          <th style="text-align: left">安全含义</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>printer-uri-supported</code></td>
+          <td style="text-align: left"><code>ipp://192.168.2.1:631/printers/SCX-4623-Series</code></td>
+          <td style="text-align: left"><strong>打印机主端点</strong>，接收打印任务</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>printer-icons</code></td>
+          <td style="text-align: left"><code>http://192.168.2.1:631/icons/SCX-4623-Series.png</code></td>
+          <td style="text-align: left">图标URL，可被利用进行SSRF</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>printer-more-info</code></td>
+          <td style="text-align: left"><code>http://192.168.2.1:631/printers/SCX-4623-Series</code></td>
+          <td style="text-align: left">管理页面URL</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>printer-strings-uri</code></td>
+          <td style="text-align: left"><code>http://192.168.2.1:631/strings/SCX-4623-Series.strings</code></td>
+          <td style="text-align: left">本地化字符串文件</td>
+      </tr>
+  </tbody>
+</table>
+<p>攻击价值：这些URI暴露了CUPS Web管理界面（631端口），是后续攻击的入口点。</p>
+<p><strong>认证与安全配置</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">属性名</th>
+          <th style="text-align: left">值</th>
+          <th style="text-align: left">安全含义</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>uri-authentication-supported</code></td>
+          <td style="text-align: left"><code>'requesting-user-name'</code></td>
+          <td style="text-align: left"><strong>关键</strong>：只验证用户名，不验证密码！</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>uri-security-supported</code></td>
+          <td style="text-align: left"><code>'none'</code></td>
+          <td style="text-align: left">无TLS/加密，IPP over HTTP（而非HTTPS）</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>安全风险</strong>：</p>
+<ul>
+<li><code>uri-authentication-supported: requesting-user-name</code> 表示<strong>仅需提供用户名即可通过认证</strong></li>
+<li>攻击者可以伪造任意用户名发送打印任务</li>
+<li>结合 <code>uri-security-supported: none</code>，所有通信都是明文</li>
+</ul>
+<p><strong>打印机状态（可用性判断）</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">属性名</th>
+          <th style="text-align: left">值</th>
+          <th style="text-align: left">含义</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>printer-state</code></td>
+          <td style="text-align: left"><code>idle</code></td>
+          <td style="text-align: left">空闲，可接收任务</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>printer-is-accepting-jobs</code></td>
+          <td style="text-align: left"><code>true</code></td>
+          <td style="text-align: left">接受新任务</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>printer-state-reasons</code></td>
+          <td style="text-align: left"><code>'none'</code></td>
+          <td style="text-align: left">无故障</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>queued-job-count</code></td>
+          <td style="text-align: left"><code>0</code></td>
+          <td style="text-align: left">队列为空</td>
+      </tr>
+  </tbody>
+</table>
+<p>攻击价值：打印机空闲，是发起攻击的最佳时机。</p>
+<p><strong>时间戳信息（便于追踪规避）</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">属性名</th>
+          <th style="text-align: left">值</th>
+          <th style="text-align: left">用途</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>printer-current-time</code></td>
+          <td style="text-align: left"><code>2026-06-10T14:52:23.0+0000</code></td>
+          <td style="text-align: left">打印机当前时间</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>printer-up-time</code></td>
+          <td style="text-align: left"><code>1781103143</code></td>
+          <td style="text-align: left">运行秒数（自启动）</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>printer-config-change-time</code></td>
+          <td style="text-align: left"><code>1781061688</code></td>
+          <td style="text-align: left">上次配置变更时间</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>型号信息（漏洞匹配）</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">属性名</th>
+          <th style="text-align: left">值</th>
+          <th style="text-align: left">含义</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>printer-dns-sd-name</code></td>
+          <td style="text-align: left"><code>'Samsung_SCX-4623_Series_Aurora @ lambda'</code></td>
+          <td style="text-align: left">DNS-SD广播名称</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>printer-type</code></td>
+          <td style="text-align: left"><code>143428</code></td>
+          <td style="text-align: left">位掩码，表示打印机能力</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>printer-is-shared</code></td>
+          <td style="text-align: left"><code>true</code></td>
+          <td style="text-align: left">打印机被共享（可被其他设备发现）</td>
+      </tr>
+  </tbody>
+</table>
+<p>这里只展示了部分内容，以下还有打印机的location等信息。</p>
+<p>然后我们找到了一个Creat-Job的包，分析作业属性组</p>
+<p><picture><img class="img-fluid " alt="Wireshark_YMINQ0FpKs" src="https://xiaochai-123.github.io/images/screenshoots/2026-06/Wireshark_YMINQ0FpKs.png?v=d28ab86befee0ba2d80be571c0cc003e" loading="lazy" width="496" height="259" />
+</picture>
+
+</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">属性名</th>
+          <th style="text-align: left">值</th>
+          <th style="text-align: left">类型</th>
+          <th style="text-align: left">含义</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>copies</code></td>
+          <td style="text-align: left"><code>1</code></td>
+          <td style="text-align: left">integer</td>
+          <td style="text-align: left"><strong>打印份数</strong>：只打印1份</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>finishings</code></td>
+          <td style="text-align: left"><code>none</code></td>
+          <td style="text-align: left">enum</td>
+          <td style="text-align: left"><strong>装订/整理选项</strong>：不使用任何装订、打孔、钉书等功能</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>job-cancel-after</code></td>
+          <td style="text-align: left"><code>10800</code></td>
+          <td style="text-align: left">integer</td>
+          <td style="text-align: left"><strong>自动取消时间</strong>：作业在10800秒（3小时）后自动取消，如果还未打印</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>job-hold-until</code></td>
+          <td style="text-align: left"><code>'no-hold'</code></td>
+          <td style="text-align: left">keyword</td>
+          <td style="text-align: left"><strong>保持直到</strong>：<code>no-hold</code>表示不保持，立即打印</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>job-priority</code></td>
+          <td style="text-align: left"><code>50</code></td>
+          <td style="text-align: left">integer</td>
+          <td style="text-align: left"><strong>作业优先级</strong>：50（通常范围1-100，50是中等优先级）</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>job-sheets</code></td>
+          <td style="text-align: left"><code>'none'</code>, <code>'none'</code></td>
+          <td style="text-align: left">1setOf name</td>
+          <td style="text-align: left"><strong>起始/结束页</strong>：打印开始时和结束时没有额外的“横幅页”</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>number-up</code></td>
+          <td style="text-align: left"><code>1</code></td>
+          <td style="text-align: left">integer</td>
+          <td style="text-align: left"><strong>每张纸页数</strong>：1表示一页打印在单张纸上（不合并多页）</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>print-color-mode</code></td>
+          <td style="text-align: left"><code>'monochrome'</code></td>
+          <td style="text-align: left">keyword</td>
+          <td style="text-align: left"><strong>色彩模式</strong>：黑白打印（不是彩色）</td>
+      </tr>
+  </tbody>
+</table>
+<p>这里的Data就是实际被打印的内容</p>
+<p><picture><img class="img-fluid " alt="Wireshark_Rlne5i7BU7" src="https://xiaochai-123.github.io/images/screenshoots/2026-06/Wireshark_Rlne5i7BU7.png?v=6241a605ca9905664e1822a8992fcf4b" loading="lazy" width="697" height="263" />
+</picture>
+
+</p>
+
+<h2 id="与网络安全的联系" data-numberify>与网络安全的联系<a class="anchor ms-1" href="#与网络安全的联系"></a></h2>
+<p>我觉得了解一下这个打印服务有助于拓宽攻击面认知，认识新的攻击入口</p>
+
+<h3 id="cve漏洞仅举几例" data-numberify>CVE漏洞（仅举几例）<a class="anchor ms-1" href="#cve漏洞仅举几例"></a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">CVE编号</th>
+          <th style="text-align: left">组件</th>
+          <th style="text-align: left">问题描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">CVE-2024-47176</td>
+          <td style="text-align: left">cups-browsed</td>
+          <td style="text-align: left">将任意UDP包视为可信打印机</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">CVE-2024-47076</td>
+          <td style="text-align: left">libcupsfilters</td>
+          <td style="text-align: left">未验证PPD中的FoomaticRIPCommandLine字段</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">CVE-2024-47175</td>
+          <td style="text-align: left">libppd</td>
+          <td style="text-align: left">未验证PPD字段</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">CVE-2024-47177</td>
+          <td style="text-align: left">cups-filters</td>
+          <td style="text-align: left"><code>foomatic-rip</code>过滤器命令注入</td>
+      </tr>
+  </tbody>
+</table>
+<blockquote>
+<p>CVE-2024-47176细节描述：CUPS 是一个基于标准的开源打印系统，“CUPS 浏览”包含网络打印功能，包括但不限于自动发现打印服务和共享打印机。“cups-browsed” 绑定于 “INADDR_ANY：631”，使其信任任何来源的数据包，并可能导致“Get-Printer-Attributes”的 IPP 请求请求到攻击者控制的 URL。当与其他漏洞如CVE-2024-47076、CVE-2024-47175和CVE-2024-47177结合时，攻击者可以在目标机器上远程执行任意命令，且在恶意打印机被打印时无需身份验证。</p>
+</blockquote>
+<ol>
+<li><strong>UDP 631端口暴露</strong>：<code>cups-browsed</code>服务默认监听在<code>0.0.0.0:631</code>，接收来自任何来源的UDP包</li>
+<li><strong>打印机自动添加</strong>：攻击者发送精心构造的UDP包（mDNS广播），受害系统会自动添加一台恶意打印机</li>
+<li><strong>PPD污染</strong>：受害系统向攻击者控制的IPP服务器发起请求，攻击者返回一个包含恶意<code>FoomaticRIPCommandLine</code>字段的PPD文件</li>
+<li><strong>命令注入</strong>：当用户尝试打印到这台恶意打印机时，<code>foomatic-rip</code>过滤器会执行该字段中的命令</li>
+</ol>
+<p>最近的漏洞：CVE-2026-34990</p>
+<blockquote>
+<p>CVE-2026-34990细节描述：OpenPrinting CUPS 是一个面向 Linux 及其他类 Unix 操作系统的开源打印系统。在2.4.16及更早版本中，本地无权限用户可以强制cupsd通过可重用的授权（Authorization： Local &hellip;代币。该令牌足以驱动 localhost 上的 /admin/ 请求，攻击者可以将 CUPS-Create-Local-Printer 与 printer-is-shared=true 结合起来，以持久化 file:///&hellip;即使正常的文件设备策略会拒绝此类URI，也会排队。打印到该队列会给任意的根文件覆盖;下面的PoC使用该原语来丢弃sudoer片段并演示根命令的执行。</p>
+</blockquote>
+<p>攻击链：</p>
+<ol>
+<li>普通用户创建本地恶意IPP服务</li>
+<li>cupsd自动认证并获得一个可重用的Authorization: Local token</li>
+<li>攻击者利用该token访问 /admin/ 管理接口</li>
+<li>通过CUPS-Create-Local-Printer创建file://协议打印机</li>
+<li>向该打印机发送打印任务 → 任意root文件写入</li>
+<li>通过写入sudoers文件实现root权限获取</li>
+</ol>
+<p>以下做一个PoC的详细介绍：</p>
+<pre tabindex="0"><code>┌─────────────────────────────────────────────────────────────────────┐
+│                    CVE-2026-34990 攻击链与PoC对应关系                  │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│  阶段1: Token钓鱼                                                     │
+│  ┌─────────────────────────────────────────────────────────────┐    │
+│  │ 1. 创建恶意IPP服务监听 localhost:任意端口                        │    │
+│  │ 2. 等待cupsd连接并自动发放 Authorization: Local token           │    │
+│  │ 3. 捕获token供后续使用                                         │    │
+│  └─────────────────────────────────────────────────────────────┘    │
+│                              │                                      │
+│                              ▼                                      │
+│  阶段2: 策略绕过 + 队列持久化                                           │
+│  ┌─────────────────────────────────────────────────────────────┐    │
+│  │ 4. 使用token调用 CUPS-Create-Local-Printer                    │    │
+│  │ 5. 设置 printer-is-shared=true 绕过 FileDevice 检查            │    │
+│  │ 6. 创建 file:///etc/sudoers.d/exploit 队列                    │    │
+│  └─────────────────────────────────────────────────────────────┘    │
+│                              │                                      │
+│                              ▼                                      │
+│  阶段3: 任意root文件写入                                               │
+│  ┌─────────────────────────────────────────────────────────────┐    │
+│  │ 7. 向恶意队列发送打印任务                                       │    │
+│  │ 8. cupsd以root权限将数据写入目标文件                            │    │
+│  │ 9. sudoers生效 → 获取root权限                                 │    │
+│  └─────────────────────────────────────────────────────────────┘    │
+└─────────────────────────────────────────────────────────────────────┘
+</code></pre></div>
+</div>
+</div><div class="card-footer">
+  <div class="post-navs d-flex justify-content-evenly"><div class="post-nav post-prev">
+      <i class="fas fa-fw fa-chevron-down post-prev-icon me-1" data-fa-transform="rotate-90"></i>
+      <a href="/posts/%E5%85%B3%E4%BA%8E%E7%9C%BC%E7%95%8C%E5%BD%A2%E5%BC%8F%E4%B8%BB%E4%B9%89%E5%92%8C%E6%80%9D%E7%BB%B4%E8%83%BD%E5%8A%9B%E7%9A%84%E7%8C%9C%E6%83%B3/">思考能力是如何被阶级化的</a>
+    </div><div class="post-nav post-next">
+      <a href="/posts/ipp/">关于打印服务之CUPS_IPP的介绍</a>
+      <i class="fas fa-fw fa-chevron-down post-next-icon ms-1" data-fa-transform="rotate-270"></i>
+    </div></div>
+</div></article>
+<section class="related-posts row card component">
+      <div class="card-header">
+        <h2 class="card-title fs-4 my-2 text-surface">
+          Related Posts
+        </h2>
+      </div>
+      <div class="card-body slide px-1">
+        <div class="slide-inner row gx-0"><div class="col-12 col-md-6 col-lg-4 me-2">
+            <div class="post-card card card-body p-0 border-0 surface">
+  
+  <picture><img class="img-fluid" alt="关于打印服务之CUPS_IPP的介绍" src="https://xiaochai-123.github.io/images/printer.png" loading="lazy"
+    
+    />
+  </picture>
+
+  <a class="post-title" href="/posts/ipp/">
+    关于打印服务之CUPS_IPP的介绍
+  </a>
+  <div class="post-meta mb-0">
+    June 13, 2026
+
+  </div>
+</div>
+
+          </div><div class="col-12 col-md-6 col-lg-4 me-2">
+            <div class="post-card card card-body p-0 border-0 surface">
+  
+  <div
+    class="post-card-default-img card-img-top d-flex align-items-center justify-content-center bg-body-secondary mb-1">
+    NO IMAGE
+  </div>
+
+  <a class="post-title" href="/posts/260325/">
+    260325~~每~~日打卡
+  </a>
+  <div class="post-meta mb-0">
+    March 25, 2026
+
+  </div>
+</div>
+
+          </div><div class="col-12 col-md-6 col-lg-4 me-2">
+            <div class="post-card card card-body p-0 border-0 surface">
+  
+  <picture><img class="img-fluid" alt="HGAME-web2026-WP" src="https://xiaochai-123.github.io/images/HGAME2026.png" loading="lazy"
+     width="859"
+     height="555"/>
+  </picture>
+
+  <a class="post-title" href="/posts/hgame-2026-web-wp/">
+    HGAME-web2026-WP
+  </a>
+  <div class="post-meta mb-0">
+    March 5, 2026
+
+  </div>
+</div>
+
+          </div><div class="col-12 col-md-6 col-lg-4 me-2">
+            <div class="post-card card card-body p-0 border-0 surface">
+  
+  <picture><img class="img-fluid" alt="SHCTF-web2026-WP" src="https://xiaochai-123.github.io/images/shctf3rd.jpg" loading="lazy"
+     width="1771"
+     height="1018"/>
+  </picture>
+
+  <a class="post-title" href="/posts/shctf-web2026-wp/">
+    SHCTF-web2026-WP
+  </a>
+  <div class="post-meta mb-0">
+    February 22, 2026
+
+  </div>
+</div>
+
+          </div><div class="col-12 col-md-6 col-lg-4 me-2">
+            <div class="post-card card card-body p-0 border-0 surface">
+  
+  <picture><img class="img-fluid" alt="Arch&#43;Hyprland" src="https://xiaochai-123.github.io/images/arch.png" loading="lazy"
+     width="833"
+     height="353"/>
+  </picture>
+
+  <a class="post-title" href="/posts/arch&#43;hyprland&#43;linux%E5%B0%8F%E6%8A%80%E5%B7%A7/">
+    Arch&#43;Hyprland
+  </a>
+  <div class="post-meta mb-0">
+    February 19, 2026
+
+  </div>
+</div>
+
+          </div></div>
+        <button class="slide-control-left">
+          <i class="fas fa-2x fa-chevron-circle-down" data-fa-transform="rotate-90"></i>
+          <span class="visually-hidden">Left</span>
+        </button>
+        <button class="slide-control-right">
+          <i class="fas fa-2x fa-chevron-circle-down" data-fa-transform="rotate-270"></i>
+          <span class="visually-hidden">Right</span>
+        </button>
+      </div>
+    </section><div class="card component row post-comments" id="post-comments">
+  <div class="card-header">
+    <h2 class="card-title my-2 fs-4 text-surface">Comments</h2>
+  </div>
+  <div class="card-body">
+
+<div class="giscus"></div>
+
+
+
+</div>
+</div></div>
+</div>
+<aside class="col-xxl-4 sidebar d-flex">
+  <div class="container d-flex flex-column">
+    
+    
+<div class="card mb-3">
+  <div class="card-body text-center">
+    <img src="/images/my-avatar.jpg" alt="我的头像" class="rounded-circle mb-2" width="100" height="100">
+    <h5 class="card-title">xiaochai_123(decimo)</h5>
+	<p id="random-quote" class="card-text text-muted"></p>
+	<script>
+	const quotes = [
+  "Stay hungry, stay foolish.",
+  "欢迎大佬莅临",
+  "路漫漫其修远兮，吾将上下而求索",
+  "前途是光明的，道路是曲折的",
+  "很荣幸能和大家做朋友",
+  "生命的有限同时赋予了生活意义和遗憾"
+	];
+	document.getElementById('random-quote').innerText = quotes[Math.floor(Math.random() * quotes.length)];
+	</script>
+<nav class="d-flex justify-content-center gap-2 my-2">
+  <a class="btn btn-sm btn-outline-dark rounded-circle" href="https://github.com/xiaochai-123" title="GitHub" target="_blank">
+    <i class="fab fa-github"></i>
+  </a>
+  <a class="btn btn-sm btn-outline-primary rounded-circle" href="mailto:l2556843965@163.com" title="Email">
+    <i class="fas fa-envelope"></i>
+  </a>
+  <a class="btn btn-sm btn-outline-danger rounded-circle" href="https://space.bilibili.com/595746072" title="Bilibili" target="_blank">
+  <i class="fab fa-bilibili"></i> 
+</a>
+  
+</nav>
+  </div>
+</div>
+
+
+    <div class="accordion posts-toggle">
+      <div class="row card component accordion-item">
+        <div class="accordion-header card-header border-0">
+          <a
+            class="accordion-button d-lg-none mb-1 shadow-none p-0 bg-transparent"
+            role="button"
+            data-bs-toggle="collapse"
+            href="#posts-toggle"
+            aria-expanded="true"
+            aria-controls="posts-toggle">
+            Posts
+          </a>
+        </div>
+        <div
+          class="card-body collapse accordion-collapse accordion-body d-lg-block show"
+          id="posts-toggle">
+          <ul class="nav nav-pills nav-fill" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link active"
+                  id="recent-posts-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#recent-posts"
+                  type="button"
+                  role="tab"
+                  aria-controls="recent-posts"
+                  aria-selected="true">
+                  Recent Posts
+                </button>
+              </li>
+          </ul>
+
+          <div class="tab-content mt-3">
+              <div
+                class="tab-pane active"
+                id="recent-posts"
+                role="tabpanel"
+                aria-labelledby="recent-posts-tab"
+                tabindex="0">
+                <ul class="post-list list-unstyled ms-1">
+                    <li class="mb-2">
+    
+  
+  <div class="d-flex">
+      <div
+        class="flex-shrink-0 d-flex justify-content-center align-items-center"
+        style="max-width: 100px"><picture><img class="img-fluid" alt="关于打印服务之CUPS_IPP的介绍" src="https://xiaochai-123.github.io/images/CUPS.jpg" loading="lazy"
+     width="946"
+     height="583"/>
+  </picture>
+      </div>
+    <div
+      class="flex-grow-1 d-flex flex-column h-auto justify-content-center ms-3">
+      <a class="post-title" href="/posts/%E5%85%B3%E4%BA%8E%E6%89%93%E5%8D%B0%E6%9C%8D%E5%8A%A1%E4%B9%8Bcups_ipp%E7%9A%84%E4%BB%8B%E7%BB%8D/">
+        关于打印服务之CUPS_IPP的介绍
+      </a>
+      <div class="post-meta mt-2">
+        <span class="post-date">
+          June 13, 2026
+        </span>
+      </div>
+    </div>
+  </div>
+                    </li>
+                    <li class="mb-2">
+    
+  
+  <div class="d-flex">
+      <div
+        class="flex-shrink-0 d-flex justify-content-center align-items-center"
+        style="max-width: 100px"><picture><img class="img-fluid" alt="关于打印服务之CUPS_IPP的介绍" src="https://xiaochai-123.github.io/images/printer.png" loading="lazy"
+    
+    />
+  </picture>
+      </div>
+    <div
+      class="flex-grow-1 d-flex flex-column h-auto justify-content-center ms-3">
+      <a class="post-title" href="/posts/ipp/">
+        关于打印服务之CUPS_IPP的介绍
+      </a>
+      <div class="post-meta mt-2">
+        <span class="post-date">
+          June 13, 2026
+        </span>
+      </div>
+    </div>
+  </div>
+                    </li>
+                    <li class="mb-2">
+    
+  
+  <div class="d-flex">
+      <div
+        class="flex-shrink-0 d-flex justify-content-center align-items-center"
+        style="max-width: 100px"><picture><img class="img-fluid" alt="思考能力是如何被阶级化的" src="https://xiaochai-123.github.io/images/star.jpeg" loading="lazy"
+     width="1080"
+     height="651"/>
+  </picture>
+      </div>
+    <div
+      class="flex-grow-1 d-flex flex-column h-auto justify-content-center ms-3">
+      <a class="post-title" href="/posts/%E5%85%B3%E4%BA%8E%E7%9C%BC%E7%95%8C%E5%BD%A2%E5%BC%8F%E4%B8%BB%E4%B9%89%E5%92%8C%E6%80%9D%E7%BB%B4%E8%83%BD%E5%8A%9B%E7%9A%84%E7%8C%9C%E6%83%B3/">
+        思考能力是如何被阶级化的
+      </a>
+      <div class="post-meta mt-2">
+        <span class="post-date">
+          April 28, 2026
+        </span>
+      </div>
+    </div>
+  </div>
+                    </li>
+                    <li class="mb-2">
+    
+  
+  <div class="d-flex">
+      <div
+        class="flex-shrink-0 d-flex justify-content-center align-items-center"
+        style="max-width: 100px"><picture><img class="img-fluid" alt="深圳大学 大学物理实验（一） 预习测试答案" src="https://xiaochai-123.github.io/images/SZU.png" loading="lazy"
+     width="300"
+     height="86"/>
+  </picture>
+      </div>
+    <div
+      class="flex-grow-1 d-flex flex-column h-auto justify-content-center ms-3">
+      <a class="post-title" href="/posts/%E6%B7%B1%E5%9C%B3%E5%A4%A7%E5%AD%A6-%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C-%E9%A2%84%E4%B9%A0%E9%A2%98%E7%AD%94%E6%A1%88/">
+        深圳大学 大学物理实验（一） 预习测试答案
+      </a>
+      <div class="post-meta mt-2">
+        <span class="post-date">
+          April 7, 2026
+        </span>
+      </div>
+    </div>
+  </div>
+                    </li>
+                    <li class="mb-2">
+  <div class="d-flex">
+    <div
+      class="flex-grow-1 d-flex flex-column h-auto justify-content-center">
+      <a class="post-title" href="/posts/260325/">
+        260325~~每~~日打卡
+      </a>
+      <div class="post-meta mt-2">
+        <span class="post-date">
+          March 25, 2026
+        </span>
+      </div>
+    </div>
+  </div>
+                    </li>
+                </ul>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<div class="accordion post-toc d-none d-lg-block">
+  <div class="accordion-item row mb-4 card component" id="postTOC">
+    <div class="card-header accordion-header">
+      <h2 class="card-title fs-4 my-2 text-surface d-none d-lg-block">Contents</h2>
+      <a class="accordion-button d-lg-none mb-1 collapsed shadow-none p-0 bg-transparent" role="button" data-bs-toggle="collapse" href="#post-toc" aria-expanded="false" aria-controls="post-toc">
+        Contents
+      </a>
+    </div>
+    <div class="card-body collapse accordion-collapse accordion-body d-lg-block" id="post-toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#历史前言">历史前言</a>
+      <ul>
+        <li><a href="#早期打印与lpd协议">早期打印与LPD协议</a></li>
+        <li><a href="#技术演进带来的挑战">技术演进带来的挑战</a></li>
+        <li><a href="#从bsd到system-v">从BSD到System V</a></li>
+      </ul>
+    </li>
+    <li><a href="#cups-通用unix打印系统common-unix-printing-system">CUPS (通用UNIX打印系统,Common UNIX Printing System)</a>
+      <ul>
+        <li><a href="#诞生背景与发展历程">诞生背景与发展历程</a></li>
+        <li><a href="#与windows的适配-smb协议">与Windows的适配 (SMB协议)</a></li>
+        <li><a href="#cups核心架构">CUPS核心架构</a></li>
+        <li><a href="#主要特性与优势">主要特性与优势</a></li>
+        <li><a href="#ppd文件">PPD文件</a></li>
+        <li><a href="#打印流程">打印流程</a></li>
+      </ul>
+    </li>
+    <li><a href="#ipp-互联网打印协议internet-printing-protocol">IPP (互联网打印协议,Internet Printing Protocol)</a>
+      <ul>
+        <li><a href="#ipp的核心设计理念">IPP的核心设计理念</a></li>
+        <li><a href="#ipp的url格式">IPP的URL格式</a></li>
+        <li><a href="#ipp的主要操作">IPP的主要操作</a></li>
+        <li><a href="#ipp与无驱动打印">IPP与无驱动打印</a></li>
+        <li><a href="#ipp-everywhere">IPP Everywhere</a></li>
+        <li><a href="#ipp协议流量分析">IPP协议流量分析</a></li>
+      </ul>
+    </li>
+    <li><a href="#与网络安全的联系">与网络安全的联系</a>
+      <ul>
+        <li><a href="#cve漏洞仅举几例">CVE漏洞（仅举几例）</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+    
+  </div>
+</aside>
+
+      </div>
+    </main><footer class="footer mt-auto py-3 text-center container"><div class="offcanvas offcanvas-bottom h-auto" tabindex="-1" id="offcanvasActionsPanel"
+  aria-labelledby="offcanvasActionsPanelLabel">
+  <div class="offcanvas-header">
+    <div class="offcanvas-title h5" id="offcanvasActionsPanelLabel">
+      <i class="fas fa-fw fa-th-large me-1"></i>
+      Actions
+    </div>
+    <button type="button" class="btn-close ms-auto" data-bs-dismiss="offcanvas" data-bs-target="offcanvasActionsPanel" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body mt-2"><div class="social-share mb-4 d-flex overflow-auto">
+      <a class="btn-social-share d-flex flex-column align-items-center me-3" rel="noopener noreferrer" aria-label="X Share Button"
+      target="_blank" href="https://x.com/intent/tweet?title=%e5%85%b3%e4%ba%8e%e6%89%93%e5%8d%b0%e6%9c%8d%e5%8a%a1%e4%b9%8bCUPS_IPP%e7%9a%84%e4%bb%8b%e7%bb%8d&url=https%3a%2f%2fxiaochai-123.github.io%2fposts%2f%25E5%2585%25B3%25E4%25BA%258E%25E6%2589%2593%25E5%258D%25B0%25E6%259C%258D%25E5%258A%25A1%25E4%25B9%258Bcups_ipp%25E7%259A%2584%25E4%25BB%258B%25E7%25BB%258D%2f">
+        <i class="fab fa-2x fa-fw fa-x-twitter mb-2"></i> X
+      </a>
+      <a class="btn-social-share d-flex flex-column align-items-center me-3" rel="noopener noreferrer" aria-label="Facebook Share Button"
+        target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fxiaochai-123.github.io%2fposts%2f%25E5%2585%25B3%25E4%25BA%258E%25E6%2589%2593%25E5%258D%25B0%25E6%259C%258D%25E5%258A%25A1%25E4%25B9%258Bcups_ipp%25E7%259A%2584%25E4%25BB%258B%25E7%25BB%258D%2f">
+        <i class="fab fa-2x fa-fw fa-facebook-f mb-2"></i> Facebook
+      </a>
+    </div>
+    <hr class="mb-4"><div class="actions d-flex overflow-auto align-items-center">
+      <a role="button" class="action action-go-back d-flex flex-column align-items-center me-3" href="javascript: window.history.back();">
+        <span class="action-icon mb-2"><i class="fas fa-2x fa-chevron-circle-down" data-fa-transform="rotate-90"></i></span> Go back
+      </a>
+      <a role="button" class="action action-reload-page d-flex flex-column align-items-center me-3">
+        <span class="action-icon mb-2"><i class="fas fa-2x fa-redo-alt"></i></span> Reload
+      </a>
+      <a role="button" class="action action-copy-url d-flex flex-column align-items-center me-3">
+        <span class="action-icon mb-2"><i class="fas fa-2x fa-link"></i></span> Copy URL
+      </a>
+  </div>
+    </div>
+  </div>
+</div><div class="row text-center">
+  <div class="col-12 mt-2">
+    <p class="mb-2">xiaochai_123的小窝</p>
+    <p class="text-secondary mb-2"><small>Welcome to xiaochai_123’s Blog! I look forward to sharing this great journey with you.</small></p>© 2026 xiaochai-123. 欢迎转载但请注明出处 | 本博客内容版权所有
+    <div class="footer-line visitor" style="margin: 0.5em 0;">
+      <span id="busuanzi_container_site_uv" title="总访客数" style="display: inline;">
+        👤 总访客数 <span id="busuanzi_value_site_uv">...</span>
+      </span>
+      <span id="busuanzi_container_site_pv" class="footer-divider" title="总访问量" style="display: inline; margin-left: 1em;">
+        👁️ 总访问量 <span id="busuanzi_value_site_pv">...</span>
+      </span>
+    </div>
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <div class="powered-by mb-2 text-secondary">
+  <small>
+    Build with ❤️ from the <a class="text-primary" href="https://gohugo.io" target="_blank" rel="noopener noreferrer">Hugo</a> and the <a class="text-primary" href="https://github.com/razonyang/hugo-theme-bootstrap" target="_blank" rel="noopener noreferrer">HBS</a> theme.
+  </small>
+</div>
+
+
+<nav class="social-links nav justify-content-center mb-2 mt-3">
+    <a class="nav-link social-link p-0 me-1 mb-2" href="mailto:mailto:l2556843965@163.com" title="Email">
+      <i class="fas fa-fw fa-2x fa-envelope" style="color: #0963ac;"></i>
+    </a>
+      <a class="nav-link social-link p-0 me-1 mb-2" target="_blank" href="https://github.com/xiaochai-123" title="GitHub" rel="me">
+        <i class="fa-fw fa-2x fab fa-github"
+          ></i>
+      </a>
+  <a class="nav-link social-link p-0 me-1 mb-2" target="_blank" data-rss-feed href="https://xiaochai-123.github.io/index.xml" title="RSS" rel="me">
+    <i class="fas fa-fw fa-2x fa-rss" style="color: #ea6221;"></i>
+  </a>
+</nav>
+</div>
+  <div class="col-12 col-lg-8 offset-0 offset-lg-1"></div>
+</div>
+<script src="/js/copy-code.js"></script>
+<link rel="stylesheet" href="/css/copy-code.css">
+</footer>
+<script data-precache src="/assets/main/bundle.min.5f7fecfd2a8f9951e8efea436dc08e86e678d38ab9eeb343e3d1324d57f3f64a.js" integrity="sha256-X3/s/SqPmVHo7&#43;pDbcCOhuZ404q57rND49EyTVfz9ko=" crossorigin="anonymous" async></script><script data-precache src="/assets/icons/bundle.min.0b03280daa4a59445b0aafc46855a2bb53b310e572534596869c33acaeec09dd.js" integrity="sha256-CwMoDapKWURbCq/EaFWiu1OzEOVyU0WWhpwzrK7sCd0=" crossorigin="anonymous" defer></script>
+<script data-precache src="/assets/viewer/bundle.min.cca398d318de9fa7816141db90f09282784fcfe0c5dabc31599b8c589932e4ae.js" integrity="sha256-zKOY0xjen6eBYUHbkPCSgnhPz&#43;DF2rwxWZuMWJky5K4=" crossorigin="anonymous" defer></script>
+<script src="https://giscus.app/client.js"
+    data-repo="xiaochai-123/xiaochai-123.github.io"
+    data-repo-id="R_kgDOQcBRNA"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOQcBRNM4Cy98G"
+    data-mapping="pathname"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    data-loading="lazy"
+    crossorigin="anonymous"
+    defer>
+</script>
+
+
+  </body>
+</html>

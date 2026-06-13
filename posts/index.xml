@@ -7,7 +7,7 @@
     <generator>Hugo</generator>
     <language>zh-cn</language>
     <copyright>© 2026 xiaochai-123. 欢迎转载但请注明出处 | 本博客内容版权所有</copyright>
-    <lastBuildDate>Tue, 28 Apr 2026 21:20:35 +0800</lastBuildDate><atom:link href="https://xiaochai-123.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 13 Jun 2026 20:31:35 +0800</lastBuildDate><atom:link href="https://xiaochai-123.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>深圳大学 大学物理实验（一） 预习测试答案</title>
       <link>https://xiaochai-123.github.io/posts/%E6%B7%B1%E5%9C%B3%E5%A4%A7%E5%AD%A6-%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C-%E9%A2%84%E4%B9%A0%E9%A2%98%E7%AD%94%E6%A1%88/</link>
@@ -455,6 +455,83 @@ Disallow: /hidden/flag.txt
 <h2 id="第三章核心漏洞---注入篇-injection-attacks" data-numberify>第三章：核心漏洞 - 注入篇 (Injection Attacks)<a class="anchor ms-1" href="#第三章核心漏洞---注入篇-injection-attacks"></a></h2>
 <p><em>CTF Web 的半壁江山。</em></p>]]></description>
     <enclosure url="https://xiaochai-123.github.io/images/1.png" length="328106" type="image/.png" />
+    </item>
+    
+    <item>
+      <title>关于打印服务之CUPS_IPP的介绍</title>
+      <link>https://xiaochai-123.github.io/posts/ipp/</link>
+      <pubDate>Sat, 13 Jun 2026 20:31:35 +0800</pubDate>
+      <guid>https://xiaochai-123.github.io/posts/ipp/</guid>
+      <description><![CDATA[<h1 id="打印这一块" data-numberify>打印这一块<a class="anchor ms-1" href="#打印这一块"></a></h1>
+
+<h2 id="历史前言" data-numberify>历史前言<a class="anchor ms-1" href="#历史前言"></a></h2>
+<p>在CUPS出现之前，Unix/Linux系统的打印功能存在但十分低效。Windows和MacOS对打印机的适配比较好，因为厂家往往不愿意让自己的驱动程序开源，同时Linux系统分支复杂种类繁多，用户较少，使得打印机很少对Linux系统进行适配。</p>
+
+<h3 id="早期打印与lpd协议" data-numberify>早期打印与LPD协议<a class="anchor ms-1" href="#早期打印与lpd协议"></a></h3>
+<p>在个人计算机普及之前，打印机是昂贵且集中的资源，通常由多个用户共享。这种共享环境催生了最早的打印管理系统。</p>
+<p><strong>LPD（Line Printer Daemon，行式打印守护程序）</strong> 它是一个轻量、简单的协议，专门为打印任务设计，功能单一。LPD 的一个显著优势是配置简单，且跨平台性很好，能在不同操作系统间轻松共享打印机。但同时，由于它诞生于早期的互联网环境，设计上几乎没有考虑安全性，缺乏身份验证和数据加密机制，数据传输是明文的，因此被认为“安全性较弱”。</p>
+<p>在 Windows 上添加打印机时，如果选择“创建新端口”为 <strong>LPR Port</strong>，就是在使用 LPD 协议。在 Linux 等 Unix-like 系统中，使用 <code>lpr</code> 命令提交作业时，后台走的也是这个流程。虽然现在 CUPS 更通用，但在很多嵌入式设备（如路由器、NAS）和旧系统中，LPD 依然是标配。</p>
+<p>然而，LPD的设计带着浓厚的“字符打印时代”的特征。当时的打印机多为击打式打印机（类似打字机），使用固定的字符集，打印数据流简单，数据量也小。随着图形用户界面的普及和激光打印机的出现，打印技术从基于字符的时代迈入了图形化时代。PostScript等页面描述语言的发明，使得打印机可以打印任意字体和图像，但这同时也带来了巨大的数据传输和复杂的处理需求。</p>
+
+<h3 id="技术演进带来的挑战" data-numberify>技术演进带来的挑战<a class="anchor ms-1" href="#技术演进带来的挑战"></a></h3>
+<p>LPD协议的局限性在此背景下逐渐暴露：</p>
+<ul>
+<li><strong>协议功能单一</strong>：LPD不支持现代打印所需的双向通信，无法从打印机获取状态信息、错误报告或耗材余量等反馈。</li>
+<li><strong>安全机制薄弱</strong>：LPD协议缺乏强大的用户认证和数据加密功能，在现代网络环境中存在安全隐患。</li>
+<li><strong>设备支持受限</strong>：LPD最初主要为行式打印机设计，难以很好地支持具备各种高级功能的图形化打印机。</li>
+<li><strong>管理方式固化</strong>：它无法优雅地支持同时连接和管理多个打印设备，尤其在不同厂商、不同接口标准的设备混合使用的场景下。</li>
+</ul>
+<p>此外，市场上还存在其他接口标准，如HP公司为网络打印机开发的JetDirect（使用TCP 9100端口）等，它们各自为政，进一步加剧了打印系统的碎片化。</p>
+
+<h3 id="从bsd到system-v" data-numberify>从BSD到System V<a class="anchor ms-1" href="#从bsd到system-v"></a></h3>
+<p>除了LPD，Unix系统中还存在另一套源自System V的打印系统。它使用 <code>lp</code>、<code>lpstat</code>、<code>cancel</code> 等命令。虽然命令和LPD系统不同，但其底层架构和设计理念同样古老，并未解决打印技术发展所带来的根本性挑战。</p>
+<p>总的来说，在CUPS诞生之前，Unix/Linux的打印世界是分散、低效且充满兼容性问题的。LPD作为服务端，其功能和协议标准都已远远落后于硬件的发展。用户和系统管理员常常需要面对复杂的配置、不稳定的连接和有限的功能支持，“在Linux下成功打印”甚至一度成为一项颇具挑战性的任务。</p>
+<p>CUPS的出现，正是为了终结这种混乱，为Unix/Linux带来一种现代、可靠且统一的打印解决方案。</p>
+
+<h2 id="cups-通用unix打印系统common-unix-printing-system" data-numberify>CUPS (通用UNIX打印系统,Common UNIX Printing System)<a class="anchor ms-1" href="#cups-通用unix打印系统common-unix-printing-system"></a></h2>
+
+<h3 id="诞生背景与发展历程" data-numberify>诞生背景与发展历程<a class="anchor ms-1" href="#诞生背景与发展历程"></a></h3>
+<p>CUPS的诞生可以追溯到1997年，由Michael Sweet创办的Easy Software Products公司开始开发。1999年，第一个公开测试版面世。CUPS的设计初衷是解决当时Unix/Linux打印系统面临的碎片化困境——LPD协议功能单一、缺乏双向通信、安全管理薄弱，而不同厂商又各自推出JetDirect等互不兼容的接口标准。</p>
+<p>值得注意的是，CUPS最初的设计也使用了LPD协议，但由于LPD的固有局限和厂商之间的不兼容问题，开发团队最终选择了 <strong>IPP (互联网打印协议,Internet Printing Protocol)</strong> 作为核心协议。这一决策成为CUPS成功的关键。</p>]]></description>
+    </item>
+    
+    <item>
+      <title>关于打印服务之CUPS_IPP的介绍</title>
+      <link>https://xiaochai-123.github.io/posts/%E5%85%B3%E4%BA%8E%E6%89%93%E5%8D%B0%E6%9C%8D%E5%8A%A1%E4%B9%8Bcups_ipp%E7%9A%84%E4%BB%8B%E7%BB%8D/</link>
+      <pubDate>Sat, 13 Jun 2026 20:31:35 +0800</pubDate>
+      <guid>https://xiaochai-123.github.io/posts/%E5%85%B3%E4%BA%8E%E6%89%93%E5%8D%B0%E6%9C%8D%E5%8A%A1%E4%B9%8Bcups_ipp%E7%9A%84%E4%BB%8B%E7%BB%8D/</guid>
+      <description><![CDATA[<h1 id="打印这一块" data-numberify>打印这一块<a class="anchor ms-1" href="#打印这一块"></a></h1>
+
+<h2 id="历史前言" data-numberify>历史前言<a class="anchor ms-1" href="#历史前言"></a></h2>
+<p>在CUPS出现之前，Unix/Linux系统的打印功能存在但十分低效。Windows和MacOS对打印机的适配比较好，因为厂家往往不愿意让自己的驱动程序开源，同时Linux系统分支复杂种类繁多，用户较少，使得打印机很少对Linux系统进行适配。</p>
+
+<h3 id="早期打印与lpd协议" data-numberify>早期打印与LPD协议<a class="anchor ms-1" href="#早期打印与lpd协议"></a></h3>
+<p>在个人计算机普及之前，打印机是昂贵且集中的资源，通常由多个用户共享。这种共享环境催生了最早的打印管理系统。</p>
+<p><strong>LPD（Line Printer Daemon，行式打印守护程序）</strong> 它是一个轻量、简单的协议，专门为打印任务设计，功能单一。LPD 的一个显著优势是配置简单，且跨平台性很好，能在不同操作系统间轻松共享打印机。但同时，由于它诞生于早期的互联网环境，设计上几乎没有考虑安全性，缺乏身份验证和数据加密机制，数据传输是明文的，因此被认为“安全性较弱”。</p>
+<p>在 Windows 上添加打印机时，如果选择“创建新端口”为 <strong>LPR Port</strong>，就是在使用 LPD 协议。在 Linux 等 Unix-like 系统中，使用 <code>lpr</code> 命令提交作业时，后台走的也是这个流程。虽然现在 CUPS 更通用，但在很多嵌入式设备（如路由器、NAS）和旧系统中，LPD 依然是标配。</p>
+<p>然而，LPD的设计带着浓厚的“字符打印时代”的特征。当时的打印机多为击打式打印机（类似打字机），使用固定的字符集，打印数据流简单，数据量也小。随着图形用户界面的普及和激光打印机的出现，打印技术从基于字符的时代迈入了图形化时代。PostScript等页面描述语言的发明，使得打印机可以打印任意字体和图像，但这同时也带来了巨大的数据传输和复杂的处理需求。</p>
+
+<h3 id="技术演进带来的挑战" data-numberify>技术演进带来的挑战<a class="anchor ms-1" href="#技术演进带来的挑战"></a></h3>
+<p>LPD协议的局限性在此背景下逐渐暴露：</p>
+<ul>
+<li><strong>协议功能单一</strong>：LPD不支持现代打印所需的双向通信，无法从打印机获取状态信息、错误报告或耗材余量等反馈。</li>
+<li><strong>安全机制薄弱</strong>：LPD协议缺乏强大的用户认证和数据加密功能，在现代网络环境中存在安全隐患。</li>
+<li><strong>设备支持受限</strong>：LPD最初主要为行式打印机设计，难以很好地支持具备各种高级功能的图形化打印机。</li>
+<li><strong>管理方式固化</strong>：它无法优雅地支持同时连接和管理多个打印设备，尤其在不同厂商、不同接口标准的设备混合使用的场景下。</li>
+</ul>
+<p>此外，市场上还存在其他接口标准，如HP公司为网络打印机开发的JetDirect（使用TCP 9100端口）等，它们各自为政，进一步加剧了打印系统的碎片化。</p>
+
+<h3 id="从bsd到system-v" data-numberify>从BSD到System V<a class="anchor ms-1" href="#从bsd到system-v"></a></h3>
+<p>除了LPD，Unix系统中还存在另一套源自System V的打印系统。它使用 <code>lp</code>、<code>lpstat</code>、<code>cancel</code> 等命令。虽然命令和LPD系统不同，但其底层架构和设计理念同样古老，并未解决打印技术发展所带来的根本性挑战。</p>
+<p>总的来说，在CUPS诞生之前，Unix/Linux的打印世界是分散、低效且充满兼容性问题的。LPD作为服务端，其功能和协议标准都已远远落后于硬件的发展。用户和系统管理员常常需要面对复杂的配置、不稳定的连接和有限的功能支持，“在Linux下成功打印”甚至一度成为一项颇具挑战性的任务。</p>
+<p>CUPS的出现，正是为了终结这种混乱，为Unix/Linux带来一种现代、可靠且统一的打印解决方案。</p>
+
+<h2 id="cups-通用unix打印系统common-unix-printing-system" data-numberify>CUPS (通用UNIX打印系统,Common UNIX Printing System)<a class="anchor ms-1" href="#cups-通用unix打印系统common-unix-printing-system"></a></h2>
+
+<h3 id="诞生背景与发展历程" data-numberify>诞生背景与发展历程<a class="anchor ms-1" href="#诞生背景与发展历程"></a></h3>
+<p>CUPS的诞生可以追溯到1997年，由Michael Sweet创办的Easy Software Products公司开始开发。1999年，第一个公开测试版面世。CUPS的设计初衷是解决当时Unix/Linux打印系统面临的碎片化困境——LPD协议功能单一、缺乏双向通信、安全管理薄弱，而不同厂商又各自推出JetDirect等互不兼容的接口标准。</p>
+<p>值得注意的是，CUPS最初的设计也使用了LPD协议，但由于LPD的固有局限和厂商之间的不兼容问题，开发团队最终选择了 <strong>IPP (互联网打印协议,Internet Printing Protocol)</strong> 作为核心协议。这一决策成为CUPS成功的关键。</p>]]></description>
+    <enclosure url="https://xiaochai-123.github.io/images/CUPS.jpg" length="44334" type="image/.jpg" />
     </item>
     
     <item>
