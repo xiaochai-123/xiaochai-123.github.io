@@ -7,7 +7,94 @@
     <generator>Hugo</generator>
     <language>zh-cn</language>
     <copyright>© 2026 xiaochai-123. 欢迎转载但请注明出处 | 本博客内容版权所有</copyright>
-    <lastBuildDate>Sat, 13 Jun 2026 20:31:35 +0800</lastBuildDate><atom:link href="https://xiaochai-123.github.io/categories/%E5%A5%87%E5%A6%99%E5%B0%8F%E7%9F%A5%E8%AF%86/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 23 Jun 2026 16:31:35 +0800</lastBuildDate><atom:link href="https://xiaochai-123.github.io/categories/%E5%A5%87%E5%A6%99%E5%B0%8F%E7%9F%A5%E8%AF%86/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>计算机网络知识梳理（未完待续）</title>
+      <link>https://xiaochai-123.github.io/posts/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/</link>
+      <pubDate>Tue, 23 Jun 2026 16:31:35 +0800</pubDate>
+      <guid>https://xiaochai-123.github.io/posts/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/</guid>
+      <description><![CDATA[<h1 id="计算机网络知识梳理" data-numberify>计算机网络知识梳理<a class="anchor ms-1" href="#计算机网络知识梳理"></a></h1>
+
+<h2 id="前言" data-numberify>前言<a class="anchor ms-1" href="#前言"></a></h2>
+<p>在b站上看到逊哥的课，讲的很好啊！</p>
+<p><a href="https://www.bilibili.com/video/BV1p69tYZEvN/?share_source=copy_web&amp;vd_source=9c22157b2c924857f42d806788cc5fea" target="_blank" rel="noopener noreferrer">计算机网络技术（可用于408备考）也许是全网讲的最通俗易懂的计算机网络课程<i class="fas fa-external-link-square-alt ms-1"></i></a></p>
+<p>推荐一下(点了关注)，此篇可能极大程度上参考逊哥的课来写</p>
+<p>那我们废话不多说直接进入正题</p>
+
+<h2 id="正题" data-numberify>正题<a class="anchor ms-1" href="#正题"></a></h2>
+
+<h3 id="模块一概述--体系结构总分结构" data-numberify>模块一：概述 & 体系结构（总分结构）<a class="anchor ms-1" href="#模块一概述--体系结构总分结构"></a></h3>
+<blockquote>
+<ul>
+<li><strong>OSI七层 vs TCP/IP四层（408必考）：</strong> 重点是两者的对应关系与“5层参考模型”。</li>
+<li><strong>关键概念扫雷：</strong> 速率、带宽、吞吐量、时延（发送/传播/处理/排队）、时延带宽积、RTT。</li>
+</ul>
+</blockquote>
+
+<h4 id="历史" data-numberify>历史<a class="anchor ms-1" href="#历史"></a></h4>
+<p>从世界上第一台计算机ENIAC开始，随着计算机的产生，人们就开始想能不能把计算机与计算机之间进行连接，形成一个网络呢？于是美国国防部做了世界上最早的分组交换网络——ARPANET(阿帕网)，如下图所示<picture><img class="img-fluid " alt="msedge_CYY1qPcTh3" src="https://xiaochai-123.github.io/images/screenshoots/2026-06/msedge_CYY1qPcTh3.png?v=2b95c26849b6a52e162794a454185af3" loading="lazy" width="1464" height="797" />
+</picture>
+
+</p>
+<p>除此之外，人类还有多个网络项目，但最终美国的ARPANET胜出，成为今天的互联网</p>
+<p><picture><img class="img-fluid " alt="POWERPNT_9ERUfXji9X" src="https://xiaochai-123.github.io/images/screenshoots/2026-06/POWERPNT_9ERUfXji9X.png?v=3b56a9203d263776a22b3d5a215c70ae" loading="lazy" width="658" height="298" />
+</picture>
+
+</p>
+
+<h4 id="计算机网络的定义" data-numberify>计算机网络的定义<a class="anchor ms-1" href="#计算机网络的定义"></a></h4>
+<p>以能够相互共享资源的方式互联起来的自治计算机系统的集合。这一定义可以从以下4个方面来理解:</p>
+<ol>
+<li>计算机网络建立的主要目的是实现资源共享</li>
+<li>互联的计算机是分布在不同地理位置的多台独立的“自治计算机”</li>
+<li>连网计算机之间的通信必须遵守共同的网络协议</li>
+<li>互联计算机之间的连接需要有一条通道,即由传输介质实现物理互联</li>
+</ol>
+
+<h4 id="互联网的组织结构" data-numberify>互联网的组织结构<a class="anchor ms-1" href="#互联网的组织结构"></a></h4>
+<p><picture><img class="img-fluid " alt="POWERPNT_MSorAByEIB" src="https://xiaochai-123.github.io/images/screenshoots/2026-06/POWERPNT_MSorAByEIB.png?v=ab7291a429fda15a6f653749e4717671" loading="lazy" width="1661" height="708" />
+</picture>
+
+</p>
+<blockquote>
+<p>这里的基础概念：</p>
+<ul>
+<li>
+<p>ISP(Internet Service Provider):互联网服务提供商</p>
+</li>
+<li>
+<p>节点(node):计算机、交换机、路由器等构成网络的硬件都可以称为网络中的节点</p>
+</li>
+<li>
+<p>主机(host):通过网络为其它机器提供服务的计算机,也称服务器</p>
+</li>
+<li>
+<p>客户端(client):指从主机处获得服务的计算机,也称为终端</p>
+</li>
+</ul>
+</blockquote>
+<p>上图中的主干网，校园网等就是指ISP（主干ISP，地区ISP，本地ISP再到公司，个人用户等）</p>
+<p><picture><img class="img-fluid " alt="chrome_7QQoI8lNCM" src="https://xiaochai-123.github.io/images/screenshoots/2026-06/chrome_7QQoI8lNCM.png?v=69ab7d0348888c8619a1fa08e4f9ee75" loading="lazy" width="961" height="499" />
+</picture>
+
+</p>
+<blockquote>
+<p>这里的基础概念：</p>
+<ul>
+<li>
+<p>报文(message):网络中交换与传输的数据单元</p>
+</li>
+<li>
+<p>分组(packet):为了从源端系统向目的端系统发送一个报文,源端将长报文划分为较小
+的数据块,称为分组</p>
+</li>
+<li>
+<p>比特(bit):用小写字母b表示,1b表示一个二进制位,0或1</p>
+<p>字节(byte):用大写字母B表示,1B表示一个字节</p>
+<p>$1\ B = 8\ bit$</p>]]></description>
+    <enclosure url="https://xiaochai-123.github.io/images/network.jpg" length="59548" type="image/.jpg" />
+    </item>
+    
     <item>
       <title>关于打印服务之CUPS_IPP的介绍</title>
       <link>https://xiaochai-123.github.io/posts/%E5%85%B3%E4%BA%8E%E6%89%93%E5%8D%B0%E6%9C%8D%E5%8A%A1%E4%B9%8Bcups_ipp%E7%9A%84%E4%BB%8B%E7%BB%8D/</link>

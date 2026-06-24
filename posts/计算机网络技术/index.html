@@ -1,0 +1,2351 @@
+<!doctype html>
+<html class="position-relative" itemscope itemtype="https://schema.org/WebPage" lang="en"
+  data-bs-theme="auto" data-palette="blue">
+  <head><script src="/assets/init/bundle.min.7399da2d95ead2c23677657b3bbcb6763c1fb1e9ffe85a9e9848326d4530a8ce.js" integrity="sha256-c5naLZXq0sI2d2V7O7y2djwfsen/6FqemEgybUUwqM4=" crossorigin="anonymous"></script>
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>计算机网络知识梳理（未完待续） - xiaochai_123的小窝</title>
+    <link rel="icon" href="https://xiaochai-123.github.io/images/icons/icon-16x16.png?version=10de02cdc53ad46a103b64b869070266" sizes="16x16">
+    <link rel="icon" href="https://xiaochai-123.github.io/images/icons/icon-32x32.png?version=f1747f8c31b6821777c3a0956b5ba0db" sizes="32x32">
+    <link rel="icon" href="/favicon_hu_1fce3f16494f6ae3.png" sizes="150x150" type="image/png">
+    <link rel="apple-touch-icon" href="/favicon_hu_f105fae78c239d0f.png" sizes="180x180" type="image/png">
+    <link rel="icon" href="/favicon_hu_af357fe99fc0195a.png" sizes="192x192" type="image/png">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#6f42c1"><link rel="icon" href="https://xiaochai-123.github.io/images/icons/favicon.ico?version=13a0b7f517ed6605fd5fc54b37b8552d">
+<meta name="keywords" content="" />
+  <meta name="description" content="计算机网络技术(408/期末考)" />
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://xiaochai-123.github.io/images/network.jpg">
+  <meta name="twitter:title" content="计算机网络知识梳理（未完待续）">
+  <meta name="twitter:description" content="计算机网络技术(408/期末考)">
+<meta property="og:url" content="https://xiaochai-123.github.io/posts/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/">
+  <meta property="og:site_name" content="xiaochai_123的小窝">
+  <meta property="og:title" content="计算机网络知识梳理（未完待续）">
+  <meta property="og:description" content="计算机网络技术(408/期末考)">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-06-23T16:31:35+08:00">
+    <meta property="article:modified_time" content="2026-06-23T16:31:35+08:00">
+    <meta property="article:tag" content="Web">
+    <meta property="og:image" content="https://xiaochai-123.github.io/images/network.jpg">
+
+  <meta itemprop="name" content="计算机网络知识梳理（未完待续）">
+  <meta itemprop="description" content="计算机网络技术(408/期末考)">
+  <meta itemprop="datePublished" content="2026-06-23T16:31:35+08:00">
+  <meta itemprop="dateModified" content="2026-06-23T16:31:35+08:00">
+  <meta itemprop="wordCount" content="1838">
+  <meta itemprop="image" content="https://xiaochai-123.github.io/images/network.jpg">
+  <meta itemprop="keywords" content="Web">
+  <meta property="og:image:alt" content="计算机网络知识梳理（未完待续）" />
+  <meta name="twitter:image:alt" content="计算机网络知识梳理（未完待续）" />
+
+<link data-precache rel="stylesheet" href="/assets/main/bundle.min.5e43b1a2119e65d96e086e7147d978bfdbb1033637f8262ecddbd3fbaee298c1.css" integrity="sha256-XkOxohGeZdluCG5xR9l4v9uxAzY3+CYuzdvT+67imME=" crossorigin="anonymous">
+
+<link data-precache rel="stylesheet" href="/assets/katex/bundle.min.df17f198d664dab283074809fb32acee7d4b8ff8fb46264040578d6f232933d2.css" integrity="sha256-3xfxmNZk2rKDB0gJ&#43;zKs7n1Lj/j7RiZAQFeNbyMpM9I=" crossorigin="anonymous">
+
+    <link data-precache rel="stylesheet" href="/assets/viewer/bundle.min.16d2c85c4cae39a98f8cb7a977e95e554b174f91a5484c32605637156f49ca6b.css" integrity="sha256-FtLIXEyuOamPjLepd&#43;leVUsXT5GlSEwyYFY3FW9Jyms=" crossorigin="anonymous">
+
+
+
+<link rel="stylesheet" href="/css/custom.css">
+<script>
+(function() {
+  var originalTitle = document.title;
+  document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+      document.title = '下次再见~';
+    } else {
+      document.title = '欢迎回来~';
+      setTimeout(function() {
+        document.title = originalTitle;
+      }, 1500); 
+    }
+  });
+})();
+</script><link rel="stylesheet" href="/css/all.min.css">
+  </head>
+  <body><header class="mb-4 sticky-top">
+  
+<nav class="top-app-bar shadow navbar navbar-expand-lg">
+  <div class="container">
+<a class="navbar-brand d-flex align-items-center flex-grow-1 flex-xxl-grow-0 justify-content-xxl-start ms-2 ms-xxl-0 mx-auto me-xxl-2"
+    href="https://xiaochai-123.github.io/">
+    <picture><img class="logo " alt="Logo" src="https://xiaochai-123.github.io/images/logo.png?v=166cbf8ee66ab6626f3f85db1fb49313" loading="lazy" width="2048" height="2048" />
+</picture>
+xiaochai_123的小窝
+</a>
+
+    <div class="offcanvas-lg offcanvas-end flex-grow-1" data-bs-scroll="true" tabindex="-1" id="navbarMenus" aria-labelledby="navbarMenusLabel">
+      <div class="offcanvas-header px-4 pb-0">
+        <div class="offcanvas-title h5" id="navbarMenusLabel">xiaochai_123的小窝</div>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" data-bs-target="#navbarMenus" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body p-4 pt-0 p-lg-0">
+        <hr class="d-lg-none">
+        <ul class="navbar-nav flex-row flex-wrap align-items-center me-auto"><li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2" href="https://xiaochai-123.github.io/posts/">Posts
+            </a>
+          </li><li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2" href="https://xiaochai-123.github.io/categories/">Categories
+            </a>
+          </li><li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2" href="https://xiaochai-123.github.io/tags/">Tags
+            </a>
+          </li><li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2" href="https://xiaochai-123.github.io/friends/">Friends
+            </a>
+          </li>
+        </ul>
+        
+    <hr class="d-lg-none">
+    <form class="search-bar ms-auto my-auto" action="" novalidate>
+      <div class="input-group align-items-center">
+        <span class="btn btn-search disabled position-absolute left-0 border-0 px-1">
+          <i class="fas fa-fw fa-search fa-lg"></i>
+        </span>
+        <input
+          class="my-1 form-control border-white rounded-5 search-input bg-body"
+          name="q"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+          required>
+          <span class="search-shortcut position-absolute end-0 top-0 me-2">
+            <kbd class="text-dark bg-white opacity-75 rounded-3 shadow border border-primary py-1 fw-bold">/</kbd>
+          </span>
+      </div>
+    </form><hr class="d-lg-none">
+        <ul class="navbar-nav flex-row flex-wrap align-items-center ms-md-auto">
+<li class="nav-item dropdown col-6 col-lg-auto">
+    <a class="nav-link px-0 py-2 px-lg-1" href="#" id="paletteDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="fas fa-fw fa-palette"></i>
+        <span class="d-lg-none">Palette</span>
+    </a>
+    <ul class="palette-dropdown-menu dropdown-menu dropdown-menu-end px-2 row g-2" aria-labelledby="paletteDropdown">
+            <li class="col-4 my-1">
+                <a role="button" id="palette-blue" aria-label="Blue"
+                    class="btn btn-sm w-100 palette text-bg-blue" data-palette="blue">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-blue-gray" aria-label="Blue Gray"
+                    class="btn btn-sm w-100 palette text-bg-blue-gray" data-palette="blue-gray">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-brown" aria-label="Brown"
+                    class="btn btn-sm w-100 palette text-bg-brown" data-palette="brown">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-cyan" aria-label="Cyan"
+                    class="btn btn-sm w-100 palette text-bg-cyan" data-palette="cyan">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-green" aria-label="Green"
+                    class="btn btn-sm w-100 palette text-bg-green" data-palette="green">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-indigo" aria-label="Indigo"
+                    class="btn btn-sm w-100 palette text-bg-indigo" data-palette="indigo">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-orange" aria-label="Orange"
+                    class="btn btn-sm w-100 palette text-bg-orange" data-palette="orange">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-pink" aria-label="Pink"
+                    class="btn btn-sm w-100 palette text-bg-pink" data-palette="pink">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-purple" aria-label="Purple"
+                    class="btn btn-sm w-100 palette text-bg-purple" data-palette="purple">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-red" aria-label="Red"
+                    class="btn btn-sm w-100 palette text-bg-red" data-palette="red">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-teal" aria-label="Teal"
+                    class="btn btn-sm w-100 palette text-bg-teal" data-palette="teal">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-yellow" aria-label="Yellow"
+                    class="btn btn-sm w-100 palette text-bg-yellow" data-palette="yellow">
+                </a>
+            </li>
+    </ul>
+</li>
+<li class="nav-item dropdown col-6 col-lg-auto">
+    <a class="nav-link px-0 py-2 px-lg-1" href="#" id="modeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="mode-icon fas fa-fw fa-adjust" id="modeIcon"></i>
+        <span class="d-lg-none">Mode</span>
+    </a>
+    <ul class="mode-dropdown-menu dropdown-menu dropdown-menu-end" aria-labelledby="modeDropdown">
+        <li class="mode-item" data-color-mode="light" data-icon="sun">
+            <button class="dropdown-item">
+                <i class="mode-icon fas fa-fw fa-sun"></i> Light
+            </button>
+        </li>
+        <li class="mode-item" data-color-mode="dark" data-icon="moon">
+            <button class="dropdown-item">
+                <i class="mode-icon fas fa-fw fa-moon"></i> Dark
+            </button>
+        </li>
+        <li class="mode-item active" data-color-mode="auto" data-icon="adjust">
+            <button class="dropdown-item">
+                <i class="mode-icon fas fa-fw fa-adjust"></i> Auto
+            </button>
+        </li>
+    </ul>
+</li>
+        </ul>
+      </div>
+    </div>
+    <div class="d-flex">
+      <button class="navbar-toggler order-5 border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarMenus"
+        aria-controls="navbarMenus" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-ellipsis-h"></i>
+      </button>
+    </div>
+  </div>
+</nav>
+
+</header>
+
+    <main class="container has-sidebar" data-kind="page"><script data-precache src="/js/main-init.6a1fd2a99f6ad87b4aa9b7ed0f10344d4273d92cc29a6fb2cf05c463ec57ce39.js" integrity="sha256-ah/SqZ9q2HtKqbftDxA0TUJz2SzCmm&#43;yzwXEY&#43;xXzjk=" crossorigin="anonymous"></script>
+
+      <div class="row content"><noscript>
+    <div class="alert alert-danger" role="alert">Your browser does not support JavaScript.</div>
+</noscript>
+
+<div class="content-posts col-xxl-8">
+  <div class="container"><nav class="row card component" aria-label="breadcrumb">
+  <div class="card-body pb-0">
+    <ol class="hbs-breadcrumb breadcrumb flex-nowrap"><li class="breadcrumb-item text-surface"><a href="/">Home</a></li><li class="breadcrumb-item text-surface"><a href="/posts/">Posts</a></li><li class="breadcrumb-item active">计算机网络知识梳理（未完待续）</li></ol>
+  </div>
+</nav><div class="post-panel-wrapper position-relative d-flex justify-content-center">
+  <div class="d-flex flex-row justify-content-center rounded-5 border post-panel position-fixed px-3 py-1 surface shadow-1">
+    
+    
+
+    
+    
+    
+  <a class="action action-toc d-none d-xxl-block" href="#postTOC" role="button" title="Contents">
+    <i class="fas fa-fw fa-list-alt"></i>
+  </a>
+<a class="action action-toc d-block d-xxl-none" href="#post-toc-container" role="button" title="Contents">
+  <i class="fas fa-fw fa-list-alt"></i>
+</a>
+
+    <a class="action action-post-comments" href="#post-comments" role="button" aria-label="Comments" title="Comments">
+  <i class="fas fa-fw fa-comments"></i>
+</a>
+    
+<a id="sidebarToggler" class="action action-sidebar-toggler d-none d-xl-block" role="button" title="Toggle sidebar">
+  <i class="fas fa-fw fa-expand-alt" data-fa-transform="rotate-45"></i>
+</a>
+
+    
+  </div>
+</div><article class="row card component mb-4 post">
+  <div class="card-header ">
+    <h1 class="card-title post-title my-2">计算机网络知识梳理（未完待续）</h1>
+  </div>
+  <div class="card-body"><div class="post-meta mb-3">
+  <span class="post-date me-1 mb-1" title="created on 2026-06-23 16:31:35 &#43;0800 CST.">June 23, 2026</span><span class="post-reading-time me-1 mb-1">9 min read</span><a href="/categories/%E5%A5%87%E5%A6%99%E5%B0%8F%E7%9F%A5%E8%AF%86/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-category">
+      <i class="fas fa-fw fa-folder me-1"></i>奇妙小知识</a><a href="/tags/web/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-tag">Web</a>
+</div>
+
+      <p class="lead mb-3 text-body-emphasis">计算机网络技术(408/期末考)</p>
+<div class="mt-2 mb-3 d-block d-xxl-none">
+    <h2 class="text-surface mb-3">Contents</h2>
+    <div id="post-toc-container">
+        </div>
+    <hr class="text-secondary">
+</div><div class="post-content mb-3" data-bs-spy="scroll" data-bs-target="#TableOfContents" tabindex="0">
+        <div id="post-content-body">
+<h1 id="计算机网络知识梳理" data-numberify>计算机网络知识梳理<a class="anchor ms-1" href="#计算机网络知识梳理"></a></h1>
+
+<h2 id="前言" data-numberify>前言<a class="anchor ms-1" href="#前言"></a></h2>
+<p>在b站上看到逊哥的课，讲的很好啊！</p>
+<p><a href="https://www.bilibili.com/video/BV1p69tYZEvN/?share_source=copy_web&amp;vd_source=9c22157b2c924857f42d806788cc5fea" target="_blank" rel="noopener noreferrer">计算机网络技术（可用于408备考）也许是全网讲的最通俗易懂的计算机网络课程<i class="fas fa-external-link-square-alt ms-1"></i></a></p>
+<p>推荐一下(点了关注)，此篇可能极大程度上参考逊哥的课来写</p>
+<p>那我们废话不多说直接进入正题</p>
+
+<h2 id="正题" data-numberify>正题<a class="anchor ms-1" href="#正题"></a></h2>
+
+<h3 id="模块一概述--体系结构总分结构" data-numberify>模块一：概述 & 体系结构（总分结构）<a class="anchor ms-1" href="#模块一概述--体系结构总分结构"></a></h3>
+<blockquote>
+<ul>
+<li><strong>OSI七层 vs TCP/IP四层（408必考）：</strong> 重点是两者的对应关系与“5层参考模型”。</li>
+<li><strong>关键概念扫雷：</strong> 速率、带宽、吞吐量、时延（发送/传播/处理/排队）、时延带宽积、RTT。</li>
+</ul>
+</blockquote>
+
+<h4 id="历史" data-numberify>历史<a class="anchor ms-1" href="#历史"></a></h4>
+<p>从世界上第一台计算机ENIAC开始，随着计算机的产生，人们就开始想能不能把计算机与计算机之间进行连接，形成一个网络呢？于是美国国防部做了世界上最早的分组交换网络——ARPANET(阿帕网)，如下图所示<picture><img class="img-fluid " alt="msedge_CYY1qPcTh3" src="https://xiaochai-123.github.io/images/screenshoots/2026-06/msedge_CYY1qPcTh3.png?v=2b95c26849b6a52e162794a454185af3" loading="lazy" width="1464" height="797" />
+</picture>
+
+</p>
+<p>除此之外，人类还有多个网络项目，但最终美国的ARPANET胜出，成为今天的互联网</p>
+<p><picture><img class="img-fluid " alt="POWERPNT_9ERUfXji9X" src="https://xiaochai-123.github.io/images/screenshoots/2026-06/POWERPNT_9ERUfXji9X.png?v=3b56a9203d263776a22b3d5a215c70ae" loading="lazy" width="658" height="298" />
+</picture>
+
+</p>
+
+<h4 id="计算机网络的定义" data-numberify>计算机网络的定义<a class="anchor ms-1" href="#计算机网络的定义"></a></h4>
+<p>以能够相互共享资源的方式互联起来的自治计算机系统的集合。这一定义可以从以下4个方面来理解:</p>
+<ol>
+<li>计算机网络建立的主要目的是实现资源共享</li>
+<li>互联的计算机是分布在不同地理位置的多台独立的“自治计算机”</li>
+<li>连网计算机之间的通信必须遵守共同的网络协议</li>
+<li>互联计算机之间的连接需要有一条通道,即由传输介质实现物理互联</li>
+</ol>
+
+<h4 id="互联网的组织结构" data-numberify>互联网的组织结构<a class="anchor ms-1" href="#互联网的组织结构"></a></h4>
+<p><picture><img class="img-fluid " alt="POWERPNT_MSorAByEIB" src="https://xiaochai-123.github.io/images/screenshoots/2026-06/POWERPNT_MSorAByEIB.png?v=ab7291a429fda15a6f653749e4717671" loading="lazy" width="1661" height="708" />
+</picture>
+
+</p>
+<blockquote>
+<p>这里的基础概念：</p>
+<ul>
+<li>
+<p>ISP(Internet Service Provider):互联网服务提供商</p>
+</li>
+<li>
+<p>节点(node):计算机、交换机、路由器等构成网络的硬件都可以称为网络中的节点</p>
+</li>
+<li>
+<p>主机(host):通过网络为其它机器提供服务的计算机,也称服务器</p>
+</li>
+<li>
+<p>客户端(client):指从主机处获得服务的计算机,也称为终端</p>
+</li>
+</ul>
+</blockquote>
+<p>上图中的主干网，校园网等就是指ISP（主干ISP，地区ISP，本地ISP再到公司，个人用户等）</p>
+<p><picture><img class="img-fluid " alt="chrome_7QQoI8lNCM" src="https://xiaochai-123.github.io/images/screenshoots/2026-06/chrome_7QQoI8lNCM.png?v=69ab7d0348888c8619a1fa08e4f9ee75" loading="lazy" width="961" height="499" />
+</picture>
+
+</p>
+<blockquote>
+<p>这里的基础概念：</p>
+<ul>
+<li>
+<p>报文(message):网络中交换与传输的数据单元</p>
+</li>
+<li>
+<p>分组(packet):为了从源端系统向目的端系统发送一个报文,源端将长报文划分为较小
+的数据块,称为分组</p>
+</li>
+<li>
+<p>比特(bit):用小写字母b表示,1b表示一个二进制位,0或1</p>
+<p>字节(byte):用大写字母B表示,1B表示一个字节</p>
+<p>$1\ B = 8\ bit$</p>
+<p>$1\ KB = 2^{10}\ B$</p>
+<p>$1\ MB = 2^{10}\ KB = 2^{20}\ B$</p>
+<p>$1\ GB = 2^{10}\ MB = 2^{20}\ KB = 2^{30}\ B$</p>
+<p>$1\ TB = 2^{10}\ GB = 2^{20}\ MB = 2^{30}\ KB = 2^{40}\ B$</p>
+<p>传输速率：每秒钟传输多少个比特（bit/s、b/s、bps，即 bit per second）</p>
+<p>$1\ B = 8\ bit$</p>
+<p>$1\ Kb/s = 10^3\ b/s$</p>
+<p>$1\ Mb/s = 10^3\ Kb/s = 10^6\ b/s$</p>
+<p>$1\ Gb/s = 10^3\ Mb/s = 10^6\ Kb/s = 10^9\ b/s$</p>
+<p>$1\ Tb/s = 10^3\ Gb/s = 10^6\ Mb/s = 10^9\ Kb/s = 10^{12}\ b/s$</p>
+<p>计算机网络中，带宽用来表示网络中某信道传送数据的能力，网络带宽表示单位时间内网络中的某信道所能通过的“最高数据率”，带宽单位：bit/s、b/s。</p>
+</li>
+</ul>
+</blockquote>
+
+<h4 id="网络分类" data-numberify>网络分类<a class="anchor ms-1" href="#网络分类"></a></h4>
+<p><strong>按覆盖范围</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">类型</th>
+          <th style="text-align: left">英文全称</th>
+          <th style="text-align: left">覆盖范围</th>
+          <th style="text-align: left">典型应用</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>个域网</strong></td>
+          <td style="text-align: left">Personal Area Network, PAN</td>
+          <td style="text-align: left">个人活动范围（数米内）</td>
+          <td style="text-align: left">蓝牙耳机、智能手表、手机与电脑互联</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>局域网</strong></td>
+          <td style="text-align: left">Local Area Network, LAN</td>
+          <td style="text-align: left">一栋楼、一个校园（几十米到数千米）</td>
+          <td style="text-align: left">家庭Wi-Fi、公司内部网络、机房网络</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>城域网</strong></td>
+          <td style="text-align: left">Metropolitan Area Network, MAN</td>
+          <td style="text-align: left">一座城市（数千米到数十千米）</td>
+          <td style="text-align: left">城市骨干网、有线电视网络、5G城域接入</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>广域网</strong></td>
+          <td style="text-align: left">Wide Area Network, WAN</td>
+          <td style="text-align: left">国家、全球（数百到数万千米）</td>
+          <td style="text-align: left">互联网（Internet）、跨国企业专线</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>其它分类</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">分类依据</th>
+          <th style="text-align: left">类型</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>按使用者</strong></td>
+          <td style="text-align: left">公用网（如Internet）、专用网（如银行内部网、政府专网）</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>按交换方式</strong></td>
+          <td style="text-align: left">电路交换（传统电话网）、报文交换、分组交换（Internet）</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>按拓扑结构</strong></td>
+          <td style="text-align: left">星型、总线型、环型、树型、网状型</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>按传输介质</strong></td>
+          <td style="text-align: left">双绞线、同轴电缆、光纤、无线</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>按用途</strong></td>
+          <td style="text-align: left">教育网、科研网、商业网、企业网、政府网</td>
+      </tr>
+  </tbody>
+</table>
+
+<h4 id="网络体系结构osi七层-vs-tcpip四层-vs-五层参考模型" data-numberify>网络体系结构（OSI七层 vs TCP/IP四层 vs 五层参考模型）<a class="anchor ms-1" href="#网络体系结构osi七层-vs-tcpip四层-vs-五层参考模型"></a></h4>
+
+<h5 id="osi参考模型" data-numberify>OSI参考模型<a class="anchor ms-1" href="#osi参考模型"></a></h5>
+<p>​	基于国际标准化组织(International Standards Organization,ISO)1983年开发的提案提出了OSI(Open Systems Interconnection)参考模型,并在1995年修订。</p>
+<p>​	OSI七层模型：</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">层</th>
+          <th style="text-align: left">名称</th>
+          <th style="text-align: left">英文</th>
+          <th style="text-align: center">功能</th>
+          <th style="text-align: left">数据单位</th>
+          <th style="text-align: left">典型设备/协议</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>7</strong></td>
+          <td style="text-align: left"><strong>应用层</strong></td>
+          <td style="text-align: left">Application Layer</td>
+          <td style="text-align: center">为用户提供网络应用服务，用户与网络的接口</td>
+          <td style="text-align: left">报文</td>
+          <td style="text-align: left">HTTP、FTP、SMTP、DNS、Telnet</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>6</strong></td>
+          <td style="text-align: left"><strong>表示层</strong></td>
+          <td style="text-align: left">Presentation Layer</td>
+          <td style="text-align: center">数据格式转换、加密解密、压缩解压缩</td>
+          <td style="text-align: left">报文</td>
+          <td style="text-align: left">JPEG、MPEG、ASCII、SSL/TLS</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>5</strong></td>
+          <td style="text-align: left"><strong>会话层</strong></td>
+          <td style="text-align: left">Session Layer</td>
+          <td style="text-align: center">建立、管理和终止会话连接</td>
+          <td style="text-align: left">报文</td>
+          <td style="text-align: left">RPC、NetBIOS、SSL</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>4</strong></td>
+          <td style="text-align: left"><strong>传输层</strong></td>
+          <td style="text-align: left">Transport Layer</td>
+          <td style="text-align: center">端到端的可靠传输、流量控制、差错恢复</td>
+          <td style="text-align: left">数据段/报文段</td>
+          <td style="text-align: left">TCP、UDP</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>3</strong></td>
+          <td style="text-align: left"><strong>网络层</strong></td>
+          <td style="text-align: left">Network Layer</td>
+          <td style="text-align: center">路由选择、寻址、分组转发</td>
+          <td style="text-align: left">数据报/分组</td>
+          <td style="text-align: left">IP、ICMP、路由器、三层交换机</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>2</strong></td>
+          <td style="text-align: left"><strong>数据链路层</strong></td>
+          <td style="text-align: left">Data Link Layer</td>
+          <td style="text-align: center">相邻节点间的可靠传输、帧同步、差错控制</td>
+          <td style="text-align: left">帧</td>
+          <td style="text-align: left">MAC、交换机、网桥、PPP</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>1</strong></td>
+          <td style="text-align: left"><strong>物理层</strong></td>
+          <td style="text-align: left">Physical Layer</td>
+          <td style="text-align: center">透明传输比特流、定义电气/机械/功能特性</td>
+          <td style="text-align: left">比特</td>
+          <td style="text-align: left">网卡、集线器、中继器、网线</td>
+      </tr>
+  </tbody>
+</table>
+<p>一定要把这OSI参考模型背下来！（物数网传会表应）</p>
+<p>当主机A给主机B发送消息时，通常是：<strong>消息在主机A从上到下，传送给主机B，然后消息在主机B从下到上进行传递。</strong></p>
+<p>每一层之间可以通过不同通信协议来通信，<strong>只是从逻辑上</strong>来讲两个设备的层之间可以相互通信，但<strong>实际上</strong>他们依然需要从上到下或从下到上地进行传递。</p>
+<p>服务是值一层<strong>向它的上一层</strong>提供的一组原语(操作)(<strong>一定是下一层对上一层提供服务，不能反</strong>)</p>
+<p><picture><img class="img-fluid " alt="chrome_FoWvFaJy3A" src="https://xiaochai-123.github.io/images/screenshoots/2026-06/chrome_FoWvFaJy3A.png?v=fdcc1213623174740d7989be366e9fa9" loading="lazy" width="848" height="525" />
+</picture>
+
+</p>
+<p><strong>各层功能简述</strong></p>
+<p><strong>第1层：物理层（Physical Layer）</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">属性</th>
+          <th style="text-align: left">说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>英文名称</strong></td>
+          <td style="text-align: left">Physical Layer</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>核心功能</strong></td>
+          <td style="text-align: left">在物理介质上透明地传输原始比特流</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>主要任务</strong></td>
+          <td style="text-align: left">定义接口的机械、电气、功能和过程特性</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>第2层：数据链路层（Data Link Layer）</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">属性</th>
+          <th style="text-align: left">说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>英文名称</strong></td>
+          <td style="text-align: left">Data Link Layer</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>核心功能</strong></td>
+          <td style="text-align: left">在相邻节点之间可靠地传输数据帧</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>主要任务</strong></td>
+          <td style="text-align: left">将比特流组合成帧，进行差错检测和流量控制</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>第3层：网络层（Network Layer）</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">属性</th>
+          <th style="text-align: left">说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>英文名称</strong></td>
+          <td style="text-align: left">Network Layer</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>核心功能</strong></td>
+          <td style="text-align: left">将数据从源主机路由到目的主机</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>主要任务</strong></td>
+          <td style="text-align: left">路由选择、分组转发、IP地址寻址</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>第4层：传输层（Transport Layer）</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">属性</th>
+          <th style="text-align: left">说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>英文名称</strong></td>
+          <td style="text-align: left">Transport Layer</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>核心功能</strong></td>
+          <td style="text-align: left">提供端到端的通信服务</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>主要任务</strong></td>
+          <td style="text-align: left">可靠传输、流量控制、拥塞控制、端口号标识进程</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>第5层：会话层（Session Layer）</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">属性</th>
+          <th style="text-align: left">说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>英文名称</strong></td>
+          <td style="text-align: left">Session Layer</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>核心功能</strong></td>
+          <td style="text-align: left">建立、管理和终止通信会话</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>主要任务</strong></td>
+          <td style="text-align: left">会话控制、同步管理</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>第6层：表示层（Presentation Layer）</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">属性</th>
+          <th style="text-align: left">说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>英文名称</strong></td>
+          <td style="text-align: left">Presentation Layer</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>核心功能</strong></td>
+          <td style="text-align: left">数据格式转换、语法表示</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>主要任务</strong></td>
+          <td style="text-align: left">数据加密解密、压缩解压缩、字符编码转换</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>第7层：应用层（Application Layer）</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">属性</th>
+          <th style="text-align: left">说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>英文名称</strong></td>
+          <td style="text-align: left">Application Layer</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>核心功能</strong></td>
+          <td style="text-align: left">为用户的网络应用提供服务</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>主要任务</strong></td>
+          <td style="text-align: left">提供各种应用层协议，用户与网络的交互接口</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>OSI七层汇总表</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">层级</th>
+          <th style="text-align: left">名称</th>
+          <th style="text-align: left">英文</th>
+          <th style="text-align: left">数据单位</th>
+          <th style="text-align: left">典型设备</th>
+          <th style="text-align: left">典型协议</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>7</strong></td>
+          <td style="text-align: left">应用层</td>
+          <td style="text-align: left">Application Layer</td>
+          <td style="text-align: left">报文</td>
+          <td style="text-align: left">—</td>
+          <td style="text-align: left">HTTP、FTP、SMTP、DNS</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>6</strong></td>
+          <td style="text-align: left">表示层</td>
+          <td style="text-align: left">Presentation Layer</td>
+          <td style="text-align: left">报文</td>
+          <td style="text-align: left">—</td>
+          <td style="text-align: left">SSL/TLS、JPEG、MPEG</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>5</strong></td>
+          <td style="text-align: left">会话层</td>
+          <td style="text-align: left">Session Layer</td>
+          <td style="text-align: left">报文</td>
+          <td style="text-align: left">—</td>
+          <td style="text-align: left">RPC、NetBIOS</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>4</strong></td>
+          <td style="text-align: left">传输层</td>
+          <td style="text-align: left">Transport Layer</td>
+          <td style="text-align: left">数据段</td>
+          <td style="text-align: left">—</td>
+          <td style="text-align: left">TCP、UDP</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>3</strong></td>
+          <td style="text-align: left">网络层</td>
+          <td style="text-align: left">Network Layer</td>
+          <td style="text-align: left">数据报/分组</td>
+          <td style="text-align: left">路由器</td>
+          <td style="text-align: left">IP、ICMP</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>2</strong></td>
+          <td style="text-align: left">数据链路层</td>
+          <td style="text-align: left">Data Link Layer</td>
+          <td style="text-align: left">帧</td>
+          <td style="text-align: left">交换机、网桥</td>
+          <td style="text-align: left">MAC、PPP</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>1</strong></td>
+          <td style="text-align: left">物理层</td>
+          <td style="text-align: left">Physical Layer</td>
+          <td style="text-align: left">比特</td>
+          <td style="text-align: left">集线器、中继器</td>
+          <td style="text-align: left">—</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>OSI参考模型的问题</strong></p>
+<p>由于OSI参考模型推出时，TCP/IP已经广泛部署，加上其自身存在以下问题，导致OSI七层模型<strong>并没有被真正广泛应用</strong>：</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">问题</th>
+          <th style="text-align: left">说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>时机错误</strong></td>
+          <td style="text-align: left">OSI标准制定时，TCP/IP已经在全球大面积部署，标准来得太晚</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>设计问题</strong></td>
+          <td style="text-align: left">会话层和表示层在实际应用中<strong>几乎为空</strong>，很少有独立协议对应这两层</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>分层过细</strong></td>
+          <td style="text-align: left">数据链路层和物理层划分过于复杂，物理层包含大量不同的物理介质标准</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>实现复杂</strong></td>
+          <td style="text-align: left">七层模型过于理想化，实现起来效率低，不如TCP/IP的简洁四层模型实用</td>
+      </tr>
+  </tbody>
+</table>
+
+<h5 id="tcpip模型" data-numberify>TCP/IP模型<a class="anchor ms-1" href="#tcpip模型"></a></h5>
+<p>TCP/IP实际上合并了某些层级，将OSI七层模型合并为四层。</p>
+<p>TCP/IP模型最早实现之一是作为Berkerley Unix的一部分,尤其是学术界都把TCP/IP看成是Unix的一部分。</p>
+<p><picture><img class="img-fluid " alt="POWERPNT_JkyUbEA7iE" src="https://xiaochai-123.github.io/images/screenshoots/2026-06/POWERPNT_JkyUbEA7iE.png?v=7da960491ebae39d1b3da032c0c2ba06" loading="lazy" width="1191" height="557" />
+</picture>
+
+</p>
+<p>TCP/IP模型虽然是当今互联网的实际标准，但它在设计上也存在一些问题和局限性。</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">问题</th>
+          <th style="text-align: left">说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>概念不清晰</strong></td>
+          <td style="text-align: left">TCP/IP模型没有明确区分<strong>服务、接口和协议</strong>这三个关键概念</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>通用性差</strong></td>
+          <td style="text-align: left">TCP/IP模型是专门为TCP/IP协议栈设计的，不适用于描述其他协议栈（如蓝牙、ZigBee等）</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>链路层定义模糊</strong></td>
+          <td style="text-align: left">TCP/IP模型中的<strong>网络接口层</strong>并不是通常意义的一层，它只是一个接口（规定了如何接入网络），而真正意义上的“层”应该包含完整的协议和功能</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>物理层缺失</strong></td>
+          <td style="text-align: left">TCP/IP模型没有区分物理层和数据链路层，将两者合并为“网络接口层”。对于有线以太网可能够用，但对于无线网络、光纤等物理介质差异较大的场景，这个设计就显得不够精细</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>协议固化</strong></td>
+          <td style="text-align: left">早期自主实现的协议已经被广泛部署，导致其他协议（如IPv6）难以取代现有协议，形成“<strong>赢家通吃</strong>”的局面</td>
+      </tr>
+  </tbody>
+</table>
+
+<h5 id="五层参考模型" data-numberify>五层参考模型<a class="anchor ms-1" href="#五层参考模型"></a></h5>
+<p>由于OSI七层模型过于理论化、TCP/IP四层模型又过于简化（物理层与链路层未区分），在实际教学和工程实践中，通常采用 <strong>五层参考模型</strong> 作为折中方案。</p>
+<p>五层参考模型综合了OSI的严谨分层思想和TCP/IP的简洁实用性，是目前计算机网络教材中最常用的教学模型。</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">层级</th>
+          <th style="text-align: left">名称</th>
+          <th style="text-align: left">英文</th>
+          <th style="text-align: left">对应OSI层</th>
+          <th style="text-align: left">对应TCP/IP层</th>
+          <th style="text-align: left">功能</th>
+          <th style="text-align: left">数据单位</th>
+          <th style="text-align: left">典型协议/设备</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>5</strong></td>
+          <td style="text-align: left"><strong>应用层</strong></td>
+          <td style="text-align: left">Application Layer</td>
+          <td style="text-align: left">应用层 + 表示层 + 会话层</td>
+          <td style="text-align: left">应用层</td>
+          <td style="text-align: left">为用户提供网络应用服务</td>
+          <td style="text-align: left">报文</td>
+          <td style="text-align: left">HTTP、FTP、SMTP、DNS</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>4</strong></td>
+          <td style="text-align: left"><strong>传输层</strong></td>
+          <td style="text-align: left">Transport Layer</td>
+          <td style="text-align: left">传输层</td>
+          <td style="text-align: left">传输层</td>
+          <td style="text-align: left">端到端的可靠传输</td>
+          <td style="text-align: left">数据段</td>
+          <td style="text-align: left">TCP、UDP</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>3</strong></td>
+          <td style="text-align: left"><strong>网络层</strong></td>
+          <td style="text-align: left">Network Layer</td>
+          <td style="text-align: left">网络层</td>
+          <td style="text-align: left">网络层（网际层）</td>
+          <td style="text-align: left">路由选择、寻址、分组转发</td>
+          <td style="text-align: left">数据报</td>
+          <td style="text-align: left">IP、ICMP、路由器</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>2</strong></td>
+          <td style="text-align: left"><strong>数据链路层</strong></td>
+          <td style="text-align: left">Data Link Layer</td>
+          <td style="text-align: left">数据链路层</td>
+          <td style="text-align: left">网络接口层</td>
+          <td style="text-align: left">相邻节点间的可靠传输</td>
+          <td style="text-align: left">帧</td>
+          <td style="text-align: left">MAC、交换机、网桥</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>1</strong></td>
+          <td style="text-align: left"><strong>物理层</strong></td>
+          <td style="text-align: left">Physical Layer</td>
+          <td style="text-align: left">物理层</td>
+          <td style="text-align: left">（未区分，合并进网络接口层）</td>
+          <td style="text-align: left">透明传输比特流</td>
+          <td style="text-align: left">比特</td>
+          <td style="text-align: left">网卡、集线器、中继器</td>
+      </tr>
+  </tbody>
+</table>
+
+<h4 id="网络交换技术" data-numberify>网络交换技术<a class="anchor ms-1" href="#网络交换技术"></a></h4>
+<p>有三种网络交换方式，下面详细介绍</p>
+<p><picture><img class="img-fluid " alt="POWERPNT_PwKigV5VB4" src="https://xiaochai-123.github.io/images/screenshoots/2026-06/POWERPNT_PwKigV5VB4.png?v=0233cf2c83cd7fd62814868b3495a02e" loading="lazy" width="1097" height="731" />
+</picture>
+
+</p>
+
+<h5 id="网络交换方式" data-numberify>网络交换方式<a class="anchor ms-1" href="#网络交换方式"></a></h5>
+<p><picture><img class="img-fluid " alt="msedge_TFtsSDwMNV" src="https://xiaochai-123.github.io/images/screenshoots/2026-06/msedge_TFtsSDwMNV.png?v=fe72a5159490c7e1564c9dce7ccd3d6f" loading="lazy" width="1008" height="543" />
+</picture>
+
+</p>
+<p>电路交换的优缺点明显</p>
+<p>优点：</p>
+<p>1.通信延时小，实时性强，可靠性高</p>
+<p>2.数据可以有序传输，安全性好，实现简单</p>
+<p>缺点：</p>
+<p>1.建立时间长</p>
+<p>2.线路独占，利用率低，灵活性差</p>
+<p><picture><img class="img-fluid " alt="msedge_VKWU3FbS34" src="https://xiaochai-123.github.io/images/screenshoots/2026-06/msedge_VKWU3FbS34.png?v=ba324f89bf259e116016077d50396a64" loading="lazy" width="994" height="544" />
+</picture>
+
+</p>
+<p>优点:</p>
+<p>1.线路利用路高，提供多目标服务</p>
+<p>2.不用建立连接，动态分配线路</p>
+<p>3.提高了线路的可靠性和利用率</p>
+<p>缺点:</p>
+<p>1.“存储-转发”实时性差</p>
+<p>2.对报文大小无限制，存储空间大</p>
+<p>3.发生错误时，请求重传，整个报文丢弃</p>
+<p><picture><img class="img-fluid " alt="msedge_f9piOVcS8Y" src="https://xiaochai-123.github.io/images/screenshoots/2026-06/msedge_f9piOVcS8Y.png?v=10eea4fce442407ea0f4b60c3a4d0505" loading="lazy" width="988" height="525" />
+</picture>
+
+</p>
+<p>优点:</p>
+<ol>
+<li>存储空间开销小</li>
+<li>无效传输低</li>
+<li>传输延迟低</li>
+</ol>
+<p>缺点:</p>
+<ol>
+<li>分组乱序，各个分组可通过不同的路径达到目的站点</li>
+<li>通信效率低</li>
+</ol>
+
+<h5 id="例题" data-numberify>例题<a class="anchor ms-1" href="#例题"></a></h5>
+<p>[2009] 34. 在无噪声情况下，若某通信链路的带宽为 3kHz，采用 4 个相位，每个相位具有 4 种振幅的 QAM 调制技术，则该通信链路的最大数据传输速率是______。</p>
+<p>A. 12k bps</p>
+<p>B. 24k bps</p>
+<p>C. 48k bps</p>
+<p>D. 96k bps</p>
+<p><span title="正确答案是：B">🤔 悬停查看答案</span></p>
+<p>[2011] 34. 若某通信链路的数据传输速率为 2400 bps，采用四相位调制，则该链路的波特率是______。</p>
+<p>A. 600 波特</p>
+<p>B. 1200 波特</p>
+<p>C. 4800 波特</p>
+<p>D. 9600 波特</p>
+<p><span title="正确答案是：B">🤔 悬停查看答案</span></p>
+<p>[2016] 34. 若连接 R2 和 R3 链路的频率带宽为 8kHz，信噪比为 30dB，该链路实际数据传输速率约为理论最大数据传输速率的 50%，则该链路的实际传输速率约是______。</p>
+<p>A. 8k bps</p>
+<p>B. 20k bps</p>
+<p>C. 40k bps</p>
+<p>D. 80k bps</p>
+<p><span title="正确答案是：C">🤔 悬停查看答案</span></p>
+<p>[2017] 34. 若信道在无噪声情况下的极限数据传输速率不小于信噪比为 30 dB 条件下的极限数据传输速率，则信号状态数至少是______。</p>
+<p>A. 4</p>
+<p>B. 8</p>
+<p>C. 16</p>
+<p>D. 32</p>
+<p><span title="正确答案是：D">🤔 悬停查看答案</span></p>
+
+<h4 id="计算机网络性能度量指标" data-numberify>计算机网络性能度量指标<a class="anchor ms-1" href="#计算机网络性能度量指标"></a></h4>
+
+<h5 id="一时延delay" data-numberify>一、时延（Delay）<a class="anchor ms-1" href="#一时延delay"></a></h5>
+<p>时延是指数据（一个报文或分组）从网络（或链路）的一端传送到另一端所需的总时间，也称为延迟或迟延。时延由以下四个部分组成：</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">时延类型</th>
+          <th style="text-align: left">含义</th>
+          <th style="text-align: left">影响因素</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>传输时延</strong>（发送时延）</td>
+          <td style="text-align: left">数据从结点进入传输媒体所需的时间，即发送数据帧所需的时间</td>
+          <td style="text-align: left">数据帧长度、发送速率</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>传播时延</strong></td>
+          <td style="text-align: left">电磁波在信道中传播一定距离所花费的时间</td>
+          <td style="text-align: left">信道长度、信号传播速度</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>处理时延</strong></td>
+          <td style="text-align: left">主机或路由器收到分组后，为处理分组（如分析首部、提取数据、差错检验、查找路由）所花费的时间</td>
+          <td style="text-align: left">硬件性能、路由器负载</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>排队时延</strong></td>
+          <td style="text-align: left">分组在路由器输入/输出队列中排队等待处理所经历的时延</td>
+          <td style="text-align: left">网络拥塞程度、队列长度</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>总时延</strong> = 传输时延 + 传播时延 + 处理时延 + 排队时延</p>
+
+<h5 id="二时延抖动jitter" data-numberify>二、时延抖动（Jitter）<a class="anchor ms-1" href="#二时延抖动jitter"></a></h5>
+<p>时延抖动是指时延的变化。由于网络中的队列或缓冲区状态不断变化，分组经历的网络时延会随时间而波动，这种变化称为抖动。</p>
+<p>时延抖动的特点：</p>
+<ul>
+<li>起源于网络中的队列或缓冲机制</li>
+<li>难以精确预测（受网络流量动态变化影响）</li>
+<li>对语音、视频等实时多媒体业务影响显著，抖动过大会严重影响用户体验</li>
+</ul>
+
+<h5 id="三往返时延rttround-trip-time" data-numberify>三、往返时延（RTT，Round-Trip Time）<a class="anchor ms-1" href="#三往返时延rttround-trip-time"></a></h5>
+<p>往返时延是指从发送方发送数据开始，到发送方收到来自接收方的确认，所经历的总时间。</p>
+<p>RTT的主要应用：</p>
+<ul>
+<li>判断网络的通断性</li>
+<li>测试网络时延</li>
+<li>计算数据包丢失率</li>
+<li>TCP协议中用于超时重传时间的计算</li>
+</ul>
+
+<h5 id="四吞吐量throughput" data-numberify>四、吞吐量（Throughput）<a class="anchor ms-1" href="#四吞吐量throughput"></a></h5>
+<p>吞吐量是指单位时间内通过某个网络（或信道、接口）的数据量，单位为 b/s（bit/s）。</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">概念</th>
+          <th style="text-align: left">定义</th>
+          <th style="text-align: left">说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>吞吐量</strong></td>
+          <td style="text-align: left">单位时间内通过某网络的数据量</td>
+          <td style="text-align: left">反映网络的实际数据传送能力</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>有效吞吐量（Goodput）</strong></td>
+          <td style="text-align: left">单位时间内，目的地正确接收到的有用信息量</td>
+          <td style="text-align: left">不包括重传数据、协议开销等无效数据</td>
+      </tr>
+  </tbody>
+</table>
+
+<h5 id="五利用率utilization" data-numberify>五、利用率（Utilization）<a class="anchor ms-1" href="#五利用率utilization"></a></h5>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">概念</th>
+          <th style="text-align: left">定义</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>信道利用率</strong></td>
+          <td style="text-align: left">某信道有百分之几的时间是被利用的（即有数据在传输）</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>网络利用率</strong></td>
+          <td style="text-align: left">全网络的信道利用率的加权平均值</td>
+      </tr>
+  </tbody>
+</table>
+<blockquote>
+<p><strong>注意</strong>：利用率并非越高越好。当利用率接近100%时，意味着网络处于拥塞状态，排队时延会急剧增大，反而导致网络性能严重下降。</p>
+</blockquote>
+
+<h5 id="六丢包率packet-loss-rate" data-numberify>六、丢包率（Packet Loss Rate）<a class="anchor ms-1" href="#六丢包率packet-loss-rate"></a></h5>
+<p>丢包率是指所丢失的数据包数量占所发送数据包总数的比率。</p>
+<p>丢包率=丢失的数据包数发送的数据包总数丢包率=发送的数据包总数丢失的数据包数</p>
+<p>丢包的主要原因：</p>
+<ul>
+<li>网络拥塞导致路由器队列溢出</li>
+<li>传输过程中的比特差错</li>
+<li>路由器处理能力不足</li>
+<li>链路故障</li>
+</ul>
+
+<h5 id="七各指标之间的关系" data-numberify>七、各指标之间的关系<a class="anchor ms-1" href="#七各指标之间的关系"></a></h5>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">指标</th>
+          <th style="text-align: left">关联说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>时延</strong> 与 <strong>时延抖动</strong></td>
+          <td style="text-align: left">时延抖动是时延的变化量，多媒体业务对抖动更敏感</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>吞吐量</strong> 与 <strong>丢包率</strong></td>
+          <td style="text-align: left">当网络拥塞时，吞吐量下降，丢包率上升</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>利用率</strong> 与 <strong>排队时延</strong></td>
+          <td style="text-align: left">利用率升高 → 排队时延增大 → 总时延增大</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>RTT</strong> 与 <strong>时延</strong></td>
+          <td style="text-align: left">RTT ≈ 发送方到接收方的时延 + 接收方到发送方的确认时延</td>
+      </tr>
+  </tbody>
+</table>
+
+<h5 id="例题-1" data-numberify>例题<a class="anchor ms-1" href="#例题-1"></a></h5>
+<p>[ 2013 ]33. 下列选项中，不属于网络体系结构所描述的内容是</p>
+<p>A. 网络的层次</p>
+<p>B. 每层使用的协议</p>
+<p>C. 协议的内部实现细节</p>
+<p>D. 每层必须完成的功能</p>
+<p><span title="正确答案是：C">🤔 悬停查看答案</span></p>
+<p>[ 2013 ]33. 在 OSI 参考模型中，下列功能需由应用层的相邻层实现的是______。</p>
+<p>A. 对话管理</p>
+<p>B. 数据格式转换</p>
+<p>C. 路由选择</p>
+<p>D. 可靠数据传输</p>
+<p><span title="正确答案是：B">🤔 悬停查看答案</span></p>
+<p>[2014] 33. 在 OSI 参考模型中，直接为会话层提供服务的是______。</p>
+<p>A. 应用层</p>
+<p>B. 表示层</p>
+<p>C. 传输层</p>
+<p>D. 网络层</p>
+<p><span title="正确答案是：C">🤔 悬停查看答案</span></p>
+<p>[2017] 33. 假设 OSI 参考模型的应用层欲发送 400B 的数据（无拆分），除物理层和应用层之外，其他各层在封装 PDU 时均引入 20B 的额外开销，则应用层数据传输效率约为 ______。</p>
+<p>A. 80%</p>
+<p>B. 83%</p>
+<p>C. 87%</p>
+<p>D. 91%</p>
+<p><span title="正确答案是：A">🤔 悬停查看答案</span></p>
+<p>[2019] 33. OSI 参考模型的第 5 层（自下而上）完成的主要功能是______。</p>
+<p>A. 差错控制</p>
+<p>B. 路由选择</p>
+<p>C. 会话管理</p>
+<p>D. 数据表示转换</p>
+<p><span title="正确答案是：C">🤔 悬停查看答案</span></p>
+<p>在 OSI 参考模型中，物理层是指（ ）</p>
+<p>A. 物理设备</p>
+<p>B. 物理介质</p>
+<p>C. 物理连接</p>
+<p>D. 物理信道</p>
+<p><span title="正确答案是：D">🤔 悬停查看答案</span></p>
+
+<h3 id="模块二物理层机械特性考察较少但基础" data-numberify>模块二：物理层（机械特性，考察较少，但基础）<a class="anchor ms-1" href="#模块二物理层机械特性考察较少但基础"></a></h3>
+<blockquote>
+<ul>
+<li><strong>核心任务：</strong> 比特流在介质上的透明传输。</li>
+<li><strong>必记公式：</strong> 奈奎斯特定理（理想）、香农定理（有噪）。</li>
+<li><strong>编码与调制：</strong> 区分曼彻斯特编码（自同步）和差分曼彻斯特。</li>
+</ul>
+</blockquote>
+
+<h4 id="传输介质" data-numberify>传输介质<a class="anchor ms-1" href="#传输介质"></a></h4>
+
+<h5 id="双绞线" data-numberify>双绞线<a class="anchor ms-1" href="#双绞线"></a></h5>
+<p><picture><img class="img-fluid " alt="chrome_C70zGW6T9V" src="https://xiaochai-123.github.io/images/screenshoots/2026-06/chrome_C70zGW6T9V.png?v=64fc4d292c7d7183eb69ab3b128557f0" loading="lazy" width="941" height="521" />
+</picture>
+
+</p>
+<p>水晶头(RJ45) T568B线序：橙白 橙 白绿 蓝 白蓝 绿 棕白 棕（无端联系的知识）</p>
+<p><picture><img class="img-fluid " alt="msedge_h2mMQlDcLj" src="https://xiaochai-123.github.io/images/screenshoots/2026-06/msedge_h2mMQlDcLj.png?v=f560e314a337398ad08d7517fb2d3997" loading="lazy" width="1128" height="488" />
+</picture>
+
+</p>
+<p>双绞线类别对照表</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">类别</th>
+          <th style="text-align: left">种类</th>
+          <th style="text-align: left">传输速率</th>
+          <th style="text-align: left">传输频率</th>
+          <th style="text-align: left">适用范围</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>3类</strong></td>
+          <td style="text-align: left">UTP</td>
+          <td style="text-align: left">10 Mbps</td>
+          <td style="text-align: left">16 MHz</td>
+          <td style="text-align: left">10BASE-T以太网</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>4类</strong></td>
+          <td style="text-align: left">UTP</td>
+          <td style="text-align: left">16 Mbps</td>
+          <td style="text-align: left">20 MHz</td>
+          <td style="text-align: left">10BASE-T、令牌环网</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>5类</strong></td>
+          <td style="text-align: left">UTP</td>
+          <td style="text-align: left">100 Mbps</td>
+          <td style="text-align: left">100 MHz</td>
+          <td style="text-align: left">100BASE-T</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>超5类</strong></td>
+          <td style="text-align: left">UTP</td>
+          <td style="text-align: left">1 Gbps</td>
+          <td style="text-align: left">125 MHz</td>
+          <td style="text-align: left">100/1000BASE-T</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>6类</strong></td>
+          <td style="text-align: left">UTP</td>
+          <td style="text-align: left">&gt;1.5 Gbps</td>
+          <td style="text-align: left">250 MHz</td>
+          <td style="text-align: left">1000/10GBASE-T</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>7类</strong></td>
+          <td style="text-align: left">UTP/STP</td>
+          <td style="text-align: left">10 Gbps</td>
+          <td style="text-align: left">600 MHz</td>
+          <td style="text-align: left">10GBASE-T</td>
+      </tr>
+  </tbody>
+</table>
+<p>传输标准命名规则</p>
+<p><picture><img class="img-fluid " alt="msedge_CfpDIN2VI6" src="https://xiaochai-123.github.io/images/screenshoots/2026-06/msedge_CfpDIN2VI6.png?v=d33d453a77b079f311b69b32d7af8c45" loading="lazy" width="1053" height="368" />
+</picture>
+
+</p>
+
+<h5 id="光纤" data-numberify>光纤<a class="anchor ms-1" href="#光纤"></a></h5>
+<p><picture><img class="img-fluid " alt="msedge_xIAMJTeQeB" src="https://xiaochai-123.github.io/images/screenshoots/2026-06/msedge_xIAMJTeQeB.png?v=c6c8b08cc93e1b59414f6342dd8c5afb" loading="lazy" width="1128" height="621" />
+</picture>
+
+</p>
+<p>光纤传输系统由三部分组成，分别是光源、传输介质和检测器。</p>
+<p><picture><img class="img-fluid " alt="msedge_GGJcio2tal" src="https://xiaochai-123.github.io/images/screenshoots/2026-06/msedge_GGJcio2tal.png?v=5ce4fa97ea07924a1bc6b22e2cb6938b" loading="lazy" width="1142" height="496" />
+</picture>
+
+</p>
+
+<h5 id="同轴线缆" data-numberify>同轴线缆<a class="anchor ms-1" href="#同轴线缆"></a></h5>
+<p><picture><img class="img-fluid " alt="msedge_28m54RUs17" src="https://xiaochai-123.github.io/images/screenshoots/2026-06/msedge_28m54RUs17.png?v=7d83a9bbe9e45fbe515ac96f71add208" loading="lazy" width="1122" height="607" />
+</picture>
+
+</p>
+
+<h5 id="无线传输" data-numberify>无线传输<a class="anchor ms-1" href="#无线传输"></a></h5>
+<p>常见的无线传输有无线电波、微波、红外线、激光等</p>
+<ul>
+<li>无线电波：具有较强的穿透能力，可以实现长距离传输。应用领域有手机通信、无线局域网、广播</li>
+<li>微波：比无线电波频率更高的电磁波。应用领域有卫星通信</li>
+<li>红外线：是不可见光的一种，通常用于近距离遥控</li>
+<li>激光：点对点的通信技术，容易受天气影响</li>
+</ul>
+
+<h5 id="例题-2" data-numberify>例题<a class="anchor ms-1" href="#例题-2"></a></h5>
+<p>[2019] 34. 100BaseT 快速以太网使用的导向传输介质是______。</p>
+<p>A. 双绞线</p>
+<p>B. 单模光纤</p>
+<p>C. 多模光纤</p>
+<p>D. 同轴电缆</p>
+<p><span title="正确答案是：A">🤔 悬停查看答案</span></p>
+
+<h4 id="编码与调制" data-numberify>编码与调制<a class="anchor ms-1" href="#编码与调制"></a></h4>
+
+<h5 id="编码" data-numberify>编码<a class="anchor ms-1" href="#编码"></a></h5>
+<p><strong>归零编码</strong>（RZ编码,Return-to-Zero Code）：正电平代表逻辑1，负电平代表逻辑0，每传输完一位数据，信号返回到零电平。</p>
+<p><strong>不归零编码</strong>（NRZ编码,Non-Return-to-Zero Code）：与归零编码相比，NRZ编码不需要归零。
+<strong>反向不归零编码</strong>（NRZI编码,Non-Return-to-Zero Code InvertedCode）：信号翻转表示0，不翻转表示1。</p>
+<p><picture><img class="img-fluid " alt="msedge_ZMEVLt1Kdq" src="https://xiaochai-123.github.io/images/screenshoots/2026-06/msedge_ZMEVLt1Kdq.png?v=1c9b4ba8e63ef19b648939cfece26214" loading="lazy" width="1110" height="393" />
+</picture>
+
+</p>
+<p><strong>曼彻斯特编码</strong></p>
+<p><picture><img class="img-fluid " alt="msedge_arz94NRqfx" src="https://xiaochai-123.github.io/images/screenshoots/2026-06/msedge_arz94NRqfx.png?v=39a7cc1cbaed8b91b85daed820df7920" loading="lazy" width="1098" height="465" />
+</picture>
+
+</p>
+<p><strong>差分曼彻斯特编码</strong></p>
+<p><picture><img class="img-fluid " alt="msedge_bBlHNK2yvj" src="https://xiaochai-123.github.io/images/screenshoots/2026-06/msedge_bBlHNK2yvj.png?v=406e62fd099dfdae2bd9c91b12313efd" loading="lazy" width="1132" height="489" />
+</picture>
+
+</p>
+<p><strong>4B/5B编码表</strong>（不必记忆，只要了解这个只是用4位/5位二进制来表示数即可）</p>
+<p><picture><img class="img-fluid " alt="msedge_ur9Nrgg69W" src="https://xiaochai-123.github.io/images/screenshoots/2026-06/msedge_ur9Nrgg69W.png?v=96f764f2cc3971fbd28a7546256ccd57" loading="lazy" width="1059" height="509" />
+</picture>
+
+</p>
+
+<h5 id="例题-3" data-numberify>例题<a class="anchor ms-1" href="#例题-3"></a></h5>
+<p>[2013] 34. 若下图为 10BaseT 网卡接收到的信号波形，则该网卡收到的比特串是______。</p>
+<p><picture><img class="img-fluid " alt="msedge_T4aXI7aARB" src="https://xiaochai-123.github.io/images/screenshoots/2026-06/msedge_T4aXI7aARB.png?v=d4d4a0f05a6530f64fc18bd62c74a5f3" loading="lazy" width="866" height="171" />
+</picture>
+
+</p>
+<p>A. 0011 0110</p>
+<p>B. 1010 1101</p>
+<p>C. 0101 0010</p>
+<p>D. 1100 0101</p>
+<p><span title="正确答案是：A">🤔 悬停查看答案</span></p>
+<p>[2015] 34. 使用两种编码方案对比特流 01100111 进行编码的结果如下图所示，编码 1 和编码 2 分别是______。</p>
+<p><picture><img class="img-fluid " alt="msedge_iTebm24PJR" src="https://xiaochai-123.github.io/images/screenshoots/2026-06/msedge_iTebm24PJR.png?v=304a7827244d846e151eefab45575dfd" loading="lazy" width="844" height="257" />
+</picture>
+
+</p>
+<p>A. NRZ 和曼彻斯特编码</p>
+<p>B. NRZ 和差分曼彻斯特编码</p>
+<p>C. NRZI 和曼彻斯特编码</p>
+<p>D. NRZI 和差分曼彻斯特编码</p>
+<p><span title="正确答案是：A">🤔 悬停查看答案</span></p>
+<p>[2021] 34. 若下图为一段差分曼彻斯特编码信号波形，则其编码的二进制位串是______。</p>
+<p><picture><img class="img-fluid " alt="msedge_oTMaHesP7T" src="https://xiaochai-123.github.io/images/screenshoots/2026-06/msedge_oTMaHesP7T.png?v=a1f2fd15ef17a60410d7691daadea9f5" loading="lazy" width="647" height="136" />
+</picture>
+
+</p>
+<p>A. 1011 1001</p>
+<p>B. 1101 0001</p>
+<p>C. 0010 1110</p>
+<p>D. 1011 0110</p>
+<p><span title="正确答案是：A">🤔 悬停查看答案</span></p>
+
+<h5 id="数字调制" data-numberify>数字调制<a class="anchor ms-1" href="#数字调制"></a></h5>
+<p>​	为了发送数字信息,必须设法使用模拟信号表示比特(数字信息)。比特与代表它们的信号之间的映射过程称为<strong>数字调制</strong>。</p>
+<p>​    模拟信号是连续的：例如连续变化的电压，光照强度，声音强度</p>
+<p>码元：码元就是数字调制过程中用来承载信息的基本信号单位，它通过特定的映射关系，将一组比特与一个独特的信号状态对应起来，从而实现数字信息的传输。</p>
+<p><picture><img class="img-fluid " alt="msedge_jVPPBIgR6i" src="https://xiaochai-123.github.io/images/screenshoots/2026-06/msedge_jVPPBIgR6i.png?v=bbae9325fc685f067a08eccb0bf5a5a5" loading="lazy" width="970" height="224" />
+</picture>
+
+</p>
+
+<h5 id="波特率与比特率" data-numberify>波特率与比特率<a class="anchor ms-1" href="#波特率与比特率"></a></h5>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">概念</th>
+          <th style="text-align: left">定义</th>
+          <th style="text-align: left">单位</th>
+          <th style="text-align: left">关注点</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>波特率</strong></td>
+          <td style="text-align: left">单位时间内传输的码元个数</td>
+          <td style="text-align: left">波特（Baud）</td>
+          <td style="text-align: left">物理信号的变化频率，反映底层通信速率</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>比特率</strong></td>
+          <td style="text-align: left">单位时间内传输的比特个数</td>
+          <td style="text-align: left">bit/s（bps）</td>
+          <td style="text-align: left">实际传输的数据量，反映有用信息的速率</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>波特率</strong>描述的是物理层信号波形的变化速率，即每秒钟信号状态发生变化的次数。例如，一个码元可以携带1个或多个比特的信息。当每个码元仅携带1个比特时，波特率与比特率数值相等；当每个码元携带多个比特时，比特率 = 波特率 × 每个码元携带的比特数。</p>
+<p><strong>比特率</strong>描述的是实际传输的有用数据速率，即每秒钟从发送端到接收端成功传输的比特数量。它反映了网络传输数据的实际效率。</p>
+<p>$$比特率 = 波特率 \times \log_2 N$$</p>
+<p>其中，N 为一个码元所含的状态数（即一个码元可以取 N 种不同的离散值）。</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">场景</th>
+          <th style="text-align: left">波特率</th>
+          <th style="text-align: left">每个码元比特数</th>
+          <th style="text-align: left">比特率</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">二进制传输（N=2）</td>
+          <td style="text-align: left">1000 Baud</td>
+          <td style="text-align: left">1 bit</td>
+          <td style="text-align: left">1000 bit/s</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">四电平传输（N=4）</td>
+          <td style="text-align: left">1000 Baud</td>
+          <td style="text-align: left">2 bit</td>
+          <td style="text-align: left">2000 bit/s</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">八电平传输（N=8）</td>
+          <td style="text-align: left">1000 Baud</td>
+          <td style="text-align: left">3 bit</td>
+          <td style="text-align: left">3000 bit/s</td>
+      </tr>
+  </tbody>
+</table>
+
+<h5 id="数字调制方法" data-numberify>数字调制方法<a class="anchor ms-1" href="#数字调制方法"></a></h5>
+<p>将数字信号调制成模拟信号，有<strong>调幅</strong>、<strong>调频</strong>和<strong>调相</strong>三种方式。</p>
+<p><picture><img class="img-fluid " alt="msedge_LtRLcHAaan" src="https://xiaochai-123.github.io/images/screenshoots/2026-06/msedge_LtRLcHAaan.png?v=7fca9b0880c06df039691e8649d0893c" loading="lazy" width="981" height="347" />
+</picture>
+
+</p>
+<p><strong>QAM 正交振幅调制</strong></p>
+<p>QAM（Quadrature Amplitude Modulation，正交振幅调制）是在频率相同的前提下，将<strong>调幅（AM）</strong> 和 <strong>调相（PM）</strong> 相结合，形成叠加的调制信号。</p>
+<p>$$\text{比特率} = \text{波特率} \times \log_2 ({相位数} \times {振幅数})$$</p>
+
+<h4 id="物理层极限容量" data-numberify>物理层极限容量<a class="anchor ms-1" href="#物理层极限容量"></a></h4>
+
+<h5 id="奈奎斯特定理" data-numberify>奈奎斯特定理<a class="anchor ms-1" href="#奈奎斯特定理"></a></h5>
+<p>在<strong>无噪声</strong>的理想信道中，码元传输速率存在一个上限值，该上限由信道带宽决定：</p>
+<p>$$B = 2H$$</p>
+<p>H位信道的带宽，即信道传输上、下限频率差值，单位为Hz</p>
+<p>无噪声下信道传输能力：</p>
+<p>$$C = B \log_2 N \quad (\text{b/s})$$</p>
+<p>其中：</p>
+<ul>
+<li>C为信道传输能力（比特率），单位为 b/s</li>
+<li>B为波特率（码元传输速率），单位为 Baud</li>
+<li>N为码元可取的离散电平数（状态数）</li>
+</ul>
+
+<h5 id="香农公式" data-numberify>香农公式<a class="anchor ms-1" href="#香农公式"></a></h5>
+<p>$$C = H \log_2 \left( 1 + \frac{S}{N} \right)$$</p>
+<p>其中：</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">符号</th>
+          <th style="text-align: left">含义</th>
+          <th style="text-align: left">单位</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>C</strong></td>
+          <td style="text-align: left">信道最大传输速率（信道容量）</td>
+          <td style="text-align: left">bit/s（bps）</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>H</strong></td>
+          <td style="text-align: left">信道带宽</td>
+          <td style="text-align: left">Hz</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>S</strong></td>
+          <td style="text-align: left">信号功率</td>
+          <td style="text-align: left">W</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>N</strong></td>
+          <td style="text-align: left">噪声功率</td>
+          <td style="text-align: left">W</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>S/N</strong></td>
+          <td style="text-align: left">信噪比</td>
+          <td style="text-align: left">无量纲（倍数）</td>
+      </tr>
+  </tbody>
+</table>
+
+<h5 id="信噪比分贝" data-numberify>信噪比分贝<a class="anchor ms-1" href="#信噪比分贝"></a></h5>
+<p>信噪比（Signal-to-Noise Ratio，SNR）是信号功率与噪声功率的比值。在工程上，信噪比通常用<strong>分贝（dB）</strong> 来表示，其换算关系为：</p>
+<p>$$\text{信噪比(dB)} = 10 \lg \left( \frac{S}{N} \right)$$</p>
+<p>其中，S<em>S</em> 为信号功率，N<em>N</em> 为噪声功率。分贝值常用于衡量信号质量，数值越大表示信号相对噪声越强。</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">信噪比（S/N）</th>
+          <th style="text-align: left">分贝（dB）</th>
+          <th style="text-align: left">计算过程</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">10</td>
+          <td style="text-align: left">10 dB</td>
+          <td style="text-align: left">10lg⁡(10)=10×1=1010lg(10)=10×1=10 dB</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">100</td>
+          <td style="text-align: left">20 dB</td>
+          <td style="text-align: left">10lg⁡(100)=10×2=2010lg(100)=10×2=20 dB</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">1000</td>
+          <td style="text-align: left">30 dB</td>
+          <td style="text-align: left">10lg⁡(1000)=10×3=3010lg(1000)=10×3=30 dB</td>
+      </tr>
+  </tbody>
+</table>
+
+<h4 id="信道复用技术" data-numberify>信道复用技术<a class="anchor ms-1" href="#信道复用技术"></a></h4>
+<p>信道复用（Channel Multiplexing）是指在有限的物理信道资源上，通过不同方式让多个信号共享同一个信道，以提高资源利用率和通信效率。对物理信道进行复用主要有三种方法：频率、时间和编码。</p>
+<p>常见的信道复用技术有：<strong>频分复用</strong>、<strong>时分复用</strong>、<strong>码分复用</strong>，此外还有一种称为波分复用，本质上是频分复用的光学形式。</p>
+
+<h5 id="一频分复用fdmfrequency-division-multiplexing" data-numberify>一、频分复用（FDM，Frequency Division Multiplexing）<a class="anchor ms-1" href="#一频分复用fdmfrequency-division-multiplexing"></a></h5>
+<p>频分复用将信道的可用频谱划分为多个互不重叠的频率子带（频段），每个子带分配给一个独立的信号使用。信号在频域上并排分布，互不干扰。</p>
+<p>比如收音机，同时接收各种不同的频段，通过解析不同的频率来换台。</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">优点</th>
+          <th style="text-align: left">缺点</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">技术成熟，实现简单</td>
+          <td style="text-align: left">频带利用率相对较低，存在保护带的开销</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">各信道之间隔离度高，干扰小</td>
+          <td style="text-align: left">频谱资源固定分配，灵活性差</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">适合模拟信号传输</td>
+          <td style="text-align: left">频带划分后难以动态调整带宽</td>
+      </tr>
+  </tbody>
+</table>
+
+<h5 id="二时分复用tdmtime-division-multiplexing" data-numberify>二、时分复用（TDM，Time Division Multiplexing）<a class="anchor ms-1" href="#二时分复用tdmtime-division-multiplexing"></a></h5>
+<p>时分复用将时间划分为若干个等长的<strong>时隙（Time Slot）</strong>，每个时隙轮流分配给不同的信号使用。信号在时间上顺序排列，互不重叠。</p>
+<p>比如对讲机，是半双工通信，需要在不同时间内使用才能有效传递信息，即不同信号在不同时间传输。</p>
+<p><strong>同步时分复用 vs 统计时分复用</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">类型</th>
+          <th style="text-align: left">说明</th>
+          <th style="text-align: left">特点</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>同步时分复用（STDM）</strong></td>
+          <td style="text-align: left">每个信号源分配<strong>固定时隙</strong>，无论有无数据都占用</td>
+          <td style="text-align: left">实现简单，但信道利用率低</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>统计时分复用（STDM）</strong></td>
+          <td style="text-align: left">时隙<strong>动态分配</strong>，仅当信号源有数据时才分配时隙</td>
+          <td style="text-align: left">实现复杂，但信道利用率高</td>
+      </tr>
+  </tbody>
+</table>
+
+<h5 id="三码分复用cdmcode-division-multiplexing" data-numberify>三、码分复用（CDM，Code Division Multiplexing）<a class="anchor ms-1" href="#三码分复用cdmcode-division-multiplexing"></a></h5>
+<p>码分复用为每个信号分配一个<strong>正交码</strong>。所有信号在<strong>同一时间</strong>、<strong>同一频率</strong>上传输，通过不同的编码序列在码域上相互区分。</p>
+<p>就好像不同国家的学生同时在一个屋子里说话，有人在用中文，有人在用英语，有人在用法语交流&hellip;每个人只能听懂自己懂得的语言，听不懂的语言不会影响同语言交流。</p>
+<p><strong>码片序列（Chip Sequence）</strong></p>
+<p>在码分复用（CDMA）中，<strong>一比特会被再细分成多个码片（Chip）</strong>。码片是比比特更短的时间单位。</p>
+<ul>
+<li>每个比特由多个码片组成</li>
+<li>一个比特通常被分为 <strong>64</strong> 或 <strong>128</strong> 个码片</li>
+<li>码片序列越长，抗干扰能力越强，但占用带宽越大</li>
+</ul>
+<p>在计算机网络中，<strong>每一个节点（站点）会被分配一个唯一的码片序列</strong>，用于区分不同的通信节点。</p>
+<p>在计算机网络中，任意两个节点的码片序列是正交的，从而实现多用户共存且互不干扰</p>
+<p>从数学角度看，所谓正交就是任意两个不同的码片归一化内积为0</p>
+<blockquote>
+<p>码片序列的正交性：</p>
+<p>设两个码片序列 $S$ 和 $T$ 的长度均为 $m$，若它们正交，则满足：</p>
+<p>$$S \cdot T = \frac{S_1 T_1 + S_2 T_2 + \cdots + S_m T_m}{m} = 0$$</p>
+<p>示例：两个码片序列 $A$ 和 $B$ 分别为</p>
+<p>$$A = (-1 \quad -1 \quad -1 \quad +1 \quad +1 \quad -1 \quad +1 \quad +1)$$</p>
+<p>$$B = (-1 \quad -1 \quad +1 \quad -1 \quad +1 \quad +1 \quad +1 \quad -1)$$</p>
+<p>计算其内积：</p>
+<p>$$A \cdot B = \frac{1 + 1 - 1 - 1 + 1 - 1 + 1 - 1}{8} = 0$$</p>
+<p>因此，$A$ 和 $B$ 为正交码片序列。</p>
+</blockquote>
+<p>任何码片与自身归一化内积一定为1。</p>
+<blockquote>
+<p>码片序列的自相关性：</p>
+<p>设码片序列 $S$ 的长度为 $m$，则其与自身的内积满足：</p>
+<p>$$S \cdot S = \frac{S_1 S_1 + S_2 S_2 + \cdots + S_m S_m}{m} = 1$$</p>
+<p>示例：码片序列 $A$ 为</p>
+<p>$$A = \begin{pmatrix} -1 &amp; -1 &amp; -1 &amp; +1 &amp; +1 &amp; -1 &amp; +1 &amp; +1 \end{pmatrix}$$</p>
+<p>计算其自相关内积：</p>
+<p>$$A \cdot A = \frac{1 + 1 + 1 + 1 + 1 + 1 + 1 + 1}{8} = \frac{8}{8} = 1$$</p>
+<p>因此，码片序列与其自身的内积为 1。</p>
+</blockquote>
+<p>任何码片与自身反码归一化内积一定为-1</p>
+<blockquote>
+<p>码片序列与其反码的相关性：</p>
+<p>设码片序列 $S$ 的长度为 $m$，$\overline{S}$ 为 $S$ 的反码（各位取反），则：</p>
+<p>$$S \cdot \overline{S} = \frac{S_1 \overline{S_1} + S_2 \overline{S_2} + \cdots + S_m \overline{S_m}}{m} = -1$$</p>
+<p>示例：码片序列 $A$ 及其反码 $\overline{A}$ 分别为</p>
+<p>$$A = \begin{pmatrix} -1 &amp; -1 &amp; -1 &amp; +1 &amp; +1 &amp; -1 &amp; +1 &amp; +1 \end{pmatrix}$$</p>
+<p>$$\overline{A} = \begin{pmatrix} +1 &amp; +1 &amp; +1 &amp; -1 &amp; -1 &amp; +1 &amp; -1 &amp; -1 \end{pmatrix}$$</p>
+<p>计算 $A$ 与 $\overline{A}$ 的相关性：</p>
+<p>$$A \cdot \overline{A} = \frac{-1 - 1 - 1 - 1 - 1 - 1 - 1 - 1}{8} = -1$$</p>
+<p>因此，码片序列与其反码的内积为 $-1$。</p>
+</blockquote>
+<p><strong>码分复用中的数据恢复（解码）</strong></p>
+<p>在码分复用（CDMA）系统中，<strong>接收方必须预先知道发送节点的码片序列</strong>，才能正确恢复该节点发送的数据。这就是为什么每个节点都需要分配一个唯一的、已知的码片序列。</p>
+<p><strong>解码原理</strong></p>
+<p>接收端接收到的是<strong>所有节点信号的叠加信号</strong>。要恢复某个特定节点（如节点 A）发送的数据，接收端只需要：</p>
+<ol>
+<li>用节点 A 的码片序列与接收到的叠加信号做<strong>内积运算</strong></li>
+<li>将内积结果除以码片长度进行归一化</li>
+<li>根据结果判断节点 A 发送的是 1、0 还是静默</li>
+</ol>
+<p><strong>解码判断规则</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">归一化内积结果</th>
+          <th style="text-align: left">含义</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>+1</strong></td>
+          <td style="text-align: left">该节点发送了比特 <strong>1</strong></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>-1</strong></td>
+          <td style="text-align: left">该节点发送了比特 <strong>0</strong></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>0</strong></td>
+          <td style="text-align: left">该节点没有发送数据（静默）</td>
+      </tr>
+  </tbody>
+</table>
+<blockquote>
+<p>码分复用解码示例</p>
+<p>两个节点的码片序列分别为：</p>
+<p>$$A = \begin{pmatrix} -1 &amp; -1 &amp; +1 &amp; -1 &amp; +1 &amp; +1 &amp; +1 &amp; -1 \end{pmatrix}$$</p>
+<p>$$B = \begin{pmatrix} -1 &amp; +1 &amp; -1 &amp; +1 &amp; +1 &amp; -1 &amp; +1 &amp; -1 \end{pmatrix}$$</p>
+<p>发送数据</p>
+<p>假设节点 A 发送比特 1，节点 B 发送比特 0：</p>
+<p>$$\text{节点 A：} \quad A = \begin{pmatrix} -1 &amp; -1 &amp; +1 &amp; -1 &amp; +1 &amp; +1 &amp; +1 &amp; -1 \end{pmatrix}$$</p>
+<p>$$\text{节点 B：} \quad \overline{B} = \begin{pmatrix} +1 &amp; -1 &amp; +1 &amp; -1 &amp; -1 &amp; +1 &amp; -1 &amp; +1 \end{pmatrix}$$</p>
+<p>空中叠加信号</p>
+<p>$$S_{\text{叠加}} = A + \overline{B}$$</p>
+<p>$$S_{\text{叠加}} = \begin{pmatrix} 0 &amp; -2 &amp; +2 &amp; -2 &amp; 0 &amp; +2 &amp; 0 &amp; 0 \end{pmatrix}$$</p>
+<p>恢复节点 A 的数据</p>
+<p>用节点 A 的码片序列与叠加信号做内积：</p>
+<p>$$S_{\text{叠加}} \cdot A = \frac{0 + 2 + 2 + 2 + 0 + 2 + 0 + 0}{8} = \frac{8}{8} = 1$$</p>
+<p>$$\text{归一化内积为 } +1 \quad \Longrightarrow \quad \text{节点 A 发送的是比特 1}$$</p>
+<p>恢复节点 B 的数据</p>
+<p>用节点 B 的码片序列与叠加信号做内积：</p>
+<p>$$S_{\text{叠加}} \cdot B = \frac{0 - 2 - 2 - 2 + 0 - 2 + 0 + 0}{8} = \frac{-8}{8} = -1$$</p>
+<p>$$\text{归一化内积为 } -1 \quad \Longrightarrow \quad \text{节点 B 发送的是比特 0}$$</p>
+</blockquote>
+
+<h5 id="四波分复用wdmwavelength-division-multiplexing" data-numberify>四、波分复用（WDM，Wavelength Division Multiplexing）<a class="anchor ms-1" href="#四波分复用wdmwavelength-division-multiplexing"></a></h5>
+<p>波分复用是<strong>频分复用（FDM）在光纤通信中的应用</strong>，本质上是光领域的频率复用。它利用不同波长的光信号在同一根光纤中同时传输。</p>
+<p><picture><img class="img-fluid " alt="msedge_BQp3BBmHmH" src="https://xiaochai-123.github.io/images/screenshoots/2026-06/msedge_BQp3BBmHmH.png?v=39c2f708ac6f5c152a8174fa60fcae71" loading="lazy" width="950" height="501" />
+</picture>
+
+</p>
+
+<h5 id="对比表" data-numberify>对比表<a class="anchor ms-1" href="#对比表"></a></h5>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">对比维度</th>
+          <th style="text-align: left">频分复用（FDM）</th>
+          <th style="text-align: left">时分复用（TDM）</th>
+          <th style="text-align: left">码分复用（CDM）</th>
+          <th style="text-align: left">波分复用（WDM）</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>划分依据</strong></td>
+          <td style="text-align: left">频率</td>
+          <td style="text-align: left">时间</td>
+          <td style="text-align: left">编码</td>
+          <td style="text-align: left">波长</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>频率</strong></td>
+          <td style="text-align: left">各信号分属不同频带</td>
+          <td style="text-align: left">所有信号共享同一频带</td>
+          <td style="text-align: left">所有信号共享同一频带</td>
+          <td style="text-align: left">各信号使用不同波长</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>时间</strong></td>
+          <td style="text-align: left">所有信号同时传输</td>
+          <td style="text-align: left">各信号轮流传输</td>
+          <td style="text-align: left">所有信号同时传输</td>
+          <td style="text-align: left">所有信号同时传输</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>编码</strong></td>
+          <td style="text-align: left">无需特殊编码</td>
+          <td style="text-align: left">无需特殊编码</td>
+          <td style="text-align: left">需要正交码（扩频码）</td>
+          <td style="text-align: left">无需特殊编码</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>干扰分离</strong></td>
+          <td style="text-align: left">通过滤波器分离</td>
+          <td style="text-align: left">通过时隙同步分离</td>
+          <td style="text-align: left">通过相关解扩分离</td>
+          <td style="text-align: left">通过分光/滤波分离</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>核心优点</strong></td>
+          <td style="text-align: left">技术成熟，隔离度高</td>
+          <td style="text-align: left">数字传输效率高</td>
+          <td style="text-align: left">抗干扰能力强，保密性好</td>
+          <td style="text-align: left">光纤容量极大</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>典型应用</strong></td>
+          <td style="text-align: left">广播电视、ADSL</td>
+          <td style="text-align: left">T1/E1、数字电话</td>
+          <td style="text-align: left">3G 移动通信、GPS</td>
+          <td style="text-align: left">光纤骨干网</td>
+      </tr>
+  </tbody>
+</table>
+
+<h4 id="物理层接口特性" data-numberify>物理层接口特性<a class="anchor ms-1" href="#物理层接口特性"></a></h4>
+<p>物理层接口主要包含以下四个方面的特性：</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">特性</th>
+          <th style="text-align: left">说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>机械特性</strong></td>
+          <td style="text-align: left">接口的形状、尺寸、引脚数目和排列、固定装置等物理结构</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>电气特性</strong></td>
+          <td style="text-align: left">接口电缆上的电压范围、传输速率、距离限制等电气参数</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>功能特性</strong></td>
+          <td style="text-align: left">各引脚的功能定义，如数据线、控制线、时钟线等</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>过程特性</strong></td>
+          <td style="text-align: left">信号线之间的时序关系和操作顺序（何时建立、维持、释放连接）</td>
+      </tr>
+  </tbody>
+</table>
+
+<h5 id="例题-4" data-numberify>例题<a class="anchor ms-1" href="#例题-4"></a></h5>
+<p>[2014] 37. 站点 A、B、C 通过 CDMA 共享链路，A、B、C 的码片序列（chipping sequence）分别是（1, 1, 1, 1）、（1, -1, 1, -1）和（1, 1, -1, -1）。若 C 从链路上收到的序列是（2, 0, 2, 0, 0, -2, 0, -2, 0, 2, 0, 2），则 C 收到 A 发送的数据是______。</p>
+<p>A. 000</p>
+<p>B. 101</p>
+<p>C. 110</p>
+<p>D. 111</p>
+<p><span title="正确答案是：B">🤔 悬停查看答案</span></p>
+<p>[2012] 34. 在物理层接口特性中，用于描述完成每种功能的事件发生顺序的是______。</p>
+<p>A. 机械特性</p>
+<p>B. 功能特性</p>
+<p>C. 过程特性</p>
+<p>D. 电气特性</p>
+<p><span title="正确答案是：C">🤔 悬停查看答案</span></p>
+<p>[2018] 34. 下列选项中，不属于物理层接口规范定义范畴的是______。</p>
+<p>A. 接口形状</p>
+<p>B. 引脚功能</p>
+<p>C. 物理地址</p>
+<p>D. 信号电平</p>
+<p><span title="正确答案是：C">🤔 悬停查看答案</span></p>
+
+<h3 id="模块三数据链路层重点封装成帧差错控制介质访问" data-numberify>模块三：数据链路层（\*重点：封装成帧、差错控制、介质访问\*）<a class="anchor ms-1" href="#模块三数据链路层重点封装成帧差错控制介质访问"></a></h3>
+<blockquote>
+<ul>
+<li><strong>点对点信道（PPP协议）：</strong> 帧格式、字节填充（面向字节） vs 零比特填充（面向比特）。</li>
+<li><strong>广播信道（局域网）：</strong>
+<ul>
+<li><strong>CSMA/CD（有线以太网）：</strong> “先听后发，边听边发，冲突停发，随机重发”（<strong>重点计算争用期/最短帧长</strong>）。</li>
+<li><strong>CSMA/CA（无线局域网）：</strong> 隐蔽站问题与RTS/CTS握手。</li>
+</ul>
+</li>
+<li><strong>MAC地址与ARP协议：</strong> ARP是IP到MAC的映射（<strong>问：ARP在哪一层？</strong> 答：介于数据链路层和网络层之间）。</li>
+<li><strong>交换机组网：</strong> 透明网桥的自学习算法（转发表怎么建立的）。</li>
+</ul>
+</blockquote>
+
+<h3 id="模块四网络层绝对c位难点在ip和路由" data-numberify>模块四：网络层（\*绝对C位，难点在IP和路由\*）<a class="anchor ms-1" href="#模块四网络层绝对c位难点在ip和路由"></a></h3>
+<blockquote>
+<ul>
+<li><strong>IP地址（灵魂）：</strong> 分类地址（A/B/C） -&gt; 子网划分（子网掩码） -&gt; CIDR（无分类编址，最重要）。</li>
+<li><strong>核心计算：</strong> 给定IP和子网掩码，求网络地址、广播地址、可用主机数（<strong>必考大题</strong>）。</li>
+<li><strong>路由协议（区分内外部网关）：</strong>
+<ul>
+<li><strong>RIP（距离向量）：</strong> 好消息传得快，坏消息传得慢（计数到无穷），基于UDP。</li>
+<li><strong>OSPF（链路状态）：</strong> 迪杰斯特拉算法，收敛快，基于IP直接封装。</li>
+</ul>
+</li>
+<li><strong>ICMP协议：</strong> Ping（回送请求）和 Traceroute（时间超时）。</li>
+</ul>
+</blockquote>
+
+<h3 id="模块五传输层区分udp和tcp是核心" data-numberify>模块五：传输层（\*区分UDP和TCP是核心\*）<a class="anchor ms-1" href="#模块五传输层区分udp和tcp是核心"></a></h3>
+<blockquote>
+<ul>
+<li><strong>UDP：</strong> 无连接、不可靠，但头小（8字节），用于DNS、SNMP。</li>
+<li><strong>TCP（重头戏）：</strong>
+<ul>
+<li><strong>报文段格式：</strong> 重点记标志位（SYN=1, ACK=1, FIN=1）和序号确认号机制。</li>
+<li><strong>三次握手（建立）：</strong> 为什么是3次？（<strong>防止过期连接请求突然到达</strong>）。</li>
+<li><strong>四次挥手（释放）：</strong> 为什么是4次？（因为被动关闭方可能还有数据要发），以及 <strong>TIME_WAIT</strong> 的必要性。</li>
+<li><strong>流量控制（滑动窗口）：</strong> 接收端控制发送端速度。</li>
+<li><strong>拥塞控制（必考大题）：</strong> 慢开始、拥塞避免、快重传、快恢复（<strong>画图判断拥塞窗口变化</strong>）。</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+
+<h3 id="模块六应用层典型协议速记" data-numberify>模块六：应用层（\*典型协议速记\*）<a class="anchor ms-1" href="#模块六应用层典型协议速记"></a></h3>
+<blockquote>
+<ul>
+<li><strong>DNS（域名解析）：</strong> 递归查询 vs 迭代查询。</li>
+<li><strong>HTTP（万维网）：</strong>
+<ul>
+<li>非持久连接 vs 持久连接（有无流水线）。</li>
+<li><strong>Cookie/Session</strong> 如何保持状态（HTTP无状态）。</li>
+<li>HTTPS = HTTP + SSL/TLS（加密）。</li>
+</ul>
+</li>
+<li><strong>FTP：</strong> 控制连接（21）和数据连接（20，主动/被动模式）。</li>
+<li><strong>电子邮件：</strong> SMTP（推） vs POP3/IMAP（拉）。</li>
+</ul>
+</blockquote>
+</div>
+</div>
+</div><div class="card-footer">
+  <div class="post-navs d-flex justify-content-evenly"><div class="post-nav post-prev">
+      <i class="fas fa-fw fa-chevron-down post-prev-icon me-1" data-fa-transform="rotate-90"></i>
+      <a href="/posts/%E5%85%B3%E4%BA%8E%E6%89%93%E5%8D%B0%E6%9C%8D%E5%8A%A1%E4%B9%8Bcups_ipp%E7%9A%84%E4%BB%8B%E7%BB%8D/">关于打印服务之CUPS_IPP的介绍</a>
+    </div><div class="post-nav post-next">
+      <a href="/posts/ctf-web-guide/">[持续更新] CTF-Web Guide</a>
+      <i class="fas fa-fw fa-chevron-down post-next-icon ms-1" data-fa-transform="rotate-270"></i>
+    </div></div>
+</div></article>
+<section class="related-posts row card component">
+      <div class="card-header">
+        <h2 class="card-title fs-4 my-2 text-surface">
+          Related Posts
+        </h2>
+      </div>
+      <div class="card-body slide px-1">
+        <div class="slide-inner row gx-0"><div class="col-12 col-md-6 col-lg-4 me-2">
+            <div class="post-card card card-body p-0 border-0 surface">
+  
+  <div
+    class="post-card-default-img card-img-top d-flex align-items-center justify-content-center bg-body-secondary mb-1">
+    NO IMAGE
+  </div>
+
+  <a class="post-title" href="/posts/260325/">
+    260325~~每~~日打卡
+  </a>
+  <div class="post-meta mb-0">
+    March 25, 2026
+
+  </div>
+</div>
+
+          </div><div class="col-12 col-md-6 col-lg-4 me-2">
+            <div class="post-card card card-body p-0 border-0 surface">
+  
+  <picture><img class="img-fluid" alt="HGAME-web2026-WP" src="https://xiaochai-123.github.io/images/HGAME2026.png" loading="lazy"
+     width="859"
+     height="555"/>
+  </picture>
+
+  <a class="post-title" href="/posts/hgame-2026-web-wp/">
+    HGAME-web2026-WP
+  </a>
+  <div class="post-meta mb-0">
+    March 5, 2026
+
+  </div>
+</div>
+
+          </div><div class="col-12 col-md-6 col-lg-4 me-2">
+            <div class="post-card card card-body p-0 border-0 surface">
+  
+  <picture><img class="img-fluid" alt="SHCTF-web2026-WP" src="https://xiaochai-123.github.io/images/shctf3rd.jpg" loading="lazy"
+     width="1771"
+     height="1018"/>
+  </picture>
+
+  <a class="post-title" href="/posts/shctf-web2026-wp/">
+    SHCTF-web2026-WP
+  </a>
+  <div class="post-meta mb-0">
+    February 22, 2026
+
+  </div>
+</div>
+
+          </div><div class="col-12 col-md-6 col-lg-4 me-2">
+            <div class="post-card card card-body p-0 border-0 surface">
+  
+  <picture><img class="img-fluid" alt="XXE漏洞利用" src="https://xiaochai-123.github.io/images/xxe.png" loading="lazy"
+     width="700"
+     height="502"/>
+  </picture>
+
+  <a class="post-title" href="/posts/xxe%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/">
+    XXE漏洞利用
+  </a>
+  <div class="post-meta mb-0">
+    February 17, 2026
+
+  </div>
+</div>
+
+          </div><div class="col-12 col-md-6 col-lg-4 me-2">
+            <div class="post-card card card-body p-0 border-0 surface">
+  
+  <picture><img class="img-fluid" alt="[持续更新] CTF-Web Guide" src="https://xiaochai-123.github.io/images/1.png" loading="lazy"
+     width="2400"
+     height="1350"/>
+  </picture>
+
+  <a class="post-title" href="/posts/ctf-web-guide/">
+    [持续更新] CTF-Web Guide
+  </a>
+  <div class="post-meta mb-0">
+    December 22, 2025
+
+  </div>
+</div>
+
+          </div></div>
+        <button class="slide-control-left">
+          <i class="fas fa-2x fa-chevron-circle-down" data-fa-transform="rotate-90"></i>
+          <span class="visually-hidden">Left</span>
+        </button>
+        <button class="slide-control-right">
+          <i class="fas fa-2x fa-chevron-circle-down" data-fa-transform="rotate-270"></i>
+          <span class="visually-hidden">Right</span>
+        </button>
+      </div>
+    </section><div class="card component row post-comments" id="post-comments">
+  <div class="card-header">
+    <h2 class="card-title my-2 fs-4 text-surface">Comments</h2>
+  </div>
+  <div class="card-body">
+
+<div class="giscus"></div>
+
+
+
+</div>
+</div></div>
+</div>
+<aside class="col-xxl-4 sidebar d-flex">
+  <div class="container d-flex flex-column">
+    
+    
+<div class="card mb-3">
+  <div class="card-body text-center">
+    <img src="/images/my-avatar.jpg" alt="我的头像" class="rounded-circle mb-2" width="100" height="100">
+    <h5 class="card-title">xiaochai_123(decimo)</h5>
+	<p id="random-quote" class="card-text text-muted"></p>
+	<script>
+	const quotes = [
+  "欢迎大佬莅临",
+  "路漫漫其修远兮，吾将上下而求索",
+  "前途是光明的，道路是曲折的",
+  "我喜欢你们",
+  "生命的有限同时赋予了生活意义和遗憾"
+	];
+	document.getElementById('random-quote').innerText = quotes[Math.floor(Math.random() * quotes.length)];
+	</script>
+<nav class="d-flex justify-content-center gap-2 my-2">
+  <a class="btn btn-sm btn-outline-dark rounded-circle" href="https://github.com/xiaochai-123" title="GitHub" target="_blank">
+    <i class="fab fa-github"></i>
+  </a>
+  <a class="btn btn-sm btn-outline-primary rounded-circle" href="mailto:l2556843965@163.com" title="Email">
+    <i class="fas fa-envelope"></i>
+  </a>
+  <a class="btn btn-sm btn-outline-danger rounded-circle" href="https://space.bilibili.com/595746072" title="Bilibili" target="_blank">
+  <i class="fab fa-bilibili"></i> 
+</a>
+  
+</nav>
+  </div>
+</div>
+
+
+    <div class="accordion posts-toggle">
+      <div class="row card component accordion-item">
+        <div class="accordion-header card-header border-0">
+          <a
+            class="accordion-button d-lg-none mb-1 shadow-none p-0 bg-transparent"
+            role="button"
+            data-bs-toggle="collapse"
+            href="#posts-toggle"
+            aria-expanded="true"
+            aria-controls="posts-toggle">
+            Posts
+          </a>
+        </div>
+        <div
+          class="card-body collapse accordion-collapse accordion-body d-lg-block show"
+          id="posts-toggle">
+          <ul class="nav nav-pills nav-fill" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link active"
+                  id="recent-posts-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#recent-posts"
+                  type="button"
+                  role="tab"
+                  aria-controls="recent-posts"
+                  aria-selected="true">
+                  Recent Posts
+                </button>
+              </li>
+          </ul>
+
+          <div class="tab-content mt-3">
+              <div
+                class="tab-pane active"
+                id="recent-posts"
+                role="tabpanel"
+                aria-labelledby="recent-posts-tab"
+                tabindex="0">
+                <ul class="post-list list-unstyled ms-1">
+                    <li class="mb-2">
+    
+  
+  <div class="d-flex">
+      <div
+        class="flex-shrink-0 d-flex justify-content-center align-items-center"
+        style="max-width: 100px"><picture><img class="img-fluid" alt="计算机网络知识梳理（未完待续）" src="https://xiaochai-123.github.io/images/network.jpg" loading="lazy"
+     width="480"
+     height="300"/>
+  </picture>
+      </div>
+    <div
+      class="flex-grow-1 d-flex flex-column h-auto justify-content-center ms-3">
+      <a class="post-title" href="/posts/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/">
+        计算机网络知识梳理（未完待续）
+      </a>
+      <div class="post-meta mt-2">
+        <span class="post-date">
+          June 23, 2026
+        </span>
+      </div>
+    </div>
+  </div>
+                    </li>
+                    <li class="mb-2">
+    
+  
+  <div class="d-flex">
+      <div
+        class="flex-shrink-0 d-flex justify-content-center align-items-center"
+        style="max-width: 100px"><picture><img class="img-fluid" alt="关于打印服务之CUPS_IPP的介绍" src="https://xiaochai-123.github.io/images/CUPS.jpg" loading="lazy"
+     width="946"
+     height="583"/>
+  </picture>
+      </div>
+    <div
+      class="flex-grow-1 d-flex flex-column h-auto justify-content-center ms-3">
+      <a class="post-title" href="/posts/%E5%85%B3%E4%BA%8E%E6%89%93%E5%8D%B0%E6%9C%8D%E5%8A%A1%E4%B9%8Bcups_ipp%E7%9A%84%E4%BB%8B%E7%BB%8D/">
+        关于打印服务之CUPS_IPP的介绍
+      </a>
+      <div class="post-meta mt-2">
+        <span class="post-date">
+          June 13, 2026
+        </span>
+      </div>
+    </div>
+  </div>
+                    </li>
+                    <li class="mb-2">
+    
+  
+  <div class="d-flex">
+      <div
+        class="flex-shrink-0 d-flex justify-content-center align-items-center"
+        style="max-width: 100px"><picture><img class="img-fluid" alt="思考能力是如何被阶级化的" src="https://xiaochai-123.github.io/images/star.jpeg" loading="lazy"
+     width="1080"
+     height="651"/>
+  </picture>
+      </div>
+    <div
+      class="flex-grow-1 d-flex flex-column h-auto justify-content-center ms-3">
+      <a class="post-title" href="/posts/%E5%85%B3%E4%BA%8E%E7%9C%BC%E7%95%8C%E5%BD%A2%E5%BC%8F%E4%B8%BB%E4%B9%89%E5%92%8C%E6%80%9D%E7%BB%B4%E8%83%BD%E5%8A%9B%E7%9A%84%E7%8C%9C%E6%83%B3/">
+        思考能力是如何被阶级化的
+      </a>
+      <div class="post-meta mt-2">
+        <span class="post-date">
+          April 28, 2026
+        </span>
+      </div>
+    </div>
+  </div>
+                    </li>
+                    <li class="mb-2">
+    
+  
+  <div class="d-flex">
+      <div
+        class="flex-shrink-0 d-flex justify-content-center align-items-center"
+        style="max-width: 100px"><picture><img class="img-fluid" alt="深圳大学 大学物理实验（一） 预习测试答案" src="https://xiaochai-123.github.io/images/SZU.png" loading="lazy"
+     width="300"
+     height="86"/>
+  </picture>
+      </div>
+    <div
+      class="flex-grow-1 d-flex flex-column h-auto justify-content-center ms-3">
+      <a class="post-title" href="/posts/%E6%B7%B1%E5%9C%B3%E5%A4%A7%E5%AD%A6-%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8C-%E9%A2%84%E4%B9%A0%E9%A2%98%E7%AD%94%E6%A1%88/">
+        深圳大学 大学物理实验（一） 预习测试答案
+      </a>
+      <div class="post-meta mt-2">
+        <span class="post-date">
+          April 7, 2026
+        </span>
+      </div>
+    </div>
+  </div>
+                    </li>
+                    <li class="mb-2">
+  <div class="d-flex">
+    <div
+      class="flex-grow-1 d-flex flex-column h-auto justify-content-center">
+      <a class="post-title" href="/posts/260325/">
+        260325~~每~~日打卡
+      </a>
+      <div class="post-meta mt-2">
+        <span class="post-date">
+          March 25, 2026
+        </span>
+      </div>
+    </div>
+  </div>
+                    </li>
+                </ul>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<div class="accordion post-toc d-none d-lg-block">
+  <div class="accordion-item row mb-4 card component" id="postTOC">
+    <div class="card-header accordion-header">
+      <h2 class="card-title fs-4 my-2 text-surface d-none d-lg-block">Contents</h2>
+      <a class="accordion-button d-lg-none mb-1 collapsed shadow-none p-0 bg-transparent" role="button" data-bs-toggle="collapse" href="#post-toc" aria-expanded="false" aria-controls="post-toc">
+        Contents
+      </a>
+    </div>
+    <div class="card-body collapse accordion-collapse accordion-body d-lg-block" id="post-toc">
+      
+	  
+      
+      
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#前言"><strong>前言</strong></a></li>
+    <li><a href="#正题"><strong>正题</strong></a>
+      <ul>
+        <li><a href="#模块一概述--体系结构总分结构"><strong>模块一：概述 &amp; 体系结构（总分结构）</strong></a>
+          <ul>
+            <li><a href="#历史">历史</a></li>
+            <li><a href="#计算机网络的定义">计算机网络的定义</a></li>
+            <li><a href="#互联网的组织结构">互联网的组织结构</a></li>
+            <li><a href="#网络分类">网络分类</a></li>
+            <li><a href="#网络体系结构osi七层-vs-tcpip四层-vs-五层参考模型">网络体系结构（OSI七层 vs TCP/IP四层 vs 五层参考模型）</a>
+              <ul>
+                <li><a href="#osi参考模型">OSI参考模型</a></li>
+                <li><a href="#tcpip模型">TCP/IP模型</a></li>
+                <li><a href="#五层参考模型">五层参考模型</a></li>
+              </ul>
+            </li>
+            <li><a href="#网络交换技术">网络交换技术</a>
+              <ul>
+                <li><a href="#网络交换方式">网络交换方式</a></li>
+                <li><a href="#例题">例题</a></li>
+              </ul>
+            </li>
+            <li><a href="#计算机网络性能度量指标">计算机网络性能度量指标</a>
+              <ul>
+                <li><a href="#一时延delay">一、时延（Delay）</a></li>
+                <li><a href="#二时延抖动jitter">二、时延抖动（Jitter）</a></li>
+                <li><a href="#三往返时延rttround-trip-time">三、往返时延（RTT，Round-Trip Time）</a></li>
+                <li><a href="#四吞吐量throughput">四、吞吐量（Throughput）</a></li>
+                <li><a href="#五利用率utilization">五、利用率（Utilization）</a></li>
+                <li><a href="#六丢包率packet-loss-rate">六、丢包率（Packet Loss Rate）</a></li>
+                <li><a href="#七各指标之间的关系">七、各指标之间的关系</a></li>
+                <li><a href="#例题-1">例题</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#模块二物理层机械特性考察较少但基础"><strong>模块二：物理层（机械特性，考察较少，但基础）</strong></a>
+          <ul>
+            <li><a href="#传输介质">传输介质</a>
+              <ul>
+                <li><a href="#双绞线">双绞线</a></li>
+                <li><a href="#光纤">光纤</a></li>
+                <li><a href="#同轴线缆">同轴线缆</a></li>
+                <li><a href="#无线传输">无线传输</a></li>
+                <li><a href="#例题-2">例题</a></li>
+              </ul>
+            </li>
+            <li><a href="#编码与调制">编码与调制</a>
+              <ul>
+                <li><a href="#编码">编码</a></li>
+                <li><a href="#例题-3">例题</a></li>
+                <li><a href="#数字调制">数字调制</a></li>
+                <li><a href="#波特率与比特率">波特率与比特率</a></li>
+                <li><a href="#数字调制方法">数字调制方法</a></li>
+              </ul>
+            </li>
+            <li><a href="#物理层极限容量">物理层极限容量</a>
+              <ul>
+                <li><a href="#奈奎斯特定理">奈奎斯特定理</a></li>
+                <li><a href="#香农公式">香农公式</a></li>
+                <li><a href="#信噪比分贝">信噪比分贝</a></li>
+              </ul>
+            </li>
+            <li><a href="#信道复用技术">信道复用技术</a>
+              <ul>
+                <li><a href="#一频分复用fdmfrequency-division-multiplexing">一、频分复用（FDM，Frequency Division Multiplexing）</a></li>
+                <li><a href="#二时分复用tdmtime-division-multiplexing">二、时分复用（TDM，Time Division Multiplexing）</a></li>
+                <li><a href="#三码分复用cdmcode-division-multiplexing">三、码分复用（CDM，Code Division Multiplexing）</a></li>
+                <li><a href="#四波分复用wdmwavelength-division-multiplexing">四、波分复用（WDM，Wavelength Division Multiplexing）</a></li>
+                <li><a href="#对比表">对比表</a></li>
+              </ul>
+            </li>
+            <li><a href="#物理层接口特性">物理层接口特性</a>
+              <ul>
+                <li><a href="#例题-4">例题</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#模块三数据链路层重点封装成帧差错控制介质访问"><strong>模块三：数据链路层（*重点：封装成帧、差错控制、介质访问*）</strong></a></li>
+        <li><a href="#模块四网络层绝对c位难点在ip和路由"><strong>模块四：网络层（*绝对C位，难点在IP和路由*）</strong></a></li>
+        <li><a href="#模块五传输层区分udp和tcp是核心"><strong>模块五：传输层（*区分UDP和TCP是核心*）</strong></a></li>
+        <li><a href="#模块六应用层典型协议速记"><strong>模块六：应用层（*典型协议速记*）</strong></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+    
+  </div>
+</aside>
+
+      </div>
+    </main><footer class="footer mt-auto py-3 text-center container"><div class="offcanvas offcanvas-bottom h-auto" tabindex="-1" id="offcanvasActionsPanel"
+  aria-labelledby="offcanvasActionsPanelLabel">
+  <div class="offcanvas-header">
+    <div class="offcanvas-title h5" id="offcanvasActionsPanelLabel">
+      <i class="fas fa-fw fa-th-large me-1"></i>
+      Actions
+    </div>
+    <button type="button" class="btn-close ms-auto" data-bs-dismiss="offcanvas" data-bs-target="offcanvasActionsPanel" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body mt-2"><div class="social-share mb-4 d-flex overflow-auto">
+      <a class="btn-social-share d-flex flex-column align-items-center me-3" rel="noopener noreferrer" aria-label="X Share Button"
+      target="_blank" href="https://x.com/intent/tweet?title=%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bd%91%e7%bb%9c%e7%9f%a5%e8%af%86%e6%a2%b3%e7%90%86%ef%bc%88%e6%9c%aa%e5%ae%8c%e5%be%85%e7%bb%ad%ef%bc%89&url=https%3a%2f%2fxiaochai-123.github.io%2fposts%2f%25E8%25AE%25A1%25E7%25AE%2597%25E6%259C%25BA%25E7%25BD%2591%25E7%25BB%259C%25E6%258A%2580%25E6%259C%25AF%2f">
+        <i class="fab fa-2x fa-fw fa-x-twitter mb-2"></i> X
+      </a>
+      <a class="btn-social-share d-flex flex-column align-items-center me-3" rel="noopener noreferrer" aria-label="Facebook Share Button"
+        target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fxiaochai-123.github.io%2fposts%2f%25E8%25AE%25A1%25E7%25AE%2597%25E6%259C%25BA%25E7%25BD%2591%25E7%25BB%259C%25E6%258A%2580%25E6%259C%25AF%2f">
+        <i class="fab fa-2x fa-fw fa-facebook-f mb-2"></i> Facebook
+      </a>
+    </div>
+    <hr class="mb-4"><div class="actions d-flex overflow-auto align-items-center">
+      <a role="button" class="action action-go-back d-flex flex-column align-items-center me-3" href="javascript: window.history.back();">
+        <span class="action-icon mb-2"><i class="fas fa-2x fa-chevron-circle-down" data-fa-transform="rotate-90"></i></span> Go back
+      </a>
+      <a role="button" class="action action-reload-page d-flex flex-column align-items-center me-3">
+        <span class="action-icon mb-2"><i class="fas fa-2x fa-redo-alt"></i></span> Reload
+      </a>
+      <a role="button" class="action action-copy-url d-flex flex-column align-items-center me-3">
+        <span class="action-icon mb-2"><i class="fas fa-2x fa-link"></i></span> Copy URL
+      </a>
+  </div>
+    </div>
+  </div>
+</div><div class="row text-center">
+  <div class="col-12 mt-2">
+    <p class="mb-2">xiaochai_123的小窝</p>
+    <p class="text-secondary mb-2"><small>Welcome to xiaochai_123’s Blog! I look forward to sharing this great journey with you.</small></p>© 2026 xiaochai-123. 欢迎转载但请注明出处 | 本博客内容版权所有
+    <div class="footer-line visitor" style="margin: 0.5em 0;">
+      <span id="busuanzi_container_site_uv" title="总访客数" style="display: inline;">
+        👤 总访客数 <span id="busuanzi_value_site_uv">...</span>
+      </span>
+      <span id="busuanzi_container_site_pv" class="footer-divider" title="总访问量" style="display: inline; margin-left: 1em;">
+        👁️ 总访问量 <span id="busuanzi_value_site_pv">...</span>
+      </span>
+    </div>
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <div class="powered-by mb-2 text-secondary">
+  <small>
+    Build with ❤️ from the <a class="text-primary" href="https://gohugo.io" target="_blank" rel="noopener noreferrer">Hugo</a> and the <a class="text-primary" href="https://github.com/razonyang/hugo-theme-bootstrap" target="_blank" rel="noopener noreferrer">HBS</a> theme.
+  </small>
+</div>
+
+
+<nav class="social-links nav justify-content-center mb-2 mt-3">
+    <a class="nav-link social-link p-0 me-1 mb-2" href="mailto:mailto:l2556843965@163.com" title="Email">
+      <i class="fas fa-fw fa-2x fa-envelope" style="color: #0963ac;"></i>
+    </a>
+      <a class="nav-link social-link p-0 me-1 mb-2" target="_blank" href="https://github.com/xiaochai-123" title="GitHub" rel="me">
+        <i class="fa-fw fa-2x fab fa-github"
+          ></i>
+      </a>
+  <a class="nav-link social-link p-0 me-1 mb-2" target="_blank" data-rss-feed href="https://xiaochai-123.github.io/index.xml" title="RSS" rel="me">
+    <i class="fas fa-fw fa-2x fa-rss" style="color: #ea6221;"></i>
+  </a>
+</nav>
+</div>
+  <div class="col-12 col-lg-8 offset-0 offset-lg-1"></div>
+</div>
+<script src="/js/copy-code.js"></script>
+<link rel="stylesheet" href="/css/copy-code.css">
+</footer>
+<script data-precache src="/assets/main/bundle.min.8964e8a02bacc7b545d3af8971fc6969dcb570fcff7d579516ada45b17ad47a8.js" integrity="sha256-iWTooCusx7VF06&#43;Jcfxpady1cPz/fVeVFq2kWxetR6g=" crossorigin="anonymous" async></script><script data-precache src="/assets/icons/bundle.min.0b03280daa4a59445b0aafc46855a2bb53b310e572534596869c33acaeec09dd.js" integrity="sha256-CwMoDapKWURbCq/EaFWiu1OzEOVyU0WWhpwzrK7sCd0=" crossorigin="anonymous" defer></script>
+<script data-precache src="/assets/viewer/bundle.min.cca398d318de9fa7816141db90f09282784fcfe0c5dabc31599b8c589932e4ae.js" integrity="sha256-zKOY0xjen6eBYUHbkPCSgnhPz&#43;DF2rwxWZuMWJky5K4=" crossorigin="anonymous" defer></script>
+  <script data-precache defer src="/assets/katex/bundle.min.c20e33d7f73a3bdcad60ddc1f77b15b1033055c7de1d08895d9afa6371c4cf29.js" integrity="sha256-wg4z1/c6O9ytYN3B93sVsQMwVcfeHQiJXZr6Y3HEzyk=" crossorigin="anonymous"></script>
+
+<script src="https://giscus.app/client.js"
+    data-repo="xiaochai-123/xiaochai-123.github.io"
+    data-repo-id="R_kgDOQcBRNA"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOQcBRNM4Cy98G"
+    data-mapping="pathname"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    data-loading="lazy"
+    crossorigin="anonymous"
+    defer>
+</script>
+
+
+  </body>
+</html>
