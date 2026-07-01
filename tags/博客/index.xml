@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>博客 on xiaochai_123的小窝</title>
-    <link>https://xiaochai-123.github.io/tags/%E5%8D%9A%E5%AE%A2/</link>
+    <link>http://localhost:1313/tags/%E5%8D%9A%E5%AE%A2/</link>
     <description>Recent content in 博客 on xiaochai_123的小窝</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
     <copyright>© 2026 xiaochai-123. 欢迎转载但请注明出处 | 本博客内容版权所有</copyright>
-    <lastBuildDate>Tue, 25 Nov 2025 07:19:55 +0800</lastBuildDate><atom:link href="https://xiaochai-123.github.io/tags/%E5%8D%9A%E5%AE%A2/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 25 Nov 2025 07:19:55 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/%E5%8D%9A%E5%AE%A2/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>搭建博客</title>
-      <link>https://xiaochai-123.github.io/posts/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</link>
+      <link>http://localhost:1313/posts/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</link>
       <pubDate>Tue, 25 Nov 2025 07:19:55 +0800</pubDate>
-      <guid>https://xiaochai-123.github.io/posts/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</guid>
+      <guid>http://localhost:1313/posts/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</guid>
       <description><![CDATA[<h1 id="搭建个人博客的教程" data-numberify>搭建个人博客的教程<a class="anchor ms-1" href="#搭建个人博客的教程"></a></h1>
 
 <h2 id="第一步-确定所选择的框架" data-numberify>第一步 确定所选择的框架<a class="anchor ms-1" href="#第一步-确定所选择的框架"></a></h2>

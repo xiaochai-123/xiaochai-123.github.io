@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>CTF on xiaochai_123的小窝</title>
-    <link>https://xiaochai-123.github.io/tags/ctf/</link>
+    <link>http://localhost:1313/tags/ctf/</link>
     <description>Recent content in CTF on xiaochai_123的小窝</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
     <copyright>© 2026 xiaochai-123. 欢迎转载但请注明出处 | 本博客内容版权所有</copyright>
-    <lastBuildDate>Sat, 13 Jun 2026 20:31:35 +0800</lastBuildDate><atom:link href="https://xiaochai-123.github.io/tags/ctf/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 13 Jun 2026 20:31:35 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/ctf/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[持续更新] CTF-Web Guide</title>
-      <link>https://xiaochai-123.github.io/posts/ctf-web-guide/</link>
+      <link>http://localhost:1313/posts/ctf-web-guide/</link>
       <pubDate>Mon, 22 Dec 2025 22:43:35 +0800</pubDate>
-      <guid>https://xiaochai-123.github.io/posts/ctf-web-guide/</guid>
+      <guid>http://localhost:1313/posts/ctf-web-guide/</guid>
       <description><![CDATA[<h1 id="持续更新-ctf-web-guide" data-numberify>[持续更新] CTF-Web Guide<a class="anchor ms-1" href="#持续更新-ctf-web-guide"></a></h1>
 <p>看到Lunatic大佬的</p>
 <p>大受震撼。大丈夫当如是也！这种长篇的持续更新文章似乎可以更全面的记录遇到题目时要有的思路，或查找一些偏门的考点。仆诚以著此篇，希望我能写出一个好的Guide&hellip;</p>
@@ -175,14 +175,14 @@ Disallow: /hidden/flag.txt
 
 <h2 id="第三章核心漏洞---注入篇-injection-attacks" data-numberify>第三章：核心漏洞 - 注入篇 (Injection Attacks)<a class="anchor ms-1" href="#第三章核心漏洞---注入篇-injection-attacks"></a></h2>
 <p><em>CTF Web 的半壁江山。</em></p>]]></description>
-    <enclosure url="https://xiaochai-123.github.io/images/1.png" length="328106" type="image/.png" />
+    <enclosure url="http://localhost:1313/images/1.png" length="328106" type="image/.png" />
     </item>
     
     <item>
       <title>关于打印服务之CUPS_IPP的介绍</title>
-      <link>https://xiaochai-123.github.io/posts/%E5%85%B3%E4%BA%8E%E6%89%93%E5%8D%B0%E6%9C%8D%E5%8A%A1%E4%B9%8Bcups_ipp%E7%9A%84%E4%BB%8B%E7%BB%8D/</link>
+      <link>http://localhost:1313/posts/%E5%85%B3%E4%BA%8E%E6%89%93%E5%8D%B0%E6%9C%8D%E5%8A%A1%E4%B9%8Bcups_ipp%E7%9A%84%E4%BB%8B%E7%BB%8D/</link>
       <pubDate>Sat, 13 Jun 2026 20:31:35 +0800</pubDate>
-      <guid>https://xiaochai-123.github.io/posts/%E5%85%B3%E4%BA%8E%E6%89%93%E5%8D%B0%E6%9C%8D%E5%8A%A1%E4%B9%8Bcups_ipp%E7%9A%84%E4%BB%8B%E7%BB%8D/</guid>
+      <guid>http://localhost:1313/posts/%E5%85%B3%E4%BA%8E%E6%89%93%E5%8D%B0%E6%9C%8D%E5%8A%A1%E4%B9%8Bcups_ipp%E7%9A%84%E4%BB%8B%E7%BB%8D/</guid>
       <description><![CDATA[<h1 id="打印这一块" data-numberify>打印这一块<a class="anchor ms-1" href="#打印这一块"></a></h1>
 
 <h2 id="历史前言" data-numberify>历史前言<a class="anchor ms-1" href="#历史前言"></a></h2>
@@ -214,24 +214,24 @@ Disallow: /hidden/flag.txt
 <h3 id="诞生背景与发展历程" data-numberify>诞生背景与发展历程<a class="anchor ms-1" href="#诞生背景与发展历程"></a></h3>
 <p>CUPS的诞生可以追溯到1997年，由Michael Sweet创办的Easy Software Products公司开始开发。1999年，第一个公开测试版面世。CUPS的设计初衷是解决当时Unix/Linux打印系统面临的碎片化困境——LPD协议功能单一、缺乏双向通信、安全管理薄弱，而不同厂商又各自推出JetDirect等互不兼容的接口标准。</p>
 <p>值得注意的是，CUPS最初的设计也使用了LPD协议，但由于LPD的固有局限和厂商之间的不兼容问题，开发团队最终选择了 <strong>IPP (互联网打印协议,Internet Printing Protocol)</strong> 作为核心协议。这一决策成为CUPS成功的关键。</p>]]></description>
-    <enclosure url="https://xiaochai-123.github.io/images/CUPS.jpg" length="44334" type="image/.jpg" />
+    <enclosure url="http://localhost:1313/images/CUPS.jpg" length="44334" type="image/.jpg" />
     </item>
     
     <item>
       <title>HGAME-web2026-WP</title>
-      <link>https://xiaochai-123.github.io/posts/hgame-2026-web-wp/</link>
+      <link>http://localhost:1313/posts/hgame-2026-web-wp/</link>
       <pubDate>Thu, 05 Mar 2026 18:35:35 +0800</pubDate>
-      <guid>https://xiaochai-123.github.io/posts/hgame-2026-web-wp/</guid>
+      <guid>http://localhost:1313/posts/hgame-2026-web-wp/</guid>
       <description><![CDATA[<h1 id="魔理沙的魔法目录" data-numberify>魔理沙的魔法目录<a class="anchor ms-1" href="#魔理沙的魔法目录"></a></h1>
 <p>题目描述：</p>
 <p>这是魔理沙从帕秋莉的藏书中找来的一系列魔法书</p>
 <p>她说, 如果你能阅读他们 1 个小时以上, 就会给你奖励!</p>
 <p>直接抓包</p>
-<p><picture><img class="img-fluid " alt="java_UFnyCs3Ugx" src="https://xiaochai-123.github.io/images/screenshoots/2026-03/java_UFnyCs3Ugx.png?v=ba90ba9aa2f4218f7f62de52878b915b" loading="lazy" width="2378" height="1339" />
+<p><picture><img class="img-fluid " alt="java_UFnyCs3Ugx" src="http://localhost:1313/images/screenshoots/2026-03/java_UFnyCs3Ugx.png?v=ba90ba9aa2f4218f7f62de52878b915b" loading="lazy" width="2378" height="1339" />
 </picture>
 
 看到时间直接改大放包，flag就出来了</p>
-<p><picture><img class="img-fluid " alt="image-20260305181752105" src="https://xiaochai-123.github.io/images/screenshoots/2026-03/image-20260305181752105.png?v=cb38fa3485f9e0e0eafc7a2ef10a2712" loading="lazy" width="1234" height="772" />
+<p><picture><img class="img-fluid " alt="image-20260305181752105" src="http://localhost:1313/images/screenshoots/2026-03/image-20260305181752105.png?v=cb38fa3485f9e0e0eafc7a2ef10a2712" loading="lazy" width="1234" height="772" />
 </picture>
 
 </p>
@@ -241,12 +241,12 @@ Disallow: /hidden/flag.txt
 <p>登录窗口进来是个商店，经典没钱买flag。</p>
 <p>题目描述提示管理员账户可以管钱，登录处不能写特殊符号。</p>
 <p>找半天原来是jwt</p>
-<p><picture><img class="img-fluid " alt="image-20260305183726266" src="https://xiaochai-123.github.io/images/screenshoots/2026-03/image-20260305183726266.png?v=816f82bc124a902b2c5540c7be4ed454" loading="lazy" width="1487" height="882" />
+<p><picture><img class="img-fluid " alt="image-20260305183726266" src="http://localhost:1313/images/screenshoots/2026-03/image-20260305183726266.png?v=816f82bc124a902b2c5540c7be4ed454" loading="lazy" width="1487" height="882" />
 </picture>
 
 在这藏着</p>
 <p>JWT弱密钥爆破结果为111，然而我们把role改成admin或者id改成admin没有卵用？</p>
-<p><picture><img class="img-fluid " alt="image-20260305184521018" src="https://xiaochai-123.github.io/images/screenshoots/2026-03/image-20260305184521018.png?v=bb555e6f1ab266df30f1b0a3cbbd8ba6" loading="lazy" width="1616" height="783" />
+<p><picture><img class="img-fluid " alt="image-20260305184521018" src="http://localhost:1313/images/screenshoots/2026-03/image-20260305184521018.png?v=bb555e6f1ab266df30f1b0a3cbbd8ba6" loading="lazy" width="1616" height="783" />
 </picture>
 
 发现是uid的问题，注册几个账户发现uid规律</p>
@@ -261,39 +261,39 @@ Disallow: /hidden/flag.txt
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -d <span style="color:#e6db74">&#34;{\&#34;__init__\&#34;: {\&#34;__globals__\&#34;: {\&#34;balance\&#34;: 2000000}}}&#34;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">{</span><span style="color:#e6db74">&#34;is_admin&#34;</span>:true,<span style="color:#e6db74">&#34;msg&#34;</span>:<span style="color:#e6db74">&#34;System Access Granted&#34;</span>,<span style="color:#e6db74">&#34;user_info&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;balance&#34;</span>:2000000,<span style="color:#e6db74">&#34;role&#34;</span>:<span style="color:#e6db74">&#34;user&#34;</span>,<span style="color:#e6db74">&#34;username&#34;</span>:<span style="color:#e6db74">&#34;admin&#34;</span><span style="color:#f92672">}}</span>
 </span></span><span style="display:flex;"><span>xiaochai_123@binarios:~$
-</span></span></code></pre></div><p>现在我们就有钱直接买flag啦<picture><img class="img-fluid " alt="image-20260305185510259" src="https://xiaochai-123.github.io/images/screenshoots/2026-03/image-20260305185510259.png?v=e92a0031ca6ec847987fe1dcc30fc702" loading="lazy" width="1460" height="984" />
+</span></span></code></pre></div><p>现在我们就有钱直接买flag啦<picture><img class="img-fluid " alt="image-20260305185510259" src="http://localhost:1313/images/screenshoots/2026-03/image-20260305185510259.png?v=e92a0031ca6ec847987fe1dcc30fc702" loading="lazy" width="1460" height="984" />
 </picture>
 
 </p>
 
 <h1 id="博丽神社的绘马挂" data-numberify>博丽神社的绘马挂<a class="anchor ms-1" href="#博丽神社的绘马挂"></a></h1>
 <p>随便登录就登录上了？然后是发帖系统，考察XSS</p>]]></description>
-    <enclosure url="https://xiaochai-123.github.io/images/HGAME2026.png" length="649546" type="image/.png" />
+    <enclosure url="http://localhost:1313/images/HGAME2026.png" length="649546" type="image/.png" />
     </item>
     
     <item>
       <title>SHCTF-web2026-WP</title>
-      <link>https://xiaochai-123.github.io/posts/shctf-web2026-wp/</link>
+      <link>http://localhost:1313/posts/shctf-web2026-wp/</link>
       <pubDate>Sun, 22 Feb 2026 18:35:35 +0800</pubDate>
-      <guid>https://xiaochai-123.github.io/posts/shctf-web2026-wp/</guid>
+      <guid>http://localhost:1313/posts/shctf-web2026-wp/</guid>
       <description><![CDATA[<h1 id="shctf-3rd-web-wp" data-numberify>SHCTF-3rd-Web-WP<a class="anchor ms-1" href="#shctf-3rd-web-wp"></a></h1>
 
 <h2 id="challenge-info---" data-numberify>Challenge Info - [<a class="anchor ms-1" href="#challenge-info---"></a></h2>
-<p><picture><img class="img-fluid " alt="chrome_mVYWnZo06K" src="https://xiaochai-123.github.io/images/screenshoots/2026-02/chrome_mVYWnZo06K.png?v=d0194acad3c5555b14c7a3b376d1399e" loading="lazy" width="1847" height="1153" />
+<p><picture><img class="img-fluid " alt="chrome_mVYWnZo06K" src="http://localhost:1313/images/screenshoots/2026-02/chrome_mVYWnZo06K.png?v=d0194acad3c5555b14c7a3b376d1399e" loading="lazy" width="1847" height="1153" />
 </picture>
 
 没钱起手，想买flag还缺47，看看源代码，发现提示</p>
-<p><picture><img class="img-fluid " alt="" src="https://xiaochai-123.github.io/images/screenshoots/2026-02/chrome_a5Mjf3MpLp.png?v=4f8a04404f866d5df9387f97aba3f392" loading="lazy" width="1847" height="1153" />
+<p><picture><img class="img-fluid " alt="" src="http://localhost:1313/images/screenshoots/2026-02/chrome_a5Mjf3MpLp.png?v=4f8a04404f866d5df9387f97aba3f392" loading="lazy" width="1847" height="1153" />
 </picture>
 
 </p>
 <p>使用cyberchef解码拿到信息</p>
-<p><picture><img class="img-fluid " alt="msedge_NypgJhfoDY" src="https://xiaochai-123.github.io/images/screenshoots/2026-02/msedge_NypgJhfoDY.png?v=0ef6f6dbe1479f58567f6bdc5634674a" loading="lazy" width="2201" height="1364" />
+<p><picture><img class="img-fluid " alt="msedge_NypgJhfoDY" src="http://localhost:1313/images/screenshoots/2026-02/msedge_NypgJhfoDY.png?v=0ef6f6dbe1479f58567f6bdc5634674a" loading="lazy" width="2201" height="1364" />
 </picture>
 
 </p>
 <p>说是有个shell.php，爆破一下看看有什么路径，（不小心把靶机扫爆了）根据提示我们来到这里</p>
-<p><picture><img class="img-fluid " alt="chrome_nuhdKeK7nL" src="https://xiaochai-123.github.io/images/screenshoots/2026-02/chrome_nuhdKeK7nL.png?v=44b9a41572978d1e7682d0e90a2bc818" loading="lazy" width="1849" height="1155" />
+<p><picture><img class="img-fluid " alt="chrome_nuhdKeK7nL" src="http://localhost:1313/images/screenshoots/2026-02/chrome_nuhdKeK7nL.png?v=44b9a41572978d1e7682d0e90a2bc818" loading="lazy" width="1849" height="1155" />
 </picture>
 
 </p>
@@ -318,32 +318,32 @@ Disallow: /hidden/flag.txt
 </span></span></code></pre></div><p>找出passwd，其md5是c4d038b4bed09fdb1471ef51ec3a32cd</p>
 <p>只要passwd对了就拿到shell</p>
 <p>用神秘小脚本爆破一下简单的字符集，看到源码是114514</p>
-<p><picture><img class="img-fluid " alt="image-20260221234208383" src="https://xiaochai-123.github.io/images/screenshoots/2026-02/image-20260221234208383.png?v=b6724d62f89c2d8247138724b13ba6d4" loading="lazy" width="1730" height="924" />
+<p><picture><img class="img-fluid " alt="image-20260221234208383" src="http://localhost:1313/images/screenshoots/2026-02/image-20260221234208383.png?v=b6724d62f89c2d8247138724b13ba6d4" loading="lazy" width="1730" height="924" />
 </picture>
 
 </p>
 <p>进去之后没发现有什么flag，写个小马进去（这里我最开始把马写在tmp目录下，蚁剑无法连接，Web服务被限制了，所以我们要写在/var/www/html里面</p>
-<p><picture><img class="img-fluid " alt="java_3IQvfhXsHz" src="https://xiaochai-123.github.io/images/screenshoots/2026-02/java_3IQvfhXsHz.png?v=d1c68d4319cf3c2520203aa3cf2b9f86" loading="lazy" width="1826" height="754" />
+<p><picture><img class="img-fluid " alt="java_3IQvfhXsHz" src="http://localhost:1313/images/screenshoots/2026-02/java_3IQvfhXsHz.png?v=d1c68d4319cf3c2520203aa3cf2b9f86" loading="lazy" width="1826" height="754" />
 </picture>
 
 </p>
-<p><picture><img class="img-fluid " alt="AntSword_KqvtdhyAuf" src="https://xiaochai-123.github.io/images/screenshoots/2026-02/AntSword_KqvtdhyAuf.png?v=602b935e296dcd183b5f287e129cea6d" loading="lazy" width="824" height="667" />
+<p><picture><img class="img-fluid " alt="AntSword_KqvtdhyAuf" src="http://localhost:1313/images/screenshoots/2026-02/AntSword_KqvtdhyAuf.png?v=602b935e296dcd183b5f287e129cea6d" loading="lazy" width="824" height="667" />
 </picture>
 
 </p>
 <p>ok,成功连接，看到它的钱数，我们给他改多就好了</p>
-<p><picture><img class="img-fluid " alt="AntSword_ZSRbr7jujF" src="https://xiaochai-123.github.io/images/screenshoots/2026-02/AntSword_ZSRbr7jujF.png?v=9b1bca972f6759646f94fef0567a86bc" loading="lazy" width="1545" height="1041" />
+<p><picture><img class="img-fluid " alt="AntSword_ZSRbr7jujF" src="http://localhost:1313/images/screenshoots/2026-02/AntSword_ZSRbr7jujF.png?v=9b1bca972f6759646f94fef0567a86bc" loading="lazy" width="1545" height="1041" />
 </picture>
 
 </p>]]></description>
-    <enclosure url="https://xiaochai-123.github.io/images/shctf3rd.jpg" length="282062" type="image/.jpg" />
+    <enclosure url="http://localhost:1313/images/shctf3rd.jpg" length="282062" type="image/.jpg" />
     </item>
     
     <item>
       <title>XXE漏洞利用</title>
-      <link>https://xiaochai-123.github.io/posts/xxe%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/</link>
+      <link>http://localhost:1313/posts/xxe%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/</link>
       <pubDate>Tue, 17 Feb 2026 23:35:35 +0800</pubDate>
-      <guid>https://xiaochai-123.github.io/posts/xxe%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/</guid>
+      <guid>http://localhost:1313/posts/xxe%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/</guid>
       <description><![CDATA[<h1 id="xxe漏洞利用" data-numberify>XXE漏洞利用<a class="anchor ms-1" href="#xxe漏洞利用"></a></h1>
 <p>学习XXE首先了解XML语言：</p>
 <p>XML是一种标记语言。他是用来把数据<strong>结构化</strong>然后传输给对方，让对方在结构化的数据中进行读取的。</p>
@@ -400,41 +400,41 @@ Disallow: /hidden/flag.txt
     &lt;/man&gt;
 &lt;/root&gt;
 </code></pre><p>除了<code>!ELEMENT</code>,我们还有其他的DTD声明标记，比如:</p>]]></description>
-    <enclosure url="https://xiaochai-123.github.io/images/xxe.png" length="120897" type="image/.png" />
+    <enclosure url="http://localhost:1313/images/xxe.png" length="120897" type="image/.png" />
     </item>
     
     <item>
       <title>SQL注入——sqli-labs学习笔记</title>
-      <link>https://xiaochai-123.github.io/posts/sqli-labs/</link>
+      <link>http://localhost:1313/posts/sqli-labs/</link>
       <pubDate>Mon, 22 Dec 2025 07:19:55 +0800</pubDate>
-      <guid>https://xiaochai-123.github.io/posts/sqli-labs/</guid>
+      <guid>http://localhost:1313/posts/sqli-labs/</guid>
       <description><![CDATA[<h1 id="sql注入sqli-labs学习笔记" data-numberify>SQL注入——sqli-labs学习笔记<a class="anchor ms-1" href="#sql注入sqli-labs学习笔记"></a></h1>
 <p>我是边看b站重庆橘子科技的视频边学的，陈腾师傅讲得很好，推荐</p>
 <pre tabindex="0"><code>https://www.bilibili.com/video/BV1c34y1h7So/?p=7&amp;share_source=copy_web&amp;vd_source=9c22157b2c924857f42d806788cc5fea
 </code></pre><hr>
 
 <h2 id="union注入" data-numberify>Union注入<a class="anchor ms-1" href="#union注入"></a></h2>
-<p><picture><img class="img-fluid " alt="msedge_yEllTDmkjW" src="https://xiaochai-123.github.io/images/screenshoots/2025-12/msedge_yEllTDmkjW.png?v=09bfda9fddc93fac2c87312aac6ebd94" loading="lazy" width="1745" height="1079" />
+<p><picture><img class="img-fluid " alt="msedge_yEllTDmkjW" src="http://localhost:1313/images/screenshoots/2025-12/msedge_yEllTDmkjW.png?v=09bfda9fddc93fac2c87312aac6ebd94" loading="lazy" width="1745" height="1079" />
 </picture>
 
 </p>
 <p>登入后我们看到提示可以传入id，我们传入就能看到对应id的user和password。</p>
 <p>一般来讲，我们需要判断题目为字符型注入还是数字型注入，这里借用几张老师的PPT</p>
-<p><picture><img class="img-fluid " alt="msedge_xZKLMRW9Rx" src="https://xiaochai-123.github.io/images/screenshoots/2025-12/msedge_xZKLMRW9Rx.png?v=a0ea5383364828d7364730585fd0ac5b" loading="lazy" width="1597" height="856" />
+<p><picture><img class="img-fluid " alt="msedge_xZKLMRW9Rx" src="http://localhost:1313/images/screenshoots/2025-12/msedge_xZKLMRW9Rx.png?v=a0ea5383364828d7364730585fd0ac5b" loading="lazy" width="1597" height="856" />
 </picture>
 
 </p>
-<p><picture><img class="img-fluid " alt="msedge_FapzDjjfSs" src="https://xiaochai-123.github.io/images/screenshoots/2025-12/msedge_FapzDjjfSs.png?v=66ffa7d54c1aa87c6dfcc2b1711dd50f" loading="lazy" width="1178" height="689" />
+<p><picture><img class="img-fluid " alt="msedge_FapzDjjfSs" src="http://localhost:1313/images/screenshoots/2025-12/msedge_FapzDjjfSs.png?v=66ffa7d54c1aa87c6dfcc2b1711dd50f" loading="lazy" width="1178" height="689" />
 </picture>
 
 </p>
 <p>小技巧，如果id=2和id=2-1的回显是一样的，说明是字符型注入。否则是数字型注入</p>
-<p><picture><img class="img-fluid " alt="msedge_pS3yOqh3DT" src="https://xiaochai-123.github.io/images/screenshoots/2025-12/msedge_pS3yOqh3DT.png?v=53a0d08a193ed341df82f1adefe911f3" loading="lazy" width="1380" height="733" />
+<p><picture><img class="img-fluid " alt="msedge_pS3yOqh3DT" src="http://localhost:1313/images/screenshoots/2025-12/msedge_pS3yOqh3DT.png?v=53a0d08a193ed341df82f1adefe911f3" loading="lazy" width="1380" height="733" />
 </picture>
 
 </p>
 <p>在UNION注入场景下，由于页面只回显第一行数据，我们可以将注入数据的<code>id</code>字段设置为0或一个负值，使其在原表中不存在，这样页面就会显示我们注入的数据。同时，也可以在需要回显的位置填写如<code>database()</code>、<code>version()</code>等函数，以获取数据库的信息。</p>
-<p>老师给出的板书<picture><img class="img-fluid " alt="msedge_oEaGgCNcvf" src="https://xiaochai-123.github.io/images/screenshoots/2025-12/msedge_oEaGgCNcvf.png?v=37bc2d5d9224384ffc9c916412b4580f" loading="lazy" width="1067" height="213" />
+<p>老师给出的板书<picture><img class="img-fluid " alt="msedge_oEaGgCNcvf" src="http://localhost:1313/images/screenshoots/2025-12/msedge_oEaGgCNcvf.png?v=37bc2d5d9224384ffc9c916412b4580f" loading="lazy" width="1067" height="213" />
 </picture>
 
 </p>
@@ -447,25 +447,25 @@ Disallow: /hidden/flag.txt
 </blockquote>
 
 <h2 id="报错注入" data-numberify>报错注入<a class="anchor ms-1" href="#报错注入"></a></h2>
-<p><picture><img class="img-fluid " alt="msedge_m4Xts1eDSA" src="https://xiaochai-123.github.io/images/screenshoots/2025-12/msedge_m4Xts1eDSA.png?v=7db64a0bcf335cc1342adee28a779f13" loading="lazy" width="1051" height="519" />
+<p><picture><img class="img-fluid " alt="msedge_m4Xts1eDSA" src="http://localhost:1313/images/screenshoots/2025-12/msedge_m4Xts1eDSA.png?v=7db64a0bcf335cc1342adee28a779f13" loading="lazy" width="1051" height="519" />
 </picture>
 
 </p>
 <p>如图所示，当我们正常进行查询时，不会有回显，只显示You are in&hellip;</p>]]></description>
-    <enclosure url="https://xiaochai-123.github.io/images/SQL1.png" length="88126" type="image/.png" />
+    <enclosure url="http://localhost:1313/images/SQL1.png" length="88126" type="image/.png" />
     </item>
     
     <item>
       <title>260325~~每~~日打卡</title>
-      <link>https://xiaochai-123.github.io/posts/260325/</link>
+      <link>http://localhost:1313/posts/260325/</link>
       <pubDate>Wed, 25 Mar 2026 20:43:35 +0800</pubDate>
-      <guid>https://xiaochai-123.github.io/posts/260325/</guid>
+      <guid>http://localhost:1313/posts/260325/</guid>
       <description><![CDATA[<h1 id="bjdctf-2020ezphp" data-numberify>[BJDCTF 2020]Ezphp<a class="anchor ms-1" href="#bjdctf-2020ezphp"></a></h1>
-<p>发现神秘base32字符，拉到cyberchef解一下<picture><img class="img-fluid " alt="msedge_6KfUAHsjnf" src="https://xiaochai-123.github.io/images/screenshoots/2026-03/msedge_6KfUAHsjnf.png?v=45705b4155f4b0143f61e3c14ee1d45e" loading="lazy" width="1437" height="697" />
+<p>发现神秘base32字符，拉到cyberchef解一下<picture><img class="img-fluid " alt="msedge_6KfUAHsjnf" src="http://localhost:1313/images/screenshoots/2026-03/msedge_6KfUAHsjnf.png?v=45705b4155f4b0143f61e3c14ee1d45e" loading="lazy" width="1437" height="697" />
 </picture>
 
 </p>
-<p><picture><img class="img-fluid " alt="msedge_VpGzQgKuIc" src="https://xiaochai-123.github.io/images/screenshoots/2026-03/msedge_VpGzQgKuIc.png?v=b5cf180bf1470970a12b646f8dbd26e2" loading="lazy" width="1449" height="891" />
+<p><picture><img class="img-fluid " alt="msedge_VpGzQgKuIc" src="http://localhost:1313/images/screenshoots/2026-03/msedge_VpGzQgKuIc.png?v=b5cf180bf1470970a12b646f8dbd26e2" loading="lazy" width="1449" height="891" />
 </picture>
 
 </p>
@@ -528,9 +528,9 @@ Disallow: /hidden/flag.txt
     
     <item>
       <title>SQLi-labs靶场搭建</title>
-      <link>https://xiaochai-123.github.io/posts/sqli-labs%E9%9D%B6%E5%9C%BA%E6%90%AD%E5%BB%BA/</link>
+      <link>http://localhost:1313/posts/sqli-labs%E9%9D%B6%E5%9C%BA%E6%90%AD%E5%BB%BA/</link>
       <pubDate>Mon, 22 Dec 2025 07:19:56 +0800</pubDate>
-      <guid>https://xiaochai-123.github.io/posts/sqli-labs%E9%9D%B6%E5%9C%BA%E6%90%AD%E5%BB%BA/</guid>
+      <guid>http://localhost:1313/posts/sqli-labs%E9%9D%B6%E5%9C%BA%E6%90%AD%E5%BB%BA/</guid>
       <description><![CDATA[<h2 id="靶场的搭建" data-numberify>靶场的搭建<a class="anchor ms-1" href="#靶场的搭建"></a></h2>
 <p>建议在虚拟机里进行靶场的搭建，<strong>安全、隔离、可恢复</strong>，不会影响真正系统。我将使用vmware-kali来搭建靶场</p>
 
@@ -557,14 +557,14 @@ Disallow: /hidden/flag.txt
 </span></span></code></pre></div>
 <h3 id="4-创建数据库和导入数据" data-numberify>4. 创建数据库和导入数据<a class="anchor ms-1" href="#4-创建数据库和导入数据"></a></h3>
 <p>登录MariaDB/MySQL，创建数据库：</p>]]></description>
-    <enclosure url="https://xiaochai-123.github.io/images/SQL.png" length="1095127" type="image/.png" />
+    <enclosure url="http://localhost:1313/images/SQL.png" length="1095127" type="image/.png" />
     </item>
     
     <item>
       <title>bkcrack的使用方法</title>
-      <link>https://xiaochai-123.github.io/posts/bkcrack%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</link>
+      <link>http://localhost:1313/posts/bkcrack%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</link>
       <pubDate>Wed, 17 Dec 2025 20:43:35 +0800</pubDate>
-      <guid>https://xiaochai-123.github.io/posts/bkcrack%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</guid>
+      <guid>http://localhost:1313/posts/bkcrack%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</guid>
       <description><![CDATA[<h1 id="bkcrack的使用方法" data-numberify>bkcrack的使用方法<a class="anchor ms-1" href="#bkcrack的使用方法"></a></h1>
 <p>在2025年鹏城杯中，连续涉及很多misc题目需要使用bkcrack破解</p>
 <p><a href="https://github.com/kimci86/bkcrack" target="_blank" rel="noopener noreferrer">bkcrack<i class="fas fa-external-link-square-alt ms-1"></i></a> 是一个开源的 ZIP 加密破解工具，可以针对使用传统 ZIP 加密（即 PKZIP cipher）的压缩包进行明文攻击，还支持多种高级功能。你可以用它来：</p>
@@ -597,15 +597,15 @@ Disallow: /hidden/flag.txt
     
     <item>
       <title>双重md5爆破</title>
-      <link>https://xiaochai-123.github.io/posts/%E5%8F%8C%E9%87%8Dmd5%E7%88%86%E7%A0%B4/</link>
+      <link>http://localhost:1313/posts/%E5%8F%8C%E9%87%8Dmd5%E7%88%86%E7%A0%B4/</link>
       <pubDate>Fri, 05 Dec 2025 23:25:07 +0800</pubDate>
-      <guid>https://xiaochai-123.github.io/posts/%E5%8F%8C%E9%87%8Dmd5%E7%88%86%E7%A0%B4/</guid>
+      <guid>http://localhost:1313/posts/%E5%8F%8C%E9%87%8Dmd5%E7%88%86%E7%A0%B4/</guid>
       <description><![CDATA[<h1 id="双重md5加密弱等于" data-numberify>双重md5加密弱等于<a class="anchor ms-1" href="#双重md5加密弱等于"></a></h1>
 <p>当前做过几道php反序列化题目中含有md5双重加密的判断</p>
 <p>发现有两个小知识点</p>
 
 <h2 id="科学计数法弱等于" data-numberify>科学计数法弱等于<a class="anchor ms-1" href="#科学计数法弱等于"></a></h2>
-<p><picture><img class="img-fluid " alt="msedge_h6OmdU0Xrz" src="https://xiaochai-123.github.io/images/screenshoots/2025-12/msedge_h6OmdU0Xrz.png?v=582a181d1ba0e5025b9c874eda529231" loading="lazy" width="505" height="298" />
+<p><picture><img class="img-fluid " alt="msedge_h6OmdU0Xrz" src="http://localhost:1313/images/screenshoots/2025-12/msedge_h6OmdU0Xrz.png?v=582a181d1ba0e5025b9c874eda529231" loading="lazy" width="505" height="298" />
 </picture>
 
 </p>
@@ -693,14 +693,14 @@ Disallow: /hidden/flag.txt
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 再用字母+数字集爆破（不会重复已找到的结果）</span>
 </span></span><span style="display:flex;"><span>    results_alphanum <span style="color:#f92672">=</span> parallel_brute_force(num, string<span style="color:#f92672">.</span>ascii_letters <span style="color:#f92672">+</span> string<span style="color:#f92672">.</span>digits, desc<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;字母+数字&#34;</span>)
 </span></span></code></pre></div><p>然后这里再给出几个爆破结果</p>]]></description>
-    <enclosure url="https://xiaochai-123.github.io/images/MD5.png" length="216119" type="image/.png" />
+    <enclosure url="http://localhost:1313/images/MD5.png" length="216119" type="image/.png" />
     </item>
     
     <item>
       <title>251204每日打卡</title>
-      <link>https://xiaochai-123.github.io/posts/251204/</link>
+      <link>http://localhost:1313/posts/251204/</link>
       <pubDate>Thu, 04 Dec 2025 20:43:35 +0800</pubDate>
-      <guid>https://xiaochai-123.github.io/posts/251204/</guid>
+      <guid>http://localhost:1313/posts/251204/</guid>
       <description><![CDATA[<h2 id="极客大挑战-2019lovesql" data-numberify>[极客大挑战 2019]LoveSQL<a class="anchor ms-1" href="#极客大挑战-2019lovesql"></a></h2>
 <p>题目一个登录框，测试一下注入</p>
 <p>用户名输入<code>1'</code>  密码输入<code>aa</code></p>
@@ -716,9 +716,9 @@ Disallow: /hidden/flag.txt
     
     <item>
       <title>251129每日打卡</title>
-      <link>https://xiaochai-123.github.io/posts/251129/</link>
+      <link>http://localhost:1313/posts/251129/</link>
       <pubDate>Sat, 29 Nov 2025 20:43:35 +0800</pubDate>
-      <guid>https://xiaochai-123.github.io/posts/251129/</guid>
+      <guid>http://localhost:1313/posts/251129/</guid>
       <description><![CDATA[<p>2025/11/29 我决定每天打卡几道题来积少成多</p>
 
 <h2 id="afctf-2021baby_csp" data-numberify>[AFCTF 2021]BABY_CSP<a class="anchor ms-1" href="#afctf-2021baby_csp"></a></h2>

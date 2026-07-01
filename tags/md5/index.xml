@@ -2,23 +2,23 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Md5 on xiaochai_123的小窝</title>
-    <link>https://xiaochai-123.github.io/tags/md5/</link>
+    <link>http://localhost:1313/tags/md5/</link>
     <description>Recent content in Md5 on xiaochai_123的小窝</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
     <copyright>© 2026 xiaochai-123. 欢迎转载但请注明出处 | 本博客内容版权所有</copyright>
-    <lastBuildDate>Fri, 05 Dec 2025 23:25:07 +0800</lastBuildDate><atom:link href="https://xiaochai-123.github.io/tags/md5/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 05 Dec 2025 23:25:07 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/md5/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>双重md5爆破</title>
-      <link>https://xiaochai-123.github.io/posts/%E5%8F%8C%E9%87%8Dmd5%E7%88%86%E7%A0%B4/</link>
+      <link>http://localhost:1313/posts/%E5%8F%8C%E9%87%8Dmd5%E7%88%86%E7%A0%B4/</link>
       <pubDate>Fri, 05 Dec 2025 23:25:07 +0800</pubDate>
-      <guid>https://xiaochai-123.github.io/posts/%E5%8F%8C%E9%87%8Dmd5%E7%88%86%E7%A0%B4/</guid>
+      <guid>http://localhost:1313/posts/%E5%8F%8C%E9%87%8Dmd5%E7%88%86%E7%A0%B4/</guid>
       <description><![CDATA[<h1 id="双重md5加密弱等于" data-numberify>双重md5加密弱等于<a class="anchor ms-1" href="#双重md5加密弱等于"></a></h1>
 <p>当前做过几道php反序列化题目中含有md5双重加密的判断</p>
 <p>发现有两个小知识点</p>
 
 <h2 id="科学计数法弱等于" data-numberify>科学计数法弱等于<a class="anchor ms-1" href="#科学计数法弱等于"></a></h2>
-<p><picture><img class="img-fluid " alt="msedge_h6OmdU0Xrz" src="https://xiaochai-123.github.io/images/screenshoots/2025-12/msedge_h6OmdU0Xrz.png?v=582a181d1ba0e5025b9c874eda529231" loading="lazy" width="505" height="298" />
+<p><picture><img class="img-fluid " alt="msedge_h6OmdU0Xrz" src="http://localhost:1313/images/screenshoots/2025-12/msedge_h6OmdU0Xrz.png?v=582a181d1ba0e5025b9c874eda529231" loading="lazy" width="505" height="298" />
 </picture>
 
 </p>
@@ -106,7 +106,7 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 再用字母+数字集爆破（不会重复已找到的结果）</span>
 </span></span><span style="display:flex;"><span>    results_alphanum <span style="color:#f92672">=</span> parallel_brute_force(num, string<span style="color:#f92672">.</span>ascii_letters <span style="color:#f92672">+</span> string<span style="color:#f92672">.</span>digits, desc<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;字母+数字&#34;</span>)
 </span></span></code></pre></div><p>然后这里再给出几个爆破结果</p>]]></description>
-    <enclosure url="https://xiaochai-123.github.io/images/MD5.png" length="216119" type="image/.png" />
+    <enclosure url="http://localhost:1313/images/MD5.png" length="216119" type="image/.png" />
     </item>
     
   </channel>

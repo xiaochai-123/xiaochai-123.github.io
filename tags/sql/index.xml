@@ -2,44 +2,44 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>SQL on xiaochai_123的小窝</title>
-    <link>https://xiaochai-123.github.io/tags/sql/</link>
+    <link>http://localhost:1313/tags/sql/</link>
     <description>Recent content in SQL on xiaochai_123的小窝</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
     <copyright>© 2026 xiaochai-123. 欢迎转载但请注明出处 | 本博客内容版权所有</copyright>
-    <lastBuildDate>Mon, 22 Dec 2025 07:19:56 +0800</lastBuildDate><atom:link href="https://xiaochai-123.github.io/tags/sql/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 22 Dec 2025 07:19:56 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/sql/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>SQL注入——sqli-labs学习笔记</title>
-      <link>https://xiaochai-123.github.io/posts/sqli-labs/</link>
+      <link>http://localhost:1313/posts/sqli-labs/</link>
       <pubDate>Mon, 22 Dec 2025 07:19:55 +0800</pubDate>
-      <guid>https://xiaochai-123.github.io/posts/sqli-labs/</guid>
+      <guid>http://localhost:1313/posts/sqli-labs/</guid>
       <description><![CDATA[<h1 id="sql注入sqli-labs学习笔记" data-numberify>SQL注入——sqli-labs学习笔记<a class="anchor ms-1" href="#sql注入sqli-labs学习笔记"></a></h1>
 <p>我是边看b站重庆橘子科技的视频边学的，陈腾师傅讲得很好，推荐</p>
 <pre tabindex="0"><code>https://www.bilibili.com/video/BV1c34y1h7So/?p=7&amp;share_source=copy_web&amp;vd_source=9c22157b2c924857f42d806788cc5fea
 </code></pre><hr>
 
 <h2 id="union注入" data-numberify>Union注入<a class="anchor ms-1" href="#union注入"></a></h2>
-<p><picture><img class="img-fluid " alt="msedge_yEllTDmkjW" src="https://xiaochai-123.github.io/images/screenshoots/2025-12/msedge_yEllTDmkjW.png?v=09bfda9fddc93fac2c87312aac6ebd94" loading="lazy" width="1745" height="1079" />
+<p><picture><img class="img-fluid " alt="msedge_yEllTDmkjW" src="http://localhost:1313/images/screenshoots/2025-12/msedge_yEllTDmkjW.png?v=09bfda9fddc93fac2c87312aac6ebd94" loading="lazy" width="1745" height="1079" />
 </picture>
 
 </p>
 <p>登入后我们看到提示可以传入id，我们传入就能看到对应id的user和password。</p>
 <p>一般来讲，我们需要判断题目为字符型注入还是数字型注入，这里借用几张老师的PPT</p>
-<p><picture><img class="img-fluid " alt="msedge_xZKLMRW9Rx" src="https://xiaochai-123.github.io/images/screenshoots/2025-12/msedge_xZKLMRW9Rx.png?v=a0ea5383364828d7364730585fd0ac5b" loading="lazy" width="1597" height="856" />
+<p><picture><img class="img-fluid " alt="msedge_xZKLMRW9Rx" src="http://localhost:1313/images/screenshoots/2025-12/msedge_xZKLMRW9Rx.png?v=a0ea5383364828d7364730585fd0ac5b" loading="lazy" width="1597" height="856" />
 </picture>
 
 </p>
-<p><picture><img class="img-fluid " alt="msedge_FapzDjjfSs" src="https://xiaochai-123.github.io/images/screenshoots/2025-12/msedge_FapzDjjfSs.png?v=66ffa7d54c1aa87c6dfcc2b1711dd50f" loading="lazy" width="1178" height="689" />
+<p><picture><img class="img-fluid " alt="msedge_FapzDjjfSs" src="http://localhost:1313/images/screenshoots/2025-12/msedge_FapzDjjfSs.png?v=66ffa7d54c1aa87c6dfcc2b1711dd50f" loading="lazy" width="1178" height="689" />
 </picture>
 
 </p>
 <p>小技巧，如果id=2和id=2-1的回显是一样的，说明是字符型注入。否则是数字型注入</p>
-<p><picture><img class="img-fluid " alt="msedge_pS3yOqh3DT" src="https://xiaochai-123.github.io/images/screenshoots/2025-12/msedge_pS3yOqh3DT.png?v=53a0d08a193ed341df82f1adefe911f3" loading="lazy" width="1380" height="733" />
+<p><picture><img class="img-fluid " alt="msedge_pS3yOqh3DT" src="http://localhost:1313/images/screenshoots/2025-12/msedge_pS3yOqh3DT.png?v=53a0d08a193ed341df82f1adefe911f3" loading="lazy" width="1380" height="733" />
 </picture>
 
 </p>
 <p>在UNION注入场景下，由于页面只回显第一行数据，我们可以将注入数据的<code>id</code>字段设置为0或一个负值，使其在原表中不存在，这样页面就会显示我们注入的数据。同时，也可以在需要回显的位置填写如<code>database()</code>、<code>version()</code>等函数，以获取数据库的信息。</p>
-<p>老师给出的板书<picture><img class="img-fluid " alt="msedge_oEaGgCNcvf" src="https://xiaochai-123.github.io/images/screenshoots/2025-12/msedge_oEaGgCNcvf.png?v=37bc2d5d9224384ffc9c916412b4580f" loading="lazy" width="1067" height="213" />
+<p>老师给出的板书<picture><img class="img-fluid " alt="msedge_oEaGgCNcvf" src="http://localhost:1313/images/screenshoots/2025-12/msedge_oEaGgCNcvf.png?v=37bc2d5d9224384ffc9c916412b4580f" loading="lazy" width="1067" height="213" />
 </picture>
 
 </p>
@@ -52,19 +52,19 @@
 </blockquote>
 
 <h2 id="报错注入" data-numberify>报错注入<a class="anchor ms-1" href="#报错注入"></a></h2>
-<p><picture><img class="img-fluid " alt="msedge_m4Xts1eDSA" src="https://xiaochai-123.github.io/images/screenshoots/2025-12/msedge_m4Xts1eDSA.png?v=7db64a0bcf335cc1342adee28a779f13" loading="lazy" width="1051" height="519" />
+<p><picture><img class="img-fluid " alt="msedge_m4Xts1eDSA" src="http://localhost:1313/images/screenshoots/2025-12/msedge_m4Xts1eDSA.png?v=7db64a0bcf335cc1342adee28a779f13" loading="lazy" width="1051" height="519" />
 </picture>
 
 </p>
 <p>如图所示，当我们正常进行查询时，不会有回显，只显示You are in&hellip;</p>]]></description>
-    <enclosure url="https://xiaochai-123.github.io/images/SQL1.png" length="88126" type="image/.png" />
+    <enclosure url="http://localhost:1313/images/SQL1.png" length="88126" type="image/.png" />
     </item>
     
     <item>
       <title>SQLi-labs靶场搭建</title>
-      <link>https://xiaochai-123.github.io/posts/sqli-labs%E9%9D%B6%E5%9C%BA%E6%90%AD%E5%BB%BA/</link>
+      <link>http://localhost:1313/posts/sqli-labs%E9%9D%B6%E5%9C%BA%E6%90%AD%E5%BB%BA/</link>
       <pubDate>Mon, 22 Dec 2025 07:19:56 +0800</pubDate>
-      <guid>https://xiaochai-123.github.io/posts/sqli-labs%E9%9D%B6%E5%9C%BA%E6%90%AD%E5%BB%BA/</guid>
+      <guid>http://localhost:1313/posts/sqli-labs%E9%9D%B6%E5%9C%BA%E6%90%AD%E5%BB%BA/</guid>
       <description><![CDATA[<h2 id="靶场的搭建" data-numberify>靶场的搭建<a class="anchor ms-1" href="#靶场的搭建"></a></h2>
 <p>建议在虚拟机里进行靶场的搭建，<strong>安全、隔离、可恢复</strong>，不会影响真正系统。我将使用vmware-kali来搭建靶场</p>
 
@@ -91,7 +91,7 @@
 </span></span></code></pre></div>
 <h3 id="4-创建数据库和导入数据" data-numberify>4. 创建数据库和导入数据<a class="anchor ms-1" href="#4-创建数据库和导入数据"></a></h3>
 <p>登录MariaDB/MySQL，创建数据库：</p>]]></description>
-    <enclosure url="https://xiaochai-123.github.io/images/SQL.png" length="1095127" type="image/.png" />
+    <enclosure url="http://localhost:1313/images/SQL.png" length="1095127" type="image/.png" />
     </item>
     
   </channel>

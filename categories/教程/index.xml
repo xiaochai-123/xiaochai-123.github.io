@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>教程 on xiaochai_123的小窝</title>
-    <link>https://xiaochai-123.github.io/categories/%E6%95%99%E7%A8%8B/</link>
+    <link>http://localhost:1313/categories/%E6%95%99%E7%A8%8B/</link>
     <description>Recent content in 教程 on xiaochai_123的小窝</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
     <copyright>© 2026 xiaochai-123. 欢迎转载但请注明出处 | 本博客内容版权所有</copyright>
-    <lastBuildDate>Thu, 19 Feb 2026 18:35:35 +0800</lastBuildDate><atom:link href="https://xiaochai-123.github.io/categories/%E6%95%99%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 19 Feb 2026 18:35:35 +0800</lastBuildDate><atom:link href="http://localhost:1313/categories/%E6%95%99%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Arch&#43;Hyprland</title>
-      <link>https://xiaochai-123.github.io/posts/arch&#43;hyprland&#43;linux%E5%B0%8F%E6%8A%80%E5%B7%A7/</link>
+      <link>http://localhost:1313/posts/arch&#43;hyprland&#43;linux%E5%B0%8F%E6%8A%80%E5%B7%A7/</link>
       <pubDate>Thu, 19 Feb 2026 18:35:35 +0800</pubDate>
-      <guid>https://xiaochai-123.github.io/posts/arch&#43;hyprland&#43;linux%E5%B0%8F%E6%8A%80%E5%B7%A7/</guid>
+      <guid>http://localhost:1313/posts/arch&#43;hyprland&#43;linux%E5%B0%8F%E6%8A%80%E5%B7%A7/</guid>
       <description><![CDATA[<h1 id="arch-linux" data-numberify>Arch Linux<a class="anchor ms-1" href="#arch-linux"></a></h1>
 <p>因为看上了Arch Linux的社区活跃性，所以我决定试试一下这个操作系统！</p>
 <p>（安装起来也很炫酷，不像其他系统只要点点点就完成了，让我找到小时候第一次安系统的新奇感）</p>
@@ -41,14 +41,14 @@
 <p>输入 <code>iwctl</code> 打开联网工具，输入<code>device list</code>可以查看网络适配器设备，一般是wlan0。</p>
 <p>输入<code>station wlan0 scan</code>指定网络适配器并扫描网络</p>
 <p>输入<code>station wlan0 get-networks</code>列出所有可用网络</p>]]></description>
-    <enclosure url="https://xiaochai-123.github.io/images/arch.png" length="410412" type="image/.png" />
+    <enclosure url="http://localhost:1313/images/arch.png" length="410412" type="image/.png" />
     </item>
     
     <item>
       <title>搭建博客</title>
-      <link>https://xiaochai-123.github.io/posts/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</link>
+      <link>http://localhost:1313/posts/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</link>
       <pubDate>Tue, 25 Nov 2025 07:19:55 +0800</pubDate>
-      <guid>https://xiaochai-123.github.io/posts/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</guid>
+      <guid>http://localhost:1313/posts/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</guid>
       <description><![CDATA[<h1 id="搭建个人博客的教程" data-numberify>搭建个人博客的教程<a class="anchor ms-1" href="#搭建个人博客的教程"></a></h1>
 
 <h2 id="第一步-确定所选择的框架" data-numberify>第一步 确定所选择的框架<a class="anchor ms-1" href="#第一步-确定所选择的框架"></a></h2>

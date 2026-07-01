@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Linux on xiaochai_123的小窝</title>
-    <link>https://xiaochai-123.github.io/tags/linux/</link>
+    <link>http://localhost:1313/tags/linux/</link>
     <description>Recent content in Linux on xiaochai_123的小窝</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
     <copyright>© 2026 xiaochai-123. 欢迎转载但请注明出处 | 本博客内容版权所有</copyright>
-    <lastBuildDate>Sat, 13 Jun 2026 20:31:35 +0800</lastBuildDate><atom:link href="https://xiaochai-123.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 13 Jun 2026 20:31:35 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>关于打印服务之CUPS_IPP的介绍</title>
-      <link>https://xiaochai-123.github.io/posts/%E5%85%B3%E4%BA%8E%E6%89%93%E5%8D%B0%E6%9C%8D%E5%8A%A1%E4%B9%8Bcups_ipp%E7%9A%84%E4%BB%8B%E7%BB%8D/</link>
+      <link>http://localhost:1313/posts/%E5%85%B3%E4%BA%8E%E6%89%93%E5%8D%B0%E6%9C%8D%E5%8A%A1%E4%B9%8Bcups_ipp%E7%9A%84%E4%BB%8B%E7%BB%8D/</link>
       <pubDate>Sat, 13 Jun 2026 20:31:35 +0800</pubDate>
-      <guid>https://xiaochai-123.github.io/posts/%E5%85%B3%E4%BA%8E%E6%89%93%E5%8D%B0%E6%9C%8D%E5%8A%A1%E4%B9%8Bcups_ipp%E7%9A%84%E4%BB%8B%E7%BB%8D/</guid>
+      <guid>http://localhost:1313/posts/%E5%85%B3%E4%BA%8E%E6%89%93%E5%8D%B0%E6%9C%8D%E5%8A%A1%E4%B9%8Bcups_ipp%E7%9A%84%E4%BB%8B%E7%BB%8D/</guid>
       <description><![CDATA[<h1 id="打印这一块" data-numberify>打印这一块<a class="anchor ms-1" href="#打印这一块"></a></h1>
 
 <h2 id="历史前言" data-numberify>历史前言<a class="anchor ms-1" href="#历史前言"></a></h2>
@@ -44,14 +44,14 @@
 <h3 id="诞生背景与发展历程" data-numberify>诞生背景与发展历程<a class="anchor ms-1" href="#诞生背景与发展历程"></a></h3>
 <p>CUPS的诞生可以追溯到1997年，由Michael Sweet创办的Easy Software Products公司开始开发。1999年，第一个公开测试版面世。CUPS的设计初衷是解决当时Unix/Linux打印系统面临的碎片化困境——LPD协议功能单一、缺乏双向通信、安全管理薄弱，而不同厂商又各自推出JetDirect等互不兼容的接口标准。</p>
 <p>值得注意的是，CUPS最初的设计也使用了LPD协议，但由于LPD的固有局限和厂商之间的不兼容问题，开发团队最终选择了 <strong>IPP (互联网打印协议,Internet Printing Protocol)</strong> 作为核心协议。这一决策成为CUPS成功的关键。</p>]]></description>
-    <enclosure url="https://xiaochai-123.github.io/images/CUPS.jpg" length="44334" type="image/.jpg" />
+    <enclosure url="http://localhost:1313/images/CUPS.jpg" length="44334" type="image/.jpg" />
     </item>
     
     <item>
       <title>Arch&#43;Hyprland</title>
-      <link>https://xiaochai-123.github.io/posts/arch&#43;hyprland&#43;linux%E5%B0%8F%E6%8A%80%E5%B7%A7/</link>
+      <link>http://localhost:1313/posts/arch&#43;hyprland&#43;linux%E5%B0%8F%E6%8A%80%E5%B7%A7/</link>
       <pubDate>Thu, 19 Feb 2026 18:35:35 +0800</pubDate>
-      <guid>https://xiaochai-123.github.io/posts/arch&#43;hyprland&#43;linux%E5%B0%8F%E6%8A%80%E5%B7%A7/</guid>
+      <guid>http://localhost:1313/posts/arch&#43;hyprland&#43;linux%E5%B0%8F%E6%8A%80%E5%B7%A7/</guid>
       <description><![CDATA[<h1 id="arch-linux" data-numberify>Arch Linux<a class="anchor ms-1" href="#arch-linux"></a></h1>
 <p>因为看上了Arch Linux的社区活跃性，所以我决定试试一下这个操作系统！</p>
 <p>（安装起来也很炫酷，不像其他系统只要点点点就完成了，让我找到小时候第一次安系统的新奇感）</p>
@@ -80,7 +80,7 @@
 <p>输入 <code>iwctl</code> 打开联网工具，输入<code>device list</code>可以查看网络适配器设备，一般是wlan0。</p>
 <p>输入<code>station wlan0 scan</code>指定网络适配器并扫描网络</p>
 <p>输入<code>station wlan0 get-networks</code>列出所有可用网络</p>]]></description>
-    <enclosure url="https://xiaochai-123.github.io/images/arch.png" length="410412" type="image/.png" />
+    <enclosure url="http://localhost:1313/images/arch.png" length="410412" type="image/.png" />
     </item>
     
   </channel>
