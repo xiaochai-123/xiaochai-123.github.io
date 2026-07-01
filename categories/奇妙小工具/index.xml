@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>奇妙小工具 on xiaochai_123的小窝</title>
-    <link>http://localhost:1313/categories/%E5%A5%87%E5%A6%99%E5%B0%8F%E5%B7%A5%E5%85%B7/</link>
+    <link>https://decimo.top/categories/%E5%A5%87%E5%A6%99%E5%B0%8F%E5%B7%A5%E5%85%B7/</link>
     <description>Recent content in 奇妙小工具 on xiaochai_123的小窝</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
     <copyright>© 2026 xiaochai-123. 欢迎转载但请注明出处 | 本博客内容版权所有</copyright>
-    <lastBuildDate>Wed, 17 Dec 2025 20:43:35 +0800</lastBuildDate><atom:link href="http://localhost:1313/categories/%E5%A5%87%E5%A6%99%E5%B0%8F%E5%B7%A5%E5%85%B7/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 17 Dec 2025 20:43:35 +0800</lastBuildDate><atom:link href="https://decimo.top/categories/%E5%A5%87%E5%A6%99%E5%B0%8F%E5%B7%A5%E5%85%B7/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>bkcrack的使用方法</title>
-      <link>http://localhost:1313/posts/bkcrack%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</link>
+      <link>https://decimo.top/posts/bkcrack%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</link>
       <pubDate>Wed, 17 Dec 2025 20:43:35 +0800</pubDate>
-      <guid>http://localhost:1313/posts/bkcrack%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</guid>
+      <guid>https://decimo.top/posts/bkcrack%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</guid>
       <description><![CDATA[<h1 id="bkcrack的使用方法" data-numberify>bkcrack的使用方法<a class="anchor ms-1" href="#bkcrack的使用方法"></a></h1>
 <p>在2025年鹏城杯中，连续涉及很多misc题目需要使用bkcrack破解</p>
 <p><a href="https://github.com/kimci86/bkcrack" target="_blank" rel="noopener noreferrer">bkcrack<i class="fas fa-external-link-square-alt ms-1"></i></a> 是一个开源的 ZIP 加密破解工具，可以针对使用传统 ZIP 加密（即 PKZIP cipher）的压缩包进行明文攻击，还支持多种高级功能。你可以用它来：</p>

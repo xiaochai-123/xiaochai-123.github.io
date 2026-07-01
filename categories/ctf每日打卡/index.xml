@@ -2,23 +2,23 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>CTF每日打卡 on xiaochai_123的小窝</title>
-    <link>http://localhost:1313/categories/ctf%E6%AF%8F%E6%97%A5%E6%89%93%E5%8D%A1/</link>
+    <link>https://decimo.top/categories/ctf%E6%AF%8F%E6%97%A5%E6%89%93%E5%8D%A1/</link>
     <description>Recent content in CTF每日打卡 on xiaochai_123的小窝</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
     <copyright>© 2026 xiaochai-123. 欢迎转载但请注明出处 | 本博客内容版权所有</copyright>
-    <lastBuildDate>Wed, 25 Mar 2026 20:43:35 +0800</lastBuildDate><atom:link href="http://localhost:1313/categories/ctf%E6%AF%8F%E6%97%A5%E6%89%93%E5%8D%A1/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 25 Mar 2026 20:43:35 +0800</lastBuildDate><atom:link href="https://decimo.top/categories/ctf%E6%AF%8F%E6%97%A5%E6%89%93%E5%8D%A1/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>260325~~每~~日打卡</title>
-      <link>http://localhost:1313/posts/260325/</link>
+      <link>https://decimo.top/posts/260325/</link>
       <pubDate>Wed, 25 Mar 2026 20:43:35 +0800</pubDate>
-      <guid>http://localhost:1313/posts/260325/</guid>
+      <guid>https://decimo.top/posts/260325/</guid>
       <description><![CDATA[<h1 id="bjdctf-2020ezphp" data-numberify>[BJDCTF 2020]Ezphp<a class="anchor ms-1" href="#bjdctf-2020ezphp"></a></h1>
-<p>发现神秘base32字符，拉到cyberchef解一下<picture><img class="img-fluid " alt="msedge_6KfUAHsjnf" src="http://localhost:1313/images/screenshoots/2026-03/msedge_6KfUAHsjnf.png?v=45705b4155f4b0143f61e3c14ee1d45e" loading="lazy" width="1437" height="697" />
+<p>发现神秘base32字符，拉到cyberchef解一下<picture><img class="img-fluid " alt="msedge_6KfUAHsjnf" src="https://decimo.top/images/screenshoots/2026-03/msedge_6KfUAHsjnf.png?v=45705b4155f4b0143f61e3c14ee1d45e" loading="lazy" width="1437" height="697" />
 </picture>
 
 </p>
-<p><picture><img class="img-fluid " alt="msedge_VpGzQgKuIc" src="http://localhost:1313/images/screenshoots/2026-03/msedge_VpGzQgKuIc.png?v=b5cf180bf1470970a12b646f8dbd26e2" loading="lazy" width="1449" height="891" />
+<p><picture><img class="img-fluid " alt="msedge_VpGzQgKuIc" src="https://decimo.top/images/screenshoots/2026-03/msedge_VpGzQgKuIc.png?v=b5cf180bf1470970a12b646f8dbd26e2" loading="lazy" width="1449" height="891" />
 </picture>
 
 </p>
@@ -81,9 +81,9 @@
     
     <item>
       <title>251204每日打卡</title>
-      <link>http://localhost:1313/posts/251204/</link>
+      <link>https://decimo.top/posts/251204/</link>
       <pubDate>Thu, 04 Dec 2025 20:43:35 +0800</pubDate>
-      <guid>http://localhost:1313/posts/251204/</guid>
+      <guid>https://decimo.top/posts/251204/</guid>
       <description><![CDATA[<h2 id="极客大挑战-2019lovesql" data-numberify>[极客大挑战 2019]LoveSQL<a class="anchor ms-1" href="#极客大挑战-2019lovesql"></a></h2>
 <p>题目一个登录框，测试一下注入</p>
 <p>用户名输入<code>1'</code>  密码输入<code>aa</code></p>
@@ -99,9 +99,9 @@
     
     <item>
       <title>251129每日打卡</title>
-      <link>http://localhost:1313/posts/251129/</link>
+      <link>https://decimo.top/posts/251129/</link>
       <pubDate>Sat, 29 Nov 2025 20:43:35 +0800</pubDate>
-      <guid>http://localhost:1313/posts/251129/</guid>
+      <guid>https://decimo.top/posts/251129/</guid>
       <description><![CDATA[<p>2025/11/29 我决定每天打卡几道题来积少成多</p>
 
 <h2 id="afctf-2021baby_csp" data-numberify>[AFCTF 2021]BABY_CSP<a class="anchor ms-1" href="#afctf-2021baby_csp"></a></h2>
