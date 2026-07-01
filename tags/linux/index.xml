@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Linux on xiaochai_123的小窝</title>
+    <title>Linux on decimo的小窝</title>
     <link>https://decimo.top/tags/linux/</link>
-    <description>Recent content in Linux on xiaochai_123的小窝</description>
+    <description>Recent content in Linux on decimo的小窝</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <copyright>© 2026 xiaochai-123. 欢迎转载但请注明出处 | 本博客内容版权所有</copyright>
+    <copyright>Copyright © 2026 decimo. All Rights Reserved.</copyright>
     <lastBuildDate>Sat, 13 Jun 2026 20:31:35 +0800</lastBuildDate><atom:link href="https://decimo.top/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>关于打印服务之CUPS_IPP的介绍</title>

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>XXE on xiaochai_123的小窝</title>
+    <title>XXE on decimo的小窝</title>
     <link>https://decimo.top/tags/xxe/</link>
-    <description>Recent content in XXE on xiaochai_123的小窝</description>
+    <description>Recent content in XXE on decimo的小窝</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <copyright>© 2026 xiaochai-123. 欢迎转载但请注明出处 | 本博客内容版权所有</copyright>
+    <copyright>Copyright © 2026 decimo. All Rights Reserved.</copyright>
     <lastBuildDate>Tue, 17 Feb 2026 23:35:35 +0800</lastBuildDate><atom:link href="https://decimo.top/tags/xxe/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>XXE漏洞利用</title>

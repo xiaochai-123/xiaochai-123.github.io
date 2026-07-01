@@ -1,10 +1,10 @@
 <!doctype html>
 <html class="position-relative" itemscope itemtype="https://schema.org/WebPage" lang="en"
   data-bs-theme="auto" data-palette="blue">
-  <head><script src="/assets/init/bundle.min.be5bf43c9112c75717f36bdbd585d1806d20d736b22dbdbcd5fa1f50f3c25d8f.js" integrity="sha256-vlv0PJESx1cX82vb1YXRgG0g1zayLb281fofUPPCXY8=" crossorigin="anonymous"></script>
+  <head><script src="/assets/init/bundle.min.be6ad579a194db645c051e088f04f0da005251a98f6d269fd12dc54593a50e57.js" integrity="sha256-vmrVeaGU22RcBR4IjwTw2gBSUamPbSaf0S3FRZOlDlc=" crossorigin="anonymous"></script>
 <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>XXE漏洞利用 - xiaochai_123的小窝</title>
+    <title>XXE漏洞利用 - decimo的小窝</title>
     <link rel="icon" href="/favicon_hu_54a6302f02e0e2d1.png" sizes="16x16" type="image/png">
     <link rel="icon" href="/favicon_hu_de41146c4fb04ef3.png" sizes="32x32" type="image/png">
     <link rel="icon" href="/favicon_hu_f18a96cef7b3e3c9.png" sizes="150x150" type="image/png">
@@ -18,7 +18,7 @@
   <meta name="twitter:title" content="XXE漏洞利用">
   <meta name="twitter:description" content="XXE漏洞利用学习笔记">
 <meta property="og:url" content="https://decimo.top/posts/xxe%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/">
-  <meta property="og:site_name" content="xiaochai_123的小窝">
+  <meta property="og:site_name" content="decimo的小窝">
   <meta property="og:title" content="XXE漏洞利用">
   <meta property="og:description" content="XXE漏洞利用学习笔记">
   <meta property="og:locale" content="zh_cn">
@@ -72,12 +72,12 @@
     href="https://decimo.top/">
     <picture><img class="logo " alt="Logo" src="https://decimo.top/images/logo.png?v=aa7d5f4fb143f00c0e5686ae2dd15c37" loading="lazy" width="1800" height="1800" />
 </picture>
-xiaochai_123的小窝
+decimo的小窝
 </a>
 
     <div class="offcanvas-lg offcanvas-end flex-grow-1" data-bs-scroll="true" tabindex="-1" id="navbarMenus" aria-labelledby="navbarMenusLabel">
       <div class="offcanvas-header px-4 pb-0">
-        <div class="offcanvas-title h5" id="navbarMenusLabel">xiaochai_123的小窝</div>
+        <div class="offcanvas-title h5" id="navbarMenusLabel">decimo的小窝</div>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" data-bs-target="#navbarMenus" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body p-4 pt-0 p-lg-0">
@@ -237,7 +237,9 @@ xiaochai_123的小窝
     
     
 
-    
+    <a class="action btn-reward" role="button" data-bs-toggle="modal" data-bs-target="#rewardModal" title="Buy me a coffee">
+  <i class="fas fa-fw fa-coffee"></i>
+</a>
     
     
   <a class="action action-toc d-none d-xxl-block" href="#postTOC" role="button" title="Contents">
@@ -246,7 +248,9 @@ xiaochai_123的小窝
 <a class="action action-toc d-block d-xxl-none" href="#post-toc-container" role="button" title="Contents">
   <i class="fas fa-fw fa-list-alt"></i>
 </a>
-
+    <a class="action action-copyright" href="#post-copyright" role="button" aria-label="Copyright" title="Copyright">
+  <i class="fas fa-fw fa-copyright"></i>
+</a>
     <a class="action action-post-comments" href="#post-comments" role="button" aria-label="Comments" title="Comments">
   <i class="fas fa-fw fa-comments"></i>
 </a>
@@ -684,7 +688,26 @@ xiaochai_123的小窝
 </span></span></code></pre></div><p>新年快乐</p>
 </div>
 </div>
-</div><div class="card-footer">
+<div class="modal fade" id="rewardModal" tabindex="-1" aria-labelledby="rewardModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content surface">
+      <div class="modal-header">
+        <h5 class="modal-title text-surface" id="rewardModalLabel"><i class="fas fa-fw fa-coffee me-1"></i>Buy me a coffee</h5>
+        <a href="#" data-bs-dismiss="modal" class="btn-close" aria-label="Close"></a>
+      </div>
+      <div class="modal-body">
+        <ul class="nav nav-tabs mb-3" role="tablist"><li class="nav-item text-nowrap" role="presentation">
+            <a class="nav-link active" id="reward-wechat-tab" data-bs-toggle="tab" href="#reward-wechat" role="tab" aria-controls="reward-wechat" aria-selected="true">
+              <i class="fab fa-fw fa-weixin me-1"></i>WeChat
+            </a>
+          </li></ul>
+        <div class="tab-content" id="rewardTabContent"><div class="tab-pane fade post-reward-content text-center show active" id="reward-wechat" role="tabpanel" aria-labelledby="reward-wechat-tab">
+            <img class="img-fluid post-reward-img" src="https://decimo.top/images/wechat.jpg" loading="lazy" data-viewer-invisible />
+          </div></div>
+      </div>
+    </div>
+  </div>
+</div></div><div class="card-footer">
   <div class="post-navs d-flex justify-content-evenly"><div class="post-nav post-prev">
       <i class="fas fa-fw fa-chevron-down post-prev-icon me-1" data-fa-transform="rotate-90"></i>
       <a href="/posts/sqli-labs/">SQL注入——sqli-labs学习笔记</a>
@@ -692,8 +715,18 @@ xiaochai_123的小窝
       <a href="/posts/arch&#43;hyprland&#43;linux%E5%B0%8F%E6%8A%80%E5%B7%A7/">Arch&#43;Hyprland</a>
       <i class="fas fa-fw fa-chevron-down post-next-icon ms-1" data-fa-transform="rotate-270"></i>
     </div></div>
-</div></article>
-<section class="related-posts row card component">
+</div></article><div class="post-copyright mb-3 row card component" id="post-copyright">
+    <div class="card-header">
+        <h2 class="card-title fs-4 my-2 text-surface">Copyright</h2>
+    </div>
+    <div class="card-body"><a class="d-flex align-items-center flex-column" target="_blank" rel="license noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.en">
+  <span><i class="fab fa-fw fa-2x fa-creative-commons"></i><i class="fab fa-fw fa-2x fa-creative-commons-by"></i><i class="fab fa-fw fa-2x fa-creative-commons-nc"></i><i class="fab fa-fw fa-2x fa-creative-commons-nd"></i></span>
+  CC BY-NC-ND 4.0 
+</a>
+
+
+    </div>
+</div><section class="related-posts row card component">
       <div class="card-header">
         <h2 class="card-title fs-4 my-2 text-surface">
           Related Posts
@@ -815,7 +848,7 @@ xiaochai_123的小窝
 <div class="card mb-3">
   <div class="card-body text-center">
     <img src="/images/my-avatar.jpg" alt="我的头像" class="rounded-circle mb-2" width="100" height="100">
-    <h5 class="card-title">xiaochai_123(decimo)</h5>
+    <h5 class="card-title">decimo(xiaochai_123)</h5>
 	<p id="random-quote" class="card-text text-muted"></p>
 	<script>
 	const quotes = [
@@ -1098,8 +1131,8 @@ xiaochai_123的小窝
   </div>
 </div><div class="row text-center">
   <div class="col-12 mt-2">
-    <p class="mb-2">xiaochai_123的小窝</p>
-    <p class="text-secondary mb-2"><small>Welcome to xiaochai_123’s Blog! I look forward to sharing this great journey with you.</small></p>© 2026 xiaochai-123. 欢迎转载但请注明出处 | 本博客内容版权所有
+    <p class="mb-2">decimo的小窝</p>
+    <p class="text-secondary mb-2"><small>Welcome to decimo’s Blog! I look forward to sharing this great journey with you.</small></p>Copyright © 2026 decimo. All Rights Reserved.
     <div class="footer-line visitor" style="margin: 0.5em 0;">
       <span id="busuanzi_container_site_uv" title="总访客数" style="display: inline;">
         👤 总访客数 <span id="busuanzi_value_site_uv">...</span>
@@ -1134,7 +1167,7 @@ xiaochai_123的小窝
 <script src="/js/copy-code.js"></script>
 <link rel="stylesheet" href="/css/copy-code.css">
 </footer>
-<script data-precache src="/assets/main/bundle.min.75097f20243551e327f1d79e9e7e220bc6b484fd476736cbfa7d7fc02a21186b.js" integrity="sha256-dQl/ICQ1UeMn8deenn4iC8a0hP1HZzbL&#43;n1/wCohGGs=" crossorigin="anonymous" async></script><script data-precache src="/assets/icons/bundle.min.0b03280daa4a59445b0aafc46855a2bb53b310e572534596869c33acaeec09dd.js" integrity="sha256-CwMoDapKWURbCq/EaFWiu1OzEOVyU0WWhpwzrK7sCd0=" crossorigin="anonymous" defer></script>
+<script data-precache src="/assets/main/bundle.min.5452294a0ec50255f284e00504db13db2e07c07ea52127e85258074c7a1f4bcf.js" integrity="sha256-VFIpSg7FAlXyhOAFBNsT2y4HwH6lISfoUlgHTHofS88=" crossorigin="anonymous" async></script><script data-precache src="/assets/icons/bundle.min.0b03280daa4a59445b0aafc46855a2bb53b310e572534596869c33acaeec09dd.js" integrity="sha256-CwMoDapKWURbCq/EaFWiu1OzEOVyU0WWhpwzrK7sCd0=" crossorigin="anonymous" defer></script>
 <script data-precache src="/assets/viewer/bundle.min.cca398d318de9fa7816141db90f09282784fcfe0c5dabc31599b8c589932e4ae.js" integrity="sha256-zKOY0xjen6eBYUHbkPCSgnhPz&#43;DF2rwxWZuMWJky5K4=" crossorigin="anonymous" defer></script>
 <script src="https://giscus.app/client.js"
     data-repo="xiaochai-123/xiaochai-123.github.io"
