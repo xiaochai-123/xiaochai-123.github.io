@@ -33,7 +33,7 @@
   <meta itemprop="description" content="计算机网络技术(408/期末考)">
   <meta itemprop="datePublished" content="2026-06-23T16:31:35+08:00">
   <meta itemprop="dateModified" content="2026-06-23T16:31:35+08:00">
-  <meta itemprop="wordCount" content="1838">
+  <meta itemprop="wordCount" content="3190">
   <meta itemprop="image" content="https://decimo.top/images/network.jpg">
   <meta itemprop="keywords" content="Web">
   <meta property="og:image:alt" content="计算机网络知识梳理（未完待续）" />
@@ -266,7 +266,7 @@ decimo的小窝
     <h1 class="card-title post-title my-2">计算机网络知识梳理（未完待续）</h1>
   </div>
   <div class="card-body"><div class="post-meta mb-3">
-  <span class="post-date me-1 mb-1" title="created on 2026-06-23 16:31:35 &#43;0800 CST.">June 23, 2026</span><span class="post-reading-time me-1 mb-1">9 min read</span><a href="/categories/%E5%A5%87%E5%A6%99%E5%B0%8F%E7%9F%A5%E8%AF%86/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-category">
+  <span class="post-date me-1 mb-1" title="created on 2026-06-23 16:31:35 &#43;0800 CST.">June 23, 2026</span><span class="post-reading-time me-1 mb-1">15 min read</span><a href="/categories/%E5%A5%87%E5%A6%99%E5%B0%8F%E7%9F%A5%E8%AF%86/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-category">
       <i class="fas fa-fw fa-folder me-1"></i>奇妙小知识</a><a href="/tags/web/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-tag">Web</a>
 </div>
 
@@ -971,7 +971,7 @@ decimo的小窝
 
 <h4 id="计算机网络性能度量指标" data-numberify>计算机网络性能度量指标<a class="anchor ms-1" href="#计算机网络性能度量指标"></a></h4>
 
-<h5 id="一时延delay" data-numberify>一、时延（Delay）<a class="anchor ms-1" href="#一时延delay"></a></h5>
+<h5 id="时延delay" data-numberify>时延（Delay）<a class="anchor ms-1" href="#时延delay"></a></h5>
 <p>时延是指数据（一个报文或分组）从网络（或链路）的一端传送到另一端所需的总时间，也称为延迟或迟延。时延由以下四个部分组成：</p>
 <table>
   <thead>
@@ -1006,7 +1006,7 @@ decimo的小窝
 </table>
 <p><strong>总时延</strong> = 传输时延 + 传播时延 + 处理时延 + 排队时延</p>
 
-<h5 id="二时延抖动jitter" data-numberify>二、时延抖动（Jitter）<a class="anchor ms-1" href="#二时延抖动jitter"></a></h5>
+<h5 id="时延抖动jitter" data-numberify>时延抖动（Jitter）<a class="anchor ms-1" href="#时延抖动jitter"></a></h5>
 <p>时延抖动是指时延的变化。由于网络中的队列或缓冲区状态不断变化，分组经历的网络时延会随时间而波动，这种变化称为抖动。</p>
 <p>时延抖动的特点：</p>
 <ul>
@@ -1015,7 +1015,7 @@ decimo的小窝
 <li>对语音、视频等实时多媒体业务影响显著，抖动过大会严重影响用户体验</li>
 </ul>
 
-<h5 id="三往返时延rttround-trip-time" data-numberify>三、往返时延（RTT，Round-Trip Time）<a class="anchor ms-1" href="#三往返时延rttround-trip-time"></a></h5>
+<h5 id="往返时延rttround-trip-time" data-numberify>往返时延（RTT，Round-Trip Time）<a class="anchor ms-1" href="#往返时延rttround-trip-time"></a></h5>
 <p>往返时延是指从发送方发送数据开始，到发送方收到来自接收方的确认，所经历的总时间。</p>
 <p>RTT的主要应用：</p>
 <ul>
@@ -1025,7 +1025,7 @@ decimo的小窝
 <li>TCP协议中用于超时重传时间的计算</li>
 </ul>
 
-<h5 id="四吞吐量throughput" data-numberify>四、吞吐量（Throughput）<a class="anchor ms-1" href="#四吞吐量throughput"></a></h5>
+<h5 id="吞吐量throughput" data-numberify>吞吐量（Throughput）<a class="anchor ms-1" href="#吞吐量throughput"></a></h5>
 <p>吞吐量是指单位时间内通过某个网络（或信道、接口）的数据量，单位为 b/s（bit/s）。</p>
 <table>
   <thead>
@@ -1049,7 +1049,7 @@ decimo的小窝
   </tbody>
 </table>
 
-<h5 id="五利用率utilization" data-numberify>五、利用率（Utilization）<a class="anchor ms-1" href="#五利用率utilization"></a></h5>
+<h5 id="利用率utilization" data-numberify>利用率（Utilization）<a class="anchor ms-1" href="#利用率utilization"></a></h5>
 <table>
   <thead>
       <tr>
@@ -1072,7 +1072,7 @@ decimo的小窝
 <p><strong>注意</strong>：利用率并非越高越好。当利用率接近100%时，意味着网络处于拥塞状态，排队时延会急剧增大，反而导致网络性能严重下降。</p>
 </blockquote>
 
-<h5 id="六丢包率packet-loss-rate" data-numberify>六、丢包率（Packet Loss Rate）<a class="anchor ms-1" href="#六丢包率packet-loss-rate"></a></h5>
+<h5 id="丢包率packet-loss-rate" data-numberify>丢包率（Packet Loss Rate）<a class="anchor ms-1" href="#丢包率packet-loss-rate"></a></h5>
 <p>丢包率是指所丢失的数据包数量占所发送数据包总数的比率。</p>
 <p>丢包率=丢失的数据包数发送的数据包总数丢包率=发送的数据包总数丢失的数据包数</p>
 <p>丢包的主要原因：</p>
@@ -1083,7 +1083,7 @@ decimo的小窝
 <li>链路故障</li>
 </ul>
 
-<h5 id="七各指标之间的关系" data-numberify>七、各指标之间的关系<a class="anchor ms-1" href="#七各指标之间的关系"></a></h5>
+<h5 id="各指标之间的关系" data-numberify>各指标之间的关系<a class="anchor ms-1" href="#各指标之间的关系"></a></h5>
 <table>
   <thead>
       <tr>
@@ -1493,7 +1493,7 @@ decimo的小窝
 <p>信道复用（Channel Multiplexing）是指在有限的物理信道资源上，通过不同方式让多个信号共享同一个信道，以提高资源利用率和通信效率。对物理信道进行复用主要有三种方法：频率、时间和编码。</p>
 <p>常见的信道复用技术有：<strong>频分复用</strong>、<strong>时分复用</strong>、<strong>码分复用</strong>，此外还有一种称为波分复用，本质上是频分复用的光学形式。</p>
 
-<h5 id="一频分复用fdmfrequency-division-multiplexing" data-numberify>一、频分复用（FDM，Frequency Division Multiplexing）<a class="anchor ms-1" href="#一频分复用fdmfrequency-division-multiplexing"></a></h5>
+<h5 id="频分复用fdmfrequency-division-multiplexing" data-numberify>频分复用（FDM，Frequency Division Multiplexing）<a class="anchor ms-1" href="#频分复用fdmfrequency-division-multiplexing"></a></h5>
 <p>频分复用将信道的可用频谱划分为多个互不重叠的频率子带（频段），每个子带分配给一个独立的信号使用。信号在频域上并排分布，互不干扰。</p>
 <p>比如收音机，同时接收各种不同的频段，通过解析不同的频率来换台。</p>
 <table>
@@ -1519,7 +1519,7 @@ decimo的小窝
   </tbody>
 </table>
 
-<h5 id="二时分复用tdmtime-division-multiplexing" data-numberify>二、时分复用（TDM，Time Division Multiplexing）<a class="anchor ms-1" href="#二时分复用tdmtime-division-multiplexing"></a></h5>
+<h5 id="时分复用tdmtime-division-multiplexing" data-numberify>时分复用（TDM，Time Division Multiplexing）<a class="anchor ms-1" href="#时分复用tdmtime-division-multiplexing"></a></h5>
 <p>时分复用将时间划分为若干个等长的<strong>时隙（Time Slot）</strong>，每个时隙轮流分配给不同的信号使用。信号在时间上顺序排列，互不重叠。</p>
 <p>比如对讲机，是半双工通信，需要在不同时间内使用才能有效传递信息，即不同信号在不同时间传输。</p>
 <p><strong>同步时分复用 vs 统计时分复用</strong></p>
@@ -1545,7 +1545,7 @@ decimo的小窝
   </tbody>
 </table>
 
-<h5 id="三码分复用cdmcode-division-multiplexing" data-numberify>三、码分复用（CDM，Code Division Multiplexing）<a class="anchor ms-1" href="#三码分复用cdmcode-division-multiplexing"></a></h5>
+<h5 id="码分复用cdmcode-division-multiplexing" data-numberify>码分复用（CDM，Code Division Multiplexing）<a class="anchor ms-1" href="#码分复用cdmcode-division-multiplexing"></a></h5>
 <p>码分复用为每个信号分配一个<strong>正交码</strong>。所有信号在<strong>同一时间</strong>、<strong>同一频率</strong>上传输，通过不同的编码序列在码域上相互区分。</p>
 <p>就好像不同国家的学生同时在一个屋子里说话，有人在用中文，有人在用英语，有人在用法语交流&hellip;每个人只能听懂自己懂得的语言，听不懂的语言不会影响同语言交流。</p>
 <p><strong>码片序列（Chip Sequence）</strong></p>
@@ -1646,7 +1646,7 @@ decimo的小窝
 <p>$$\text{归一化内积为 } -1 \quad \Longrightarrow \quad \text{节点 B 发送的是比特 0}$$</p>
 </blockquote>
 
-<h5 id="四波分复用wdmwavelength-division-multiplexing" data-numberify>四、波分复用（WDM，Wavelength Division Multiplexing）<a class="anchor ms-1" href="#四波分复用wdmwavelength-division-multiplexing"></a></h5>
+<h5 id="波分复用wdmwavelength-division-multiplexing" data-numberify>波分复用（WDM，Wavelength Division Multiplexing）<a class="anchor ms-1" href="#波分复用wdmwavelength-division-multiplexing"></a></h5>
 <p>波分复用是<strong>频分复用（FDM）在光纤通信中的应用</strong>，本质上是光领域的频率复用。它利用不同波长的光信号在同一根光纤中同时传输。</p>
 <p><picture><img class="img-fluid " alt="msedge_BQp3BBmHmH" src="https://decimo.top/images/screenshoots/2026-06/msedge_BQp3BBmHmH.png?v=39c2f708ac6f5c152a8174fa60fcae71" loading="lazy" width="950" height="501" />
 </picture>
@@ -1754,8 +1754,7 @@ decimo的小窝
 <p>D. 111</p>
 <p><span title="正确答案是：B">🤔 悬停查看答案</span></p>
 <p>[2012] 34. 在物理层接口特性中，用于描述完成每种功能的事件发生顺序的是______。</p>
-<p>A. 机械特性</p>
-<p>B. 功能特性</p>
+<p>A. 机械特性B. 功能特性</p>
 <p>C. 过程特性</p>
 <p>D. 电气特性</p>
 <p><span title="正确答案是：C">🤔 悬停查看答案</span></p>
@@ -1780,6 +1779,1104 @@ decimo的小窝
 <li><strong>交换机组网：</strong> 透明网桥的自学习算法（转发表怎么建立的）。</li>
 </ul>
 </blockquote>
+<p>数据链路层的<strong>核心任务</strong>是：在<strong>物理层</strong>提供的比特流基础上，提供<strong>可靠的</strong>数据传输，并确保数据能<strong>正确地</strong>从一个设备发送到另一个设备。</p>
+<p>它能做的是：</p>
+<ul>
+<li>向网络层提供一个定义良好的服务接口</li>
+<li>将数据报封装成帧/从比特流中解析帧</li>
+<li>错误检测和纠正</li>
+<li>调节数据流</li>
+<li>介质访问控制</li>
+</ul>
+
+<h4 id="帧的基本概念" data-numberify>帧的基本概念<a class="anchor ms-1" href="#帧的基本概念"></a></h4>
+<p>物理层的传输单位叫bit，数据链路层的传输单位就叫<strong>帧</strong>。</p>
+<p>在数据链路层中，数据以“帧（Frame）”的形式进行传输，每一帧通常包含以下三个部分：</p>
+<ul>
+<li>帧头（Header）：包含地址信息（源地址、目的地址）、帧类型、控制信息等。</li>
+<li>数据（payload）：承载来自网络层的数据报文（通常是IP数据报）</li>
+<li>帧尾（Trailer）：通常包含校验和用于检测数据传输错误</li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">帧头</th>
+          <th style="text-align: center">数据报（00111010100011101）</th>
+          <th style="text-align: center">帧尾</th>
+      </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<p>我们所说的封装成帧，其实是<strong>从网络层到数据链路层</strong>的方向去看的。</p>
+<p><picture><img class="img-fluid " alt="msedge_BunaV64fCX" src="https://decimo.top/images/screenshoots/2026-07/msedge_BunaV64fCX.png?v=7717eb7cbfc957d9b7fd5f4a21abe1e5" loading="lazy" width="2249" height="1266" />
+</picture>
+
+</p>
+<p>如图所示，接收的时候则叫<strong>解析帧</strong>。</p>
+
+<h4 id="封装成帧确定数据边界" data-numberify>封装成帧（确定数据边界）<a class="anchor ms-1" href="#封装成帧确定数据边界"></a></h4>
+<p>封装成帧主要为了限制数据的边界，让接收方知道自己</p>
+
+<h5 id="字节计数法" data-numberify>字节计数法<a class="anchor ms-1" href="#字节计数法"></a></h5>
+<p>在帧的头部添加一个字段，指明该帧的字节数。</p>
+<img src="/images/screenshoots/2026-07/msedge_xodb0fk9MI.png" alt="msedge_xodb0fk9MI" style="zoom:50%;" />
+<p>如图所示，如果第二个帧的头部5不小心传错成了7，则会把下一个帧头5给覆盖掉。数据就错乱了。</p>
+<p>优点：简单易实现，占用的额外开销少。</p>
+<p>缺点：如果计数字段的数据<strong>被传输错误</strong>，会导致<strong>数据同步错误</strong>，接收端可能会错误地解析数据。</p>
+
+<h5 id="字符填充法" data-numberify>字符填充法<a class="anchor ms-1" href="#字符填充法"></a></h5>
+<p>使用特殊字符（如SOH代表帧起始，EOT代表帧结束），并在数据部分中避免特殊字符的冲突。</p>
+<p><picture><img class="img-fluid " alt="msedge_TpmZP8P656" src="https://decimo.top/images/screenshoots/2026-07/msedge_TpmZP8P656.png?v=dce710355281bc734ba7a8095ec03bee" loading="lazy" width="1348" height="292" />
+</picture>
+
+</p>
+<p>（这里的SOH和EOT在ASCII值表中出现过（））</p>
+<img src="/images/screenshoots/2026-07/msedge_OgnNvR9AKE.png" alt="msedge_OgnNvR9AKE" style="zoom: 50%;" />
+<p>但是这种方法会出现什么问题呢，假设我们数据报中存在一个EOT该怎么办呢？</p>
+<p>正如C++中，我们要输出一个单引号，<code>cout &lt;&lt; '''</code>是不行的，要加一个转义符<code>cout &lt;&lt; '\''</code></p>
+<p>如果数据中包含SOH、EOT或者ESC，则用ESC（转义字符）来填充，避免误判</p>
+<img src="/images/screenshoots/2026-07/msedge_3vEuuWA3jG.png" alt="msedge_3vEuuWA3jG" style="zoom:50%;" />
+<img src="/images/screenshoots/2026-07/msedge_fVA1RpOfb8.png" alt="msedge_fVA1RpOfb8" style="zoom:50%;" />
+<p>优点：解决了字节计数法的同步问题，适用于字符流（文本）</p>
+<p>缺点：增加了额外的转义字符，可能会占用带宽</p>
+
+<h5 id="比特填充法" data-numberify>比特填充法<a class="anchor ms-1" href="#比特填充法"></a></h5>
+<p>使用特定的比特模式作为帧的起始和终止标志，并在数据部分中避免比特模式的冲突。</p>
+<img src="/images/screenshoots/2026-07/msedge_hD2k1DaFU6.png" alt="msedge_hD2k1DaFU6" style="zoom:50%;" />
+<p>中间也有01111110，那怎么避免冲突呢？</p>
+<p>数据中如果出现连续5个1，则自动填充0</p>
+<img src="/images/screenshoots/2026-07/msedge_DWWXXcUBXj.png" alt="msedge_DWWXXcUBXj" style="zoom:50%;" />
+<p>那么解析帧的时候，把连续五个1后面的0删掉就好了。</p>
+<p>优点：适用于任何比特流，不局限于字符编码（比字符填充更通用）</p>
+<p>缺点：需要额外的比特填充，稍微增加了传输开销。</p>
+
+<h5 id="物理层编码法" data-numberify>物理层编码法<a class="anchor ms-1" href="#物理层编码法"></a></h5>
+<p>数据报封装成帧后，直接在物理层使用信号的变化来标识帧的起始和结束，而不是依赖特定的比特模式。</p>
+<img src="/images/screenshoots/2026-07/msedge_eRVz4teVGW.png" alt="msedge_eRVz4teVGW" style="zoom:50%;" />
+<p>（直接加一段平的来表示开头和结尾）</p>
+<p>优点：不需要填充比特，不会增加额外的开销</p>
+<p>缺点：依赖物理层的编码方式，不适用于所有链路层协议</p>
+
+<h4 id="差错控制错误检测" data-numberify>差错控制——错误检测<a class="anchor ms-1" href="#差错控制错误检测"></a></h4>
+<p>数据在传输过程中，由于各种因素（如干扰、噪声、信号衰减），可能导致比特错误（比特翻转）。数据链路层提供错误检测机制，保证数据传输的可靠性，使得接收端能检测出数据并采取相应措施（如请求重传）。</p>
+
+<h5 id="奇偶校验parity-check" data-numberify>奇偶校验（Parity Check）<a class="anchor ms-1" href="#奇偶校验parity-check"></a></h5>
+<ul>
+<li>奇偶校验具体采用奇校验还是偶校验是发送方与接收方<strong>事先</strong>协商好的</li>
+<li>无论奇校验还是偶校验，判断的都是数据中<strong>1的个数</strong>是奇数还是偶数</li>
+<li>数据的1的个数 + 校验位数字 = 满足奇校验或偶校验的要求</li>
+</ul>
+<p>例如发送数据为10110101，采用偶校验。八位数据中1的个数是5，则在后面增加一位校验位1来使1的总个数为6（偶数个）满足校验要求。</p>
+<img src="/images/screenshoots/2026-07/msedge_oBxYKoEHdB.png" alt="msedge_oBxYKoEHdB" style="zoom:50%;" />
+<p>如果为奇校验，则末尾的检验为写0，满足1的个数为5个（奇数个）满足校验要求。</p>
+<img src="/images/screenshoots/2026-07/msedge_FK9eyKnk6y.png" alt="msedge_FK9eyKnk6y" style="zoom:50%;" />
+<p>当数据不满足奇偶校验条件时重传</p>
+<p>优点：实现简单，开销小</p>
+<p>缺点：检测能力弱，只能检测奇数个比特的错误，偶数个比特错误无法检测。</p>
+
+<h5 id="校验和checksum" data-numberify>校验和（Checksum）<a class="anchor ms-1" href="#校验和checksum"></a></h5>
+<p>校验和是一种常用的错误检测方法，<strong>广泛用于TCP/IP协议</strong>中，具体操作方法如下：</p>
+<ul>
+<li>发送方将待发送的数据分成若干段（通常为16位一组）</li>
+<li>将这些数据段进行二进制求和</li>
+<li>若求和过程中产生进位，则将进位部分<strong>回卷相加</strong>（循环进位）</li>
+<li>最后将求和结果取反，作为校验和附加在数据后发送</li>
+<li>接受方验证后如果<strong>结果全为1</strong>说明数据无误，否则说明数据有问题</li>
+</ul>
+<p>假设发送端数据如下：</p>
+<p>数据段1：0110 0110 0110 0000</p>
+<p>数据段2：0101 0101 0101 0101</p>
+<img src="/images/screenshoots/2026-07/msedge_MSjcF3VZXS.png" alt="msedge_MSjcF3VZXS" style="zoom:50%;" />
+<p>先将所有数据段相加求和，将求和结果取反</p>
+<img src="/images/screenshoots/2026-07/msedge_97MmGzT5Nm.png" alt="msedge_97MmGzT5Nm" style="zoom:50%;" />
+<p>在数据传输的时候，我们把最后得到的结果作为校验和与数据一起发送：</p>
+<p>数据段1：0110 0110 0110 0000</p>
+<p>数据段2：0101 0101 0101 0101</p>
+<p>校验和：  0100 0100 0100 1010</p>
+<p>接收方接收到数据之后，检测结果的过程为：</p>
+<p>先将数据段1和2相加，再加上校验和部分：</p>
+<img src="../../../../AppData/Roaming/Typora/typora-user-images/image-20260711171106841.png" alt="image-20260711171106841" style="zoom: 50%;" />
+<p>结果全为1说明数据没有问题</p>
+<p><strong>回卷相加示例：</strong></p>
+<p>带进位的校验和计算</p>
+<p>数据段1：1111 1111 1111 1111</p>
+<p>数据段2：0000 0000 0000 0001</p>
+<img src="/images/screenshoots/2026-07/msedge_Mf9Uynoo2o.png" alt="msedge_Mf9Uynoo2o" style="zoom: 50%;" />
+<p>发现最高位多进位出一个1，则我们把前面多出来的拿出来回卷相加</p>
+<img src="../../../../AppData/Roaming/Typora/typora-user-images/image-20260711171642252.png" alt="image-20260711171642252" style="zoom:50%;" />
+<p>重复回卷相加直到结果最终和数据段长度相同为16位</p>
+<p>优点：比奇偶校验强，能检测更多错误，简单高效，计算量小</p>
+<p>缺点：不能检测所有错误（例如数据中部分比特位置反转后总和仍相同，无法发现）</p>
+
+<h5 id="循环冗余校验crccyclic-redundancy-check" data-numberify>循环冗余校验（CRC，Cyclic Redundancy Check）<a class="anchor ms-1" href="#循环冗余校验crccyclic-redundancy-check"></a></h5>
+<p>CRC 是一种广泛用于数据链路层的错误检测方法，常用于以太网、HDLC、PPP 等协议。</p>
+<ul>
+<li>发送方和接收方事先约定一个叫作生成多项式的二进制序列</li>
+<li>生成多项式如果有 n 位，发送方在发送数据末尾添加 n-1 个 0</li>
+<li>发送方使用末尾添加 0 的数据除以生成多项式，得到的余数为 CRC 码</li>
+<li>发送方发送原始数据 + CRC</li>
+<li>接收端收到数据后，用同样的生成多项式去除。如果余数为 0，则数据无误；否则数据有误。</li>
+</ul>
+<p>假设发送端情况如下：</p>
+<p>原始数据：1011001</p>
+<p>生成多项式：1101</p>
+<p>生成多项式有4位，所以在原始数据后方加3个0（n-1个0）</p>
+<p>然后做多项式除法：（主要用异或运算）</p>
+<img src="/images/screenshoots/2026-07/msedge_HPe58NEY2O.png" alt="msedge_HPe58NEY2O" style="zoom:67%;" />
+<blockquote>
+<ol>
+<li>在CRC计算中，我们用的是一种特殊的“减法”，叫做<strong>模2减法</strong>。你可以把它想象成“按位比较”：如果两个位相同，结果为0；如果两个位不同，结果为1。这个过程不需要向高位借位，这是它和普通减法的最大区别。</li>
+<li><strong>对齐与初始异或</strong>：将参与计算的数据（末尾已补0）的最高位与生成多项式的最高位对齐，进行第一次**模2除法（异或）**运算。</li>
+<li><strong>结果处理</strong>：将本次异或的结果作为<strong>部分余数</strong>。</li>
+<li><strong>最高位检查</strong>：检查部分余数的最高位（即最左边的位）：
+<ul>
+<li>若最高位为 <strong>1</strong>，则下一轮继续用完整的生成多项式（位数不变）与之进行异或。</li>
+<li>若最高位为 <strong>0</strong>，则下一轮用全0序列（位数与生成多项式相同）与之进行异或。</li>
+</ul>
+</li>
+<li><strong>“落位”操作</strong>：将原始数据中下一位数字“拉下来”，附加到部分余数的末尾，凑成与生成多项式相同位数的新数，然后回到步骤3，重复此过程，直到原始数据的所有位都被“拉下来”参与运算。</li>
+</ol>
+</blockquote>
+<p>最终发送端发送的数据为原始数据 + CRC码：1011001110</p>
+<p>接收方使用生成多项式验证数据是否正确，使用接收到的数据除以生成多项式</p>
+<img src="../../../../AppData/Roaming/Typora/typora-user-images/image-20260711173639887.png" alt="image-20260711173639887" style="zoom: 67%;" />
+<p>余数为0，说明数据正确无误</p>
+<p><strong>为什么1101叫做“生成多项式”？</strong></p>
+<p>CRC中的多项式实际上是“二进制多项式”</p>
+<ul>
+<li>多项式的系数只可能是0或1，而不可能是其他数字</li>
+<li>系数为1的项表示存在该项，系数为0表示不存在该项</li>
+</ul>
+<p>例如：</p>
+<p>$$x^3 + x + 1$$</p>
+<p>如果这个式子作为生成多项式，展开后是这样的：</p>
+<p>$$x^3 + x + 1 = 1 \cdot x^3 + 0 \cdot x^2 + 1 \cdot x + 1$$</p>
+<p>取各幂次的系数即为1011</p>
+<p>同样地，$x^4 + x^3 + x + 1$ 的生成多项式为11011</p>
+<p><strong>生成多项式式如何确定的？</strong></p>
+<p>生成多项式不是随机的，也不是根据数据临时决定的，是事先由协议规定好的，固定不变的</p>
+<ul>
+<li>每一种协议在<strong>制定之初</strong>就明确规定了使用的CRC生成多项式</li>
+<li>不同协议使用的生成多项式<strong>不同</strong>，且<strong>标准化</strong></li>
+<li>发送端和接收端都按照协议规定使用相同的固定生成多项式进行计算</li>
+</ul>
+
+<h5 id="数据链路层常用错误检测方法对比" data-numberify>数据链路层常用错误检测方法对比<a class="anchor ms-1" href="#数据链路层常用错误检测方法对比"></a></h5>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">检测方法</th>
+          <th style="text-align: center">附加开销</th>
+          <th style="text-align: center">实现难度</th>
+          <th style="text-align: center">错误检测能力</th>
+          <th style="text-align: center">常用协议</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">奇偶校验</td>
+          <td style="text-align: center">1 bit</td>
+          <td style="text-align: center">简单</td>
+          <td style="text-align: center">弱（偶数位错漏检）</td>
+          <td style="text-align: center">串行通信</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">校验和</td>
+          <td style="text-align: center">16 bit</td>
+          <td style="text-align: center">较简单</td>
+          <td style="text-align: center">中等</td>
+          <td style="text-align: center">TCP / UDP</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">CRC 校验</td>
+          <td style="text-align: center">16 或 32 bit</td>
+          <td style="text-align: center">中等</td>
+          <td style="text-align: center">非常强</td>
+          <td style="text-align: center">Ethernetm, Wi-Fi, HDLC</td>
+      </tr>
+  </tbody>
+</table>
+
+<h4 id="流量控制与可靠传输调节数据流" data-numberify>流量控制与可靠传输——调节数据流<a class="anchor ms-1" href="#流量控制与可靠传输调节数据流"></a></h4>
+<img src="/images/screenshoots/2026-07/msedge_UKbgSrDQIj.png" alt="msedge_UKbgSrDQIj" style="zoom:67%;" />
+
+<h5 id="停止-等待协议stop-and-wait" data-numberify>停止-等待协议（Stop-and-Wait）<a class="anchor ms-1" href="#停止-等待协议stop-and-wait"></a></h5>
+<p>发送方只有接收到Ack确认帧的时候，才会发送下一个帧。</p>
+<p>在发送出去后直到接收Ack确认帧之间的时间叫做一个RTT。单程发送叫单程时延（RTT/2）</p>
+<img src="/images/screenshoots/2026-07/msedge_hpdLmqkjpW.png" alt="msedge_hpdLmqkjpW" style="zoom:80%;" />
+<p><strong>超时重传</strong>：发送方每发送一帧，就会为该帧启动一个<strong>定时器</strong>。若在定时器超时之前未收到接收方发来的确认帧（ACK），则判定该帧已丢失或出错，并<strong>重传该帧</strong>。</p>
+<p>超时时间的设定通常<strong>略大于一个平均往返时间（RTT）</strong>，并可根据网络状况动态调整，以避免因网络抖动导致不必要的重传。</p>
+<img src="/images/screenshoots/2026-07/msedge_KRnMianceZ.png" alt="msedge_KRnMianceZ" style="zoom: 67%;" />
+<p>那么如果是Ack确认帧丢失了，接收方该如何确定对方发送过来的下一帧是超时重传还是新的一帧呢？</p>
+<img src="/images/screenshoots/2026-07/msedge_fBfWAWLxLc.png" alt="msedge_fBfWAWLxLc" style="zoom:67%;" />
+<p>我们每一个帧是带有编号的，这样就避免了数据混淆的问题。</p>
+
+<h5 id="信道利用率" data-numberify>信道利用率<a class="anchor ms-1" href="#信道利用率"></a></h5>
+<p>信道利用率 $U$：在一个发送周期内，链路真正用来“发送数据帧”的时间占比。</p>
+<p>$$U = \frac{T_f}{T_f + T_{\text{ack}} + \text{RTT}}$$</p>
+<p>其中，数据帧发送时间 $T_f$ 为：</p>
+<p>$$T_f = \frac{L}{R}$$</p>
+<p>参数说明：</p>
+<ul>
+<li>$L$ 为帧长（bit）</li>
+<li>$R$ 为发送速率（bit/s）</li>
+<li>$T_{\text{ack}}$ 为 ACK 帧发送时间（题目描述中可能会忽略此项）</li>
+<li>RTT 为往返时延</li>
+</ul>
+
+<h5 id="例题-5" data-numberify>例题<a class="anchor ms-1" href="#例题-5"></a></h5>
+<p>[2020] 36. 假设主机甲采用停止-等待协议向主机乙发送数据帧，数据帧长与确认帧长均为 1000B，数据传输速率是 10kbps，单向传播延时是 200ms。则甲的最大信道利用率为______。</p>
+<p>A. 80%</p>
+<p>B. 66.7%</p>
+<p>C. 44.4%</p>
+<p>D. 40%</p>
+<p><span title="正确答案是：D">🤔 悬停查看答案</span></p>
+<p>[2018] 36. 主机甲采用停止-等待协议向主机乙发送数据，数据传输速率是 3kbps，单向传播延时是 200ms，忽略确认帧的传输延时。当信道利用率等于 40% 时，数据帧的长度为______。</p>
+<p>A. 240 比特</p>
+<p>B. 400 比特</p>
+<p>C. 480 比特</p>
+<p>D. 800 比特</p>
+<p><span title="正确答案是：D">🤔 悬停查看答案</span></p>
+<p>停止等待协议的信道利用率较低，发送时间通常很短，但等待 ACK + 单程延时很长，链路大部分时间在“空转”。</p>
+<p>于是我们创造了更高效的协议</p>
+<img src="/images/screenshoots/2026-07/msedge_1dCHFyvnQ4.png" alt="msedge_1dCHFyvnQ4" style="zoom:67%;" />
+
+<h5 id="滑动窗口" data-numberify>滑动窗口<a class="anchor ms-1" href="#滑动窗口"></a></h5>
+<p>发送窗口（Send Window）：允许发送未确认的数据帧序号范围</p>
+<p>接收窗口（Receive Window）：接收方当前愿意接收/缓存的数据帧序号范围</p>
+<p>窗口滑动（Slide）：左边界右移，释放额度</p>
+<p>![2026-07-11 21-12-17_1](/images/screenshoots/2026-07/2026-07-11 21-12-17_1.gif)</p>
+
+<h5 id="后退-n-帧协议go-back-n-gbn" data-numberify>后退 n 帧协议（Go Back N, GBN）<a class="anchor ms-1" href="#后退-n-帧协议go-back-n-gbn"></a></h5>
+<p>接收方只按序接收；一旦缺一帧，后面都丢；发送方超时后从缺失处起“一串重传”。</p>
+<p>后退n帧协议正常传输：</p>
+<img src="/images/screenshoots/2026-07/2026-07-11 21-58-27.gif" alt="2026-07-11 21-58-27"  />
+<p>后退n帧协议发生错误时：（1号帧第一次发送时丢失，Ack确认帧丢失）</p>
+<img src="/images/screenshoots/2026-07/2026-07-11 22-24-11.gif" alt="2026-07-11 22-24-11" />
+<p>GBN协议中，发送端只有一个计时器，用于监控当前发送窗口中最旧但未确认的帧；若超时，则需将窗口中所有已发未确认的帧全部重传。接收端采用累积确认且仅按序接收，若期望收到n号帧却收到后续帧，则丢弃这些乱序帧并重复发送对n-1号帧的确认。</p>
+<p>确认帧丢失时，若后续收到更大序号的确认帧，则该丢失确认被覆盖，因为累积确认隐含了此前所有帧均已正确接收。但需注意，此覆盖仅在窗口未发生滑动或序号未回绕时成立；窗口滑动后，旧ACK不能代表新窗口中帧的确认状态。（从逻辑上来讲，既然接收到了更大序号的确认帧，那么他一定收全了所有这之前的帧。）</p>
+<p>假设使用 $n$ 个比特对数据帧进行编号，那么发送窗口数 $S$ 和接收窗口数 $R$ 需要满足的条件是：</p>
+<p>$$S + R \leq 2^n$$</p>
+<p>在后退 $N$ 帧协议中，接收窗口为 1</p>
+<p>发送窗口的数量：</p>
+<p>$$1 &lt; S \leq 2^n - 1$$</p>
+
+<h5 id="选择重传协议select-repeat-sr" data-numberify>选择重传协议（Select Repeat, SR）<a class="anchor ms-1" href="#选择重传协议select-repeat-sr"></a></h5>
+<p>接收方允许乱序接收并缓存；只重传丢的那几帧。</p>
+<p>后退 N 帧：接收端简单，但丢一帧会导致后续到达的帧都被丢弃，发送端还要回退重传一串。</p>
+<p>选择重传：让接收端把乱序到达的帧先收下并缓存，这样只需要重传真正丢掉的帧。</p>
+<p>正常接收（与其他协议差不多，只是接收窗口变得更大，发送端有多个计时器）</p>
+<img src="/images/screenshoots/2026-07/2026-07-11 22-55-51_1.gif" alt="2026-07-11 22-55-51_1" />
+<p>当1号帧第一次发送丢失与1号确认帧丢失：</p>
+<img src="/images/screenshoots/2026-07/2026-07-11 23-07-18.gif" alt="2026-07-11 23-07-18" />
+<p>选择重传协议每一帧都有一个定时器，所以只需要重传超时未确认的帧即可。</p>
+<p>假设使用 $n$ 个比特对数据帧进行编号，那么发送窗口数 $S$ 和接收窗口数 $R$ 需要满足的条件是：</p>
+<p>$$S + R \leq 2^n$$</p>
+<p>在选择重传协议中，通常发送窗口等于接收窗口。</p>
+<p>如果发送窗口大于接收窗口，那么发送的数据帧可能会溢出接收窗口。</p>
+<p>如果接收窗口大于发送窗口，那么接收窗口无法被填满。</p>
+<p><strong>信道利用率的计算</strong></p>
+<p>$$U = \frac{nT_f}{T_f + T_{\text{ack}} + \text{RTT}}$$</p>
+<p>其中，$T_f$ 为数据帧发送时间（把整帧比特推上链路的时间）：</p>
+<p>$$T_f = \frac{L}{R}$$</p>
+<ul>
+<li>
+<p>$L$：帧长（bit）</p>
+</li>
+<li>
+<p>$R$：发送速率（bit/s）</p>
+</li>
+<li>
+<p>$T_{\text{ack}}$ 为 ACK 帧发送时间（ACK 帧上链路时间）</p>
+</li>
+<li>
+<p>$n$：同时发送的数据数（窗口大小）</p>
+</li>
+</ul>
+<p><strong>U公式的倒数即为一个发送周期内最多可以同时发送的数据量，可以得到一个合适的窗口大小。</strong></p>
+
+<h5 id="例题-6" data-numberify>例题<a class="anchor ms-1" href="#例题-6"></a></h5>
+<p>[2009] 35. 数据链路层采用后退 N 帧（GBN）协议，发送方已经发送了编号为 0~7 的帧。当计时器超时时，若发送方只收到 0、2、3 号帧的确认，则发送方需要重发的帧数是______。</p>
+<p>A. 2</p>
+<p>B. 3</p>
+<p>C. 4</p>
+<p>D. 5</p>
+<p><span title="正确答案是：C">🤔 悬停查看答案</span></p>
+<p>[2011] 35. 数据链路层采用选择重传协议（SR）传输数据，发送方已发送了 0~3 号数据帧，现已收到 1 号帧的确认，而 0、2 号帧依次超时，则此时需要重传的帧数是______。</p>
+<p>A. 1</p>
+<p>B. 2</p>
+<p>C. 3</p>
+<p>D. 4</p>
+<p><span title="正确答案是：B">🤔 悬停查看答案</span></p>
+<p>[2012] 36. 两台主机之间的数据链路层采用后退 N 帧协议（GBN）传输数据，数据传输速率为 16kbps，单向传播时延为 270ms，数据帧长度范围是 128 ~ 512 字节，接收方总是以与数据帧等长的帧进行确认。为使信道利用率达到最高，帧序号的比特数至少为 ______。</p>
+<p>A. 5</p>
+<p>B. 4</p>
+<p>C. 3</p>
+<p>D. 2</p>
+<p><span title="正确答案是：B">🤔 悬停查看答案</span></p>
+<p>[2014] 36. 主机甲与主机乙之间使用后退 N 帧协议（GBN）传输数据，甲发送窗口尺寸为 1000，数据帧长度为 1000 字节，信道带宽为 100Mbps，乙每收到一个数据帧立即利用一个短帧（忽略其传输延迟）进行确认，若甲、乙之间的单向传播延迟是 50 ms，则甲可以达到的最大平均数据传输速率约为______。</p>
+<p>A. 10Mbps</p>
+<p>B. 20Mbps</p>
+<p>C. 80Mbps</p>
+<p>D. 100Mbps</p>
+<p><span title="正确答案是：C">🤔 悬停查看答案</span></p>
+
+<h4 id="网络链路类型" data-numberify>网络链路类型<a class="anchor ms-1" href="#网络链路类型"></a></h4>
+<p>点对点链路：由链路一端的单个发送方和链路另外一端的单一端的单个接收方组成</p>
+<p>广播链路：多个发送方和接收方都连接到相同的、单一的、共享的广播信道上</p>
+<p>广播：当任何一个节点传输一帧数据时，其他节点都会受到一个副本</p>
+
+<h4 id="介质访问控制子层medium-access-control-mac" data-numberify>介质访问控制子层（Medium Access Control, MAC）<a class="anchor ms-1" href="#介质访问控制子层medium-access-control-mac"></a></h4>
+<p>介质访问控制子层是数据链路层的一个子层，主要负责在共享介质上协调多个节点的传输，确保各节点按照一定规则访问信道。</p>
+<img src="/images/screenshoots/2026-07/msedge_oe8kTmqeRG.png" alt="msedge_oe8kTmqeRG" style="zoom: 50%;" />
+<p>通俗来讲就是很多电脑连在一根线上，怎么传数据才能不打架！</p>
+<p>与我们之前说的信道复用技术区别在于：信道复用技术是静态的，这里是动态的。</p>
+<img src="/images/screenshoots/2026-07/msedge_jd73GoRur1.png" alt="msedge_jd73GoRur1" style="zoom:50%;" />
+<p>这里的英文缩写需要我们记住。</p>
+
+<h5 id="aloha协议" data-numberify>ALOHA协议<a class="anchor ms-1" href="#aloha协议"></a></h5>
+<p>诞生背景：1970年代，夏威夷大学用于远程岛屿之间的无线数据传输</p>
+<p>核心问题：多个设备共享同一信道，如何协调谁来发送数据？</p>
+<img src="/images/screenshoots/2026-07/msedge_k5vTmQ4eTz.png" alt="msedge_k5vTmQ4eTz" style="zoom:50%;" />
+<p>ALOHA协议比较简单粗暴。总结起来就是八个字：<strong>完全随机，碰撞重传</strong></p>
+<p>发送机制：</p>
+<ul>
+<li>节点一旦有数据就立刻发送，无需监听信道状态</li>
+<li>不关心其它节点是否在发送，属于“盲发”</li>
+</ul>
+<p>冲突处理：</p>
+<ul>
+<li>节点会等待一段时间（随机退避）后再次尝试发送</li>
+</ul>
+<p>理论最大信道利用率：</p>
+<ul>
+<li>约18.4%</li>
+</ul>
+<p>由于ALOHA协议没有监听，所以很容易出现这种部分重叠的情况</p>
+<img src="/images/screenshoots/2026-07/msedge_eOdcx7AAqq.png" alt="msedge_eOdcx7AAqq" style="zoom:50%;" />
+<p>于是ALOHA协议有了一个升级款</p>
+<p><strong>时隙ALOHA</strong></p>
+<ul>
+<li>将时间划分“时隙”，节点只能在时隙开始时发数据</li>
+<li>冲突只能发生在同一个时隙内，不再有“部分重叠”，冲突概率降低</li>
+<li>理论最大信道利用率 36.8%</li>
+<li>要求各节点系统时间同步，增加了实现复杂度</li>
+</ul>
+<img src="/images/screenshoots/2026-07/msedge_8uTbyJL8EZ.png" alt="msedge_8uTbyJL8EZ" style="zoom:50%;" />
+
+<h5 id="csma协议carrier-sense-multiple-access-载波监听多路访问协议" data-numberify>CSMA协议（Carrier Sense Multiple Access, 载波监听多路访问协议)<a class="anchor ms-1" href="#csma协议carrier-sense-multiple-access-载波监听多路访问协议"></a></h5>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">协议类型</th>
+          <th style="text-align: left">描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">1-坚持 CSMA (1-persistent)</td>
+          <td style="text-align: left">监听到信道空闲时立即发送，若忙则持续监听，直到空闲立刻发</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">非坚持 CSMA (Non-persistent)</td>
+          <td style="text-align: left">如果信道忙就随机等待一段时间后重试，避免抢占引发“集体冲突”</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">p-坚持 CSMA (p-persistent)</td>
+          <td style="text-align: left">一般用于时隙信道：监听空闲后以概率 p 发送，1-p 的概率继续等待下一个时隙（通常根据网络负载动态调整p是最优策略（但比较复杂））</td>
+      </tr>
+  </tbody>
+</table>
+
+<h5 id="csmacdcsma-with-collision-detection" data-numberify>CSMA/CD（CSMA with Collision Detection）<a class="anchor ms-1" href="#csmacdcsma-with-collision-detection"></a></h5>
+<p>边发边听，发现冲突马上停止，并等待随机时间再试一次</p>
+<p>节点不仅发送前监听，还在发送的同时持续监听，一旦听到有别的节点的数据与自己数据冲突，立即停下来。</p>
+<p>边发边听，冲突即停，随机等待后重试。是以太网经典共享介质环境下的核心协议。</p>
+
+<h6 id="传播延迟" data-numberify>传播延迟<a class="anchor ms-1" href="#传播延迟"></a></h6>
+<p>传播延迟就是数据或信号从发送节点传输到接收节点的时间。<strong>最大传播延迟</strong>就是最远两个节点之间信号传播的时间。它决定了在最坏情况下，发送节点得多久才能得知是否发生冲突</p>
+<p>如图所示，AE之间传播的延迟就是最大传播延迟。</p>
+<img src="/images/screenshoots/2026-07/msedge_rEHu9siRUQ.png" alt="msedge_rEHu9siRUQ" style="zoom:50%;" />
+<p>因为此协议采用<strong>边发边听</strong>的方式检测冲突，如果发送的帧太小，导致帧在收到冲突信号之前就已经发送完毕，则无法检测到冲突。</p>
+<p>所以最坏情况下，发送节点需要<strong>两倍最大传播延迟</strong>才能得知发生了冲突。（A发送的数据马上抵达E时，E也发了一个数据。此时A从发送数据到接收到E的数据花费了2个最大传播延迟）（<em><strong>我们通常根据此结论计算最短帧长</strong></em>）</p>
+
+<h6 id="争用期往返传播延迟" data-numberify>争用期（往返传播延迟）<a class="anchor ms-1" href="#争用期往返传播延迟"></a></h6>
+<p>争用期即为发送节点多久才能得知是否发生了冲突。最大传播延迟位T，则争用期为2T</p>
+
+<h6 id="最小帧长" data-numberify>最小帧长<a class="anchor ms-1" href="#最小帧长"></a></h6>
+<p>最小帧长的目的，是保证数据帧发送所用的最短时间 ≥ 往返传播延迟</p>
+<p>如果数据帧过小，那么碰撞发生之前监听就停止了，那么就无法检测冲突</p>
+<p>$$\text{最小帧长} = \text{争用期(2T)} \times \text{传输速率}$$</p>
+
+<h6 id="退避时间" data-numberify>退避时间<a class="anchor ms-1" href="#退避时间"></a></h6>
+<p>当多个节点同时发现冲突、同时停下后，如果都同时重新发送，一定再冲突所以设计了随机等待机制（退避），避免持续碰撞</p>
+<p>$$ \text{退避时间} = \text{争用期(2T)} \times \text{随机数k}, \quad k \in [0,\ 2^n-1] $$</p>
+<p>n 为重传次数，n 的值最大为 10，重传次数最多 16 次</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">重传次数</th>
+          <th style="text-align: left">随机数 k 取值范围</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">第 1 次</td>
+          <td style="text-align: left">0 ~ 1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">第 2 次</td>
+          <td style="text-align: left">0 ~ 3</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">第 3 次</td>
+          <td style="text-align: left">0 ~ 7</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&hellip;</td>
+          <td style="text-align: left">&hellip;</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">第 10 次</td>
+          <td style="text-align: left">0 ~ 1023</td>
+      </tr>
+  </tbody>
+</table>
+
+<h5 id="csmacacsma-with-collision-avoidance" data-numberify>CSMA/CA（CSMA with Collision Avoidance）<a class="anchor ms-1" href="#csmacacsma-with-collision-avoidance"></a></h5>
+
+<h6 id="wlan无线局域网" data-numberify>WLAN无线局域网<a class="anchor ms-1" href="#wlan无线局域网"></a></h6>
+<p>WIFI: IEEE 802.11 无线局域网</p>
+<p>BSS: 基本服务集 (Basic Service Set, BSS)</p>
+<p>一个 BSS 包含一个或多个无线站点和一个中央基站 (Access Point, AP)</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">IEEE 802.11 standard</th>
+          <th style="text-align: left">Year</th>
+          <th style="text-align: left">Max data rate</th>
+          <th style="text-align: left">Range</th>
+          <th style="text-align: left">Frequency</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">802.11 b</td>
+          <td style="text-align: left">1999</td>
+          <td style="text-align: left">11 Mbps</td>
+          <td style="text-align: left">30 m</td>
+          <td style="text-align: left">2.4 GHz</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">802.11 g</td>
+          <td style="text-align: left">2003</td>
+          <td style="text-align: left">54 Mbps</td>
+          <td style="text-align: left">30 m</td>
+          <td style="text-align: left">2.4 GHz</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">802.1n (WiFi 4)</td>
+          <td style="text-align: left">2009</td>
+          <td style="text-align: left">600 Mbps</td>
+          <td style="text-align: left">70 m</td>
+          <td style="text-align: left">2.4, 5 GHz</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">802.11 ac (WiFi 5)</td>
+          <td style="text-align: left">2013</td>
+          <td style="text-align: left">3.47 Gbps</td>
+          <td style="text-align: left">70 m</td>
+          <td style="text-align: left">5 GHz</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">802.11 ax (WiFi 6)</td>
+          <td style="text-align: left">2020</td>
+          <td style="text-align: left">14 Gbps</td>
+          <td style="text-align: left">70 m</td>
+          <td style="text-align: left">2.4, 5 GHz</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">802.11 af</td>
+          <td style="text-align: left">2014</td>
+          <td style="text-align: left">35 – 560 Mbps</td>
+          <td style="text-align: left">1 km</td>
+          <td style="text-align: left">54–790 MHz</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">802.11 ah</td>
+          <td style="text-align: left">2017</td>
+          <td style="text-align: left">347 Mbps</td>
+          <td style="text-align: left">1 km</td>
+          <td style="text-align: left">900 MHz</td>
+      </tr>
+  </tbody>
+</table>
+
+<h6 id="无线网络与有线网络" data-numberify>无线网络与有线网络<a class="anchor ms-1" href="#无线网络与有线网络"></a></h6>
+<p>在有线局域网中，当一个站发出一帧时，所有其他站都能接收到这个帧。</p>
+<p>在无线局域网中，由于无线电传输范围有限，无法向所有的站传输帧，也无法接收来自所有其他站的帧。</p>
+<p>在无线局域网中，相对于发送信号而言，接收到的信号可能很微弱，因此，在无线信道中进行冲突检测非常困难，硬件成本高。</p>
+
+<h6 id="隐藏站问题" data-numberify>隐藏站问题<a class="anchor ms-1" href="#隐藏站问题"></a></h6>
+<p>站 B 在站 A 和站 C 的信号覆盖范围内，可以接收站 A 和站 C 的数据，由于竞争者离的太远而导致无法检测到潜在的竞争者，这个问题称为隐藏问题。</p>
+<img src="/images/screenshoots/2026-07/msedge_LEdFNqFOqR.png" alt="msedge_LEdFNqFOqR" style="zoom:50%;" />
+<p>站 B 向站 A 传输数据，站 C 向站 D 传输数据。当站 C 侦听到该范围内有数据传输，为了避免冲突，站 C 暂停向站 D 传输数据。不过站 C 的结论是错误的。</p>
+<img src="/images/screenshoots/2026-07/msedge_9m0n4HDNem.png" alt="msedge_9m0n4HDNem" style="zoom:50%;" />
+
+<h6 id="带碰撞避免的-csmacsma-with-collision-avoidancecsma--ca" data-numberify>带碰撞避免的 CSMA（CSMA with Collision Avoidance，CSMA / CA）<a class="anchor ms-1" href="#带碰撞避免的-csmacsma-with-collision-avoidancecsma--ca"></a></h6>
+<p>节点在发送数据之前监听无线信道，如果信号强度超过一定阈值则认为当前有其他节点在该信道上发送数据，此时随机等一段时间后再次监听。</p>
+<p>如果检测到信道空闲，需要等到一个帧间间隔（InterFrame Space，IFS）之后再发送数据，在等待的时候保持监听。</p>
+<p>DIFS（Distributed InterFrame Space）分布式帧间间隔：</p>
+<ul>
+<li>用于普通数据帧之间的间隔</li>
+<li>节点在发送数据帧之前，需要监听信道是否空闲，若信道空闲，则等待 DIFS 时间再发送</li>
+</ul>
+<p>SIFS（Short InterFrame Space 短帧间隔）：</p>
+<ul>
+<li>用于控制帧（如 ACK、RTS / CTS 等）之间的间隔</li>
+<li>SIFS 是最短的间隔，通常用于控制信道使用的帧。</li>
+</ul>
+<p>EIFS（Extended InterFrame Space）扩展帧间隔：</p>
+<ul>
+<li>主要用于错误帧，例如接收到错误数据的节点在发送 ACK 前需要等待更长时间。</li>
+</ul>
+<p><picture><img class="img-fluid " alt="msedge_dyBmKPuyMG" src="https://decimo.top/images/screenshoots/2026-07/msedge_dyBmKPuyMG.png?v=8990213f96d6d087a5b77b8de85313ab" loading="lazy" width="1702" height="850" />
+</picture>
+
+</p>
+<p>信道预约：</p>
+<p>在发送数据帧之前，发送方首先广播一个 RTS（Request to Send）帧这个 RTS 帧能够被其范围内的所有站点侦听到（图中：A向自己的范围内广播自己要向B发送数据）</p>
+<img src="/images/screenshoots/2026-07/msedge_6j9q7RvQfB.png" alt="msedge_6j9q7RvQfB" style="zoom:50%;" />
+<p>接收方收到RTS帧后，需要广播一个CTS（Clear to Send）帧作为应答。发送方收到CTS帧之后开始数据传输。</p>
+<img src="/images/screenshoots/2026-07/msedge_CfoBHG7WCJ.png" alt="msedge_CfoBHG7WCJ" style="zoom:50%;" />
+<p>任何一个站若监听到 RTS 帧，这些站必须保持沉默，等待足够长的时间，以便发送站接收 CTS 帧。</p>
+<img src="/images/screenshoots/2026-07/msedge_K6fcDhLU62.png" alt="msedge_K6fcDhLU62" style="zoom:67%;" />
+<p>尽管有了预约信道来预防碰撞，但是如果多个发送方同时发送 RTS 帧，这些帧将发生部突，从而丢失数据。发送方没有在期望的时间间隔内收到 CTS 帧，则判定发生冲突。发送方将等待一段随机时间后，再进行重试。</p>
+<p>当链路中大部分主机都比较繁忙，多台主机同时发送数据频率高，如果采用随机访问的方式，发生冲突的概率会比较高，可以采用轮询访问</p>
+<img src="/images/screenshoots/2026-07/msedge_uaBwuKu3oE.png" alt="msedge_uaBwuKu3oE" style="zoom:50%;" />
+<p>也就是说有令牌的主机才可以发信，大家轮流持有令牌，这样避免了冲突</p>
+
+<h6 id="例题-7" data-numberify>例题<a class="anchor ms-1" href="#例题-7"></a></h6>
+<p>[2018] 35. IEEE 802.11 无线局域网的 MAC 协议 CSMA/CA 进行信道预约的方法是______。</p>
+<p>A. 发送确认</p>
+<p>B. 采用二进制指数退避</p>
+<p>C. 使用多个 MAC 地址</p>
+<p>D. 交换 RTS 与 CTS 帧</p>
+<p><span title="正确答案是：D">🤔 悬停查看答案</span></p>
+<p>[2020] 37. 某 IEEE 802.11 无线局域网中，主机 H 与 AP 之间发送或接收 CSMA/CA 帧的过程如下图所示。在 H 或 AP 发送帧前所等待的帧间间隔时间（IFS）中，最长的是______。</p>
+<img src="/images/screenshoots/2026-07/msedge_4UwZ4ZAxu7.png" alt="msedge_4UwZ4ZAxu7" style="zoom:50%;" />
+<p>A. IFS1</p>
+<p>B. IFS2</p>
+<p>C. IFS3</p>
+<p>D. IFS4</p>
+<p><span title="正确答案是：A">🤔 悬停查看答案</span></p>
+<p>[2010] 47. （9分）某局域网采用 CSMA/CD 协议实现介质访问控制，数据传输速率为 10 Mbps，主机甲和主机乙之间的距离为 2 km，信号传播速度为 200000 km/s。请回答下列问题，要求说明理由或写出计算过程。</p>
+<p>1）若主机甲和主机乙发送数据时发生冲突，则从开始发送数据时刻起，到两台主机均检测到冲突时刻止，最短需经过多长时间？最长需经过多长时间（假设主机甲和主机乙发送数据过程中，其他主机不发送数据）？</p>
+<p><span title="最短时间：10μs；最长时间：20μs">🤔 悬停查看答案</span></p>
+<p>2）若网络不存在任何冲突与差错，主机甲总是以标准的最长以太网数据帧（1518B）向主机乙发送数据，主机乙每成功收到一个数据帧后立即向主机甲发送一个64B的确认帧，主机甲收到确认帧后方可发送下一个数据帧。此时主机甲的有效数据传输速率是多少（不考虑以太网的前导码）？</p>
+<p><span title="答案：约 9.3 Mbps">🤔 悬停查看答案</span></p>
+
+<h5 id="介质访问控制子层mac各协议对比" data-numberify>介质访问控制子层（MAC）各协议对比<a class="anchor ms-1" href="#介质访问控制子层mac各协议对比"></a></h5>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">协议</th>
+          <th style="text-align: left">是否监听信道</th>
+          <th style="text-align: left">是否使用时隙</th>
+          <th style="text-align: left">是否检测冲突</th>
+          <th style="text-align: left">最大信道利用率</th>
+          <th style="text-align: left">应用例子</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>纯 ALOHA</strong></td>
+          <td style="text-align: left">否</td>
+          <td style="text-align: left">否</td>
+          <td style="text-align: left">否</td>
+          <td style="text-align: left">18%</td>
+          <td style="text-align: left">无线早期实验</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>时隙 ALOHA</strong></td>
+          <td style="text-align: left">否</td>
+          <td style="text-align: left">是</td>
+          <td style="text-align: left">否</td>
+          <td style="text-align: left">37%</td>
+          <td style="text-align: left">RFID、低速无线网</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>CSMA</strong></td>
+          <td style="text-align: left">是</td>
+          <td style="text-align: left">否</td>
+          <td style="text-align: left">否</td>
+          <td style="text-align: left">高于 ALOHA</td>
+          <td style="text-align: left">局域网</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>CSMA/CD</strong></td>
+          <td style="text-align: left">是</td>
+          <td style="text-align: left">否</td>
+          <td style="text-align: left">是</td>
+          <td style="text-align: left">40%-60%</td>
+          <td style="text-align: left"><strong>有线</strong>以太网</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>CSMA/CA</strong></td>
+          <td style="text-align: left">是</td>
+          <td style="text-align: left">否</td>
+          <td style="text-align: left">避免冲突</td>
+          <td style="text-align: left">中等</td>
+          <td style="text-align: left">Wi-Fi</td>
+      </tr>
+  </tbody>
+</table>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">协议</th>
+          <th style="text-align: left">核心特点</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>纯 ALOHA</strong></td>
+          <td style="text-align: left">想发就发，不监听、不检测冲突，冲突后随机等待重传</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>时隙 ALOHA</strong></td>
+          <td style="text-align: left">只能在时隙开始时发送，降低了冲突概率</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>CSMA</strong></td>
+          <td style="text-align: left">发送前先监听信道（载波监听），信道空闲才发送</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>CSMA/CD</strong></td>
+          <td style="text-align: left">在 CSMA 基础上增加了<strong>冲突检测</strong>能力，边发边听，冲突后立即停止发送，缩短无效传输时间</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>CSMA/CA</strong></td>
+          <td style="text-align: left">在 CSMA 基础上采用<strong>冲突避免</strong>机制（预约信道、ACK确认等），主要用于无线网络</td>
+      </tr>
+  </tbody>
+</table>
+
+<h5 id="例题-8" data-numberify>例题<a class="anchor ms-1" href="#例题-8"></a></h5>
+<p>[2009] 37. 在一个采用 CSMA/CD 协议的网络中，传输介质是一根完整的电缆，传输速率为 1 Gbps，电缆中的信号传播速度为 200000 km/s。若最小数据帧长度减少 800 bit，则最远的两个站点之间的距离至少需要______。</p>
+<p>A. 增加 160 m</p>
+<p>B. 增加 80 m</p>
+<p>C. 减少 160 m</p>
+<p>D. 减少 80 m</p>
+<p><span title="正确答案是：D">🤔 悬停查看答案</span></p>
+<p>[2013] 36. 下列介质访问控制方法中，可能发生冲突的是_____。</p>
+<p>A. CDMA</p>
+<p>B. CSMA</p>
+<p>C. TDMA</p>
+<p>D. FDMA</p>
+<p><span title="正确答案是：B">🤔 悬停查看答案</span></p>
+<p>[2015] 36. 下列关于 CSMA/CD 协议的叙述中，错误的是_____。</p>
+<p>A. 边发送数据帧，边检测是否发生冲突</p>
+<p>B. 适用于无线网络，以实现无线链路共享</p>
+<p>C. 需要根据网络的跨距和数据传输速率限定最小帧长</p>
+<p>D. 当信号传播延迟趋近 0 时，信道利用率趋近 100%</p>
+<p><span title="正确答案是：B">🤔 悬停查看答案</span></p>
+<p>[2019] 36. 假设一个采用 CSMA/CD 协议的 100 Mb/s 局域网，最小帧长是 128B，则在一个冲突域内两个站点之间的单向传播延时最多是_____。</p>
+<p>A. 2.56μs</p>
+<p>B. 5.12μs</p>
+<p>C. 10.24μs</p>
+<p>D. 20.48μs</p>
+<p><span title="正确答案是：B">🤔 悬停查看答案</span></p>
+
+<h4 id="以太网" data-numberify>以太网<a class="anchor ms-1" href="#以太网"></a></h4>
+
+<h5 id="数据信号传输模式" data-numberify>数据/信号传输模式<a class="anchor ms-1" href="#数据信号传输模式"></a></h5>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">模式</th>
+          <th style="text-align: left">含义</th>
+          <th style="text-align: left">生活中的例子</th>
+          <th style="text-align: left">网络中典型应用</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">单工</td>
+          <td style="text-align: left">只能单向发送</td>
+          <td style="text-align: left">收音机广播</td>
+          <td style="text-align: left">单向广播线路</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">半双工</td>
+          <td style="text-align: left">双方都能发送，但不能同时发送</td>
+          <td style="text-align: left">对讲机</td>
+          <td style="text-align: left">WiFi、集线器式以太网</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">全双工</td>
+          <td style="text-align: left">双方能同时发送或接收数据</td>
+          <td style="text-align: left">电话通话</td>
+          <td style="text-align: left">交换式以太网、光纤</td>
+      </tr>
+  </tbody>
+</table>
+
+<h5 id="局域网lan" data-numberify>局域网（LAN）<a class="anchor ms-1" href="#局域网lan"></a></h5>
+<p>概念：是一种覆盖范围较小的计算机网络，典型的使用场景是一个办公室、一个实验室、栋楼甚至一个小型园区。</p>
+<p>特点：传输距离短、速度快、管理成单、成本低。</p>
+<p>局域网的关键功能：实现本地设备间的高速通信和资源共享。</p>
+<p>局域网是应用范围（在一个有限区域内实现网络互连）</p>
+
+<h5 id="以太网ethernet" data-numberify>以太网（Ethernet)<a class="anchor ms-1" href="#以太网ethernet"></a></h5>
+<p>概念：以太网是一种具体的局域网通信协议标准，定义了物理层和数据链路层的实现方式。</p>
+<p>起源与发展：最早由Xerox公司提出，后由DEC、Intel和Xerox联合推广形成DIX标准，之后成为IEEE 802.3标准的核心。</p>
+<p>功能：规定了MAC地址、帧结构、介质访问控制（如CSMA/CD机制）、传输速率（10Mbps→100Mbps→1Gbps及以上）等。</p>
+<p>以太网是实现技术（怎么连、用什么协议、什么硬件）</p>
+<p>除了以太网，还有其它局域网技术，比如早期的 Token Ring、FDDI、ARCnet（但现在几乎都被以太网淘汰了）。</p>
+<img src="/images/screenshoots/2026-07/msedge_fFGAj5bpPg.png" alt="msedge_fFGAj5bpPg" style="zoom:50%;" />
+
+<h5 id="集线器hub" data-numberify>集线器（HUB）<a class="anchor ms-1" href="#集线器hub"></a></h5>
+<p>连接在集线器上的所有计算机是处在一个冲突域内的。会互相挤占带宽。（比如一个人在下载电影，另一个人玩游戏就会卡。）</p>
+<p>集线器VS交换机</p>
+<p><picture><img class="img-fluid " alt="image-20260712003155850" src="" loading="lazy" />
+</picture>
+
+</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">维度</th>
+          <th style="text-align: left">集线器（Hub）</th>
+          <th style="text-align: left">交换机（Switch Hub）</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">工作层次</td>
+          <td style="text-align: left">物理层</td>
+          <td style="text-align: left">数据链路层</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">冲突域</td>
+          <td style="text-align: left">所有端口共享一个冲突域</td>
+          <td style="text-align: left">每个端口是独立的冲突域</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">通信方式</td>
+          <td style="text-align: left">半双工</td>
+          <td style="text-align: left">通常全双工</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">是否使用 CSMA / CD</td>
+          <td style="text-align: left">是</td>
+          <td style="text-align: left">否</td>
+      </tr>
+  </tbody>
+</table>
+
+<h5 id="中继器repeater" data-numberify>中继器（Repeater）<a class="anchor ms-1" href="#中继器repeater"></a></h5>
+<p>以太网中电缆具有最大的长度限制，也就是信号可以不失真传播的最大长度（粗：500米，细：185米），超过这个长度信号就不能正常传播了。</p>
+<p>中继器是一种信号增强装置，它能接收、放大并重传信号，多段由中继器连接起来的电缆段与一根单独电缆没有什么区别（队了由中继器引入的少量延迟）。</p>
+
+<h5 id="mac地址" data-numberify>MAC地址<a class="anchor ms-1" href="#mac地址"></a></h5>
+<p>MAC 地址又被称为硬件地址或物理地址，由 48 个比特位（6 个字节）组成。</p>
+<p>MAC 地址是全球唯一的</p>
+<p><picture><img class="img-fluid " alt="msedge_XccALDDbsf" src="https://decimo.top/images/screenshoots/2026-07/msedge_XccALDDbsf.png?v=78759fa25e7b5901c53d8caa639c8507" loading="lazy" width="1479" height="496" />
+</picture>
+
+</p>
+<p>单播地址：第一个字节最低位为 0，表示目标是唯一的某个主机。</p>
+<img src="/images/screenshoots/2026-07/msedge_bo1eqjyNFl.png" alt="msedge_bo1eqjyNFl" style="zoom: 50%;" />
+<p>组播地址：第一个字节最低位为 1，表示目标是一组设备。</p>
+<p>广播地址：全 F（FF-FF-FF-FF-FF-FF-FF），也可以视为一种特殊的“组播”。</p>
+
+<h5 id="经典以太网" data-numberify>经典以太网<a class="anchor ms-1" href="#经典以太网"></a></h5>
+<p>任意两个节点之间的距离不能超过 2.5 km，并且任意两个收发器之间的路径不能跨越 4 个中继器。</p>
+<p>往返时间：50 μs</p>
+<p><picture><img class="img-fluid " alt="msedge_sQqiX1yWLU" src="https://decimo.top/images/screenshoots/2026-07/msedge_sQqiX1yWLU.png?v=a00902450a0981dc6b1c7d33c6ba4925" loading="lazy" width="1413" height="269" />
+</picture>
+
+</p>
+<p>经典以太网帧格式</p>
+<img src="/images/screenshoots/2026-07/msedge_LoXNE18byo.png" alt="msedge_LoXNE18byo" style="zoom:50%;" />
+<p>以太网最大的传输单元（MTU）1500 字节，如果数据报超过 1500 字节，主机必须将该数据报分片。如果小于 46 个字节，需要将数据报填充到 46 字节。</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">字段名称</th>
+          <th style="text-align: left">长度</th>
+          <th style="text-align: left">作用说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">前导码（Preamble）</td>
+          <td style="text-align: left">7</td>
+          <td style="text-align: left">帮助接收端建立比特同步（10101010重复）</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">帧开始定界符（SFD）</td>
+          <td style="text-align: left">1</td>
+          <td style="text-align: left">表示帧的正式开始（10101011）</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">目标MAC地址</td>
+          <td style="text-align: left">6</td>
+          <td style="text-align: left">接收方的物理地址</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">源MAC地址</td>
+          <td style="text-align: left">6</td>
+          <td style="text-align: left">发送方的物理地址</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">类型/长度</td>
+          <td style="text-align: left">2</td>
+          <td style="text-align: left">指出&quot;数据&quot;字段的协议类型或长度</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">数据</td>
+          <td style="text-align: left">46~1500</td>
+          <td style="text-align: left">正文数据部分</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">帧校验序列（FCS）</td>
+          <td style="text-align: left">4</td>
+          <td style="text-align: left">使用CRC检查帧是否损坏</td>
+      </tr>
+  </tbody>
+</table>
+
+<h5 id="交换以太网" data-numberify>交换以太网<a class="anchor ms-1" href="#交换以太网"></a></h5>
+<p><picture><img class="img-fluid " alt="msedge_fFGAj5bpPg" src="https://decimo.top/images/screenshoots/2026-07/msedge_fFGAj5bpPg.png?v=f6bf4db89e3d713479d0cbc1554191d4" loading="lazy" width="1366" height="720" />
+</picture>
+
+</p>
+
+<h6 id="快速以太网" data-numberify>快速以太网<a class="anchor ms-1" href="#快速以太网"></a></h6>
+<p>基本思想：保留原来的帧格式、接口和过程规则</p>
+<p>将比特的传输速率从 10 Mb/s 提升到 100 Mb/s，为了保证及时的检测冲突，只要将电缆的最大长度降低到 1 / 10 即可</p>
+<img src="/images/screenshoots/2026-07/msedge_vunwZi0BGr.png" alt="msedge_vunwZi0BGr" style="zoom:50%;" />
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">名称</th>
+          <th style="text-align: left">线缆</th>
+          <th style="text-align: left">最大长度</th>
+          <th style="text-align: left">优点</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">100Base-T4</td>
+          <td style="text-align: left">双绞线</td>
+          <td style="text-align: left">100米</td>
+          <td style="text-align: left">可用 3 类 UTP</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">100Base-TX</td>
+          <td style="text-align: left">双绞线</td>
+          <td style="text-align: left">100米</td>
+          <td style="text-align: left">全双工速率 100 Mbps（5类UTP）</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">100Base-FX</td>
+          <td style="text-align: left">光纤</td>
+          <td style="text-align: left">2000米</td>
+          <td style="text-align: left">全双工速率 100 Mbps，距离长</td>
+      </tr>
+  </tbody>
+</table>
+
+<h6 id="千兆以太网" data-numberify>千兆以太网<a class="anchor ms-1" href="#千兆以太网"></a></h6>
+<p>当计算机被连接到一个集线器而不是交换机时，就会使用半双工模式。</p>
+<img src="/images/screenshoots/2026-07/msedge_vovqZ1shnB.png" alt="msedge_vovqZ1shnB" style="zoom:50%;" />
+<p>IEEE 802 加入了两个特性，使得最大线缆长度增加到 200 m</p>
+<p>特性一：载波扩充，本质就是让硬件在普通帧后增加一些填充位，将帧的长度从 64 个字节扩充到 512 字节（提升 8 倍），当用户发送 46 字节时，使用 512 字节传输，线路利用率只有 9%</p>
+<p>特性二：帧突发，允许发送方将多个待发送的帧的序列级联在一起，一次传输出去。如果帧突发仍然小于 512 字节，则硬件再进行填充。</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">名称</th>
+          <th style="text-align: left">线缆</th>
+          <th style="text-align: left">最大长度</th>
+          <th style="text-align: left">优点</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">1000Base-SX</td>
+          <td style="text-align: left">光纤</td>
+          <td style="text-align: left">550 米</td>
+          <td style="text-align: left">多模光纤（50、62.5微米）</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">1000Base-LX</td>
+          <td style="text-align: left">光纤</td>
+          <td style="text-align: left">5000 米</td>
+          <td style="text-align: left">单模光纤（10微米）或多模光纤</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">1000Base-CX</td>
+          <td style="text-align: left">2 对 STP</td>
+          <td style="text-align: left">25 米</td>
+          <td style="text-align: left">屏蔽双绞线</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">1000Base-T</td>
+          <td style="text-align: left">2 对 UTP</td>
+          <td style="text-align: left">100 米</td>
+          <td style="text-align: left">标准 5 类 UTP</td>
+      </tr>
+  </tbody>
+</table>
+
+<h6 id="万兆以太网" data-numberify>万兆以太网<a class="anchor ms-1" href="#万兆以太网"></a></h6>
+<p>万兆以太网的所有版本只支持全双工操作，CSMA / CD 不再属于设计的一部分。</p>
+<p>主要用在数据中心和交换局内部，用来连接高端路由器、交换机和服务器</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">名称</th>
+          <th style="text-align: left">线缆</th>
+          <th style="text-align: left">最大长度</th>
+          <th style="text-align: left">优点</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">10GBase-SR</td>
+          <td style="text-align: left">光纤</td>
+          <td style="text-align: left">最多 300 米</td>
+          <td style="text-align: left">多模光纤（0.85 微米）</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">10GBase-LR</td>
+          <td style="text-align: left">光纤</td>
+          <td style="text-align: left">10 千米</td>
+          <td style="text-align: left">单模光纤（1.3 微米）</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">10GBase-ER</td>
+          <td style="text-align: left">光纤</td>
+          <td style="text-align: left">40 千米</td>
+          <td style="text-align: left">单模光纤（1.5 微米）</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">10Base-CX4</td>
+          <td style="text-align: left">4对双轴</td>
+          <td style="text-align: left">15 米</td>
+          <td style="text-align: left">双轴铜缆</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">10GBase-T</td>
+          <td style="text-align: left">4对UTP</td>
+          <td style="text-align: left">100 米</td>
+          <td style="text-align: left">6a类UTP</td>
+      </tr>
+  </tbody>
+</table>
+
+<h5 id="传统局域网的局限性" data-numberify>传统局域网的局限性<a class="anchor ms-1" href="#传统局域网的局限性"></a></h5>
+<p>**广播风暴：**在一个大的局域网中，广播消息会不停地传输，影响带宽和网络性能，导致网络拥堵。</p>
+<p>**安全问题：**所有设备都在同一个广播域内，恶意设备可能会轻易地接收到其他设备的流量，存在安全隐患。</p>
+<p>**扩展问题：**随着网络规模的扩大，增加设备时必须调整物理布线，这使得扩展变得困难且成本高。</p>
+
+<h5 id="虚拟局域网" data-numberify>虚拟局域网<a class="anchor ms-1" href="#虚拟局域网"></a></h5>
+<p>“网络规模不断扩大，我们如何能够在不改变物理结构的情况下，提高网络的效率、增强安全性、简化管理，而且还能灵活扩展？”</p>
+<p>将物理局域网（LAN）划分为多个逻辑上的子网，每个子网叫做一个 VLAN。VLAN 通过逻辑隔离设备，保证设备之间的通信可以被有效管理，同时不会受到物理位置的限制。</p>
+<p><picture><img class="img-fluid " alt="msedge_KtxdKGHxLd" src="https://decimo.top/images/screenshoots/2026-07/msedge_KtxdKGHxLd.png?v=588dbea236e341cbe7a1c20fe19e3f88" loading="lazy" width="1664" height="350" />
+</picture>
+
+</p>
+<p><strong>虚拟局域网的目标</strong></p>
+<p>隔离广播流量：减少广播消息在网络中的传播范围。</p>
+<p>提高安全性：通过将不同部门或功能的设备划分到不同的 VLAN，可以有效隔离它们之间的通信，降低攻击的风险。</p>
+<p>简化网络管理：即使设备不在同一位置，也可以通过 VLAN 分配到相应逻辑子网中。</p>
+<p>提高网络性能：划分 VLAN 可以减少网络中的冲突和广播流量，提高网络的整体效率。、</p>
+<p>如何划分虚拟局域网（VLAN）</p>
+<p>最常用的方法是：根据交换机的端口来划分 VLAN
+以太网交换机的接口分为两类：access 接口和 trunk 接口</p>
+<p><picture><img class="img-fluid " alt="msedge_oEwsfl1hal" src="https://decimo.top/images/screenshoots/2026-07/msedge_oEwsfl1hal.png?v=0535b84877a334458b67602d3481b2eb" loading="lazy" width="1359" height="488" />
+</picture>
+
+</p>
+<p>access端口：接收帧后，根据预先分配好的 VID 值，给帧添加标签，然后判断交换机内其它端口分配的 VID 与帧中的标签 VID 是否一致，如果一致则转发，否则不转发。</p>
+<p>trunk接口：一般用于交换机之间的互联</p>
+
+<h5 id="广域网" data-numberify>广域网<a class="anchor ms-1" href="#广域网"></a></h5>
+<p>广域网通常指覆盖范围很广的长距离网络，通常连接不同地区的城域网或者局域网，用来实现远距离通信。</p>
+<p>广域网中数据链路层使用的是点对点信道，主要使用的协议有 PPP、LCP、NCP</p>
+
+<h6 id="ppp协议" data-numberify>PPP协议<a class="anchor ms-1" href="#ppp协议"></a></h6>
+<p>PPP（Point to Point Protocol）协议：用于点对点的数据链路中，为通信双方建立点对点的连接。PPP 协议只支持点对点全双式链路的数据链路层协议</p>
+<ul>
+<li>将 IP 数据报封装到串行链路中，这部分信息长度小于 MTU（0～1500）</li>
+<li>链路控制协议（Link Control Protocal, LCP）：用于建立、配置和测试链路的连接</li>
+<li>网络控制协议（Network Control Protocal, NCP）：用于支持不同网络层协议（如 IPv4、IPv6）的配置和协商。</li>
+</ul>
+<p>PPP协议数据帧格式</p>
+<p><picture><img class="img-fluid " alt="msedge_2sceT6QNaq" src="https://decimo.top/images/screenshoots/2026-07/msedge_2sceT6QNaq.png?v=7f04a8c59933ecd6a19f74b41c0e94fe" loading="lazy" width="1671" height="624" />
+</picture>
+
+</p>
+<p>发起连接：PPP 连接通过链路控制协议（LCP）进行协商，双方交换链路参数并通过认证。</p>
+<p>数据传输：PPP 数据帧根据网络层协议（如 IPv4）进行封装，并通过点对点链路传输。</p>
+<p>链路管理：连接过程中，LCP 会对链路状态进行监控，并在必要时进行链路恢复。</p>
+<p>断开连接：通信完成后，PPP 通过 LCP 断开连接。</p>
+<p><strong>IEEE 802.11帧</strong></p>
+<p><picture><img class="img-fluid " alt="msedge_PSXcOgETn1" src="https://decimo.top/images/screenshoots/2026-07/msedge_PSXcOgETn1.png?v=da077bc1922ddad107089ecd4668deb5" loading="lazy" width="1663" height="220" />
+</picture>
+
+</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">类型</th>
+          <th style="text-align: left">地址1</th>
+          <th style="text-align: left">地址2</th>
+          <th style="text-align: left">地址3</th>
+          <th style="text-align: left">地址4</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">IBSS 帧</td>
+          <td style="text-align: left">接收地址</td>
+          <td style="text-align: left">发送地址</td>
+          <td style="text-align: left">BSSID（随机）</td>
+          <td style="text-align: left">-</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">to AP</td>
+          <td style="text-align: left">BSSID</td>
+          <td style="text-align: left">发送地址</td>
+          <td style="text-align: left">接收地址</td>
+          <td style="text-align: left">-</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">from AP</td>
+          <td style="text-align: left">接收地址</td>
+          <td style="text-align: left">BSSID</td>
+          <td style="text-align: left">发送地址</td>
+          <td style="text-align: left">-</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">WDS 帧</td>
+          <td style="text-align: left">接收 AP 地址</td>
+          <td style="text-align: left">发送 AP 地址</td>
+          <td style="text-align: left">接收地址</td>
+          <td style="text-align: left">发送地址</td>
+      </tr>
+  </tbody>
+</table>
+<p><picture><img class="img-fluid " alt="msedge_QFd2hsO1fj" src="https://decimo.top/images/screenshoots/2026-07/msedge_QFd2hsO1fj.png?v=d04c4a0d3bbc0992f3de419047a52e8c" loading="lazy" width="1683" height="818" />
+</picture>
+
+</p>
+<p><span title="正确答案是：B">🤔 悬停查看答案</span></p>
 
 <h3 id="模块四网络层绝对c位难点在ip和路由" data-numberify>模块四：网络层（\*绝对C位，难点在IP和路由\*）<a class="anchor ms-1" href="#模块四网络层绝对c位难点在ip和路由"></a></h3>
 <blockquote>
@@ -1802,7 +2899,7 @@ decimo的小窝
 <li><strong>UDP：</strong> 无连接、不可靠，但头小（8字节），用于DNS、SNMP。</li>
 <li><strong>TCP（重头戏）：</strong>
 <ul>
-<li><strong>报文段格式：</strong> 重点记标志位（SYN=1, ACK=1, FIN=1）和序号确认号机制。</li>
+<li>陈邦桦<strong>报文段格式：</strong> 重点记标志位（SYN=1, ACK=1, FIN=1）和序号确认号机制。</li>
 <li><strong>三次握手（建立）：</strong> 为什么是3次？（<strong>防止过期连接请求突然到达</strong>）。</li>
 <li><strong>四次挥手（释放）：</strong> 为什么是4次？（因为被动关闭方可能还有数据要发），以及 <strong>TIME_WAIT</strong> 的必要性。</li>
 <li><strong>流量控制（滑动窗口）：</strong> 接收端控制发送端速度。</li>
@@ -2222,13 +3319,13 @@ decimo的小窝
             </li>
             <li><a href="#计算机网络性能度量指标">计算机网络性能度量指标</a>
               <ul>
-                <li><a href="#一时延delay">一、时延（Delay）</a></li>
-                <li><a href="#二时延抖动jitter">二、时延抖动（Jitter）</a></li>
-                <li><a href="#三往返时延rttround-trip-time">三、往返时延（RTT，Round-Trip Time）</a></li>
-                <li><a href="#四吞吐量throughput">四、吞吐量（Throughput）</a></li>
-                <li><a href="#五利用率utilization">五、利用率（Utilization）</a></li>
-                <li><a href="#六丢包率packet-loss-rate">六、丢包率（Packet Loss Rate）</a></li>
-                <li><a href="#七各指标之间的关系">七、各指标之间的关系</a></li>
+                <li><a href="#时延delay">时延（Delay）</a></li>
+                <li><a href="#时延抖动jitter">时延抖动（Jitter）</a></li>
+                <li><a href="#往返时延rttround-trip-time">往返时延（RTT，Round-Trip Time）</a></li>
+                <li><a href="#吞吐量throughput">吞吐量（Throughput）</a></li>
+                <li><a href="#利用率utilization">利用率（Utilization）</a></li>
+                <li><a href="#丢包率packet-loss-rate">丢包率（Packet Loss Rate）</a></li>
+                <li><a href="#各指标之间的关系">各指标之间的关系</a></li>
                 <li><a href="#例题-1">例题</a></li>
               </ul>
             </li>
@@ -2263,10 +3360,10 @@ decimo的小窝
             </li>
             <li><a href="#信道复用技术">信道复用技术</a>
               <ul>
-                <li><a href="#一频分复用fdmfrequency-division-multiplexing">一、频分复用（FDM，Frequency Division Multiplexing）</a></li>
-                <li><a href="#二时分复用tdmtime-division-multiplexing">二、时分复用（TDM，Time Division Multiplexing）</a></li>
-                <li><a href="#三码分复用cdmcode-division-multiplexing">三、码分复用（CDM，Code Division Multiplexing）</a></li>
-                <li><a href="#四波分复用wdmwavelength-division-multiplexing">四、波分复用（WDM，Wavelength Division Multiplexing）</a></li>
+                <li><a href="#频分复用fdmfrequency-division-multiplexing">频分复用（FDM，Frequency Division Multiplexing）</a></li>
+                <li><a href="#时分复用tdmtime-division-multiplexing">时分复用（TDM，Time Division Multiplexing）</a></li>
+                <li><a href="#码分复用cdmcode-division-multiplexing">码分复用（CDM，Code Division Multiplexing）</a></li>
+                <li><a href="#波分复用wdmwavelength-division-multiplexing">波分复用（WDM，Wavelength Division Multiplexing）</a></li>
                 <li><a href="#对比表">对比表</a></li>
               </ul>
             </li>
@@ -2277,7 +3374,89 @@ decimo的小窝
             </li>
           </ul>
         </li>
-        <li><a href="#模块三数据链路层重点封装成帧差错控制介质访问"><strong>模块三：数据链路层（*重点：封装成帧、差错控制、介质访问*）</strong></a></li>
+        <li><a href="#模块三数据链路层重点封装成帧差错控制介质访问"><strong>模块三：数据链路层（*重点：封装成帧、差错控制、介质访问*）</strong></a>
+          <ul>
+            <li><a href="#帧的基本概念">帧的基本概念</a></li>
+            <li><a href="#封装成帧确定数据边界">封装成帧（确定数据边界）</a>
+              <ul>
+                <li><a href="#字节计数法">字节计数法</a></li>
+                <li><a href="#字符填充法">字符填充法</a></li>
+                <li><a href="#比特填充法">比特填充法</a></li>
+                <li><a href="#物理层编码法">物理层编码法</a></li>
+              </ul>
+            </li>
+            <li><a href="#差错控制错误检测">差错控制——错误检测</a>
+              <ul>
+                <li><a href="#奇偶校验parity-check">奇偶校验（Parity Check）</a></li>
+                <li><a href="#校验和checksum">校验和（Checksum）</a></li>
+                <li><a href="#循环冗余校验crccyclic-redundancy-check">循环冗余校验（CRC，Cyclic Redundancy Check）</a></li>
+                <li><a href="#数据链路层常用错误检测方法对比">数据链路层常用错误检测方法对比</a></li>
+              </ul>
+            </li>
+            <li><a href="#流量控制与可靠传输调节数据流">流量控制与可靠传输——调节数据流</a>
+              <ul>
+                <li><a href="#停止-等待协议stop-and-wait">停止-等待协议（Stop-and-Wait）</a></li>
+                <li><a href="#信道利用率">信道利用率</a></li>
+                <li><a href="#例题-5">例题</a></li>
+                <li><a href="#滑动窗口">滑动窗口</a></li>
+                <li><a href="#后退-n-帧协议go-back-n-gbn">后退 n 帧协议（Go Back N, GBN）</a></li>
+                <li><a href="#选择重传协议select-repeat-sr">选择重传协议（Select Repeat, SR）</a></li>
+                <li><a href="#例题-6">例题</a></li>
+              </ul>
+            </li>
+            <li><a href="#网络链路类型">网络链路类型</a></li>
+            <li><a href="#介质访问控制子层medium-access-control-mac">介质访问控制子层（Medium Access Control, MAC）</a>
+              <ul>
+                <li><a href="#aloha协议">ALOHA协议</a></li>
+                <li><a href="#csma协议carrier-sense-multiple-access-载波监听多路访问协议">CSMA协议（Carrier Sense Multiple Access, 载波监听多路访问协议)</a></li>
+                <li><a href="#csmacdcsma-with-collision-detection">CSMA/CD（CSMA with Collision Detection）</a>
+                  <ul>
+                    <li><a href="#传播延迟">传播延迟</a></li>
+                    <li><a href="#争用期往返传播延迟">争用期（往返传播延迟）</a></li>
+                    <li><a href="#最小帧长">最小帧长</a></li>
+                    <li><a href="#退避时间">退避时间</a></li>
+                  </ul>
+                </li>
+                <li><a href="#csmacacsma-with-collision-avoidance">CSMA/CA（CSMA with Collision Avoidance）</a>
+                  <ul>
+                    <li><a href="#wlan无线局域网">WLAN无线局域网</a></li>
+                    <li><a href="#无线网络与有线网络">无线网络与有线网络</a></li>
+                    <li><a href="#隐藏站问题">隐藏站问题</a></li>
+                    <li><a href="#带碰撞避免的-csmacsma-with-collision-avoidancecsma--ca">带碰撞避免的 CSMA（CSMA with Collision Avoidance，CSMA / CA）</a></li>
+                    <li><a href="#例题-7">例题</a></li>
+                  </ul>
+                </li>
+                <li><a href="#介质访问控制子层mac各协议对比">介质访问控制子层（MAC）各协议对比</a></li>
+                <li><a href="#例题-8">例题</a></li>
+              </ul>
+            </li>
+            <li><a href="#以太网">以太网</a>
+              <ul>
+                <li><a href="#数据信号传输模式">数据/信号传输模式</a></li>
+                <li><a href="#局域网lan">局域网（LAN）</a></li>
+                <li><a href="#以太网ethernet">以太网（Ethernet)</a></li>
+                <li><a href="#集线器hub">集线器（HUB）</a></li>
+                <li><a href="#中继器repeater">中继器（Repeater）</a></li>
+                <li><a href="#mac地址">MAC地址</a></li>
+                <li><a href="#经典以太网">经典以太网</a></li>
+                <li><a href="#交换以太网">交换以太网</a>
+                  <ul>
+                    <li><a href="#快速以太网">快速以太网</a></li>
+                    <li><a href="#千兆以太网">千兆以太网</a></li>
+                    <li><a href="#万兆以太网">万兆以太网</a></li>
+                  </ul>
+                </li>
+                <li><a href="#传统局域网的局限性">传统局域网的局限性</a></li>
+                <li><a href="#虚拟局域网">虚拟局域网</a></li>
+                <li><a href="#广域网">广域网</a>
+                  <ul>
+                    <li><a href="#ppp协议">PPP协议</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
         <li><a href="#模块四网络层绝对c位难点在ip和路由"><strong>模块四：网络层（*绝对C位，难点在IP和路由*）</strong></a></li>
         <li><a href="#模块五传输层区分udp和tcp是核心"><strong>模块五：传输层（*区分UDP和TCP是核心*）</strong></a></li>
         <li><a href="#模块六应用层典型协议速记"><strong>模块六：应用层（*典型协议速记*）</strong></a></li>
