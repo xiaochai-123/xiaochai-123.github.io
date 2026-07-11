@@ -1896,7 +1896,7 @@ decimo的小窝
 <p>校验和：  0100 0100 0100 1010</p>
 <p>接收方接收到数据之后，检测结果的过程为：</p>
 <p>先将数据段1和2相加，再加上校验和部分：</p>
-<img src="../../../../AppData/Roaming/Typora/typora-user-images/image-20260711171106841.png" alt="image-20260711171106841" style="zoom: 50%;" />
+<img src="/images/screenshoots/2026-07/image-20260711171106841.png" alt="image-20260711171106841" style="zoom: 50%;" />
 <p>结果全为1说明数据没有问题</p>
 <p><strong>回卷相加示例：</strong></p>
 <p>带进位的校验和计算</p>
@@ -1904,7 +1904,7 @@ decimo的小窝
 <p>数据段2：0000 0000 0000 0001</p>
 <img src="/images/screenshoots/2026-07/msedge_Mf9Uynoo2o.png" alt="msedge_Mf9Uynoo2o" style="zoom: 50%;" />
 <p>发现最高位多进位出一个1，则我们把前面多出来的拿出来回卷相加</p>
-<img src="../../../../AppData/Roaming/Typora/typora-user-images/image-20260711171642252.png" alt="image-20260711171642252" style="zoom:50%;" />
+<img src="/images/screenshoots/2026-07/image-20260711171642252.png" alt="image-20260711171642252" style="zoom:50%;" />
 <p>重复回卷相加直到结果最终和数据段长度相同为16位</p>
 <p>优点：比奇偶校验强，能检测更多错误，简单高效，计算量小</p>
 <p>缺点：不能检测所有错误（例如数据中部分比特位置反转后总和仍相同，无法发现）</p>
@@ -1940,7 +1940,10 @@ decimo的小窝
 </blockquote>
 <p>最终发送端发送的数据为原始数据 + CRC码：1011001110</p>
 <p>接收方使用生成多项式验证数据是否正确，使用接收到的数据除以生成多项式</p>
-<img src="../../../../AppData/Roaming/Typora/typora-user-images/image-20260711173639887.png" alt="image-20260711173639887" style="zoom: 67%;" />
+<p><picture><img class="img-fluid " alt="image-20260711173639887" src="https://decimo.top/images/screenshoots/2026-07/image-20260711173639887.png?v=d7c57618facf8311996b80e5c26dd5f2" loading="lazy" width="787" height="933" />
+</picture>
+
+</p>
 <p>余数为0，说明数据正确无误</p>
 <p><strong>为什么1101叫做“生成多项式”？</strong></p>
 <p>CRC中的多项式实际上是“二进制多项式”</p>
@@ -2540,7 +2543,7 @@ decimo的小窝
 <h5 id="集线器hub" data-numberify>集线器（HUB）<a class="anchor ms-1" href="#集线器hub"></a></h5>
 <p>连接在集线器上的所有计算机是处在一个冲突域内的。会互相挤占带宽。（比如一个人在下载电影，另一个人玩游戏就会卡。）</p>
 <p>集线器VS交换机</p>
-<p><picture><img class="img-fluid " alt="image-20260712003155850" src="" loading="lazy" />
+<p><picture><img class="img-fluid " alt="image-20260712003155850" src="https://decimo.top/images/screenshoots/2026-07/image-20260712003155850.png?v=e3df1bd6b41174165af7b7807fde05e5" loading="lazy" width="1474" height="537" />
 </picture>
 
 </p>
