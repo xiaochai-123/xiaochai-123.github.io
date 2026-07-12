@@ -9,7 +9,7 @@
     <copyright>Copyright © 2026 decimo. All Rights Reserved.</copyright>
     <lastBuildDate>Tue, 23 Jun 2026 16:31:35 +0800</lastBuildDate><atom:link href="https://decimo.top/categories/%E5%A5%87%E5%A6%99%E5%B0%8F%E7%9F%A5%E8%AF%86/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>计算机网络知识梳理（未完待续）</title>
+      <title>计算机网络知识梳理</title>
       <link>https://decimo.top/posts/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/</link>
       <pubDate>Tue, 23 Jun 2026 16:31:35 +0800</pubDate>
       <guid>https://decimo.top/posts/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/</guid>
@@ -18,8 +18,31 @@
 <h2 id="前言" data-numberify>前言<a class="anchor ms-1" href="#前言"></a></h2>
 <p>在b站上看到逊哥的课，讲的很好啊！</p>
 <p><a href="https://www.bilibili.com/video/BV1p69tYZEvN/?share_source=copy_web&amp;vd_source=9c22157b2c924857f42d806788cc5fea" target="_blank" rel="noopener noreferrer">计算机网络技术（可用于408备考）也许是全网讲的最通俗易懂的计算机网络课程<i class="fas fa-external-link-square-alt ms-1"></i></a></p>
-<p>推荐一下(点了关注)，此篇可能极大程度上参考逊哥的课来写</p>
-<p>那我们废话不多说直接进入正题</p>
+<p>推荐一下(点了关注)，此篇可能极大程度上参考逊哥的课来写，这里也纠正了我发现逊哥的一些小错误。</p>
+<p>我认为期末考试的重点内容大概有：（如果你时间不够的话可以只看看这些）</p>
+<pre tabindex="0"><code>模块一：
+	OSI参考模型
+	网络交换方式
+模块三：
+	CRC循环冗余校验
+	停止等待、后退n帧，选择重传协议
+	CSMA/CD、CSMA/CA协议
+	以太网
+模块四：
+	路由算法
+	域内路由与域间路由协议
+	IPv4数据报
+	IP地址
+	CIDR及子网划分
+	ICMP、DHCP、ARP协议
+模块五：
+	UDP与TCP特性
+	TCP三次握手，四次挥手
+	TCP超时重传、快速重传、累计确认
+	TCP流量控制与拥塞控制
+模块六：
+	应用层协议
+</code></pre><p>那我们废话不多说直接进入正题</p>
 
 <h2 id="正题" data-numberify>正题<a class="anchor ms-1" href="#正题"></a></h2>
 
@@ -55,43 +78,7 @@
 <p><picture><img class="img-fluid " alt="POWERPNT_MSorAByEIB" src="https://decimo.top/images/screenshoots/2026-06/POWERPNT_MSorAByEIB.png?v=ab7291a429fda15a6f653749e4717671" loading="lazy" width="1661" height="708" />
 </picture>
 
-</p>
-<blockquote>
-<p>这里的基础概念：</p>
-<ul>
-<li>
-<p>ISP(Internet Service Provider):互联网服务提供商</p>
-</li>
-<li>
-<p>节点(node):计算机、交换机、路由器等构成网络的硬件都可以称为网络中的节点</p>
-</li>
-<li>
-<p>主机(host):通过网络为其它机器提供服务的计算机,也称服务器</p>
-</li>
-<li>
-<p>客户端(client):指从主机处获得服务的计算机,也称为终端</p>
-</li>
-</ul>
-</blockquote>
-<p>上图中的主干网，校园网等就是指ISP（主干ISP，地区ISP，本地ISP再到公司，个人用户等）</p>
-<p><picture><img class="img-fluid " alt="chrome_7QQoI8lNCM" src="https://decimo.top/images/screenshoots/2026-06/chrome_7QQoI8lNCM.png?v=69ab7d0348888c8619a1fa08e4f9ee75" loading="lazy" width="961" height="499" />
-</picture>
-
-</p>
-<blockquote>
-<p>这里的基础概念：</p>
-<ul>
-<li>
-<p>报文(message):网络中交换与传输的数据单元</p>
-</li>
-<li>
-<p>分组(packet):为了从源端系统向目的端系统发送一个报文,源端将长报文划分为较小
-的数据块,称为分组</p>
-</li>
-<li>
-<p>比特(bit):用小写字母b表示,1b表示一个二进制位,0或1</p>
-<p>字节(byte):用大写字母B表示,1B表示一个字节</p>
-<p>$1\ B = 8\ bit$</p>]]></description>
+</p>]]></description>
     <enclosure url="https://decimo.top/images/network.jpg" length="59548" type="image/.jpg" />
     </item>
     
