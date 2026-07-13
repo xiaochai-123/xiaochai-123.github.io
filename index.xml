@@ -530,6 +530,8 @@ Disallow: /hidden/flag.txt
 <pre tabindex="0"><code>模块一：
 	OSI参考模型
 	网络交换方式
+模块二：
+	信道复用技术
 模块三：
 	CRC循环冗余校验
 	停止等待、后退n帧，选择重传协议
@@ -540,7 +542,7 @@ Disallow: /hidden/flag.txt
 	域内路由与域间路由协议
 	IPv4数据报
 	IP地址
-	CIDR及子网划分
+	CIDR及子网划分、路由聚合
 	ICMP、DHCP、ARP协议
 模块五：
 	UDP与TCP特性
@@ -556,8 +558,8 @@ Disallow: /hidden/flag.txt
 <h3 id="模块一概述--体系结构总分结构" data-numberify>模块一：概述 & 体系结构（总分结构）<a class="anchor ms-1" href="#模块一概述--体系结构总分结构"></a></h3>
 <blockquote>
 <ul>
-<li><strong>OSI七层 vs TCP/IP四层（408必考）：</strong> 重点是两者的对应关系与“5层参考模型”。</li>
-<li><strong>关键概念扫雷：</strong> 速率、带宽、吞吐量、时延（发送/传播/处理/排队）、时延带宽积、RTT。</li>
+<li><strong>OSI七层 vs TCP/IP四层（408必考）</strong>： 重点是两者的对应关系与“5层参考模型”。</li>
+<li><strong>关键概念扫雷</strong>： 速率、带宽、吞吐量、时延（发送/传播/处理/排队）、时延带宽积、RTT。</li>
 </ul>
 </blockquote>
 

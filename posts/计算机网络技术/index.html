@@ -33,7 +33,7 @@
   <meta itemprop="description" content="计算机网络技术(408/期末考)">
   <meta itemprop="datePublished" content="2026-06-23T16:31:35+08:00">
   <meta itemprop="dateModified" content="2026-06-23T16:31:35+08:00">
-  <meta itemprop="wordCount" content="5876">
+  <meta itemprop="wordCount" content="5880">
   <meta itemprop="image" content="https://decimo.top/images/network.jpg">
   <meta itemprop="keywords" content="Web">
   <meta property="og:image:alt" content="计算机网络知识梳理" />
@@ -288,6 +288,8 @@ decimo的小窝
 <pre tabindex="0"><code>模块一：
 	OSI参考模型
 	网络交换方式
+模块二：
+	信道复用技术
 模块三：
 	CRC循环冗余校验
 	停止等待、后退n帧，选择重传协议
@@ -298,7 +300,7 @@ decimo的小窝
 	域内路由与域间路由协议
 	IPv4数据报
 	IP地址
-	CIDR及子网划分
+	CIDR及子网划分、路由聚合
 	ICMP、DHCP、ARP协议
 模块五：
 	UDP与TCP特性
@@ -314,8 +316,8 @@ decimo的小窝
 <h3 id="模块一概述--体系结构总分结构" data-numberify>模块一：概述 & 体系结构（总分结构）<a class="anchor ms-1" href="#模块一概述--体系结构总分结构"></a></h3>
 <blockquote>
 <ul>
-<li><strong>OSI七层 vs TCP/IP四层（408必考）：</strong> 重点是两者的对应关系与“5层参考模型”。</li>
-<li><strong>关键概念扫雷：</strong> 速率、带宽、吞吐量、时延（发送/传播/处理/排队）、时延带宽积、RTT。</li>
+<li><strong>OSI七层 vs TCP/IP四层（408必考）</strong>： 重点是两者的对应关系与“5层参考模型”。</li>
+<li><strong>关键概念扫雷</strong>： 速率、带宽、吞吐量、时延（发送/传播/处理/排队）、时延带宽积、RTT。</li>
 </ul>
 </blockquote>
 
@@ -541,7 +543,7 @@ decimo的小窝
   </tbody>
 </table>
 <p>一定要把这OSI参考模型背下来！（物数网传会表应）</p>
-<p>当主机A给主机B发送消息时，通常是：<strong>消息在主机A从上到下，传送给主机B，然后消息在主机B从下到上进行传递。</strong></p>
+<p>当主机A给主机B发送消息时，通常是**：消息在主机A从上到下，传送给主机B，然后消息在主机B从下到上进行传递。**</p>
 <p>每一层之间可以通过不同通信协议来通信，<strong>只是从逻辑上</strong>来讲两个设备的层之间可以相互通信，但<strong>实际上</strong>他们依然需要从上到下或从下到上地进行传递。</p>
 <p>服务是值一层<strong>向它的上一层</strong>提供的一组原语(操作)(<strong>一定是下一层对上一层提供服务，不能反</strong>)</p>
 <p><picture><img class="img-fluid " alt="chrome_FoWvFaJy3A" src="https://decimo.top/images/screenshoots/2026-06/chrome_FoWvFaJy3A.png?v=fdcc1213623174740d7989be366e9fa9" loading="lazy" width="848" height="525" />
@@ -1175,9 +1177,9 @@ decimo的小窝
 <h3 id="模块二物理层机械特性考察较少但基础" data-numberify>模块二：物理层（机械特性，考察较少，但基础）<a class="anchor ms-1" href="#模块二物理层机械特性考察较少但基础"></a></h3>
 <blockquote>
 <ul>
-<li><strong>核心任务：</strong> 比特流在介质上的透明传输。</li>
-<li><strong>必记公式：</strong> 奈奎斯特定理（理想）、香农定理（有噪）。</li>
-<li><strong>编码与调制：</strong> 区分曼彻斯特编码（自同步）和差分曼彻斯特。</li>
+<li><strong>核心任务</strong>： 比特流在介质上的透明传输。</li>
+<li><strong>必记公式</strong>： 奈奎斯特定理（理想）、香农定理（有噪）。</li>
+<li><strong>编码与调制</strong>： 区分曼彻斯特编码（自同步）和差分曼彻斯特。</li>
 </ul>
 </blockquote>
 
@@ -1514,7 +1516,7 @@ decimo的小窝
 
 <h4 id="信道复用技术" data-numberify>信道复用技术<a class="anchor ms-1" href="#信道复用技术"></a></h4>
 <p>信道复用（Channel Multiplexing）是指在有限的物理信道资源上，通过不同方式让多个信号共享同一个信道，以提高资源利用率和通信效率。对物理信道进行复用主要有三种方法：频率、时间和编码。</p>
-<p>常见的信道复用技术有：<strong>频分复用</strong>、<strong>时分复用</strong>、<strong>码分复用</strong>，此外还有一种称为波分复用，本质上是频分复用的光学形式。</p>
+<p>常见的信道复用技术有**：频分复用**、<strong>时分复用</strong>、<strong>码分复用</strong>，此外还有一种称为波分复用，本质上是频分复用的光学形式。</p>
 
 <h5 id="频分复用fdmfrequency-division-multiplexing" data-numberify>频分复用（FDM，Frequency Division Multiplexing）<a class="anchor ms-1" href="#频分复用fdmfrequency-division-multiplexing"></a></h5>
 <p>频分复用将信道的可用频谱划分为多个互不重叠的频率子带（频段），每个子带分配给一个独立的信号使用。信号在频域上并排分布，互不干扰。</p>
@@ -1791,15 +1793,15 @@ decimo的小窝
 <h3 id="模块三数据链路层重点封装成帧差错控制介质访问" data-numberify>模块三：数据链路层（\*重点：封装成帧、差错控制、介质访问\*）<a class="anchor ms-1" href="#模块三数据链路层重点封装成帧差错控制介质访问"></a></h3>
 <blockquote>
 <ul>
-<li><strong>点对点信道（PPP协议）：</strong> 帧格式、字节填充（面向字节） vs 零比特填充（面向比特）。</li>
-<li><strong>广播信道（局域网）：</strong>
+<li><strong>点对点信道（PPP协议）</strong>： 帧格式、字节填充（面向字节） vs 零比特填充（面向比特）。</li>
+<li><strong>广播信道（局域网）</strong>：
 <ul>
-<li><strong>CSMA/CD（有线以太网）：</strong> “先听后发，边听边发，冲突停发，随机重发”（<strong>重点计算争用期/最短帧长</strong>）。</li>
-<li><strong>CSMA/CA（无线局域网）：</strong> 隐蔽站问题与RTS/CTS握手。</li>
+<li><strong>CSMA/CD（有线以太网）</strong>： “先听后发，边听边发，冲突停发，随机重发”（<strong>重点计算争用期/最短帧长</strong>）。</li>
+<li><strong>CSMA/CA（无线局域网）</strong>： 隐蔽站问题与RTS/CTS握手。</li>
 </ul>
 </li>
-<li><strong>MAC地址与ARP协议：</strong> ARP是IP到MAC的映射（<strong>问：ARP在哪一层？</strong> 答：介于数据链路层和网络层之间）。</li>
-<li><strong>交换机组网：</strong> 透明网桥的自学习算法（转发表怎么建立的）。</li>
+<li><strong>MAC地址与ARP协议</strong>： ARP是IP到MAC的映射（<strong>问：ARP在哪一层？</strong> 答：介于数据链路层和网络层之间）。</li>
+<li><strong>交换机组网</strong>： 透明网桥的自学习算法（转发表怎么建立的）。</li>
 </ul>
 </blockquote>
 <p>数据链路层的<strong>核心任务</strong>是：在<strong>物理层</strong>提供的比特流基础上，提供<strong>可靠的</strong>数据传输，并确保数据能<strong>正确地</strong>从一个设备发送到另一个设备。</p>
@@ -1921,7 +1923,7 @@ decimo的小窝
 <p>先将数据段1和2相加，再加上校验和部分：</p>
 <img src="/images/screenshoots/2026-07/image-20260711171106841.png" alt="image-20260711171106841" style="zoom: 50%;" />
 <p>结果全为1说明数据没有问题</p>
-<p><strong>回卷相加示例：</strong></p>
+<p><strong>回卷相加示例</strong>：</p>
 <p>带进位的校验和计算</p>
 <p>数据段1：1111 1111 1111 1111</p>
 <p>数据段2：0000 0000 0000 0001</p>
@@ -1950,7 +1952,7 @@ decimo的小窝
 <blockquote>
 <ol>
 <li>在CRC计算中，我们用的是一种特殊的“减法”，叫做<strong>模2减法</strong>。你可以把它想象成“按位比较”：如果两个位相同，结果为0；如果两个位不同，结果为1。这个过程不需要向高位借位，这是它和普通减法的最大区别。</li>
-<li><strong>对齐与初始异或</strong>：将参与计算的数据（末尾已补0）的最高位与生成多项式的最高位对齐，进行第一次**模2除法（异或）**运算。</li>
+<li><strong>对齐与初始异或</strong>：将参与计算的数据（末尾已补0）的最高位与生成多项式的最高位对齐，进行第一次<strong>模2除法异或</strong>运算。</li>
 <li><strong>结果处理</strong>：将本次异或的结果作为<strong>部分余数</strong>。</li>
 <li><strong>最高位检查</strong>：检查部分余数的最高位（即最左边的位）：
 <ul>
@@ -1963,10 +1965,7 @@ decimo的小窝
 </blockquote>
 <p>最终发送端发送的数据为原始数据 + CRC码：1011001110</p>
 <p>接收方使用生成多项式验证数据是否正确，使用接收到的数据除以生成多项式</p>
-<p><picture><img class="img-fluid " alt="image-20260711173639887" src="https://decimo.top/images/screenshoots/2026-07/image-20260711173639887.png?v=d7c57618facf8311996b80e5c26dd5f2" loading="lazy" width="787" height="933" />
-</picture>
-
-</p>
+<img src="/images/screenshoots/2026-07/image-20260711173639887.png" alt="image-20260711173639887" style="zoom:67%;" />
 <p>余数为0，说明数据正确无误</p>
 <p><strong>为什么1101叫做“生成多项式”？</strong></p>
 <p>CRC中的多项式实际上是“二进制多项式”</p>
@@ -2165,7 +2164,7 @@ decimo的小窝
 <p>诞生背景：1970年代，夏威夷大学用于远程岛屿之间的无线数据传输</p>
 <p>核心问题：多个设备共享同一信道，如何协调谁来发送数据？</p>
 <img src="/images/screenshoots/2026-07/msedge_k5vTmQ4eTz.png" alt="msedge_k5vTmQ4eTz" style="zoom:50%;" />
-<p>ALOHA协议比较简单粗暴。总结起来就是八个字：<strong>完全随机，碰撞重传</strong></p>
+<p>ALOHA协议比较简单粗暴。总结起来就是八个字**：完全随机，碰撞重传**</p>
 <p>发送机制：</p>
 <ul>
 <li>节点一旦有数据就立刻发送，无需监听信道状态</li>
@@ -2608,7 +2607,7 @@ decimo的小窝
 
 <h5 id="mac地址" data-numberify>MAC地址<a class="anchor ms-1" href="#mac地址"></a></h5>
 <p>MAC 地址又被称为硬件地址或物理地址，由 48 个比特位（6 个字节）组成。</p>
-<p>MAC 地址是全球唯一的</p>
+<p>MAC 地址是<strong>全球唯一</strong>的</p>
 <p><picture><img class="img-fluid " alt="msedge_XccALDDbsf" src="https://decimo.top/images/screenshoots/2026-07/msedge_XccALDDbsf.png?v=78759fa25e7b5901c53d8caa639c8507" loading="lazy" width="1479" height="496" />
 </picture>
 
@@ -2806,9 +2805,9 @@ decimo的小窝
 </table>
 
 <h5 id="传统局域网的局限性" data-numberify>传统局域网的局限性<a class="anchor ms-1" href="#传统局域网的局限性"></a></h5>
-<p>**广播风暴：**在一个大的局域网中，广播消息会不停地传输，影响带宽和网络性能，导致网络拥堵。</p>
-<p>**安全问题：**所有设备都在同一个广播域内，恶意设备可能会轻易地接收到其他设备的流量，存在安全隐患。</p>
-<p>**扩展问题：**随着网络规模的扩大，增加设备时必须调整物理布线，这使得扩展变得困难且成本高。</p>
+<p><strong>广播风暴</strong>：在一个大的局域网中，广播消息会不停地传输，影响带宽和网络性能，导致网络拥堵。</p>
+<p><strong>安全问题</strong>：所有设备都在同一个广播域内，恶意设备可能会轻易地接收到其他设备的流量，存在安全隐患。</p>
+<p><strong>扩展问题</strong>：随着网络规模的扩大，增加设备时必须调整物理布线，这使得扩展变得困难且成本高。</p>
 
 <h5 id="虚拟局域网" data-numberify>虚拟局域网<a class="anchor ms-1" href="#虚拟局域网"></a></h5>
 <p>“网络规模不断扩大，我们如何能够在不改变物理结构的情况下，提高网络的效率、增强安全性、简化管理，而且还能灵活扩展？”</p>
@@ -2909,15 +2908,15 @@ decimo的小窝
 <h3 id="模块四网络层绝对c位难点在ip和路由" data-numberify>模块四：网络层（\*绝对C位，难点在IP和路由\*）<a class="anchor ms-1" href="#模块四网络层绝对c位难点在ip和路由"></a></h3>
 <blockquote>
 <ul>
-<li><strong>IP地址（灵魂）：</strong> 分类地址（A/B/C） -&gt; 子网划分（子网掩码） -&gt; CIDR（无分类编址，最重要）。</li>
-<li><strong>核心计算：</strong> 给定IP和子网掩码，求网络地址、广播地址、可用主机数（<strong>必考大题</strong>）。</li>
-<li><strong>路由协议（区分内外部网关）：</strong>
+<li><strong>IP地址（灵魂）</strong>： 分类地址（A/B/C） -&gt; 子网划分（子网掩码） -&gt; CIDR（无分类编址，最重要）。</li>
+<li><strong>核心计算</strong>： 给定IP和子网掩码，求网络地址、广播地址、可用主机数（<strong>必考大题</strong>）。</li>
+<li><strong>路由协议（区分内外部网关）</strong>：
 <ul>
-<li><strong>RIP（距离向量）：</strong> 好消息传得快，坏消息传得慢（计数到无穷），基于UDP。</li>
-<li><strong>OSPF（链路状态）：</strong> 迪杰斯特拉算法，收敛快，基于IP直接封装。</li>
+<li><strong>RIP（距离向量）</strong>： 好消息传得快，坏消息传得慢（计数到无穷），基于UDP。</li>
+<li><strong>OSPF（链路状态）</strong>： 迪杰斯特拉算法，收敛快，基于IP直接封装。</li>
 </ul>
 </li>
-<li><strong>ICMP协议：</strong> Ping（回送请求）和 Traceroute（时间超时）。</li>
+<li><strong>ICMP协议</strong>： Ping（回送请求）和 Traceroute（时间超时）。</li>
 </ul>
 </blockquote>
 <p>将数据传输到目的地址</p>
@@ -3635,20 +3634,20 @@ I. 中继器 II. 集线器 III. 网桥 IV. 路由器</p>
 </picture>
 
 </p>
-<p>**版本：**规定了数据报的 IP 协议版本，通过版本号，路由器能确定如何解释 IP 数据报的剩余部分。</p>
-<p>**首部长度：**表示 IP 数据报首部长度（以 4 字节为单位）。该字段取值范围 5～15（0101～1111），大多数 IP 数据报不包含选项，所以一般 IP 数据报首部是 20 字节。</p>
-<p>**服务类型：**前 6 位用来表示数据报的服务类型，后 2 位用来携带拥塞通知信息，配合 TCP 实现端到端拥塞管理。</p>
-<p>**数据报长度：**整个 IP 数据报（头部 + 数据）的长度，单位字节。IP 数据报理论最大长度是 65535 字节，但很少有超过 1500 字节的。</p>
-<p>**标志：**唯一标识一个原始数据报，用于分片与重组。当一个大的数据报被分片后，各分片都带相同的标识值，以便目的端正确重组。</p>
+<p><strong>版本</strong>：规定了数据报的 IP 协议版本，通过版本号，路由器能确定如何解释 IP 数据报的剩余部分。</p>
+<p><strong>首部长度</strong>：表示 IP 数据报首部长度（以 4 字节为单位）。该字段取值范围 5～15（0101～1111），大多数 IP 数据报不包含选项，所以一般 IP 数据报首部是 20 字节。</p>
+<p><strong>服务类型</strong>：前 6 位用来表示数据报的服务类型，后 2 位用来携带拥塞通知信息，配合 TCP 实现端到端拥塞管理。</p>
+<p><strong>数据报长度</strong>：整个 IP 数据报（头部 + 数据）的长度，单位字节。IP 数据报理论最大长度是 65535 字节，但很少有超过 1500 字节的。</p>
+<p><strong>标志</strong>：唯一标识一个原始数据报，用于分片与重组。当一个大的数据报被分片后，各分片都带相同的标识值，以便目的端正确重组。</p>
 <p>第一位：保留位，必须为 0</p>
 <p>第二位：DF（Don&rsquo;t Fragment，不分片），置 1 为不分片</p>
 <p>第三位：MF（More Fragments，后续还有分片），除最后一片外的所有分片，MF=1；最后一片 MF=0</p>
-<p>**片偏移量：**当前分片在原始数据报中的位置，单位为 8 字节。重组时，目的端根据偏移值把各片按正确顺序拼回原始数据</p>
-<p>**生存时间：**用于限制数据报生存时间的计数器，最初是以秒计数，最大生存时间为 255s。</p>
+<p><strong>片偏移量</strong>：当前分片在原始数据报中的位置，单位为 8 字节。重组时，目的端根据偏移值把各片按正确顺序拼回原始数据</p>
+<p><strong>生存时间</strong>：用于限制数据报生存时间的计数器，最初是以秒计数，最大生存时间为 255s。</p>
 <p>现在是跳计数器，每经过一个路由器，计数器减 1，当减到 0 时，数据报被丢弃。这样做的意义在于防止循环转发导致数据报在网络中&quot;无限存活&quot;。</p>
-<p>**上层协议：**该字段当一个 IP 数据报报到达最终目的地时才会有用。该字段的值指示了 IP 数据报应该交给哪个特定的传输层协议。例如，1 = ICMP，6 = TCP，17 = UDP 等。</p>
-<p>**首部校验和：**用来检验数据报的首部，不包括数据部分，接收端验证头部在传输过程中是否出错，若不匹配则丢弃数据报。</p>
-<p>**选项：**提供额外功能，如安全级别、安全路由记录、时间戳等，一般不用。</p>
+<p><strong>上层协议</strong>：该字段当一个 IP 数据报报到达最终目的地时才会有用。该字段的值指示了 IP 数据报应该交给哪个特定的传输层协议。例如，1 = ICMP，6 = TCP，17 = UDP 等。</p>
+<p><strong>首部校验和</strong>：用来检验数据报的首部，不包括数据部分，接收端验证头部在传输过程中是否出错，若不匹配则丢弃数据报。</p>
+<p><strong>选项</strong>：提供额外功能，如安全级别、安全路由记录、时间戳等，一般不用。</p>
 <p>假设链路最大传输单元为800字节，总长度为1580字节的IP数据报该如何分片？</p>
 <p><picture><img class="img-fluid " alt="msedge_jg2u6yawuJ" src="https://decimo.top/images/screenshoots/2026-07/msedge_jg2u6yawuJ.png?v=209aeb22fef89d7f8218e461908007d4" loading="lazy" width="1660" height="598" />
 </picture>
@@ -4090,8 +4089,10 @@ NAT在数据包经过路由器时，修改其源（或目的）IP地址和/或�
 <p>IPv6地址的长度为<strong>16个字节</strong>（128bit），通常以8段十六进制表示，每段16bit
 <strong><code>2001:0db8:85a3:0000:0000:8a2e:0370:7334</code></strong></p>
 <p>连续的“0000”可以简写为 “::&quot;（只能出现一次）</p>
-<p>上面的地址就可以简写成**<code>2001:0db8:85a3::8a2e:0370:7334</code>**</p>
-<p>每组开头的0可以省略，那么上面的IPV6地址可以进一步简写为**<code>2001:db8:85a3::8a2e:370:7334</code>**</p>
+<p>上面的地址就可以简写成</p>
+<p><strong><code>2001:0db8:85a3::8a2e:0370:7334</code></strong></p>
+<p>每组开头的0可以省略，那么上面的IPV6地址可以进一步简写为</p>
+<p><strong><code>2001:db8:85a3::8a2e:370:7334</code></strong></p>
 
 <h5 id="ipv6数据报" data-numberify>IPV6数据报<a class="anchor ms-1" href="#ipv6数据报"></a></h5>
 <p><picture><img class="img-fluid " alt="msedge_KUNcKgrWA1" src="https://decimo.top/images/screenshoots/2026-07/msedge_KUNcKgrWA1.png?v=51de2568ea9ad3173d92cf41c540ff14" loading="lazy" width="1267" height="404" />
@@ -4218,14 +4219,14 @@ NAT在数据包经过路由器时，修改其源（或目的）IP地址和/或�
 <h3 id="模块五传输层区分udp和tcp是核心" data-numberify>模块五：传输层（\*区分UDP和TCP是核心\*）<a class="anchor ms-1" href="#模块五传输层区分udp和tcp是核心"></a></h3>
 <blockquote>
 <ul>
-<li><strong>UDP：</strong> 无连接、不可靠，但头小（8字节），用于DNS、SNMP。</li>
-<li><strong>TCP（重头戏）：</strong>
+<li><strong>UDP</strong>： 无连接、不可靠，但头小（8字节），用于DNS、SNMP。</li>
+<li><strong>TCP（重头戏）</strong>：
 <ul>
-<li><strong>报文段格式：</strong> 重点记标志位（SYN=1, ACK=1, FIN=1）和序号确认号机制。</li>
-<li><strong>三次握手（建立）：</strong> 为什么是3次？（<strong>防止过期连接请求突然到达</strong>）。</li>
-<li><strong>四次挥手（释放）：</strong> 为什么是4次？（因为被动关闭方可能还有数据要发），以及 <strong>TIME_WAIT</strong> 的必要性。</li>
-<li><strong>流量控制（滑动窗口）：</strong> 接收端控制发送端速度。</li>
-<li><strong>拥塞控制（必考大题）：</strong> 慢开始、拥塞避免、快重传、快恢复（<strong>画图判断拥塞窗口变化</strong>）。</li>
+<li><strong>报文段格式</strong>： 重点记标志位（SYN=1, ACK=1, FIN=1）和序号确认号机制。</li>
+<li><strong>三次握手（建立）</strong>： 为什么是3次？（<strong>防止过期连接请求突然到达</strong>）。</li>
+<li><strong>四次挥手（释放）</strong>： 为什么是4次？（因为被动关闭方可能还有数据要发），以及 <strong>TIME_WAIT</strong> 的必要性。</li>
+<li><strong>流量控制（滑动窗口）</strong>： 接收端控制发送端速度。</li>
+<li><strong>拥塞控制（必考大题）</strong>： 慢开始、拥塞避免、快重传、快恢复（<strong>画图判断拥塞窗口变化</strong>）。</li>
 </ul>
 </li>
 </ul>
@@ -4369,15 +4370,15 @@ NAT在数据包经过路由器时，修改其源（或目的）IP地址和/或�
 
 </p>
 <p>在题目没有明确说明段头的长度下默认为20字节。实际上它是弹性的，最长可以到60字节。</p>
-<p>**序号：**指示“本报文段所携带数据的第一个字节”在该连接发送方的序列号（Sequence）。用于在接收端进行重组与排序。在三次握手时，通信双方各自选择一个随机初始序号，然后后续每发送一个字节，序号递增 1。</p>
+<p><strong>序号</strong>：指示“本报文段所携带数据的第一个字节”在该连接发送方的序列号（Sequence）。用于在接收端进行重组与排序。在三次握手时，通信双方各自选择一个随机初始序号，然后后续每发送一个字节，序号递增 1。</p>
 <p>如下图我们的例子中，第一个报文段序号：0；第二个报文段序号：1000；第三个报文段序号：2000</p>
 <p><picture><img class="img-fluid " alt="msedge_lap9DqjTdN" src="https://decimo.top/images/screenshoots/2026-07/msedge_lap9DqjTdN.png?v=4bfffe09412698af8d31b13be549708b" loading="lazy" width="1143" height="191" />
 </picture>
 
 </p>
-<p>**确认号ack：**只有当 ACK 位为 1 时，该字段才有效。确认号表示&quot;期待接收的下一个字节序号&quot;。例如：接收方若正确收到序号 1000（共 500 字节），下一次要接收的数据序号就是 1500，于是接收方就向发送方发送 ack 确认号字段填 1500。</p>
-<p>**头部长度：**指明TCP头部占用的长度，以4字节为单位，最小值5，最大值15</p>
-<p><strong>控制位：</strong></p>
+<p><strong>确认号ack</strong>：只有当 ACK 位为 1 时，该字段才有效。确认号表示&quot;期待接收的下一个字节序号&quot;。例如：接收方若正确收到序号 1000（共 500 字节），下一次要接收的数据序号就是 1500，于是接收方就向发送方发送 ack 确认号字段填 1500。</p>
+<p><strong>头部长度</strong>：指明TCP头部占用的长度，以4字节为单位，最小值5，最大值15</p>
+<p><strong>控制位</strong>：</p>
 <table>
   <thead>
       <tr>
@@ -4426,10 +4427,10 @@ NAT在数据包经过路由器时，修改其源（或目的）IP地址和/或�
 <p>RST = 1: 表示出现严重错误或连接请求被拒绝，直接重置连接。</p>
 <p>URG = 1: 告诉接收方紧急指针有效，报文中&quot;紧急数据&quot;需要优先处理。</p>
 <p>PSH = 1: 告诉接收端把此报文段的所有数据立刻交给应用，而不要再缓存。</p>
-<p>**窗口大小：**接收方通告发送方的“滑动窗口大小”，<strong>即本端当前可接收的缓冲区剩余空间</strong></p>
-<p>**校验和：**与UDP类似，覆盖伪首部、TCP头部、以及TCP数据，用于差错检测。</p>
-<p>**紧急指针：**仅当URG=1时该字段才有效。它指示“紧急数据”的末尾在本报文段中的偏移量</p>
-<p>**选项：**为TCP提供可扩展功能，比如设置最大报文段长度（MSS）、窗口扩大因子（Window Scale）、时间戳（Timestamp）、选择确认（SelectiveAcknowledgment，SACK）等。</p>
+<p><strong>窗口大小</strong>：接收方通告发送方的“滑动窗口大小”，<strong>即本端当前可接收的缓冲区剩余空间</strong></p>
+<p><strong>校验和</strong>：与UDP类似，覆盖伪首部、TCP头部、以及TCP数据，用于差错检测。</p>
+<p><strong>紧急指针</strong>：仅当URG=1时该字段才有效。它指示“紧急数据”的末尾在本报文段中的偏移量</p>
+<p><strong>选项</strong>：为TCP提供可扩展功能，比如设置最大报文段长度（MSS）、窗口扩大因子（Window Scale）、时间戳（Timestamp）、选择确认（SelectiveAcknowledgment，SACK）等。</p>
 
 <h5 id="例题-19" data-numberify>例题<a class="anchor ms-1" href="#例题-19"></a></h5>
 <p>[2014] 39. 下列关于 UDP 协议的叙述中，正确的是______。</p>
@@ -4559,7 +4560,7 @@ NAT在数据包经过路由器时，修改其源（或目的）IP地址和/或�
 <p>TCP 采用**滑动窗口（Sliding Window）**机制来实现流量控制。接收方通过通告窗口大小（rwnd，即接收缓存剩余空间）来告知发送方“你还能发多少数据”。</p>
 <ul>
 <li><strong>接收缓存</strong>的大小取决于操作系统为 TCP 连接分配的缓冲区空间。</li>
-<li><strong>发送窗口</strong>的大小由接收窗口（rwnd）决定，即：<strong>发送窗口 = min(拥塞窗口 cwnd, 接收窗口 rwnd)</strong>。在仅考虑流量控制时，可以认为发送窗口的大小等于接收窗口。</li>
+<li><strong>发送窗口</strong>的大小由接收窗口（rwnd）决定，即**：发送窗口 = min(拥塞窗口 cwnd, 接收窗口 rwnd)**。在仅考虑流量控制时，可以认为发送窗口的大小等于接收窗口。</li>
 </ul>
 <p><strong>与数据链路层滑动窗口的区别</strong></p>
 <table>
@@ -4726,16 +4727,16 @@ D. 32KB</p>
 <h3 id="模块六应用层典型协议速记" data-numberify>模块六：应用层（\*典型协议速记\*）<a class="anchor ms-1" href="#模块六应用层典型协议速记"></a></h3>
 <blockquote>
 <ul>
-<li><strong>DNS（域名解析）：</strong> 递归查询 vs 迭代查询。</li>
-<li><strong>HTTP（万维网）：</strong>
+<li><strong>DNS（域名解析）</strong>： 递归查询 vs 迭代查询。</li>
+<li><strong>HTTP（万维网）</strong>：
 <ul>
 <li>非持久连接 vs 持久连接（有无流水线）。</li>
 <li><strong>Cookie/Session</strong> 如何保持状态（HTTP无状态）。</li>
 <li>HTTPS = HTTP + SSL/TLS（加密）。</li>
 </ul>
 </li>
-<li><strong>FTP：</strong> 控制连接（21）和数据连接（20，主动/被动模式）。</li>
-<li><strong>电子邮件：</strong> SMTP（推） vs POP3/IMAP（拉）。</li>
+<li><strong>FTP</strong>： 控制连接（21）和数据连接（20，主动/被动模式）。</li>
+<li><strong>电子邮件</strong>： SMTP（推） vs POP3/IMAP（拉）。</li>
 </ul>
 </blockquote>
 
