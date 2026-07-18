@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Crypto on decimo的小窝</title>
+    <link>http://localhost:1313/tags/crypto/</link>
+    <description>Recent content in Crypto on decimo的小窝</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <copyright>Copyright © 2026 decimo. All Rights Reserved.</copyright>
+    <lastBuildDate>Sun, 12 Jul 2026 16:31:35 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/crypto/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>密码学入门</title>
+      <link>http://localhost:1313/posts/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%85%A5%E9%97%A8/</link>
+      <pubDate>Sun, 12 Jul 2026 16:31:35 +0800</pubDate>
+      <guid>http://localhost:1313/posts/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%85%A5%E9%97%A8/</guid>
+      <description><![CDATA[<h2 id="数论" data-numberify>数论<a class="anchor ms-1" href="#数论"></a></h2>
+
+<h3 id="模运算" data-numberify>模运算<a class="anchor ms-1" href="#模运算"></a></h3>
+
+<h4 id="modulus模and-residue余数" data-numberify>Modulus（模）and Residue（余数）<a class="anchor ms-1" href="#modulus模and-residue余数"></a></h4>
+<p>数学中有些时候不关注商，而是看重余数</p>
+<p>这里就像小学数学，5除以2余1，9除以7余2</p>
+<p>$$5 \bmod 2 =1, 9 \bmod 7 = 2$$</p>
+
+<h4 id="congruent同余" data-numberify>Congruent（同余）<a class="anchor ms-1" href="#congruent同余"></a></h4>
+<p>这两个式子表示成同余，为</p>
+<p>$$5 \equiv 1 \pmod{2}, 9 \equiv 2 \pmod{7}$$</p>
+<p>更多的例子：</p>
+<p>$$12 \equiv 20 \pmod{8}, \quad 15 \equiv 22 \pmod{7}$$</p>
+<p>$$25 \not\equiv 38 \pmod{4}, \quad 12 \not\equiv 7 \pmod{4}$$</p>
+<p>$$n \equiv r \pmod{m}, \quad 0 \leq r &lt; m$$</p>
+
+<h4 id="同余的基本性质" data-numberify>同余的基本性质<a class="anchor ms-1" href="#同余的基本性质"></a></h4>
+<p>设 $m$ 为正整数，且 $m &gt; 1$，$a, b, c \in \mathbb{Z}$，则同余满足以下基本性质：</p>]]></description>
+    <enclosure url="http://localhost:1313/images/crypto.jpg" length="20166" type="image/.jpg" />
+    </item>
+    
+  </channel>
+</rss>
+

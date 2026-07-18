@@ -1,0 +1,737 @@
+<!doctype html>
+<html class="position-relative" itemscope itemtype="https://schema.org/WebPage" lang="en"
+  data-bs-theme="auto" data-palette="blue">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><script src="/assets/init/bundle.min.ef98193069145e32fe0dad11541b21cb9f9035b329f5a4148eb03a45a997050c.js" integrity="sha256-75gZMGkUXjL&#43;Da0RVBshy5&#43;QNbMp9aQUjrA6RamXBQw=" crossorigin="anonymous"></script>
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>密码学入门 - decimo的小窝</title>
+    <link rel="icon" href="/favicon_hu_54a6302f02e0e2d1.png" sizes="16x16" type="image/png">
+    <link rel="icon" href="/favicon_hu_de41146c4fb04ef3.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="/favicon_hu_f18a96cef7b3e3c9.png" sizes="150x150" type="image/png">
+    <link rel="apple-touch-icon" href="/favicon_hu_960aeb1d3a93909f.png" sizes="180x180" type="image/png">
+    <link rel="icon" href="/favicon_hu_5fdf2c175687e98d.png" sizes="192x192" type="image/png">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#6f42c1">
+<meta name="keywords" content="" />
+  <meta name="description" content="密码学入门学习笔记" />
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="http://localhost:1313/images/crypto.jpg">
+  <meta name="twitter:title" content="密码学入门">
+  <meta name="twitter:description" content="密码学入门学习笔记">
+<meta property="og:url" content="http://localhost:1313/posts/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%85%A5%E9%97%A8/">
+  <meta property="og:site_name" content="decimo的小窝">
+  <meta property="og:title" content="密码学入门">
+  <meta property="og:description" content="密码学入门学习笔记">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-07-12T16:31:35+08:00">
+    <meta property="article:modified_time" content="2026-07-12T16:31:35+08:00">
+    <meta property="article:tag" content="Crypto">
+    <meta property="og:image" content="http://localhost:1313/images/crypto.jpg">
+
+  <meta itemprop="name" content="密码学入门">
+  <meta itemprop="description" content="密码学入门学习笔记">
+  <meta itemprop="datePublished" content="2026-07-12T16:31:35+08:00">
+  <meta itemprop="dateModified" content="2026-07-12T16:31:35+08:00">
+  <meta itemprop="wordCount" content="291">
+  <meta itemprop="image" content="http://localhost:1313/images/crypto.jpg">
+  <meta itemprop="keywords" content="Crypto">
+  <meta property="og:image:alt" content="密码学入门" />
+  <meta name="twitter:image:alt" content="密码学入门" />
+
+<link data-precache rel="stylesheet" href="/assets/main/bundle.min.d5aac6480a1ef020e43c97debab51daf2d7322416eaa854051c3e1c6ef2b77df.css" integrity="sha256-1arGSAoe8CDkPJfeurUdry1zIkFuqoVAUcPhxu8rd98=" crossorigin="anonymous">
+
+<link data-precache rel="stylesheet" href="/assets/katex/bundle.min.08658afad9600a031485396002b45d0b9a84c87c531cbc1deda808882ac8fd9d.css" integrity="sha256-CGWK&#43;tlgCgMUhTlgArRdC5qEyHxTHLwd7agIiCrI/Z0=" crossorigin="anonymous">
+
+    <link data-precache rel="stylesheet" href="/assets/viewer/bundle.min.5778ec8e95e9d1e612441ebcf911ccb843e5cc5d9a1fc99ec90a32adbfebb3b4.css" integrity="sha256-V3jsjpXp0eYSRB68&#43;RHMuEPlzF2aH8meyQoyrb/rs7Q=" crossorigin="anonymous">
+
+
+
+<link rel="stylesheet" href="/css/custom.css">
+<script>
+(function() {
+  var originalTitle = document.title;
+  document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+      document.title = '下次再见~';
+    } else {
+      document.title = '欢迎回来~';
+      setTimeout(function() {
+        document.title = originalTitle;
+      }, 1500); 
+    }
+  });
+})();
+</script><link rel="stylesheet" href="/css/all.min.css">
+  </head>
+  <body><header class="mb-4 sticky-top">
+  
+<nav class="top-app-bar shadow navbar navbar-expand-lg">
+  <div class="container">
+<a class="navbar-brand d-flex align-items-center flex-grow-1 flex-xxl-grow-0 justify-content-xxl-start ms-2 ms-xxl-0 mx-auto me-xxl-2"
+    href="http://localhost:1313/">
+    <picture><img class="logo " alt="Logo" src="http://localhost:1313/images/logo.png?v=aa7d5f4fb143f00c0e5686ae2dd15c37" loading="lazy" width="1800" height="1800" />
+</picture>
+decimo的小窝
+</a>
+
+    <div class="offcanvas-lg offcanvas-end flex-grow-1" data-bs-scroll="true" tabindex="-1" id="navbarMenus" aria-labelledby="navbarMenusLabel">
+      <div class="offcanvas-header px-4 pb-0">
+        <div class="offcanvas-title h5" id="navbarMenusLabel">decimo的小窝</div>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" data-bs-target="#navbarMenus" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body p-4 pt-0 p-lg-0">
+        <hr class="d-lg-none">
+        <ul class="navbar-nav flex-row flex-wrap align-items-center me-auto"><li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2" href="http://localhost:1313/posts/">Posts
+            </a>
+          </li><li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2" href="http://localhost:1313/categories/">Categories
+            </a>
+          </li><li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2" href="http://localhost:1313/tags/">Tags
+            </a>
+          </li><li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2" href="http://localhost:1313/friends/">Friends
+            </a>
+          </li>
+        </ul>
+        
+    <hr class="d-lg-none">
+    <form class="search-bar ms-auto my-auto" action="" novalidate>
+      <div class="input-group align-items-center">
+        <span class="btn btn-search disabled position-absolute left-0 border-0 px-1">
+          <i class="fas fa-fw fa-search fa-lg"></i>
+        </span>
+        <input
+          class="my-1 form-control border-white rounded-5 search-input bg-body"
+          name="q"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+          required>
+          <span class="search-shortcut position-absolute end-0 top-0 me-2">
+            <kbd class="text-dark bg-white opacity-75 rounded-3 shadow border border-primary py-1 fw-bold">/</kbd>
+          </span>
+      </div>
+    </form><hr class="d-lg-none">
+        <ul class="navbar-nav flex-row flex-wrap align-items-center ms-md-auto">
+<li class="nav-item dropdown col-6 col-lg-auto">
+    <a class="nav-link px-0 py-2 px-lg-1" href="#" id="paletteDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="fas fa-fw fa-palette"></i>
+        <span class="d-lg-none">Palette</span>
+    </a>
+    <ul class="palette-dropdown-menu dropdown-menu dropdown-menu-end px-2 row g-2" aria-labelledby="paletteDropdown">
+            <li class="col-4 my-1">
+                <a role="button" id="palette-blue" aria-label="Blue"
+                    class="btn btn-sm w-100 palette text-bg-blue" data-palette="blue">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-blue-gray" aria-label="Blue Gray"
+                    class="btn btn-sm w-100 palette text-bg-blue-gray" data-palette="blue-gray">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-brown" aria-label="Brown"
+                    class="btn btn-sm w-100 palette text-bg-brown" data-palette="brown">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-cyan" aria-label="Cyan"
+                    class="btn btn-sm w-100 palette text-bg-cyan" data-palette="cyan">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-green" aria-label="Green"
+                    class="btn btn-sm w-100 palette text-bg-green" data-palette="green">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-indigo" aria-label="Indigo"
+                    class="btn btn-sm w-100 palette text-bg-indigo" data-palette="indigo">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-orange" aria-label="Orange"
+                    class="btn btn-sm w-100 palette text-bg-orange" data-palette="orange">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-pink" aria-label="Pink"
+                    class="btn btn-sm w-100 palette text-bg-pink" data-palette="pink">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-purple" aria-label="Purple"
+                    class="btn btn-sm w-100 palette text-bg-purple" data-palette="purple">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-red" aria-label="Red"
+                    class="btn btn-sm w-100 palette text-bg-red" data-palette="red">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-teal" aria-label="Teal"
+                    class="btn btn-sm w-100 palette text-bg-teal" data-palette="teal">
+                </a>
+            </li>
+            <li class="col-4 my-1">
+                <a role="button" id="palette-yellow" aria-label="Yellow"
+                    class="btn btn-sm w-100 palette text-bg-yellow" data-palette="yellow">
+                </a>
+            </li>
+    </ul>
+</li>
+<li class="nav-item dropdown col-6 col-lg-auto">
+    <a class="nav-link px-0 py-2 px-lg-1" href="#" id="modeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="mode-icon fas fa-fw fa-adjust" id="modeIcon"></i>
+        <span class="d-lg-none">Mode</span>
+    </a>
+    <ul class="mode-dropdown-menu dropdown-menu dropdown-menu-end" aria-labelledby="modeDropdown">
+        <li class="mode-item" data-color-mode="light" data-icon="sun">
+            <button class="dropdown-item">
+                <i class="mode-icon fas fa-fw fa-sun"></i> Light
+            </button>
+        </li>
+        <li class="mode-item" data-color-mode="dark" data-icon="moon">
+            <button class="dropdown-item">
+                <i class="mode-icon fas fa-fw fa-moon"></i> Dark
+            </button>
+        </li>
+        <li class="mode-item active" data-color-mode="auto" data-icon="adjust">
+            <button class="dropdown-item">
+                <i class="mode-icon fas fa-fw fa-adjust"></i> Auto
+            </button>
+        </li>
+    </ul>
+</li>
+        </ul>
+      </div>
+    </div>
+    <div class="d-flex">
+      <button class="navbar-toggler order-5 border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarMenus"
+        aria-controls="navbarMenus" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-ellipsis-h"></i>
+      </button>
+    </div>
+  </div>
+</nav>
+
+</header>
+
+    <main class="container has-sidebar" data-kind="page"><script data-precache src="/js/main-init.a9427f53469a98d1f41056ab9e1e085a005990992fc0f97bbf459f35ed9d1d43.js" integrity="sha256-qUJ/U0aamNH0EFarnh4IWgBZkJkvwPl7v0WfNe2dHUM=" crossorigin="anonymous"></script>
+
+      <div class="row content"><noscript>
+    <div class="alert alert-danger" role="alert">Your browser does not support JavaScript.</div>
+</noscript>
+
+<div class="content-posts col-xxl-8">
+  <div class="container"><nav class="row card component" aria-label="breadcrumb">
+  <div class="card-body pb-0">
+    <ol class="hbs-breadcrumb breadcrumb flex-nowrap"><li class="breadcrumb-item text-surface"><a href="/">Home</a></li><li class="breadcrumb-item text-surface"><a href="/posts/">Posts</a></li><li class="breadcrumb-item active">密码学入门</li></ol>
+  </div>
+</nav><div class="post-panel-wrapper position-relative d-flex justify-content-center">
+  <div class="d-flex flex-row justify-content-center rounded-5 border post-panel position-fixed px-3 py-1 surface shadow-1">
+    
+    
+
+    <a class="action btn-reward" role="button" data-bs-toggle="modal" data-bs-target="#rewardModal" title="Buy me a coffee">
+  <i class="fas fa-fw fa-coffee"></i>
+</a>
+    
+    
+  <a class="action action-toc d-none d-xxl-block" href="#postTOC" role="button" title="Contents">
+    <i class="fas fa-fw fa-list-alt"></i>
+  </a>
+<a class="action action-toc d-block d-xxl-none" href="#post-toc-container" role="button" title="Contents">
+  <i class="fas fa-fw fa-list-alt"></i>
+</a>
+    <a class="action action-copyright" href="#post-copyright" role="button" aria-label="Copyright" title="Copyright">
+  <i class="fas fa-fw fa-copyright"></i>
+</a>
+    <a class="action action-post-comments" href="#post-comments" role="button" aria-label="Comments" title="Comments">
+  <i class="fas fa-fw fa-comments"></i>
+</a>
+    
+<a id="sidebarToggler" class="action action-sidebar-toggler d-none d-xl-block" role="button" title="Toggle sidebar">
+  <i class="fas fa-fw fa-expand-alt" data-fa-transform="rotate-45"></i>
+</a>
+
+    
+  </div>
+</div><article class="row card component mb-4 post">
+  <div class="card-header ">
+    <h1 class="card-title post-title my-2">密码学入门</h1>
+  </div>
+  <div class="card-body"><div class="post-meta mb-3">
+  <span class="post-date me-1 mb-1" title="created on 2026-07-12 16:31:35 &#43;0800 CST.">July 12, 2026</span><span class="post-reading-time me-1 mb-1">3 min read</span><a href="/categories/%E5%A5%87%E5%A6%99%E5%B0%8F%E7%9F%A5%E8%AF%86/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-category">
+      <i class="fas fa-fw fa-folder me-1"></i>奇妙小知识</a><a href="/tags/crypto/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-tag">Crypto</a>
+</div>
+
+      <p class="lead mb-3 text-body-emphasis">密码学入门学习笔记</p>
+<div class="mt-2 mb-3 d-block d-xxl-none">
+    <h2 class="text-surface mb-3">Contents</h2>
+    <div id="post-toc-container">
+        </div>
+    <hr class="text-secondary">
+</div><div class="post-content mb-3" data-bs-spy="scroll" data-bs-target="#TableOfContents" tabindex="0">
+        <div id="post-content-body">
+<h2 id="数论" data-numberify>数论<a class="anchor ms-1" href="#数论"></a></h2>
+
+<h3 id="模运算" data-numberify>模运算<a class="anchor ms-1" href="#模运算"></a></h3>
+
+<h4 id="modulus模and-residue余数" data-numberify>Modulus（模）and Residue（余数）<a class="anchor ms-1" href="#modulus模and-residue余数"></a></h4>
+<p>数学中有些时候不关注商，而是看重余数</p>
+<p>这里就像小学数学，5除以2余1，9除以7余2</p>
+<p>$$5 \bmod 2 =1, 9 \bmod 7 = 2$$</p>
+
+<h4 id="congruent同余" data-numberify>Congruent（同余）<a class="anchor ms-1" href="#congruent同余"></a></h4>
+<p>这两个式子表示成同余，为</p>
+<p>$$5 \equiv 1 \pmod{2}, 9 \equiv 2 \pmod{7}$$</p>
+<p>更多的例子：</p>
+<p>$$12 \equiv 20 \pmod{8}, \quad 15 \equiv 22 \pmod{7}$$</p>
+<p>$$25 \not\equiv 38 \pmod{4}, \quad 12 \not\equiv 7 \pmod{4}$$</p>
+<p>$$n \equiv r \pmod{m}, \quad 0 \leq r &lt; m$$</p>
+
+<h4 id="同余的基本性质" data-numberify>同余的基本性质<a class="anchor ms-1" href="#同余的基本性质"></a></h4>
+<p>设 $m$ 为正整数，且 $m &gt; 1$，$a, b, c \in \mathbb{Z}$，则同余满足以下基本性质：</p>
+
+<h5 id="1-传递性" data-numberify>1. 传递性<a class="anchor ms-1" href="#1-传递性"></a></h5>
+<p>$$a \equiv b \pmod{m}, \quad b \equiv c \pmod{m} \Rightarrow a \equiv c \pmod{m}$$</p>
+
+<h5 id="2-加减法和乘法" data-numberify>2. 加减法和乘法<a class="anchor ms-1" href="#2-加减法和乘法"></a></h5>
+<p>$$a_1 \equiv a_2 \pmod{m}, \quad b_1 \equiv b_2 \pmod{m}$$</p>
+<p>$$\Rightarrow$$</p>
+<p>$$a_1 + b_1 \equiv a_2 + b_2 \pmod{m}$$</p>
+<p>$$a_1 \cdot b_1 \equiv a_2 \cdot b_2 \pmod{m}$$</p>
+
+<h5 id="3-指数性质" data-numberify>3. 指数性质<a class="anchor ms-1" href="#3-指数性质"></a></h5>
+<p>$$a_1 \equiv a_2 \pmod{m}$$</p>
+<p>$$\Rightarrow$$</p>
+<p>$$a_1^n \equiv a_2^n \pmod{m}$$</p>
+
+<h4 id="modular-arithmetic模运算" data-numberify>Modular Arithmetic模运算<a class="anchor ms-1" href="#modular-arithmetic模运算"></a></h4>
+<p>解同余方程 $x^2 + 3 \equiv 0 \pmod{7}$</p>
+<p>将方程化为标准形式：</p>
+<p>$$x^2 + 3 \equiv 0 \pmod{7}$$</p>
+<p>$$x^2 \equiv -3 \pmod{7}$$</p>
+<p>$$x^2 \equiv 4 \pmod{7}$$</p>
+<p>两边同时开平方，得：</p>
+<p>$$x \equiv \pm 2 \pmod{7}$$</p>
+<p>即</p>
+<p>$$x \equiv 2 \pmod{7} \quad \text{或} \quad x \equiv -2 \pmod{7}$$</p>
+<p>因为</p>
+<p>$$-2 \equiv 5 \pmod{7}$$</p>
+<p>所以最终解为：</p>
+<p>$$\boxed{x \equiv 2 \pmod{7} \quad \text{或} \quad x \equiv 5 \pmod{7}}$$</p>
+
+<h4 id="除法" data-numberify>除法<a class="anchor ms-1" href="#除法"></a></h4>
+<p>$$3x \equiv 12 \pmod{7}$$</p>
+<p>因为 $\gcd(3, 7) = 1$，所以 $3$ 在模 $7$ 下可逆。</p>
+<p>两边同时除以 $3$（即乘以 $3^{-1} \equiv 5 \pmod{7}$）：</p>
+<p>$$x \equiv 4 \pmod{7}$$</p>
+<p>因此，原同余方程的解为：</p>
+<p>$$\boxed{x \equiv 4 \pmod{7}}$$</p>
+<p>公式的形式为：</p>
+<p>若 $\gcd(b, m) = 1$，则</p>
+<p>$$a_1 b \equiv a_2 b \pmod{m} \implies a_1 \equiv a_2 \pmod{m}$$</p>
+<p>若 $\gcd(b, m) \neq 1$，则不能直接消去 $b$。</p>
+<p>解同余方程</p>
+<p>例 1：$3x \equiv 1 \pmod{5}$</p>
+<p>因为 $1 \equiv 6 \pmod{5}$，所以：</p>
+<p>$$3x \equiv 6 \pmod{5}$$</p>
+<p>因为 $\gcd(3, 5) = 1$，两边同时除以 $3$：</p>
+<p>$$\boxed{x \equiv 2 \pmod{5}}$$</p>
+<p>例 2：$4x \equiv 1 \pmod{7}$</p>
+<p>求 $4$ 在模 $7$ 下的逆元：</p>
+<p>因为 $4 \times 2 = 8 \equiv 1 \pmod{7}$，所以 $4^{-1} \equiv 2 \pmod{7}$。</p>
+<p>两边同时乘以 $2$：</p>
+<p>$$x \equiv 1 \times 2 \pmod{7}$$</p>
+<p>$$\boxed{x \equiv 2 \pmod{7}}$$</p>
+</div>
+</div>
+<div class="modal fade" id="rewardModal" tabindex="-1" aria-labelledby="rewardModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content surface">
+      <div class="modal-header">
+        <h5 class="modal-title text-surface" id="rewardModalLabel"><i class="fas fa-fw fa-coffee me-1"></i>Buy me a coffee</h5>
+        <a href="#" data-bs-dismiss="modal" class="btn-close" aria-label="Close"></a>
+      </div>
+      <div class="modal-body">
+        <ul class="nav nav-tabs mb-3" role="tablist"><li class="nav-item text-nowrap" role="presentation">
+            <a class="nav-link active" id="reward-wechat-tab" data-bs-toggle="tab" href="#reward-wechat" role="tab" aria-controls="reward-wechat" aria-selected="true">
+              <i class="fab fa-fw fa-weixin me-1"></i>WeChat
+            </a>
+          </li></ul>
+        <div class="tab-content" id="rewardTabContent"><div class="tab-pane fade post-reward-content text-center show active" id="reward-wechat" role="tabpanel" aria-labelledby="reward-wechat-tab">
+            <img class="img-fluid post-reward-img" src="http://localhost:1313/images/wechat.jpg" loading="lazy" data-viewer-invisible />
+          </div></div>
+      </div>
+    </div>
+  </div>
+</div></div><div class="card-footer">
+  <div class="post-navs d-flex justify-content-evenly"><div class="post-nav post-prev">
+      <i class="fas fa-fw fa-chevron-down post-prev-icon me-1" data-fa-transform="rotate-90"></i>
+      <a href="/posts/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/">计算机网络知识梳理</a>
+    </div><div class="post-nav post-next">
+      <a href="/posts/ctf-web-guide/">[持续更新] CTF-Web Guide</a>
+      <i class="fas fa-fw fa-chevron-down post-next-icon ms-1" data-fa-transform="rotate-270"></i>
+    </div></div>
+</div></article><div class="post-copyright mb-3 row card component" id="post-copyright">
+    <div class="card-header">
+        <h2 class="card-title fs-4 my-2 text-surface">Copyright</h2>
+    </div>
+    <div class="card-body"><a class="d-flex align-items-center flex-column" target="_blank" rel="license noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en">
+  <span><i class="fab fa-fw fa-2x fa-creative-commons"></i><i class="fab fa-fw fa-2x fa-creative-commons-by"></i><i class="fab fa-fw fa-2x fa-creative-commons-nc"></i><i class="fab fa-fw fa-2x fa-creative-commons-sa"></i></span>
+  CC BY-NC-SA 4.0 
+</a>
+
+
+    </div>
+</div><div class="card component row post-comments" id="post-comments">
+  <div class="card-header">
+    <h2 class="card-title my-2 fs-4 text-surface">Comments</h2>
+  </div>
+  <div class="card-body">
+
+<div class="giscus"></div>
+
+
+
+</div>
+</div></div>
+</div>
+<aside class="col-xxl-4 sidebar d-flex">
+  <div class="container d-flex flex-column">
+    
+    
+<div class="card mb-3">
+  <div class="card-body text-center">
+    <img src="/images/my-avatar.jpg" alt="我的头像" class="rounded-circle mb-2" width="100" height="100">
+    <h5 class="card-title">decimo(xiaochai_123)</h5>
+	<p id="random-quote" class="card-text text-muted"></p>
+	<script>
+	const quotes = [
+  "欢迎大佬莅临",
+  "路漫漫其修远兮，吾将上下而求索",
+  "前途是光明的，道路是曲折的",
+  "我喜欢你们",
+  "生命的有限同时赋予了生活意义和遗憾"
+	];
+	document.getElementById('random-quote').innerText = quotes[Math.floor(Math.random() * quotes.length)];
+	</script>
+<nav class="d-flex justify-content-center gap-2 my-2">
+  <a class="btn btn-sm btn-outline-dark rounded-circle" href="https://github.com/xiaochai-123" title="GitHub" target="_blank">
+    <i class="fab fa-github"></i>
+  </a>
+  <a class="btn btn-sm btn-outline-primary rounded-circle" href="mailto:l2556843965@163.com" title="Email">
+    <i class="fas fa-envelope"></i>
+  </a>
+  <a class="btn btn-sm btn-outline-danger rounded-circle" href="https://space.bilibili.com/595746072" title="Bilibili" target="_blank">
+  <i class="fab fa-bilibili"></i> 
+</a>
+  
+</nav>
+  </div>
+</div>
+
+
+    <div class="accordion posts-toggle">
+      <div class="row card component accordion-item">
+        <div class="accordion-header card-header border-0">
+          <a
+            class="accordion-button d-lg-none mb-1 shadow-none p-0 bg-transparent"
+            role="button"
+            data-bs-toggle="collapse"
+            href="#posts-toggle"
+            aria-expanded="true"
+            aria-controls="posts-toggle">
+            Posts
+          </a>
+        </div>
+        <div
+          class="card-body collapse accordion-collapse accordion-body d-lg-block show"
+          id="posts-toggle">
+          <ul class="nav nav-pills nav-fill" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link active"
+                  id="recent-posts-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#recent-posts"
+                  type="button"
+                  role="tab"
+                  aria-controls="recent-posts"
+                  aria-selected="true">
+                  Recent Posts
+                </button>
+              </li>
+          </ul>
+
+          <div class="tab-content mt-3">
+              <div
+                class="tab-pane active"
+                id="recent-posts"
+                role="tabpanel"
+                aria-labelledby="recent-posts-tab"
+                tabindex="0">
+                <ul class="post-list list-unstyled ms-1">
+                    <li class="mb-2">
+    
+  
+  <div class="d-flex">
+      <div
+        class="flex-shrink-0 d-flex justify-content-center align-items-center"
+        style="max-width: 100px"><picture><img class="img-fluid" alt="计算机网络知识梳理" src="http://localhost:1313/images/network.jpg" loading="lazy"
+     width="480"
+     height="300"/>
+  </picture>
+      </div>
+    <div
+      class="flex-grow-1 d-flex flex-column h-auto justify-content-center ms-3">
+      <a class="post-title" href="/posts/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/">
+        计算机网络知识梳理
+      </a>
+      <div class="post-meta mt-2">
+        <span class="post-date">
+          July 12, 2026
+        </span>
+      </div>
+    </div>
+  </div>
+                    </li>
+                    <li class="mb-2">
+    
+  
+  <div class="d-flex">
+      <div
+        class="flex-shrink-0 d-flex justify-content-center align-items-center"
+        style="max-width: 100px"><picture><img class="img-fluid" alt="密码学入门" src="http://localhost:1313/images/crypto.jpg" loading="lazy"
+     width="479"
+     height="182"/>
+  </picture>
+      </div>
+    <div
+      class="flex-grow-1 d-flex flex-column h-auto justify-content-center ms-3">
+      <a class="post-title" href="/posts/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%85%A5%E9%97%A8/">
+        密码学入门
+      </a>
+      <div class="post-meta mt-2">
+        <span class="post-date">
+          July 12, 2026
+        </span>
+      </div>
+    </div>
+  </div>
+                    </li>
+                    <li class="mb-2">
+    
+  
+  <div class="d-flex">
+      <div
+        class="flex-shrink-0 d-flex justify-content-center align-items-center"
+        style="max-width: 100px"><picture><img class="img-fluid" alt="UOOC艺术的星空：艺术美学十二讲习题答案" src="http://localhost:1313/images/SZU.png" loading="lazy"
+     width="322"
+     height="97"/>
+  </picture>
+      </div>
+    <div
+      class="flex-grow-1 d-flex flex-column h-auto justify-content-center ms-3">
+      <a class="post-title" href="/posts/%E8%89%BA%E6%9C%AF%E7%9A%84%E6%98%9F%E7%A9%BA%E6%9C%9F%E6%9C%AB%E7%AD%94%E6%A1%88/">
+        UOOC艺术的星空：艺术美学十二讲习题答案
+      </a>
+      <div class="post-meta mt-2">
+        <span class="post-date">
+          June 29, 2026
+        </span>
+      </div>
+    </div>
+  </div>
+                    </li>
+                    <li class="mb-2">
+    
+  
+  <div class="d-flex">
+      <div
+        class="flex-shrink-0 d-flex justify-content-center align-items-center"
+        style="max-width: 100px"><picture><img class="img-fluid" alt="关于打印服务之CUPS_IPP的介绍" src="http://localhost:1313/images/CUPS.jpg" loading="lazy"
+     width="946"
+     height="583"/>
+  </picture>
+      </div>
+    <div
+      class="flex-grow-1 d-flex flex-column h-auto justify-content-center ms-3">
+      <a class="post-title" href="/posts/%E5%85%B3%E4%BA%8E%E6%89%93%E5%8D%B0%E6%9C%8D%E5%8A%A1%E4%B9%8Bcups_ipp%E7%9A%84%E4%BB%8B%E7%BB%8D/">
+        关于打印服务之CUPS_IPP的介绍
+      </a>
+      <div class="post-meta mt-2">
+        <span class="post-date">
+          June 13, 2026
+        </span>
+      </div>
+    </div>
+  </div>
+                    </li>
+                    <li class="mb-2">
+    
+  
+  <div class="d-flex">
+      <div
+        class="flex-shrink-0 d-flex justify-content-center align-items-center"
+        style="max-width: 100px"><picture><img class="img-fluid" alt="思考能力是如何被阶级化的" src="http://localhost:1313/images/star.jpeg" loading="lazy"
+     width="1080"
+     height="651"/>
+  </picture>
+      </div>
+    <div
+      class="flex-grow-1 d-flex flex-column h-auto justify-content-center ms-3">
+      <a class="post-title" href="/posts/%E5%85%B3%E4%BA%8E%E7%9C%BC%E7%95%8C%E5%BD%A2%E5%BC%8F%E4%B8%BB%E4%B9%89%E5%92%8C%E6%80%9D%E7%BB%B4%E8%83%BD%E5%8A%9B%E7%9A%84%E7%8C%9C%E6%83%B3/">
+        思考能力是如何被阶级化的
+      </a>
+      <div class="post-meta mt-2">
+        <span class="post-date">
+          April 28, 2026
+        </span>
+      </div>
+    </div>
+  </div>
+                    </li>
+                </ul>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<div class="accordion post-toc d-none d-lg-block">
+  <div class="accordion-item row mb-4 card component" id="postTOC">
+    <div class="card-header accordion-header">
+      <h2 class="card-title fs-4 my-2 text-surface d-none d-lg-block">Contents</h2>
+      <a class="accordion-button d-lg-none mb-1 collapsed shadow-none p-0 bg-transparent" role="button" data-bs-toggle="collapse" href="#post-toc" aria-expanded="false" aria-controls="post-toc">
+        Contents
+      </a>
+    </div>
+    <div class="card-body collapse accordion-collapse accordion-body d-lg-block" id="post-toc">
+      
+	  
+      
+      
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#数论">数论</a>
+      <ul>
+        <li><a href="#模运算">模运算</a>
+          <ul>
+            <li><a href="#modulus模and-residue余数">Modulus（模）and Residue（余数）</a></li>
+            <li><a href="#congruent同余">Congruent（同余）</a></li>
+            <li><a href="#同余的基本性质">同余的基本性质</a>
+              <ul>
+                <li><a href="#1-传递性">1. 传递性</a></li>
+                <li><a href="#2-加减法和乘法">2. 加减法和乘法</a></li>
+                <li><a href="#3-指数性质">3. 指数性质</a></li>
+              </ul>
+            </li>
+            <li><a href="#modular-arithmetic模运算">Modular Arithmetic模运算</a></li>
+            <li><a href="#除法">除法</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+    
+  </div>
+</aside>
+
+      </div>
+    </main><footer class="footer mt-auto py-3 text-center container"><div class="offcanvas offcanvas-bottom h-auto" tabindex="-1" id="offcanvasActionsPanel"
+  aria-labelledby="offcanvasActionsPanelLabel">
+  <div class="offcanvas-header">
+    <div class="offcanvas-title h5" id="offcanvasActionsPanelLabel">
+      <i class="fas fa-fw fa-th-large me-1"></i>
+      Actions
+    </div>
+    <button type="button" class="btn-close ms-auto" data-bs-dismiss="offcanvas" data-bs-target="offcanvasActionsPanel" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body mt-2"><div class="actions d-flex overflow-auto align-items-center">
+      <a role="button" class="action action-go-back d-flex flex-column align-items-center me-3" href="javascript: window.history.back();">
+        <span class="action-icon mb-2"><i class="fas fa-2x fa-chevron-circle-down" data-fa-transform="rotate-90"></i></span> Go back
+      </a>
+      <a role="button" class="action action-reload-page d-flex flex-column align-items-center me-3">
+        <span class="action-icon mb-2"><i class="fas fa-2x fa-redo-alt"></i></span> Reload
+      </a>
+      <a role="button" class="action action-copy-url d-flex flex-column align-items-center me-3">
+        <span class="action-icon mb-2"><i class="fas fa-2x fa-link"></i></span> Copy URL
+      </a>
+    </div>
+  </div>
+</div><div class="row text-center">
+  <div class="col-12 mt-2">
+    <p class="mb-2">decimo的小窝</p>
+    <p class="text-secondary mb-2"><small>Welcome to decimo’s Blog! I look forward to sharing this great journey with you.</small></p>Copyright © 2026 decimo. All Rights Reserved.
+    <div class="footer-line visitor" style="margin: 0.5em 0;">
+      <span id="busuanzi_container_site_uv" title="总访客数" style="display: inline;">
+        🐾 总访客数 <span id="busuanzi_value_site_uv">...</span>
+      </span>
+      <span id="busuanzi_container_site_pv" class="footer-divider" title="总访问量" style="display: inline; margin-left: 1em;">
+        👀 总访问量 <span id="busuanzi_value_site_pv">...</span>
+      </span>
+    </div>
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <div class="powered-by mb-2 text-secondary">
+  <small>
+    Build with ❤️ from the <a class="text-primary" href="https://gohugo.io" target="_blank" rel="noopener noreferrer">Hugo</a> and the <a class="text-primary" href="https://github.com/razonyang/hugo-theme-bootstrap" target="_blank" rel="noopener noreferrer">HBS</a> theme.
+  </small>
+</div>
+
+
+<nav class="social-links nav justify-content-center mb-2 mt-3">
+    <a class="nav-link social-link p-0 me-1 mb-2" href="mailto:mailto:l2556843965@163.com" title="Email">
+      <i class="fas fa-fw fa-2x fa-envelope" style="color: #0963ac;"></i>
+    </a>
+      <a class="nav-link social-link p-0 me-1 mb-2" target="_blank" href="https://github.com/xiaochai-123" title="GitHub" rel="me">
+        <i class="fa-fw fa-2x fab fa-github"
+          ></i>
+      </a>
+  <a class="nav-link social-link p-0 me-1 mb-2" target="_blank" data-rss-feed href="http://localhost:1313/index.xml" title="RSS" rel="me">
+    <i class="fas fa-fw fa-2x fa-rss" style="color: #ea6221;"></i>
+  </a>
+</nav>
+</div>
+  <div class="col-12 col-lg-8 offset-0 offset-lg-1"></div>
+</div>
+<script src="/js/copy-code.js"></script>
+<link rel="stylesheet" href="/css/copy-code.css">
+</footer>
+<script data-precache src="/assets/main/bundle.min.2547f2c222651d21cd48ce82f2f9d1d37080527c9cb5201127598bcaceafb9cb.js" integrity="sha256-JUfywiJlHSHNSM6C8vnR03CAUnyctSARJ1mLys6vucs=" crossorigin="anonymous" async></script><script data-precache src="/assets/icons/bundle.min.cbea61263c4ff4af25077451650e39434ea61f115c240d221e2dc739ad82b60b.js" integrity="sha256-y&#43;phJjxP9K8lB3RRZQ45Q06mHxFcJA0iHi3HOa2Ctgs=" crossorigin="anonymous" defer></script>
+<script data-precache src="/assets/viewer/bundle.min.560dde3e6a332bcfb3c948907022a5a35751d968de94ab4ef36371ab392ed913.js" integrity="sha256-Vg3ePmozK8&#43;zyUiQcCKlo1dR2WjelKtO82Nxqzku2RM=" crossorigin="anonymous" defer></script>
+  <script data-precache defer src="/assets/katex/bundle.min.1f328d488c07b150d202339039bb6647471315c0971ae45d87fd28687dd6453b.js" integrity="sha256-HzKNSIwHsVDSAjOQObtmR0cTFcCXGuRdh/0oaH3WRTs=" crossorigin="anonymous"></script>
+
+<script src="https://giscus.app/client.js"
+    data-repo="xiaochai-123/xiaochai-123.github.io"
+    data-repo-id="R_kgDOQcBRNA"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOQcBRNM4Cy98G"
+    data-mapping="pathname"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    data-loading="lazy"
+    crossorigin="anonymous"
+    defer>
+</script>
+
+
+  </body>
+</html>
