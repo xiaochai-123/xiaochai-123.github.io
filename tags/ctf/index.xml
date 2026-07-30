@@ -47,9 +47,9 @@
 <li><strong>抓包与测试</strong>：<strong>Burp Suite</strong>（核心、抓包/重放/爆破）、Yakit（中文版bp）</li>
 <li><strong>信息收集</strong>：<strong>Dirsearch</strong>（目录扫描）、Nmap（端口扫描）</li>
 <li><strong>浏览器插件</strong>：<strong>HackBar</strong>（快速发包）、Wappalyzer（指纹识别）</li>
-<li><strong>Linux环境</strong>：<strong>VMware/WSL2 Kali</strong>（用来执行shell/linux工具)</li>
+<li><strong>Linux环境</strong>：<strong>VMware</strong>（测试病毒)、WSL2（用于快速启动Linux环境）</li>
 <li><strong>远程控制</strong>：<strong>Antsword</strong>（连接木马），冰蝎，哥斯拉</li>
-<li><strong>IDE</strong>：<strong>PhpStorm</strong>（做php反序列化），<strong>IDEA</strong>（做java）</li>
+<li><strong>IDE</strong>：<strong>PhpStorm</strong>（做php反序列化），<strong>VScode</strong></li>
 <li><strong>自动注入</strong>：<strong>SQLmap</strong>（sql注入点自动查找），<strong>fenjing</strong>（焚靖|自动构建SSTIpayload，绕过waf一把梭）</li>
 <li><strong>AI助手</strong>：帮你想思路，构建payload和脚本</li>
 </ul>
