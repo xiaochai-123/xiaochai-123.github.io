@@ -1,7 +1,7 @@
 <!doctype html>
 <html class="position-relative" itemscope itemtype="https://schema.org/WebPage" lang="en"
   data-bs-theme="auto" data-palette="blue">
-  <head><script src="/assets/init/bundle.min.658d13e58d95d8bb2da082cf6e92f29c1f07475fd145926c2c401f88f9ddf545.js" integrity="sha256-ZY0T5Y2V2LstoILPbpLynB8HR1/RRZJsLEAfiPnd9UU=" crossorigin="anonymous"></script>
+  <head><script src="/assets/init/bundle.min.0815b7e73ceecd1be5ee8303df916b89a7fd1454fb835a47e3b2f9739781426f.js" integrity="sha256-CBW35zzuzRvl7oMD35Friaf9FFT7g1pH47L5c5eBQm8=" crossorigin="anonymous"></script>
 <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SQLi-labs靶场搭建 - decimo的小窝</title>
@@ -46,7 +46,7 @@
     <link data-precache rel="stylesheet" href="/assets/viewer/bundle.min.16d2c85c4cae39a98f8cb7a977e95e554b174f91a5484c32605637156f49ca6b.css" integrity="sha256-FtLIXEyuOamPjLepd&#43;leVUsXT5GlSEwyYFY3FW9Jyms=" crossorigin="anonymous">
 
 
-<link rel="stylesheet" href="/css/custom.8cc5830dfc3827d70305a39f1925ac813f85effc381d9b656ac82115d234cbea.css" integrity="sha256-jMWDDfw4J9cDBaOfGSWsgT&#43;F7/w4HZtlasghFdI0y&#43;o=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/custom.730a801596309655d4fc41e9ef9ac6d3a06d0396ba0b1cea47e7418cf1013673.css" integrity="sha256-cwqAFZYwllXU/EHp75rG06BtA5a6CxzqR&#43;dBjPEBNnM=" crossorigin="anonymous">
 <script>
 (function() {
   var originalTitle = document.title;
@@ -285,46 +285,46 @@ decimo的小窝
 <h3 id="1-安装kali环境及lamp组件" data-numberify>1. 安装Kali环境及LAMP组件<a class="anchor ms-1" href="#1-安装kali环境及lamp组件"></a></h3>
 <p>建议使用VMware或VirtualBox新建Kali虚拟机。<br>
 安装Web服务与SQL支持：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt update
-</span></span><span style="display:flex;"><span>sudo apt install apache2 mariadb-server php php-mysql git unzip
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">sudo apt update
+</span></span><span class="line"><span class="ln">2</span><span class="cl">sudo apt install apache2 mariadb-server php php-mysql git unzip
 </span></span></code></pre></div>
 <h3 id="2-克隆sqli-labs靶场源码" data-numberify>2. 克隆SQLi Labs靶场源码<a class="anchor ms-1" href="#2-克隆sqli-labs靶场源码"></a></h3>
 <p>进入Web根目录（Apache默认）：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd /var/www/html
-</span></span><span style="display:flex;"><span>sudo git clone https://github.com/Audi-1/sqli-labs.git
-</span></span><span style="display:flex;"><span>sudo chown -R www-data:www-data sqli-labs
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl"><span class="nb">cd</span> /var/www/html
+</span></span><span class="line"><span class="ln">2</span><span class="cl">sudo git clone https://github.com/Audi-1/sqli-labs.git
+</span></span><span class="line"><span class="ln">3</span><span class="cl">sudo chown -R www-data:www-data sqli-labs
 </span></span></code></pre></div>
 <h3 id="3-启动服务" data-numberify>3. 启动服务<a class="anchor ms-1" href="#3-启动服务"></a></h3>
 <p>确保apache和数据库开启：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo systemctl start apache2
-</span></span><span style="display:flex;"><span>sudo systemctl start mariadb
-</span></span><span style="display:flex;"><span>sudo systemctl enable apache2
-</span></span><span style="display:flex;"><span>sudo systemctl enable mariadb
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">sudo systemctl start apache2
+</span></span><span class="line"><span class="ln">2</span><span class="cl">sudo systemctl start mariadb
+</span></span><span class="line"><span class="ln">3</span><span class="cl">sudo systemctl <span class="nb">enable</span> apache2
+</span></span><span class="line"><span class="ln">4</span><span class="cl">sudo systemctl <span class="nb">enable</span> mariadb
 </span></span></code></pre></div>
 <h3 id="4-创建数据库和导入数据" data-numberify>4. 创建数据库和导入数据<a class="anchor ms-1" href="#4-创建数据库和导入数据"></a></h3>
 <p>登录MariaDB/MySQL，创建数据库：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo mysql -u root
-</span></span><span style="display:flex;"><span>CREATE DATABASE security;
-</span></span><span style="display:flex;"><span>exit;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">sudo mysql -u root
+</span></span><span class="line"><span class="ln">2</span><span class="cl">CREATE DATABASE security<span class="p">;</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl">exit<span class="p">;</span>
 </span></span></code></pre></div><p>导入表数据（最新版SQLi Labs用sql-lab.sql）：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo mysql -u root security &lt; /var/www/html/sqli-labs/sql-lab.sql
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">sudo mysql -u root security &lt; /var/www/html/sqli-labs/sql-lab.sql
 </span></span></code></pre></div>
 <h3 id="5-检查修改数据库连接配置" data-numberify>5. 检查/修改数据库连接配置<a class="anchor ms-1" href="#5-检查修改数据库连接配置"></a></h3>
 <p>查看连接文件：
 <code>/var/www/html/sqli-labs/sql-connections/db-creds.inc.php</code>
 常见参数如下：</p>
 <p>（这里要把你实际的数据库user和password写进去）</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$dbuser <span style="color:#f92672">=</span><span style="color:#e6db74">&#39;root&#39;</span>;
-</span></span><span style="display:flex;"><span>$dbpass <span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#39;</span>;
-</span></span><span style="display:flex;"><span>$dbname <span style="color:#f92672">=</span><span style="color:#e6db74">&#34;security&#34;</span>;
-</span></span><span style="display:flex;"><span>$host <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;localhost&#39;</span>;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="ln">1</span><span class="cl"><span class="nv">$dbuser</span> <span class="o">=</span><span class="s1">&#39;root&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="nv">$dbpass</span> <span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="nv">$dbname</span> <span class="o">=</span><span class="s2">&#34;security&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="nv">$host</span> <span class="o">=</span> <span class="s1">&#39;localhost&#39;</span><span class="p">;</span>
 </span></span></code></pre></div>
 <h3 id="6-重启服务并测试浏览" data-numberify>6. 重启服务并测试浏览<a class="anchor ms-1" href="#6-重启服务并测试浏览"></a></h3>
 <p>重启Apache以确保配置生效：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo systemctl restart apache2
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">sudo systemctl restart apache2
 </span></span></code></pre></div><p>用浏览器访问靶场首页：</p>
-<pre tabindex="0"><code>http://localhost/sqli-labs/
-</code></pre>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">http://localhost/sqli-labs/
+</span></span></code></pre></div>
 <h3 id="7-局域网访问windows主机互通" data-numberify>7. 局域网访问（Windows主机互通）<a class="anchor ms-1" href="#7-局域网访问windows主机互通"></a></h3>
 <ul>
 <li>
@@ -332,12 +332,12 @@ decimo的小窝
 </li>
 <li>
 <p>Kali查IP命令：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ip a
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">ip a
 </span></span></code></pre></div></li>
 <li>
 <p>Windows浏览器输入 Kali 的IP访问：（比如说192.168.26.128）</p>
-<pre tabindex="0"><code>http://192.168.26.128/sqli-labs/
-</code></pre></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">http://192.168.26.128/sqli-labs/
+</span></span></code></pre></div></li>
 </ul>
 
 <h3 id="8-常见问题处理" data-numberify>8. 常见问题处理<a class="anchor ms-1" href="#8-常见问题处理"></a></h3>
@@ -347,7 +347,7 @@ decimo的小窝
 </li>
 <li>
 <p>权限不足可用：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo chown -R www-data:www-data /var/www/html/sqli-labs
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">sudo chown -R www-data:www-data /var/www/html/sqli-labs
 </span></span></code></pre></div></li>
 <li>
 <p>IP变动，重新查当前虚拟机IP再访问。</p>
@@ -370,10 +370,10 @@ decimo的小窝
 </li>
 <li>
 <p>例：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mysql -u admin -p
-</span></span><span style="display:flex;"><span>CREATE DATABASE security;
-</span></span><span style="display:flex;"><span>USE security;
-</span></span><span style="display:flex;"><span>SOURCE /var/www/html/sqli-labs-master/sql-connections/setup-db.sql;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">mysql -u admin -p
+</span></span><span class="line"><span class="ln">2</span><span class="cl">CREATE DATABASE security<span class="p">;</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl">USE security<span class="p">;</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl">SOURCE /var/www/html/sqli-labs-master/sql-connections/setup-db.sql<span class="p">;</span>
 </span></span></code></pre></div></li>
 <li>
 <p>编写好 db-creds.inc，用户名、密码跟本地数据库账号一致</p>
@@ -392,11 +392,11 @@ decimo的小窝
 <ul>
 <li>
 <p>在MariaDB中执行：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">user</span>, <span style="color:#66d9ef">host</span> <span style="color:#66d9ef">FROM</span> mysql.<span style="color:#66d9ef">user</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SHOW</span> DATABASES;
-</span></span><span style="display:flex;"><span>USE <span style="color:#66d9ef">security</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SHOW</span> TABLES;
-</span></span></code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="ln">1</span><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="k">user</span><span class="p">,</span><span class="w"> </span><span class="k">host</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">mysql</span><span class="p">.</span><span class="k">user</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="w"></span><span class="k">SHOW</span><span class="w"> </span><span class="n">DATABASES</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="w"></span><span class="n">USE</span><span class="w"> </span><span class="k">security</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="w"></span><span class="k">SHOW</span><span class="w"> </span><span class="n">TABLES</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div></li>
 <li>
 <p>保证用户和数据库名一样</p>
 </li>
@@ -416,7 +416,7 @@ decimo的小窝
 <ol>
 <li>
 <p>打开 PHP 错误显示：在顶部添加</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#a6e22e">error_reporting</span>(<span style="color:#66d9ef">E_ALL</span>); <span style="color:#a6e22e">ini_set</span>(<span style="color:#e6db74">&#39;display_errors&#39;</span>, <span style="color:#ae81ff">1</span>);
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="ln">1</span><span class="cl"><span class="nx">error_reporting</span><span class="p">(</span><span class="k">E_ALL</span><span class="p">);</span> <span class="nx">ini_set</span><span class="p">(</span><span class="s1">&#39;display_errors&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
 </span></span></code></pre></div></li>
 <li>
 <p>刷新页面，获取详细错误信息</p>
@@ -434,16 +434,16 @@ decimo的小窝
 <li>原因：PHP7/8 已移除所有 mysql_* API，只支持 mysqli 或 PDO</li>
 </ul>
 <p><strong>典型报错：</strong></p>
-<pre tabindex="0"><code>Fatal error: Uncaught Error: Call to undefined function mysql_connect() in .../sql-connections/sql-connect.php
-</code></pre><p><strong>解决办法：</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">Fatal error: Uncaught Error: Call to undefined function mysql_connect() in .../sql-connections/sql-connect.php
+</span></span></code></pre></div><p><strong>解决办法：</strong></p>
 <ul>
 <li>
 <p>把数据库连接相关代码从</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$con <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysql_connect</span>($host, $dbuser, $dbpass);
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">mysql_select_db</span>($dbname, $con);
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="ln">1</span><span class="cl"><span class="nv">$con</span> <span class="o">=</span> <span class="nx">mysql_connect</span><span class="p">(</span><span class="nv">$host</span><span class="p">,</span> <span class="nv">$dbuser</span><span class="p">,</span> <span class="nv">$dbpass</span><span class="p">);</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="nx">mysql_select_db</span><span class="p">(</span><span class="nv">$dbname</span><span class="p">,</span> <span class="nv">$con</span><span class="p">);</span>
 </span></span></code></pre></div><p>改成：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$con <span style="color:#f92672">=</span> <span style="color:#a6e22e">mysqli_connect</span>($host, $dbuser, $dbpass, $dbname);
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>$con) { <span style="color:#66d9ef">die</span>(<span style="color:#e6db74">&#34;Failed to connect to MySQL: &#34;</span> <span style="color:#f92672">.</span> <span style="color:#a6e22e">mysqli_connect_error</span>()); }
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="ln">1</span><span class="cl"><span class="nv">$con</span> <span class="o">=</span> <span class="nx">mysqli_connect</span><span class="p">(</span><span class="nv">$host</span><span class="p">,</span> <span class="nv">$dbuser</span><span class="p">,</span> <span class="nv">$dbpass</span><span class="p">,</span> <span class="nv">$dbname</span><span class="p">);</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$con</span><span class="p">)</span> <span class="p">{</span> <span class="k">die</span><span class="p">(</span><span class="s2">&#34;Failed to connect to MySQL: &#34;</span> <span class="o">.</span> <span class="nx">mysqli_connect_error</span><span class="p">());</span> <span class="p">}</span>
 </span></span></code></pre></div></li>
 <li>
 <p>数据查询部分所有</p>
@@ -468,9 +468,9 @@ decimo的小窝
 
 <h4 id="6-批量替换技巧" data-numberify>6. 批量替换技巧<a class="anchor ms-1" href="#6-批量替换技巧"></a></h4>
 <p><strong>Linux下批量替换：</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>find 路径 -type f -name <span style="color:#e6db74">&#34;*.php&#34;</span> -exec sed -i <span style="color:#e6db74">&#39;s/mysql_query(\(.*\))/mysqli_query($con, \1)/g&#39;</span> <span style="color:#f92672">{}</span> <span style="color:#ae81ff">\;</span>
-</span></span><span style="display:flex;"><span>find 路径 -type f -name <span style="color:#e6db74">&#34;*.php&#34;</span> -exec sed -i <span style="color:#e6db74">&#39;s/mysql_fetch_array/mysqli_fetch_array/g&#39;</span> <span style="color:#f92672">{}</span> <span style="color:#ae81ff">\;</span>
-</span></span><span style="display:flex;"><span>find 路径 -type f -name <span style="color:#e6db74">&#34;*.php&#34;</span> -exec sed -i <span style="color:#e6db74">&#39;s/mysql_error()/mysqli_error($con)/g&#39;</span> <span style="color:#f92672">{}</span> <span style="color:#ae81ff">\;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">find 路径 -type f -name <span class="s2">&#34;*.php&#34;</span> -exec sed -i <span class="s1">&#39;s/mysql_query(\(.*\))/mysqli_query($con, \1)/g&#39;</span> <span class="o">{}</span> <span class="se">\;</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">find 路径 -type f -name <span class="s2">&#34;*.php&#34;</span> -exec sed -i <span class="s1">&#39;s/mysql_fetch_array/mysqli_fetch_array/g&#39;</span> <span class="o">{}</span> <span class="se">\;</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl">find 路径 -type f -name <span class="s2">&#34;*.php&#34;</span> -exec sed -i <span class="s1">&#39;s/mysql_error()/mysqli_error($con)/g&#39;</span> <span class="o">{}</span> <span class="se">\;</span>
 </span></span></code></pre></div><blockquote>
 <p>路径通常为 <code>/var/www/html/sqli-labs</code></p>
 </blockquote>
@@ -948,10 +948,8 @@ decimo的小窝
 </div>
   <div class="col-12 col-lg-8 offset-0 offset-lg-1"></div>
 </div>
-<script src="/js/copy-code.js"></script>
-<link rel="stylesheet" href="/css/copy-code.css">
 </footer>
-<script data-precache src="/assets/main/bundle.min.d462af947fff0bbdb09a7b9fcb40a12bc7ca3b7ee172a4a5a35044386026b13d.js" integrity="sha256-1GKvlH//C72wmnufy0ChK8fKO37hcqSlo1BEOGAmsT0=" crossorigin="anonymous" async></script><script data-precache src="/assets/icons/bundle.min.0b03280daa4a59445b0aafc46855a2bb53b310e572534596869c33acaeec09dd.js" integrity="sha256-CwMoDapKWURbCq/EaFWiu1OzEOVyU0WWhpwzrK7sCd0=" crossorigin="anonymous" defer></script>
+<script data-precache src="/assets/main/bundle.min.87619fbefacaa035367e3393cad6ce3508196b946cf9962924868666df3f298f.js" integrity="sha256-h2GfvvrKoDU2fjOTytbONQgZa5Rs&#43;ZYpJIaGZt8/KY8=" crossorigin="anonymous" async></script><script data-precache src="/assets/icons/bundle.min.0b03280daa4a59445b0aafc46855a2bb53b310e572534596869c33acaeec09dd.js" integrity="sha256-CwMoDapKWURbCq/EaFWiu1OzEOVyU0WWhpwzrK7sCd0=" crossorigin="anonymous" defer></script>
 <script data-precache src="/assets/viewer/bundle.min.cca398d318de9fa7816141db90f09282784fcfe0c5dabc31599b8c589932e4ae.js" integrity="sha256-zKOY0xjen6eBYUHbkPCSgnhPz&#43;DF2rwxWZuMWJky5K4=" crossorigin="anonymous" defer></script>
 <script src="/js/toc-auto.635186e6d874d0dfed4a40f65dcc71e277a9772461a22e01fd1e5aabc804694d.js" integrity="sha256-Y1GG5th00N/tSkD2Xcxx4nepdyRhoi4B/R5aq8gEaU0=" crossorigin="anonymous" defer></script>
 <script src="https://giscus.app/client.js"

@@ -50,25 +50,25 @@
 <h2 id="dtd-doucument-type-definition" data-numberify>DTD (Doucument Type Definition)<a class="anchor ms-1" href="#dtd-doucument-type-definition"></a></h2>
 <p>文档类型定义，可定义合法的XML文档构建模块，它使用一系列合法的元素来定义文档的结构。在XML中DTD就是来定义我们自定义元素的相关属性的文档，它规定、约束XML规则的定义和陈述，DTD可被成行地声明于XML文档中，也可作为一个外部引用。</p>
 <p>XML文档内部定义的是内定义，例如：</p>
-<pre tabindex="0"><code class="language-xml-dtd" data-lang="xml-dtd">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;
-&lt;!DOCTYPE root [
-                               &lt;!-- DOCTYPE用来约束XML规则 --&gt; 
-    &lt;!ELEMENT root (man)&gt;      &lt;!-- !ELEMENT定义root下有一个分支叫做man --&gt;
-    &lt;!ELEMENT man (name,age)&gt;  &lt;!-- 定义man根下有两个分支叫做name和age --&gt;
-    &lt;!ELEMENT name (#PCDATA)&gt;  &lt;!-- #PCDATA意味着name里面只能是字符串 --&gt;
-]&gt;
-&lt;root&gt;
-	&lt;man&gt;
-    	&lt;name&gt;leyi&lt;/name&gt;
-        &lt;age&gt;18&lt;/age&gt;
-        &lt;extra&gt;114514&lt;/extra&gt;  &lt;!-- 多余的会报错，但页面仍可正常打开 --&gt;
-    &lt;/man&gt;
-	&lt;man&gt;
-    	&lt;name&gt;晓堃&lt;/name&gt;
-        &lt;age&gt;18&lt;/age&gt;
-    &lt;/man&gt;
-&lt;/root&gt;
-</code></pre><p>除了<code>!ELEMENT</code>,我们还有其他的DTD声明标记，比如:</p>]]></description>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln"> 1</span><span class="cl">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">&lt;!DOCTYPE root [
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">                               &lt;!-- DOCTYPE用来约束XML规则 --&gt; 
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">    &lt;!ELEMENT root (man)&gt;      &lt;!-- !ELEMENT定义root下有一个分支叫做man --&gt;
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">    &lt;!ELEMENT man (name,age)&gt;  &lt;!-- 定义man根下有两个分支叫做name和age --&gt;
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">    &lt;!ELEMENT name (#PCDATA)&gt;  &lt;!-- #PCDATA意味着name里面只能是字符串 --&gt;
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">]&gt;
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">&lt;root&gt;
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">	&lt;man&gt;
+</span></span><span class="line"><span class="ln">10</span><span class="cl">    	&lt;name&gt;leyi&lt;/name&gt;
+</span></span><span class="line"><span class="ln">11</span><span class="cl">        &lt;age&gt;18&lt;/age&gt;
+</span></span><span class="line"><span class="ln">12</span><span class="cl">        &lt;extra&gt;114514&lt;/extra&gt;  &lt;!-- 多余的会报错，但页面仍可正常打开 --&gt;
+</span></span><span class="line"><span class="ln">13</span><span class="cl">    &lt;/man&gt;
+</span></span><span class="line"><span class="ln">14</span><span class="cl">	&lt;man&gt;
+</span></span><span class="line"><span class="ln">15</span><span class="cl">    	&lt;name&gt;晓堃&lt;/name&gt;
+</span></span><span class="line"><span class="ln">16</span><span class="cl">        &lt;age&gt;18&lt;/age&gt;
+</span></span><span class="line"><span class="ln">17</span><span class="cl">    &lt;/man&gt;
+</span></span><span class="line"><span class="ln">18</span><span class="cl">&lt;/root&gt;
+</span></span></code></pre></div><p>除了<code>!ELEMENT</code>,我们还有其他的DTD声明标记，比如:</p>]]></description>
     <enclosure url="https://decimo.top/images/xxe.png" length="120897" type="image/.png" />
     </item>
     

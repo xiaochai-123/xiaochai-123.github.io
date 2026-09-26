@@ -357,9 +357,9 @@
 </li>
 <li>
 <p><strong>例子</strong>：</p>
-<pre tabindex="0"><code>Disallow: /admin
-Disallow: /hidden/flag.txt
-</code></pre></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">Disallow: /admin
+</span></span><span class="line"><span class="ln">2</span><span class="cl">Disallow: /hidden/flag.txt
+</span></span></code></pre></div></li>
 </ul>
 
 <h5 id="12-sitemapxml" data-numberify>1.2 sitemap.xml<a class="anchor ms-1" href="#12-sitemapxml"></a></h5>

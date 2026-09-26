@@ -1,0 +1,665 @@
+/* ============================================================
+   1. 原有定制（保留，勿删）
+   ============================================================ */
+
+/* 让目录栏链接在鼠标悬停时高亮变色 */
+.post-toc a:hover,
+.table-of-contents a:hover {
+  color: #007bff !important;
+  border-radius: 4px;
+  transition: color 0.15s, background 0.2s;
+}
+.logo {
+  transition: none;
+  will-change: transform, filter;
+}
+.navbar-brand:hover .logo {
+  animation: spin-glow 2.2s cubic-bezier(.25,.8,.25,1) !important;
+}
+@keyframes spin-glow {
+  0%   { transform: rotate(0deg) scale(1);   filter: drop-shadow(0 0 0px #03a9f4);}
+  20%  { transform: rotate(180deg) scale(1.10); filter: drop-shadow(0 0 16px #e91e63);}
+  40%  { transform: rotate(360deg) scale(1.18); filter: drop-shadow(0 0 36px #8bc34a);}
+  60%  { transform: rotate(540deg) scale(0.97); filter: drop-shadow(0 0 42px #ffa726);}
+  80%  { transform: rotate(650deg) scale(1.09); filter: drop-shadow(0 0 26px #40c4ff);}
+  100% { transform: rotate(720deg) scale(1);    filter: drop-shadow(0 0 0px #03a9f4);}
+}
+.post-card-default-img {
+  display: none !important;
+}
+
+/* ============================================================
+   2. 阅读度量：正文行宽 / 行高 / 字号
+   ============================================================ */
+
+/* 一行 40 个汉字 —— W3C《中文排版需求》(clreq) 给出「大多数书籍 17–40 字」，
+   40 是这个区间的上限；横排硬上限是 48 字。
+   想让栏更宽就加字号、不加字数：18px × 40 字 = 720px，正好是字号的整数倍。 */
+.post-content {
+  font-size: 1.125rem;    /* 18px */
+  line-height: 1.8;
+}
+
+:root {
+  --rd-measure: 47rem;    /* 正文列宽，改这一个数就能调 */
+}
+
+/* 正文列锁宽：约 45 个汉字一行，从手机到 4K 恒定。
+   友情链接页是自定义的卡片墙，不该被收窄，用 :not() 排除。
+   以后再有类似的宽版自定义页面，把它的容器 class 加进下面的 :not() 即可。 */
+.content-posts:not(:has(.friend-cards)) > .container {
+  max-width: var(--rd-measure);
+  margin-inline: auto;
+}
+
+.post-content p {
+  margin-bottom: 1.15em;
+}
+.post-content li {
+  margin-bottom: .35em;
+}
+.post-content li > ul,
+.post-content li > ol {
+  margin-top: .35em;
+}
+
+/* ============================================================
+   3. 标题层级
+   ============================================================ */
+
+.post-content h2 {
+  font-size: 1.5rem;
+  line-height: 1.5;
+  margin-top: 2.6em;
+  margin-bottom: .9em;
+  padding-bottom: .35em;
+  border-bottom: 1px solid var(--hbs-border-color);
+  text-wrap: balance;
+}
+.post-content h3 {
+  font-size: 1.25rem;
+  line-height: 1.55;
+  margin-top: 2em;
+  margin-bottom: .7em;
+  text-wrap: balance;
+}
+.post-content h4 {
+  font-size: 1.15rem;
+  margin-top: 1.7em;
+}
+.post-title {
+  line-height: 1.35;
+  text-wrap: balance;
+}
+
+/* ============================================================
+   4. 行内元素与块
+   ============================================================ */
+
+.post-content a {
+  color: var(--hbs-primary);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+.post-content a:hover {
+  text-decoration-thickness: 2px;
+}
+.post-content code {
+  font-size: .9em;
+  padding: .15em .38em;
+  border-radius: 5px;
+  background: var(--hbs-secondary-bg);
+}
+.post-content pre {
+  font-size: .9em;
+  line-height: 1.7;
+  border-radius: 10px;
+  padding: 1rem 1.15rem;
+}
+.post-content pre code {
+  padding: 0;
+  background: transparent;
+}
+.post-content blockquote {
+  margin: 1.6em 0;
+  padding: .55em 1.1em;
+  border-left: 3px solid var(--hbs-primary);
+  background: var(--hbs-secondary-bg-subtle, var(--hbs-secondary-bg));
+  border-radius: 0 8px 8px 0;
+}
+.post-content img {
+  border-radius: 10px;
+  max-width: 100%;
+  height: auto;
+}
+.post-content hr {
+  margin: 2.6em 0;
+  opacity: .5;
+}
+.post-content table {
+  font-size: .95em;
+}
+
+/* 标签字号 */
+.post-taxonomy,
+.post-tag,
+.tag {
+  font-size: .8125rem !important;
+}
+
+/* ============================================================
+   5. 断点修复
+   原先双栏只在 >=1400px 生效，1000–1400 的笔记本上正文被拉到
+   近 1000px 宽、侧栏整块掉到文末。这里补上 1200px 起双栏。
+   ============================================================ */
+
+@media (min-width: 1200px) and (max-width: 1399.98px) {
+  .content-posts {
+    flex: 0 0 auto;
+    width: 66.66666667%;
+  }
+  aside.sidebar {
+    flex: 0 0 auto;
+    width: 33.33333333%;
+  }
+}
+
+/* 正文列想更宽，得先松开外层容器的宽度上限（Bootstrap xxl 默认 1320px，
+   8/12 分栏后正文最多只能到 ~840px，再调 --rd-measure 也会被截住）。
+   只对带正文列的页面放开，首页和列表页不受影响。 */
+@media (min-width: 1400px) {
+  main.container:has(.content-posts) {
+    max-width: 1500px;
+  }
+}
+
+/* 目录只留一份：>=1200 用侧栏那份，<1200 用正文顶部那份 */
+.post-toc {
+  display: none !important;
+}
+div:has(> #post-toc-container) {
+  display: block;
+}
+@media (min-width: 1200px) {
+  .post-toc {
+    display: block !important;
+    position: sticky;
+    top: 80px;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+  div:has(> #post-toc-container) {
+    display: none !important;
+  }
+}
+
+/* ============================================================
+   6. 目录：滚动联动自动展开
+   当前阅读章节所在的分支自动展开，其它分支收起。
+   逻辑在 /js/toc-auto.js
+   ============================================================ */
+
+.post-toc nav ul,
+#post-toc-container nav ul {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+}
+.post-toc nav ul ul,
+#post-toc-container nav ul ul {
+  padding-left: .9rem;
+}
+.post-toc nav li,
+#post-toc-container nav li {
+  position: relative;
+}
+
+.post-toc nav a,
+#post-toc-container nav a {
+  display: block;
+  padding: .22rem .5rem;
+  border-radius: 6px;
+  color: var(--hbs-surface-color-secondary, var(--hbs-secondary-color));
+  text-decoration: none;
+  line-height: 1.45;
+}
+
+/* 分支：默认收起，展开时再显示子层 */
+.post-toc nav li.toc-branch > ul,
+#post-toc-container nav li.toc-branch > ul {
+  display: none;
+}
+.post-toc nav li.toc-branch.toc-open > ul,
+#post-toc-container nav li.toc-branch.toc-open > ul {
+  display: block;
+}
+
+/* 折叠箭头 */
+.post-toc nav li.toc-branch > a,
+#post-toc-container nav li.toc-branch > a {
+  padding-right: 1.1rem;
+}
+.post-toc nav li.toc-branch > a::after,
+#post-toc-container nav li.toc-branch > a::after {
+  content: "";
+  position: absolute;
+  right: .5rem;
+  top: .72em;
+  width: .36rem;
+  height: .36rem;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(-45deg);
+  opacity: .5;
+  transition: transform .2s ease;
+}
+.post-toc nav li.toc-branch.toc-open > a::after,
+#post-toc-container nav li.toc-branch.toc-open > a::after {
+  transform: rotate(45deg);
+}
+
+/* 当前阅读到的条目 */
+.post-toc nav a.toc-active,
+#post-toc-container nav a.toc-active {
+  color: var(--hbs-primary) !important;
+  background: var(--hbs-secondary-bg);
+  font-weight: 600;
+}
+[data-bs-theme="dark"] .post-toc nav a.toc-active,
+[data-bs-theme="dark"] #post-toc-container nav a.toc-active {
+  color: #7cb0ff !important;
+}
+
+/* ============================================================
+   7. 阅读进度条（纯 CSS 滚动驱动，零 JS）
+   不支持的浏览器自动不显示
+   ============================================================ */
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: scroll()) {
+    .reading-progress {
+      position: fixed;
+      inset: 0 0 auto 0;
+      height: 3px;
+      transform-origin: 0 50%;
+      transform: scaleX(0);
+      background: linear-gradient(90deg, #60a5fa, #a78bfa, #f472b6);
+      z-index: 1035;
+      pointer-events: none;
+      animation: reading-progress-grow linear both;
+      animation-timeline: scroll(root block);
+    }
+    @keyframes reading-progress-grow {
+      from { transform: scaleX(0); }
+      to   { transform: scaleX(1); }
+    }
+  }
+}
+
+/* ============================================================
+   8. 极光玻璃顶栏
+   顶栏磨砂半透明，滚动时内容从底下透上来；背后一层极光光晕。
+   ============================================================ */
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: -20vh -10vw auto -10vw;
+  height: 90vh;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(45% 55% at 18% 20%, rgba(96, 165, 250, .38), transparent 70%),
+    radial-gradient(40% 50% at 78% 8%,  rgba(167, 139, 250, .34), transparent 70%),
+    radial-gradient(38% 48% at 55% 42%, rgba(56, 189, 248, .26), transparent 70%);
+  filter: blur(8px);
+}
+
+[data-bs-theme="dark"] body::before {
+  background:
+    radial-gradient(45% 55% at 18% 18%, rgba(37, 99, 235, .45), transparent 70%),
+    radial-gradient(40% 50% at 80% 6%,  rgba(124, 58, 237, .40), transparent 70%),
+    radial-gradient(38% 48% at 52% 40%, rgba(14, 165, 233, .30), transparent 70%);
+  opacity: .75;
+}
+
+.top-app-bar {
+  background: rgba(255, 255, 255, .72) !important;
+  backdrop-filter: saturate(180%) blur(14px);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+  border-bottom: 1px solid rgba(148, 163, 184, .28);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .6) inset, 0 6px 24px -12px rgba(15, 23, 42, .35) !important;
+}
+
+/* 浅色模式下玻璃底是白的，文字必须跟着转深色。
+   主题默认的 #ccc 是配蓝色底用的，放到白玻璃上对比度只有 1.6:1。 */
+[data-bs-theme="light"] .top-app-bar {
+  color: #212529;
+  --hbs-link-color: #212529;
+  --hbs-link-hover-color: var(--hbs-primary);
+  --hbs-navbar-color: rgba(33, 37, 41, .85);
+  --hbs-navbar-hover-color: var(--hbs-primary);
+  --hbs-navbar-active-color: var(--hbs-primary);
+  --hbs-navbar-brand-color: #212529;
+  --hbs-navbar-brand-hover-color: var(--hbs-primary);
+  --hbs-nav-link-color: rgba(33, 37, 41, .85);
+  --hbs-nav-link-hover-color: var(--hbs-primary);
+  --hbs-nav-link-active-color: var(--hbs-primary);
+  --hbs-form-control-bg: rgba(255, 255, 255, .85);
+}
+
+[data-bs-theme="dark"] .top-app-bar {
+  background: rgba(17, 24, 39, .68) !important;
+  border-bottom-color: rgba(148, 163, 184, .18);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .06) inset, 0 6px 24px -12px rgba(0, 0, 0, .8) !important;
+}
+
+/* 不支持毛玻璃就退回实色，保证可读性 */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .top-app-bar {
+    background: var(--hbs-surface-bg, #fff) !important;
+  }
+  [data-bs-theme="dark"] .top-app-bar {
+    background: #111827 !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .post-toc nav li.toc-branch > a::after,
+  #post-toc-container nav li.toc-branch > a::after {
+    transition: none;
+  }
+}
+
+/* ============================================================
+   9. 友链页：星云散落排布
+   原先卡片写死 width: 230px + flex-wrap，一行只塞得下 3 张，
+   右边固定空掉一条；这里换成自适应网格铺满整行，再给整片卡
+   片加一层共用星云底 + 逐卡微错落，让它们像散在同一片星云里
+   的星星，而不是排成一格一格的方块。
+   ============================================================ */
+
+.friend-cards,
+.org-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 12rem), 1fr));
+  gap: 1.5rem 1.1rem;
+  overflow: visible;
+  /* 给最后一行往下错落的卡片留出余量 */
+  padding-bottom: 1.25rem;
+}
+
+.friend-cards > .friend-card,
+.org-cards > .org-card {
+  /* 每张卡片的错落量，由下面的 nth-child 轮换赋值 */
+  --rot: 0deg;
+  --dy: 0px;
+
+  position: relative;
+  border-radius: 22px;
+  border: 2px solid rgba(255, 255, 255, .18);
+  padding: 1.2rem;
+  box-shadow: 0 8px 40px rgba(175, 66, 97, .18);
+  backdrop-filter: blur(10px) saturate(170%);
+  -webkit-backdrop-filter: blur(10px) saturate(170%);
+  overflow: hidden;
+  transition: transform .2s, box-shadow .2s, border-color .2s;
+  transform: translateY(var(--dy)) rotate(var(--rot));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+/* 错落：同一行里的卡片角度和高低都不同，看着像随手撒下的星星。
+   错落量用 transform 做，不占布局空间，所以网格不会被撑歪。 */
+.friend-cards > .friend-card:nth-child(4n + 1),
+.org-cards > .org-card:nth-child(4n + 1) { --rot: -.9deg; --dy: 0; }
+.friend-cards > .friend-card:nth-child(4n + 2),
+.org-cards > .org-card:nth-child(4n + 2) { --rot: .6deg; --dy: 10px; }
+.friend-cards > .friend-card:nth-child(4n + 3),
+.org-cards > .org-card:nth-child(4n + 3) { --rot: -.4deg; --dy: 4px; }
+.friend-cards > .friend-card:nth-child(4n),
+.org-cards > .org-card:nth-child(4n) { --rot: 1deg; --dy: 14px; }
+
+/* 卡片自带的星点层 */
+.friend-cards > .friend-card::before,
+.org-cards > .org-card::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  left: -20%;
+  width: 140%;
+  height: 140%;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle, #ffe3b0 .8px, transparent 2px) 12% 22%/110px 80px,
+    radial-gradient(circle, #aae2ff 1.1px, transparent 2px) 72% 32%/150px 75px,
+    radial-gradient(circle, #8e71bf .7px, transparent 2px) 42% 77%/90px 60px,
+    radial-gradient(circle, #fff 1.3px, transparent 2px) 87% 51%/130px 120px,
+    radial-gradient(circle, #fcb3d1 1px, transparent 2px) 33% 64%/120px 88px,
+    radial-gradient(circle, #ffeeb3 1px, transparent 2px) 62% 78%/120px 100px;
+  background-repeat: repeat;
+  animation: friend-stars-rotate 22s linear infinite;
+  border-radius: 50%;
+  opacity: .32;
+}
+
+@keyframes friend-stars-rotate {
+  0%   { transform: rotate(0deg) scale(1); }
+  100% { transform: rotate(360deg) scale(1.04); }
+}
+
+/* 卡片内容压在星点层上面 */
+.friend-cards > .friend-card > *,
+.org-cards > .org-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+.friend-cards > .friend-card:hover,
+.org-cards > .org-card:hover {
+  transform: translateY(var(--dy)) rotate(var(--rot)) scale(1.06);
+  box-shadow: 0 16px 50px 6px rgba(175, 66, 160, .25);
+  border-color: rgba(255, 255, 255, .38);
+  z-index: 999;
+}
+
+.friend-cards > .friend-card img,
+.org-cards > .org-card img {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: .7rem;
+  border: 2px solid #fff;
+  box-shadow: 0 4px 16px #af426178;
+  z-index: 3;
+}
+
+.friend-cards > .friend-card a,
+.org-cards > .org-card a {
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.08em;
+  z-index: 3;
+  text-shadow: 0 2px 14px rgba(175, 66, 160, .16);
+}
+
+.friend-desc,
+.org-desc {
+  color: #fffbe5;
+  font-size: 1em;
+  text-align: center;
+  text-shadow: 0 2px 6px #af426166;
+  z-index: 3;
+}
+
+/* ---- 整片卡片共用的星云底 ----
+   isolation: isolate 让这片星云和卡片自成一层，卡片能靠 z-index
+   稳稳压在星云上面，也不会盖到顶栏和侧边栏。 */
+
+.post-content section:has(> .friend-cards),
+.post-content section:has(> .org-cards) {
+  position: relative;
+  isolation: isolate;
+}
+
+.post-content section:has(> .friend-cards) > h2,
+.post-content section:has(> .org-cards) > h2 {
+  position: relative;
+  z-index: 1;
+}
+
+/* 星云本体：几团柔和的彩色光晕，晕开后再压到卡片底下 */
+.post-content section:has(> .friend-cards)::before,
+.post-content section:has(> .org-cards)::before {
+  content: '';
+  position: absolute;
+  inset: -3rem -.5rem;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(38% 30% at 16% 14%, rgba(96, 165, 250, .22), transparent 70%),
+    radial-gradient(34% 26% at 82% 8%, rgba(167, 139, 250, .2), transparent 70%),
+    radial-gradient(40% 30% at 55% 46%, rgba(244, 114, 182, .13), transparent 70%),
+    radial-gradient(34% 26% at 10% 76%, rgba(56, 189, 248, .15), transparent 70%),
+    radial-gradient(36% 26% at 88% 88%, rgba(139, 92, 246, .16), transparent 70%);
+  filter: blur(18px);
+}
+
+/* 星点：铺在星云上面、卡片底下，缓慢明暗呼吸 */
+.post-content section:has(> .friend-cards)::after,
+.post-content section:has(> .org-cards)::after {
+  content: '';
+  position: absolute;
+  inset: -2rem -.5rem;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle, #ffe3b0 1px, transparent 2px) 12% 22%/110px 80px,
+    radial-gradient(circle, #aae2ff 1.2px, transparent 2px) 72% 32%/150px 75px,
+    radial-gradient(circle, #fff 1.4px, transparent 2px) 87% 51%/130px 120px,
+    radial-gradient(circle, #fcb3d1 1.1px, transparent 2px) 33% 64%/120px 88px,
+    radial-gradient(circle, #8e71bf .9px, transparent 2px) 42% 77%/90px 60px;
+  background-repeat: repeat;
+  animation: friend-nebula-breathe 14s ease-in-out infinite;
+}
+
+@keyframes friend-nebula-breathe {
+  0%, 100% { opacity: .28; }
+  50%      { opacity: .6; }
+}
+
+/* 手机端：两列、去掉高低错落（角度留着），卡片内边距收一点 */
+@media (max-width: 575.98px) {
+  .friend-cards,
+  .org-cards {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 9rem), 1fr));
+    gap: 1.1rem .85rem;
+  }
+
+  .friend-cards > .friend-card:nth-child(n),
+  .org-cards > .org-card:nth-child(n) {
+    --dy: 0;
+  }
+
+  .friend-cards > .friend-card,
+  .org-cards > .org-card {
+    padding: 1rem .75rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .friend-cards > .friend-card::before,
+  .org-cards > .org-card::before,
+  .post-content section:has(> .friend-cards)::after,
+  .post-content section:has(> .org-cards)::after {
+    animation: none;
+  }
+
+  .post-content section:has(> .friend-cards)::after,
+  .post-content section:has(> .org-cards)::after {
+    opacity: .45;
+  }
+}
+
+/* ============================================================
+   10. 友链页：浅色模式
+   卡片文字写死了 #fff / #fffbe5，卡片本身又没有背景，
+   浅色模式下就是白底白字。这里只补浅色模式缺的那几项，
+   深色模式一点没动。
+   ============================================================ */
+
+[data-bs-theme="light"] .friend-cards > .friend-card,
+[data-bs-theme="light"] .org-cards > .org-card {
+  background: rgba(255, 255, 255, .55);
+  border-color: rgba(15, 23, 42, .1);
+  box-shadow: 0 8px 30px rgba(83, 63, 120, .12);
+}
+
+/* 星点在浅色底上会变成脏点，压淡 */
+[data-bs-theme="light"] .friend-cards > .friend-card::before,
+[data-bs-theme="light"] .org-cards > .org-card::before {
+  opacity: .16;
+}
+
+[data-bs-theme="light"] .friend-cards > .friend-card a,
+[data-bs-theme="light"] .org-cards > .org-card a {
+  color: #1b2440;
+  text-shadow: none;
+}
+
+[data-bs-theme="light"] .friend-desc,
+[data-bs-theme="light"] .org-desc {
+  color: #4a5568;
+  text-shadow: none;
+}
+
+[data-bs-theme="light"] .friend-cards > .friend-card img,
+[data-bs-theme="light"] .org-cards > .org-card img {
+  box-shadow: 0 4px 16px rgba(83, 63, 120, .2);
+}
+
+[data-bs-theme="light"] .friend-cards > .friend-card:hover,
+[data-bs-theme="light"] .org-cards > .org-card:hover {
+  border-color: rgba(15, 23, 42, .22);
+  box-shadow: 0 16px 40px 4px rgba(83, 63, 120, .18);
+}
+
+/* 浅色页面本身已经有极光底，星云再叠满会糊，收回一半 */
+[data-bs-theme="light"] .post-content section:has(> .friend-cards)::before,
+[data-bs-theme="light"] .post-content section:has(> .org-cards)::before {
+  opacity: .55;
+}
+
+/* ============================================================
+   11. 侧栏卡片圆角
+   主题把 .card 的圆角交给 --hbs-card-border-radius，默认值是
+   --hbs-border-radius（6px）——330px 宽的卡片上这 6px 几乎看不见，
+   所以看着像直角。这里把右栏三张卡（作者卡 / Recent Posts /
+   Contents）统一放大到 16px。
+
+   两个坑：
+   1. 变量前缀是 --hbs- 不是 --bs-。主题就是 hbs 前缀，
+      写 --bs-card-border-radius 是不存在的变量，一行都不会生效。
+   2. 侧栏这几张卡同时带 .accordion-item，而 Bootstrap 有
+      .accordion-item:first-of-type / :last-of-type 四条
+      border-*-radius: var(--hbs-accordion-border-radius)
+      —— 特异性 (0,2,0)，压过 .card 的 (0,1,0)。
+      所以光改 --hbs-card-* 不够，accordion 那组变量必须一起改，
+      否则 Recent Posts 那张还是 6px（实测过）。
+   3. 头部上两角走 --hbs-card-inner-border-radius，
+      不跟着改的话标题条会顶出圆角外面。
+   ============================================================ */
+
+aside.sidebar .card {
+  --hbs-card-border-radius: 16px;
+  --hbs-card-inner-border-radius: 16px;
+  --hbs-accordion-border-radius: 16px;
+  --hbs-accordion-inner-border-radius: 16px;
+}

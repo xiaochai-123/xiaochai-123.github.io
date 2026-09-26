@@ -15,8 +15,8 @@
       <guid>https://decimo.top/posts/sqli-labs/</guid>
       <description><![CDATA[<h1 id="sql注入sqli-labs学习笔记" data-numberify>SQL注入——sqli-labs学习笔记<a class="anchor ms-1" href="#sql注入sqli-labs学习笔记"></a></h1>
 <p>我是边看b站重庆橘子科技的视频边学的，陈腾师傅讲得很好，推荐</p>
-<pre tabindex="0"><code>https://www.bilibili.com/video/BV1c34y1h7So/?p=7&amp;share_source=copy_web&amp;vd_source=9c22157b2c924857f42d806788cc5fea
-</code></pre><hr>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">https://www.bilibili.com/video/BV1c34y1h7So/?p=7&amp;share_source=copy_web&amp;vd_source=9c22157b2c924857f42d806788cc5fea
+</span></span></code></pre></div><hr>
 
 <h2 id="union注入" data-numberify>Union注入<a class="anchor ms-1" href="#union注入"></a></h2>
 <p><picture><img class="img-fluid " alt="msedge_yEllTDmkjW" src="https://decimo.top/images/screenshoots/2025-12/msedge_yEllTDmkjW.png?v=09bfda9fddc93fac2c87312aac6ebd94" loading="lazy" width="1745" height="1079" />
@@ -55,8 +55,7 @@
 <p><picture><img class="img-fluid " alt="msedge_m4Xts1eDSA" src="https://decimo.top/images/screenshoots/2025-12/msedge_m4Xts1eDSA.png?v=7db64a0bcf335cc1342adee28a779f13" loading="lazy" width="1051" height="519" />
 </picture>
 
-</p>
-<p>如图所示，当我们正常进行查询时，不会有回显，只显示You are in&hellip;</p>]]></description>
+</p>]]></description>
     <enclosure url="https://decimo.top/images/SQL1.png" length="88126" type="image/.png" />
     </item>
     
@@ -73,21 +72,21 @@
 <h3 id="1-安装kali环境及lamp组件" data-numberify>1. 安装Kali环境及LAMP组件<a class="anchor ms-1" href="#1-安装kali环境及lamp组件"></a></h3>
 <p>建议使用VMware或VirtualBox新建Kali虚拟机。<br>
 安装Web服务与SQL支持：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt update
-</span></span><span style="display:flex;"><span>sudo apt install apache2 mariadb-server php php-mysql git unzip
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">sudo apt update
+</span></span><span class="line"><span class="ln">2</span><span class="cl">sudo apt install apache2 mariadb-server php php-mysql git unzip
 </span></span></code></pre></div>
 <h3 id="2-克隆sqli-labs靶场源码" data-numberify>2. 克隆SQLi Labs靶场源码<a class="anchor ms-1" href="#2-克隆sqli-labs靶场源码"></a></h3>
 <p>进入Web根目录（Apache默认）：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd /var/www/html
-</span></span><span style="display:flex;"><span>sudo git clone https://github.com/Audi-1/sqli-labs.git
-</span></span><span style="display:flex;"><span>sudo chown -R www-data:www-data sqli-labs
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl"><span class="nb">cd</span> /var/www/html
+</span></span><span class="line"><span class="ln">2</span><span class="cl">sudo git clone https://github.com/Audi-1/sqli-labs.git
+</span></span><span class="line"><span class="ln">3</span><span class="cl">sudo chown -R www-data:www-data sqli-labs
 </span></span></code></pre></div>
 <h3 id="3-启动服务" data-numberify>3. 启动服务<a class="anchor ms-1" href="#3-启动服务"></a></h3>
 <p>确保apache和数据库开启：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo systemctl start apache2
-</span></span><span style="display:flex;"><span>sudo systemctl start mariadb
-</span></span><span style="display:flex;"><span>sudo systemctl enable apache2
-</span></span><span style="display:flex;"><span>sudo systemctl enable mariadb
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">sudo systemctl start apache2
+</span></span><span class="line"><span class="ln">2</span><span class="cl">sudo systemctl start mariadb
+</span></span><span class="line"><span class="ln">3</span><span class="cl">sudo systemctl <span class="nb">enable</span> apache2
+</span></span><span class="line"><span class="ln">4</span><span class="cl">sudo systemctl <span class="nb">enable</span> mariadb
 </span></span></code></pre></div>
 <h3 id="4-创建数据库和导入数据" data-numberify>4. 创建数据库和导入数据<a class="anchor ms-1" href="#4-创建数据库和导入数据"></a></h3>
 <p>登录MariaDB/MySQL，创建数据库：</p>]]></description>

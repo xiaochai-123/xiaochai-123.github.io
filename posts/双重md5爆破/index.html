@@ -1,7 +1,7 @@
 <!doctype html>
 <html class="position-relative" itemscope itemtype="https://schema.org/WebPage" lang="en"
   data-bs-theme="auto" data-palette="blue">
-  <head><script src="/assets/init/bundle.min.658d13e58d95d8bb2da082cf6e92f29c1f07475fd145926c2c401f88f9ddf545.js" integrity="sha256-ZY0T5Y2V2LstoILPbpLynB8HR1/RRZJsLEAfiPnd9UU=" crossorigin="anonymous"></script>
+  <head><script src="/assets/init/bundle.min.0815b7e73ceecd1be5ee8303df916b89a7fd1454fb835a47e3b2f9739781426f.js" integrity="sha256-CBW35zzuzRvl7oMD35Friaf9FFT7g1pH47L5c5eBQm8=" crossorigin="anonymous"></script>
 <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>双重md5爆破 - decimo的小窝</title>
@@ -35,7 +35,7 @@
   <meta itemprop="description" content="PHP奇淫巧计之md5碰撞">
   <meta itemprop="datePublished" content="2025-12-05T23:25:07+08:00">
   <meta itemprop="dateModified" content="2025-12-05T23:25:07+08:00">
-  <meta itemprop="wordCount" content="465">
+  <meta itemprop="wordCount" content="567">
   <meta itemprop="image" content="https://decimo.top/images/MD5.png">
   <meta itemprop="keywords" content="CTF,Web,Md5">
   <meta property="og:image:alt" content="双重md5爆破" />
@@ -46,7 +46,7 @@
     <link data-precache rel="stylesheet" href="/assets/viewer/bundle.min.16d2c85c4cae39a98f8cb7a977e95e554b174f91a5484c32605637156f49ca6b.css" integrity="sha256-FtLIXEyuOamPjLepd&#43;leVUsXT5GlSEwyYFY3FW9Jyms=" crossorigin="anonymous">
 
 
-<link rel="stylesheet" href="/css/custom.8cc5830dfc3827d70305a39f1925ac813f85effc381d9b656ac82115d234cbea.css" integrity="sha256-jMWDDfw4J9cDBaOfGSWsgT&#43;F7/w4HZtlasghFdI0y&#43;o=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/custom.730a801596309655d4fc41e9ef9ac6d3a06d0396ba0b1cea47e7418cf1013673.css" integrity="sha256-cwqAFZYwllXU/EHp75rG06BtA5a6CxzqR&#43;dBjPEBNnM=" crossorigin="anonymous">
 <script>
 (function() {
   var originalTitle = document.title;
@@ -265,7 +265,7 @@ decimo的小窝
     <h1 class="card-title post-title my-2">双重md5爆破</h1>
   </div>
   <div class="card-body"><div class="post-meta mb-3">
-  <span class="post-date me-1 mb-1" title="created on 2025-12-05 23:25:07 &#43;0800 CST.">December 5, 2025</span><span class="post-reading-time me-1 mb-1">4 min read</span><a href="/categories/%E5%A5%87%E5%A6%99%E5%B0%8F%E7%9F%A5%E8%AF%86/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-category">
+  <span class="post-date me-1 mb-1" title="created on 2025-12-05 23:25:07 &#43;0800 CST.">December 5, 2025</span><span class="post-reading-time me-1 mb-1">5 min read</span><a href="/categories/%E5%A5%87%E5%A6%99%E5%B0%8F%E7%9F%A5%E8%AF%86/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-category">
       <i class="fas fa-fw fa-folder me-1"></i>奇妙小知识</a><a href="/tags/ctf/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-tag">CTF</a><a href="/tags/md5/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-tag">Md5</a><a href="/tags/web/" class="btn btn-sm btn-secondary mb-1 me-2 py-0 pe-1 post-taxonomy post-taxonomy-sm post-tag">Web</a>
 </div>
 
@@ -289,148 +289,148 @@ decimo的小窝
 <p>比如说这道极客大挑战2025的题目，要求两个值弱等于且不强等于。</p>
 <p>由于弱等于可以把字符串转化为数字比较，而强等于限制了二者不能完全相同</p>
 <p>所有用到科学计数法，当双重md5后字符串为0e开头后面全是数字，则可以通过弱比较，二者都等于0，且强比较不同，符合题意。这里给出一个python脚本，可以拿来爆破</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> hashlib
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> string
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> multiprocessing
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">double_md5</span>(s):
-</span></span><span style="display:flex;"><span>    first_md5 <span style="color:#f92672">=</span> hashlib<span style="color:#f92672">.</span>md5(s<span style="color:#f92672">.</span>encode())<span style="color:#f92672">.</span>hexdigest()
-</span></span><span style="display:flex;"><span>    second_md5 <span style="color:#f92672">=</span> hashlib<span style="color:#f92672">.</span>md5(first_md5<span style="color:#f92672">.</span>encode())<span style="color:#f92672">.</span>hexdigest()
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> second_md5
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">is_magic_hash</span>(md5_hash):
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> md5_hash<span style="color:#f92672">.</span>startswith(<span style="color:#e6db74">&#39;0e&#39;</span>) <span style="color:#f92672">and</span> md5_hash[<span style="color:#ae81ff">2</span>:]<span style="color:#f92672">.</span>isdigit()
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">worker_task</span>(args):
-</span></span><span style="display:flex;"><span>    charset, length, start_idx, batch_size, max_results_left <span style="color:#f92672">=</span> args
-</span></span><span style="display:flex;"><span>    results <span style="color:#f92672">=</span> []
-</span></span><span style="display:flex;"><span>    count <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(start_idx, start_idx <span style="color:#f92672">+</span> batch_size):
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> i <span style="color:#f92672">&gt;=</span> len(charset) <span style="color:#f92672">**</span> length <span style="color:#f92672">or</span> count <span style="color:#f92672">&gt;=</span> max_results_left:
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">break</span>
-</span></span><span style="display:flex;"><span>        candidate_str <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>
-</span></span><span style="display:flex;"><span>        temp <span style="color:#f92672">=</span> i
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(length):
-</span></span><span style="display:flex;"><span>            candidate_str <span style="color:#f92672">+=</span> charset[temp <span style="color:#f92672">%</span> len(charset)]
-</span></span><span style="display:flex;"><span>            temp <span style="color:#f92672">//=</span> len(charset)
-</span></span><span style="display:flex;"><span>        hash_result <span style="color:#f92672">=</span> double_md5(candidate_str)
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> is_magic_hash(hash_result):
-</span></span><span style="display:flex;"><span>            results<span style="color:#f92672">.</span>append((candidate_str, hash_result))
-</span></span><span style="display:flex;"><span>            count <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> results
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">parallel_brute_force</span>(max_results, charset, desc<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>):
-</span></span><span style="display:flex;"><span>    max_length <span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span>
-</span></span><span style="display:flex;"><span>    batch_size <span style="color:#f92672">=</span> <span style="color:#ae81ff">100000</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    found <span style="color:#f92672">=</span> []
-</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">开始并行暴力破解“</span><span style="color:#e6db74">{</span>desc<span style="color:#e6db74">}</span><span style="color:#e6db74">”集，目标找到 </span><span style="color:#e6db74">{</span>max_results<span style="color:#e6db74">}</span><span style="color:#e6db74"> 个...&#34;</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> length <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">4</span>, max_length <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>):
-</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">搜索长度 </span><span style="color:#e6db74">{</span>length<span style="color:#e6db74">}</span><span style="color:#e6db74"> 的字符串...&#34;</span>)
-</span></span><span style="display:flex;"><span>        total_combinations <span style="color:#f92672">=</span> len(charset) <span style="color:#f92672">**</span> length
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">with</span> multiprocessing<span style="color:#f92672">.</span>Pool(processes<span style="color:#f92672">=</span>multiprocessing<span style="color:#f92672">.</span>cpu_count()) <span style="color:#66d9ef">as</span> pool:
-</span></span><span style="display:flex;"><span>            tasks <span style="color:#f92672">=</span> []
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> start_idx <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">0</span>, total_combinations, batch_size):
-</span></span><span style="display:flex;"><span>                left_to_find <span style="color:#f92672">=</span> max_results <span style="color:#f92672">-</span> len(found)
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> left_to_find <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">0</span>:
-</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">break</span>
-</span></span><span style="display:flex;"><span>                tasks<span style="color:#f92672">.</span>append((charset, length, start_idx, batch_size, left_to_find))
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> i, result_batch <span style="color:#f92672">in</span> enumerate(pool<span style="color:#f92672">.</span>imap_unordered(worker_task, tasks)):
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> result_batch:
-</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">for</span> string_val, hash_val <span style="color:#f92672">in</span> result_batch:
-</span></span><span style="display:flex;"><span>                        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;找到匹配! 字符串: </span><span style="color:#e6db74">{</span>string_val<span style="color:#e6db74">}</span><span style="color:#e6db74">, 哈希: </span><span style="color:#e6db74">{</span>hash_val<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
-</span></span><span style="display:flex;"><span>                        found<span style="color:#f92672">.</span>append((string_val, hash_val))
-</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">if</span> len(found) <span style="color:#f92672">&gt;=</span> max_results:
-</span></span><span style="display:flex;"><span>                            print(<span style="color:#e6db74">&#34;已达到目标数量，提前结束&#34;</span>)
-</span></span><span style="display:flex;"><span>                            pool<span style="color:#f92672">.</span>terminate()
-</span></span><span style="display:flex;"><span>                            <span style="color:#66d9ef">break</span>
-</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">if</span> len(found) <span style="color:#f92672">&gt;=</span> max_results:
-</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">break</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> i <span style="color:#f92672">%</span> <span style="color:#ae81ff">10</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
-</span></span><span style="display:flex;"><span>                    progress <span style="color:#f92672">=</span> min((i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">*</span> batch_size, total_combinations)
-</span></span><span style="display:flex;"><span>                    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;进度: </span><span style="color:#e6db74">{</span>progress<span style="color:#e6db74">}</span><span style="color:#e6db74">/</span><span style="color:#e6db74">{</span>total_combinations<span style="color:#e6db74">}</span><span style="color:#e6db74"> (</span><span style="color:#e6db74">{</span>progress<span style="color:#f92672">/</span>total_combinations<span style="color:#f92672">*</span><span style="color:#ae81ff">100</span><span style="color:#e6db74">:</span><span style="color:#e6db74">.1f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">%)&#34;</span>)
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> len(found) <span style="color:#f92672">&gt;=</span> max_results:
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">break</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">全部找到的魔术hash（</span><span style="color:#e6db74">{</span>desc<span style="color:#e6db74">}</span><span style="color:#e6db74">）如下：&#34;</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> idx, (s, h) <span style="color:#f92672">in</span> enumerate(found, <span style="color:#ae81ff">1</span>):
-</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>idx<span style="color:#e6db74">:</span><span style="color:#e6db74">02d</span><span style="color:#e6db74">}</span><span style="color:#e6db74">. 字符串: </span><span style="color:#e6db74">{</span>s<span style="color:#e6db74">}</span><span style="color:#e6db74">, 哈希: </span><span style="color:#e6db74">{</span>h<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> found
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
-</span></span><span style="display:flex;"><span>    num <span style="color:#f92672">=</span> int(input(<span style="color:#e6db74">&#34;请输入要找到的魔术hash数量: &#34;</span>))
-</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;-&#34;</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">30</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 先用纯字母集爆破</span>
-</span></span><span style="display:flex;"><span>    results_alpha <span style="color:#f92672">=</span> parallel_brute_force(num, string<span style="color:#f92672">.</span>ascii_letters, desc<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;字母&#34;</span>)
-</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;-&#34;</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">30</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 再用字母+数字集爆破（不会重复已找到的结果）</span>
-</span></span><span style="display:flex;"><span>    results_alphanum <span style="color:#f92672">=</span> parallel_brute_force(num, string<span style="color:#f92672">.</span>ascii_letters <span style="color:#f92672">+</span> string<span style="color:#f92672">.</span>digits, desc<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;字母+数字&#34;</span>)
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="kn">import</span> <span class="nn">hashlib</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="kn">import</span> <span class="nn">string</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="kn">import</span> <span class="nn">multiprocessing</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="k">def</span> <span class="nf">double_md5</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">    <span class="n">first_md5</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">md5</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">    <span class="n">second_md5</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">md5</span><span class="p">(</span><span class="n">first_md5</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">    <span class="k">return</span> <span class="n">second_md5</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">
+</span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="k">def</span> <span class="nf">is_magic_hash</span><span class="p">(</span><span class="n">md5_hash</span><span class="p">):</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl">    <span class="k">return</span> <span class="n">md5_hash</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;0e&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">md5_hash</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span><span class="o">.</span><span class="n">isdigit</span><span class="p">()</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl">
+</span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="k">def</span> <span class="nf">worker_task</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+</span></span><span class="line"><span class="ln">14</span><span class="cl">    <span class="n">charset</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">start_idx</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">max_results_left</span> <span class="o">=</span> <span class="n">args</span>
+</span></span><span class="line"><span class="ln">15</span><span class="cl">    <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="ln">16</span><span class="cl">    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="ln">17</span><span class="cl">    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start_idx</span><span class="p">,</span> <span class="n">start_idx</span> <span class="o">+</span> <span class="n">batch_size</span><span class="p">):</span>
+</span></span><span class="line"><span class="ln">18</span><span class="cl">        <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">charset</span><span class="p">)</span> <span class="o">**</span> <span class="n">length</span> <span class="ow">or</span> <span class="n">count</span> <span class="o">&gt;=</span> <span class="n">max_results_left</span><span class="p">:</span>
+</span></span><span class="line"><span class="ln">19</span><span class="cl">            <span class="k">break</span>
+</span></span><span class="line"><span class="ln">20</span><span class="cl">        <span class="n">candidate_str</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+</span></span><span class="line"><span class="ln">21</span><span class="cl">        <span class="n">temp</span> <span class="o">=</span> <span class="n">i</span>
+</span></span><span class="line"><span class="ln">22</span><span class="cl">        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">length</span><span class="p">):</span>
+</span></span><span class="line"><span class="ln">23</span><span class="cl">            <span class="n">candidate_str</span> <span class="o">+=</span> <span class="n">charset</span><span class="p">[</span><span class="n">temp</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">charset</span><span class="p">)]</span>
+</span></span><span class="line"><span class="ln">24</span><span class="cl">            <span class="n">temp</span> <span class="o">//=</span> <span class="nb">len</span><span class="p">(</span><span class="n">charset</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">25</span><span class="cl">        <span class="n">hash_result</span> <span class="o">=</span> <span class="n">double_md5</span><span class="p">(</span><span class="n">candidate_str</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">26</span><span class="cl">        <span class="k">if</span> <span class="n">is_magic_hash</span><span class="p">(</span><span class="n">hash_result</span><span class="p">):</span>
+</span></span><span class="line"><span class="ln">27</span><span class="cl">            <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">candidate_str</span><span class="p">,</span> <span class="n">hash_result</span><span class="p">))</span>
+</span></span><span class="line"><span class="ln">28</span><span class="cl">            <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="ln">29</span><span class="cl">    <span class="k">return</span> <span class="n">results</span>
+</span></span><span class="line"><span class="ln">30</span><span class="cl">
+</span></span><span class="line"><span class="ln">31</span><span class="cl"><span class="k">def</span> <span class="nf">parallel_brute_force</span><span class="p">(</span><span class="n">max_results</span><span class="p">,</span> <span class="n">charset</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s2">&#34;&#34;</span><span class="p">):</span>
+</span></span><span class="line"><span class="ln">32</span><span class="cl">    <span class="n">max_length</span> <span class="o">=</span> <span class="mi">6</span>
+</span></span><span class="line"><span class="ln">33</span><span class="cl">    <span class="n">batch_size</span> <span class="o">=</span> <span class="mi">100000</span>
+</span></span><span class="line"><span class="ln">34</span><span class="cl">
+</span></span><span class="line"><span class="ln">35</span><span class="cl">    <span class="n">found</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="ln">36</span><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">开始并行暴力破解“</span><span class="si">{</span><span class="n">desc</span><span class="si">}</span><span class="s2">”集，目标找到 </span><span class="si">{</span><span class="n">max_results</span><span class="si">}</span><span class="s2"> 个...&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">37</span><span class="cl">
+</span></span><span class="line"><span class="ln">38</span><span class="cl">    <span class="k">for</span> <span class="n">length</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">max_length</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+</span></span><span class="line"><span class="ln">39</span><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">搜索长度 </span><span class="si">{</span><span class="n">length</span><span class="si">}</span><span class="s2"> 的字符串...&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">40</span><span class="cl">        <span class="n">total_combinations</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">charset</span><span class="p">)</span> <span class="o">**</span> <span class="n">length</span>
+</span></span><span class="line"><span class="ln">41</span><span class="cl">
+</span></span><span class="line"><span class="ln">42</span><span class="cl">        <span class="k">with</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Pool</span><span class="p">(</span><span class="n">processes</span><span class="o">=</span><span class="n">multiprocessing</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">())</span> <span class="k">as</span> <span class="n">pool</span><span class="p">:</span>
+</span></span><span class="line"><span class="ln">43</span><span class="cl">            <span class="n">tasks</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="ln">44</span><span class="cl">            <span class="k">for</span> <span class="n">start_idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">total_combinations</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">):</span>
+</span></span><span class="line"><span class="ln">45</span><span class="cl">                <span class="n">left_to_find</span> <span class="o">=</span> <span class="n">max_results</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">found</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">46</span><span class="cl">                <span class="k">if</span> <span class="n">left_to_find</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="ln">47</span><span class="cl">                    <span class="k">break</span>
+</span></span><span class="line"><span class="ln">48</span><span class="cl">                <span class="n">tasks</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">charset</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">start_idx</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">left_to_find</span><span class="p">))</span>
+</span></span><span class="line"><span class="ln">49</span><span class="cl">
+</span></span><span class="line"><span class="ln">50</span><span class="cl">            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">result_batch</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">pool</span><span class="o">.</span><span class="n">imap_unordered</span><span class="p">(</span><span class="n">worker_task</span><span class="p">,</span> <span class="n">tasks</span><span class="p">)):</span>
+</span></span><span class="line"><span class="ln">51</span><span class="cl">                <span class="k">if</span> <span class="n">result_batch</span><span class="p">:</span>
+</span></span><span class="line"><span class="ln">52</span><span class="cl">                    <span class="k">for</span> <span class="n">string_val</span><span class="p">,</span> <span class="n">hash_val</span> <span class="ow">in</span> <span class="n">result_batch</span><span class="p">:</span>
+</span></span><span class="line"><span class="ln">53</span><span class="cl">                        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;找到匹配! 字符串: </span><span class="si">{</span><span class="n">string_val</span><span class="si">}</span><span class="s2">, 哈希: </span><span class="si">{</span><span class="n">hash_val</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">54</span><span class="cl">                        <span class="n">found</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">string_val</span><span class="p">,</span> <span class="n">hash_val</span><span class="p">))</span>
+</span></span><span class="line"><span class="ln">55</span><span class="cl">                        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">found</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">max_results</span><span class="p">:</span>
+</span></span><span class="line"><span class="ln">56</span><span class="cl">                            <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;已达到目标数量，提前结束&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">57</span><span class="cl">                            <span class="n">pool</span><span class="o">.</span><span class="n">terminate</span><span class="p">()</span>
+</span></span><span class="line"><span class="ln">58</span><span class="cl">                            <span class="k">break</span>
+</span></span><span class="line"><span class="ln">59</span><span class="cl">                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">found</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">max_results</span><span class="p">:</span>
+</span></span><span class="line"><span class="ln">60</span><span class="cl">                        <span class="k">break</span>
+</span></span><span class="line"><span class="ln">61</span><span class="cl">                <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="ln">62</span><span class="cl">                    <span class="n">progress</span> <span class="o">=</span> <span class="nb">min</span><span class="p">((</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">total_combinations</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">63</span><span class="cl">                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;进度: </span><span class="si">{</span><span class="n">progress</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">total_combinations</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">progress</span><span class="o">/</span><span class="n">total_combinations</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%)&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">64</span><span class="cl">        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">found</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">max_results</span><span class="p">:</span>
+</span></span><span class="line"><span class="ln">65</span><span class="cl">            <span class="k">break</span>
+</span></span><span class="line"><span class="ln">66</span><span class="cl">
+</span></span><span class="line"><span class="ln">67</span><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">全部找到的魔术hash（</span><span class="si">{</span><span class="n">desc</span><span class="si">}</span><span class="s2">）如下：&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">68</span><span class="cl">    <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">found</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+</span></span><span class="line"><span class="ln">69</span><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;</span><span class="si">{</span><span class="n">idx</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">. 字符串: </span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s2">, 哈希: </span><span class="si">{</span><span class="n">h</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">70</span><span class="cl">
+</span></span><span class="line"><span class="ln">71</span><span class="cl">    <span class="k">return</span> <span class="n">found</span>
+</span></span><span class="line"><span class="ln">72</span><span class="cl">
+</span></span><span class="line"><span class="ln">73</span><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="ln">74</span><span class="cl">    <span class="n">num</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&#34;请输入要找到的魔术hash数量: &#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="ln">75</span><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;-&#34;</span> <span class="o">*</span> <span class="mi">30</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">76</span><span class="cl">    <span class="c1"># 先用纯字母集爆破</span>
+</span></span><span class="line"><span class="ln">77</span><span class="cl">    <span class="n">results_alpha</span> <span class="o">=</span> <span class="n">parallel_brute_force</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">string</span><span class="o">.</span><span class="n">ascii_letters</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s2">&#34;字母&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">78</span><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;-&#34;</span> <span class="o">*</span> <span class="mi">30</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">79</span><span class="cl">    <span class="c1"># 再用字母+数字集爆破（不会重复已找到的结果）</span>
+</span></span><span class="line"><span class="ln">80</span><span class="cl">    <span class="n">results_alphanum</span> <span class="o">=</span> <span class="n">parallel_brute_force</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">string</span><span class="o">.</span><span class="n">ascii_letters</span> <span class="o">+</span> <span class="n">string</span><span class="o">.</span><span class="n">digits</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s2">&#34;字母+数字&#34;</span><span class="p">)</span>
 </span></span></code></pre></div><p>然后这里再给出几个爆破结果</p>
-<pre tabindex="0"><code>全部找到的魔术hash（字母）如下：
-01. 字符串: mBeSja, 哈希: 0e210860082616560753197903773939
-02. 字符串: RleoIb, 哈希: 0e165155735388603862205760323672
-03. 字符串: IKsHGc, 哈希: 0e022289409330782264224545582392
-04. 字符串: LOhlKc, 哈希: 0e852429040529624829369802171953
-05. 字符串: iQAwXc, 哈希: 0e999179829757837097870506517663
-06. 字符串: KtnAJe, 哈希: 0e787639518490550583554438466566
-07. 字符串: LejvIf, 哈希: 0e111484964175819120956442834140
-08. 字符串: rjvJNf, 哈希: 0e736903779667020579552711625557
-09. 字符串: RwOOei, 哈希: 0e800236998473922397186801398019
-10. 字符串: KWMDli, 哈希: 0e081194590188158636719044384199
-全部找到的魔术hash（字母+数字）如下：
-01. 字符串: iv2Cn, 哈希: 0e759070535261955870964738616588
-02. 字符串: O5KIA, 哈希: 0e844204234135990947908741466581
-03. 字符串: f2WfQ, 哈希: 0e997766059721689977306698103413
-04. 字符串: mBeSja, 哈希: 0e210860082616560753197903773939
-05. 字符串: 3cXHka, 哈希: 0e958555339178072545376428935878
-06. 字符串: D8Urza, 哈希: 0e238311354792814154407054340292
-07. 字符串: WWbd4a, 哈希: 0e749455434249576441309004609713
-08. 字符串: RleoIb, 哈希: 0e165155735388603862205760323672
-09. 字符串: 4FiJIb, 哈希: 0e301452408972530419353168017689
-10. 字符串: iS4XRb, 哈希: 0e161587431976517563275813980840
-</code></pre>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln"> 1</span><span class="cl">全部找到的魔术hash（字母）如下：
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">01. 字符串: mBeSja, 哈希: 0e210860082616560753197903773939
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">02. 字符串: RleoIb, 哈希: 0e165155735388603862205760323672
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">03. 字符串: IKsHGc, 哈希: 0e022289409330782264224545582392
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">04. 字符串: LOhlKc, 哈希: 0e852429040529624829369802171953
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">05. 字符串: iQAwXc, 哈希: 0e999179829757837097870506517663
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">06. 字符串: KtnAJe, 哈希: 0e787639518490550583554438466566
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">07. 字符串: LejvIf, 哈希: 0e111484964175819120956442834140
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">08. 字符串: rjvJNf, 哈希: 0e736903779667020579552711625557
+</span></span><span class="line"><span class="ln">10</span><span class="cl">09. 字符串: RwOOei, 哈希: 0e800236998473922397186801398019
+</span></span><span class="line"><span class="ln">11</span><span class="cl">10. 字符串: KWMDli, 哈希: 0e081194590188158636719044384199
+</span></span><span class="line"><span class="ln">12</span><span class="cl">全部找到的魔术hash（字母+数字）如下：
+</span></span><span class="line"><span class="ln">13</span><span class="cl">01. 字符串: iv2Cn, 哈希: 0e759070535261955870964738616588
+</span></span><span class="line"><span class="ln">14</span><span class="cl">02. 字符串: O5KIA, 哈希: 0e844204234135990947908741466581
+</span></span><span class="line"><span class="ln">15</span><span class="cl">03. 字符串: f2WfQ, 哈希: 0e997766059721689977306698103413
+</span></span><span class="line"><span class="ln">16</span><span class="cl">04. 字符串: mBeSja, 哈希: 0e210860082616560753197903773939
+</span></span><span class="line"><span class="ln">17</span><span class="cl">05. 字符串: 3cXHka, 哈希: 0e958555339178072545376428935878
+</span></span><span class="line"><span class="ln">18</span><span class="cl">06. 字符串: D8Urza, 哈希: 0e238311354792814154407054340292
+</span></span><span class="line"><span class="ln">19</span><span class="cl">07. 字符串: WWbd4a, 哈希: 0e749455434249576441309004609713
+</span></span><span class="line"><span class="ln">20</span><span class="cl">08. 字符串: RleoIb, 哈希: 0e165155735388603862205760323672
+</span></span><span class="line"><span class="ln">21</span><span class="cl">09. 字符串: 4FiJIb, 哈希: 0e301452408972530419353168017689
+</span></span><span class="line"><span class="ln">22</span><span class="cl">10. 字符串: iS4XRb, 哈希: 0e161587431976517563275813980840
+</span></span></code></pre></div>
 <h2 id="数字前缀弱等于" data-numberify>数字前缀弱等于<a class="anchor ms-1" href="#数字前缀弱等于"></a></h2>
 <p>如果出现条件：if (md5(md5(&ldquo;x&rdquo;)) == 114)</p>
 <p>如果我们的字符串x的双重md5加密值为114开头且后面一位是字母(除e加数字外)，或者后面的两位是e+字母，则可以通过弱等于（PHP7）</p>
 <p>这里给出一个python脚本用于爆破</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> hashlib
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">double_md5</span>(s):
-</span></span><span style="display:flex;"><span>    h1 <span style="color:#f92672">=</span> hashlib<span style="color:#f92672">.</span>md5(s<span style="color:#f92672">.</span>encode())<span style="color:#f92672">.</span>hexdigest()
-</span></span><span style="display:flex;"><span>    h2 <span style="color:#f92672">=</span> hashlib<span style="color:#f92672">.</span>md5(h1<span style="color:#f92672">.</span>encode())<span style="color:#f92672">.</span>hexdigest()
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> h2
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">brute_force</span>(prefix, max_count<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, start<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>):
-</span></span><span style="display:flex;"><span>    found <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
-</span></span><span style="display:flex;"><span>    i <span style="color:#f92672">=</span> start
-</span></span><span style="display:flex;"><span>    prefix_len <span style="color:#f92672">=</span> len(prefix)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> found <span style="color:#f92672">&lt;</span> max_count:
-</span></span><span style="display:flex;"><span>        candidate <span style="color:#f92672">=</span> str(i)
-</span></span><span style="display:flex;"><span>        result <span style="color:#f92672">=</span> double_md5(candidate)
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> result<span style="color:#f92672">.</span>startswith(prefix):
-</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># 第x+1位</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> len(result) <span style="color:#f92672">&gt;</span> prefix_len:
-</span></span><span style="display:flex;"><span>                nxt1 <span style="color:#f92672">=</span> result[prefix_len]
-</span></span><span style="display:flex;"><span>                <span style="color:#75715e"># 满足：不是数字</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> nxt1<span style="color:#f92672">.</span>isdigit():
-</span></span><span style="display:flex;"><span>                    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;第</span><span style="color:#e6db74">{</span>found<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span><span style="color:#e6db74">}</span><span style="color:#e6db74">个: 明文=</span><span style="color:#e6db74">{</span>candidate<span style="color:#e6db74">}</span><span style="color:#e6db74">, 双md5=</span><span style="color:#e6db74">{</span>result<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
-</span></span><span style="display:flex;"><span>                    found <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#75715e"># 如果第x+1位是e，则第x+2位不能是数字</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">elif</span> nxt1<span style="color:#f92672">.</span>lower() <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;e&#39;</span> <span style="color:#f92672">and</span> len(result) <span style="color:#f92672">&gt;</span> prefix_len <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>:
-</span></span><span style="display:flex;"><span>                    nxt2 <span style="color:#f92672">=</span> result[prefix_len <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>]
-</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> nxt2<span style="color:#f92672">.</span>isdigit():
-</span></span><span style="display:flex;"><span>                        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;第</span><span style="color:#e6db74">{</span>found<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span><span style="color:#e6db74">}</span><span style="color:#e6db74">个: 明文=</span><span style="color:#e6db74">{</span>candidate<span style="color:#e6db74">}</span><span style="color:#e6db74">, 双md5=</span><span style="color:#e6db74">{</span>result<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
-</span></span><span style="display:flex;"><span>                        found <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span>        i <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
-</span></span><span style="display:flex;"><span>    prefix <span style="color:#f92672">=</span> input(<span style="color:#e6db74">&#34;请输入你想要的双md5前缀：&#34;</span>)   <span style="color:#75715e"># 比如 &#39;1145&#39;</span>
-</span></span><span style="display:flex;"><span>    max_count <span style="color:#f92672">=</span> int(input(<span style="color:#e6db74">&#34;请输入最多爆破多少个：&#34;</span>)) <span style="color:#75715e"># 比如 2</span>
-</span></span><span style="display:flex;"><span>    brute_force(prefix<span style="color:#f92672">=</span>prefix, max_count<span style="color:#f92672">=</span>max_count)
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="kn">import</span> <span class="nn">hashlib</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="k">def</span> <span class="nf">double_md5</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">    <span class="n">h1</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">md5</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">    <span class="n">h2</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">md5</span><span class="p">(</span><span class="n">h1</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">    <span class="k">return</span> <span class="n">h2</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="k">def</span> <span class="nf">brute_force</span><span class="p">(</span><span class="n">prefix</span><span class="p">,</span> <span class="n">max_count</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">    <span class="n">found</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl">    <span class="n">i</span> <span class="o">=</span> <span class="n">start</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl">    <span class="n">prefix_len</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">prefix</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl">    <span class="k">while</span> <span class="n">found</span> <span class="o">&lt;</span> <span class="n">max_count</span><span class="p">:</span>
+</span></span><span class="line"><span class="ln">13</span><span class="cl">        <span class="n">candidate</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">14</span><span class="cl">        <span class="n">result</span> <span class="o">=</span> <span class="n">double_md5</span><span class="p">(</span><span class="n">candidate</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">15</span><span class="cl">        <span class="k">if</span> <span class="n">result</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">prefix</span><span class="p">):</span>
+</span></span><span class="line"><span class="ln">16</span><span class="cl">            <span class="c1"># 第x+1位</span>
+</span></span><span class="line"><span class="ln">17</span><span class="cl">            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">prefix_len</span><span class="p">:</span>
+</span></span><span class="line"><span class="ln">18</span><span class="cl">                <span class="n">nxt1</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="n">prefix_len</span><span class="p">]</span>
+</span></span><span class="line"><span class="ln">19</span><span class="cl">                <span class="c1"># 满足：不是数字</span>
+</span></span><span class="line"><span class="ln">20</span><span class="cl">                <span class="k">if</span> <span class="ow">not</span> <span class="n">nxt1</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>
+</span></span><span class="line"><span class="ln">21</span><span class="cl">                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;第</span><span class="si">{</span><span class="n">found</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">个: 明文=</span><span class="si">{</span><span class="n">candidate</span><span class="si">}</span><span class="s2">, 双md5=</span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">22</span><span class="cl">                    <span class="n">found</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="ln">23</span><span class="cl">                <span class="c1"># 如果第x+1位是e，则第x+2位不能是数字</span>
+</span></span><span class="line"><span class="ln">24</span><span class="cl">                <span class="k">elif</span> <span class="n">nxt1</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;e&#39;</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">prefix_len</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span>
+</span></span><span class="line"><span class="ln">25</span><span class="cl">                    <span class="n">nxt2</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="n">prefix_len</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+</span></span><span class="line"><span class="ln">26</span><span class="cl">                    <span class="k">if</span> <span class="ow">not</span> <span class="n">nxt2</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>
+</span></span><span class="line"><span class="ln">27</span><span class="cl">                        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;第</span><span class="si">{</span><span class="n">found</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">个: 明文=</span><span class="si">{</span><span class="n">candidate</span><span class="si">}</span><span class="s2">, 双md5=</span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">28</span><span class="cl">                        <span class="n">found</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="ln">29</span><span class="cl">        <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="ln">30</span><span class="cl">
+</span></span><span class="line"><span class="ln">31</span><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="ln">32</span><span class="cl">    <span class="n">prefix</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&#34;请输入你想要的双md5前缀：&#34;</span><span class="p">)</span>   <span class="c1"># 比如 &#39;1145&#39;</span>
+</span></span><span class="line"><span class="ln">33</span><span class="cl">    <span class="n">max_count</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&#34;请输入最多爆破多少个：&#34;</span><span class="p">))</span> <span class="c1"># 比如 2</span>
+</span></span><span class="line"><span class="ln">34</span><span class="cl">    <span class="n">brute_force</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="n">prefix</span><span class="p">,</span> <span class="n">max_count</span><span class="o">=</span><span class="n">max_count</span><span class="p">)</span>
 </span></span></code></pre></div><p>因为“数字e数字”会被当成科学计数法解析，比如114e3会被解析为114000（114x10^3）</p>
 </div>
 </div>
@@ -816,10 +816,8 @@ decimo的小窝
 </div>
   <div class="col-12 col-lg-8 offset-0 offset-lg-1"></div>
 </div>
-<script src="/js/copy-code.js"></script>
-<link rel="stylesheet" href="/css/copy-code.css">
 </footer>
-<script data-precache src="/assets/main/bundle.min.d462af947fff0bbdb09a7b9fcb40a12bc7ca3b7ee172a4a5a35044386026b13d.js" integrity="sha256-1GKvlH//C72wmnufy0ChK8fKO37hcqSlo1BEOGAmsT0=" crossorigin="anonymous" async></script><script data-precache src="/assets/icons/bundle.min.0b03280daa4a59445b0aafc46855a2bb53b310e572534596869c33acaeec09dd.js" integrity="sha256-CwMoDapKWURbCq/EaFWiu1OzEOVyU0WWhpwzrK7sCd0=" crossorigin="anonymous" defer></script>
+<script data-precache src="/assets/main/bundle.min.87619fbefacaa035367e3393cad6ce3508196b946cf9962924868666df3f298f.js" integrity="sha256-h2GfvvrKoDU2fjOTytbONQgZa5Rs&#43;ZYpJIaGZt8/KY8=" crossorigin="anonymous" async></script><script data-precache src="/assets/icons/bundle.min.0b03280daa4a59445b0aafc46855a2bb53b310e572534596869c33acaeec09dd.js" integrity="sha256-CwMoDapKWURbCq/EaFWiu1OzEOVyU0WWhpwzrK7sCd0=" crossorigin="anonymous" defer></script>
 <script data-precache src="/assets/viewer/bundle.min.cca398d318de9fa7816141db90f09282784fcfe0c5dabc31599b8c589932e4ae.js" integrity="sha256-zKOY0xjen6eBYUHbkPCSgnhPz&#43;DF2rwxWZuMWJky5K4=" crossorigin="anonymous" defer></script>
 <script src="/js/toc-auto.635186e6d874d0dfed4a40f65dcc71e277a9772461a22e01fd1e5aabc804694d.js" integrity="sha256-Y1GG5th00N/tSkD2Xcxx4nepdyRhoi4B/R5aq8gEaU0=" crossorigin="anonymous" defer></script>
 <script src="https://giscus.app/client.js"

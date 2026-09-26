@@ -1,7 +1,7 @@
 <!doctype html>
 <html class="position-relative" itemscope itemtype="https://schema.org/WebPage" lang="en"
   data-bs-theme="auto" data-palette="blue">
-  <head><script src="/assets/init/bundle.min.658d13e58d95d8bb2da082cf6e92f29c1f07475fd145926c2c401f88f9ddf545.js" integrity="sha256-ZY0T5Y2V2LstoILPbpLynB8HR1/RRZJsLEAfiPnd9UU=" crossorigin="anonymous"></script>
+  <head><script src="/assets/init/bundle.min.0815b7e73ceecd1be5ee8303df916b89a7fd1454fb835a47e3b2f9739781426f.js" integrity="sha256-CBW35zzuzRvl7oMD35Friaf9FFT7g1pH47L5c5eBQm8=" crossorigin="anonymous"></script>
 <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>友情链接 - decimo的小窝</title>
@@ -13,7 +13,6 @@
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#6f42c1">
 <meta name="keywords" content="" />
   <meta name="description" content="
-
 
 
   友链
@@ -199,7 +198,7 @@
     <link data-precache rel="stylesheet" href="/assets/viewer/bundle.min.16d2c85c4cae39a98f8cb7a977e95e554b174f91a5484c32605637156f49ca6b.css" integrity="sha256-FtLIXEyuOamPjLepd&#43;leVUsXT5GlSEwyYFY3FW9Jyms=" crossorigin="anonymous">
 
 
-<link rel="stylesheet" href="/css/custom.8cc5830dfc3827d70305a39f1925ac813f85effc381d9b656ac82115d234cbea.css" integrity="sha256-jMWDDfw4J9cDBaOfGSWsgT&#43;F7/w4HZtlasghFdI0y&#43;o=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/custom.730a801596309655d4fc41e9ef9ac6d3a06d0396ba0b1cea47e7418cf1013673.css" integrity="sha256-cwqAFZYwllXU/EHp75rG06BtA5a6CxzqR&#43;dBjPEBNnM=" crossorigin="anonymous">
 <script>
 (function() {
   var originalTitle = document.title;
@@ -415,89 +414,7 @@ decimo的小窝
   <span class="post-date me-1 mb-1" title="created on 2025-11-24 08:00:00 &#43;0800 CST.">November 24, 2025</span><span class="post-reading-time me-1 mb-1">1 min read</span>
 </div>
 <div class="post-content mb-3" data-bs-spy="scroll" data-bs-target="#TableOfContents" tabindex="0">
-        <div id="post-content-body">
-<style>
-.friend-cards, .org-cards { 
-  display: flex; flex-wrap: wrap; gap: 1rem; justify-content: flex-start;
-  overflow: visible;
-}
-.friend-card, .org-card {
-  position: relative;
-  border-radius: 22px;
-  border: 2px solid rgba(255,255,255,0.18);
-  width: 230px;
-  padding: 1.2rem;
-  box-shadow: 0 8px 40px rgba(175,66,97,0.18);
-  backdrop-filter: blur(10px) saturate(170%);
-  -webkit-backdrop-filter: blur(10px) saturate(170%);
-  overflow: hidden; 
-  transition: transform .2s, z-index .2s;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  z-index: 1;
-}
-/* 星点背景，也同步到 .org-card */
-.friend-card::before, .org-card::before {
-  content: '';
-  position: absolute;
-  top: -20%;
-  left: -20%;
-  width: 140%;
-  height: 140%;
-  z-index: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(circle, #ffe3b0 0.8px, transparent 2px) 12% 22%/ 110px 80px,
-    radial-gradient(circle, #aae2ff 1.1px, transparent 2px) 72% 32%/ 150px 75px,
-    radial-gradient(circle, #8e71bf 0.7px, transparent 2px) 42% 77%/ 90px 60px,
-    radial-gradient(circle, #fff 1.3px, transparent 2px) 87% 51%/ 130px 120px,
-    radial-gradient(circle, #fcb3d1 1px, transparent 2px) 33% 64%/ 120px 88px,
-    radial-gradient(circle, #ffeeb3 1px, transparent 2px) 62% 78%/ 120px 100px;
-  background-repeat: repeat;
-  animation: stars-rotate 22s linear infinite;
-  border-radius: 50%;
-  opacity: 0.32;
-}
-@keyframes stars-rotate {
-  0% { transform: rotate(0deg) scale(1);}
-  100% { transform: rotate(360deg) scale(1.04);}
-}
-/* 包装内容，互不遮挡 */
-.friend-card > *, .org-card > * { 
-  position: relative; 
-  z-index: 2;
-}
-/* 悬停效果一致 */
-.friend-card:hover, .org-card:hover {
-  transform: scale(1.05) rotate(-1deg);
-  box-shadow: 0 16px 50px 6px rgba(175,66,160,0.25);
-  border: 2.5px solid rgba(255,255,255,0.38);
-  z-index: 999;
-}
-/* 头像样式一致 */
-.friend-card img, .org-card img { 
-  width: 72px; height: 72px; border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 0.7rem; 
-  border: 2px solid #fff;
-  box-shadow: 0 4px 16px #af426178;
-  z-index:3;
-}
-/* 链接样式一致 */
-.friend-card a, .org-card a { 
-  font-weight: bold; color: #fff; text-decoration: none;
-  font-size: 1.08em; z-index:3;
-  text-shadow: 0 2px 14px rgba(175,66,160,0.16);
-}
-/* 描述样式一致 */
-.friend-desc, .org-desc { 
-  color: #fffbe5; font-size: 1em; text-align: center;
-  text-shadow: 0 2px 6px #af426166;
-  z-index:3;
-}
-</style>
-<!-- 友链窗口 -->
+        <div id="post-content-body"><!-- 友链窗口 -->
 
 <section>
   <h2>友链</h2>
@@ -959,10 +876,8 @@ decimo的小窝
 </div>
   <div class="col-12 col-lg-8 offset-0 offset-lg-1"></div>
 </div>
-<script src="/js/copy-code.js"></script>
-<link rel="stylesheet" href="/css/copy-code.css">
 </footer>
-<script data-precache src="/assets/main/bundle.min.d462af947fff0bbdb09a7b9fcb40a12bc7ca3b7ee172a4a5a35044386026b13d.js" integrity="sha256-1GKvlH//C72wmnufy0ChK8fKO37hcqSlo1BEOGAmsT0=" crossorigin="anonymous" async></script><script data-precache src="/assets/icons/bundle.min.0b03280daa4a59445b0aafc46855a2bb53b310e572534596869c33acaeec09dd.js" integrity="sha256-CwMoDapKWURbCq/EaFWiu1OzEOVyU0WWhpwzrK7sCd0=" crossorigin="anonymous" defer></script>
+<script data-precache src="/assets/main/bundle.min.87619fbefacaa035367e3393cad6ce3508196b946cf9962924868666df3f298f.js" integrity="sha256-h2GfvvrKoDU2fjOTytbONQgZa5Rs&#43;ZYpJIaGZt8/KY8=" crossorigin="anonymous" async></script><script data-precache src="/assets/icons/bundle.min.0b03280daa4a59445b0aafc46855a2bb53b310e572534596869c33acaeec09dd.js" integrity="sha256-CwMoDapKWURbCq/EaFWiu1OzEOVyU0WWhpwzrK7sCd0=" crossorigin="anonymous" defer></script>
 <script data-precache src="/assets/viewer/bundle.min.cca398d318de9fa7816141db90f09282784fcfe0c5dabc31599b8c589932e4ae.js" integrity="sha256-zKOY0xjen6eBYUHbkPCSgnhPz&#43;DF2rwxWZuMWJky5K4=" crossorigin="anonymous" defer></script>
 <script src="https://giscus.app/client.js"
     data-repo="xiaochai-123/xiaochai-123.github.io"

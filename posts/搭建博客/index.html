@@ -1,7 +1,7 @@
 <!doctype html>
 <html class="position-relative" itemscope itemtype="https://schema.org/WebPage" lang="en"
   data-bs-theme="auto" data-palette="blue">
-  <head><script src="/assets/init/bundle.min.658d13e58d95d8bb2da082cf6e92f29c1f07475fd145926c2c401f88f9ddf545.js" integrity="sha256-ZY0T5Y2V2LstoILPbpLynB8HR1/RRZJsLEAfiPnd9UU=" crossorigin="anonymous"></script>
+  <head><script src="/assets/init/bundle.min.0815b7e73ceecd1be5ee8303df916b89a7fd1454fb835a47e3b2f9739781426f.js" integrity="sha256-CBW35zzuzRvl7oMD35Friaf9FFT7g1pH47L5c5eBQm8=" crossorigin="anonymous"></script>
 <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>搭建博客 - decimo的小窝</title>
@@ -44,7 +44,7 @@
     <link data-precache rel="stylesheet" href="/assets/viewer/bundle.min.16d2c85c4cae39a98f8cb7a977e95e554b174f91a5484c32605637156f49ca6b.css" integrity="sha256-FtLIXEyuOamPjLepd&#43;leVUsXT5GlSEwyYFY3FW9Jyms=" crossorigin="anonymous">
 
 
-<link rel="stylesheet" href="/css/custom.8cc5830dfc3827d70305a39f1925ac813f85effc381d9b656ac82115d234cbea.css" integrity="sha256-jMWDDfw4J9cDBaOfGSWsgT&#43;F7/w4HZtlasghFdI0y&#43;o=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/custom.730a801596309655d4fc41e9ef9ac6d3a06d0396ba0b1cea47e7418cf1013673.css" integrity="sha256-cwqAFZYwllXU/EHp75rG06BtA5a6CxzqR&#43;dBjPEBNnM=" crossorigin="anonymous">
 <script>
 (function() {
   var originalTitle = document.title;
@@ -500,18 +500,18 @@ decimo的小窝
 <h2 id="第四步-生成public并推送" data-numberify>第四步 生成public并推送<a class="anchor ms-1" href="#第四步-生成public并推送"></a></h2>
 <p>在本地调试的过程中其实已经生成了public文件。为了确保最新你可以先删除掉public文件，再在powershell运行<code>hugo</code>或者<code>hugo --minify</code>来生成public文件。这个public就是已完全编译好的静态网页文件。它不是源码，而是成品页面。把它推送至Github仓库，并且指定分支，Github会自动把文件作为网站托管。</p>
 <p>可以把public里的内容单独拎出来。放在一个文件夹里，运行以下指令</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>git init
-</span></span><span style="display:flex;"><span>git add .  
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 将当前目录所有文件和修改（包括新文件、删除、修改）都加入 git 暂存区，准备提交</span>
-</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;add workflow&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 用说明（commit message）“add workflow”提交所有刚才 add 的文件和修改到本地 git 仓库。这一步是保存快照，也可把消息改成你喜欢的，比如 &#34;更新文章&#34; &#34;首次初始化博客&#34;</span>
-</span></span><span style="display:flex;"><span>git remote add origin https://github.com/你的用户名/你的仓库名.git
-</span></span><span style="display:flex;"><span><span style="color:#75715e">#把你本地的 Git 仓库和远程的 GitHub 仓库关联起来，告诉 Git，远程仓库的名字叫 origin，地址是你 GitHub 的仓库 URL</span>
-</span></span><span style="display:flex;"><span>git push origin master
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 说明：把本地 git 仓库的所有最新提交（commit）推送到远程 GitHub 仓库。推送后，所有新内容/修改会同步到 GitHub。如果你的仓库分支是main，则把master改成main</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="ln">1</span><span class="cl">git init
+</span></span><span class="line"><span class="ln">2</span><span class="cl">git add .  
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="c1"># 将当前目录所有文件和修改（包括新文件、删除、修改）都加入 git 暂存区，准备提交</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl">git commit -m <span class="s2">&#34;add workflow&#34;</span>
+</span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="c1"># 用说明（commit message）“add workflow”提交所有刚才 add 的文件和修改到本地 git 仓库。这一步是保存快照，也可把消息改成你喜欢的，比如 &#34;更新文章&#34; &#34;首次初始化博客&#34;</span>
+</span></span><span class="line"><span class="ln">6</span><span class="cl">git remote add origin https://github.com/你的用户名/你的仓库名.git
+</span></span><span class="line"><span class="ln">7</span><span class="cl"><span class="c1">#把你本地的 Git 仓库和远程的 GitHub 仓库关联起来，告诉 Git，远程仓库的名字叫 origin，地址是你 GitHub 的仓库 URL</span>
+</span></span><span class="line"><span class="ln">8</span><span class="cl">git push origin master
+</span></span><span class="line"><span class="ln">9</span><span class="cl"><span class="c1"># 说明：把本地 git 仓库的所有最新提交（commit）推送到远程 GitHub 仓库。推送后，所有新内容/修改会同步到 GitHub。如果你的仓库分支是main，则把master改成main</span>
 </span></span></code></pre></div><p>第一次可能还需要配置用户信息，如下</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>git config --global user.name <span style="color:#e6db74">&#34;你的github用户名&#34;</span>
-</span></span><span style="display:flex;"><span>git config --global user.email <span style="color:#e6db74">&#34;你的Github账号邮箱&#34;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="ln">1</span><span class="cl">git config --global user.name <span class="s2">&#34;你的github用户名&#34;</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">git config --global user.email <span class="s2">&#34;你的Github账号邮箱&#34;</span>
 </span></span></code></pre></div><p>成功后你就可以在Github仓库里看到自己的文件。就像这样</p>
 <p><picture><img class="img-fluid " alt="msedge_ZdrvhZogut" src="https://decimo.top/images/screenshoots/2025-11/msedge_ZdrvhZogut.png?v=67790a071a411c6e4ad1289720a85cd7" loading="lazy" width="1421" height="944" />
 </picture>
@@ -535,9 +535,9 @@ decimo的小窝
 Your site is live at xxx</p>
 <p>进入即可查看你的网页。</p>
 <p>后续更新网站内容只需要</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>git add .
-</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;update&#34;</span>
-</span></span><span style="display:flex;"><span>git push origin master
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="ln">1</span><span class="cl">git add .
+</span></span><span class="line"><span class="ln">2</span><span class="cl">git commit -m <span class="s2">&#34;update&#34;</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl">git push origin master
 </span></span></code></pre></div><p>即可，原理上刷新你仓库内的那些public文件，就可以自动新建页面</p>
 
 <h2 id="常见问题" data-numberify>常见问题<a class="anchor ms-1" href="#常见问题"></a></h2>
@@ -899,10 +899,8 @@ Your site is live at xxx</p>
 </div>
   <div class="col-12 col-lg-8 offset-0 offset-lg-1"></div>
 </div>
-<script src="/js/copy-code.js"></script>
-<link rel="stylesheet" href="/css/copy-code.css">
 </footer>
-<script data-precache src="/assets/main/bundle.min.d462af947fff0bbdb09a7b9fcb40a12bc7ca3b7ee172a4a5a35044386026b13d.js" integrity="sha256-1GKvlH//C72wmnufy0ChK8fKO37hcqSlo1BEOGAmsT0=" crossorigin="anonymous" async></script><script data-precache src="/assets/icons/bundle.min.0b03280daa4a59445b0aafc46855a2bb53b310e572534596869c33acaeec09dd.js" integrity="sha256-CwMoDapKWURbCq/EaFWiu1OzEOVyU0WWhpwzrK7sCd0=" crossorigin="anonymous" defer></script>
+<script data-precache src="/assets/main/bundle.min.87619fbefacaa035367e3393cad6ce3508196b946cf9962924868666df3f298f.js" integrity="sha256-h2GfvvrKoDU2fjOTytbONQgZa5Rs&#43;ZYpJIaGZt8/KY8=" crossorigin="anonymous" async></script><script data-precache src="/assets/icons/bundle.min.0b03280daa4a59445b0aafc46855a2bb53b310e572534596869c33acaeec09dd.js" integrity="sha256-CwMoDapKWURbCq/EaFWiu1OzEOVyU0WWhpwzrK7sCd0=" crossorigin="anonymous" defer></script>
 <script data-precache src="/assets/viewer/bundle.min.cca398d318de9fa7816141db90f09282784fcfe0c5dabc31599b8c589932e4ae.js" integrity="sha256-zKOY0xjen6eBYUHbkPCSgnhPz&#43;DF2rwxWZuMWJky5K4=" crossorigin="anonymous" defer></script>
 <script src="/js/toc-auto.635186e6d874d0dfed4a40f65dcc71e277a9772461a22e01fd1e5aabc804694d.js" integrity="sha256-Y1GG5th00N/tSkD2Xcxx4nepdyRhoi4B/R5aq8gEaU0=" crossorigin="anonymous" defer></script>
 <script src="https://giscus.app/client.js"

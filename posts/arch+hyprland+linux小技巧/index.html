@@ -1,7 +1,7 @@
 <!doctype html>
 <html class="position-relative" itemscope itemtype="https://schema.org/WebPage" lang="en"
   data-bs-theme="auto" data-palette="blue">
-  <head><script src="/assets/init/bundle.min.658d13e58d95d8bb2da082cf6e92f29c1f07475fd145926c2c401f88f9ddf545.js" integrity="sha256-ZY0T5Y2V2LstoILPbpLynB8HR1/RRZJsLEAfiPnd9UU=" crossorigin="anonymous"></script>
+  <head><script src="/assets/init/bundle.min.0815b7e73ceecd1be5ee8303df916b89a7fd1454fb835a47e3b2f9739781426f.js" integrity="sha256-CBW35zzuzRvl7oMD35Friaf9FFT7g1pH47L5c5eBQm8=" crossorigin="anonymous"></script>
 <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Arch&#43;Hyprland - decimo的小窝</title>
@@ -34,7 +34,7 @@
   <meta itemprop="description" content="Arch折腾记录">
   <meta itemprop="datePublished" content="2026-02-19T18:35:35+08:00">
   <meta itemprop="dateModified" content="2026-02-19T18:35:35+08:00">
-  <meta itemprop="wordCount" content="966">
+  <meta itemprop="wordCount" content="967">
   <meta itemprop="image" content="https://decimo.top/images/arch.png">
   <meta itemprop="keywords" content="Linux,OS">
   <meta property="og:image:alt" content="Arch&#43;Hyprland" />
@@ -45,7 +45,7 @@
     <link data-precache rel="stylesheet" href="/assets/viewer/bundle.min.16d2c85c4cae39a98f8cb7a977e95e554b174f91a5484c32605637156f49ca6b.css" integrity="sha256-FtLIXEyuOamPjLepd&#43;leVUsXT5GlSEwyYFY3FW9Jyms=" crossorigin="anonymous">
 
 
-<link rel="stylesheet" href="/css/custom.8cc5830dfc3827d70305a39f1925ac813f85effc381d9b656ac82115d234cbea.css" integrity="sha256-jMWDDfw4J9cDBaOfGSWsgT&#43;F7/w4HZtlasghFdI0y&#43;o=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/custom.730a801596309655d4fc41e9ef9ac6d3a06d0396ba0b1cea47e7418cf1013673.css" integrity="sha256-cwqAFZYwllXU/EHp75rG06BtA5a6CxzqR&#43;dBjPEBNnM=" crossorigin="anonymous">
 <script>
 (function() {
   var originalTitle = document.title;
@@ -320,26 +320,26 @@ decimo的小窝
 <p>输入<code>pacman -S yazi</code>安装yazi</p>
 <p>输入<code>yazi</code>打开yazi，在这个界面里可以看到文件目录。我们可以使用上下左右方向键来操作 上下选择，左右进退</p>
 <p>/目录是Linux系统的根目录，大致有以下目录</p>
-<pre tabindex="0"><code>/（根目录）
-├── bin  -&gt;  usr/bin      # 基础命令
-├── boot                  # 启动文件
-├── dev                   # 设备文件
-├── etc                   # 配置文件
-├── home                  # 用户目录
-├── lib  -&gt;  usr/lib      # 基础库文件 类似 Windows 的 DLL
-├── media                 # 可移动媒体 自动挂载的U盘、光盘
-├── mnt                   # 临时挂载
-├── opt                   # 可选软件 第三方商业软件或手动安装的程序
-├── proc                  # 进程信息 
-├── root                  # root用户家目录
-├── run                   # 运行时数据 系统启动后的运行时信息
-├── sbin -&gt; usr/sbin      # 系统管理命令 只有 root 能用的系统管理工具
-├── srv                   # 服务数据 Web服务器、FTP服务器的数据文件
-├── sys                   # 系统信息
-├── tmp                   # 临时文件 所有用户都能读写，重启清空
-├── usr                   # 用户程序 这是最大的目录，结构类似根目录
-└── var                   # 可变数据 日志文件、邮件、打印队列、缓存等
-</code></pre><p>按Q键退出yazi；CTRL+L键可以清屏</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="o">/</span><span class="err">（根目录）</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="err">├──</span> <span class="n">bin</span>  <span class="o">-&gt;</span>  <span class="n">usr</span><span class="o">/</span><span class="n">bin</span>      <span class="c1"># 基础命令</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="err">├──</span> <span class="n">boot</span>                  <span class="c1"># 启动文件</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="err">├──</span> <span class="n">dev</span>                   <span class="c1"># 设备文件</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="err">├──</span> <span class="n">etc</span>                   <span class="c1"># 配置文件</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="err">├──</span> <span class="n">home</span>                  <span class="c1"># 用户目录</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="err">├──</span> <span class="n">lib</span>  <span class="o">-&gt;</span>  <span class="n">usr</span><span class="o">/</span><span class="n">lib</span>      <span class="c1"># 基础库文件 类似 Windows 的 DLL</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="err">├──</span> <span class="n">media</span>                 <span class="c1"># 可移动媒体 自动挂载的U盘、光盘</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="err">├──</span> <span class="n">mnt</span>                   <span class="c1"># 临时挂载</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="err">├──</span> <span class="n">opt</span>                   <span class="c1"># 可选软件 第三方商业软件或手动安装的程序</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="err">├──</span> <span class="n">proc</span>                  <span class="c1"># 进程信息 </span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="err">├──</span> <span class="n">root</span>                  <span class="c1"># root用户家目录</span>
+</span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="err">├──</span> <span class="n">run</span>                   <span class="c1"># 运行时数据 系统启动后的运行时信息</span>
+</span></span><span class="line"><span class="ln">14</span><span class="cl"><span class="err">├──</span> <span class="n">sbin</span> <span class="o">-&gt;</span> <span class="n">usr</span><span class="o">/</span><span class="n">sbin</span>      <span class="c1"># 系统管理命令 只有 root 能用的系统管理工具</span>
+</span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="err">├──</span> <span class="n">srv</span>                   <span class="c1"># 服务数据 Web服务器、FTP服务器的数据文件</span>
+</span></span><span class="line"><span class="ln">16</span><span class="cl"><span class="err">├──</span> <span class="n">sys</span>                   <span class="c1"># 系统信息</span>
+</span></span><span class="line"><span class="ln">17</span><span class="cl"><span class="err">├──</span> <span class="n">tmp</span>                   <span class="c1"># 临时文件 所有用户都能读写，重启清空</span>
+</span></span><span class="line"><span class="ln">18</span><span class="cl"><span class="err">├──</span> <span class="n">usr</span>                   <span class="c1"># 用户程序 这是最大的目录，结构类似根目录</span>
+</span></span><span class="line"><span class="ln">19</span><span class="cl"><span class="err">└──</span> <span class="k">var</span>                   <span class="c1"># 可变数据 日志文件、邮件、打印队列、缓存等</span>
+</span></span></code></pre></div><p>按Q键退出yazi；CTRL+L键可以清屏</p>
 <p>输入<code>lsblk -pf</code>列出当前分区情况</p>
 <p>-p列出完整设备名 -f显示更多信息</p>
 <p>找到你要安装Arch的目标硬盘，如果不确定可以使用<code>fdisk -l &lt;设备名，如/dev/nvme1n1&gt;</code>列出详细信息</p>
@@ -352,10 +352,10 @@ decimo的小窝
 </p>
 <p>然后再对准我们新创建的这个分区，按右方向键选择Type，类型选择EFI System(如果没有，需要先修改MBR分区为GPT分区)</p>
 <p>ESP（EFI System Partition（EFI系统分区），也就是启动分区）常用挂载点为</p>
-<pre tabindex="0"><code>/boot （最常见） 优点：内核和 initramfs 直接放在 ESP 里，GRUB 可以直接读取
-/efi （新趋势） 优点：和 /boot 分开，更清晰
-/boot/efi （传统）优点：兼容性最好
-</code></pre><p>我们选择的挂载点为/efi</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">/boot （最常见） 优点：内核和 initramfs 直接放在 ESP 里，GRUB 可以直接读取
+</span></span><span class="line"><span class="ln">2</span><span class="cl">/efi （新趋势） 优点：和 /boot 分开，更清晰
+</span></span><span class="line"><span class="ln">3</span><span class="cl">/boot/efi （传统）优点：兼容性最好
+</span></span></code></pre></div><p>我们选择的挂载点为/efi</p>
 <p>然后我们选中剩余空间，选择New，直接按空格键把剩余空间全部创建为根分区(此时文件类型为Linux filesystem就可以)</p>
 <p>文件系统类型对比</p>
 <table>
@@ -468,49 +468,49 @@ decimo的小窝
       </tr>
   </tbody>
 </table>
-<pre tabindex="0"><code>文件操作
-vim 文件名     # 打开文件
-:w             # 保存
-:q             # 退出
-:wq            # 保存并退出
-:q!            # 不保存强制退出
-ZZ             # 保存并退出（Shift+z+z）
-移动（普通模式）
-h j k l        # 左 下 上 右（相当于方向键）
-0              # 行首
-$              # 行尾
-gg             # 文件开头
-G              # 文件结尾
-123G           # 跳到第 123 行
-w              # 下一个单词开头
-b              # 上一个单词开头
-编辑（普通模式）
-i              # 在光标前插入
-a              # 在光标后插入
-o              # 在下一行插入新行
-dd             # 删除当前行
-5dd            # 删除 5 行
-yy             # 复制当前行
-5yy            # 复制 5 行
-p              # 粘贴
-u              # 撤销
-Ctrl+r         # 重做
-x              # 删除光标处字符
-dw             # 删除一个单词
-搜索替换
-/关键词        # 向下搜索
-?关键词        # 向上搜索
-n              # 下一个匹配
-N              # 上一个匹配
-:%s/旧/新/g    # 全文替换
-:%s/旧/新/gc   # 全文替换（每次确认）
-可视模式（选中文字）
-v              # 进入可视模式（字符选中）
-V              # 行选中
-Ctrl+v         # 块选中
-选中后按 y     # 复制
-选中后按 d     # 删除
-</code></pre><p>用习惯之后，感觉vim是真好用！</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln"> 1</span><span class="cl">文件操作
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">vim 文件名     # 打开文件
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">:w             # 保存
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">:q             # 退出
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">:wq            # 保存并退出
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">:q!            # 不保存强制退出
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">ZZ             # 保存并退出（Shift+z+z）
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">移动（普通模式）
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">h j k l        # 左 下 上 右（相当于方向键）
+</span></span><span class="line"><span class="ln">10</span><span class="cl">0              # 行首
+</span></span><span class="line"><span class="ln">11</span><span class="cl">$              # 行尾
+</span></span><span class="line"><span class="ln">12</span><span class="cl">gg             # 文件开头
+</span></span><span class="line"><span class="ln">13</span><span class="cl">G              # 文件结尾
+</span></span><span class="line"><span class="ln">14</span><span class="cl">123G           # 跳到第 123 行
+</span></span><span class="line"><span class="ln">15</span><span class="cl">w              # 下一个单词开头
+</span></span><span class="line"><span class="ln">16</span><span class="cl">b              # 上一个单词开头
+</span></span><span class="line"><span class="ln">17</span><span class="cl">编辑（普通模式）
+</span></span><span class="line"><span class="ln">18</span><span class="cl">i              # 在光标前插入
+</span></span><span class="line"><span class="ln">19</span><span class="cl">a              # 在光标后插入
+</span></span><span class="line"><span class="ln">20</span><span class="cl">o              # 在下一行插入新行
+</span></span><span class="line"><span class="ln">21</span><span class="cl">dd             # 删除当前行
+</span></span><span class="line"><span class="ln">22</span><span class="cl">5dd            # 删除 5 行
+</span></span><span class="line"><span class="ln">23</span><span class="cl">yy             # 复制当前行
+</span></span><span class="line"><span class="ln">24</span><span class="cl">5yy            # 复制 5 行
+</span></span><span class="line"><span class="ln">25</span><span class="cl">p              # 粘贴
+</span></span><span class="line"><span class="ln">26</span><span class="cl">u              # 撤销
+</span></span><span class="line"><span class="ln">27</span><span class="cl">Ctrl+r         # 重做
+</span></span><span class="line"><span class="ln">28</span><span class="cl">x              # 删除光标处字符
+</span></span><span class="line"><span class="ln">29</span><span class="cl">dw             # 删除一个单词
+</span></span><span class="line"><span class="ln">30</span><span class="cl">搜索替换
+</span></span><span class="line"><span class="ln">31</span><span class="cl">/关键词        # 向下搜索
+</span></span><span class="line"><span class="ln">32</span><span class="cl">?关键词        # 向上搜索
+</span></span><span class="line"><span class="ln">33</span><span class="cl">n              # 下一个匹配
+</span></span><span class="line"><span class="ln">34</span><span class="cl">N              # 上一个匹配
+</span></span><span class="line"><span class="ln">35</span><span class="cl">:%s/旧/新/g    # 全文替换
+</span></span><span class="line"><span class="ln">36</span><span class="cl">:%s/旧/新/gc   # 全文替换（每次确认）
+</span></span><span class="line"><span class="ln">37</span><span class="cl">可视模式（选中文字）
+</span></span><span class="line"><span class="ln">38</span><span class="cl">v              # 进入可视模式（字符选中）
+</span></span><span class="line"><span class="ln">39</span><span class="cl">V              # 行选中
+</span></span><span class="line"><span class="ln">40</span><span class="cl">Ctrl+v         # 块选中
+</span></span><span class="line"><span class="ln">41</span><span class="cl">选中后按 y     # 复制
+</span></span><span class="line"><span class="ln">42</span><span class="cl">选中后按 d     # 删除
+</span></span></code></pre></div><p>用习惯之后，感觉vim是真好用！</p>
 <p>输入<code>locale-gen</code>生成本地化文件</p>
 <p>然后输入<code>vim /etc/locale.conf</code>编辑配置文件，按下i键进入编辑模式</p>
 <p>写入<code>LANG=en_US.UTF-8</code>代表全局本地化使用英文，然后按Esc退出编辑模式，输入:wq保存并退出(之后不再赘述)</p>
@@ -529,10 +529,10 @@ Ctrl+v         # 块选中
 <p>然后我们配置Zram内存压缩和交换空间</p>
 <p>输入<code>pacman -S zram-generator</code>，它是管理工具</p>
 <p>输入<code>vim /etc/systemd/zram-generator.conf</code>,并且写入：</p>
-<pre tabindex="0"><code>[zram0]
-zram-size = ram
-compression-algorithm = zstd
-</code></pre><p>然后编辑grub源文件</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">[zram0]
+</span></span><span class="line"><span class="ln">2</span><span class="cl">zram-size = ram
+</span></span><span class="line"><span class="ln">3</span><span class="cl">compression-algorithm = zstd
+</span></span></code></pre></div><p>然后编辑grub源文件</p>
 <p>输入<code>vim /etc/default/grub</code>,将GRUB_CMDLINE_LINUX_DEFAULT=&ldquo;loglevel=5&quot;一行改为GRUB_CMDLINE_LINUX_DEFAULT=&ldquo;loglevel=5 zswap.enabled=0&rdquo; ，禁用zswap，它和zram功能重复</p>
 <p>再输入<code>grub-mkconfig -o /boot/grub/grub.cfg</code>生成一次配置文件</p>
 <p>输入<code>exit</code>退出chroot环境</p>
@@ -580,9 +580,9 @@ compression-algorithm = zstd
 <p>输入<code>passwd &lt;username&gt;</code>设置密码</p>
 <p>输入<code>visudo</code>，搜索wheel，取消#%wheel ALL=(ALL:ALL) ALL开头的注释</p>
 <p>输入<code>vim /etc/pacman.conf</code>，搜索multilib，取消#[multilib]和#Include = /etc/pacman.d/mirrorlist前面的注释，在文件最底部新建一行写入以下内容：</p>
-<pre tabindex="0"><code>[archlinuxcn]
-Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
-</code></pre><p>#唉逆神什么时候能有开源镜像站</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">[archlinuxcn]
+</span></span><span class="line"><span class="ln">2</span><span class="cl">Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
+</span></span></code></pre></div><p>#唉逆神什么时候能有开源镜像站</p>
 <p>然后保存并退出</p>
 <p>输入<code>pacman -Sy archlinuxcn-keyring</code>同步并安装密钥</p>
 <p>输入<code>pacman -S yay paru</code>安装AUR助手</p>
@@ -650,11 +650,11 @@ Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
 <p><code>vim ~/.config/hypr/hyprland.conf</code></p>
 <p>在里面找到# Set programs that you use</p>
 <p>修改成你要的软件</p>
-<pre tabindex="0"><code># Set programs that you use
-$terminal = kitty
-$fileManager = dolphin
-#menu = fuzzel
-</code></pre><p>保存并退出</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl"># Set programs that you use
+</span></span><span class="line"><span class="ln">2</span><span class="cl">$terminal = kitty
+</span></span><span class="line"><span class="ln">3</span><span class="cl">$fileManager = dolphin
+</span></span><span class="line"><span class="ln">4</span><span class="cl">#menu = fuzzel
+</span></span></code></pre></div><p>保存并退出</p>
 <p>再次输入<code>hyprland</code>进入DE</p>
 <p>再次输入<code>vim ~/.config/hypr/hyprland.conf</code>编辑配置文件</p>
 <p>找到autogenerated = 1 # remove this line to remove the warning，删掉这一行</p>
@@ -672,10 +672,10 @@ $fileManager = dolphin
 
 </p>
 <p>在这里写下</p>
-<pre tabindex="0"><code>xwayland{
-	force_zero_scaling=true
-}
-</code></pre><p>可以解决缩放导致的字体模糊问题，保存并退出</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">xwayland{
+</span></span><span class="line"><span class="ln">2</span><span class="cl">	force_zero_scaling=true
+</span></span><span class="line"><span class="ln">3</span><span class="cl">}
+</span></span></code></pre></div><p>可以解决缩放导致的字体模糊问题，保存并退出</p>
 
 <h3 id="安装音视频服务" data-numberify>安装音视频服务<a class="anchor ms-1" href="#安装音视频服务"></a></h3>
 <p>输入<code>sudo pacman -S --needed pipewire wireplumber pipewire-pulse pipewire-alsa pipewire-jack</code></p>
@@ -683,16 +683,16 @@ $fileManager = dolphin
 <p>输入<code>sudo pacman -S pavucontrol</code>安装图形化声音控制工具</p>
 <p>输入<code>sudo pacman -S libnotify mako xdg-desktop-portal-hyprland xdg-desltop-portal-gtk hypropolkitagent qt5-wayland qt6-wayland</code>安装一些必要软件，前两个是通知，xdg是门户，提供屏幕分享，文件选择之类的功能。hypropolkitagent是管理员权限询问，后两个是qt的wayland库，负责让基于 Qt5 和 Qt6 框架开发的应用程序，能在 Wayland 这个新的图形界面上正常显示和运行</p>
 <p>然后再去编辑hyprland的配置文件，找到exec，写入</p>
-<pre tabindex="0"><code>exec-once = mako
-exec-once = /usr/lib/hyprpolkitagent/hyprpolkitagent
-</code></pre><p>代表开机自启，保存并退出。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">exec-once = mako
+</span></span><span class="line"><span class="ln">2</span><span class="cl">exec-once = /usr/lib/hyprpolkitagent/hyprpolkitagent
+</span></span></code></pre></div><p>代表开机自启，保存并退出。</p>
 <p>Super+M退出DE，然后再输入<code>hyprland</code>进入</p>
 <p>输入<code>notify-send helloworld</code>给自己发个信息</p>
 <p>使用<code>mkdir ~/.config/mako</code>创建文件夹，输入<code>vim ~/.config/mako/config</code></p>
 <p>写入(8000代表通知显示8000ms也就是8s，下面设置圆角)</p>
-<pre tabindex="0"><code>default-timeout=8000
-border-radius=5
-</code></pre><p>输入<code>makoctl reload</code>，再给自己发个信息，就按照我们的配置显示了</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">default-timeout=8000
+</span></span><span class="line"><span class="ln">2</span><span class="cl">border-radius=5
+</span></span></code></pre></div><p>输入<code>makoctl reload</code>，再给自己发个信息，就按照我们的配置显示了</p>
 
 <h3 id="安装图形化文档管理器" data-numberify>安装图形化文档管理器<a class="anchor ms-1" href="#安装图形化文档管理器"></a></h3>
 <p>输入<code>sudo pacman -S thunar tumbler ffmpegthumbnailer poppler-glib gvfs-smb file-roller thunar-archive-plugin gnome-keyring</code></p>
@@ -1079,10 +1079,8 @@ border-radius=5
 </div>
   <div class="col-12 col-lg-8 offset-0 offset-lg-1"></div>
 </div>
-<script src="/js/copy-code.js"></script>
-<link rel="stylesheet" href="/css/copy-code.css">
 </footer>
-<script data-precache src="/assets/main/bundle.min.d462af947fff0bbdb09a7b9fcb40a12bc7ca3b7ee172a4a5a35044386026b13d.js" integrity="sha256-1GKvlH//C72wmnufy0ChK8fKO37hcqSlo1BEOGAmsT0=" crossorigin="anonymous" async></script><script data-precache src="/assets/icons/bundle.min.0b03280daa4a59445b0aafc46855a2bb53b310e572534596869c33acaeec09dd.js" integrity="sha256-CwMoDapKWURbCq/EaFWiu1OzEOVyU0WWhpwzrK7sCd0=" crossorigin="anonymous" defer></script>
+<script data-precache src="/assets/main/bundle.min.87619fbefacaa035367e3393cad6ce3508196b946cf9962924868666df3f298f.js" integrity="sha256-h2GfvvrKoDU2fjOTytbONQgZa5Rs&#43;ZYpJIaGZt8/KY8=" crossorigin="anonymous" async></script><script data-precache src="/assets/icons/bundle.min.0b03280daa4a59445b0aafc46855a2bb53b310e572534596869c33acaeec09dd.js" integrity="sha256-CwMoDapKWURbCq/EaFWiu1OzEOVyU0WWhpwzrK7sCd0=" crossorigin="anonymous" defer></script>
 <script data-precache src="/assets/viewer/bundle.min.cca398d318de9fa7816141db90f09282784fcfe0c5dabc31599b8c589932e4ae.js" integrity="sha256-zKOY0xjen6eBYUHbkPCSgnhPz&#43;DF2rwxWZuMWJky5K4=" crossorigin="anonymous" defer></script>
 <script src="/js/toc-auto.635186e6d874d0dfed4a40f65dcc71e277a9772461a22e01fd1e5aabc804694d.js" integrity="sha256-Y1GG5th00N/tSkD2Xcxx4nepdyRhoi4B/R5aq8gEaU0=" crossorigin="anonymous" defer></script>
 <script src="https://giscus.app/client.js"

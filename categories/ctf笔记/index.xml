@@ -50,25 +50,25 @@
 <h2 id="dtd-doucument-type-definition" data-numberify>DTD (Doucument Type Definition)<a class="anchor ms-1" href="#dtd-doucument-type-definition"></a></h2>
 <p>文档类型定义，可定义合法的XML文档构建模块，它使用一系列合法的元素来定义文档的结构。在XML中DTD就是来定义我们自定义元素的相关属性的文档，它规定、约束XML规则的定义和陈述，DTD可被成行地声明于XML文档中，也可作为一个外部引用。</p>
 <p>XML文档内部定义的是内定义，例如：</p>
-<pre tabindex="0"><code class="language-xml-dtd" data-lang="xml-dtd">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;
-&lt;!DOCTYPE root [
-                               &lt;!-- DOCTYPE用来约束XML规则 --&gt; 
-    &lt;!ELEMENT root (man)&gt;      &lt;!-- !ELEMENT定义root下有一个分支叫做man --&gt;
-    &lt;!ELEMENT man (name,age)&gt;  &lt;!-- 定义man根下有两个分支叫做name和age --&gt;
-    &lt;!ELEMENT name (#PCDATA)&gt;  &lt;!-- #PCDATA意味着name里面只能是字符串 --&gt;
-]&gt;
-&lt;root&gt;
-	&lt;man&gt;
-    	&lt;name&gt;leyi&lt;/name&gt;
-        &lt;age&gt;18&lt;/age&gt;
-        &lt;extra&gt;114514&lt;/extra&gt;  &lt;!-- 多余的会报错，但页面仍可正常打开 --&gt;
-    &lt;/man&gt;
-	&lt;man&gt;
-    	&lt;name&gt;晓堃&lt;/name&gt;
-        &lt;age&gt;18&lt;/age&gt;
-    &lt;/man&gt;
-&lt;/root&gt;
-</code></pre><p>除了<code>!ELEMENT</code>,我们还有其他的DTD声明标记，比如:</p>]]></description>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln"> 1</span><span class="cl">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">&lt;!DOCTYPE root [
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">                               &lt;!-- DOCTYPE用来约束XML规则 --&gt; 
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">    &lt;!ELEMENT root (man)&gt;      &lt;!-- !ELEMENT定义root下有一个分支叫做man --&gt;
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">    &lt;!ELEMENT man (name,age)&gt;  &lt;!-- 定义man根下有两个分支叫做name和age --&gt;
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">    &lt;!ELEMENT name (#PCDATA)&gt;  &lt;!-- #PCDATA意味着name里面只能是字符串 --&gt;
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">]&gt;
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">&lt;root&gt;
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">	&lt;man&gt;
+</span></span><span class="line"><span class="ln">10</span><span class="cl">    	&lt;name&gt;leyi&lt;/name&gt;
+</span></span><span class="line"><span class="ln">11</span><span class="cl">        &lt;age&gt;18&lt;/age&gt;
+</span></span><span class="line"><span class="ln">12</span><span class="cl">        &lt;extra&gt;114514&lt;/extra&gt;  &lt;!-- 多余的会报错，但页面仍可正常打开 --&gt;
+</span></span><span class="line"><span class="ln">13</span><span class="cl">    &lt;/man&gt;
+</span></span><span class="line"><span class="ln">14</span><span class="cl">	&lt;man&gt;
+</span></span><span class="line"><span class="ln">15</span><span class="cl">    	&lt;name&gt;晓堃&lt;/name&gt;
+</span></span><span class="line"><span class="ln">16</span><span class="cl">        &lt;age&gt;18&lt;/age&gt;
+</span></span><span class="line"><span class="ln">17</span><span class="cl">    &lt;/man&gt;
+</span></span><span class="line"><span class="ln">18</span><span class="cl">&lt;/root&gt;
+</span></span></code></pre></div><p>除了<code>!ELEMENT</code>,我们还有其他的DTD声明标记，比如:</p>]]></description>
     <enclosure url="https://decimo.top/images/xxe.png" length="120897" type="image/.png" />
     </item>
     
@@ -79,8 +79,8 @@
       <guid>https://decimo.top/posts/sqli-labs/</guid>
       <description><![CDATA[<h1 id="sql注入sqli-labs学习笔记" data-numberify>SQL注入——sqli-labs学习笔记<a class="anchor ms-1" href="#sql注入sqli-labs学习笔记"></a></h1>
 <p>我是边看b站重庆橘子科技的视频边学的，陈腾师傅讲得很好，推荐</p>
-<pre tabindex="0"><code>https://www.bilibili.com/video/BV1c34y1h7So/?p=7&amp;share_source=copy_web&amp;vd_source=9c22157b2c924857f42d806788cc5fea
-</code></pre><hr>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">https://www.bilibili.com/video/BV1c34y1h7So/?p=7&amp;share_source=copy_web&amp;vd_source=9c22157b2c924857f42d806788cc5fea
+</span></span></code></pre></div><hr>
 
 <h2 id="union注入" data-numberify>Union注入<a class="anchor ms-1" href="#union注入"></a></h2>
 <p><picture><img class="img-fluid " alt="msedge_yEllTDmkjW" src="https://decimo.top/images/screenshoots/2025-12/msedge_yEllTDmkjW.png?v=09bfda9fddc93fac2c87312aac6ebd94" loading="lazy" width="1745" height="1079" />
@@ -119,8 +119,7 @@
 <p><picture><img class="img-fluid " alt="msedge_m4Xts1eDSA" src="https://decimo.top/images/screenshoots/2025-12/msedge_m4Xts1eDSA.png?v=7db64a0bcf335cc1342adee28a779f13" loading="lazy" width="1051" height="519" />
 </picture>
 
-</p>
-<p>如图所示，当我们正常进行查询时，不会有回显，只显示You are in&hellip;</p>]]></description>
+</p>]]></description>
     <enclosure url="https://decimo.top/images/SQL1.png" length="88126" type="image/.png" />
     </item>
     
@@ -137,21 +136,21 @@
 <h3 id="1-安装kali环境及lamp组件" data-numberify>1. 安装Kali环境及LAMP组件<a class="anchor ms-1" href="#1-安装kali环境及lamp组件"></a></h3>
 <p>建议使用VMware或VirtualBox新建Kali虚拟机。<br>
 安装Web服务与SQL支持：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt update
-</span></span><span style="display:flex;"><span>sudo apt install apache2 mariadb-server php php-mysql git unzip
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">sudo apt update
+</span></span><span class="line"><span class="ln">2</span><span class="cl">sudo apt install apache2 mariadb-server php php-mysql git unzip
 </span></span></code></pre></div>
 <h3 id="2-克隆sqli-labs靶场源码" data-numberify>2. 克隆SQLi Labs靶场源码<a class="anchor ms-1" href="#2-克隆sqli-labs靶场源码"></a></h3>
 <p>进入Web根目录（Apache默认）：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd /var/www/html
-</span></span><span style="display:flex;"><span>sudo git clone https://github.com/Audi-1/sqli-labs.git
-</span></span><span style="display:flex;"><span>sudo chown -R www-data:www-data sqli-labs
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl"><span class="nb">cd</span> /var/www/html
+</span></span><span class="line"><span class="ln">2</span><span class="cl">sudo git clone https://github.com/Audi-1/sqli-labs.git
+</span></span><span class="line"><span class="ln">3</span><span class="cl">sudo chown -R www-data:www-data sqli-labs
 </span></span></code></pre></div>
 <h3 id="3-启动服务" data-numberify>3. 启动服务<a class="anchor ms-1" href="#3-启动服务"></a></h3>
 <p>确保apache和数据库开启：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo systemctl start apache2
-</span></span><span style="display:flex;"><span>sudo systemctl start mariadb
-</span></span><span style="display:flex;"><span>sudo systemctl enable apache2
-</span></span><span style="display:flex;"><span>sudo systemctl enable mariadb
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">sudo systemctl start apache2
+</span></span><span class="line"><span class="ln">2</span><span class="cl">sudo systemctl start mariadb
+</span></span><span class="line"><span class="ln">3</span><span class="cl">sudo systemctl <span class="nb">enable</span> apache2
+</span></span><span class="line"><span class="ln">4</span><span class="cl">sudo systemctl <span class="nb">enable</span> mariadb
 </span></span></code></pre></div>
 <h3 id="4-创建数据库和导入数据" data-numberify>4. 创建数据库和导入数据<a class="anchor ms-1" href="#4-创建数据库和导入数据"></a></h3>
 <p>登录MariaDB/MySQL，创建数据库：</p>]]></description>
