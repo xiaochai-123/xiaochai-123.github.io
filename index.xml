@@ -293,168 +293,83 @@
       <pubDate>Mon, 22 Dec 2025 22:43:35 +0800</pubDate>
       <guid>https://decimo.top/posts/ctf-web-guide/</guid>
       <description><![CDATA[<h1 id="持续更新-ctf-web-guide" data-numberify>[持续更新] CTF-Web Guide<a class="anchor ms-1" href="#持续更新-ctf-web-guide"></a></h1>
-<p>看到Lunatic大佬的</p>
-<p>大受震撼。大丈夫当如是也！这种长篇的持续更新文章似乎可以更全面的记录遇到题目时要有的思路，或查找一些偏门的考点。仆诚以著此篇，希望我能写出一个好的Guide&hellip;</p>
+<p>看到Lunatic大佬的 <a href="https://goodlunatic.github.io/posts/1ad9200/" target="_blank" rel="noopener noreferrer">Misc-Guide<i class="fas fa-external-link-square-alt ms-1"></i></a>，大受震撼。大丈夫当如是也！这种长篇的持续更新文章似乎可以更全面的记录遇到题目时要有的思路，或查找一些偏门的考点。仆诚以著此篇，希望我能写出一个好的Guide&hellip;</p>
 
 <h2 id="前言-preface" data-numberify>前言 (Preface)<a class="anchor ms-1" href="#前言-preface"></a></h2>
 <ul>
 <li><strong>前言</strong>：本篇旨在提供全面的ctfweb题目分析讲解和思路的提供，无论是新手学习和老手速查都十分适合0v0</li>
+<li><strong>怎么用这篇</strong>：新手建议从头顺着读一遍，每章末尾的表格当课后小结；老手直接 Ctrl+F 搜关键词，或者当&quot;看到某个现象该往哪想&quot;的索引。</li>
+<li><strong>说在前面</strong>：所有 payload 都只是&quot;思路的载体&quot;，题目一换、过滤一变就要变形。真正要记的是<strong>为什么这么构造</strong>，而不是把 payload 背下来。</li>
+<li><strong>免责声明</strong>：本文所有内容仅用于 CTF 竞赛、靶场练习和已获授权的安全测试。拿去做未授权测试，后果自负，别赖我0.0</li>
 </ul>
 
 <h2 id="第一章工欲善其事-the-toolkit" data-numberify>第一章：工欲善其事 (The Toolkit)<a class="anchor ms-1" href="#第一章工欲善其事-the-toolkit"></a></h2>
-<blockquote>
-<p><em>这部分介绍基础环境，同时强调工具的重要性。</em></p>
-</blockquote>
+<p>工欲善其事，必先利其器。这一章不讲漏洞本身，只讲两样东西：脑子里的常识，和手上的家伙。这两样东西决定了你解题是&quot;有章法的推进&quot;还是&quot;乱撞的碰运气&quot;。</p>
 
 <h3 id="基础知识储备" data-numberify>基础知识储备<a class="anchor ms-1" href="#基础知识储备"></a></h3>
+
+<h4 id="1-httphttps-协议" data-numberify>1. HTTP/HTTPS 协议<a class="anchor ms-1" href="#1-httphttps-协议"></a></h4>
+<p>Web 题的本质是&quot;和服务器聊天&quot;，而聊天的语法就是 HTTP。抓包抓出来的每一个包，都能拆成这四块：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">GET /index.php?id=1 HTTP/1.1        ← 请求行：方法 + 路径 + 版本
+</span></span><span class="line"><span class="ln">2</span><span class="cl">Host: www.example.com               ← 请求头：一堆键值对
+</span></span><span class="line"><span class="ln">3</span><span class="cl">Cookie: PHPSESSID=abc123
+</span></span><span class="line"><span class="ln">4</span><span class="cl">User-Agent: Mozilla/5.0 ...
+</span></span><span class="line"><span class="ln">5</span><span class="cl">
+</span></span><span class="line"><span class="ln">6</span><span class="cl">username=admin&amp;pass=123             ← 请求体：POST 才带（GET 没有）
+</span></span></code></pre></div><p><strong>常用方法</strong>（别只会 GET/POST，冷门方法是常考点）：</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">方法</th>
+          <th style="text-align: left">作用</th>
+          <th style="text-align: left">CTF 里的用处</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>GET</code></td>
+          <td style="text-align: left">获取资源，参数在 URL</td>
+          <td style="text-align: left">最常见的传参方式</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>POST</code></td>
+          <td style="text-align: left">提交数据，参数在请求体</td>
+          <td style="text-align: left">上传、登录</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>HEAD</code></td>
+          <td style="text-align: left">只要响应头，不要 body</td>
+          <td style="text-align: left"><strong>不执行代码地探测文件是否存在</strong>、看响应头</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>PUT</code></td>
+          <td style="text-align: left">上传/覆盖文件</td>
+          <td style="text-align: left">遇到就试试写 webshell</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>OPTIONS</code></td>
+          <td style="text-align: left">问服务器支持哪些方法</td>
+          <td style="text-align: left">探测可用方法、CORS 预检</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>DELETE</code></td>
+          <td style="text-align: left">删除资源</td>
+          <td style="text-align: left">删除 <code>.htaccess</code>、删上传的黑名单校验文件</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>TRACE</code></td>
+          <td style="text-align: left">回显请求内容</td>
+          <td style="text-align: left">反射型 XSS 的载体</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>PATCH</code></td>
+          <td style="text-align: left">局部更新</td>
+          <td style="text-align: left">有些框架的路由只认它</td>
+      </tr>
+  </tbody>
+</table>
 <blockquote>
-<p><em>这部分是地基，不需要写太深，但要列出“必知必会”。</em></p>
-</blockquote>
-<ol>
-<li>协议与架构
-<ul>
-<li><strong>HTTP/HTTPS 协议</strong>：请求头（Headers）、响应码（Status Codes）、常用方法（GET/POST/PUT/HEAD/OPTIONS）。</li>
-<li><strong>Web 架构</strong>：前端（HTML/JS/CSS）与后端（PHP/Java/Python/Go）的交互流程，MVC 模式，API 接口（RESTful/GraphQL）。</li>
-</ul>
-</li>
-</ol>
-
-<h3 id="web工具" data-numberify>Web工具<a class="anchor ms-1" href="#web工具"></a></h3>
-<ol>
-<li>常用工具
-<ul>
-<li><strong>抓包与测试</strong>：<strong>Burp Suite</strong>（核心、抓包/重放/爆破）、Yakit（中文版bp）</li>
-<li><strong>信息收集</strong>：<strong>Dirsearch</strong>（目录扫描）、Nmap（端口扫描）</li>
-<li><strong>浏览器插件</strong>：<strong>HackBar</strong>（快速发包）、Wappalyzer（指纹识别）</li>
-<li><strong>Linux环境</strong>：<strong>VMware</strong>（测试病毒)、WSL2（用于快速启动Linux环境）</li>
-<li><strong>远程控制</strong>：<strong>Antsword</strong>（连接木马），冰蝎，哥斯拉</li>
-<li><strong>IDE</strong>：<strong>PhpStorm</strong>（做php反序列化），<strong>VScode</strong>（泛用）</li>
-<li><strong>自动注入</strong>：<strong>SQLmap</strong>（sql注入点自动查找），<strong>fenjing</strong>（焚靖|自动构建SSTIpayload，绕过waf一把梭）</li>
-<li><strong>AI助手</strong>：帮你想思路，构建payload和脚本</li>
-</ul>
-</li>
-</ol>
-
-<h2 id="第二章信息收集-information-gathering" data-numberify>第二章：信息收集 (Information Gathering)<a class="anchor ms-1" href="#第二章信息收集-information-gathering"></a></h2>
-<blockquote>
-<p><em>Web 题的第一步永远是把题目“看光”。</em></p>
-</blockquote>
-
-<h3 id="敏感文件泄露" data-numberify>敏感文件泄露<a class="anchor ms-1" href="#敏感文件泄露"></a></h3>
-<ul>
-<li><code>robots.txt</code>、<code>sitemap.xml</code>。</li>
-</ul>
-
-<h4 id="1-管理类文件" data-numberify>1. 管理类文件<a class="anchor ms-1" href="#1-管理类文件"></a></h4>
-
-<h5 id="11-robotstxt" data-numberify>1.1 robots.txt<a class="anchor ms-1" href="#11-robotstxt"></a></h5>
-<ul>
-<li>
-<p><strong>作用</strong>：搜索引擎爬虫协议文件，告诉爬虫哪些路径不应抓取。</p>
-</li>
-<li>
-<p><strong>渗透思路</strong>：黑名单信息含涉密路径、后门、管理后台、备份等，非常容易疏忽泄露。</p>
-</li>
-<li>
-<p><strong>例子</strong>：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">Disallow: /admin
-</span></span><span class="line"><span class="ln">2</span><span class="cl">Disallow: /hidden/flag.txt
-</span></span></code></pre></div></li>
-</ul>
-
-<h5 id="12-sitemapxml" data-numberify>1.2 sitemap.xml<a class="anchor ms-1" href="#12-sitemapxml"></a></h5>
-<ul>
-<li><strong>作用</strong>：网站内容地图，列出所有可爬网址。</li>
-<li><strong>渗透思路</strong>：直接暴露未公开子目录，配合robots.txt查询价值极高。</li>
-</ul>
-
-<h5 id="13-env" data-numberify>1.3 .env<a class="anchor ms-1" href="#13-env"></a></h5>
-<ul>
-<li><strong>作用</strong>：各类Web框架常用环境变量文件。</li>
-<li><strong>渗透</strong>：很多JWT密钥、数据库连接信息、邮箱API等一览无遗，PHP、Laravel、Node.js尤其常见。</li>
-</ul>
-<hr>
-
-<h4 id="2-源码和仓库泄露" data-numberify>2. 源码和仓库泄露<a class="anchor ms-1" href="#2-源码和仓库泄露"></a></h4>
-
-<h5 id="21-git" data-numberify>2.1 .git/<a class="anchor ms-1" href="#21-git"></a></h5>
-<ul>
-<li><strong>作用</strong>：Git版本库目录。</li>
-<li><strong>渗透</strong>：若未做严格防护可直接遍历和还原完整源码。使用 <code>GitHack.py</code>、<code>githound</code>等工具，一键还原全部源码+敏感信息。</li>
-</ul>
-
-<h5 id="22-svnhg" data-numberify>2.2 .svn/、.hg/<a class="anchor ms-1" href="#22-svnhg"></a></h5>
-<ul>
-<li><strong>作用</strong>：分别对应Subversion、Mercurial代码管理目录。</li>
-<li><strong>渗透</strong>：同理可还原源代码及全部提交历史。</li>
-</ul>
-
-<h5 id="23-ds_store" data-numberify>2.3 .DS_Store<a class="anchor ms-1" href="#23-ds_store"></a></h5>
-<ul>
-<li><strong>作用</strong>：Mac下目录索引文件。</li>
-<li><strong>渗透</strong>：泄露完整目录结构（可见文件名），辅助发现“隐藏文件”“Flag”。</li>
-</ul>
-
-<h5 id="24-wwwzipcodetargzsourcebak" data-numberify>2.4 www.zip、code.tar.gz、source.bak<a class="anchor ms-1" href="#24-wwwzipcodetargzsourcebak"></a></h5>
-<ul>
-<li><strong>作用</strong>：习惯性手工备份或源码打包，上传或备份遗留。</li>
-<li><strong>渗透</strong>：敏感备份/打包文件常规文件：
-<code>www.zip</code>、<code>web.zip</code>、<code>backup.zip</code>、<code>site.bak</code>、<code>index.php.bak</code>、<code>src.rar</code>、<code>bak.tar.gz</code>等</li>
-</ul>
-<hr>
-
-<h4 id="3-编辑器临时自动备份文件" data-numberify>3. 编辑器临时/自动备份文件<a class="anchor ms-1" href="#3-编辑器临时自动备份文件"></a></h4>
-
-<h5 id="31-vimemacs交换备份" data-numberify>3.1 Vim/Emacs交换备份<a class="anchor ms-1" href="#31-vimemacs交换备份"></a></h5>
-<ul>
-<li><code>.swp</code>/<code>.swo</code></li>
-<li>例：<code>index.php.swp</code></li>
-<li><strong>用途与危害</strong>：Vim自动生成的内存交换文件。利用<code>strings</code>等命令可恢复大量源码或明文密码。</li>
-</ul>
-
-<h5 id="32-emacs临时文件" data-numberify>3.2 Emacs临时文件<a class="anchor ms-1" href="#32-emacs临时文件"></a></h5>
-<ul>
-<li>例：<code>index.php~</code>, <code>#index.php#</code></li>
-</ul>
-
-<h5 id="33-其它常见临时备份扩展" data-numberify>3.3 其它常见临时/备份扩展<a class="anchor ms-1" href="#33-其它常见临时备份扩展"></a></h5>
-<ul>
-<li><code>.bak</code>、<code>.old</code>、<code>.backup</code>、<code>.save</code>、<code>.tmp</code>、<code>.temp</code></li>
-<li><strong>典型案例</strong>：<code>index.php.bak</code>、<code>config.php.old</code>，甚至<code>flag.php.save</code></li>
-</ul>
-<hr>
-
-<h4 id="4-常见渗透ctf技巧总结" data-numberify>4. 常见渗透/CTF技巧总结<a class="anchor ms-1" href="#4-常见渗透ctf技巧总结"></a></h4>
-<ol>
-<li><strong>爆破路径字典</strong>：用字典工具快速遍历敏感路径
-典例：<code>dirsearch</code>, <code>ffuf</code>, <code>gobuster</code></li>
-<li><strong>尝试访问源码与备份文件</strong>：如<code>index.php.bak</code>，几乎等同于源码泄露。</li>
-<li><strong>下载解压源码包或查看仓库提交历史</strong>：发现历史密码、后台路径、flag等。</li>
-<li><strong>扫描.git, .svn, .hg</strong>：直接还原项目全部文件、操作commit，甚至逆推出未上线flag。</li>
-<li><strong>编辑器遗留文件源码复原</strong>：如vim .swp 文件，用<code>strings</code>或专用工具还原内容，常获flag。</li>
-</ol>
-<ul>
-<li>源码泄露：<code>www.zip</code>、<code>.git</code>、<code>.svn</code>、<code>.hg</code>、<code>.DS_Store</code>。</li>
-<li>备份文件：<code>index.php.bak</code>、<code>vim</code> 交换文件 (<code>.swp</code>)。</li>
-</ul>
-<ol>
-<li>指纹识别
-<ul>
-<li>判断操作系统（Linux/Windows）、中间件（Apache/Nginx/IIS/Tomcat）、数据库类型。</li>
-<li>CMS 识别（WordPress, Discuz, Typecho 等）。</li>
-</ul>
-</li>
-<li>其他
-<ul>
-<li>PHPinfo 页面分析（查看 <code>disable_functions</code>、开启的扩展）。</li>
-<li>社工与 OSINT（如果有涉及）。</li>
-</ul>
-</li>
-</ol>
-
-<h2 id="第三章核心漏洞---注入篇-injection-attacks" data-numberify>第三章：核心漏洞 - 注入篇 (Injection Attacks)<a class="anchor ms-1" href="#第三章核心漏洞---注入篇-injection-attacks"></a></h2>
-<blockquote>
-<p><em>CTF Web 的半壁江山。</em></p>]]></description>
+<p><strong>小技巧</strong>：如果题目只校验 <code>GET</code>，试试换 <code>POST</code> 传参；反之亦然。很多题目的过滤只写在其中一个方法里。用 Burp 的话右键 → <code>Change request method</code> 一键切换。</p>]]></description>
     <enclosure url="https://decimo.top/images/1.png" length="328106" type="image/.png" />
     </item>
     
